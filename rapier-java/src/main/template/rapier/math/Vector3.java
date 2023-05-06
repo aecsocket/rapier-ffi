@@ -15,31 +15,31 @@ public final class Vector3 extends Native {
         return new Vector3(memory);
     }
 
-    public static Vector3 create(SegmentAllocator alloc, float x, float y, float z) {
-        return at(alloc.allocateArray(ValueLayout.ValueLayout.JAVA_FLOAT, x, y, z));
+    public static Vector3 create(SegmentAllocator alloc, {{ real }} x, {{ real }} y, {{ real }} z) {
+        return at(alloc.allocateArray({{ realLayout }}, x, y, z));
     }
 
-    public float getX() {
-        return self.getAtIndex(ValueLayout.JAVA_FLOAT, 0);
+    public {{ real }} getX() {
+        return self.getAtIndex({{ realLayout }}, 0);
     }
 
-    public void setX(float x) {
-        self.setAtIndex(ValueLayout.JAVA_FLOAT, 0, x);
+    public void setX({{ real }} x) {
+        self.setAtIndex({{ realLayout }}, 0, x);
     }
 
-    public float getY() {
-        return self.getAtIndex(ValueLayout.JAVA_FLOAT, 1);
+    public {{ real }} getY() {
+        return self.getAtIndex({{ realLayout }}, 1);
     }
 
-    public void setY(float y) {
-        self.setAtIndex(ValueLayout.JAVA_FLOAT, 1, y);
+    public void setY({{ real }} y) {
+        self.setAtIndex({{ realLayout }}, 1, y);
     }
 
-    public float getZ() {
-        return self.getAtIndex(ValueLayout.JAVA_FLOAT, 2);
+    public {{ real }} getZ() {
+        return self.getAtIndex({{ realLayout }}, 2);
     }
 
-    public void setZ(float z) {
-        self.setAtIndex(ValueLayout.JAVA_FLOAT, 2, z);
+    public void setZ({{ real }} z) {
+        self.setAtIndex({{ realLayout }}, 2, z);
     }
 }

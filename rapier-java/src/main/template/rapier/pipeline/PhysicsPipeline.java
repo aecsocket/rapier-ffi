@@ -22,8 +22,16 @@ public abstract class PhysicsPipeline extends DroppableNative {
         RprPhysicsPipeline_drop(self);
     }
 
+    public static PhysicsPipeline at(MemorySegment memory) {
+        return new PhysicsPipeline(memory);
+    }
+
+    public static PhysicsPipeline create() {
+        return at(RprPhysicsPipeline_new());
+    }
+
     public void step(
-            Vector2 gravity,
+            {{ realVector }} gravity,
             IntegrationParameters integrationParameters,
             IslandManager islands,
             BroadPhase broadPhase,
@@ -47,7 +55,7 @@ public abstract class PhysicsPipeline extends DroppableNative {
                 impulseJoints.memory(),
                 multibodyJoints.memory(),
                 ccdSolver.memory(),
-                queryPipeline.memory()
+                memoryOrNull(queryPipeline)
         );
     }
 }

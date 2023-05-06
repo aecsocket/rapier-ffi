@@ -24,11 +24,11 @@ public final class IntegrationParameters extends DroppableNative {
         RprIntegrationParameters_drop(self);
     }
 
-    public float getDt() {
-        return rapier.sys_dim2_f32.RprIntegrationParameters_dt(self).get(Real, 0);
+    public {{ real }} getDt() {
+        return {{ sys }}.RprIntegrationParameters_dt(self).get(Real, 0);
     }
 
-    public void setDt(float dt) {
-        rapier.sys_dim2_f32.RprIntegrationParameters_dt(self).set(Real, 0, dt.value());
+    public void setDt({{ real }} dt) {
+        {{ sys }}.RprIntegrationParameters_dt(self).set(Real, 0, dt.value());
     }
 }
