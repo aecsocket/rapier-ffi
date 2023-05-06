@@ -7,7 +7,8 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.indraCommon)
-    implementation(libs.indraPublishingSonatype)
+    implementation(libs.indra.common)
+    implementation(libs.indra.publishing.sonatype)
     implementation(libs.jextract)
+    implementation(libs.pebble)
 }

@@ -1,0 +1,15 @@
+plugins {
+    id("variant-conventions")
+}
+
+dependencies {
+    implementation(projects.rapierJavaSys)
+    compileOnlyApi(libs.findbugs)
+}
+
+variant {
+    context("sys", "rapier.sys_dim3_f32")
+    context("real", "float")
+    context("realLayout", "ValueLayout.JAVA_FLOAT")
+    context("realVector", "Vector3")
+}

@@ -7,10 +7,10 @@ pluginManagement {
     includeBuild("build-logic")
 }
 
-plugins {
-    id("ca.stellardrift.polyglot-version-catalogs") version "6.0.1"
-}
-
 rootProject.name = "rapier-java"
 
-include("rapier-java-headers")
+include("rapier-java-sys")
+include("rapier-java-dim2-f32")
+include("rapier-java-dim2-f64")
+include("rapier-java-dim3-f32")
+include("rapier-java-dim3-f64")
