@@ -7,3 +7,13 @@ val Project.ci: Provider<Boolean>
 
 val Project.nativeDir: File
     get() = rootDir.resolve("rapier_ffi")
+
+enum class BuildProfile(val cargoName: String, val outputName: String) {
+    DEV     ("dev", "debug"),
+    RELEASE ("release", "release"),
+}
+
+val Project.buildProfile: BuildProfile
+    get() = (findProperty("buildProfile")?.toString())?.uppercase()?.let {
+        BuildProfile.valueOf(it)
+    } ?: BuildProfile.DEV

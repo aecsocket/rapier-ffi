@@ -11,6 +11,9 @@ afterEvaluate {
 
     sourceSets.forEach { sourceSet ->
         val source = rootProject.projectDir.resolve("src/${sourceSet.name}/templates")
+        if (!source.exists()) {
+            return@forEach
+        }
         val output = buildDir.resolve("generated/sources/${sourceSet.name}-templates")
 
         val taskName = sourceSet.getTaskName("generate", "templates")

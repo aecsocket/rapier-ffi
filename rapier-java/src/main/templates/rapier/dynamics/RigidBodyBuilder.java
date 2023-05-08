@@ -1,7 +1,7 @@
 package rapier.dynamics;
 
 import rapier.DroppableNative;
-import rapier.math.Vector3;
+import rapier.math.*;
 
 import java.lang.foreign.MemorySegment;
 

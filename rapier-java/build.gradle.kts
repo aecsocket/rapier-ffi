@@ -1,3 +1,5 @@
+import org.gradle.internal.os.OperatingSystem
+
 plugins {
     id("parent-conventions")
     id("java-conventions")
@@ -5,13 +7,20 @@ plugins {
 
 group = "io.github.aecsocket"
 version = "0.1.0-SNAPSHOT"
-description = "API abstraction layer for physics engines for Minecraft servers"
+description = "Java bindings for the Rapier physics engine"
 
 dependencies {
     implementation(projects.rapierJavaSys) // for IDE autocompletion
 
-    testImplementation(projects.rapierJavaDim3F64)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)
-    testImplementation(libs.findbugs)
+
+    testImplementation(projects.rapierJavaDim3F64)
+
+    val os = OperatingSystem.current()
+    when {
+        os.isLinux -> testRuntimeOnly(projects.rapierJavaNativesLinuxX86)
+        os.isWindows -> testRuntimeOnly(projects.rapierJavaNativesWindowsX86)
+        os.isMacOsX -> testRuntimeOnly(projects.rapierJavaNativesMacosX86)
+    }
 }

@@ -32,7 +32,6 @@ afterEvaluate {
             jvmArgs(
                 "--enable-preview",
                 "--enable-native-access=ALL-UNNAMED",
-                "-Djava.library.path=$nativeDir/target/debug/",
             )
             testLogging.exceptionFormat = TestExceptionFormat.FULL
         }
