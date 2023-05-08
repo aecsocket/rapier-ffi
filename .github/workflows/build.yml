@@ -19,6 +19,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: "cargo build --verbose --feature ${{ matrix.dimension }}-${{ matrix.precision }}"
+      run: "cargo build --verbose --features ${{ matrix.dimension }}-${{ matrix.precision }}"
     - name: Test
-      run: "cargo test --verbose --feature ${{ matrix.dimension }}-${{ matrix.precision }}"
+      run: "cargo test --verbose --features ${{ matrix.dimension }}-${{ matrix.precision }}"
