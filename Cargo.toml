@@ -5,7 +5,7 @@ edition = "2018"
 authors = ["aecsocket"]
 
 [features]
-default = ["dim3-f64"]
+default = []
 dim2-f32 = ["dim2", "f32", "dep:rapier2d"]
 dim2-f64 = ["dim2", "f64", "dep:rapier2d-f64"]
 dim3-f32 = ["dim3", "f32", "dep:rapier3d"]
