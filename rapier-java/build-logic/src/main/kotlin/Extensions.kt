@@ -6,7 +6,7 @@ val Project.ci: Provider<Boolean>
     get() = providers.environmentVariable("CI").map { it.toBoolean() }.orElse(false)
 
 val Project.nativeDir: File
-    get() = rootDir.resolve("rapier_ffi")
+    get() = rootDir.resolve("rapier-ffi")
 
 enum class BuildProfile(val cargoName: String, val outputName: String) {
     DEV     ("dev", "debug"),
