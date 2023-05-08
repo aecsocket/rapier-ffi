@@ -15,7 +15,7 @@ public final class Rapier {
         var platform = CpuPlatform.get();
         var resourcePath = "rapier/" + switch (platform) {
             case LINUX -> "linux_x86/librapier_ffi.so";
-            case WINDOWS -> "windows_x86/librapier_ffi.dll";
+            case WINDOWS -> "windows_x86/rapier_ffi.dll";
             case MACOS -> "macos_x86/librapier_ffi.dylib";
         };
 
@@ -23,7 +23,7 @@ public final class Rapier {
             if (resourceIn == null) {
                 throw new RuntimeException("No native library in JAR at " + resourcePath);
             }
-            var libFile = Files.createTempFile("Rapier", "");
+            var libFile = Files.createTempFile("rapier", null);
             Files.copy(resourceIn, libFile, StandardCopyOption.REPLACE_EXISTING);
             System.load(libFile.toAbsolutePath().toString());
         } catch (IOException ex) {
