@@ -65,6 +65,10 @@ public final class HelloRapier {
             broadPhase.drop();
             islandManager.drop();
             integrationParameters.drop();
+
+            // will automatically drop its contents
+            colliderSet.drop();
+            rigidBody.drop();
             // gravity is allocated on the Java side, not the native side
             // so it gets deallocated when we exit the arena's scope
         }

@@ -9,9 +9,9 @@ Java bindings for the Rapier physics engine
 
 </div>
 
-# Building
+## Building
 
-## Quick start
+### Quick start
 
 Requirements:
 * [Java 20](https://openjdk.org/projects/jdk/20/)
@@ -32,7 +32,7 @@ To also publish to your local `~/.m2` repo:
 ./gradlew publishToMavenLocal
 ```
 
-## Detailed steps
+### Detailed steps
 
 To update rapier_ffi:
 1. `./gradlew generateHeaders`

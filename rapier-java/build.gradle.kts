@@ -1,8 +1,10 @@
 import org.gradle.internal.os.OperatingSystem
+import org.gradle.plugins.ide.idea.model.IdeaModel
 
 plugins {
     id("parent-conventions")
     id("java-conventions")
+    id("idea")
 }
 
 group = "io.github.aecsocket"
@@ -22,5 +24,12 @@ dependencies {
         os.isLinux -> testRuntimeOnly(projects.rapierJavaNativesLinuxX86)
         os.isWindows -> testRuntimeOnly(projects.rapierJavaNativesWindowsX86)
         os.isMacOsX -> testRuntimeOnly(projects.rapierJavaNativesMacosX86)
+    }
+}
+
+// for IDE autocompletion
+extensions.configure<IdeaModel> {
+    module {
+        sourceDirs.add(file("$projectDir/src/main/templates"))
     }
 }
