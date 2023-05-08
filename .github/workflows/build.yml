@@ -22,3 +22,7 @@ jobs:
       run: "cargo build --verbose --features ${{ matrix.dimension }}-${{ matrix.precision }}"
     - name: Test
       run: "cargo test --verbose --features ${{ matrix.dimension }}-${{ matrix.precision }}"
+    - uses: actions/upload-artifact@v3
+      with:
+        name: natives
+        path: target/*/*rapier_ffi*

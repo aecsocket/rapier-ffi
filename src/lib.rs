@@ -1,5 +1,10 @@
 pub(crate) mod ffi;
 
+#[cfg(not(any(feature = "dim2", feature = "dim3")))]
+compile_error!("must enable a feature that enables at least one of `dim2` or `dim3`");
+#[cfg(not(any(feature = "f32", feature = "f64")))]
+compile_error!("must enable a feature that enables at least one of `f32` or `f64`");
+
 #[cfg(all(feature = "dim2", feature = "f32"))]
 extern crate rapier2d as rapier;
 #[cfg(all(feature = "dim2", feature = "f64"))]
