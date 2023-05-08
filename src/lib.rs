@@ -1,5 +1,12 @@
 pub(crate) mod ffi;
 
+#[cfg(all(feature = "dim2", feature = "f32"))]
+extern crate rapier2d as rapier;
+#[cfg(all(feature = "dim2", feature = "f64"))]
+extern crate rapier2d_f64 as rapier;
+#[cfg(all(feature = "dim3", feature = "f32"))]
+extern crate rapier3d as rapier;
+#[cfg(all(feature = "dim3", feature = "f64"))]
 extern crate rapier3d_f64 as rapier;
 
 pub(crate) mod prelude {
