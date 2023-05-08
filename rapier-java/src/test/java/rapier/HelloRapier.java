@@ -36,7 +36,7 @@ public final class HelloRapier {
             var multibodyJointSet = MultibodyJointSet.create();
             var ccdSolver = CCDSolver.create();
             var physicsPipeline = PhysicsPipeline.create();
-            
+
             for (int i = 0; i < 200; i++) {
                 physicsPipeline.step(
                         gravity,

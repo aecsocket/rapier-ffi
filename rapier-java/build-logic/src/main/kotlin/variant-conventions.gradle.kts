@@ -10,7 +10,7 @@ afterEvaluate {
     val variantContext = variantExt.context.get()
 
     sourceSets.forEach { sourceSet ->
-        val source = rootProject.projectDir.resolve("src/${sourceSet.name}/template")
+        val source = rootProject.projectDir.resolve("src/${sourceSet.name}/templates")
         val output = buildDir.resolve("generated/sources/${sourceSet.name}-templates")
 
         val taskName = sourceSet.getTaskName("generate", "templates")
