@@ -1,3 +1,14 @@
+<div align="center">
+
+# rapier-java
+[![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-java/build.yml)](https://github.com/aecsocket/rapier-java/actions/workflows/build.yml)
+
+Java bindings for the Rapier physics engine
+
+### [GitHub](https://github.com/aecsocket/rapier-java)
+
+</div>
+
 # Building
 
 ## Quick start
