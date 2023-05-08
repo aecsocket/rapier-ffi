@@ -19,6 +19,10 @@ public final class Vector3 extends Native {
         return at(alloc.allocateArray({{ realLayout }}, x, y, z));
     }
 
+    public static Vector3 create(SegmentAllocator alloc) {
+        return create(alloc, {{ realZero }}, {{ realZero }}, {{ realZero }});
+    }
+
     public {{ real }} getX() {
         return self.getAtIndex({{ realLayout }}, 0);
     }

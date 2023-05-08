@@ -4,22 +4,22 @@ import rapier.DroppableNative;
 import rapier.dynamics.IntegrationParameters;
 import rapier.dynamics.IslandManager;
 import rapier.dynamics.RigidBodySet;
+import rapier.dynamics.ImpulseJointSet;
+import rapier.dynamics.MultibodyJointSet;
+import rapier.dynamics.CCDSolver;
 import rapier.geometry.BroadPhase;
 import rapier.geometry.NarrowPhase;
+import rapier.geometry.ColliderSet;
 import rapier.math.*;
 
+import javax.annotation.Nullable;
 import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public abstract class PhysicsPipeline extends DroppableNative {
+public final class PhysicsPipeline extends DroppableNative {
     protected PhysicsPipeline(MemorySegment memory) {
         super(memory);
-    }
-
-    @Override
-    protected void dropInternal() {
-        RprPhysicsPipeline_drop(self);
     }
 
     public static PhysicsPipeline at(MemorySegment memory) {
@@ -28,6 +28,11 @@ public abstract class PhysicsPipeline extends DroppableNative {
 
     public static PhysicsPipeline create() {
         return at(RprPhysicsPipeline_new());
+    }
+
+    @Override
+    protected void dropInternal() {
+        RprPhysicsPipeline_drop(self);
     }
 
     public void step(
@@ -41,9 +46,9 @@ public abstract class PhysicsPipeline extends DroppableNative {
             ImpulseJointSet impulseJoints,
             MultibodyJointSet multibodyJoints,
             CCDSolver ccdSolver,
-            QueryPipeline queryPipeline
+            @Nullable QueryPipeline queryPipeline
     ) {
-        RprPhysicsPipeline_step(
+        {{ sys }}.RapierC.RprPhysicsPipeline_step(
                 self,
                 gravity.memory(),
                 integrationParameters.memory(),

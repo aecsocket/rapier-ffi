@@ -19,6 +19,10 @@ public final class Vector2 extends Native {
         return at(alloc.allocateArray({{ realLayout }}, x, y));
     }
 
+    public static Vector2 create(SegmentAllocator alloc) {
+        return create(alloc, {{ realZero }}, {{ realZero }});
+    }
+
     public {{ real }} getX() {
         return self.getAtIndex({{ realLayout }}, 0);
     }

@@ -10,6 +10,7 @@ dependencies {
 variant {
     context("sys", "rapier.sys_dim3_f64")
     context("real", "double")
+    context("realZero", "0.0")
     context("realLayout", "ValueLayout.JAVA_DOUBLE")
     context("realVector", "Vector3")
 }

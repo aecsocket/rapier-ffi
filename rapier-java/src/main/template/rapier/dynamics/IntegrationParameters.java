@@ -3,6 +3,7 @@ package rapier.dynamics;
 import rapier.DroppableNative;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 import static rapier.sys.RapierC.*;
 
@@ -25,10 +26,10 @@ public final class IntegrationParameters extends DroppableNative {
     }
 
     public {{ real }} getDt() {
-        return {{ sys }}.RprIntegrationParameters_dt(self).get(Real, 0);
+        return {{ sys }}.RapierC.RprIntegrationParameters_dt(self).get({{ realLayout }}, 0);
     }
 
     public void setDt({{ real }} dt) {
-        {{ sys }}.RprIntegrationParameters_dt(self).set(Real, 0, dt.value());
+        {{ sys }}.RapierC.RprIntegrationParameters_dt(self).set({{ realLayout }}, 0, dt);
     }
 }

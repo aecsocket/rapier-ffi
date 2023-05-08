@@ -1,22 +1,17 @@
 package rapier.dynamics;
 
-import rapier.DroppableNative;
-
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 
-import static rapier.sys.RapierC.*;
+public final class RigidBodyHandle {
+    private RigidBodyHandle() {}
 
-public final class RigidBodyHandle extends DroppableNative {
-    protected RigidBodyHandle(MemorySegment memory) {
-        super(memory);
+    public static long pack(MemorySegment memory) {
+        return memory.getAtIndex(ValueLayout.JAVA_LONG, 0);
     }
 
-    public static RigidBodyHandle at(MemorySegment memory) {
-        return new RigidBodyHandle(memory);
-    }
-
-    @Override
-    protected void dropInternal() {
-        RprRigidBodyHandle_drop(self);
+    public static MemorySegment unpack(SegmentAllocator alloc, long handle) {
+        return alloc.allocate(ValueLayout.JAVA_LONG, handle);
     }
 }

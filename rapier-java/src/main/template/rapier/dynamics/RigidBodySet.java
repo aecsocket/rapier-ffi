@@ -3,6 +3,7 @@ package rapier.dynamics;
 import rapier.DroppableNative;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 import static rapier.sys.RapierC.*;
 
@@ -15,16 +16,24 @@ public final class RigidBodySet extends DroppableNative {
         return new RigidBodySet(memory);
     }
 
+    public static RigidBodySet create() {
+        return at(RprRigidBodySet_new());
+    }
+
     @Override
     protected void dropInternal() {
         RprRigidBodySet_drop(self);
     }
 
-    public RigidBodyHandle insert(RigidBody rb) {
-        return RigidBodyHandle.at(RprRigidBodySet_insert(self, rb.memory()));
+    public long insert(RigidBody rb) {
+        try (var arena = Arena.openConfined()) {
+            return RigidBodyHandle.pack(RprRigidBodySet_insert(arena, self, rb.memory()));
+        }
     }
 
-    public RigidBody index(RigidBodyHandle index) {
-        return RigidBody.at(RprRigidBodySet_index(self, index.memory()));
+    public RigidBody get(long index) {
+        try (var arena = Arena.openConfined()) {
+            return RigidBody.at(RprRigidBodySet_index(self, RigidBodyHandle.unpack(arena, index)));
+        }
     }
 }

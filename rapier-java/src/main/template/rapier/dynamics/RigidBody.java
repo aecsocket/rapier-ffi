@@ -1,6 +1,7 @@
 package rapier.dynamics;
 
 import rapier.DroppableNative;
+import rapier.math.*;
 
 import java.lang.foreign.MemorySegment;
 
@@ -18,5 +19,9 @@ public final class RigidBody extends DroppableNative {
     @Override
     protected void dropInternal() {
         RprRigidBody_drop(self);
+    }
+
+    public void getTranslation({{ realVector }} out) {
+        {{ sys }}.RapierC.RprRigidBody_translation(self, out.memory());
     }
 }

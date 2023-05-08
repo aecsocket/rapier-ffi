@@ -8,6 +8,8 @@ version = "0.1.0-SNAPSHOT"
 description = "API abstraction layer for physics engines for Minecraft servers"
 
 dependencies {
+    implementation(projects.rapierJavaSys) // for IDE autocompletion
+
     testImplementation(projects.rapierJavaDim3F64)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)

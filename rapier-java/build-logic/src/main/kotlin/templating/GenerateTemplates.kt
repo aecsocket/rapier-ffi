@@ -57,7 +57,6 @@ abstract class GenerateTemplates : DefaultTask() {
                 val relative = file.relativeTo(sourceDir)
                 val output = outputDir.resolve(relative)
 
-                println("wrote to $output = $outputDir + $relative")
                 Files.createDirectories(output.parent)
                 Files.newBufferedWriter(output).use { writer ->
                     template.evaluate(writer, context)
