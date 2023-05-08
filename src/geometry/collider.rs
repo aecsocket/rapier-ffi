@@ -15,6 +15,16 @@ pub extern "C" fn RprColliderBuilder_ball(radius: RprReal) -> *mut RprColliderBu
 }
 
 #[no_mangle]
+#[cfg(feature = "dim2")]
+pub extern "C" fn RprColliderBuilder_cuboid(
+    hx: RprReal,
+    hy: RprReal,
+) -> *mut RprColliderBuilder {
+    leak_ptr(RprColliderBuilder(ColliderBuilder::cuboid(hx, hy)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
 pub extern "C" fn RprColliderBuilder_cuboid(
     hx: RprReal,
     hy: RprReal,
