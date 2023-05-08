@@ -1,7 +1,6 @@
 <div align="center">
 
 # rapier_ffi
-[![License](https://img.shields.io/github/license/aecsocket/rapier-ffi)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-ffi/build.yml)](https://github.com/aecsocket/rapier-ffi/actions/workflows/build.yml)
 
 C/FFI bindings for the [Rapier](https://github.com/dimforge/rapier/) physics engine

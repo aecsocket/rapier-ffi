@@ -11,9 +11,14 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dimension: [dim2, dim3]
+        precision: [f32, f64]
+
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: "cargo build --verbose"
+      run: "cargo build --verbose --feature ${{ matrix.dimension }}-${{ matrix.precision }}"
     - name: Test
-      run: "cargo test --verbose"
+      run: "cargo test --verbose --feature ${{ matrix.dimension }}-${{ matrix.precision }}"
