@@ -12,7 +12,7 @@ Optional: if updating rapier_ffi, also:
 ```shell
 git clone https://github.com/aecsocket/rapier-java
 cd rapier-java
-git submodule init
+git submodule update --init
 ./gradlew build
 ```
 
