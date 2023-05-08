@@ -1,0 +1,26 @@
+[package]
+name = "rapier_ffi"
+version = "0.1.0"
+edition = "2018"
+authors = ["aecsocket"]
+
+[features]
+default = ["dim3-f64"]
+dim2-f32 = ["dim2", "f32", "dep:rapier2d"]
+dim2-f64 = ["dim2", "f64", "dep:rapier2d-f64"]
+dim3-f32 = ["dim3", "f32", "dep:rapier3d"]
+dim3-f64 = ["dim3", "f64", "dep:rapier3d-f64"]
+# do not enable manually
+dim2 = []
+dim3 = []
+f32 = []
+f64 = []
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+rapier2d = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
+rapier2d-f64 = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
+rapier3d = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
+rapier3d-f64 = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
