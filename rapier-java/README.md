@@ -14,7 +14,7 @@ Java bindings for the Rapier physics engine
 ### Quick start
 
 Requirements:
-* [Java 20](https://openjdk.org/projects/jdk/20/)
+* [Java >=8](https://adoptium.net/temurin/releases/)
 * [Rust 2018 + Cargo](https://rustup.rs/)
 
 Optional: if updating rapier_ffi, also:

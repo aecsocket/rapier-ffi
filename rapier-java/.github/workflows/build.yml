@@ -19,11 +19,11 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
-        java-version: 20
+        java-version: 17
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: "./gradlew build"
     - uses: actions/upload-artifact@v3
       with:
         name: artifacts-${{ matrix.os }}-${{ matrix.dimension }}-${{ matrix.precision }}
-        path: rapier-java-*/build/libs/*.jar
+        path: "**/build/libs/*.jar"
