@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    name: Build
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -22,8 +21,5 @@ jobs:
         java-version: 17
     - uses: gradle/gradle-build-action@v2
     - name: Build
-      run: "./gradlew build"
-    - uses: actions/upload-artifact@v3
-      with:
-        name: artifacts-${{ matrix.os }}-${{ matrix.dimension }}-${{ matrix.precision }}
-        path: "**/build/libs/*.jar"
+      run: |
+        ./gradlew --info build

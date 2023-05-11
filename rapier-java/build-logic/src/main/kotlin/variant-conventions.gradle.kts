@@ -2,6 +2,7 @@ import templating.GenerateTemplates
 
 plugins {
     id("java-conventions")
+    id("publishing-conventions")
 }
 
 val variantExt = extensions.create("variant", VariantExtension::class)
@@ -11,11 +12,9 @@ afterEvaluate {
 
     sourceSets.forEach { sourceSet ->
         val source = rootProject.projectDir.resolve("src/${sourceSet.name}/templates")
-        if (!source.exists()) {
-            return@forEach
-        }
-        val output = buildDir.resolve("generated/sources/${sourceSet.name}-templates")
+        if (!source.exists()) return@forEach
 
+        val output = buildDir.resolve("generated/sources/${sourceSet.name}-templates")
         val taskName = sourceSet.getTaskName("generate", "templates")
         val generateTask = tasks.register<GenerateTemplates>(taskName) {
             sourceDir.set(source)

@@ -9,6 +9,7 @@ plugins {
 indra {
     javaVersions {
         target(20)
+        previewFeaturesEnabled(true)
     }
 }
 
@@ -16,24 +17,12 @@ repositories {
     mavenCentral()
 }
 
-afterEvaluate {
-    tasks {
-        withType<JavaCompile> {
-            options.compilerArgs.addAll(listOf("--enable-preview"))
-        }
-
-        javadoc {
-            (options as CoreJavadocOptions).apply {
-                addBooleanOption("-enable-preview", true)
-            }
-        }
-
-        test {
-            jvmArgs(
-                "--enable-preview",
-                "--enable-native-access=ALL-UNNAMED",
-            )
-            testLogging.exceptionFormat = TestExceptionFormat.FULL
-        }
+tasks {
+    test {
+        jvmArgs(
+            "--enable-preview",
+            "--enable-native-access=ALL-UNNAMED",
+        )
+        testLogging.exceptionFormat = TestExceptionFormat.FULL
     }
 }
