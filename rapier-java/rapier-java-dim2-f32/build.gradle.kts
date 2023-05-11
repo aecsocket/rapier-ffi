@@ -4,10 +4,11 @@ plugins {
 
 dependencies {
     implementation(projects.rapierJavaSys)
-    compileOnlyApi(libs.findbugs)
+    implementation(libs.findbugs)
 }
 
 variant {
+    name.set("dim2-f32")
     context("sys", "rapier.sys_dim2_f32")
     context("real", "float")
     context("realZero", "0.0f")

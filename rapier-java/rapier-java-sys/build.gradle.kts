@@ -4,6 +4,8 @@ plugins {
     id("java-conventions")
 }
 
+publishCore()
+
 val headerPath = buildDir.resolve("librapier.h").absolutePath
 
 tasks {

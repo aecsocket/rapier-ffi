@@ -2,8 +2,9 @@ import templating.GenerateTemplates
 
 plugins {
     id("java-conventions")
-    id("publishing-conventions")
 }
+
+publishCore()
 
 val variantExt = extensions.create("variant", VariantExtension::class)
 

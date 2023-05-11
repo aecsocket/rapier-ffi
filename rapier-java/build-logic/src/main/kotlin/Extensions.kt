@@ -5,6 +5,9 @@ import java.io.File
 val Project.ci: Provider<Boolean>
     get() = providers.environmentVariable("CI").map { it.toBoolean() }.orElse(false)
 
+val Project.ciPublishCore: Provider<Boolean>
+    get() = providers.environmentVariable("CI_PUBLISH_CORE").map { it.toBoolean() }.orElse(false)
+
 val Project.nativeDir: File
     get() = rootDir.resolve("rapier-ffi")
 
@@ -17,3 +20,11 @@ val Project.buildProfile: BuildProfile
     get() = (findProperty("buildProfile")?.toString())?.uppercase()?.let {
         BuildProfile.valueOf(it)
     } ?: BuildProfile.DEV
+
+fun Project.publishCore(): Boolean {
+    if (ci.get() && !ciPublishCore.get())
+        return false
+
+    plugins.apply("publishing-conventions")
+    return true
+}

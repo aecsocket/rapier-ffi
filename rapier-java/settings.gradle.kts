@@ -15,11 +15,15 @@ rootProject.name = "rapier-java"
 
 include("rapier-java-sys")
 
-include("rapier-java-dim2-f32")
-include("rapier-java-dim2-f64")
-include("rapier-java-dim3-f32")
-include("rapier-java-dim3-f64")
+listOf("dim2", "dim3").forEach { dimension ->
+    listOf("f32", "f64").forEach { precision ->
+        val variantProject = "rapier-java-$dimension-$precision"
+        include(variantProject)
 
-include("rapier-java-natives-linux-x86")
-include("rapier-java-natives-windows-x86")
-include("rapier-java-natives-macos-x86")
+        listOf("linux-x86", "windows-x86", "macos-x86").forEach { native ->
+            val nativesProject = "$variantProject:$variantProject-$native"
+            include(nativesProject)
+            project(":$nativesProject").projectDir = file("rapier-java-$dimension-$precision/$native")
+        }
+    }
+}
