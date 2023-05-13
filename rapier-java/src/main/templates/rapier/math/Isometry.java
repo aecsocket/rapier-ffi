@@ -1,12 +1,12 @@
 package rapier.math;
 
-import rapier.Native;
+import rapier.BaseNative;
 import rapier.sys.RprIso;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Isometry extends Native {
+public final class Isometry extends BaseNative {
     protected Isometry(MemorySegment memory) {
         super(memory);
     }

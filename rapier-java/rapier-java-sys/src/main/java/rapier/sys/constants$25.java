@@ -11,54 +11,57 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final FunctionDescriptor RprRigidBodyBuilder_angular_damping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_angular_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_angular_damping",
-        constants$25.RprRigidBodyBuilder_angular_damping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_angvel$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(1, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprAngVec")
-    );
-    static final MethodHandle RprRigidBodyBuilder_angvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_angvel",
-        constants$25.RprRigidBodyBuilder_angvel$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprCollider_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_build$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_build",
-        constants$25.RprRigidBodyBuilder_build$FUNC
+    static final MethodHandle RprCollider_is_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_is_enabled",
+        constants$25.RprCollider_is_enabled$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_can_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+    static final FunctionDescriptor RprCollider_is_sensor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_can_sleep",
-        constants$25.RprRigidBodyBuilder_can_sleep$FUNC
+    static final MethodHandle RprCollider_is_sensor$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_is_sensor",
+        constants$25.RprCollider_is_sensor$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_ccd_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+    static final FunctionDescriptor RprCollider_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_ccd_enabled",
-        constants$25.RprRigidBodyBuilder_ccd_enabled$FUNC
+    static final MethodHandle RprCollider_mass$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_mass",
+        constants$25.RprCollider_mass$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_dominance_group$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
+    static final FunctionDescriptor RprCollider_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprRigidBodyHandle"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_dominance_group",
-        constants$25.RprRigidBodyBuilder_dominance_group$FUNC
+    static final MethodHandle RprCollider_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_parent",
+        constants$25.RprCollider_parent$FUNC
+    );
+    static final FunctionDescriptor RprCollider_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_position$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_position",
+        constants$25.RprCollider_position$FUNC
+    );
+    static final FunctionDescriptor RprCollider_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_restitution",
+        constants$25.RprCollider_restitution$FUNC
     );
 }
 

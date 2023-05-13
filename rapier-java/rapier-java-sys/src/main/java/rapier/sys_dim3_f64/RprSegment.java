@@ -10,8 +10,8 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct RprSegment {
- *     struct RprVec a;
- *     struct RprVec b;
+ *     struct RprVector a;
+ *     struct RprVector b;
  * };
  * }
  */

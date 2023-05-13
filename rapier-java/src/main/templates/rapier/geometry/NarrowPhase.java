@@ -1,12 +1,21 @@
 package rapier.geometry;
 
-import rapier.DroppableNative;
+import rapier.BaseNative;
+import rapier.DropFlag;
+import rapier.Droppable;
 
 import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class NarrowPhase extends DroppableNative {
+public final class NarrowPhase extends BaseNative implements Droppable {
+    private final DropFlag dropped = new DropFlag();
+
+    @Override
+    public void drop() {
+        dropped.drop(() -> RprNarrowPhase_drop(self));
+    }
+
     protected NarrowPhase(MemorySegment memory) {
         super(memory);
     }
@@ -17,10 +26,5 @@ public final class NarrowPhase extends DroppableNative {
 
     public static NarrowPhase create() {
         return at(RprNarrowPhase_new());
-    }
-
-    @Override
-    protected void dropInternal() {
-        RprNarrowPhase_drop(self);
     }
 }

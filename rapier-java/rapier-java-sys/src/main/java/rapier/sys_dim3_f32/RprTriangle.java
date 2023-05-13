@@ -10,9 +10,9 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct RprTriangle {
- *     struct RprVec a;
- *     struct RprVec b;
- *     struct RprVec c;
+ *     struct RprVector a;
+ *     struct RprVector b;
+ *     struct RprVector c;
  * };
  * }
  */

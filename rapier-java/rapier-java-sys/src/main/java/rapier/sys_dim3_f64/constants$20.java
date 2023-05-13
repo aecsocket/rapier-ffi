@@ -35,7 +35,7 @@ final class constants$20 {
             MemoryLayout.structLayout(
                 MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
             ).withName("translation")
-        ).withName("RprIso")
+        ).withName("RprIsometry")
     );
     static final MethodHandle RprColliderBuilder_position$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_position",
@@ -61,7 +61,7 @@ final class constants$20 {
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("RprAngVec")
+        ).withName("RprAngVector")
     );
     static final MethodHandle RprColliderBuilder_rotation$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_rotation",

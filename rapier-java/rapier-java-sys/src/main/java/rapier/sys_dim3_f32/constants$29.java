@@ -11,64 +11,45 @@ final class constants$29 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$29() {}
-    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprRigidBodyHandle"),
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprCollider_shape$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_insert",
-        constants$29.RprRigidBodySet_insert$FUNC
+    static final MethodHandle RprCollider_shape$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_shape",
+        constants$29.RprCollider_shape$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodySet_new$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_new",
-        constants$29.RprRigidBodySet_new$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_force$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprVec"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_force$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_force",
-        constants$29.RprRigidBody_add_force$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_force_at_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprVec"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprVec"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_force_at_point$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_force_at_point",
-        constants$29.RprRigidBody_add_force_at_point$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_torque$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprAngVec"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_torque$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_torque",
-        constants$29.RprRigidBody_add_torque$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_angular_damping$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+    static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_angular_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_angular_damping",
-        constants$29.RprRigidBody_angular_damping$FUNC
+    static final MethodHandle RprCollider_translation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_translation",
+        constants$29.RprCollider_translation$FUNC
+    );
+    static final FunctionDescriptor RprCollider_volume$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_volume$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_volume",
+        constants$29.RprCollider_volume$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_drop",
+        constants$29.RprImpulseJointSet_drop$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_new",
+        constants$29.RprImpulseJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprIntegrationParameters_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIntegrationParameters_default$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_default",
+        constants$29.RprIntegrationParameters_default$FUNC
     );
 }
 

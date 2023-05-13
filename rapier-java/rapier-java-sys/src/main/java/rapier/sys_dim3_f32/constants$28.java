@@ -11,62 +11,61 @@ final class constants$28 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$28() {}
-    static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprCollider_set_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprRotation")
+    );
+    static final MethodHandle RprCollider_set_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_rotation",
+        constants$28.RprCollider_set_rotation$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_rotation_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprAngVec")
+        ).withName("RprAngVector")
     );
-    static final MethodHandle RprRigidBodyBuilder_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_rotation",
-        constants$28.RprRigidBodyBuilder_rotation$FUNC
+    static final MethodHandle RprCollider_set_rotation_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_rotation_wrt_parent",
+        constants$28.RprCollider_set_rotation_wrt_parent$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_sleeping$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprCollider_set_sensor$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_sleeping",
-        constants$28.RprRigidBodyBuilder_sleeping$FUNC
+    static final MethodHandle RprCollider_set_sensor$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_sensor",
+        constants$28.RprCollider_set_sensor$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprCollider_set_shape$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_shape$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_shape",
+        constants$28.RprCollider_set_shape$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-        ).withName("RprVec")
+        ).withName("RprVector")
     );
-    static final MethodHandle RprRigidBodyBuilder_translation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_translation",
-        constants$28.RprRigidBodyBuilder_translation$FUNC
+    static final MethodHandle RprCollider_set_translation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_translation",
+        constants$28.RprCollider_set_translation$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_drop",
-        constants$28.RprRigidBodySet_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprCollider_set_translation_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprVector")
     );
-    static final MethodHandle RprRigidBodySet_index$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_index",
-        constants$28.RprRigidBodySet_index$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_index_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
-    );
-    static final MethodHandle RprRigidBodySet_index_mut$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_index_mut",
-        constants$28.RprRigidBodySet_index_mut$FUNC
+    static final MethodHandle RprCollider_set_translation_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_translation_wrt_parent",
+        constants$28.RprCollider_set_translation_wrt_parent$FUNC
     );
 }
 

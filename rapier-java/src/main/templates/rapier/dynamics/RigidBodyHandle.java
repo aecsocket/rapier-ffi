@@ -1,8 +1,11 @@
 package rapier.dynamics;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
+
+import static rapier.sys.RapierC.*;
 
 public final class RigidBodyHandle {
     private RigidBodyHandle() {}
@@ -13,5 +16,11 @@ public final class RigidBodyHandle {
 
     public static MemorySegment unpack(SegmentAllocator alloc, long handle) {
         return alloc.allocate(ValueLayout.JAVA_LONG, handle);
+    }
+
+    public static boolean isValid(long handle) {
+        try (var arena = Arena.openConfined()) {
+            return RprRigidBodyHandle_is_valid(unpack(arena, handle));
+        }
     }
 }

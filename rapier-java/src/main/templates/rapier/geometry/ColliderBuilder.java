@@ -1,6 +1,8 @@
 package rapier.geometry;
 
-import rapier.DroppableNative;
+import rapier.BaseNative;
+import rapier.DropFlag;
+import rapier.Droppable;
 import rapier.math.*;
 import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
@@ -9,7 +11,14 @@ import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class ColliderBuilder extends DroppableNative {
+public final class ColliderBuilder extends BaseNative implements Droppable {
+    private final DropFlag dropped = new DropFlag();
+
+    @Override
+    public void drop() {
+        dropped.drop(() -> RprColliderBuilder_drop(self));
+    }
+
     protected ColliderBuilder(MemorySegment memory) {
         super(memory);
     }
@@ -22,13 +31,8 @@ public final class ColliderBuilder extends DroppableNative {
         return ColliderBuilder.at(RprColliderBuilder_new(shape.memory()));
     }
 
-    @Override
-    protected void dropInternal() {
-        RprColliderBuilder_drop(self);
-    }
-
-    public Collider build() {
-        return Collider.at(RprColliderBuilder_build(self));
+    public Collider.Mut build() {
+        return Collider.atMut(RprColliderBuilder_build(self));
     }
 
     public ColliderBuilder sensor(boolean sensor) {
@@ -78,6 +82,16 @@ public final class ColliderBuilder extends DroppableNative {
 
     public ColliderBuilder rotation(AngVector rotation) {
         {{ sys }}.RapierC.RprColliderBuilder_rotation(self, rotation.memory());
+        return this;
+    }
+
+    public ColliderBuilder position(Isometry pos) {
+        {{ sys }}.RapierC.RprColliderBuilder_position(self, pos.memory());
+        return this;
+    }
+
+    public ColliderBuilder enabled(boolean enabled) {
+        {{ sys }}.RapierC.RprColliderBuilder_enabled(self, enabled);
         return this;
     }
 }

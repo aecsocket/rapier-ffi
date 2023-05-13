@@ -1,6 +1,8 @@
 package rapier.dynamics;
 
-import rapier.DroppableNative;
+import rapier.BaseNative;
+import rapier.DropFlag;
+import rapier.Droppable;
 import rapier.math.*;
 import rapier.sys.RapierC;
 
@@ -8,13 +10,24 @@ import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class RigidBodyBuilder extends DroppableNative {
+public final class RigidBodyBuilder extends BaseNative implements Droppable {
+    private final DropFlag dropped = new DropFlag();
+
+    @Override
+    public void drop() {
+        dropped.drop(() -> RprRigidBodyBuilder_drop(self));
+    }
+
     protected RigidBodyBuilder(MemorySegment memory) {
         super(memory);
     }
 
     public static RigidBodyBuilder at(MemorySegment memory) {
         return new RigidBodyBuilder(memory);
+    }
+
+    public static RigidBodyBuilder of(RigidBodyType bodyType) {
+        return RigidBodyBuilder.at(RprRigidBodyBuilder_new(bodyType.ordinal()));
     }
 
     public static RigidBodyBuilder fixed() {
@@ -33,13 +46,8 @@ public final class RigidBodyBuilder extends DroppableNative {
         return RigidBodyBuilder.at(RprRigidBodyBuilder_dynamic());
     }
 
-    @Override
-    protected void dropInternal() {
-        RprRigidBodyBuilder_drop(self);
-    }
-
-    public RigidBody build() {
-        return RigidBody.at(RprRigidBodyBuilder_build(self));
+    public RigidBody.Mut build() {
+        return RigidBody.atMut(RprRigidBodyBuilder_build(self));
     }
 
     public RigidBodyBuilder gravityScale({{ real }} scale) {

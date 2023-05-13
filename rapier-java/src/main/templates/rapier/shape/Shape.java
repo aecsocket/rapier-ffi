@@ -1,10 +1,10 @@
 package rapier.shape;
 
-import rapier.Native;
+import rapier.BaseNative;
 
 import java.lang.foreign.MemorySegment;
 
-public sealed class Shape extends Native
+public sealed class Shape extends BaseNative
         permits Segment, Cuboid, Triangle, Ball, Capsule {
     protected Shape(MemorySegment memory) {
         super(memory);

@@ -11,61 +11,67 @@ final class constants$36 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$36() {}
-    static final FunctionDescriptor RprRigidBody_set_body_type$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprRigidBodyHandle")
     );
-    static final MethodHandle RprRigidBody_set_body_type$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_body_type",
-        constants$36.RprRigidBody_set_body_type$FUNC
+    static final MethodHandle RprRigidBodySet_contains$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_contains",
+        constants$36.RprRigidBodySet_contains$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_set_dominance_group$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_drop",
+        constants$36.RprRigidBodySet_drop$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprRigidBodyHandle")
     );
-    static final MethodHandle RprRigidBody_set_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_dominance_group",
-        constants$36.RprRigidBody_set_dominance_group$FUNC
+    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get",
+        constants$36.RprRigidBodySet_get$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_set_enabled$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprRigidBodyHandle")
     );
-    static final MethodHandle RprRigidBody_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled",
-        constants$36.RprRigidBody_set_enabled$FUNC
+    static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get_mut",
+        constants$36.RprRigidBodySet_get_mut$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_set_enabled_rotations$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprRigidBodyHandle")
     );
-    static final MethodHandle RprRigidBody_set_enabled_rotations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled_rotations",
-        constants$36.RprRigidBody_set_enabled_rotations$FUNC
+    static final MethodHandle RprRigidBodySet_index$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_index",
+        constants$36.RprRigidBodySet_index$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_set_enabled_translations$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_index_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprRigidBodyHandle")
     );
-    static final MethodHandle RprRigidBody_set_enabled_translations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled_translations",
-        constants$36.RprRigidBody_set_enabled_translations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_gravity_scale",
-        constants$36.RprRigidBody_set_gravity_scale$FUNC
+    static final MethodHandle RprRigidBodySet_index_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_index_mut",
+        constants$36.RprRigidBodySet_index_mut$FUNC
     );
 }
 

@@ -10,7 +10,7 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct RprCuboid {
- *     struct RprVec half_extents;
+ *     struct RprVector half_extents;
  * };
  * }
  */

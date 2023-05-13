@@ -1,12 +1,21 @@
 package rapier.dynamics;
 
-import rapier.DroppableNative;
+import rapier.BaseNative;
+import rapier.DropFlag;
+import rapier.Droppable;
 
 import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class ImpulseJointSet extends DroppableNative {
+public final class ImpulseJointSet extends BaseNative implements Droppable {
+    private final DropFlag dropped = new DropFlag();
+
+    @Override
+    public void drop() {
+        dropped.drop(() -> RprImpulseJointSet_drop(self));
+    }
+
     protected ImpulseJointSet(MemorySegment memory) {
         super(memory);
     }
@@ -17,10 +26,5 @@ public final class ImpulseJointSet extends DroppableNative {
 
     public static ImpulseJointSet create() {
         return at(RprImpulseJointSet_new());
-    }
-
-    @Override
-    protected void dropInternal() {
-        RprImpulseJointSet_drop(self);
     }
 }

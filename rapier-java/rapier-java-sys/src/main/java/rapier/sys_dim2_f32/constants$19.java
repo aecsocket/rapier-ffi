@@ -34,6 +34,14 @@ final class constants$19 {
         "RprColliderBuilder_drop",
         constants$19.RprColliderBuilder_drop$FUNC
     );
+    static final FunctionDescriptor RprColliderBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_enabled",
+        constants$19.RprColliderBuilder_enabled$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_friction$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -49,14 +57,6 @@ final class constants$19 {
     static final MethodHandle RprColliderBuilder_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_friction_combine_rule",
         constants$19.RprColliderBuilder_friction_combine_rule$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_mass$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_mass$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_mass",
-        constants$19.RprColliderBuilder_mass$FUNC
     );
 }
 

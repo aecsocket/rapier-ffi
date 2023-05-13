@@ -43,6 +43,7 @@ public final class HelloRapier {
             var physicsPipeline = PhysicsPipeline.create();
 
             for (int i = 0; i < 200; i++) {
+                System.out.println(physicsPipeline + " / " + gravity + " / " + integrationParameters + " / " + islandManager + " / " + broadPhase + " / " + narrowPhase + " / " + rigidBodySet + " / " + colliderSet);
                 physicsPipeline.step(
                         gravity,
                         integrationParameters,
@@ -57,7 +58,7 @@ public final class HelloRapier {
                         null
                 );
 
-                Vector translation = rigidBodySet.get(ballBodyHandle).getTranslation(arena);
+                Vector translation = rigidBodySet.index(ballBodyHandle).getTranslation(arena);
                 System.out.printf("Ball altitude: %f\n", translation.getY());
             }
             
@@ -71,8 +72,8 @@ public final class HelloRapier {
             integrationParameters.drop();
 
             // will automatically drop its contents
-            colliderSet.drop();
-            rigidBody.drop();
+//            colliderSet.drop();
+//            rigidBodySet.drop();
             // gravity is allocated on the Java side, not the native side
             // so it gets deallocated when we exit the arena's scope
         }

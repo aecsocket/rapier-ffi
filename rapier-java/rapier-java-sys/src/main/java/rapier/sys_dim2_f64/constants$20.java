@@ -11,12 +11,35 @@ final class constants$20 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$20() {}
+    static final FunctionDescriptor RprColliderBuilder_mass$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_mass$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_mass",
+        constants$20.RprColliderBuilder_mass$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle RprColliderBuilder_new$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_new",
         constants$20.RprColliderBuilder_new$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprColliderBuilder_position$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_position",
+        constants$20.RprColliderBuilder_position$FUNC
     );
     static final FunctionDescriptor RprColliderBuilder_restitution$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
@@ -38,29 +61,11 @@ final class constants$20 {
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.sequenceLayout(1, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("RprAngVec")
+        ).withName("RprAngVector")
     );
     static final MethodHandle RprColliderBuilder_rotation$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_rotation",
         constants$20.RprColliderBuilder_rotation$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_sensor$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_sensor$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_sensor",
-        constants$20.RprColliderBuilder_sensor$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("RprVec")
-    );
-    static final MethodHandle RprColliderBuilder_translation$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_translation",
-        constants$20.RprColliderBuilder_translation$FUNC
     );
 }
 

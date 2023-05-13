@@ -11,72 +11,53 @@ final class constants$39 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$39() {}
-    static final FunctionDescriptor RprRigidBody_velocity_at_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-    ).withName("RprVec"),
+    static final FunctionDescriptor RprRigidBody_apply_torque_impulse$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("RprVec")
-    );
-    static final MethodHandle RprRigidBody_velocity_at_point$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_velocity_at_point",
-        constants$39.RprRigidBody_velocity_at_point$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_wake_up$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+        ).withName("RprAngVector"),
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBody_wake_up$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_wake_up",
-        constants$39.RprRigidBody_wake_up$FUNC
+    static final MethodHandle RprRigidBody_apply_torque_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_apply_torque_impulse",
+        constants$39.RprRigidBody_apply_torque_impulse$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprBall")
+    static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_ball",
-        constants$39.RprSharedShape_ball$FUNC
+    static final MethodHandle RprRigidBody_body_type$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_body_type",
+        constants$39.RprRigidBody_body_type$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("a"),
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("b")
-            ).withName("segment"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCapsule")
+    static final FunctionDescriptor RprRigidBody_center_of_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_capsule",
-        constants$39.RprSharedShape_capsule$FUNC
+    static final MethodHandle RprRigidBody_center_of_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_center_of_mass",
+        constants$39.RprRigidBody_center_of_mass$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("half_height"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCone")
+    static final FunctionDescriptor RprRigidBody_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_cone$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cone",
-        constants$39.RprSharedShape_cone$FUNC
+    static final MethodHandle RprRigidBody_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_dominance_group",
+        constants$39.RprRigidBody_dominance_group$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
+    static final FunctionDescriptor RprRigidBody_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cuboid",
-        constants$39.RprSharedShape_cuboid$FUNC
+    static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_drop",
+        constants$39.RprRigidBody_drop$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_effective_dominance_group",
+        constants$39.RprRigidBody_effective_dominance_group$FUNC
     );
 }
 

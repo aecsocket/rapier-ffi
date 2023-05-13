@@ -1,12 +1,13 @@
 package rapier.shape;
 
-import rapier.DroppableNative;
+import rapier.BaseNative;
+import rapier.RefCounted;
 
 import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class SharedShape extends DroppableNative {
+public final class SharedShape extends BaseNative implements RefCounted {
     protected SharedShape(MemorySegment memory) {
         super(memory);
     }
@@ -38,7 +39,17 @@ public final class SharedShape extends DroppableNative {
     // TODO cylinder, cone
 
     @Override
-    protected void dropInternal() {
-        RprSharedShape_drop(self);
+    public long strongCount() {
+        return RprSharedShape_strong_count(self);
+    }
+
+    @Override
+    public void increment() {
+        RprSharedShape_increment(self);
+    }
+
+    @Override
+    public void decrement() {
+        RprSharedShape_decrement(self);
     }
 }
