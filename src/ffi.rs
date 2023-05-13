@@ -14,7 +14,7 @@ fn print_and_abort() -> ! {
     let mut stderr = std::io::stderr();
     let _ = writeln!(
         stderr,
-        "passed null pointer to function expecting non-null pointer, aborting. {file}:{line}:{column}",
+        "passed invalid pointer to foreign function, aborting. {file}:{line}:{column}",
         file = location.file(),
         line = location.line(),
         column = location.column(),

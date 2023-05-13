@@ -21,6 +21,15 @@ pub enum RprCoefficientCombineRule {
 }
 
 impl RprCoefficientCombineRule {
+    pub fn from_raw(raw: CoefficientCombineRule) -> Self {
+        match raw {
+            CoefficientCombineRule::Average => Self::Average,
+            CoefficientCombineRule::Min => Self::Min,
+            CoefficientCombineRule::Multiply => Self::Multiply,
+            CoefficientCombineRule::Max => Self::Max,
+        }
+    }
+
     pub fn into_raw(self) -> CoefficientCombineRule {
         match self {
             Self::Average => CoefficientCombineRule::Average,

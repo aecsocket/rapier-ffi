@@ -1,24 +1,55 @@
 use crate::prelude::*;
 
-pub struct RprColliderSet(pub ColliderSet);
-
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 pub struct RprColliderHandle {
-    index: u32,
-    generation: u32,
+    pub index: u32,
+    pub generation: u32,
 }
 
 impl RprColliderHandle {
-    pub fn into_raw(self) -> ColliderHandle {
-        ColliderHandle::from_raw_parts(self.index, self.generation)
-    }
-
     pub fn from_raw(handle: ColliderHandle) -> Self {
         let (index, generation) = handle.into_raw_parts();
         Self { index, generation }
     }
+
+    pub fn invalid() -> Self {
+        Self {
+            index: INVALID_U32,
+            generation: INVALID_U32,
+        }
+    }
+
+    pub fn is_valid(self) -> bool {
+        self.index != INVALID_U32 || self.generation != INVALID_U32
+    }
+    
+    pub fn into_raw(self) -> ColliderHandle {
+        ColliderHandle::from_raw_parts(self.index, self.generation)
+    }
+
+    pub fn none_if_invalid(self) -> Option<ColliderHandle> {
+        match self {
+            RprColliderHandle {
+                index: INVALID_U32,
+                generation: INVALID_U32,
+            } => None,
+            t => Some(t.into_raw()),
+        }
+    }
 }
+
+#[no_mangle]
+pub extern "C" fn RprColliderHandle_is_valid(this: RprColliderHandle) -> bool {
+    this.is_valid()
+}
+
+#[no_mangle]
+pub extern "C" fn RprColliderHandle_invalid() -> RprColliderHandle {
+    RprColliderHandle::invalid()
+}
+
+pub struct RprColliderSet(pub ColliderSet);
 
 #[no_mangle]
 pub extern "C" fn RprColliderSet_new() -> *mut RprColliderSet {

@@ -3,22 +3,14 @@ use crate::prelude::*;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
-pub struct RprVec(pub [Real; 2]);
+pub struct RprVector(pub [Real; 2]);
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim3")]
-pub struct RprVec(pub [Real; 3]);
+pub struct RprVector(pub [Real; 3]);
 
-impl RprVec {
-    pub fn into_raw(self) -> Vector<Real> {
-        cast(self.0)
-    }
-
-    pub fn into_point(self) -> Point<Real> {
-        cast(self.0)
-    }
-
+impl RprVector {
     pub fn from_raw(vec: Vector<Real>) -> Self {
         Self(cast(vec))
     }
@@ -30,69 +22,84 @@ impl RprVec {
     pub fn from_translation(tl: Translation<Real>) -> Self {
         Self(cast(tl))
     }
-}
 
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-#[cfg(feature = "dim2")]
-pub struct RprAngVec(pub [Real; 1]);
-
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-#[cfg(feature = "dim3")]
-pub struct RprAngVec(pub [Real; 3]);
-
-impl RprAngVec {
-    pub fn into_raw(self) -> AngVector<Real> {
+    pub fn into_raw(self) -> Vector<Real> {
         cast(self.0)
     }
 
-    pub fn from_raw(vec: AngVector<Real>) -> Self {
-        Self(cast(vec))
+    pub fn into_point(self) -> Point<Real> {
+        cast(self.0)
     }
 }
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
-pub struct RprRot(pub [Real; 2]);
+pub struct RprAngVector(pub [Real; 1]);
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim3")]
-pub struct RprRot(pub [Real; 4]);
+pub struct RprAngVector(pub [Real; 3]);
+
+impl RprAngVector {
+    pub fn from_raw(vec: AngVector<Real>) -> Self {
+        Self(cast(vec))
+    }
+
+    pub fn into_raw(self) -> AngVector<Real> {
+        cast(self.0)
+    }
+}
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+#[cfg(feature = "dim2")]
+pub struct RprRotation(pub [Real; 2]);
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+#[cfg(feature = "dim3")]
+pub struct RprRotation(pub [Real; 4]);
 
 #[cfg(feature = "dim2")]
-impl RprRot {
+impl RprRotation {
+    pub fn from_raw(raw: Rotation<Real>) -> Self {
+        Self([raw.re, raw.im])
+    }
+
     pub fn into_raw(self) -> Rotation<Real> {
         use rapier::parry::na::{Complex, Unit};
         Unit::from_complex(Complex::new(self.0[0], self.0[1]))
     }
-
-    pub fn from_raw(raw: Rotation<Real>) -> Self {
-        Self([raw.re, raw.im])
-    }
 }
 
 #[cfg(feature = "dim3")]
-impl RprRot {
-    pub fn into_raw(self) -> Rotation<Real> {
-        cast(self.0)
-    }
-
+impl RprRotation {
     pub fn from_raw(raw: Rotation<Real>) -> Self {
         Self(cast(raw))
+    }
+
+    pub fn into_raw(self) -> Rotation<Real> {
+        cast(self.0)
     }
 }
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprIso {
-    pub rotation: RprRot,
-    pub translation: RprVec,
+pub struct RprIsometry {
+    pub rotation: RprRotation,
+    pub translation: RprVector,
 }
 
-impl RprIso {
+impl RprIsometry {
+    pub fn from_raw(raw: Isometry<Real>) -> Self {
+        Self {
+            rotation: RprRotation::from_raw(raw.rotation),
+            translation: RprVector::from_translation(raw.translation),
+        }
+    }
+    
     pub fn into_raw(self) -> Isometry<Real> {
         Isometry {
             rotation: self.rotation.into_raw(),
@@ -101,63 +108,27 @@ impl RprIso {
             },
         }
     }
+}
 
-    pub fn from_raw(raw: Isometry<Real>) -> Self {
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+pub struct RprAabb {
+    pub min: RprVector,
+    pub max: RprVector,
+}
+
+impl RprAabb {
+    pub fn from_raw(raw: Aabb) -> Self {
         Self {
-            rotation: RprRot::from_raw(raw.rotation),
-            translation: RprVec::from_translation(raw.translation),
+            min: RprVector::from_point(raw.mins),
+            max: RprVector::from_point(raw.maxs),
+        }
+    }
+
+    pub fn into_raw(self) -> Aabb {
+        Aabb {
+            mins: self.min.into_point(),
+            maxs: self.max.into_point(),
         }
     }
 }
-
-// #[repr(C)]
-// #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-// #[cfg(feature = "dim2")]
-// pub struct RprIso {
-//     pub rotation: [Real; 2],
-//     pub translation: [Real; 2],
-// }
-
-// #[repr(C)]
-// #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-// #[cfg(feature = "dim3")]
-// pub struct RprIso {
-//     pub rotation: [Real; 4],
-//     pub translation: [Real; 3],
-// }
-
-// #[cfg(feature = "dim2")]
-// impl RprIso {
-//     pub fn into_raw(self) -> Isometry<Real> {
-//         use rapier::parry::na::{Complex, Unit};
-//         Isometry {
-//             // `rotation` is a Complex, which doesn't implement Pod
-//             rotation: Unit::from_complex(Complex::new(self.rotation[0], self.rotation[1])),
-//             translation: cast(self.translation),
-//         }
-//     }
-
-//     pub fn from_raw(pos: Isometry<Real>) -> Self {
-//         Self {
-//             rotation: [pos.rotation.re, pos.rotation.im],
-//             translation: cast(pos.translation),
-//         }
-//     }
-// }
-
-// #[cfg(feature = "dim3")]
-// impl RprIso {
-//     pub fn into_raw(self) -> Isometry<Real> {
-//         Isometry {
-//             rotation: cast(self.rotation),
-//             translation: cast(self.translation),
-//         }
-//     }
-
-//     pub fn from_raw(pos: Isometry<Real>) -> Self {
-//         Self {
-//             rotation: cast(pos.rotation),
-//             translation: cast(pos.translation),
-//         }
-//     }
-// }

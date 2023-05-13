@@ -100,8 +100,8 @@ pub unsafe extern "C" fn RprRigidBody_set_body_type(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_center_of_mass(this: *const RprRigidBody) -> RprVec {
-    RprVec::from_point(*this.get().0.center_of_mass())
+pub unsafe extern "C" fn RprRigidBody_center_of_mass(this: *const RprRigidBody) -> RprVector {
+    RprVector::from_point(*this.get().0.center_of_mass())
 }
 
 // TODO mass_properties
@@ -255,8 +255,8 @@ pub unsafe extern "C" fn RprRigidBody_mass(this: *const RprRigidBody) -> Real {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_next_position(this: *const RprRigidBody) -> RprIso {
-    RprIso::from_raw(*this.get().0.next_position())
+pub unsafe extern "C" fn RprRigidBody_next_position(this: *const RprRigidBody) -> RprIsometry {
+    RprIsometry::from_raw(*this.get().0.next_position())
 }
 
 #[no_mangle]
@@ -299,26 +299,26 @@ pub unsafe extern "C" fn RprRigidBody_is_sleeping(this: *const RprRigidBody) -> 
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_linvel(this: *const RprRigidBody) -> RprVec {
-    RprVec::from_raw(*this.get().0.linvel())
+pub unsafe extern "C" fn RprRigidBody_linvel(this: *const RprRigidBody) -> RprVector {
+    RprVector::from_raw(*this.get().0.linvel())
 }
 
 #[no_mangle]
 #[cfg(feature = "dim2")]
-pub unsafe extern "C" fn RprRigidBody_angvel(this: *const RprRigidBody) -> RprAngVec {
-    RprAngVec([this.get().0.angvel()])
+pub unsafe extern "C" fn RprRigidBody_angvel(this: *const RprRigidBody) -> RprAngVector {
+    RprAngVector([this.get().0.angvel()])
 }
 
 #[no_mangle]
 #[cfg(feature = "dim3")]
-pub unsafe extern "C" fn RprRigidBody_angvel(this: *const RprRigidBody) -> RprAngVec {
-    RprAngVec::from_raw(*this.get().0.angvel())
+pub unsafe extern "C" fn RprRigidBody_angvel(this: *const RprRigidBody) -> RprAngVector {
+    RprAngVector::from_raw(*this.get().0.angvel())
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_linvel(
     this: *mut RprRigidBody,
-    linvel: RprVec,
+    linvel: RprVector,
     wake_up: bool,
 ) {
     this.get_mut().0.set_linvel(linvel.into_raw(), wake_up)
@@ -328,7 +328,7 @@ pub unsafe extern "C" fn RprRigidBody_set_linvel(
 #[cfg(feature = "dim2")]
 pub unsafe extern "C" fn RprRigidBody_set_angvel(
     this: *mut RprRigidBody,
-    angvel: RprVec,
+    angvel: RprVector,
     wake_up: bool,
 ) {
     this.get_mut().0.set_angvel(angvel.0[0], wake_up)
@@ -338,26 +338,26 @@ pub unsafe extern "C" fn RprRigidBody_set_angvel(
 #[cfg(feature = "dim3")]
 pub unsafe extern "C" fn RprRigidBody_set_angvel(
     this: *mut RprRigidBody,
-    angvel: RprVec,
+    angvel: RprVector,
     wake_up: bool,
 ) {
     this.get_mut().0.set_angvel(angvel.into_raw(), wake_up)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_position(this: *const RprRigidBody) -> RprIso {
-    RprIso::from_raw(*this.get().0.position())
+pub unsafe extern "C" fn RprRigidBody_position(this: *const RprRigidBody) -> RprIsometry {
+    RprIsometry::from_raw(*this.get().0.position())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_translation(this: *const RprRigidBody) -> RprVec {
-    RprVec::from_raw(*this.get().0.translation())
+pub unsafe extern "C" fn RprRigidBody_translation(this: *const RprRigidBody) -> RprVector {
+    RprVector::from_raw(*this.get().0.translation())
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_translation(
     this: *mut RprRigidBody,
-    translation: RprVec,
+    translation: RprVector,
     wake_up: bool,
 ) {
     this.get_mut()
@@ -366,14 +366,14 @@ pub unsafe extern "C" fn RprRigidBody_set_translation(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_rotation(this: *const RprRigidBody) -> RprRot {
-    RprRot::from_raw(*this.get().0.rotation())
+pub unsafe extern "C" fn RprRigidBody_rotation(this: *const RprRigidBody) -> RprRotation {
+    RprRotation::from_raw(*this.get().0.rotation())
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_rotation(
     this: *mut RprRigidBody,
-    rotation: RprRot,
+    rotation: RprRotation,
     wake_up: bool,
 ) {
     this.get_mut().0.set_rotation(rotation.into_raw(), wake_up)
@@ -382,7 +382,7 @@ pub unsafe extern "C" fn RprRigidBody_set_rotation(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_position(
     this: *mut RprRigidBody,
-    pos: RprIso,
+    pos: RprIsometry,
     wake_up: bool,
 ) {
     this.get_mut().0.set_position(pos.into_raw(), wake_up)
@@ -391,7 +391,7 @@ pub unsafe extern "C" fn RprRigidBody_set_position(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_rotation(
     this: *mut RprRigidBody,
-    rotation: RprRot,
+    rotation: RprRotation,
 ) {
     this.get_mut()
         .0
@@ -401,7 +401,7 @@ pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_rotation(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_translation(
     this: *mut RprRigidBody,
-    translation: RprVec,
+    translation: RprVector,
 ) {
     this.get_mut()
         .0
@@ -411,7 +411,7 @@ pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_translation(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_position(
     this: *mut RprRigidBody,
-    pos: RprIso,
+    pos: RprIsometry,
 ) {
     this.get_mut().0.set_next_kinematic_position(pos.into_raw())
 }
@@ -420,8 +420,8 @@ pub unsafe extern "C" fn RprRigidBody_set_next_kinematic_position(
 pub unsafe extern "C" fn RprRigidBody_predict_position_using_velocity_and_forces(
     this: *const RprRigidBody,
     dt: Real,
-) -> RprIso {
-    RprIso::from_raw(this.get().0.predict_position_using_velocity_and_forces(dt))
+) -> RprIsometry {
+    RprIsometry::from_raw(this.get().0.predict_position_using_velocity_and_forces(dt))
 }
 
 #[no_mangle]
@@ -437,7 +437,7 @@ pub unsafe extern "C" fn RprRigidBody_reset_torques(this: *mut RprRigidBody, wak
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_add_force(
     this: *mut RprRigidBody,
-    force: RprVec,
+    force: RprVector,
     wake_up: bool,
 ) {
     this.get_mut().0.add_force(force.into_raw(), wake_up)
@@ -446,7 +446,7 @@ pub unsafe extern "C" fn RprRigidBody_add_force(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_add_torque(
     this: *mut RprRigidBody,
-    torque: RprAngVec,
+    torque: RprAngVector,
     wake_up: bool,
 ) {
     this.get_mut().0.add_torque(torque.into_raw(), wake_up)
@@ -455,8 +455,8 @@ pub unsafe extern "C" fn RprRigidBody_add_torque(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_add_force_at_point(
     this: *mut RprRigidBody,
-    force: RprVec,
-    point: RprVec,
+    force: RprVector,
+    point: RprVector,
     wake_up: bool,
 ) {
     this.get_mut()
@@ -467,7 +467,7 @@ pub unsafe extern "C" fn RprRigidBody_add_force_at_point(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_apply_impulse(
     this: *mut RprRigidBody,
-    impulse: RprVec,
+    impulse: RprVector,
     wake_up: bool,
 ) {
     this.get_mut().0.apply_impulse(impulse.into_raw(), wake_up)
@@ -476,7 +476,7 @@ pub unsafe extern "C" fn RprRigidBody_apply_impulse(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_apply_torque_impulse(
     this: *mut RprRigidBody,
-    torque_impulse: RprAngVec,
+    torque_impulse: RprAngVector,
     wake_up: bool,
 ) {
     this.get_mut()
@@ -487,8 +487,8 @@ pub unsafe extern "C" fn RprRigidBody_apply_torque_impulse(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_apply_impulse_at_point(
     this: *mut RprRigidBody,
-    impulse: RprVec,
-    point: RprVec,
+    impulse: RprVector,
+    point: RprVector,
     wake_up: bool,
 ) {
     this.get_mut()
@@ -497,21 +497,21 @@ pub unsafe extern "C" fn RprRigidBody_apply_impulse_at_point(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_user_force(this: *const RprRigidBody) -> RprVec {
-    RprVec::from_raw(this.get().0.user_force())
+pub unsafe extern "C" fn RprRigidBody_user_force(this: *const RprRigidBody) -> RprVector {
+    RprVector::from_raw(this.get().0.user_force())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_user_torque(this: *const RprRigidBody) -> RprAngVec {
-    RprAngVec::from_raw(this.get().0.user_torque())
+pub unsafe extern "C" fn RprRigidBody_user_torque(this: *const RprRigidBody) -> RprAngVector {
+    RprAngVector::from_raw(this.get().0.user_torque())
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_velocity_at_point(
     this: *const RprRigidBody,
-    point: RprVec,
-) -> RprVec {
-    RprVec::from_raw(this.get().0.velocity_at_point(&point.into_point()))
+    point: RprVector,
+) -> RprVector {
+    RprVector::from_raw(this.get().0.velocity_at_point(&point.into_point()))
 }
 
 #[no_mangle]
@@ -523,7 +523,7 @@ pub unsafe extern "C" fn RprRigidBody_kinetic_energy(this: *const RprRigidBody) 
 pub unsafe extern "C" fn RprRigidBody_gravitational_potential_energy(
     this: *const RprRigidBody,
     dt: Real,
-    gravity: RprVec,
+    gravity: RprVector,
 ) -> Real {
     this.get()
         .0
@@ -531,6 +531,11 @@ pub unsafe extern "C" fn RprRigidBody_gravitational_potential_energy(
 }
 
 pub struct RprRigidBodyBuilder(pub RigidBodyBuilder);
+
+#[no_mangle]
+pub extern "C" fn RprRigidBodyBuilder_new(body_type: RprRigidBodyType) -> *mut RprRigidBodyBuilder {
+    leak_ptr(RprRigidBodyBuilder(RigidBodyBuilder::new(body_type.into_raw())))
+}
 
 #[no_mangle]
 pub extern "C" fn RprRigidBodyBuilder_fixed() -> *mut RprRigidBodyBuilder {
@@ -587,7 +592,7 @@ pub unsafe extern "C" fn RprRigidBodyBuilder_dominance_group(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodyBuilder_translation(
     this: *mut RprRigidBodyBuilder,
-    translation: RprVec,
+    translation: RprVector,
 ) {
     this.rewrite(|t| RprRigidBodyBuilder(t.0.translation(translation.into_raw())))
 }
@@ -595,7 +600,7 @@ pub unsafe extern "C" fn RprRigidBodyBuilder_translation(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodyBuilder_rotation(
     this: *mut RprRigidBodyBuilder,
-    rotation: RprAngVec,
+    rotation: RprAngVector,
 ) {
     this.rewrite(|t| RprRigidBodyBuilder(t.0.rotation(rotation.into_raw())))
 }
@@ -603,7 +608,7 @@ pub unsafe extern "C" fn RprRigidBodyBuilder_rotation(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodyBuilder_position(
     this: *mut RprRigidBodyBuilder,
-    position: RprIso,
+    position: RprIsometry,
 ) {
     this.rewrite(|t| RprRigidBodyBuilder(t.0.position(position.into_raw())))
 }
@@ -635,7 +640,7 @@ pub unsafe extern "C" fn RprRigidBodyBuilder_angular_damping(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodyBuilder_linvel(
     this: *mut RprRigidBodyBuilder,
-    linvel: RprVec,
+    linvel: RprVector,
 ) {
     this.rewrite(|t| RprRigidBodyBuilder(t.0.linvel(linvel.into_raw())))
 }
@@ -643,7 +648,7 @@ pub unsafe extern "C" fn RprRigidBodyBuilder_linvel(
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodyBuilder_angvel(
     this: *mut RprRigidBodyBuilder,
-    angvel: RprAngVec,
+    angvel: RprAngVector,
 ) {
     this.rewrite(|t| RprRigidBodyBuilder(t.0.angvel(angvel.into_raw())))
 }

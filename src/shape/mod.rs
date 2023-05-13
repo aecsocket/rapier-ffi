@@ -9,9 +9,9 @@ pub struct RprSharedShape(pub SharedShape);
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 pub struct RprSegment {
     /// The segment first point.
-    pub a: RprVec,
+    pub a: RprVector,
     /// The segment second point.
-    pub b: RprVec,
+    pub b: RprVector,
 }
 
 /// A cuboid shape.
@@ -19,7 +19,7 @@ pub struct RprSegment {
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 pub struct RprCuboid {
     /// The half-extents of the cuboid.
-    pub half_extents: RprVec,
+    pub half_extents: RprVector,
 }
 
 /// A triangle shape.
@@ -27,11 +27,11 @@ pub struct RprCuboid {
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 pub struct RprTriangle {
     /// The triangle first point.
-    pub a: RprVec,
+    pub a: RprVector,
     /// The triangle second point.
-    pub b: RprVec,
+    pub b: RprVector,
     /// The triangle third point.
-    pub c: RprVec,
+    pub c: RprVector,
 }
 
 /// A ball shape.

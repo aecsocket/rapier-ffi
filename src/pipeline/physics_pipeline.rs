@@ -15,7 +15,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_drop(this: *mut RprPhysicsPipeline) 
 #[no_mangle]
 pub unsafe extern "C" fn RprPhysicsPipeline_step(
     this: *mut RprPhysicsPipeline,
-    gravity: RprVec,
+    gravity: RprVector,
     integration_parameters: *const RprIntegrationParameters,
     islands: *mut RprIslandManager,
     broad_phase: *mut RprBroadPhase,

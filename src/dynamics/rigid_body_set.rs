@@ -1,34 +1,55 @@
 use crate::prelude::*;
 
-pub struct RprRigidBodySet(pub RigidBodySet);
-
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 pub struct RprRigidBodyHandle {
-    index: u32,
-    generation: u32,
+    pub index: u32,
+    pub generation: u32,
 }
 
 impl RprRigidBodyHandle {
-    pub fn into_raw(self) -> RigidBodyHandle {
-        RigidBodyHandle::from_raw_parts(self.index, self.generation)
-    }
-
     pub fn from_raw(handle: RigidBodyHandle) -> Self {
         let (index, generation) = handle.into_raw_parts();
         Self { index, generation }
     }
 
+    pub fn invalid() -> Self {
+        Self {
+            index: INVALID_U32,
+            generation: INVALID_U32,
+        }
+    }
+
+    pub fn is_valid(self) -> bool {
+        self.index != INVALID_U32 || self.generation != INVALID_U32
+    }
+
+    pub fn into_raw(self) -> RigidBodyHandle {
+        RigidBodyHandle::from_raw_parts(self.index, self.generation)
+    }
+
     pub fn none_if_invalid(self) -> Option<RigidBodyHandle> {
         match self {
             RprRigidBodyHandle {
-                index: u32::MAX,
-                generation: u32::MAX,
+                index: INVALID_U32,
+                generation: INVALID_U32,
             } => None,
             t => Some(t.into_raw()),
         }
     }
 }
+
+#[no_mangle]
+pub extern "C" fn RprRigidBodyHandle_is_valid(this: RprRigidBodyHandle) -> bool {
+    this.is_valid()
+}
+
+#[no_mangle]
+pub extern "C" fn RprRigidBodyHandle_invalid() -> RprRigidBodyHandle {
+    RprRigidBodyHandle::invalid()
+}
+
+pub struct RprRigidBodySet(pub RigidBodySet);
 
 #[no_mangle]
 pub extern "C" fn RprRigidBodySet_new() -> *mut RprRigidBodySet {

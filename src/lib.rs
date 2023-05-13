@@ -28,6 +28,8 @@ pub(crate) mod prelude {
     pub use crate::math::*;
     pub use crate::pipeline::{physics_pipeline::*, query_pipeline::*};
     pub use crate::shape::*;
+
+    pub(crate) const INVALID_U32: u32 = u32::MAX;
 }
 
 pub mod dynamics;

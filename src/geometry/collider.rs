@@ -2,9 +2,196 @@ use crate::prelude::*;
 
 pub struct RprCollider(pub Collider);
 
+
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_drop(this: *mut RprCollider) {
     drop_ptr(this)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_parent(this: *const RprCollider) -> RprRigidBodyHandle {
+    match this.get().0.parent() {
+        Some(t) => RprRigidBodyHandle::from_raw(t),
+        None => RprRigidBodyHandle_invalid()
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_is_sensor(this: *const RprCollider) -> bool {
+    this.get().0.is_sensor()
+}
+
+// TODO (set_)active_hooks
+
+// TODO (set_)active_events
+
+// TODO (set_)active_collision_types
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_friction(this: *const RprCollider) -> Real {
+    this.get().0.friction()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_friction(this: *mut RprCollider, coefficient: Real) {
+    this.get_mut().0.set_friction(coefficient)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_friction_combine_rule(this: *const RprCollider) -> RprCoefficientCombineRule {
+    RprCoefficientCombineRule::from_raw(this.get().0.friction_combine_rule())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_friction_combine_rule(this: *mut RprCollider, rule: RprCoefficientCombineRule) {
+    this.get_mut().0.set_friction_combine_rule(rule.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_restitution(this: *const RprCollider) -> Real {
+    this.get().0.restitution()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_restitution(this: *mut RprCollider, coefficient: Real) {
+    this.get_mut().0.set_restitution(coefficient)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_restitution_combine_rule(this: *const RprCollider) -> RprCoefficientCombineRule {
+    RprCoefficientCombineRule::from_raw(this.get().0.restitution_combine_rule())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_restitution_combine_rule(this: *mut RprCollider, rule: RprCoefficientCombineRule) {
+    this.get_mut().0.set_restitution_combine_rule(rule.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_contact_force_event_threshold(this: *mut RprCollider, threshold: Real) {
+    this.get_mut().0.set_contact_force_event_threshold(threshold)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_sensor(this: *mut RprCollider, is_sensor: bool) {
+    this.get_mut().0.set_sensor(is_sensor)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_is_enabled(this: *const RprCollider) -> bool {
+    this.get().0.is_enabled()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_enabled(this: *mut RprCollider, enabled: bool) {
+    this.get_mut().0.set_enabled(enabled)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_translation(this: *mut RprCollider, translation: RprVector) {
+    this.get_mut().0.set_translation(translation.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_rotation(this: *mut RprCollider, rotation: RprRotation) {
+    this.get_mut().0.set_rotation(rotation.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_position(this: *mut RprCollider, position: RprIsometry) {
+    this.get_mut().0.set_position(position.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_position(this: *const RprCollider) -> RprIsometry {
+    RprIsometry::from_raw(*this.get().0.position())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_translation(this: *const RprCollider) -> RprVector {
+    RprVector::from_raw(*this.get().0.translation())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_rotation(this: *const RprCollider) -> RprRotation {
+    RprRotation::from_raw(*this.get().0.rotation())
+}
+
+// TODO position_wrt_parent
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_translation_wrt_parent(this: *mut RprCollider, translation: RprVector) {
+    this.get_mut().0.set_translation_wrt_parent(translation.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_rotation_wrt_parent(this: *mut RprCollider, rotation: RprAngVector) {
+    this.get_mut().0.set_rotation_wrt_parent(rotation.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_position_wrt_parent(this: *mut RprCollider, pos_wrt_parent: RprIsometry) {
+    this.get_mut().0.set_position_wrt_parent(pos_wrt_parent.into_raw())
+}
+
+// TODO (set_)collision_groups
+
+// TODO (set_)solver_groups
+
+// TODO material
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_volume(this: *const RprCollider) -> Real {
+    this.get().0.volume()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_density(this: *const RprCollider) -> Real {
+    this.get().0.density()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_mass(this: *const RprCollider) -> Real {
+    this.get().0.mass()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_density(this: *mut RprCollider, density: Real) {
+    this.get_mut().0.set_density(density)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_mass(this: *mut RprCollider, mass: Real) {
+    this.get_mut().0.set_mass(mass)
+}
+
+// TODO set_mass_properties
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_shape(this: *const RprCollider) -> *const RprSharedShape {
+    this.get().0.shared_shape() as *const SharedShape as *const RprSharedShape
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_shape(this: *mut RprCollider, shape: *mut RprSharedShape) {
+    this.get_mut().0.set_shape(shape.read().0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_compute_aabb(this: *const RprCollider) -> RprAabb {
+    RprAabb::from_raw(this.get().0.compute_aabb())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_compute_swept_aabb(this: *const RprCollider, next_position: RprIsometry) -> RprAabb {
+    RprAabb::from_raw(this.get().0.compute_swept_aabb(&next_position.into_raw()))
+}
+
+// TODO mass_properties
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_contact_force_event_threshold(this: *const RprCollider) -> Real {
+    this.get().0.contact_force_event_threshold()
 }
 
 pub struct RprColliderBuilder(pub ColliderBuilder);
@@ -86,7 +273,7 @@ pub unsafe extern "C" fn RprColliderBuilder_contact_force_event_threshold(
 #[no_mangle]
 pub unsafe extern "C" fn RprColliderBuilder_translation(
     this: *mut RprColliderBuilder,
-    translation: RprVec,
+    translation: RprVector,
 ) {
     this.rewrite(|t| RprColliderBuilder(t.0.translation(translation.into_raw())))
 }
@@ -94,7 +281,7 @@ pub unsafe extern "C" fn RprColliderBuilder_translation(
 #[no_mangle]
 pub unsafe extern "C" fn RprColliderBuilder_rotation(
     this: *mut RprColliderBuilder,
-    rotation: RprAngVec,
+    rotation: RprAngVector,
 ) {
     this.rewrite(|t| RprColliderBuilder(t.0.rotation(rotation.into_raw())))
 }
@@ -102,7 +289,7 @@ pub unsafe extern "C" fn RprColliderBuilder_rotation(
 #[no_mangle]
 pub unsafe extern "C" fn RprColliderBuilder_position(
     this: *mut RprColliderBuilder,
-    position: RprIso,
+    position: RprIsometry,
 ) {
     this.rewrite(|t| RprColliderBuilder(t.0.position(position.into_raw())))
 }
