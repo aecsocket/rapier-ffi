@@ -1,5 +1,5 @@
 {
     "rust-analyzer.cargo.features": [
-        "dim3-f64"
+        "dim2-f64"
     ]
 }

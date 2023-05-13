@@ -29,6 +29,7 @@ pub(crate) trait ConstOrAbort<T: ?Sized> {
 
 impl<T: ?Sized> ConstOrAbort<T> for *const T {
     #[inline]
+    #[track_caller]
     unsafe fn get<'a>(self) -> &'a T {
         if self.is_null() {
             print_and_abort()
@@ -40,6 +41,7 @@ impl<T: ?Sized> ConstOrAbort<T> for *const T {
 
 impl<T: ?Sized> ConstOrAbort<T> for *mut T {
     #[inline]
+    #[track_caller]
     unsafe fn get<'a>(self) -> &'a T {
         if self.is_null() {
             print_and_abort()
@@ -55,6 +57,7 @@ pub(crate) trait MutOrAbort<T: ?Sized>: ConstOrAbort<T> {
 
 impl<T: ?Sized> MutOrAbort<T> for *mut T {
     #[inline]
+    #[track_caller]
     unsafe fn get_mut<'a>(self) -> &'a mut T {
         if self.is_null() {
             print_and_abort()

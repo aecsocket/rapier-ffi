@@ -18,6 +18,16 @@ impl RprRigidBodyHandle {
         let (index, generation) = handle.into_raw_parts();
         Self { index, generation }
     }
+
+    pub fn none_if_invalid(self) -> Option<RigidBodyHandle> {
+        match self {
+            RprRigidBodyHandle {
+                index: u32::MAX,
+                generation: u32::MAX,
+            } => None,
+            t => Some(t.into_raw()),
+        }
+    }
 }
 
 #[no_mangle]
@@ -31,11 +41,74 @@ pub unsafe extern "C" fn RprRigidBodySet_drop(this: *mut RprRigidBodySet) {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_len(this: *const RprRigidBodySet) -> usize {
+    this.get().0.len()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_is_empty(this: *const RprRigidBodySet) -> bool {
+    this.get().0.is_empty()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_contains(
+    this: *const RprRigidBodySet,
+    handle: RprRigidBodyHandle,
+) -> bool {
+    this.get().0.contains(handle.into_raw())
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn RprRigidBodySet_insert(
     this: *mut RprRigidBodySet,
     rb: *mut RprRigidBody,
 ) -> RprRigidBodyHandle {
     RprRigidBodyHandle::from_raw(this.get_mut().0.insert(rb.read().0))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_remove(
+    this: *mut RprRigidBodySet,
+    handle: RprRigidBodyHandle,
+    islands: *mut RprIslandManager,
+    colliders: *mut RprColliderSet,
+    impulse_joints: *mut RprImpulseJointSet,
+    multibody_joints: *mut RprMultibodyJointSet,
+    remove_attached_colliders: bool,
+) -> *mut RprRigidBody {
+    match this.get_mut().0.remove(
+        handle.into_raw(),
+        &mut islands.get_mut().0,
+        &mut colliders.get_mut().0,
+        &mut impulse_joints.get_mut().0,
+        &mut multibody_joints.get_mut().0,
+        remove_attached_colliders,
+    ) {
+        Some(t) => &mut RprRigidBody(t) as *mut RprRigidBody,
+        None => std::ptr::null_mut(),
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_get(
+    this: *const RprRigidBodySet,
+    handle: RprRigidBodyHandle,
+) -> *const RprRigidBody {
+    match this.get().0.get(handle.into_raw()) {
+        Some(t) => t as *const RigidBody as *const RprRigidBody,
+        None => std::ptr::null(),
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_get_mut(
+    this: *mut RprRigidBodySet,
+    handle: RprRigidBodyHandle,
+) -> *mut RprRigidBody {
+    match this.get_mut().0.get_mut(handle.into_raw()) {
+        Some(t) => t as *mut RigidBody as *mut RprRigidBody,
+        None => std::ptr::null_mut(),
+    }
 }
 
 #[no_mangle]

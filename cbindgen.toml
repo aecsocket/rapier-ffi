@@ -26,9 +26,8 @@ after_includes = """
 typedef float Real;
 #elif defined(RAPIER_F64)
 typedef double Real;
-#else
-typedef void* Real; // just a type that shouldn't be used, but we need the header to still compile
 #endif
+// if neither are defined, this header file will be invalid
 """
 
 ############################ Code Style Options ################################

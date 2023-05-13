@@ -31,6 +31,24 @@ pub unsafe extern "C" fn RprColliderSet_drop(this: *mut RprColliderSet) {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_len(this: *const RprColliderSet) -> usize {
+    this.get().0.len()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_is_empty(this: *const RprColliderSet) -> bool {
+    this.get().0.is_empty()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_contains(
+    this: *const RprColliderSet,
+    handle: RprColliderHandle,
+) -> bool {
+    this.get().0.contains(handle.into_raw())
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn RprColliderSet_insert(
     this: *mut RprColliderSet,
     coll: *mut RprCollider,
@@ -50,6 +68,61 @@ pub unsafe extern "C" fn RprColliderSet_insert_with_parent(
         parent_handle.into_raw(),
         &mut bodies.get_mut().0,
     ))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_set_parent(
+    this: *mut RprColliderSet,
+    handle: RprColliderHandle,
+    new_parent_handle: RprRigidBodyHandle,
+    bodies: *mut RprRigidBodySet,
+) {
+    this.get_mut().0.set_parent(
+        handle.into_raw(),
+        new_parent_handle.none_if_invalid(),
+        &mut bodies.get_mut().0,
+    )
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_remove(
+    this: *mut RprColliderSet,
+    handle: RprColliderHandle,
+    islands: *mut RprIslandManager,
+    bodies: *mut RprRigidBodySet,
+    wake_up: bool,
+) -> *mut RprCollider {
+    match this.get_mut().0.remove(
+        handle.into_raw(),
+        &mut islands.get_mut().0,
+        &mut bodies.get_mut().0,
+        wake_up,
+    ) {
+        Some(t) => &mut RprCollider(t) as *mut RprCollider,
+        None => std::ptr::null_mut(),
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_get(
+    this: *const RprColliderSet,
+    handle: RprColliderHandle,
+) -> *const RprCollider {
+    match this.get().0.get(handle.into_raw()) {
+        Some(t) => t as *const Collider as *const RprCollider,
+        None => std::ptr::null(),
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_get_mut(
+    this: *mut RprColliderSet,
+    handle: RprColliderHandle,
+) -> *mut RprCollider {
+    match this.get_mut().0.get_mut(handle.into_raw()) {
+        Some(t) => t as *mut Collider as *mut RprCollider,
+        None => std::ptr::null_mut(),
+    }
 }
 
 #[no_mangle]
