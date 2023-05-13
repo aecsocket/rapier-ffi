@@ -11,21 +11,21 @@ final class constants$19 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$19() {}
-    static final FunctionDescriptor RprColliderBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_build$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_build",
-        constants$19.RprColliderBuilder_build$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprColliderBuilder_contact_force_event_threshold$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprColliderBuilder_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_cuboid",
-        constants$19.RprColliderBuilder_cuboid$FUNC
+    static final MethodHandle RprColliderBuilder_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_contact_force_event_threshold",
+        constants$19.RprColliderBuilder_contact_force_event_threshold$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_density$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_density$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_density",
+        constants$19.RprColliderBuilder_density$FUNC
     );
     static final FunctionDescriptor RprColliderBuilder_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
@@ -34,31 +34,29 @@ final class constants$19 {
         "RprColliderBuilder_drop",
         constants$19.RprColliderBuilder_drop$FUNC
     );
-    static final FunctionDescriptor RprColliderBuilder_restitution$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprColliderBuilder_friction$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprColliderBuilder_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_restitution",
-        constants$19.RprColliderBuilder_restitution$FUNC
+    static final MethodHandle RprColliderBuilder_friction$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_friction",
+        constants$19.RprColliderBuilder_friction$FUNC
     );
-    static final FunctionDescriptor RprColliderSet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_drop",
-        constants$19.RprColliderSet_drop$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprColliderBuilder_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprColliderHandle")
+        Constants$root.C_INT$LAYOUT
     );
-    static final MethodHandle RprColliderSet_index$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_index",
-        constants$19.RprColliderSet_index$FUNC
+    static final MethodHandle RprColliderBuilder_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_friction_combine_rule",
+        constants$19.RprColliderBuilder_friction_combine_rule$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_mass$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_mass$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_mass",
+        constants$19.RprColliderBuilder_mass$FUNC
     );
 }
 

@@ -9,9 +9,12 @@ dependencies {
 
 variant {
     name.set("dim3-f32")
-    context("sys", "rapier.sys_dim3_f32")
-    context("real", "float")
-    context("realZero", "0.0f")
-    context("realLayout", "ValueLayout.JAVA_FLOAT")
-    context("realVector", "Vector3")
+    dim.set(Dimension.DIM3)
+    sys.set("rapier.sys_dim3_f32")
+    real.set("float")
+    realZero.set("0.0f")
+    realLayout.set("ValueLayout.JAVA_FLOAT")
+    realVec.set("Vec3")
+    realAngVec.set("Vec3")
+    realRot.set("Vec4")
 }

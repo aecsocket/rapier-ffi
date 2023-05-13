@@ -1,6 +1,9 @@
 package rapier.geometry;
 
 import rapier.DroppableNative;
+import rapier.math.*;
+import rapier.shape.SharedShape;
+import rapier.sys.RapierC;
 
 import java.lang.foreign.MemorySegment;
 
@@ -15,12 +18,8 @@ public final class ColliderBuilder extends DroppableNative {
         return new ColliderBuilder(memory);
     }
 
-    public static ColliderBuilder ball({{ real }} radius) {
-        return ColliderBuilder.at({{ sys }}.RapierC.RprColliderBuilder_ball(radius));
-    }
-
-    public static ColliderBuilder cuboid({{ real }} hx, {{ real }} hy, {{ real }} hz) {
-        return ColliderBuilder.at({{ sys }}.RapierC.RprColliderBuilder_cuboid(hx, hy, hz));
+    public static ColliderBuilder of(SharedShape shape) {
+        return ColliderBuilder.at(RprColliderBuilder_new(shape.memory()));
     }
 
     @Override
@@ -32,8 +31,53 @@ public final class ColliderBuilder extends DroppableNative {
         return Collider.at(RprColliderBuilder_build(self));
     }
 
+    public ColliderBuilder sensor(boolean sensor) {
+        RprColliderBuilder_sensor(self, sensor);
+        return this;
+    }
+
+    public ColliderBuilder friction({{ real }} friction) {
+        {{ sys }}.RapierC.RprColliderBuilder_friction(self, friction);
+        return this;
+    }
+
+    public ColliderBuilder frictionCombineRule(CoefficientCombineRule rule) {
+        RprColliderBuilder_friction_combine_rule(self, rule.ordinal());
+        return this;
+    }
+
     public ColliderBuilder restitution({{ real }} restitution) {
         {{ sys }}.RapierC.RprColliderBuilder_restitution(self, restitution);
+        return this;
+    }
+
+    public ColliderBuilder restitutionCombineRule(CoefficientCombineRule rule) {
+        RprColliderBuilder_restitution_combine_rule(self, rule.ordinal());
+        return this;
+    }
+
+    public ColliderBuilder density({{ real }} density) {
+        {{ sys }}.RapierC.RprColliderBuilder_density(self, density);
+        return this;
+    }
+
+    public ColliderBuilder mass({{ real }} mass) {
+        {{ sys }}.RapierC.RprColliderBuilder_mass(self, mass);
+        return this;
+    }
+
+    public ColliderBuilder contactForceEventThreshold({{ real }} threshold) {
+        {{ sys }}.RapierC.RprColliderBuilder_contact_force_event_threshold(self, threshold);
+        return this;
+    }
+
+    public ColliderBuilder translation({{ realVec }} translation) {
+        {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.memory());
+        return this;
+    }
+
+    public ColliderBuilder rotation({{ realAngVec }} rotation) {
+        {{ sys }}.RapierC.RprColliderBuilder_rotation(self, rotation.memory());
         return this;
     }
 }

@@ -31,7 +31,8 @@ tasks {
             }
         }
 
-        addHeader("sys")
+        // we still need to define *something* for the header file to process properly
+        addHeader("sys", "RAPIER_DIM2", "RAPIER_F32")
         // one set of sources for each variant
         addHeader("sys_dim2_f32", "RAPIER_DIM2", "RAPIER_F32")
         addHeader("sys_dim2_f64", "RAPIER_DIM2", "RAPIER_F64")

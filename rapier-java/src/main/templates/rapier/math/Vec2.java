@@ -6,21 +6,17 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
-public final class Vector2 extends Native {
-    protected Vector2(MemorySegment memory) {
+public final class Vec2 extends Native {
+    protected Vec2(MemorySegment memory) {
         super(memory);
     }
 
-    public static Vector2 at(MemorySegment memory) {
-        return new Vector2(memory);
+    public static Vec2 at(MemorySegment memory) {
+        return new Vec2(memory);
     }
 
-    public static Vector2 create(SegmentAllocator alloc, {{ real }} x, {{ real }} y) {
+    public static Vec2 of(SegmentAllocator alloc, {{ real }} x, {{ real }} y) {
         return at(alloc.allocateArray({{ realLayout }}, x, y));
-    }
-
-    public static Vector2 create(SegmentAllocator alloc) {
-        return create(alloc, {{ realZero }}, {{ realZero }});
     }
 
     public {{ real }} getX() {
@@ -37,5 +33,10 @@ public final class Vector2 extends Native {
 
     public void setY({{ real }} y) {
         self.setAtIndex({{ realLayout }}, 1, y);
+    }
+
+    @Override
+    public String toString() {
+        return "(%f, %f)".formatted(getX(), getY());
     }
 }

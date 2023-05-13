@@ -11,62 +11,61 @@ final class constants$20 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$20() {}
-    static final FunctionDescriptor RprColliderSet_index_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprColliderBuilder_mass$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_mass$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_mass",
+        constants$20.RprColliderBuilder_mass$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_new$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_new",
+        constants$20.RprColliderBuilder_new$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_position$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprColliderHandle")
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("translation")
+        ).withName("RprIso")
     );
-    static final MethodHandle RprColliderSet_index_mut$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_index_mut",
-        constants$20.RprColliderSet_index_mut$FUNC
+    static final MethodHandle RprColliderBuilder_position$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_position",
+        constants$20.RprColliderBuilder_position$FUNC
     );
-    static final FunctionDescriptor RprColliderSet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprColliderHandle"),
+    static final FunctionDescriptor RprColliderBuilder_restitution$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+        Constants$root.C_FLOAT$LAYOUT
     );
-    static final MethodHandle RprColliderSet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_insert",
-        constants$20.RprColliderSet_insert$FUNC
+    static final MethodHandle RprColliderBuilder_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_restitution",
+        constants$20.RprColliderBuilder_restitution$FUNC
     );
-    static final FunctionDescriptor RprColliderSet_insert_with_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprColliderHandle"),
+    static final FunctionDescriptor RprColliderBuilder_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_restitution_combine_rule",
+        constants$20.RprColliderBuilder_restitution_combine_rule$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle"),
-        Constants$root.C_POINTER$LAYOUT
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprAngVec")
     );
-    static final MethodHandle RprColliderSet_insert_with_parent$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_insert_with_parent",
-        constants$20.RprColliderSet_insert_with_parent$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprColliderSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_new",
-        constants$20.RprColliderSet_new$FUNC
-    );
-    static final FunctionDescriptor RprCollider_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_drop$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_drop",
-        constants$20.RprCollider_drop$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprImpulseJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_drop",
-        constants$20.RprImpulseJointSet_drop$FUNC
+    static final MethodHandle RprColliderBuilder_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_rotation",
+        constants$20.RprColliderBuilder_rotation$FUNC
     );
 }
 

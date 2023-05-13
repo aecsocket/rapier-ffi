@@ -2,6 +2,7 @@ package rapier.dynamics;
 
 import rapier.DroppableNative;
 import rapier.math.*;
+import rapier.sys.RapierC;
 
 import java.lang.foreign.MemorySegment;
 
@@ -20,6 +21,14 @@ public final class RigidBodyBuilder extends DroppableNative {
         return RigidBodyBuilder.at(RprRigidBodyBuilder_fixed());
     }
 
+    public static RigidBodyBuilder kinematicVelocityBased() {
+        return RigidBodyBuilder.at(RprRigidBodyBuilder_kinematic_velocity_based());
+    }
+
+    public static RigidBodyBuilder kinematicPositionBased() {
+        return RigidBodyBuilder.at(RprRigidBodyBuilder_kinematic_position_based());
+    }
+
     public static RigidBodyBuilder dynamic() {
         return RigidBodyBuilder.at(RprRigidBodyBuilder_dynamic());
     }
@@ -33,8 +42,73 @@ public final class RigidBodyBuilder extends DroppableNative {
         return RigidBody.at(RprRigidBodyBuilder_build(self));
     }
 
-    public RigidBodyBuilder translation({{ realVector }} translation) {
+    public RigidBodyBuilder gravityScale({{ real }} scale) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_gravity_scale(self, scale);
+        return this;
+    }
+
+    public RigidBodyBuilder dominanceGroup(byte group) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_dominance_group(self, group);
+        return this;
+    }
+
+    public RigidBodyBuilder translation({{ realVec }} translation) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.memory());
+        return this;
+    }
+
+    public RigidBodyBuilder rotation({{ realAngVec }} rotation) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.memory());
+        return this;
+    }
+
+    public RigidBodyBuilder position(Iso position) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.memory());
+        return this;
+    }
+
+    public RigidBodyBuilder additionalMass({{ real }} mass) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_additional_mass(self, mass);
+        return this;
+    }
+
+    public RigidBodyBuilder linearDamping({{ real }} factor) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_linear_damping(self, factor);
+        return this;
+    }
+
+    public RigidBodyBuilder angularDamping({{ real }} factor) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_angular_damping(self, factor);
+        return this;
+    }
+
+    public RigidBodyBuilder linvel({{ realVec }} linvel) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.memory());
+        return this;
+    }
+
+    public RigidBodyBuilder angvel({{ realAngVec }} angvel) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.memory());
+        return this;
+    }
+
+    public RigidBodyBuilder canSleep(boolean canSleep) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_can_sleep(self, canSleep);
+        return this;
+    }
+
+    public RigidBodyBuilder ccdEnabled(boolean ccdEnabled) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_ccd_enabled(self, ccdEnabled);
+        return this;
+    }
+
+    public RigidBodyBuilder sleeping(boolean sleeping) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_sleeping(self, sleeping);
+        return this;
+    }
+
+    public RigidBodyBuilder enabled(boolean enabled) {
+        {{ sys }}.RapierC.RprRigidBodyBuilder_enabled(self, enabled);
         return this;
     }
 }

@@ -3383,10 +3383,68 @@ public class RapierC  {
     public static final OfFloat Real = Constants$root.C_FLOAT$LAYOUT;
     /**
      * {@snippet :
-     * typedef float RprReal;
+     * enum RprCoefficientCombineRule.Average = 0;
      * }
      */
-    public static final OfFloat RprReal = Constants$root.C_FLOAT$LAYOUT;
+    public static int Average() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * enum RprCoefficientCombineRule.Min = 1;
+     * }
+     */
+    public static int Min() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * enum RprCoefficientCombineRule.Multiply = 2;
+     * }
+     */
+    public static int Multiply() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * enum RprCoefficientCombineRule.Max = 3;
+     * }
+     */
+    public static int Max() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * enum RprRigidBodyType.Dynamic = 0;
+     * }
+     */
+    public static int Dynamic() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * enum RprRigidBodyType.Fixed = 1;
+     * }
+     */
+    public static int Fixed() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * enum RprRigidBodyType.KinematicPositionBased = 2;
+     * }
+     */
+    public static int KinematicPositionBased() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * enum RprRigidBodyType.KinematicVelocityBased = 3;
+     * }
+     */
+    public static int KinematicVelocityBased() {
+        return (int)3L;
+    }
     public static MethodHandle RprBroadPhase_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$18.RprBroadPhase_drop$MH,"RprBroadPhase_drop");
     }
@@ -3451,24 +3509,8 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprColliderBuilder_ball$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.RprColliderBuilder_ball$MH,"RprColliderBuilder_ball");
-    }
-    /**
-     * {@snippet :
-     * struct RprColliderBuilder* RprColliderBuilder_ball(float radius);
-     * }
-     */
-    public static MemorySegment RprColliderBuilder_ball(float radius) {
-        var mh$ = RprColliderBuilder_ball$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(radius);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle RprColliderBuilder_build$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_build$MH,"RprColliderBuilder_build");
+        return RuntimeHelper.requireNonNull(constants$18.RprColliderBuilder_build$MH,"RprColliderBuilder_build");
     }
     /**
      * {@snippet :
@@ -3483,18 +3525,34 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprColliderBuilder_cuboid$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_cuboid$MH,"RprColliderBuilder_cuboid");
+    public static MethodHandle RprColliderBuilder_contact_force_event_threshold$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_contact_force_event_threshold$MH,"RprColliderBuilder_contact_force_event_threshold");
     }
     /**
      * {@snippet :
-     * struct RprColliderBuilder* RprColliderBuilder_cuboid(float hx, float hy, float hz);
+     * void RprColliderBuilder_contact_force_event_threshold(struct RprColliderBuilder* this_, float threshold);
      * }
      */
-    public static MemorySegment RprColliderBuilder_cuboid(float hx, float hy, float hz) {
-        var mh$ = RprColliderBuilder_cuboid$MH();
+    public static void RprColliderBuilder_contact_force_event_threshold(MemorySegment this_, float threshold) {
+        var mh$ = RprColliderBuilder_contact_force_event_threshold$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(hx, hy, hz);
+            mh$.invokeExact(this_, threshold);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_density$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_density$MH,"RprColliderBuilder_density");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_density(struct RprColliderBuilder* this_, float density);
+     * }
+     */
+    public static void RprColliderBuilder_density(MemorySegment this_, float density) {
+        var mh$ = RprColliderBuilder_density$MH();
+        try {
+            mh$.invokeExact(this_, density);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3515,8 +3573,72 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprColliderBuilder_friction$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_friction$MH,"RprColliderBuilder_friction");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_friction(struct RprColliderBuilder* this_, float friction);
+     * }
+     */
+    public static void RprColliderBuilder_friction(MemorySegment this_, float friction) {
+        var mh$ = RprColliderBuilder_friction$MH();
+        try {
+            mh$.invokeExact(this_, friction);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_friction_combine_rule$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_friction_combine_rule$MH,"RprColliderBuilder_friction_combine_rule");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_friction_combine_rule(struct RprColliderBuilder* this_, enum RprCoefficientCombineRule rule);
+     * }
+     */
+    public static void RprColliderBuilder_friction_combine_rule(MemorySegment this_, int rule) {
+        var mh$ = RprColliderBuilder_friction_combine_rule$MH();
+        try {
+            mh$.invokeExact(this_, rule);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_mass$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_mass$MH,"RprColliderBuilder_mass");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_mass(struct RprColliderBuilder* this_, float mass);
+     * }
+     */
+    public static void RprColliderBuilder_mass(MemorySegment this_, float mass) {
+        var mh$ = RprColliderBuilder_mass$MH();
+        try {
+            mh$.invokeExact(this_, mass);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_new$MH,"RprColliderBuilder_new");
+    }
+    /**
+     * {@snippet :
+     * struct RprColliderBuilder* RprColliderBuilder_new(struct RprSharedShape* shape);
+     * }
+     */
+    public static MemorySegment RprColliderBuilder_new(MemorySegment shape) {
+        var mh$ = RprColliderBuilder_new$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(shape);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprColliderBuilder_restitution$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_restitution$MH,"RprColliderBuilder_restitution");
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_restitution$MH,"RprColliderBuilder_restitution");
     }
     /**
      * {@snippet :
@@ -3531,8 +3653,72 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprColliderBuilder_restitution_combine_rule$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_restitution_combine_rule$MH,"RprColliderBuilder_restitution_combine_rule");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_restitution_combine_rule(struct RprColliderBuilder* this_, enum RprCoefficientCombineRule rule);
+     * }
+     */
+    public static void RprColliderBuilder_restitution_combine_rule(MemorySegment this_, int rule) {
+        var mh$ = RprColliderBuilder_restitution_combine_rule$MH();
+        try {
+            mh$.invokeExact(this_, rule);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_rotation$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_rotation$MH,"RprColliderBuilder_rotation");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_rotation(struct RprColliderBuilder* this_, struct RprAngVec rotation);
+     * }
+     */
+    public static void RprColliderBuilder_rotation(MemorySegment this_, MemorySegment rotation) {
+        var mh$ = RprColliderBuilder_rotation$MH();
+        try {
+            mh$.invokeExact(this_, rotation);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_sensor$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_sensor$MH,"RprColliderBuilder_sensor");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_sensor(struct RprColliderBuilder* this_, _Bool sensor);
+     * }
+     */
+    public static void RprColliderBuilder_sensor(MemorySegment this_, boolean sensor) {
+        var mh$ = RprColliderBuilder_sensor$MH();
+        try {
+            mh$.invokeExact(this_, sensor);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprColliderBuilder_translation$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_translation$MH,"RprColliderBuilder_translation");
+    }
+    /**
+     * {@snippet :
+     * void RprColliderBuilder_translation(struct RprColliderBuilder* this_, struct RprVec translation);
+     * }
+     */
+    public static void RprColliderBuilder_translation(MemorySegment this_, MemorySegment translation) {
+        var mh$ = RprColliderBuilder_translation$MH();
+        try {
+            mh$.invokeExact(this_, translation);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprColliderSet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderSet_drop$MH,"RprColliderSet_drop");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_drop$MH,"RprColliderSet_drop");
     }
     /**
      * {@snippet :
@@ -3548,7 +3734,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_index$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderSet_index$MH,"RprColliderSet_index");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_index$MH,"RprColliderSet_index");
     }
     /**
      * {@snippet :
@@ -3564,7 +3750,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_index_mut$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderSet_index_mut$MH,"RprColliderSet_index_mut");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_index_mut$MH,"RprColliderSet_index_mut");
     }
     /**
      * {@snippet :
@@ -3580,7 +3766,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_insert$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderSet_insert$MH,"RprColliderSet_insert");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_insert$MH,"RprColliderSet_insert");
     }
     /**
      * {@snippet :
@@ -3596,7 +3782,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_insert_with_parent$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderSet_insert_with_parent$MH,"RprColliderSet_insert_with_parent");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_insert_with_parent$MH,"RprColliderSet_insert_with_parent");
     }
     /**
      * {@snippet :
@@ -3612,7 +3798,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderSet_new$MH,"RprColliderSet_new");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_new$MH,"RprColliderSet_new");
     }
     /**
      * {@snippet :
@@ -3628,7 +3814,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprCollider_drop$MH,"RprCollider_drop");
+        return RuntimeHelper.requireNonNull(constants$22.RprCollider_drop$MH,"RprCollider_drop");
     }
     /**
      * {@snippet :
@@ -3644,7 +3830,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprImpulseJointSet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprImpulseJointSet_drop$MH,"RprImpulseJointSet_drop");
+        return RuntimeHelper.requireNonNull(constants$22.RprImpulseJointSet_drop$MH,"RprImpulseJointSet_drop");
     }
     /**
      * {@snippet :
@@ -3660,7 +3846,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprImpulseJointSet_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprImpulseJointSet_new$MH,"RprImpulseJointSet_new");
+        return RuntimeHelper.requireNonNull(constants$22.RprImpulseJointSet_new$MH,"RprImpulseJointSet_new");
     }
     /**
      * {@snippet :
@@ -3676,7 +3862,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIntegrationParameters_default$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprIntegrationParameters_default$MH,"RprIntegrationParameters_default");
+        return RuntimeHelper.requireNonNull(constants$22.RprIntegrationParameters_default$MH,"RprIntegrationParameters_default");
     }
     /**
      * {@snippet :
@@ -3692,7 +3878,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIntegrationParameters_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
+        return RuntimeHelper.requireNonNull(constants$22.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
     }
     /**
      * {@snippet :
@@ -3708,7 +3894,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIntegrationParameters_dt$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprIntegrationParameters_dt$MH,"RprIntegrationParameters_dt");
+        return RuntimeHelper.requireNonNull(constants$22.RprIntegrationParameters_dt$MH,"RprIntegrationParameters_dt");
     }
     /**
      * {@snippet :
@@ -3724,7 +3910,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIslandManager_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprIslandManager_drop$MH,"RprIslandManager_drop");
+        return RuntimeHelper.requireNonNull(constants$23.RprIslandManager_drop$MH,"RprIslandManager_drop");
     }
     /**
      * {@snippet :
@@ -3740,7 +3926,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIslandManager_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprIslandManager_new$MH,"RprIslandManager_new");
+        return RuntimeHelper.requireNonNull(constants$23.RprIslandManager_new$MH,"RprIslandManager_new");
     }
     /**
      * {@snippet :
@@ -3756,7 +3942,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprMultibodyJointSet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprMultibodyJointSet_drop$MH,"RprMultibodyJointSet_drop");
+        return RuntimeHelper.requireNonNull(constants$23.RprMultibodyJointSet_drop$MH,"RprMultibodyJointSet_drop");
     }
     /**
      * {@snippet :
@@ -3772,7 +3958,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprMultibodyJointSet_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprMultibodyJointSet_new$MH,"RprMultibodyJointSet_new");
+        return RuntimeHelper.requireNonNull(constants$23.RprMultibodyJointSet_new$MH,"RprMultibodyJointSet_new");
     }
     /**
      * {@snippet :
@@ -3788,7 +3974,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprNarrowPhase_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
+        return RuntimeHelper.requireNonNull(constants$23.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
     }
     /**
      * {@snippet :
@@ -3804,7 +3990,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprNarrowPhase_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprNarrowPhase_new$MH,"RprNarrowPhase_new");
+        return RuntimeHelper.requireNonNull(constants$23.RprNarrowPhase_new$MH,"RprNarrowPhase_new");
     }
     /**
      * {@snippet :
@@ -3820,7 +4006,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprPhysicsPipeline_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprPhysicsPipeline_drop$MH,"RprPhysicsPipeline_drop");
+        return RuntimeHelper.requireNonNull(constants$24.RprPhysicsPipeline_drop$MH,"RprPhysicsPipeline_drop");
     }
     /**
      * {@snippet :
@@ -3836,7 +4022,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprPhysicsPipeline_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprPhysicsPipeline_new$MH,"RprPhysicsPipeline_new");
+        return RuntimeHelper.requireNonNull(constants$24.RprPhysicsPipeline_new$MH,"RprPhysicsPipeline_new");
     }
     /**
      * {@snippet :
@@ -3852,11 +4038,11 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprPhysicsPipeline_step$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprPhysicsPipeline_step$MH,"RprPhysicsPipeline_step");
+        return RuntimeHelper.requireNonNull(constants$24.RprPhysicsPipeline_step$MH,"RprPhysicsPipeline_step");
     }
     /**
      * {@snippet :
-     * void RprPhysicsPipeline_step(struct RprPhysicsPipeline* this_, float gravity[2], struct RprIntegrationParameters* integration_parameters, struct RprIslandManager* islands, struct RprBroadPhase* broad_phase, struct RprNarrowPhase* narrow_phase, struct RprRigidBodySet* bodies, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, struct RprCCDSolver* ccd_solver, struct RprQueryPipeline* query_pipeline);
+     * void RprPhysicsPipeline_step(struct RprPhysicsPipeline* this_, struct RprVec gravity, struct RprIntegrationParameters* integration_parameters, struct RprIslandManager* islands, struct RprBroadPhase* broad_phase, struct RprNarrowPhase* narrow_phase, struct RprRigidBodySet* bodies, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, struct RprCCDSolver* ccd_solver, struct RprQueryPipeline* query_pipeline);
      * }
      */
     public static void RprPhysicsPipeline_step(MemorySegment this_, MemorySegment gravity, MemorySegment integration_parameters, MemorySegment islands, MemorySegment broad_phase, MemorySegment narrow_phase, MemorySegment bodies, MemorySegment colliders, MemorySegment impulse_joints, MemorySegment multibody_joints, MemorySegment ccd_solver, MemorySegment query_pipeline) {
@@ -3868,7 +4054,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprQueryPipeline_drop$MH,"RprQueryPipeline_drop");
+        return RuntimeHelper.requireNonNull(constants$24.RprQueryPipeline_drop$MH,"RprQueryPipeline_drop");
     }
     /**
      * {@snippet :
@@ -3884,7 +4070,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
+        return RuntimeHelper.requireNonNull(constants$24.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
     }
     /**
      * {@snippet :
@@ -3899,8 +4085,56 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprRigidBodyBuilder_additional_mass$MH() {
+        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodyBuilder_additional_mass$MH,"RprRigidBodyBuilder_additional_mass");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_additional_mass(struct RprRigidBodyBuilder* this_, float mass);
+     * }
+     */
+    public static void RprRigidBodyBuilder_additional_mass(MemorySegment this_, float mass) {
+        var mh$ = RprRigidBodyBuilder_additional_mass$MH();
+        try {
+            mh$.invokeExact(this_, mass);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_angular_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_angular_damping$MH,"RprRigidBodyBuilder_angular_damping");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_angular_damping(struct RprRigidBodyBuilder* this_, float factor);
+     * }
+     */
+    public static void RprRigidBodyBuilder_angular_damping(MemorySegment this_, float factor) {
+        var mh$ = RprRigidBodyBuilder_angular_damping$MH();
+        try {
+            mh$.invokeExact(this_, factor);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_angvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_angvel$MH,"RprRigidBodyBuilder_angvel");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_angvel(struct RprRigidBodyBuilder* this_, struct RprAngVec angvel);
+     * }
+     */
+    public static void RprRigidBodyBuilder_angvel(MemorySegment this_, MemorySegment angvel) {
+        var mh$ = RprRigidBodyBuilder_angvel$MH();
+        try {
+            mh$.invokeExact(this_, angvel);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprRigidBodyBuilder_build$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprRigidBodyBuilder_build$MH,"RprRigidBodyBuilder_build");
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_build$MH,"RprRigidBodyBuilder_build");
     }
     /**
      * {@snippet :
@@ -3915,8 +4149,56 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprRigidBodyBuilder_can_sleep$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_can_sleep$MH,"RprRigidBodyBuilder_can_sleep");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_can_sleep(struct RprRigidBodyBuilder* this_, _Bool can_sleep);
+     * }
+     */
+    public static void RprRigidBodyBuilder_can_sleep(MemorySegment this_, boolean can_sleep) {
+        var mh$ = RprRigidBodyBuilder_can_sleep$MH();
+        try {
+            mh$.invokeExact(this_, can_sleep);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_ccd_enabled$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_ccd_enabled$MH,"RprRigidBodyBuilder_ccd_enabled");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_ccd_enabled(struct RprRigidBodyBuilder* this_, _Bool enabled);
+     * }
+     */
+    public static void RprRigidBodyBuilder_ccd_enabled(MemorySegment this_, boolean enabled) {
+        var mh$ = RprRigidBodyBuilder_ccd_enabled$MH();
+        try {
+            mh$.invokeExact(this_, enabled);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_dominance_group$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodyBuilder_dominance_group$MH,"RprRigidBodyBuilder_dominance_group");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_dominance_group(struct RprRigidBodyBuilder* this_, signed char group);
+     * }
+     */
+    public static void RprRigidBodyBuilder_dominance_group(MemorySegment this_, byte group) {
+        var mh$ = RprRigidBodyBuilder_dominance_group$MH();
+        try {
+            mh$.invokeExact(this_, group);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprRigidBodyBuilder_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprRigidBodyBuilder_drop$MH,"RprRigidBodyBuilder_drop");
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_drop$MH,"RprRigidBodyBuilder_drop");
     }
     /**
      * {@snippet :
@@ -3932,7 +4214,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_dynamic$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprRigidBodyBuilder_dynamic$MH,"RprRigidBodyBuilder_dynamic");
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_dynamic$MH,"RprRigidBodyBuilder_dynamic");
     }
     /**
      * {@snippet :
@@ -3947,8 +4229,24 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprRigidBodyBuilder_enabled$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_enabled$MH,"RprRigidBodyBuilder_enabled");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_enabled(struct RprRigidBodyBuilder* this_, _Bool enabled);
+     * }
+     */
+    public static void RprRigidBodyBuilder_enabled(MemorySegment this_, boolean enabled) {
+        var mh$ = RprRigidBodyBuilder_enabled$MH();
+        try {
+            mh$.invokeExact(this_, enabled);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprRigidBodyBuilder_fixed$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodyBuilder_fixed$MH,"RprRigidBodyBuilder_fixed");
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_fixed$MH,"RprRigidBodyBuilder_fixed");
     }
     /**
      * {@snippet :
@@ -3963,12 +4261,140 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprRigidBodyBuilder_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodyBuilder_translation$MH,"RprRigidBodyBuilder_translation");
+    public static MethodHandle RprRigidBodyBuilder_gravity_scale$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_gravity_scale$MH,"RprRigidBodyBuilder_gravity_scale");
     }
     /**
      * {@snippet :
-     * void RprRigidBodyBuilder_translation(struct RprRigidBodyBuilder* this_, float translation[2]);
+     * void RprRigidBodyBuilder_gravity_scale(struct RprRigidBodyBuilder* this_, float scale_factor);
+     * }
+     */
+    public static void RprRigidBodyBuilder_gravity_scale(MemorySegment this_, float scale_factor) {
+        var mh$ = RprRigidBodyBuilder_gravity_scale$MH();
+        try {
+            mh$.invokeExact(this_, scale_factor);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.RprRigidBodyBuilder_kinematic_position_based$MH,"RprRigidBodyBuilder_kinematic_position_based");
+    }
+    /**
+     * {@snippet :
+     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_kinematic_position_based();
+     * }
+     */
+    public static MemorySegment RprRigidBodyBuilder_kinematic_position_based() {
+        var mh$ = RprRigidBodyBuilder_kinematic_position_based$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_kinematic_velocity_based$MH,"RprRigidBodyBuilder_kinematic_velocity_based");
+    }
+    /**
+     * {@snippet :
+     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_kinematic_velocity_based();
+     * }
+     */
+    public static MemorySegment RprRigidBodyBuilder_kinematic_velocity_based() {
+        var mh$ = RprRigidBodyBuilder_kinematic_velocity_based$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_linear_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_linear_damping$MH,"RprRigidBodyBuilder_linear_damping");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_linear_damping(struct RprRigidBodyBuilder* this_, float factor);
+     * }
+     */
+    public static void RprRigidBodyBuilder_linear_damping(MemorySegment this_, float factor) {
+        var mh$ = RprRigidBodyBuilder_linear_damping$MH();
+        try {
+            mh$.invokeExact(this_, factor);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_linvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_linvel$MH,"RprRigidBodyBuilder_linvel");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_linvel(struct RprRigidBodyBuilder* this_, struct RprVec linvel);
+     * }
+     */
+    public static void RprRigidBodyBuilder_linvel(MemorySegment this_, MemorySegment linvel) {
+        var mh$ = RprRigidBodyBuilder_linvel$MH();
+        try {
+            mh$.invokeExact(this_, linvel);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_position$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_position$MH,"RprRigidBodyBuilder_position");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_position(struct RprRigidBodyBuilder* this_, struct RprIso position);
+     * }
+     */
+    public static void RprRigidBodyBuilder_position(MemorySegment this_, MemorySegment position) {
+        var mh$ = RprRigidBodyBuilder_position$MH();
+        try {
+            mh$.invokeExact(this_, position);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_rotation$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_rotation$MH,"RprRigidBodyBuilder_rotation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_rotation(struct RprRigidBodyBuilder* this_, struct RprAngVec rotation);
+     * }
+     */
+    public static void RprRigidBodyBuilder_rotation(MemorySegment this_, MemorySegment rotation) {
+        var mh$ = RprRigidBodyBuilder_rotation$MH();
+        try {
+            mh$.invokeExact(this_, rotation);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_sleeping$MH() {
+        return RuntimeHelper.requireNonNull(constants$27.RprRigidBodyBuilder_sleeping$MH,"RprRigidBodyBuilder_sleeping");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_sleeping(struct RprRigidBodyBuilder* this_, _Bool sleeping);
+     * }
+     */
+    public static void RprRigidBodyBuilder_sleeping(MemorySegment this_, boolean sleeping) {
+        var mh$ = RprRigidBodyBuilder_sleeping$MH();
+        try {
+            mh$.invokeExact(this_, sleeping);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBodyBuilder_translation$MH() {
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodyBuilder_translation$MH,"RprRigidBodyBuilder_translation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBodyBuilder_translation(struct RprRigidBodyBuilder* this_, struct RprVec translation);
      * }
      */
     public static void RprRigidBodyBuilder_translation(MemorySegment this_, MemorySegment translation) {
@@ -3980,7 +4406,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
     }
     /**
      * {@snippet :
@@ -3996,7 +4422,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_index$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodySet_index$MH,"RprRigidBodySet_index");
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodySet_index$MH,"RprRigidBodySet_index");
     }
     /**
      * {@snippet :
@@ -4012,7 +4438,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_index_mut$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodySet_index_mut$MH,"RprRigidBodySet_index_mut");
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodySet_index_mut$MH,"RprRigidBodySet_index_mut");
     }
     /**
      * {@snippet :
@@ -4028,7 +4454,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_insert$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
     }
     /**
      * {@snippet :
@@ -4044,7 +4470,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprRigidBodySet_new$MH,"RprRigidBodySet_new");
+        return RuntimeHelper.requireNonNull(constants$28.RprRigidBodySet_new$MH,"RprRigidBodySet_new");
     }
     /**
      * {@snippet :
@@ -4059,8 +4485,184 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprRigidBody_add_force$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_add_force$MH,"RprRigidBody_add_force");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_add_force(struct RprRigidBody* this_, struct RprVec force, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_add_force(MemorySegment this_, MemorySegment force, boolean wake_up) {
+        var mh$ = RprRigidBody_add_force$MH();
+        try {
+            mh$.invokeExact(this_, force, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_add_force_at_point$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_add_force_at_point(struct RprRigidBody* this_, struct RprVec force, struct RprVec point, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_add_force_at_point(MemorySegment this_, MemorySegment force, MemorySegment point, boolean wake_up) {
+        var mh$ = RprRigidBody_add_force_at_point$MH();
+        try {
+            mh$.invokeExact(this_, force, point, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_add_torque$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_add_torque$MH,"RprRigidBody_add_torque");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_add_torque(struct RprRigidBody* this_, struct RprAngVec torque, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_add_torque(MemorySegment this_, MemorySegment torque, boolean wake_up) {
+        var mh$ = RprRigidBody_add_torque$MH();
+        try {
+            mh$.invokeExact(this_, torque, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_angular_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_angular_damping$MH,"RprRigidBody_angular_damping");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_angular_damping(struct RprRigidBody* this_);
+     * }
+     */
+    public static float RprRigidBody_angular_damping(MemorySegment this_) {
+        var mh$ = RprRigidBody_angular_damping$MH();
+        try {
+            return (float)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_angvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_angvel$MH,"RprRigidBody_angvel");
+    }
+    /**
+     * {@snippet :
+     * struct RprAngVec RprRigidBody_angvel(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_angvel(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_angvel$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_apply_impulse$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprRigidBody_apply_impulse$MH,"RprRigidBody_apply_impulse");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_apply_impulse(struct RprRigidBody* this_, struct RprVec impulse, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_apply_impulse(MemorySegment this_, MemorySegment impulse, boolean wake_up) {
+        var mh$ = RprRigidBody_apply_impulse$MH();
+        try {
+            mh$.invokeExact(this_, impulse, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_apply_impulse_at_point$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_apply_impulse_at_point$MH,"RprRigidBody_apply_impulse_at_point");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_apply_impulse_at_point(struct RprRigidBody* this_, struct RprVec impulse, struct RprVec point, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_apply_impulse_at_point(MemorySegment this_, MemorySegment impulse, MemorySegment point, boolean wake_up) {
+        var mh$ = RprRigidBody_apply_impulse_at_point$MH();
+        try {
+            mh$.invokeExact(this_, impulse, point, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_apply_torque_impulse$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_apply_torque_impulse(struct RprRigidBody* this_, struct RprAngVec torque_impulse, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_apply_torque_impulse(MemorySegment this_, MemorySegment torque_impulse, boolean wake_up) {
+        var mh$ = RprRigidBody_apply_torque_impulse$MH();
+        try {
+            mh$.invokeExact(this_, torque_impulse, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_body_type$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_body_type$MH,"RprRigidBody_body_type");
+    }
+    /**
+     * {@snippet :
+     * enum RprRigidBodyType RprRigidBody_body_type(struct RprRigidBody* this_);
+     * }
+     */
+    public static int RprRigidBody_body_type(MemorySegment this_) {
+        var mh$ = RprRigidBody_body_type$MH();
+        try {
+            return (int)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_center_of_mass$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_center_of_mass$MH,"RprRigidBody_center_of_mass");
+    }
+    /**
+     * {@snippet :
+     * struct RprVec RprRigidBody_center_of_mass(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_center_of_mass(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_center_of_mass$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_dominance_group$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_dominance_group$MH,"RprRigidBody_dominance_group");
+    }
+    /**
+     * {@snippet :
+     * signed char RprRigidBody_dominance_group(struct RprRigidBody* this_);
+     * }
+     */
+    public static byte RprRigidBody_dominance_group(MemorySegment this_) {
+        var mh$ = RprRigidBody_dominance_group$MH();
+        try {
+            return (byte)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprRigidBody_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprRigidBody_drop$MH,"RprRigidBody_drop");
+        return RuntimeHelper.requireNonNull(constants$30.RprRigidBody_drop$MH,"RprRigidBody_drop");
     }
     /**
      * {@snippet :
@@ -4075,18 +4677,866 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprRigidBody_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprRigidBody_translation$MH,"RprRigidBody_translation");
+    public static MethodHandle RprRigidBody_effective_dominance_group$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_effective_dominance_group$MH,"RprRigidBody_effective_dominance_group");
     }
     /**
      * {@snippet :
-     * void RprRigidBody_translation(struct RprRigidBody* this_, float out[2]);
+     * short RprRigidBody_effective_dominance_group(struct RprRigidBody* this_);
      * }
      */
-    public static void RprRigidBody_translation(MemorySegment this_, MemorySegment out) {
-        var mh$ = RprRigidBody_translation$MH();
+    public static short RprRigidBody_effective_dominance_group(MemorySegment this_) {
+        var mh$ = RprRigidBody_effective_dominance_group$MH();
+        try {
+            return (short)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_enable_ccd$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_enable_ccd$MH,"RprRigidBody_enable_ccd");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_enable_ccd(struct RprRigidBody* this_, _Bool enabled);
+     * }
+     */
+    public static void RprRigidBody_enable_ccd(MemorySegment this_, boolean enabled) {
+        var mh$ = RprRigidBody_enable_ccd$MH();
+        try {
+            mh$.invokeExact(this_, enabled);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_gravitational_potetial_energy$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_gravitational_potetial_energy$MH,"RprRigidBody_gravitational_potetial_energy");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_gravitational_potetial_energy(struct RprRigidBody* this_, float dt, struct RprVec gravity);
+     * }
+     */
+    public static float RprRigidBody_gravitational_potetial_energy(MemorySegment this_, float dt, MemorySegment gravity) {
+        var mh$ = RprRigidBody_gravitational_potetial_energy$MH();
+        try {
+            return (float)mh$.invokeExact(this_, dt, gravity);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_gravity_scale$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_gravity_scale$MH,"RprRigidBody_gravity_scale");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_gravity_scale(struct RprRigidBody* this_);
+     * }
+     */
+    public static float RprRigidBody_gravity_scale(MemorySegment this_) {
+        var mh$ = RprRigidBody_gravity_scale$MH();
+        try {
+            return (float)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_ccd_active$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_is_ccd_active$MH,"RprRigidBody_is_ccd_active");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_ccd_active(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_ccd_active(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_ccd_active$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_ccd_enabled$MH() {
+        return RuntimeHelper.requireNonNull(constants$31.RprRigidBody_is_ccd_enabled$MH,"RprRigidBody_is_ccd_enabled");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_ccd_enabled(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_ccd_enabled(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_ccd_enabled$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_dynamic$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_dynamic$MH,"RprRigidBody_is_dynamic");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_dynamic(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_dynamic(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_dynamic$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_enabled$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_enabled$MH,"RprRigidBody_is_enabled");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_enabled(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_enabled(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_enabled$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_fixed$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_fixed$MH,"RprRigidBody_is_fixed");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_fixed(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_fixed(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_fixed$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_kinematic$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_kinematic$MH,"RprRigidBody_is_kinematic");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_kinematic(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_kinematic(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_kinematic$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_rotation_locked$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_rotation_locked$MH,"RprRigidBody_is_rotation_locked");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_is_rotation_locked(struct RprRigidBody* this_, _Bool *out[1]);
+     * }
+     */
+    public static void RprRigidBody_is_rotation_locked(MemorySegment this_, MemorySegment out) {
+        var mh$ = RprRigidBody_is_rotation_locked$MH();
         try {
             mh$.invokeExact(this_, out);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_sleeping$MH() {
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBody_is_sleeping$MH,"RprRigidBody_is_sleeping");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_sleeping(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_sleeping(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_sleeping$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_is_translation_locked$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_is_translation_locked$MH,"RprRigidBody_is_translation_locked");
+    }
+    /**
+     * {@snippet :
+     * _Bool RprRigidBody_is_translation_locked(struct RprRigidBody* this_);
+     * }
+     */
+    public static boolean RprRigidBody_is_translation_locked(MemorySegment this_) {
+        var mh$ = RprRigidBody_is_translation_locked$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_kinetic_energy$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_kinetic_energy$MH,"RprRigidBody_kinetic_energy");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_kinetic_energy(struct RprRigidBody* this_);
+     * }
+     */
+    public static float RprRigidBody_kinetic_energy(MemorySegment this_) {
+        var mh$ = RprRigidBody_kinetic_energy$MH();
+        try {
+            return (float)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_linear_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_linear_damping$MH,"RprRigidBody_linear_damping");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_linear_damping(struct RprRigidBody* this_);
+     * }
+     */
+    public static float RprRigidBody_linear_damping(MemorySegment this_) {
+        var mh$ = RprRigidBody_linear_damping$MH();
+        try {
+            return (float)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_linvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_linvel$MH,"RprRigidBody_linvel");
+    }
+    /**
+     * {@snippet :
+     * struct RprVec RprRigidBody_linvel(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_linvel(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_linvel$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_lock_translations$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_lock_translations$MH,"RprRigidBody_lock_translations");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_lock_translations(struct RprRigidBody* this_, _Bool locked, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_lock_translations(MemorySegment this_, boolean locked, boolean wake_up) {
+        var mh$ = RprRigidBody_lock_translations$MH();
+        try {
+            mh$.invokeExact(this_, locked, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_mass$MH() {
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBody_mass$MH,"RprRigidBody_mass");
+    }
+    /**
+     * {@snippet :
+     * float RprRigidBody_mass(struct RprRigidBody* this_);
+     * }
+     */
+    public static float RprRigidBody_mass(MemorySegment this_) {
+        var mh$ = RprRigidBody_mass$MH();
+        try {
+            return (float)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_next_position$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_next_position$MH,"RprRigidBody_next_position");
+    }
+    /**
+     * {@snippet :
+     * struct RprIso RprRigidBody_next_position(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_next_position(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_next_position$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_position$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_position$MH,"RprRigidBody_position");
+    }
+    /**
+     * {@snippet :
+     * struct RprIso RprRigidBody_position(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_position(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_position$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_predict_position_using_velocity_and_forces$MH,"RprRigidBody_predict_position_using_velocity_and_forces");
+    }
+    /**
+     * {@snippet :
+     * struct RprIso RprRigidBody_predict_position_using_velocity_and_forces(struct RprRigidBody* this_, float dt);
+     * }
+     */
+    public static MemorySegment RprRigidBody_predict_position_using_velocity_and_forces(SegmentAllocator allocator, MemorySegment this_, float dt) {
+        var mh$ = RprRigidBody_predict_position_using_velocity_and_forces$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, dt);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_recompute_mass_properties_from_colliders$MH,"RprRigidBody_recompute_mass_properties_from_colliders");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_recompute_mass_properties_from_colliders(struct RprRigidBody* this_, struct RprColliderSet* colliders);
+     * }
+     */
+    public static void RprRigidBody_recompute_mass_properties_from_colliders(MemorySegment this_, MemorySegment colliders) {
+        var mh$ = RprRigidBody_recompute_mass_properties_from_colliders$MH();
+        try {
+            mh$.invokeExact(this_, colliders);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_reset_forces$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_reset_forces$MH,"RprRigidBody_reset_forces");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_reset_forces(struct RprRigidBody* this_, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_reset_forces(MemorySegment this_, boolean wake_up) {
+        var mh$ = RprRigidBody_reset_forces$MH();
+        try {
+            mh$.invokeExact(this_, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_reset_torques$MH() {
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBody_reset_torques$MH,"RprRigidBody_reset_torques");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_reset_torques(struct RprRigidBody* this_, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_reset_torques(MemorySegment this_, boolean wake_up) {
+        var mh$ = RprRigidBody_reset_torques$MH();
+        try {
+            mh$.invokeExact(this_, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_rotation$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_rotation$MH,"RprRigidBody_rotation");
+    }
+    /**
+     * {@snippet :
+     * struct RprRot RprRigidBody_rotation(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_rotation(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_rotation$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_additional_mass$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_set_additional_mass$MH,"RprRigidBody_set_additional_mass");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_additional_mass(struct RprRigidBody* this_, float additional_mass, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_additional_mass(MemorySegment this_, float additional_mass, boolean wake_up) {
+        var mh$ = RprRigidBody_set_additional_mass$MH();
+        try {
+            mh$.invokeExact(this_, additional_mass, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_angular_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_set_angular_damping$MH,"RprRigidBody_set_angular_damping");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_angular_damping(struct RprRigidBody* this_, float damping);
+     * }
+     */
+    public static void RprRigidBody_set_angular_damping(MemorySegment this_, float damping) {
+        var mh$ = RprRigidBody_set_angular_damping$MH();
+        try {
+            mh$.invokeExact(this_, damping);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_angvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_set_angvel$MH,"RprRigidBody_set_angvel");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_angvel(struct RprRigidBody* this_, struct RprVec angvel, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_angvel(MemorySegment this_, MemorySegment angvel, boolean wake_up) {
+        var mh$ = RprRigidBody_set_angvel$MH();
+        try {
+            mh$.invokeExact(this_, angvel, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_body_type$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_set_body_type$MH,"RprRigidBody_set_body_type");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_body_type(struct RprRigidBody* this_, enum RprRigidBodyType status, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_body_type(MemorySegment this_, int status, boolean wake_up) {
+        var mh$ = RprRigidBody_set_body_type$MH();
+        try {
+            mh$.invokeExact(this_, status, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_dominance_group$MH() {
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBody_set_dominance_group$MH,"RprRigidBody_set_dominance_group");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_dominance_group(struct RprRigidBody* this_, signed char dominance);
+     * }
+     */
+    public static void RprRigidBody_set_dominance_group(MemorySegment this_, byte dominance) {
+        var mh$ = RprRigidBody_set_dominance_group$MH();
+        try {
+            mh$.invokeExact(this_, dominance);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_enabled$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_enabled$MH,"RprRigidBody_set_enabled");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_enabled(struct RprRigidBody* this_, _Bool enabled);
+     * }
+     */
+    public static void RprRigidBody_set_enabled(MemorySegment this_, boolean enabled) {
+        var mh$ = RprRigidBody_set_enabled$MH();
+        try {
+            mh$.invokeExact(this_, enabled);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_enabled_rotations$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_enabled_rotations$MH,"RprRigidBody_set_enabled_rotations");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_enabled_rotations(struct RprRigidBody* this_, _Bool allow_rotations_x, _Bool allow_rotations_y, _Bool allow_rotations_z, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_enabled_rotations(MemorySegment this_, boolean allow_rotations_x, boolean allow_rotations_y, boolean allow_rotations_z, boolean wake_up) {
+        var mh$ = RprRigidBody_set_enabled_rotations$MH();
+        try {
+            mh$.invokeExact(this_, allow_rotations_x, allow_rotations_y, allow_rotations_z, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_enabled_translations$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_enabled_translations$MH,"RprRigidBody_set_enabled_translations");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_enabled_translations(struct RprRigidBody* this_, _Bool allow_translation_x, _Bool allow_translation_y, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_enabled_translations(MemorySegment this_, boolean allow_translation_x, boolean allow_translation_y, boolean wake_up) {
+        var mh$ = RprRigidBody_set_enabled_translations$MH();
+        try {
+            mh$.invokeExact(this_, allow_translation_x, allow_translation_y, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_gravity_scale$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_gravity_scale$MH,"RprRigidBody_set_gravity_scale");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_gravity_scale(struct RprRigidBody* this_, float scale, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_gravity_scale(MemorySegment this_, float scale, boolean wake_up) {
+        var mh$ = RprRigidBody_set_gravity_scale$MH();
+        try {
+            mh$.invokeExact(this_, scale, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_linear_damping$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_linear_damping$MH,"RprRigidBody_set_linear_damping");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_linear_damping(struct RprRigidBody* this_, float damping);
+     * }
+     */
+    public static void RprRigidBody_set_linear_damping(MemorySegment this_, float damping) {
+        var mh$ = RprRigidBody_set_linear_damping$MH();
+        try {
+            mh$.invokeExact(this_, damping);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_linvel$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBody_set_linvel$MH,"RprRigidBody_set_linvel");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_linvel(struct RprRigidBody* this_, struct RprVec linvel, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_linvel(MemorySegment this_, MemorySegment linvel, boolean wake_up) {
+        var mh$ = RprRigidBody_set_linvel$MH();
+        try {
+            mh$.invokeExact(this_, linvel, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_next_kinematic_position$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_next_kinematic_position$MH,"RprRigidBody_set_next_kinematic_position");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_next_kinematic_position(struct RprRigidBody* this_, struct RprIso pos);
+     * }
+     */
+    public static void RprRigidBody_set_next_kinematic_position(MemorySegment this_, MemorySegment pos) {
+        var mh$ = RprRigidBody_set_next_kinematic_position$MH();
+        try {
+            mh$.invokeExact(this_, pos);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_next_kinematic_rotation$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_next_kinematic_rotation$MH,"RprRigidBody_set_next_kinematic_rotation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_next_kinematic_rotation(struct RprRigidBody* this_, struct RprRot rotation);
+     * }
+     */
+    public static void RprRigidBody_set_next_kinematic_rotation(MemorySegment this_, MemorySegment rotation) {
+        var mh$ = RprRigidBody_set_next_kinematic_rotation$MH();
+        try {
+            mh$.invokeExact(this_, rotation);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_next_kinematic_translation$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_next_kinematic_translation$MH,"RprRigidBody_set_next_kinematic_translation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_next_kinematic_translation(struct RprRigidBody* this_, struct RprVec translation);
+     * }
+     */
+    public static void RprRigidBody_set_next_kinematic_translation(MemorySegment this_, MemorySegment translation) {
+        var mh$ = RprRigidBody_set_next_kinematic_translation$MH();
+        try {
+            mh$.invokeExact(this_, translation);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_position$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_position(struct RprRigidBody* this_, struct RprIso pos, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_position(MemorySegment this_, MemorySegment pos, boolean wake_up) {
+        var mh$ = RprRigidBody_set_position$MH();
+        try {
+            mh$.invokeExact(this_, pos, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_rotation$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_rotation$MH,"RprRigidBody_set_rotation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_rotation(struct RprRigidBody* this_, struct RprRot rotation, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_rotation(MemorySegment this_, MemorySegment rotation, boolean wake_up) {
+        var mh$ = RprRigidBody_set_rotation$MH();
+        try {
+            mh$.invokeExact(this_, rotation, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_set_translation$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_set_translation$MH,"RprRigidBody_set_translation");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_set_translation(struct RprRigidBody* this_, struct RprVec translation, _Bool wake_up);
+     * }
+     */
+    public static void RprRigidBody_set_translation(MemorySegment this_, MemorySegment translation, boolean wake_up) {
+        var mh$ = RprRigidBody_set_translation$MH();
+        try {
+            mh$.invokeExact(this_, translation, wake_up);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_sleep$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_sleep$MH,"RprRigidBody_sleep");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_sleep(struct RprRigidBody* this_);
+     * }
+     */
+    public static void RprRigidBody_sleep(MemorySegment this_) {
+        var mh$ = RprRigidBody_sleep$MH();
+        try {
+            mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_translation$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_translation$MH,"RprRigidBody_translation");
+    }
+    /**
+     * {@snippet :
+     * struct RprVec RprRigidBody_translation(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_translation(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_translation$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_user_force$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_user_force$MH,"RprRigidBody_user_force");
+    }
+    /**
+     * {@snippet :
+     * struct RprVec RprRigidBody_user_force(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_user_force(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_user_force$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_user_torque$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
+    }
+    /**
+     * {@snippet :
+     * struct RprAngVec RprRigidBody_user_torque(struct RprRigidBody* this_);
+     * }
+     */
+    public static MemorySegment RprRigidBody_user_torque(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprRigidBody_user_torque$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_velocity_at_point$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_velocity_at_point$MH,"RprRigidBody_velocity_at_point");
+    }
+    /**
+     * {@snippet :
+     * struct RprVec RprRigidBody_velocity_at_point(struct RprRigidBody* this_, struct RprVec point);
+     * }
+     */
+    public static MemorySegment RprRigidBody_velocity_at_point(SegmentAllocator allocator, MemorySegment this_, MemorySegment point) {
+        var mh$ = RprRigidBody_velocity_at_point$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, point);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprRigidBody_wake_up$MH() {
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_wake_up$MH,"RprRigidBody_wake_up");
+    }
+    /**
+     * {@snippet :
+     * void RprRigidBody_wake_up(struct RprRigidBody* this_, _Bool strong);
+     * }
+     */
+    public static void RprRigidBody_wake_up(MemorySegment this_, boolean strong) {
+        var mh$ = RprRigidBody_wake_up$MH();
+        try {
+            mh$.invokeExact(this_, strong);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_ball$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_ball$MH,"RprSharedShape_ball");
+    }
+    /**
+     * {@snippet :
+     * struct RprSharedShape* RprSharedShape_ball(struct RprBall ball);
+     * }
+     */
+    public static MemorySegment RprSharedShape_ball(MemorySegment ball) {
+        var mh$ = RprSharedShape_ball$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(ball);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_capsule$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
+    }
+    /**
+     * {@snippet :
+     * struct RprSharedShape* RprSharedShape_capsule(struct RprCapsule capsule);
+     * }
+     */
+    public static MemorySegment RprSharedShape_capsule(MemorySegment capsule) {
+        var mh$ = RprSharedShape_capsule$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(capsule);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_cuboid$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
+    }
+    /**
+     * {@snippet :
+     * struct RprSharedShape* RprSharedShape_cuboid(struct RprCuboid cuboid);
+     * }
+     */
+    public static MemorySegment RprSharedShape_cuboid(MemorySegment cuboid) {
+        var mh$ = RprSharedShape_cuboid$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(cuboid);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_drop$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_drop$MH,"RprSharedShape_drop");
+    }
+    /**
+     * {@snippet :
+     * void RprSharedShape_drop(struct RprSharedShape* this_);
+     * }
+     */
+    public static void RprSharedShape_drop(MemorySegment this_) {
+        var mh$ = RprSharedShape_drop$MH();
+        try {
+            mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_segment$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_segment$MH,"RprSharedShape_segment");
+    }
+    /**
+     * {@snippet :
+     * struct RprSharedShape* RprSharedShape_segment(struct RprSegment segment);
+     * }
+     */
+    public static MemorySegment RprSharedShape_segment(MemorySegment segment) {
+        var mh$ = RprSharedShape_segment$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(segment);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_triangle$MH() {
+        return RuntimeHelper.requireNonNull(constants$39.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
+    }
+    /**
+     * {@snippet :
+     * struct RprSharedShape* RprSharedShape_triangle(struct RprTriangle triangle);
+     * }
+     */
+    public static MemorySegment RprSharedShape_triangle(MemorySegment triangle) {
+        var mh$ = RprSharedShape_triangle$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(triangle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4097,7 +5547,7 @@ public class RapierC  {
      * }
      */
     public static MemorySegment NULL() {
-        return constants$25.NULL$ADDR;
+        return constants$40.NULL$ADDR;
     }
     /**
      * {@snippet :

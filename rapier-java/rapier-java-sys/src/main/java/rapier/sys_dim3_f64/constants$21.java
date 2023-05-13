@@ -11,41 +11,63 @@ final class constants$21 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$21() {}
-    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_new",
-        constants$21.RprImpulseJointSet_new$FUNC
+    static final FunctionDescriptor RprColliderBuilder_sensor$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final FunctionDescriptor RprIntegrationParameters_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIntegrationParameters_default$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_default",
-        constants$21.RprIntegrationParameters_default$FUNC
+    static final MethodHandle RprColliderBuilder_sensor$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_sensor",
+        constants$21.RprColliderBuilder_sensor$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprColliderBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+        ).withName("RprVec")
+    );
+    static final MethodHandle RprColliderBuilder_translation$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_translation",
+        constants$21.RprColliderBuilder_translation$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$21.RprIntegrationParameters_drop$FUNC
+    static final MethodHandle RprColliderSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_drop",
+        constants$21.RprColliderSet_drop$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_dt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprColliderSet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprColliderHandle")
+    );
+    static final MethodHandle RprColliderSet_index$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_index",
+        constants$21.RprColliderSet_index$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_index_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprColliderHandle")
+    );
+    static final MethodHandle RprColliderSet_index_mut$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_index_mut",
+        constants$21.RprColliderSet_index_mut$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprColliderHandle"),
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_dt$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_dt",
-        constants$21.RprIntegrationParameters_dt$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$21.RprIslandManager_drop$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$21.RprIslandManager_new$FUNC
+    static final MethodHandle RprColliderSet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_insert",
+        constants$21.RprColliderSet_insert$FUNC
     );
 }
 

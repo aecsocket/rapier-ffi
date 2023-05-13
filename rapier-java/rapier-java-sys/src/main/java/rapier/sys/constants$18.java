@@ -43,12 +43,12 @@ final class constants$18 {
         "RprCCDSolver_new",
         constants$18.RprCCDSolver_new$FUNC
     );
-    static final FunctionDescriptor RprColliderBuilder_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprColliderBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprColliderBuilder_ball$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_ball",
-        constants$18.RprColliderBuilder_ball$FUNC
+    static final MethodHandle RprColliderBuilder_build$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_build",
+        constants$18.RprColliderBuilder_build$FUNC
     );
 }
 
