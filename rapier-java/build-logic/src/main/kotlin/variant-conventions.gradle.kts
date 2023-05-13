@@ -9,7 +9,8 @@ publishCore()
 val variantExt = extensions.create("variant", VariantExtension::class)
 
 afterEvaluate {
-    val dim = variantExt.dim.get()
+    val dimension = variantExt.dimension.get()
+    val precision = variantExt.precision.get()
 
     sourceSets.forEach { sourceSet ->
         val source = rootProject.projectDir.resolve("src/${sourceSet.name}/templates")
@@ -22,15 +23,12 @@ afterEvaluate {
             sourceDir.set(source)
             outputDir.set(output)
             context.putAll(mapOf(
-                "sys" to variantExt.sys.get(),
-                "dim2" to (dim == Dimension.DIM2),
-                "dim3" to (dim == Dimension.DIM3),
-                "real" to variantExt.real.get(),
-                "realZero" to variantExt.realZero.get(),
-                "realLayout" to variantExt.realLayout.get(),
-                "realVec" to variantExt.realVec.get(),
-                "realAngVec" to variantExt.realAngVec.get(),
-                "realRot" to variantExt.realRot.get(),
+                "sys" to "rapier.sys_${dimension.key}_${precision.key}",
+                "dim2" to (dimension == Dimension.DIM2),
+                "dim3" to (dimension == Dimension.DIM3),
+                "real" to precision.type,
+                "realZero" to precision.zero,
+                "realLayout" to precision.layout,
             ))
         }
 

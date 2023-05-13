@@ -36,7 +36,7 @@ public final class PhysicsPipeline extends DroppableNative {
     }
 
     public void step(
-            {{ realVec }} gravity,
+            Vector gravity,
             IntegrationParameters integrationParameters,
             IslandManager islands,
             BroadPhase broadPhase,

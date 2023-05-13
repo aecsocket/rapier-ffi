@@ -71,12 +71,12 @@ public final class ColliderBuilder extends DroppableNative {
         return this;
     }
 
-    public ColliderBuilder translation({{ realVec }} translation) {
+    public ColliderBuilder translation(Vector translation) {
         {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.memory());
         return this;
     }
 
-    public ColliderBuilder rotation({{ realAngVec }} rotation) {
+    public ColliderBuilder rotation(AngVector rotation) {
         {{ sys }}.RapierC.RprColliderBuilder_rotation(self, rotation.memory());
         return this;
     }

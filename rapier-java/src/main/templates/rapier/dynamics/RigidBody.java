@@ -58,8 +58,8 @@ public final class RigidBody extends DroppableNative {
         RprRigidBody_set_body_type(self, status.ordinal(), wakeUp);
     }
 
-    public {{ realVec }} getCenterOfMass(SegmentAllocator alloc) {
-        return {{ realVec }}.at(RprRigidBody_center_of_mass(alloc, self));
+    public Vector getCenterOfMass(SegmentAllocator alloc) {
+        return Vector.at({{ sys }}.RapierC.RprRigidBody_center_of_mass(alloc, self));
     }
 
     public short getEffectiveDominanceGroup() {
@@ -165,8 +165,8 @@ public final class RigidBody extends DroppableNative {
         return {{ sys }}.RapierC.RprRigidBody_mass(self);
     }
 
-    public Iso getNextPosition(SegmentAllocator alloc) {
-        return Iso.at(RprRigidBody_next_position(alloc, self));
+    public Isometry getNextPosition(SegmentAllocator alloc) {
+        return Isometry.at({{ sys }}.RapierC.RprRigidBody_next_position(alloc, self));
     }
 
     public {{ real }} getGravityScale() {
@@ -197,55 +197,75 @@ public final class RigidBody extends DroppableNative {
         return RprRigidBody_is_sleeping(self);
     }
 
-    public {{ realVec }} getLinearVelocity(SegmentAllocator alloc) {
-        return {{ realVec }}.at(RprRigidBody_linvel(alloc, self));
+    public Vector getLinearVelocity(SegmentAllocator alloc) {
+        return Vector.at({{ sys }}.RapierC.RprRigidBody_linvel(alloc, self));
     }
 
-    public {{ realAngVec }} getAngularVelocity(SegmentAllocator alloc) {
-        return {{ realAngVec }}.at(RprRigidBody_angvel(alloc, self));
+    public AngVector getAngularVelocity(SegmentAllocator alloc) {
+        return AngVector.at({{ sys }}.RapierC.RprRigidBody_angvel(alloc, self));
     }
 
-    public void setLinearVelocity({{ realVec }} linvel, boolean wakeUp) {
-        RprRigidBody_set_linvel(self, linvel.memory(), wakeUp);
+    public void setLinearVelocity(AngVector linvel, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.memory(), wakeUp);
     }
 
-    public void setAngularVelocity({{ realAngVec }} angvel, boolean wakeUp) {
-        RprRigidBody_set_angvel(self, angvel.memory(), wakeUp);
+    public void setAngularVelocity(AngVector angvel, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_set_angvel(self, angvel.memory(), wakeUp);
     }
 
-    public Iso getPosition(SegmentAllocator alloc) {
-        Iso.at(RprRigidBody_position(alloc, self));
+    public Isometry getPosition(SegmentAllocator alloc) {
+        return Isometry.at({{ sys }}.RapierC.RprRigidBody_position(alloc, self));
     }
 
-    public {{ realVec }} getTranslation(SegmentAllocator alloc) {
-        return {{ realVec }}.at(RprRigidBody_translation(alloc, self));
+    public Vector getTranslation(SegmentAllocator alloc) {
+        return Vector.at({{ sys }}.RapierC.RprRigidBody_translation(alloc, self));
     }
 
-    public void setTranslation({{ realVec }} translation, boolean wakeUp) {
-        RprRigidBody_set_translation(self, translation.memory(), wakeUp);
+    public void setTranslation(Vector translation, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_set_translation(self, translation.memory(), wakeUp);
     }
 
-    public {{ realRot }} getRotation(SegmentAllocator alloc) {
-        return {{ realRot }}.at(RprRigidBody_rotation(alloc, self));
+    public Rotation getRotation(SegmentAllocator alloc) {
+        return Rotation.at({{ sys }}.RapierC.RprRigidBody_rotation(alloc, self));
     }
 
-    public void setRotation({{ realRot }} rotation, boolean wakeUp) {
-        RprRigidBody_set_rotation(self, rotation.memory(), wakeUp);
+    public void setRotation(Rotation rotation, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_set_rotation(self, rotation.memory(), wakeUp);
     }
 
-    public void setPosition(Iso pos, boolean wakeUp) {
-        RprRigidBody_set_position(self, pos.memory(), wakeUp);
+    public void setPosition(Isometry pos, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_set_position(self, pos.memory(), wakeUp);
     }
 
-    public void setNextKinematicRotation({{ realRot }} rotation) {
-        RprRigidBody_set_next_kinematic_rotation(self, rotation.memory());
+    public void setNextKinematicRotation(Rotation rotation) {
+        {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_rotation(self, rotation.memory());
     }
 
-    public void setNextKinematicTranslation({{ realVec }} translation) {
-        RprRigidBody_set_next_kinematic_translation(self, translation.memory());
+    public void setNextKinematicTranslation(Vector translation) {
+        {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_translation(self, translation.memory());
     }
 
-    public void setNextKinematicPosition(Iso pos) {
-        RprRigidBody_set_next_kinematic_position(self, pos.memory());
+    public void setNextKinematicPosition(Isometry pos) {
+        {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_position(self, pos.memory());
+    }
+
+    public Isometry predictPositionUsingVelocityAndForces(SegmentAllocator alloc, {{ real }} dt) {
+        return Isometry.at({{ sys }}.RapierC.RprRigidBody_predict_position_using_velocity_and_forces(alloc, self, dt));
+    }
+
+    public void resetForces(boolean wakeUp) {
+        RprRigidBody_reset_forces(self, wakeUp);
+    }
+
+    public void resetTorques(boolean wakeUp) {
+        RprRigidBody_reset_torques(self, wakeUp);
+    }
+
+    public void addForce(Vector force, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_add_force(self, force.memory(), wakeUp);
+    }
+
+    public void addTorque(AngVector torque, boolean wakeUp) {
+        {{ sys }}.RapierC.RprRigidBody_add_torque(self, torque.memory(), wakeUp);
     }
 }

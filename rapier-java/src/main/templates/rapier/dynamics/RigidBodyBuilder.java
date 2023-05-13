@@ -48,21 +48,21 @@ public final class RigidBodyBuilder extends DroppableNative {
     }
 
     public RigidBodyBuilder dominanceGroup(byte group) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_dominance_group(self, group);
+        RprRigidBodyBuilder_dominance_group(self, group);
         return this;
     }
 
-    public RigidBodyBuilder translation({{ realVec }} translation) {
+    public RigidBodyBuilder translation(Vector translation) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.memory());
         return this;
     }
 
-    public RigidBodyBuilder rotation({{ realAngVec }} rotation) {
+    public RigidBodyBuilder rotation(AngVector rotation) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.memory());
         return this;
     }
 
-    public RigidBodyBuilder position(Iso position) {
+    public RigidBodyBuilder position(Isometry position) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.memory());
         return this;
     }
@@ -82,33 +82,33 @@ public final class RigidBodyBuilder extends DroppableNative {
         return this;
     }
 
-    public RigidBodyBuilder linvel({{ realVec }} linvel) {
+    public RigidBodyBuilder linvel(Vector linvel) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.memory());
         return this;
     }
 
-    public RigidBodyBuilder angvel({{ realAngVec }} angvel) {
+    public RigidBodyBuilder angvel(AngVector angvel) {
         {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.memory());
         return this;
     }
 
     public RigidBodyBuilder canSleep(boolean canSleep) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_can_sleep(self, canSleep);
+        RprRigidBodyBuilder_can_sleep(self, canSleep);
         return this;
     }
 
     public RigidBodyBuilder ccdEnabled(boolean ccdEnabled) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_ccd_enabled(self, ccdEnabled);
+        RprRigidBodyBuilder_ccd_enabled(self, ccdEnabled);
         return this;
     }
 
     public RigidBodyBuilder sleeping(boolean sleeping) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_sleeping(self, sleeping);
+        RprRigidBodyBuilder_sleeping(self, sleeping);
         return this;
     }
 
     public RigidBodyBuilder enabled(boolean enabled) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_enabled(self, enabled);
+        RprRigidBodyBuilder_enabled(self, enabled);
         return this;
     }
 }

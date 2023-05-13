@@ -24,5 +24,6 @@ tasks {
             "--enable-native-access=ALL-UNNAMED",
         )
         testLogging.exceptionFormat = TestExceptionFormat.FULL
+        environment["RUST_BACKTRACE"] = "full"
     }
 }

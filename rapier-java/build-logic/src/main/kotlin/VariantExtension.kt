@@ -1,26 +1,19 @@
 import org.gradle.api.provider.Property
 
-enum class Dimension {
-    DIM2,
-    DIM3,
+enum class Dimension(val key: String) {
+    DIM2    ("dim2"),
+    DIM3    ("dim3"),
+}
+
+enum class Precision(val key: String, val type: String, val zero: String, val layout: String) {
+    F32 ("f32", type = "float",  zero = "0.0f", layout = "ValueLayout.JAVA_FLOAT"),
+    F64 ("f64", type = "double", zero = "0.0",  layout = "ValueLayout.JAVA_DOUBLE"),
 }
 
 abstract class VariantExtension {
     abstract val name: Property<String>
 
-    abstract val dim: Property<Dimension>
+    abstract val dimension: Property<Dimension>
 
-    abstract val sys: Property<String>
-
-    abstract val real: Property<String>
-
-    abstract val realZero: Property<String>
-
-    abstract val realLayout: Property<String>
-
-    abstract val realVec: Property<String>
-
-    abstract val realAngVec: Property<String>
-
-    abstract val realRot: Property<String>
+    abstract val precision: Property<Precision>
 }

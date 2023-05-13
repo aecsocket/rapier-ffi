@@ -1,6 +1,7 @@
 package rapier.shape;
 
 import rapier.math.*;
+import rapier.sys.RprTriangle;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -14,7 +15,7 @@ public final class Triangle extends Shape {
         return new Triangle(memory);
     }
 
-    public static Triangle create(SegmentAllocator alloc, {{ realVec }} a, {{ realVec }} b, {{ realVec }} c) {
+    public static Triangle create(SegmentAllocator alloc, Vector a, Vector b, Vector c) {
         var memory = {{ sys }}.RprTriangle.allocate(alloc);
         {{ sys }}.RprTriangle.a$slice(memory).copyFrom(a.memory());
         {{ sys }}.RprTriangle.b$slice(memory).copyFrom(b.memory());
@@ -22,27 +23,27 @@ public final class Triangle extends Shape {
         return at(memory);
     }
 
-    public {{ realVec }} getA() {
-        return {{ realVec }}.at({{ sys }}.RprTriangle.a$slice(self));
+    public Vector getA() {
+        return Vector.at({{ sys }}.RprTriangle.a$slice(self));
     }
 
-    public void setA({{ realVec }} a) {
+    public void setA(Vector a) {
         {{ sys }}.RprTriangle.a$slice(self).copyFrom(a.memory());
     }
 
-    public {{ realVec }} getB() {
-        return {{ realVec }}.at({{ sys }}.RprTriangle.b$slice(self));
+    public Vector getB() {
+        return Vector.at({{ sys }}.RprTriangle.b$slice(self));
     }
 
-    public void setB({{ realVec }} b) {
+    public void setB(Vector b) {
         {{ sys }}.RprTriangle.b$slice(self).copyFrom(b.memory());
     }
 
-    public {{ realVec }} getC() {
-        return {{ realVec }}.at({{ sys }}.RprTriangle.c$slice(self));
+    public Vector getC() {
+        return Vector.at({{ sys }}.RprTriangle.c$slice(self));
     }
 
-    public void setC({{ realVec }} c) {
+    public void setC(Vector c) {
         {{ sys }}.RprTriangle.c$slice(self).copyFrom(c.memory());
     }
 }

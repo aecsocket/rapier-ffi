@@ -3,7 +3,7 @@ package rapier;
 import org.junit.jupiter.api.Test;
 import rapier.dynamics.*;
 import rapier.geometry.*;
-import rapier.math.Vec3;
+import rapier.math.Vector;
 import rapier.pipeline.PhysicsPipeline;
 import rapier.shape.Ball;
 import rapier.shape.Cuboid;
@@ -20,19 +20,19 @@ public final class HelloRapier {
             var rigidBodySet = RigidBodySet.create();
             var colliderSet = ColliderSet.create();
 
-            var floorShape = SharedShape.of(Cuboid.of(arena, Vec3.of(arena, 100.0, 0.1, 100.0)));
+            var floorShape = SharedShape.of(Cuboid.of(arena, Vector.of(arena, 100.0, 0.1, 100.0)));
             var floorCollider = ColliderBuilder.of(floorShape).build();
             colliderSet.insert(floorCollider);
 
             var rigidBody = RigidBodyBuilder.dynamic()
-                    .translation(Vec3.of(arena, 0.0, 10.0, 0.0))
+                    .translation(Vector.of(arena, 0.0, 10.0, 0.0))
                     .build();
             var ballShape = SharedShape.of(Ball.of(arena, 0.5));
             var ballCollider = ColliderBuilder.of(ballShape).restitution(0.7).build();
             long ballBodyHandle = rigidBodySet.insert(rigidBody);
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
-            var gravity = Vec3.of(arena, 0.0, -9.81, 0.0);
+            var gravity = Vector.of(arena, 0.0, -9.81, 0.0);
             var integrationParameters = IntegrationParameters.ofDefault();
             var islandManager = IslandManager.create();
             var broadPhase = BroadPhase.create();
@@ -57,7 +57,7 @@ public final class HelloRapier {
                         null
                 );
 
-                Vec3 translation = rigidBodySet.get(ballBodyHandle).getTranslation(arena);
+                Vector translation = rigidBodySet.get(ballBodyHandle).getTranslation(arena);
                 System.out.printf("Ball altitude: %f\n", translation.getY());
             }
             
