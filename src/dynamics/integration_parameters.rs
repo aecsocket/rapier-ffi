@@ -91,7 +91,6 @@ pub struct RprIntegrationParameters(pub IntegrationParameters);
 pub extern "C" fn RprIntegrationParameters_new(
     desc: RprIntegrationParametersDesc,
 ) -> *mut RprIntegrationParameters {
-    println!("{:?}", desc);
     leak_ptr(RprIntegrationParameters(IntegrationParameters {
         dt: desc.dt,
         min_ccd_dt: desc.min_ccd_dt,
