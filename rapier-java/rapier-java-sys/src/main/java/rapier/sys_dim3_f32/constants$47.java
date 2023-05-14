@@ -58,14 +58,12 @@ final class constants$47 {
         "RprRigidBody_wake_up",
         constants$47.RprRigidBody_wake_up$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("radius")
-        ).withName("RprBall")
+    static final FunctionDescriptor RprSharedShape_acquire$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_ball",
-        constants$47.RprSharedShape_ball$FUNC
+    static final MethodHandle RprSharedShape_acquire$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_acquire",
+        constants$47.RprSharedShape_acquire$FUNC
     );
 }
 

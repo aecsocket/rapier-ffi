@@ -33,7 +33,7 @@ public final class HelloRapier {
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
             var gravity = Vector.of(arena, 0.0, -9.81, 0.0);
-            var integrationParameters = IntegrationParameters.ofDefault();
+            var integrationParameters = IntegrationParametersDesc.ofDefault(arena).build();
             var islandManager = IslandManager.create();
             var broadPhase = BroadPhase.create();
             var narrowPhase = NarrowPhase.create();
@@ -43,7 +43,6 @@ public final class HelloRapier {
             var physicsPipeline = PhysicsPipeline.create();
 
             for (int i = 0; i < 200; i++) {
-                System.out.println(physicsPipeline + " / " + gravity + " / " + integrationParameters + " / " + islandManager + " / " + broadPhase + " / " + narrowPhase + " / " + rigidBodySet + " / " + colliderSet);
                 physicsPipeline.step(
                         gravity,
                         integrationParameters,
@@ -72,8 +71,8 @@ public final class HelloRapier {
             integrationParameters.drop();
 
             // will automatically drop its contents
-//            colliderSet.drop();
-//            rigidBodySet.drop();
+            colliderSet.drop();
+            rigidBodySet.drop();
             // gravity is allocated on the Java side, not the native side
             // so it gets deallocated when we exit the arena's scope
         }

@@ -18,12 +18,30 @@ final class constants$30 {
         "RprIntegrationParameters_drop",
         constants$30.RprIntegrationParameters_drop$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_dt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
+            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
+            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
+            MemoryLayout.paddingLayout(32),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+            MemoryLayout.paddingLayout(56),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+        ).withName("RprIntegrationParametersDesc")
     );
-    static final MethodHandle RprIntegrationParameters_dt$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_dt",
-        constants$30.RprIntegrationParameters_dt$FUNC
+    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_new",
+        constants$30.RprIntegrationParameters_new$FUNC
     );
     static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT

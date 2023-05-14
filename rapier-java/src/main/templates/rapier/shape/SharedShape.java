@@ -44,12 +44,12 @@ public final class SharedShape extends BaseNative implements RefCounted {
     }
 
     @Override
-    public void increment() {
-        RprSharedShape_increment(self);
+    public void acquire() {
+        RprSharedShape_acquire(self);
     }
 
     @Override
-    public void decrement() {
-        RprSharedShape_decrement(self);
+    public void release() {
+        RprSharedShape_release(self);
     }
 }

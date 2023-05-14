@@ -4565,18 +4565,18 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprIntegrationParameters_default$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.RprIntegrationParameters_default$MH,"RprIntegrationParameters_default");
+    public static MethodHandle RprIntegrationParametersDesc_default$MH() {
+        return RuntimeHelper.requireNonNull(constants$29.RprIntegrationParametersDesc_default$MH,"RprIntegrationParametersDesc_default");
     }
     /**
      * {@snippet :
-     * struct RprIntegrationParameters* RprIntegrationParameters_default();
+     * struct RprIntegrationParametersDesc RprIntegrationParametersDesc_default();
      * }
      */
-    public static MemorySegment RprIntegrationParameters_default() {
-        var mh$ = RprIntegrationParameters_default$MH();
+    public static MemorySegment RprIntegrationParametersDesc_default(SegmentAllocator allocator) {
+        var mh$ = RprIntegrationParametersDesc_default$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4597,18 +4597,18 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprIntegrationParameters_dt$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParameters_dt$MH,"RprIntegrationParameters_dt");
+    public static MethodHandle RprIntegrationParameters_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParameters_new$MH,"RprIntegrationParameters_new");
     }
     /**
      * {@snippet :
-     * float* RprIntegrationParameters_dt(struct RprIntegrationParameters* this_);
+     * struct RprIntegrationParameters* RprIntegrationParameters_new(struct RprIntegrationParametersDesc desc);
      * }
      */
-    public static MemorySegment RprIntegrationParameters_dt(MemorySegment this_) {
-        var mh$ = RprIntegrationParameters_dt$MH();
+    public static MemorySegment RprIntegrationParameters_new(MemorySegment desc) {
+        var mh$ = RprIntegrationParameters_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(desc);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6293,8 +6293,24 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_acquire$MH() {
+        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_acquire$MH,"RprSharedShape_acquire");
+    }
+    /**
+     * {@snippet :
+     * void RprSharedShape_acquire(struct RprSharedShape* this_);
+     * }
+     */
+    public static void RprSharedShape_acquire(MemorySegment this_) {
+        var mh$ = RprSharedShape_acquire$MH();
+        try {
+            mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_ball$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_ball$MH,"RprSharedShape_ball");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_ball$MH,"RprSharedShape_ball");
     }
     /**
      * {@snippet :
@@ -6341,32 +6357,16 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprSharedShape_decrement$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_decrement$MH,"RprSharedShape_decrement");
+    public static MethodHandle RprSharedShape_release$MH() {
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_release$MH,"RprSharedShape_release");
     }
     /**
      * {@snippet :
-     * void RprSharedShape_decrement(struct RprSharedShape* this_);
+     * void RprSharedShape_release(struct RprSharedShape* this_);
      * }
      */
-    public static void RprSharedShape_decrement(MemorySegment this_) {
-        var mh$ = RprSharedShape_decrement$MH();
-        try {
-            mh$.invokeExact(this_);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle RprSharedShape_increment$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_increment$MH,"RprSharedShape_increment");
-    }
-    /**
-     * {@snippet :
-     * void RprSharedShape_increment(struct RprSharedShape* this_);
-     * }
-     */
-    public static void RprSharedShape_increment(MemorySegment this_) {
-        var mh$ = RprSharedShape_increment$MH();
+    public static void RprSharedShape_release(MemorySegment this_) {
+        var mh$ = RprSharedShape_release$MH();
         try {
             mh$.invokeExact(this_);
         } catch (Throwable ex$) {

@@ -11,6 +11,15 @@ final class constants$48 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$48() {}
+    static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("radius")
+        ).withName("RprBall")
+    );
+    static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_ball",
+        constants$48.RprSharedShape_ball$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
@@ -39,19 +48,12 @@ final class constants$48 {
         "RprSharedShape_cuboid",
         constants$48.RprSharedShape_cuboid$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_decrement$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_decrement$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_decrement",
-        constants$48.RprSharedShape_decrement$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_increment$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_increment$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_increment",
-        constants$48.RprSharedShape_increment$FUNC
+    static final MethodHandle RprSharedShape_release$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_release",
+        constants$48.RprSharedShape_release$FUNC
     );
     static final FunctionDescriptor RprSharedShape_segment$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(

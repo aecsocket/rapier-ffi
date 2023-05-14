@@ -3,7 +3,7 @@ package rapier;
 public interface RefCounted {
     long strongCount();
 
-    void increment();
+    void acquire();
 
-    void decrement();
+    void release();
 }
