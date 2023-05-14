@@ -99,7 +99,7 @@ impl RprIsometry {
             translation: RprVector::from_translation(raw.translation),
         }
     }
-    
+
     pub fn into_raw(self) -> Isometry<Real> {
         Isometry {
             rotation: self.rotation.into_raw(),

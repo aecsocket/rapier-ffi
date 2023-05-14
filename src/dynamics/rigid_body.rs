@@ -534,7 +534,9 @@ pub struct RprRigidBodyBuilder(pub RigidBodyBuilder);
 
 #[no_mangle]
 pub extern "C" fn RprRigidBodyBuilder_new(body_type: RprRigidBodyType) -> *mut RprRigidBodyBuilder {
-    leak_ptr(RprRigidBodyBuilder(RigidBodyBuilder::new(body_type.into_raw())))
+    leak_ptr(RprRigidBodyBuilder(RigidBodyBuilder::new(
+        body_type.into_raw(),
+    )))
 }
 
 #[no_mangle]

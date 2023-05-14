@@ -23,7 +23,7 @@ impl RprColliderHandle {
     pub fn is_valid(self) -> bool {
         self.index != INVALID_U32 || self.generation != INVALID_U32
     }
-    
+
     pub fn into_raw(self) -> ColliderHandle {
         ColliderHandle::from_raw_parts(self.index, self.generation)
     }
