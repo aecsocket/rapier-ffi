@@ -11,20 +11,6 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final FunctionDescriptor RprCollider_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_is_enabled",
-        constants$25.RprCollider_is_enabled$FUNC
-    );
-    static final FunctionDescriptor RprCollider_is_sensor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_is_sensor$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_is_sensor",
-        constants$25.RprCollider_is_sensor$FUNC
-    );
     static final FunctionDescriptor RprCollider_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -35,7 +21,7 @@ final class constants$25 {
     static final FunctionDescriptor RprCollider_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprRigidBodyHandle"),
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle RprCollider_parent$MH = RuntimeHelper.downcallHandle(
@@ -56,12 +42,33 @@ final class constants$25 {
         "RprCollider_position",
         constants$25.RprCollider_position$FUNC
     );
+    static final FunctionDescriptor RprCollider_position_wrt_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_position_wrt_parent",
+        constants$25.RprCollider_position_wrt_parent$FUNC
+    );
     static final FunctionDescriptor RprCollider_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle RprCollider_restitution$MH = RuntimeHelper.downcallHandle(
         "RprCollider_restitution",
         constants$25.RprCollider_restitution$FUNC
+    );
+    static final FunctionDescriptor RprCollider_restitution_combine_rule$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_restitution_combine_rule",
+        constants$25.RprCollider_restitution_combine_rule$FUNC
     );
 }
 

@@ -3749,44 +3749,12 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprColliderHandle_invalid$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprColliderHandle_invalid$MH,"RprColliderHandle_invalid");
-    }
-    /**
-     * {@snippet :
-     * struct RprColliderHandle RprColliderHandle_invalid();
-     * }
-     */
-    public static MemorySegment RprColliderHandle_invalid(SegmentAllocator allocator) {
-        var mh$ = RprColliderHandle_invalid$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle RprColliderHandle_is_valid$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprColliderHandle_is_valid$MH,"RprColliderHandle_is_valid");
-    }
-    /**
-     * {@snippet :
-     * _Bool RprColliderHandle_is_valid(struct RprColliderHandle this_);
-     * }
-     */
-    public static boolean RprColliderHandle_is_valid(MemorySegment this_) {
-        var mh$ = RprColliderHandle_is_valid$MH();
-        try {
-            return (boolean)mh$.invokeExact(this_);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle RprColliderSet_contains$MH() {
         return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_contains$MH,"RprColliderSet_contains");
     }
     /**
      * {@snippet :
-     * _Bool RprColliderSet_contains(struct RprColliderSet* this_, struct RprColliderHandle handle);
+     * _Bool RprColliderSet_contains(struct RprColliderSet* this_, struct RprArenaKey handle);
      * }
      */
     public static boolean RprColliderSet_contains(MemorySegment this_, MemorySegment handle) {
@@ -3814,11 +3782,11 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_get$MH,"RprColliderSet_get");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_get$MH,"RprColliderSet_get");
     }
     /**
      * {@snippet :
-     * struct RprCollider* RprColliderSet_get(struct RprColliderSet* this_, struct RprColliderHandle handle);
+     * struct RprCollider* RprColliderSet_get(struct RprColliderSet* this_, struct RprArenaKey handle);
      * }
      */
     public static MemorySegment RprColliderSet_get(MemorySegment this_, MemorySegment handle) {
@@ -3830,11 +3798,11 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_get_mut$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_get_mut$MH,"RprColliderSet_get_mut");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_get_mut$MH,"RprColliderSet_get_mut");
     }
     /**
      * {@snippet :
-     * struct RprCollider* RprColliderSet_get_mut(struct RprColliderSet* this_, struct RprColliderHandle handle);
+     * struct RprCollider* RprColliderSet_get_mut(struct RprColliderSet* this_, struct RprArenaKey handle);
      * }
      */
     public static MemorySegment RprColliderSet_get_mut(MemorySegment this_, MemorySegment handle) {
@@ -3850,7 +3818,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprCollider* RprColliderSet_index(struct RprColliderSet* this_, struct RprColliderHandle index);
+     * struct RprCollider* RprColliderSet_index(struct RprColliderSet* this_, struct RprArenaKey index);
      * }
      */
     public static MemorySegment RprColliderSet_index(MemorySegment this_, MemorySegment index) {
@@ -3866,7 +3834,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprCollider* RprColliderSet_index_mut(struct RprColliderSet* this_, struct RprColliderHandle index);
+     * struct RprCollider* RprColliderSet_index_mut(struct RprColliderSet* this_, struct RprArenaKey index);
      * }
      */
     public static MemorySegment RprColliderSet_index_mut(MemorySegment this_, MemorySegment index) {
@@ -3882,7 +3850,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprColliderHandle RprColliderSet_insert(struct RprColliderSet* this_, struct RprCollider* coll);
+     * struct RprArenaKey RprColliderSet_insert(struct RprColliderSet* this_, struct RprCollider* coll);
      * }
      */
     public static MemorySegment RprColliderSet_insert(SegmentAllocator allocator, MemorySegment this_, MemorySegment coll) {
@@ -3898,7 +3866,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprColliderHandle RprColliderSet_insert_with_parent(struct RprColliderSet* this_, struct RprCollider* coll, struct RprRigidBodyHandle parent_handle, struct RprRigidBodySet* bodies);
+     * struct RprArenaKey RprColliderSet_insert_with_parent(struct RprColliderSet* this_, struct RprCollider* coll, struct RprArenaKey parent_handle, struct RprRigidBodySet* bodies);
      * }
      */
     public static MemorySegment RprColliderSet_insert_with_parent(SegmentAllocator allocator, MemorySegment this_, MemorySegment coll, MemorySegment parent_handle, MemorySegment bodies) {
@@ -3910,7 +3878,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_is_empty$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_is_empty$MH,"RprColliderSet_is_empty");
+        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_is_empty$MH,"RprColliderSet_is_empty");
     }
     /**
      * {@snippet :
@@ -3926,7 +3894,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_len$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_len$MH,"RprColliderSet_len");
+        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_len$MH,"RprColliderSet_len");
     }
     /**
      * {@snippet :
@@ -3962,7 +3930,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprCollider* RprColliderSet_remove(struct RprColliderSet* this_, struct RprColliderHandle handle, struct RprIslandManager* islands, struct RprRigidBodySet* bodies, _Bool wake_up);
+     * struct RprCollider* RprColliderSet_remove(struct RprColliderSet* this_, struct RprArenaKey handle, struct RprIslandManager* islands, struct RprRigidBodySet* bodies, _Bool wake_up);
      * }
      */
     public static MemorySegment RprColliderSet_remove(MemorySegment this_, MemorySegment handle, MemorySegment islands, MemorySegment bodies, boolean wake_up) {
@@ -3978,7 +3946,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * void RprColliderSet_set_parent(struct RprColliderSet* this_, struct RprColliderHandle handle, struct RprRigidBodyHandle new_parent_handle, struct RprRigidBodySet* bodies);
+     * void RprColliderSet_set_parent(struct RprColliderSet* this_, struct RprArenaKey handle, struct RprArenaKey new_parent_handle, struct RprRigidBodySet* bodies);
      * }
      */
     public static void RprColliderSet_set_parent(MemorySegment this_, MemorySegment handle, MemorySegment new_parent_handle, MemorySegment bodies) {
@@ -4006,7 +3974,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_compute_swept_aabb$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprCollider_compute_swept_aabb$MH,"RprCollider_compute_swept_aabb");
+        return RuntimeHelper.requireNonNull(constants$23.RprCollider_compute_swept_aabb$MH,"RprCollider_compute_swept_aabb");
     }
     /**
      * {@snippet :
@@ -4022,7 +3990,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_contact_force_event_threshold$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprCollider_contact_force_event_threshold$MH,"RprCollider_contact_force_event_threshold");
+        return RuntimeHelper.requireNonNull(constants$23.RprCollider_contact_force_event_threshold$MH,"RprCollider_contact_force_event_threshold");
     }
     /**
      * {@snippet :
@@ -4102,7 +4070,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_is_enabled$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprCollider_is_enabled$MH,"RprCollider_is_enabled");
+        return RuntimeHelper.requireNonNull(constants$24.RprCollider_is_enabled$MH,"RprCollider_is_enabled");
     }
     /**
      * {@snippet :
@@ -4118,7 +4086,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_is_sensor$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprCollider_is_sensor$MH,"RprCollider_is_sensor");
+        return RuntimeHelper.requireNonNull(constants$24.RprCollider_is_sensor$MH,"RprCollider_is_sensor");
     }
     /**
      * {@snippet :
@@ -4154,7 +4122,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprRigidBodyHandle RprCollider_parent(struct RprCollider* this_);
+     * struct RprArenaKey RprCollider_parent(struct RprCollider* this_);
      * }
      */
     public static MemorySegment RprCollider_parent(SegmentAllocator allocator, MemorySegment this_) {
@@ -4181,6 +4149,22 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprCollider_position_wrt_parent$MH() {
+        return RuntimeHelper.requireNonNull(constants$25.RprCollider_position_wrt_parent$MH,"RprCollider_position_wrt_parent");
+    }
+    /**
+     * {@snippet :
+     * struct RprIsometry RprCollider_position_wrt_parent(struct RprCollider* this_);
+     * }
+     */
+    public static MemorySegment RprCollider_position_wrt_parent(SegmentAllocator allocator, MemorySegment this_) {
+        var mh$ = RprCollider_position_wrt_parent$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprCollider_restitution$MH() {
         return RuntimeHelper.requireNonNull(constants$25.RprCollider_restitution$MH,"RprCollider_restitution");
     }
@@ -4198,7 +4182,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_restitution_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.RprCollider_restitution_combine_rule$MH,"RprCollider_restitution_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$25.RprCollider_restitution_combine_rule$MH,"RprCollider_restitution_combine_rule");
     }
     /**
      * {@snippet :
@@ -4294,7 +4278,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_friction_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_friction_combine_rule$MH,"RprCollider_set_friction_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_friction_combine_rule$MH,"RprCollider_set_friction_combine_rule");
     }
     /**
      * {@snippet :
@@ -4390,7 +4374,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_rotation$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_rotation$MH,"RprCollider_set_rotation");
+        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_rotation$MH,"RprCollider_set_rotation");
     }
     /**
      * {@snippet :
@@ -4486,7 +4470,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_shape$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.RprCollider_shape$MH,"RprCollider_shape");
+        return RuntimeHelper.requireNonNull(constants$28.RprCollider_shape$MH,"RprCollider_shape");
     }
     /**
      * {@snippet :
@@ -4582,7 +4566,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIntegrationParameters_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
+        return RuntimeHelper.requireNonNull(constants$29.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
     }
     /**
      * {@snippet :
@@ -4678,7 +4662,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprNarrowPhase_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
+        return RuntimeHelper.requireNonNull(constants$30.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
     }
     /**
      * {@snippet :
@@ -4774,7 +4758,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
+        return RuntimeHelper.requireNonNull(constants$31.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
     }
     /**
      * {@snippet :
@@ -4870,7 +4854,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_ccd_enabled$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_ccd_enabled$MH,"RprRigidBodyBuilder_ccd_enabled");
+        return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_ccd_enabled$MH,"RprRigidBodyBuilder_ccd_enabled");
     }
     /**
      * {@snippet :
@@ -4966,7 +4950,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_gravity_scale$MH,"RprRigidBodyBuilder_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_gravity_scale$MH,"RprRigidBodyBuilder_gravity_scale");
     }
     /**
      * {@snippet :
@@ -5062,7 +5046,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_position$MH,"RprRigidBodyBuilder_position");
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_position$MH,"RprRigidBodyBuilder_position");
     }
     /**
      * {@snippet :
@@ -5125,44 +5109,12 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprRigidBodyHandle_invalid$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyHandle_invalid$MH,"RprRigidBodyHandle_invalid");
-    }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyHandle RprRigidBodyHandle_invalid();
-     * }
-     */
-    public static MemorySegment RprRigidBodyHandle_invalid(SegmentAllocator allocator) {
-        var mh$ = RprRigidBodyHandle_invalid$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle RprRigidBodyHandle_is_valid$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyHandle_is_valid$MH,"RprRigidBodyHandle_is_valid");
-    }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBodyHandle_is_valid(struct RprRigidBodyHandle this_);
-     * }
-     */
-    public static boolean RprRigidBodyHandle_is_valid(MemorySegment this_) {
-        var mh$ = RprRigidBodyHandle_is_valid$MH();
-        try {
-            return (boolean)mh$.invokeExact(this_);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle RprRigidBodySet_contains$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_contains$MH,"RprRigidBodySet_contains");
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_contains$MH,"RprRigidBodySet_contains");
     }
     /**
      * {@snippet :
-     * _Bool RprRigidBodySet_contains(struct RprRigidBodySet* this_, struct RprRigidBodyHandle handle);
+     * _Bool RprRigidBodySet_contains(struct RprRigidBodySet* this_, struct RprArenaKey handle);
      * }
      */
     public static boolean RprRigidBodySet_contains(MemorySegment this_, MemorySegment handle) {
@@ -5174,7 +5126,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
     }
     /**
      * {@snippet :
@@ -5190,11 +5142,11 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_get$MH,"RprRigidBodySet_get");
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_get$MH,"RprRigidBodySet_get");
     }
     /**
      * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_get(struct RprRigidBodySet* this_, struct RprRigidBodyHandle handle);
+     * struct RprRigidBody* RprRigidBodySet_get(struct RprRigidBodySet* this_, struct RprArenaKey handle);
      * }
      */
     public static MemorySegment RprRigidBodySet_get(MemorySegment this_, MemorySegment handle) {
@@ -5210,7 +5162,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_get_mut(struct RprRigidBodySet* this_, struct RprRigidBodyHandle handle);
+     * struct RprRigidBody* RprRigidBodySet_get_mut(struct RprRigidBodySet* this_, struct RprArenaKey handle);
      * }
      */
     public static MemorySegment RprRigidBodySet_get_mut(MemorySegment this_, MemorySegment handle) {
@@ -5226,7 +5178,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_index(struct RprRigidBodySet* this_, struct RprRigidBodyHandle index);
+     * struct RprRigidBody* RprRigidBodySet_index(struct RprRigidBodySet* this_, struct RprArenaKey index);
      * }
      */
     public static MemorySegment RprRigidBodySet_index(MemorySegment this_, MemorySegment index) {
@@ -5242,7 +5194,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_index_mut(struct RprRigidBodySet* this_, struct RprRigidBodyHandle index);
+     * struct RprRigidBody* RprRigidBodySet_index_mut(struct RprRigidBodySet* this_, struct RprArenaKey index);
      * }
      */
     public static MemorySegment RprRigidBodySet_index_mut(MemorySegment this_, MemorySegment index) {
@@ -5254,11 +5206,11 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_insert$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
     }
     /**
      * {@snippet :
-     * struct RprRigidBodyHandle RprRigidBodySet_insert(struct RprRigidBodySet* this_, struct RprRigidBody* rb);
+     * struct RprArenaKey RprRigidBodySet_insert(struct RprRigidBodySet* this_, struct RprRigidBody* rb);
      * }
      */
     public static MemorySegment RprRigidBodySet_insert(SegmentAllocator allocator, MemorySegment this_, MemorySegment rb) {
@@ -5270,7 +5222,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_is_empty$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_is_empty$MH,"RprRigidBodySet_is_empty");
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_is_empty$MH,"RprRigidBodySet_is_empty");
     }
     /**
      * {@snippet :
@@ -5286,7 +5238,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_len$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_len$MH,"RprRigidBodySet_len");
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_len$MH,"RprRigidBodySet_len");
     }
     /**
      * {@snippet :
@@ -5322,7 +5274,7 @@ public class RapierC  {
     }
     /**
      * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_remove(struct RprRigidBodySet* this_, struct RprRigidBodyHandle handle, struct RprIslandManager* islands, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, _Bool remove_attached_colliders);
+     * struct RprRigidBody* RprRigidBodySet_remove(struct RprRigidBodySet* this_, struct RprArenaKey handle, struct RprIslandManager* islands, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, _Bool remove_attached_colliders);
      * }
      */
     public static MemorySegment RprRigidBodySet_remove(MemorySegment this_, MemorySegment handle, MemorySegment islands, MemorySegment colliders, MemorySegment impulse_joints, MemorySegment multibody_joints, boolean remove_attached_colliders) {
@@ -5350,7 +5302,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_add_force_at_point$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
     }
     /**
      * {@snippet :
@@ -5366,7 +5318,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_add_torque$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_add_torque$MH,"RprRigidBody_add_torque");
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_add_torque$MH,"RprRigidBody_add_torque");
     }
     /**
      * {@snippet :
@@ -5382,7 +5334,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_angular_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_angular_damping$MH,"RprRigidBody_angular_damping");
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_angular_damping$MH,"RprRigidBody_angular_damping");
     }
     /**
      * {@snippet :
@@ -5446,7 +5398,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_apply_torque_impulse$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
     }
     /**
      * {@snippet :
@@ -5462,7 +5414,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_body_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_body_type$MH,"RprRigidBody_body_type");
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_body_type$MH,"RprRigidBody_body_type");
     }
     /**
      * {@snippet :
@@ -5478,7 +5430,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_center_of_mass$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_center_of_mass$MH,"RprRigidBody_center_of_mass");
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_center_of_mass$MH,"RprRigidBody_center_of_mass");
     }
     /**
      * {@snippet :
@@ -5542,7 +5494,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_enable_ccd$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_enable_ccd$MH,"RprRigidBody_enable_ccd");
+        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_enable_ccd$MH,"RprRigidBody_enable_ccd");
     }
     /**
      * {@snippet :
@@ -5558,7 +5510,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_gravitational_potential_energy$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_gravitational_potential_energy$MH,"RprRigidBody_gravitational_potential_energy");
+        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_gravitational_potential_energy$MH,"RprRigidBody_gravitational_potential_energy");
     }
     /**
      * {@snippet :
@@ -5574,7 +5526,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_gravity_scale$MH,"RprRigidBody_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_gravity_scale$MH,"RprRigidBody_gravity_scale");
     }
     /**
      * {@snippet :
@@ -5638,7 +5590,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_enabled$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_enabled$MH,"RprRigidBody_is_enabled");
+        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_enabled$MH,"RprRigidBody_is_enabled");
     }
     /**
      * {@snippet :
@@ -5654,7 +5606,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_fixed$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_fixed$MH,"RprRigidBody_is_fixed");
+        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_fixed$MH,"RprRigidBody_is_fixed");
     }
     /**
      * {@snippet :
@@ -5670,7 +5622,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_kinematic$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_kinematic$MH,"RprRigidBody_is_kinematic");
+        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_kinematic$MH,"RprRigidBody_is_kinematic");
     }
     /**
      * {@snippet :
@@ -5734,7 +5686,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_kinetic_energy$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_kinetic_energy$MH,"RprRigidBody_kinetic_energy");
+        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_kinetic_energy$MH,"RprRigidBody_kinetic_energy");
     }
     /**
      * {@snippet :
@@ -5750,7 +5702,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_linear_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_linear_damping$MH,"RprRigidBody_linear_damping");
+        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_linear_damping$MH,"RprRigidBody_linear_damping");
     }
     /**
      * {@snippet :
@@ -5766,7 +5718,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_linvel$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_linvel$MH,"RprRigidBody_linvel");
+        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_linvel$MH,"RprRigidBody_linvel");
     }
     /**
      * {@snippet :
@@ -5830,7 +5782,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_position$MH,"RprRigidBody_position");
+        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_position$MH,"RprRigidBody_position");
     }
     /**
      * {@snippet :
@@ -5846,7 +5798,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_predict_position_using_velocity_and_forces$MH,"RprRigidBody_predict_position_using_velocity_and_forces");
+        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_predict_position_using_velocity_and_forces$MH,"RprRigidBody_predict_position_using_velocity_and_forces");
     }
     /**
      * {@snippet :
@@ -5862,7 +5814,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_recompute_mass_properties_from_colliders$MH,"RprRigidBody_recompute_mass_properties_from_colliders");
+        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_recompute_mass_properties_from_colliders$MH,"RprRigidBody_recompute_mass_properties_from_colliders");
     }
     /**
      * {@snippet :
@@ -5926,7 +5878,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_additional_mass$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_additional_mass$MH,"RprRigidBody_set_additional_mass");
+        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_additional_mass$MH,"RprRigidBody_set_additional_mass");
     }
     /**
      * {@snippet :
@@ -5942,7 +5894,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_angular_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_angular_damping$MH,"RprRigidBody_set_angular_damping");
+        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_angular_damping$MH,"RprRigidBody_set_angular_damping");
     }
     /**
      * {@snippet :
@@ -5958,7 +5910,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_angvel$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_angvel$MH,"RprRigidBody_set_angvel");
+        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_angvel$MH,"RprRigidBody_set_angvel");
     }
     /**
      * {@snippet :
@@ -6022,7 +5974,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_enabled_rotations$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_enabled_rotations$MH,"RprRigidBody_set_enabled_rotations");
+        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_enabled_rotations$MH,"RprRigidBody_set_enabled_rotations");
     }
     /**
      * {@snippet :
@@ -6038,7 +5990,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_enabled_translations$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_enabled_translations$MH,"RprRigidBody_set_enabled_translations");
+        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_enabled_translations$MH,"RprRigidBody_set_enabled_translations");
     }
     /**
      * {@snippet :
@@ -6054,7 +6006,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_gravity_scale$MH,"RprRigidBody_set_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_gravity_scale$MH,"RprRigidBody_set_gravity_scale");
     }
     /**
      * {@snippet :
@@ -6118,7 +6070,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_next_kinematic_rotation$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_next_kinematic_rotation$MH,"RprRigidBody_set_next_kinematic_rotation");
+        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_next_kinematic_rotation$MH,"RprRigidBody_set_next_kinematic_rotation");
     }
     /**
      * {@snippet :
@@ -6134,7 +6086,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_next_kinematic_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_next_kinematic_translation$MH,"RprRigidBody_set_next_kinematic_translation");
+        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_next_kinematic_translation$MH,"RprRigidBody_set_next_kinematic_translation");
     }
     /**
      * {@snippet :
@@ -6150,7 +6102,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
+        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
     }
     /**
      * {@snippet :
@@ -6214,7 +6166,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_translation$MH,"RprRigidBody_translation");
+        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_translation$MH,"RprRigidBody_translation");
     }
     /**
      * {@snippet :
@@ -6230,7 +6182,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_user_force$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_user_force$MH,"RprRigidBody_user_force");
+        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_user_force$MH,"RprRigidBody_user_force");
     }
     /**
      * {@snippet :
@@ -6246,7 +6198,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_user_torque$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
+        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
     }
     /**
      * {@snippet :
@@ -6310,7 +6262,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_ball$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_ball$MH,"RprSharedShape_ball");
+        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_ball$MH,"RprSharedShape_ball");
     }
     /**
      * {@snippet :
@@ -6326,7 +6278,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_capsule$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
+        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
     }
     /**
      * {@snippet :
@@ -6342,7 +6294,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_cone$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_cone$MH,"RprSharedShape_cone");
+        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_cone$MH,"RprSharedShape_cone");
     }
     /**
      * {@snippet :
@@ -6406,7 +6358,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_segment$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.RprSharedShape_segment$MH,"RprSharedShape_segment");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_segment$MH,"RprSharedShape_segment");
     }
     /**
      * {@snippet :
@@ -6422,7 +6374,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_strong_count$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
     }
     /**
      * {@snippet :
@@ -6438,7 +6390,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_triangle$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
     }
     /**
      * {@snippet :

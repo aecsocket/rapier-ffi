@@ -11,13 +11,6 @@ final class constants$29 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$29() {}
-    static final FunctionDescriptor RprCollider_shape$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_shape$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_shape",
-        constants$29.RprCollider_shape$FUNC
-    );
     static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
     ).withName("RprVector"),
@@ -68,6 +61,13 @@ final class constants$29 {
     static final MethodHandle RprIntegrationParametersDesc_default$MH = RuntimeHelper.downcallHandle(
         "RprIntegrationParametersDesc_default",
         constants$29.RprIntegrationParametersDesc_default$FUNC
+    );
+    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_drop",
+        constants$29.RprIntegrationParameters_drop$FUNC
     );
 }
 

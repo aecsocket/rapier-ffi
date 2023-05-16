@@ -4,6 +4,7 @@ package rapier.geometry;
 import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.data.ArenaKey;
 import rapier.math.*;
 import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
@@ -30,8 +31,8 @@ public sealed class Collider extends BaseNative permits Collider.Mut {
 
     public @Nullable Long getParent() {
         try (var arena = Arena.openConfined()) {
-            var res = RprCollider_parent(arena, self);
-            return RprColliderHandle_is_valid(res) ? ColliderHandle.pack(res) : null;
+            var res = ArenaKey.pack(RprCollider_parent(arena, self));
+            return ArenaKey.isValid(res) ? res : null;
         }
     }
 
@@ -73,6 +74,11 @@ public sealed class Collider extends BaseNative permits Collider.Mut {
 
     public Isometry getPosition(SegmentAllocator alloc) {
         return Isometry.at({{ sys }}.RapierC.RprCollider_position(alloc, self));
+    }
+
+    public @Nullable Isometry getPositionWrtParent(SegmentAllocator alloc) {
+        if (getParent() == null) return null;
+        return Isometry.at({{ sys }}.RapierC.RprCollider_position_wrt_parent(alloc, self));
     }
 
     public {{ real }} getVolume() {

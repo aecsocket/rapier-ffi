@@ -11,14 +11,6 @@ final class constants$33 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$33() {}
-    static final FunctionDescriptor RprRigidBodyBuilder_ccd_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_ccd_enabled",
-        constants$33.RprRigidBodyBuilder_ccd_enabled$FUNC
-    );
     static final FunctionDescriptor RprRigidBodyBuilder_dominance_group$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_CHAR$LAYOUT
@@ -51,6 +43,14 @@ final class constants$33 {
     static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_fixed",
         constants$33.RprRigidBodyBuilder_fixed$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_gravity_scale",
+        constants$33.RprRigidBodyBuilder_gravity_scale$FUNC
     );
 }
 

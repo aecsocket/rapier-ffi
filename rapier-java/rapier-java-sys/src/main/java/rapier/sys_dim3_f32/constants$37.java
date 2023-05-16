@@ -11,31 +11,6 @@ final class constants$37 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$37() {}
-    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprRigidBodyHandle"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_insert",
-        constants$37.RprRigidBodySet_insert$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_is_empty$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_is_empty",
-        constants$37.RprRigidBodySet_is_empty$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_len$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_len",
-        constants$37.RprRigidBodySet_len$FUNC
-    );
     static final FunctionDescriptor RprRigidBodySet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprRigidBodySet_new$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_new",
@@ -46,7 +21,7 @@ final class constants$37 {
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle"),
+        ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -67,6 +42,38 @@ final class constants$37 {
     static final MethodHandle RprRigidBody_add_force$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_add_force",
         constants$37.RprRigidBody_add_force$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_add_force_at_point$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_add_force_at_point$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_add_force_at_point",
+        constants$37.RprRigidBody_add_force_at_point$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_add_torque$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprAngVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_add_torque$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_add_torque",
+        constants$37.RprRigidBody_add_torque$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_angular_damping$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_angular_damping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_angular_damping",
+        constants$37.RprRigidBody_angular_damping$FUNC
     );
 }
 

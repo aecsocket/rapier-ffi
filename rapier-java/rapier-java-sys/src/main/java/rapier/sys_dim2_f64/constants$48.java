@@ -11,43 +11,6 @@ final class constants$48 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$48() {}
-    static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprBall")
-    );
-    static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_ball",
-        constants$48.RprSharedShape_ball$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("a"),
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("b")
-            ).withName("segment"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCapsule")
-    );
-    static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_capsule",
-        constants$48.RprSharedShape_capsule$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
-    );
-    static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cuboid",
-        constants$48.RprSharedShape_cuboid$FUNC
-    );
     static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -76,6 +39,24 @@ final class constants$48 {
         "RprSharedShape_strong_count",
         constants$48.RprSharedShape_strong_count$FUNC
     );
+    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("a"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("b"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("c")
+        ).withName("RprTriangle")
+    );
+    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_triangle",
+        constants$48.RprSharedShape_triangle$FUNC
+    );
+    static final MemorySegment NULL$ADDR = MemorySegment.ofAddress(0L);
 }
 
 

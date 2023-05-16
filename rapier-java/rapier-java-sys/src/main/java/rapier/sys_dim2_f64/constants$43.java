@@ -11,43 +11,6 @@ final class constants$43 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$43() {}
-    static final FunctionDescriptor RprRigidBody_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_position",
-        constants$43.RprRigidBody_position$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_predict_position_using_velocity_and_forces$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_predict_position_using_velocity_and_forces",
-        constants$43.RprRigidBody_predict_position_using_velocity_and_forces$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_recompute_mass_properties_from_colliders$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_recompute_mass_properties_from_colliders",
-        constants$43.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
-    );
     static final FunctionDescriptor RprRigidBody_reset_forces$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -72,6 +35,34 @@ final class constants$43 {
     static final MethodHandle RprRigidBody_rotation$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_rotation",
         constants$43.RprRigidBody_rotation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_additional_mass$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_additional_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_additional_mass",
+        constants$43.RprRigidBody_set_additional_mass$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_angular_damping$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_angular_damping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_angular_damping",
+        constants$43.RprRigidBody_set_angular_damping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_angvel$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_angvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_angvel",
+        constants$43.RprRigidBody_set_angvel$FUNC
     );
 }
 

@@ -3,8 +3,8 @@ package rapier.geometry;
 import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.data.ArenaKey;
 import rapier.dynamics.IslandManager;
-import rapier.dynamics.RigidBodyHandle;
 import rapier.dynamics.RigidBodySet;
 
 import javax.annotation.Nullable;
@@ -43,17 +43,17 @@ public final class ColliderSet extends BaseNative implements Droppable {
 
     public long insert(Collider.Mut coll) {
         try (var arena = Arena.openConfined()) {
-            return ColliderHandle.pack(RprColliderSet_insert(arena, self, coll.memory()));
+            return ArenaKey.pack(RprColliderSet_insert(arena, self, coll.memory()));
         }
     }
 
     public long insertWithParent(Collider.Mut coll, long parentHandle, RigidBodySet bodies) {
         try (var arena = Arena.openConfined()) {
-            return ColliderHandle.pack(RprColliderSet_insert_with_parent(
+            return ArenaKey.pack(RprColliderSet_insert_with_parent(
                     arena,
                     self,
                     coll.memory(),
-                    RigidBodyHandle.unpack(arena, parentHandle),
+                    ArenaKey.unpack(arena, parentHandle),
                     bodies.memory()
             ));
         }
@@ -63,8 +63,8 @@ public final class ColliderSet extends BaseNative implements Droppable {
         try (var arena = Arena.openConfined()) {
             RprColliderSet_set_parent(
                     self,
-                    ColliderHandle.unpack(arena, handle),
-                    newParentHandle == null ? RprRigidBodyHandle_invalid(arena) : RigidBodyHandle.unpack(arena, newParentHandle),
+                    ArenaKey.unpack(arena, handle),
+                    ArenaKey.unpack(arena, newParentHandle == null ? ArenaKey.INVALID_KEY : newParentHandle),
                     bodies.memory()
             );
         }
@@ -79,7 +79,7 @@ public final class ColliderSet extends BaseNative implements Droppable {
         try (var arena = Arena.openConfined()) {
             var res = RprColliderSet_remove(
                     self,
-                    ColliderHandle.unpack(arena, handle),
+                    ArenaKey.unpack(arena, handle),
                     islands.memory(),
                     bodies.memory(),
                     wakeUp
@@ -90,13 +90,13 @@ public final class ColliderSet extends BaseNative implements Droppable {
 
     public Collider index(long index) {
         try (var arena = Arena.openConfined()) {
-            return Collider.at(RprColliderSet_index(self, ColliderHandle.unpack(arena, index)));
+            return Collider.at(RprColliderSet_index(self, ArenaKey.unpack(arena, index)));
         }
     }
 
     public Collider.Mut indexMut(long index) {
         try (var arena = Arena.openConfined()) {
-            return Collider.atMut(RprColliderSet_index_mut(self, ColliderHandle.unpack(arena, index)));
+            return Collider.atMut(RprColliderSet_index_mut(self, ArenaKey.unpack(arena, index)));
         }
     }
 }

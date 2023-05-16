@@ -11,13 +11,6 @@ final class constants$30 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$30() {}
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$30.RprIntegrationParameters_drop$FUNC
-    );
     static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("dt"),
@@ -66,6 +59,13 @@ final class constants$30 {
     static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
         "RprMultibodyJointSet_new",
         constants$30.RprMultibodyJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$30.RprNarrowPhase_drop$FUNC
     );
 }
 

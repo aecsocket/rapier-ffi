@@ -250,7 +250,7 @@ public sealed class RigidBody extends BaseNative permits RigidBody.Mut {
             RprRigidBody_wake_up(self, strong);
         }
 
-        public void setLinearVelocity(AngVector linvel, boolean wakeUp) {
+        public void setLinearVelocity(Vector linvel, boolean wakeUp) {
             {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.memory(), wakeUp);
         }
 

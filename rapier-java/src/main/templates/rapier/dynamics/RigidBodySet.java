@@ -3,6 +3,7 @@ package rapier.dynamics;
 import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.data.ArenaKey;
 import rapier.geometry.ColliderSet;
 
 import javax.annotation.Nullable;
@@ -41,7 +42,7 @@ public final class RigidBodySet extends BaseNative implements Droppable {
 
     public long insert(RigidBody.Mut rb) {
         try (var arena = Arena.openConfined()) {
-            return RigidBodyHandle.pack(RprRigidBodySet_insert(arena, self, rb.memory()));
+            return ArenaKey.pack(RprRigidBodySet_insert(arena, self, rb.memory()));
         }
     }
 
@@ -56,7 +57,7 @@ public final class RigidBodySet extends BaseNative implements Droppable {
         try (var arena = Arena.openConfined()) {
             var res = RprRigidBodySet_remove(
                     self,
-                    RigidBodyHandle.unpack(arena, handle),
+                    ArenaKey.unpack(arena, handle),
                     islands.memory(),
                     colliders.memory(),
                     impulseJoints.memory(),
@@ -69,13 +70,13 @@ public final class RigidBodySet extends BaseNative implements Droppable {
 
     public RigidBody index(long index) {
         try (var arena = Arena.openConfined()) {
-            return RigidBody.at(RprRigidBodySet_index(self, RigidBodyHandle.unpack(arena, index)));
+            return RigidBody.at(RprRigidBodySet_index(self, ArenaKey.unpack(arena, index)));
         }
     }
 
     public RigidBody.Mut indexMut(long index) {
         try (var arena = Arena.openConfined()) {
-            return RigidBody.atMut(RprRigidBodySet_index_mut(self, RigidBodyHandle.unpack(arena, index)));
+            return RigidBody.atMut(RprRigidBodySet_index_mut(self, ArenaKey.unpack(arena, index)));
         }
     }
 }

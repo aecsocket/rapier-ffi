@@ -11,35 +11,6 @@ final class constants$24 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$24() {}
-    static final FunctionDescriptor RprCollider_compute_swept_aabb$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("min"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("max")
-    ).withName("RprAabb"),
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(4, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprCollider_compute_swept_aabb$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_compute_swept_aabb",
-        constants$24.RprCollider_compute_swept_aabb$FUNC
-    );
-    static final FunctionDescriptor RprCollider_contact_force_event_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_contact_force_event_threshold",
-        constants$24.RprCollider_contact_force_event_threshold$FUNC
-    );
     static final FunctionDescriptor RprCollider_density$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -67,6 +38,20 @@ final class constants$24 {
     static final MethodHandle RprCollider_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
         "RprCollider_friction_combine_rule",
         constants$24.RprCollider_friction_combine_rule$FUNC
+    );
+    static final FunctionDescriptor RprCollider_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_is_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_is_enabled",
+        constants$24.RprCollider_is_enabled$FUNC
+    );
+    static final FunctionDescriptor RprCollider_is_sensor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_is_sensor$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_is_sensor",
+        constants$24.RprCollider_is_sensor$FUNC
     );
 }
 

@@ -11,44 +11,6 @@ final class constants$49 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$49() {}
-    static final FunctionDescriptor RprSharedShape_segment$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("a"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("b")
-        ).withName("RprSegment")
-    );
-    static final MethodHandle RprSharedShape_segment$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_segment",
-        constants$49.RprSharedShape_segment$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_strong_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_strong_count$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_strong_count",
-        constants$49.RprSharedShape_strong_count$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("a"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("b"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("c")
-        ).withName("RprTriangle")
-    );
-    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_triangle",
-        constants$49.RprSharedShape_triangle$FUNC
-    );
     static final MemorySegment NULL$ADDR = MemorySegment.ofAddress(0L);
 }
 

@@ -11,13 +11,6 @@ final class constants$31 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$31() {}
-    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
-        "RprNarrowPhase_drop",
-        constants$31.RprNarrowPhase_drop$FUNC
-    );
     static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
         "RprNarrowPhase_new",
@@ -61,6 +54,11 @@ final class constants$31 {
     static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
         "RprQueryPipeline_drop",
         constants$31.RprQueryPipeline_drop$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprQueryPipeline_new$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_new",
+        constants$31.RprQueryPipeline_new$FUNC
     );
 }
 

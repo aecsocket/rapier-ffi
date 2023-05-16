@@ -11,14 +11,6 @@ final class constants$34 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$34() {}
-    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_gravity_scale",
-        constants$34.RprRigidBodyBuilder_gravity_scale$FUNC
-    );
     static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_kinematic_position_based",
@@ -53,6 +45,21 @@ final class constants$34 {
     static final MethodHandle RprRigidBodyBuilder_new$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_new",
         constants$34.RprRigidBodyBuilder_new$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprRigidBodyBuilder_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_position",
+        constants$34.RprRigidBodyBuilder_position$FUNC
     );
 }
 

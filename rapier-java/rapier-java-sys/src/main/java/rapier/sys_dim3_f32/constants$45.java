@@ -11,37 +11,6 @@ final class constants$45 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$45() {}
-    static final FunctionDescriptor RprRigidBody_set_enabled_rotations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_enabled_rotations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled_rotations",
-        constants$45.RprRigidBody_set_enabled_rotations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_enabled_translations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_enabled_translations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled_translations",
-        constants$45.RprRigidBody_set_enabled_translations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_gravity_scale",
-        constants$45.RprRigidBody_set_gravity_scale$FUNC
-    );
     static final FunctionDescriptor RprRigidBody_set_linear_damping$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -75,6 +44,42 @@ final class constants$45 {
     static final MethodHandle RprRigidBody_set_next_kinematic_position$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_set_next_kinematic_position",
         constants$45.RprRigidBody_set_next_kinematic_position$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_next_kinematic_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprRotation")
+    );
+    static final MethodHandle RprRigidBody_set_next_kinematic_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_next_kinematic_rotation",
+        constants$45.RprRigidBody_set_next_kinematic_rotation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_next_kinematic_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprRigidBody_set_next_kinematic_translation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_next_kinematic_translation",
+        constants$45.RprRigidBody_set_next_kinematic_translation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_position",
+        constants$45.RprRigidBody_set_position$FUNC
     );
 }
 

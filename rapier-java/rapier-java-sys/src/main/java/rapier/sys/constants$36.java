@@ -11,41 +11,12 @@ final class constants$36 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$36() {}
-    static final FunctionDescriptor RprRigidBodySet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
-    );
-    static final MethodHandle RprRigidBodySet_contains$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_contains",
-        constants$36.RprRigidBodySet_contains$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_drop",
-        constants$36.RprRigidBodySet_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
-    );
-    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_get",
-        constants$36.RprRigidBodySet_get$FUNC
-    );
     static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
+        ).withName("RprArenaKey")
     );
     static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_get_mut",
@@ -56,7 +27,7 @@ final class constants$36 {
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
+        ).withName("RprArenaKey")
     );
     static final MethodHandle RprRigidBodySet_index$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_index",
@@ -67,11 +38,36 @@ final class constants$36 {
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
+        ).withName("RprArenaKey")
     );
     static final MethodHandle RprRigidBodySet_index_mut$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_index_mut",
         constants$36.RprRigidBodySet_index_mut$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_insert",
+        constants$36.RprRigidBodySet_insert$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_is_empty$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_is_empty",
+        constants$36.RprRigidBodySet_is_empty$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_len$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_len",
+        constants$36.RprRigidBodySet_len$FUNC
     );
 }
 

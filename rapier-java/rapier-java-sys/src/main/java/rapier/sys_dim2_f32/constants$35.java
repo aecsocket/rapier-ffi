@@ -11,21 +11,6 @@ final class constants$35 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$35() {}
-    static final FunctionDescriptor RprRigidBodyBuilder_position$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprRigidBodyBuilder_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_position",
-        constants$35.RprRigidBodyBuilder_position$FUNC
-    );
     static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -54,23 +39,34 @@ final class constants$35 {
         "RprRigidBodyBuilder_translation",
         constants$35.RprRigidBodyBuilder_translation$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyHandle_invalid$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprRigidBodyHandle"));
-    static final MethodHandle RprRigidBodyHandle_invalid$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyHandle_invalid",
-        constants$35.RprRigidBodyHandle_invalid$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyHandle_is_valid$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBodySet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprRigidBodyHandle")
+        ).withName("RprArenaKey")
     );
-    static final MethodHandle RprRigidBodyHandle_is_valid$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyHandle_is_valid",
-        constants$35.RprRigidBodyHandle_is_valid$FUNC
+    static final MethodHandle RprRigidBodySet_contains$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_contains",
+        constants$35.RprRigidBodySet_contains$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_drop",
+        constants$35.RprRigidBodySet_drop$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get",
+        constants$35.RprRigidBodySet_get$FUNC
     );
 }
 

@@ -11,14 +11,6 @@ final class constants$27 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$27() {}
-    static final FunctionDescriptor RprCollider_set_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_friction_combine_rule",
-        constants$27.RprCollider_set_friction_combine_rule$FUNC
-    );
     static final FunctionDescriptor RprCollider_set_mass$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -72,6 +64,16 @@ final class constants$27 {
     static final MethodHandle RprCollider_set_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_restitution_combine_rule",
         constants$27.RprCollider_set_restitution_combine_rule$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        ).withName("RprRotation")
+    );
+    static final MethodHandle RprCollider_set_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_rotation",
+        constants$27.RprCollider_set_rotation$FUNC
     );
 }
 

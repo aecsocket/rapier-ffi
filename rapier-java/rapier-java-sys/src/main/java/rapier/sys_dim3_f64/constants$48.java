@@ -11,42 +11,6 @@ final class constants$48 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$48() {}
-    static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprBall")
-    );
-    static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_ball",
-        constants$48.RprSharedShape_ball$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("a"),
-                MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-                ).withName("b")
-            ).withName("segment"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCapsule")
-    );
-    static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_capsule",
-        constants$48.RprSharedShape_capsule$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("half_height"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCone")
-    );
-    static final MethodHandle RprSharedShape_cone$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cone",
-        constants$48.RprSharedShape_cone$FUNC
-    );
     static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
@@ -74,6 +38,44 @@ final class constants$48 {
     static final MethodHandle RprSharedShape_release$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_release",
         constants$48.RprSharedShape_release$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_segment$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("a"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("b")
+        ).withName("RprSegment")
+    );
+    static final MethodHandle RprSharedShape_segment$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_segment",
+        constants$48.RprSharedShape_segment$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_strong_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_strong_count$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_strong_count",
+        constants$48.RprSharedShape_strong_count$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("a"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("b"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(3, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            ).withName("c")
+        ).withName("RprTriangle")
+    );
+    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_triangle",
+        constants$48.RprSharedShape_triangle$FUNC
     );
 }
 
