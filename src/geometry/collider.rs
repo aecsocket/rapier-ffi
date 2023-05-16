@@ -10,8 +10,8 @@ pub unsafe extern "C" fn RprCollider_drop(this: *mut RprCollider) {
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_parent(this: *const RprCollider) -> RprRigidBodyHandle {
     match this.get().0.parent() {
-        Some(t) => RprRigidBodyHandle::from_raw(t),
-        None => RprRigidBodyHandle_invalid(),
+        Some(t) => RprRigidBodyHandle::from_raw(t.0),
+        None => RprRigidBodyHandle::invalid(),
     }
 }
 
@@ -136,7 +136,17 @@ pub unsafe extern "C" fn RprCollider_rotation(this: *const RprCollider) -> RprRo
     RprRotation::from_raw(*this.get().0.rotation())
 }
 
-// TODO position_wrt_parent
+// SAFETY: this can only be called if the collider has a parent
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_position_wrt_parent(this: *const RprCollider) -> RprIsometry {
+    RprIsometry::from_raw(
+        *this
+            .get()
+            .0
+            .position_wrt_parent()
+            .expect("cannot access position_wrt_parent of collider without parent"),
+    )
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_set_translation_wrt_parent(

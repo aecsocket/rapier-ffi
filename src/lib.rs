@@ -19,6 +19,7 @@ pub(crate) mod prelude {
     pub use bytemuck::cast;
     pub use rapier::prelude::*;
 
+    pub use crate::data::arena::*;
     pub use crate::dynamics::{
         ccd_solver::*, coefficient_combine_rule::*, impulse_joint_set::*,
         integration_parameters::*, island_manager::*, multibody_joint_set::*, rigid_body::*,
@@ -32,6 +33,7 @@ pub(crate) mod prelude {
     pub(crate) const INVALID_U32: u32 = u32::MAX;
 }
 
+pub mod data;
 pub mod dynamics;
 pub mod geometry;
 pub mod math;

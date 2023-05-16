@@ -1,53 +1,6 @@
 use crate::prelude::*;
 
-#[repr(C)]
-#[derive(Debug, Clone, Copy)]
-pub struct RprRigidBodyHandle {
-    pub index: u32,
-    pub generation: u32,
-}
-
-impl RprRigidBodyHandle {
-    pub fn from_raw(handle: RigidBodyHandle) -> Self {
-        let (index, generation) = handle.into_raw_parts();
-        Self { index, generation }
-    }
-
-    pub fn invalid() -> Self {
-        Self {
-            index: INVALID_U32,
-            generation: INVALID_U32,
-        }
-    }
-
-    pub fn is_valid(self) -> bool {
-        self.index != INVALID_U32 || self.generation != INVALID_U32
-    }
-
-    pub fn into_raw(self) -> RigidBodyHandle {
-        RigidBodyHandle::from_raw_parts(self.index, self.generation)
-    }
-
-    pub fn none_if_invalid(self) -> Option<RigidBodyHandle> {
-        match self {
-            RprRigidBodyHandle {
-                index: INVALID_U32,
-                generation: INVALID_U32,
-            } => None,
-            t => Some(t.into_raw()),
-        }
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn RprRigidBodyHandle_is_valid(this: RprRigidBodyHandle) -> bool {
-    this.is_valid()
-}
-
-#[no_mangle]
-pub extern "C" fn RprRigidBodyHandle_invalid() -> RprRigidBodyHandle {
-    RprRigidBodyHandle::invalid()
-}
+pub type RprRigidBodyHandle = RprArenaKey;
 
 pub struct RprRigidBodySet(pub RigidBodySet);
 
@@ -76,7 +29,7 @@ pub unsafe extern "C" fn RprRigidBodySet_contains(
     this: *const RprRigidBodySet,
     handle: RprRigidBodyHandle,
 ) -> bool {
-    this.get().0.contains(handle.into_raw())
+    this.get().0.contains(RigidBodyHandle(handle.into_raw()))
 }
 
 #[no_mangle]
@@ -84,7 +37,7 @@ pub unsafe extern "C" fn RprRigidBodySet_insert(
     this: *mut RprRigidBodySet,
     rb: *mut RprRigidBody,
 ) -> RprRigidBodyHandle {
-    RprRigidBodyHandle::from_raw(this.get_mut().0.insert(rb.read().0))
+    RprRigidBodyHandle::from_raw(this.get_mut().0.insert(rb.read().0).0)
 }
 
 #[no_mangle]
@@ -98,7 +51,7 @@ pub unsafe extern "C" fn RprRigidBodySet_remove(
     remove_attached_colliders: bool,
 ) -> *mut RprRigidBody {
     match this.get_mut().0.remove(
-        handle.into_raw(),
+        RigidBodyHandle(handle.into_raw()),
         &mut islands.get_mut().0,
         &mut colliders.get_mut().0,
         &mut impulse_joints.get_mut().0,
@@ -115,7 +68,7 @@ pub unsafe extern "C" fn RprRigidBodySet_get(
     this: *const RprRigidBodySet,
     handle: RprRigidBodyHandle,
 ) -> *const RprRigidBody {
-    match this.get().0.get(handle.into_raw()) {
+    match this.get().0.get(RigidBodyHandle(handle.into_raw())) {
         Some(t) => t as *const RigidBody as *const RprRigidBody,
         None => std::ptr::null(),
     }
@@ -126,7 +79,7 @@ pub unsafe extern "C" fn RprRigidBodySet_get_mut(
     this: *mut RprRigidBodySet,
     handle: RprRigidBodyHandle,
 ) -> *mut RprRigidBody {
-    match this.get_mut().0.get_mut(handle.into_raw()) {
+    match this.get_mut().0.get_mut(RigidBodyHandle(handle.into_raw())) {
         Some(t) => t as *mut RigidBody as *mut RprRigidBody,
         None => std::ptr::null_mut(),
     }
@@ -145,5 +98,6 @@ pub unsafe extern "C" fn RprRigidBodySet_index_mut(
     this: *mut RprRigidBodySet,
     index: RprRigidBodyHandle,
 ) -> *mut RprRigidBody {
-    (&mut this.get_mut().0[index.into_raw()]) as *mut RigidBody as *mut RprRigidBody
+    (&mut this.get_mut().0[RigidBodyHandle(index.into_raw())]) as *mut RigidBody
+        as *mut RprRigidBody
 }
