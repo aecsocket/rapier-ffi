@@ -3,85 +3,109 @@ use crate::prelude::*;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
-pub struct RprVector(pub [Real; 2]);
+pub struct RprVector {
+    pub x: Real,
+    pub y: Real,
+}
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim3")]
-pub struct RprVector(pub [Real; 3]);
+pub struct RprVector {
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
+}
 
 impl RprVector {
     pub fn from_raw(vec: Vector<Real>) -> Self {
-        Self(cast(vec))
+        cast(vec)
     }
 
     pub fn from_point(pt: Point<Real>) -> Self {
-        Self(cast(pt))
+        cast(pt)
     }
 
     pub fn from_translation(tl: Translation<Real>) -> Self {
-        Self(cast(tl))
+        cast(tl)
     }
 
     pub fn into_raw(self) -> Vector<Real> {
-        cast(self.0)
+        cast(self)
     }
 
     pub fn into_point(self) -> Point<Real> {
-        cast(self.0)
+        cast(self)
     }
 }
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
-pub struct RprAngVector(pub [Real; 1]);
+pub struct RprAngVector {
+    pub x: Real,
+}
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim3")]
-pub struct RprAngVector(pub [Real; 3]);
+pub struct RprAngVector {
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
+}
 
 impl RprAngVector {
     pub fn from_raw(vec: AngVector<Real>) -> Self {
-        Self(cast(vec))
+        cast(vec)
     }
 
     pub fn into_raw(self) -> AngVector<Real> {
-        cast(self.0)
+        cast(self)
     }
 }
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
-pub struct RprRotation(pub [Real; 2]);
+pub struct RprRotation {
+    pub re: Real,
+    pub im: Real,
+}
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim3")]
-pub struct RprRotation(pub [Real; 4]);
+pub struct RprRotation {
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
+    pub w: Real,
+}
 
 #[cfg(feature = "dim2")]
 impl RprRotation {
     pub fn from_raw(raw: Rotation<Real>) -> Self {
-        Self([raw.re, raw.im])
+        Self {
+            re: raw.re,
+            im: raw.im,
+        }
     }
 
     pub fn into_raw(self) -> Rotation<Real> {
         use rapier::parry::na::{Complex, Unit};
-        Unit::from_complex(Complex::new(self.0[0], self.0[1]))
+        Unit::from_complex(Complex::new(self.re, self.im))
     }
 }
 
 #[cfg(feature = "dim3")]
 impl RprRotation {
     pub fn from_raw(raw: Rotation<Real>) -> Self {
-        Self(cast(raw))
+        cast(raw)
     }
 
     pub fn into_raw(self) -> Rotation<Real> {
-        cast(self.0)
+        cast(self)
     }
 }
 
