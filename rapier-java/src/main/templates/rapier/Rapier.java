@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
 
 public final class Rapier {
     public static final String VERSION = "0.17.2";
@@ -31,6 +32,12 @@ public final class Rapier {
         } catch (IOException ex) {
             throw new RuntimeException("Could not load native library", ex);
         }
+    }
+
+    public static <T extends Droppable, R> R use(T obj, Function<T, R> fn) {
+        var res = fn.apply(obj);
+        obj.drop();
+        return res;
     }
 
     public enum CpuPlatform {

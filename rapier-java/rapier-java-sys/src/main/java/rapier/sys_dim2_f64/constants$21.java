@@ -22,7 +22,8 @@ final class constants$21 {
     static final FunctionDescriptor RprColliderBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
         ).withName("RprVector")
     );
     static final MethodHandle RprColliderBuilder_translation$MH = RuntimeHelper.downcallHandle(

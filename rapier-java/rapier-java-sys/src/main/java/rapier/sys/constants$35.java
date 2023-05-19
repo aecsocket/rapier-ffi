@@ -32,7 +32,8 @@ final class constants$35 {
     static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
         ).withName("RprVector")
     );
     static final MethodHandle RprRigidBodyBuilder_translation$MH = RuntimeHelper.downcallHandle(

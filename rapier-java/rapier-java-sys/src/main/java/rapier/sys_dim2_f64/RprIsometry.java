@@ -22,7 +22,8 @@ public class RprIsometry {
             MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
         ).withName("rotation"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
         ).withName("translation")
     ).withName("RprIsometry");
     public static MemoryLayout $LAYOUT() {

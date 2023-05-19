@@ -33,7 +33,9 @@ final class constants$25 {
             MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
         ).withName("rotation"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
         ).withName("translation")
     ).withName("RprIsometry"),
         Constants$root.C_POINTER$LAYOUT
@@ -47,7 +49,9 @@ final class constants$25 {
             MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
         ).withName("rotation"),
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
         ).withName("translation")
     ).withName("RprIsometry"),
         Constants$root.C_POINTER$LAYOUT

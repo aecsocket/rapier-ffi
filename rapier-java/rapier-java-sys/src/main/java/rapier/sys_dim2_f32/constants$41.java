@@ -48,7 +48,8 @@ final class constants$41 {
         constants$41.RprRigidBody_linear_damping$FUNC
     );
     static final FunctionDescriptor RprRigidBody_linvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
     ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );

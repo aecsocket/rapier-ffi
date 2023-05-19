@@ -2,6 +2,7 @@ package rapier;
 
 import javax.annotation.Nullable;
 import java.lang.foreign.MemorySegment;
+import java.util.function.Consumer;
 
 public interface Native {
     MemorySegment memory();

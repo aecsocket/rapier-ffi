@@ -8,6 +8,7 @@ import rapier.pipeline.PhysicsPipeline;
 import rapier.shape.Ball;
 import rapier.shape.Cuboid;
 import rapier.shape.SharedShape;
+import rapier.sys.RapierC;
 
 import java.lang.foreign.Arena;
 
@@ -21,14 +22,14 @@ public final class HelloRapier {
             var colliderSet = ColliderSet.create();
 
             var floorShape = SharedShape.of(Cuboid.of(arena, Vector.of(arena, 100.0, 0.1, 100.0)));
-            var floorCollider = ColliderBuilder.of(floorShape).build();
+            var floorCollider = Rapier.use(ColliderBuilder.of(floorShape), ColliderBuilder::build);
             colliderSet.insert(floorCollider);
 
-            var rigidBody = RigidBodyBuilder.dynamic()
-                    .translation(Vector.of(arena, 0.0, 10.0, 0.0))
-                    .build();
+            var rigidBody = Rapier.use(RigidBodyBuilder.dynamic()
+                    .translation(Vector.of(arena, 0.0, 10.0, 0.0)),
+                    RigidBodyBuilder::build);
             var ballShape = SharedShape.of(Ball.of(arena, 0.5));
-            var ballCollider = ColliderBuilder.of(ballShape).restitution(0.7).build();
+            var ballCollider = Rapier.use(ColliderBuilder.of(ballShape).restitution(0.7), ColliderBuilder::build);
             long ballBodyHandle = rigidBodySet.insert(rigidBody);
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 

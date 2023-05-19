@@ -17,7 +17,10 @@ public final class Vector extends BaseNative {
 
 {% if dim2 %}
     public static Vector of(SegmentAllocator alloc, {{ real }} x, {{ real }} y) {
-        return at(alloc.allocateArray({{ realLayout }}, x, y));
+        var memory = {{ sys }}.RprVector.allocate(alloc);
+        {{ sys }}.RprVector.x$set(memory, x);
+        {{ sys }}.RprVector.y$set(memory, y);
+        return at(memory);
     }
 
     @Override
@@ -26,7 +29,12 @@ public final class Vector extends BaseNative {
     }
 {% elseif dim3 %}
     public static Vector of(SegmentAllocator alloc, {{ real }} x, {{ real }} y, {{ real }} z) {
-        return at(alloc.allocateArray({{ realLayout }}, x, y, z));
+        var memory = {{ sys }}.RprVector.allocate(alloc);
+        System.out.println(">> size = " + memory.byteSize());
+        {{ sys }}.RprVector.x$set(memory, x);
+        {{ sys }}.RprVector.y$set(memory, y);
+        {{ sys }}.RprVector.z$set(memory, z);
+        return at(memory);
     }
 
     @Override
@@ -36,28 +44,28 @@ public final class Vector extends BaseNative {
 {% endif %}
 
     public {{ real }} getX() {
-        return self.getAtIndex({{ realLayout }}, 0);
+        return {{ sys }}.RprVector.x$get(self);
     }
 
     public void setX({{ real }} x) {
-        self.setAtIndex({{ realLayout }}, 0, x);
+        {{ sys }}.RprVector.x$set(self, x);
     }
 
     public {{ real }} getY() {
-        return self.getAtIndex({{ realLayout }}, 1);
+        return {{ sys }}.RprVector.y$get(self);
     }
 
     public void setY({{ real }} y) {
-        self.setAtIndex({{ realLayout }}, 1, y);
+        {{ sys }}.RprVector.y$set(self, y);
     }
 
 {% if dim3 %}
     public {{ real }} getZ() {
-        return self.getAtIndex({{ realLayout }}, 2);
+        return {{ sys }}.RprVector.z$get(self);
     }
 
     public void setZ({{ real }} z) {
-        self.setAtIndex({{ realLayout }}, 2, z);
+        {{ sys }}.RprVector.z$set(self, z);
     }
 {% endif %}
 }

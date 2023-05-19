@@ -10,20 +10,105 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
  * struct RprVector {
- *     float _0[3];
+ *     float x;
+ *     float y;
+ *     float z;
  * };
  * }
  */
 public class RprVector {
 
     static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
     ).withName("RprVector");
     public static MemoryLayout $LAYOUT() {
         return RprVector.$struct$LAYOUT;
     }
-    public static MemorySegment _0$slice(MemorySegment seg) {
-        return seg.asSlice(0, 12);
+    static final VarHandle x$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("x"));
+    public static VarHandle x$VH() {
+        return RprVector.x$VH;
+    }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float x;
+     * }
+     */
+    public static float x$get(MemorySegment seg) {
+        return (float)RprVector.x$VH.get(seg);
+    }
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float x;
+     * }
+     */
+    public static void x$set(MemorySegment seg, float x) {
+        RprVector.x$VH.set(seg, x);
+    }
+    public static float x$get(MemorySegment seg, long index) {
+        return (float)RprVector.x$VH.get(seg.asSlice(index*sizeof()));
+    }
+    public static void x$set(MemorySegment seg, long index, float x) {
+        RprVector.x$VH.set(seg.asSlice(index*sizeof()), x);
+    }
+    static final VarHandle y$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("y"));
+    public static VarHandle y$VH() {
+        return RprVector.y$VH;
+    }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float y;
+     * }
+     */
+    public static float y$get(MemorySegment seg) {
+        return (float)RprVector.y$VH.get(seg);
+    }
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float y;
+     * }
+     */
+    public static void y$set(MemorySegment seg, float x) {
+        RprVector.y$VH.set(seg, x);
+    }
+    public static float y$get(MemorySegment seg, long index) {
+        return (float)RprVector.y$VH.get(seg.asSlice(index*sizeof()));
+    }
+    public static void y$set(MemorySegment seg, long index, float x) {
+        RprVector.y$VH.set(seg.asSlice(index*sizeof()), x);
+    }
+    static final VarHandle z$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("z"));
+    public static VarHandle z$VH() {
+        return RprVector.z$VH;
+    }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float z;
+     * }
+     */
+    public static float z$get(MemorySegment seg) {
+        return (float)RprVector.z$VH.get(seg);
+    }
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float z;
+     * }
+     */
+    public static void z$set(MemorySegment seg, float x) {
+        RprVector.z$VH.set(seg, x);
+    }
+    public static float z$get(MemorySegment seg, long index) {
+        return (float)RprVector.z$VH.get(seg.asSlice(index*sizeof()));
+    }
+    public static void z$set(MemorySegment seg, long index, float x) {
+        RprVector.z$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

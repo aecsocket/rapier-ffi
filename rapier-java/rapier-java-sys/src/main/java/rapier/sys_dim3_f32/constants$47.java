@@ -12,11 +12,15 @@ final class constants$47 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$47() {}
     static final FunctionDescriptor RprRigidBody_velocity_at_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
     ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
         ).withName("RprVector")
     );
     static final MethodHandle RprRigidBody_velocity_at_point$MH = RuntimeHelper.downcallHandle(
@@ -51,10 +55,14 @@ final class constants$47 {
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
                 MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                    Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                    Constants$root.C_FLOAT$LAYOUT.withName("z")
                 ).withName("a"),
                 MemoryLayout.structLayout(
-                    MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                    Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                    Constants$root.C_FLOAT$LAYOUT.withName("z")
                 ).withName("b")
             ).withName("segment"),
             Constants$root.C_FLOAT$LAYOUT.withName("radius")

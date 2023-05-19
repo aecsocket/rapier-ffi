@@ -33,7 +33,9 @@ final class constants$20 {
                 MemoryLayout.sequenceLayout(4, Constants$root.C_FLOAT$LAYOUT).withName("_0")
             ).withName("rotation"),
             MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(3, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
             ).withName("translation")
         ).withName("RprIsometry")
     );

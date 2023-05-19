@@ -18,7 +18,8 @@ public class RprCuboid {
 
     static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
         ).withName("half_extents")
     ).withName("RprCuboid");
     public static MemoryLayout $LAYOUT() {

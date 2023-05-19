@@ -12,7 +12,8 @@ final class constants$29 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$29() {}
     static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
     ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
