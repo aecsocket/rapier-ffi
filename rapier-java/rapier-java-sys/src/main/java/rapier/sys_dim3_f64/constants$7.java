@@ -7,55 +7,56 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$7 {
+class constants$7 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$7() {}
-    static final FunctionDescriptor jrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor lcong48$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle lcong48$MH = RuntimeHelper.downcallHandle(
+        "lcong48",
+        constants$7.lcong48$FUNC
+    );
+    static final FunctionDescriptor drand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle drand48_r$MH = RuntimeHelper.downcallHandle(
+        "drand48_r",
+        constants$7.drand48_r$FUNC
+    );
+    static final FunctionDescriptor erand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle jrand48_r$MH = RuntimeHelper.downcallHandle(
-        "jrand48_r",
-        constants$7.jrand48_r$FUNC
+    static final MethodHandle erand48_r$MH = RuntimeHelper.downcallHandle(
+        "erand48_r",
+        constants$7.erand48_r$FUNC
     );
-    static final FunctionDescriptor srand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle srand48_r$MH = RuntimeHelper.downcallHandle(
-        "srand48_r",
-        constants$7.srand48_r$FUNC
-    );
-    static final FunctionDescriptor seed48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor lrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle seed48_r$MH = RuntimeHelper.downcallHandle(
-        "seed48_r",
-        constants$7.seed48_r$FUNC
+    static final MethodHandle lrand48_r$MH = RuntimeHelper.downcallHandle(
+        "lrand48_r",
+        constants$7.lrand48_r$FUNC
     );
-    static final FunctionDescriptor lcong48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor nrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle lcong48_r$MH = RuntimeHelper.downcallHandle(
-        "lcong48_r",
-        constants$7.lcong48_r$FUNC
+    static final MethodHandle nrand48_r$MH = RuntimeHelper.downcallHandle(
+        "nrand48_r",
+        constants$7.nrand48_r$FUNC
     );
-    static final FunctionDescriptor arc4random$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle arc4random$MH = RuntimeHelper.downcallHandle(
-        "arc4random",
-        constants$7.arc4random$FUNC
-    );
-    static final FunctionDescriptor arc4random_buf$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor mrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle arc4random_buf$MH = RuntimeHelper.downcallHandle(
-        "arc4random_buf",
-        constants$7.arc4random_buf$FUNC
+    static final MethodHandle mrand48_r$MH = RuntimeHelper.downcallHandle(
+        "mrand48_r",
+        constants$7.mrand48_r$FUNC
     );
 }
 

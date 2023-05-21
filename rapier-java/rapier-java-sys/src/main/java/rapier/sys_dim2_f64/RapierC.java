@@ -9,1559 +9,427 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 public class RapierC  {
 
-    public static final OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
-    public static final OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
-    public static final OfInt C_INT = Constants$root.C_INT$LAYOUT;
-    public static final OfLong C_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static final OfLong C_LONG_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static final OfFloat C_FLOAT = Constants$root.C_FLOAT$LAYOUT;
-    public static final OfDouble C_DOUBLE = Constants$root.C_DOUBLE$LAYOUT;
-    public static final OfAddress C_POINTER = Constants$root.C_POINTER$LAYOUT;
-    /**
-     * {@snippet :
-     * #define __bool_true_false_are_defined 1
-     * }
-     */
-    public static int __bool_true_false_are_defined() {
+    /* package-private */ RapierC() {}
+    public static OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
+    public static OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt C_INT = Constants$root.C_INT$LAYOUT;
+    public static OfLong C_LONG = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong C_LONG_LONG = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfFloat C_FLOAT = Constants$root.C_FLOAT$LAYOUT;
+    public static OfDouble C_DOUBLE = Constants$root.C_DOUBLE$LAYOUT;
+    public static OfAddress C_POINTER = Constants$root.C_POINTER$LAYOUT;
+    public static int __GNUC_VA_LIST() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define true 1
-     * }
-     */
     public static int true_() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define false 0
-     * }
-     */
     public static int false_() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define _STDINT_H 1
-     * }
-     */
+    public static int __bool_true_false_are_defined() {
+        return (int)1L;
+    }
     public static int _STDINT_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _FEATURES_H 1
-     * }
-     */
     public static int _FEATURES_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _DEFAULT_SOURCE 1
-     * }
-     */
     public static int _DEFAULT_SOURCE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_ISOC2X 0
-     * }
-     */
     public static int __GLIBC_USE_ISOC2X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC11 1
-     * }
-     */
     public static int __USE_ISOC11() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC99 1
-     * }
-     */
     public static int __USE_ISOC99() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_ISOC95 1
-     * }
-     */
     public static int __USE_ISOC95() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX_IMPLICITLY 1
-     * }
-     */
     public static int __USE_POSIX_IMPLICITLY() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _POSIX_SOURCE 1
-     * }
-     */
     public static int _POSIX_SOURCE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX 1
-     * }
-     */
     public static int __USE_POSIX() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX2 1
-     * }
-     */
     public static int __USE_POSIX2() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX199309 1
-     * }
-     */
     public static int __USE_POSIX199309() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_POSIX199506 1
-     * }
-     */
     public static int __USE_POSIX199506() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_XOPEN2K 1
-     * }
-     */
     public static int __USE_XOPEN2K() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_XOPEN2K8 1
-     * }
-     */
     public static int __USE_XOPEN2K8() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _ATFILE_SOURCE 1
-     * }
-     */
     public static int _ATFILE_SOURCE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __WORDSIZE 64
-     * }
-     */
     public static int __WORDSIZE() {
         return (int)64L;
     }
-    /**
-     * {@snippet :
-     * #define __WORDSIZE_TIME64_COMPAT32 1
-     * }
-     */
     public static int __WORDSIZE_TIME64_COMPAT32() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __SYSCALL_WORDSIZE 64
-     * }
-     */
     public static int __SYSCALL_WORDSIZE() {
         return (int)64L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_MISC 1
-     * }
-     */
     public static int __USE_MISC() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_ATFILE 1
-     * }
-     */
     public static int __USE_ATFILE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __USE_FORTIFY_LEVEL 0
-     * }
-     */
     public static int __USE_FORTIFY_LEVEL() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_DEPRECATED_GETS 0
-     * }
-     */
     public static int __GLIBC_USE_DEPRECATED_GETS() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_DEPRECATED_SCANF 0
-     * }
-     */
     public static int __GLIBC_USE_DEPRECATED_SCANF() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define _STDC_PREDEF_H 1
-     * }
-     */
     public static int _STDC_PREDEF_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_559__ 1
-     * }
-     */
     public static int __STDC_IEC_559__() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_559_COMPLEX__ 1
-     * }
-     */
     public static int __STDC_IEC_559_COMPLEX__() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __GNU_LIBRARY__ 6
-     * }
-     */
     public static int __GNU_LIBRARY__() {
         return (int)6L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC__ 2
-     * }
-     */
     public static int __GLIBC__() {
         return (int)2L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_MINOR__ 37
-     * }
-     */
     public static int __GLIBC_MINOR__() {
         return (int)37L;
     }
-    /**
-     * {@snippet :
-     * #define _SYS_CDEFS_H 1
-     * }
-     */
     public static int _SYS_CDEFS_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __glibc_c99_flexarr_available 1
-     * }
-     */
     public static int __glibc_c99_flexarr_available() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI 0
-     * }
-     */
     public static int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_GENERIC_SELECTION 1
-     * }
-     */
     public static int __HAVE_GENERIC_SELECTION() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_LIB_EXT2 0
-     * }
-     */
     public static int __GLIBC_USE_LIB_EXT2() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_BFP_EXT 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_BFP_EXT() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_BFP_EXT_C2X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_EXT 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_EXT() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_FUNCS_EXT() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __GLIBC_USE_IEC_60559_TYPES_EXT 0
-     * }
-     */
     public static int __GLIBC_USE_IEC_60559_TYPES_EXT() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_TYPES_H 1
-     * }
-     */
     public static int _BITS_TYPES_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_TYPESIZES_H 1
-     * }
-     */
     public static int _BITS_TYPESIZES_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __OFF_T_MATCHES_OFF64_T 1
-     * }
-     */
     public static int __OFF_T_MATCHES_OFF64_T() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __INO_T_MATCHES_INO64_T 1
-     * }
-     */
     public static int __INO_T_MATCHES_INO64_T() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __RLIM_T_MATCHES_RLIM64_T 1
-     * }
-     */
     public static int __RLIM_T_MATCHES_RLIM64_T() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __STATFS_MATCHES_STATFS64 1
-     * }
-     */
     public static int __STATFS_MATCHES_STATFS64() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 1
-     * }
-     */
     public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __FD_SETSIZE 1024
-     * }
-     */
     public static int __FD_SETSIZE() {
         return (int)1024L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_TIME64_H 1
-     * }
-     */
     public static int _BITS_TIME64_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_WCHAR_H 1
-     * }
-     */
     public static int _BITS_WCHAR_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_STDINT_INTN_H 1
-     * }
-     */
     public static int _BITS_STDINT_INTN_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_STDINT_UINTN_H 1
-     * }
-     */
     public static int _BITS_STDINT_UINTN_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _STDLIB_H 1
-     * }
-     */
     public static int _STDLIB_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define WNOHANG 1
-     * }
-     */
     public static int WNOHANG() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define WUNTRACED 2
-     * }
-     */
     public static int WUNTRACED() {
         return (int)2L;
     }
-    /**
-     * {@snippet :
-     * #define WSTOPPED 2
-     * }
-     */
     public static int WSTOPPED() {
         return (int)2L;
     }
-    /**
-     * {@snippet :
-     * #define WEXITED 4
-     * }
-     */
     public static int WEXITED() {
         return (int)4L;
     }
-    /**
-     * {@snippet :
-     * #define WCONTINUED 8
-     * }
-     */
     public static int WCONTINUED() {
         return (int)8L;
     }
-    /**
-     * {@snippet :
-     * #define WNOWAIT 16777216
-     * }
-     */
     public static int WNOWAIT() {
         return (int)16777216L;
     }
-    /**
-     * {@snippet :
-     * #define __WNOTHREAD 536870912
-     * }
-     */
     public static int __WNOTHREAD() {
         return (int)536870912L;
     }
-    /**
-     * {@snippet :
-     * #define __WALL 1073741824
-     * }
-     */
     public static int __WALL() {
         return (int)1073741824L;
     }
-    /**
-     * {@snippet :
-     * #define __W_CONTINUED 65535
-     * }
-     */
     public static int __W_CONTINUED() {
         return (int)65535L;
     }
-    /**
-     * {@snippet :
-     * #define __WCOREFLAG 128
-     * }
-     */
     public static int __WCOREFLAG() {
         return (int)128L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT128 0
-     * }
-     */
     public static int __HAVE_FLOAT128() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT128 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT128() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64X 1
-     * }
-     */
     public static int __HAVE_FLOAT64X() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64X_LONG_DOUBLE 1
-     * }
-     */
     public static int __HAVE_FLOAT64X_LONG_DOUBLE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT16 0
-     * }
-     */
     public static int __HAVE_FLOAT16() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT32 1
-     * }
-     */
     public static int __HAVE_FLOAT32() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT64 1
-     * }
-     */
     public static int __HAVE_FLOAT64() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT32X 1
-     * }
-     */
     public static int __HAVE_FLOAT32X() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT128X 0
-     * }
-     */
     public static int __HAVE_FLOAT128X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT32 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT32() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT64 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT64() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT32X 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT32X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT64X 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT64X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOATN_NOT_TYPEDEF 0
-     * }
-     */
     public static int __HAVE_FLOATN_NOT_TYPEDEF() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __ldiv_t_defined 1
-     * }
-     */
     public static int __ldiv_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __lldiv_t_defined 1
-     * }
-     */
     public static int __lldiv_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define RAND_MAX 2147483647
-     * }
-     */
     public static int RAND_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define EXIT_FAILURE 1
-     * }
-     */
     public static int EXIT_FAILURE() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define EXIT_SUCCESS 0
-     * }
-     */
     public static int EXIT_SUCCESS() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define _SYS_TYPES_H 1
-     * }
-     */
     public static int _SYS_TYPES_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __clock_t_defined 1
-     * }
-     */
     public static int __clock_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __clockid_t_defined 1
-     * }
-     */
     public static int __clockid_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __time_t_defined 1
-     * }
-     */
     public static int __time_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __timer_t_defined 1
-     * }
-     */
     public static int __timer_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __BIT_TYPES_DEFINED__ 1
-     * }
-     */
     public static int __BIT_TYPES_DEFINED__() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _ENDIAN_H 1
-     * }
-     */
     public static int _ENDIAN_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_ENDIAN_H 1
-     * }
-     */
     public static int _BITS_ENDIAN_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __LITTLE_ENDIAN 1234
-     * }
-     */
     public static int __LITTLE_ENDIAN() {
         return (int)1234L;
     }
-    /**
-     * {@snippet :
-     * #define __BIG_ENDIAN 4321
-     * }
-     */
     public static int __BIG_ENDIAN() {
         return (int)4321L;
     }
-    /**
-     * {@snippet :
-     * #define __PDP_ENDIAN 3412
-     * }
-     */
     public static int __PDP_ENDIAN() {
         return (int)3412L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_ENDIANNESS_H 1
-     * }
-     */
     public static int _BITS_ENDIANNESS_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_BYTESWAP_H 1
-     * }
-     */
     public static int _BITS_BYTESWAP_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_UINTN_IDENTITY_H 1
-     * }
-     */
     public static int _BITS_UINTN_IDENTITY_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _SYS_SELECT_H 1
-     * }
-     */
     public static int _SYS_SELECT_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __sigset_t_defined 1
-     * }
-     */
     public static int __sigset_t_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __timeval_defined 1
-     * }
-     */
     public static int __timeval_defined() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _STRUCT_TIMESPEC 1
-     * }
-     */
     public static int _STRUCT_TIMESPEC() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_PTHREADTYPES_COMMON_H 1
-     * }
-     */
     public static int _BITS_PTHREADTYPES_COMMON_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _THREAD_SHARED_TYPES_H 1
-     * }
-     */
     public static int _THREAD_SHARED_TYPES_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _BITS_PTHREADTYPES_ARCH_H 1
-     * }
-     */
     public static int _BITS_PTHREADTYPES_ARCH_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_MUTEX_T 40
-     * }
-     */
     public static int __SIZEOF_PTHREAD_MUTEX_T() {
         return (int)40L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_ATTR_T 56
-     * }
-     */
     public static int __SIZEOF_PTHREAD_ATTR_T() {
         return (int)56L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_RWLOCK_T 56
-     * }
-     */
     public static int __SIZEOF_PTHREAD_RWLOCK_T() {
         return (int)56L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_BARRIER_T 32
-     * }
-     */
     public static int __SIZEOF_PTHREAD_BARRIER_T() {
         return (int)32L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_MUTEXATTR_T 4
-     * }
-     */
     public static int __SIZEOF_PTHREAD_MUTEXATTR_T() {
         return (int)4L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_COND_T 48
-     * }
-     */
     public static int __SIZEOF_PTHREAD_COND_T() {
         return (int)48L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_CONDATTR_T 4
-     * }
-     */
     public static int __SIZEOF_PTHREAD_CONDATTR_T() {
         return (int)4L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_RWLOCKATTR_T 8
-     * }
-     */
     public static int __SIZEOF_PTHREAD_RWLOCKATTR_T() {
         return (int)8L;
     }
-    /**
-     * {@snippet :
-     * #define __SIZEOF_PTHREAD_BARRIERATTR_T 4
-     * }
-     */
     public static int __SIZEOF_PTHREAD_BARRIERATTR_T() {
         return (int)4L;
     }
-    /**
-     * {@snippet :
-     * #define _THREAD_MUTEX_INTERNAL_H 1
-     * }
-     */
     public static int _THREAD_MUTEX_INTERNAL_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __PTHREAD_MUTEX_HAVE_PREV 1
-     * }
-     */
     public static int __PTHREAD_MUTEX_HAVE_PREV() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define __have_pthread_attr_t 1
-     * }
-     */
     public static int __have_pthread_attr_t() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * #define _ALLOCA_H 1
-     * }
-     */
     public static int _ALLOCA_H() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * typedef long ptrdiff_t;
-     * }
-     */
-    public static final OfLong ptrdiff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long size_t;
-     * }
-     */
-    public static final OfLong size_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int wchar_t;
-     * }
-     */
-    public static final OfInt wchar_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char __u_char;
-     * }
-     */
-    public static final OfByte __u_char = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short __u_short;
-     * }
-     */
-    public static final OfShort __u_short = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __u_int;
-     * }
-     */
-    public static final OfInt __u_int = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __u_long;
-     * }
-     */
-    public static final OfLong __u_long = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef signed char __int8_t;
-     * }
-     */
-    public static final OfByte __int8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char __uint8_t;
-     * }
-     */
-    public static final OfByte __uint8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef short __int16_t;
-     * }
-     */
-    public static final OfShort __int16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short __uint16_t;
-     * }
-     */
-    public static final OfShort __uint16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __int32_t;
-     * }
-     */
-    public static final OfInt __int32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uint32_t;
-     * }
-     */
-    public static final OfInt __uint32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __int64_t;
-     * }
-     */
-    public static final OfLong __int64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uint64_t;
-     * }
-     */
-    public static final OfLong __uint64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef signed char __int_least8_t;
-     * }
-     */
-    public static final OfByte __int_least8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char __uint_least8_t;
-     * }
-     */
-    public static final OfByte __uint_least8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef short __int_least16_t;
-     * }
-     */
-    public static final OfShort __int_least16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short __uint_least16_t;
-     * }
-     */
-    public static final OfShort __uint_least16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __int_least32_t;
-     * }
-     */
-    public static final OfInt __int_least32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uint_least32_t;
-     * }
-     */
-    public static final OfInt __uint_least32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __int_least64_t;
-     * }
-     */
-    public static final OfLong __int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uint_least64_t;
-     * }
-     */
-    public static final OfLong __uint_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __quad_t;
-     * }
-     */
-    public static final OfLong __quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __u_quad_t;
-     * }
-     */
-    public static final OfLong __u_quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __intmax_t;
-     * }
-     */
-    public static final OfLong __intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __uintmax_t;
-     * }
-     */
-    public static final OfLong __uintmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __dev_t;
-     * }
-     */
-    public static final OfLong __dev_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __uid_t;
-     * }
-     */
-    public static final OfInt __uid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __gid_t;
-     * }
-     */
-    public static final OfInt __gid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __ino_t;
-     * }
-     */
-    public static final OfLong __ino_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __ino64_t;
-     * }
-     */
-    public static final OfLong __ino64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __mode_t;
-     * }
-     */
-    public static final OfInt __mode_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __nlink_t;
-     * }
-     */
-    public static final OfLong __nlink_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __off_t;
-     * }
-     */
-    public static final OfLong __off_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __off64_t;
-     * }
-     */
-    public static final OfLong __off64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __pid_t;
-     * }
-     */
-    public static final OfInt __pid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __clock_t;
-     * }
-     */
-    public static final OfLong __clock_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __rlim_t;
-     * }
-     */
-    public static final OfLong __rlim_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __rlim64_t;
-     * }
-     */
-    public static final OfLong __rlim64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __id_t;
-     * }
-     */
-    public static final OfInt __id_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __time_t;
-     * }
-     */
-    public static final OfLong __time_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __useconds_t;
-     * }
-     */
-    public static final OfInt __useconds_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __suseconds_t;
-     * }
-     */
-    public static final OfLong __suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __suseconds64_t;
-     * }
-     */
-    public static final OfLong __suseconds64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __daddr_t;
-     * }
-     */
-    public static final OfInt __daddr_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __key_t;
-     * }
-     */
-    public static final OfInt __key_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __clockid_t;
-     * }
-     */
-    public static final OfInt __clockid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef void* __timer_t;
-     * }
-     */
-    public static final OfAddress __timer_t = Constants$root.C_POINTER$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __blksize_t;
-     * }
-     */
-    public static final OfLong __blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __blkcnt_t;
-     * }
-     */
-    public static final OfLong __blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __blkcnt64_t;
-     * }
-     */
-    public static final OfLong __blkcnt64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsblkcnt_t;
-     * }
-     */
-    public static final OfLong __fsblkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsblkcnt64_t;
-     * }
-     */
-    public static final OfLong __fsblkcnt64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsfilcnt_t;
-     * }
-     */
-    public static final OfLong __fsfilcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __fsfilcnt64_t;
-     * }
-     */
-    public static final OfLong __fsfilcnt64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __fsword_t;
-     * }
-     */
-    public static final OfLong __fsword_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __ssize_t;
-     * }
-     */
-    public static final OfLong __ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __syscall_slong_t;
-     * }
-     */
-    public static final OfLong __syscall_slong_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __syscall_ulong_t;
-     * }
-     */
-    public static final OfLong __syscall_ulong_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __loff_t;
-     * }
-     */
-    public static final OfLong __loff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef char* __caddr_t;
-     * }
-     */
-    public static final OfAddress __caddr_t = Constants$root.C_POINTER$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __intptr_t;
-     * }
-     */
-    public static final OfLong __intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __socklen_t;
-     * }
-     */
-    public static final OfInt __socklen_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int __sig_atomic_t;
-     * }
-     */
-    public static final OfInt __sig_atomic_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef signed char int8_t;
-     * }
-     */
-    public static final OfByte int8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef short int16_t;
-     * }
-     */
-    public static final OfShort int16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int int32_t;
-     * }
-     */
-    public static final OfInt int32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long int64_t;
-     * }
-     */
-    public static final OfLong int64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint8_t;
-     * }
-     */
-    public static final OfByte uint8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short uint16_t;
-     * }
-     */
-    public static final OfShort uint16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uint32_t;
-     * }
-     */
-    public static final OfInt uint32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint64_t;
-     * }
-     */
-    public static final OfLong uint64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef signed char int_least8_t;
-     * }
-     */
-    public static final OfByte int_least8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef short int_least16_t;
-     * }
-     */
-    public static final OfShort int_least16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int int_least32_t;
-     * }
-     */
-    public static final OfInt int_least32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long int_least64_t;
-     * }
-     */
-    public static final OfLong int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint_least8_t;
-     * }
-     */
-    public static final OfByte uint_least8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short uint_least16_t;
-     * }
-     */
-    public static final OfShort uint_least16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uint_least32_t;
-     * }
-     */
-    public static final OfInt uint_least32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_least64_t;
-     * }
-     */
-    public static final OfLong uint_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef signed char int_fast8_t;
-     * }
-     */
-    public static final OfByte int_fast8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long int_fast16_t;
-     * }
-     */
-    public static final OfLong int_fast16_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long int_fast32_t;
-     * }
-     */
-    public static final OfLong int_fast32_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long int_fast64_t;
-     * }
-     */
-    public static final OfLong int_fast64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char uint_fast8_t;
-     * }
-     */
-    public static final OfByte uint_fast8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast16_t;
-     * }
-     */
-    public static final OfLong uint_fast16_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast32_t;
-     * }
-     */
-    public static final OfLong uint_fast32_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uint_fast64_t;
-     * }
-     */
-    public static final OfLong uint_fast64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long intptr_t;
-     * }
-     */
-    public static final OfLong intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uintptr_t;
-     * }
-     */
-    public static final OfLong uintptr_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long intmax_t;
-     * }
-     */
-    public static final OfLong intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long uintmax_t;
-     * }
-     */
-    public static final OfLong uintmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef float _Float32;
-     * }
-     */
-    public static final OfFloat _Float32 = Constants$root.C_FLOAT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef double _Float64;
-     * }
-     */
-    public static final OfDouble _Float64 = Constants$root.C_DOUBLE$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef double _Float32x;
-     * }
-     */
-    public static final OfDouble _Float32x = Constants$root.C_DOUBLE$LAYOUT;
+    public static OfLong ptrdiff_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt wchar_t = Constants$root.C_INT$LAYOUT;
+    public static OfShort __int16_t = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt __int32_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong __int64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfShort __int_least16_t = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt __int_least32_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong __int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __quad_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __off_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __off64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt __pid_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong __clock_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __time_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __suseconds64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt __daddr_t = Constants$root.C_INT$LAYOUT;
+    public static OfInt __key_t = Constants$root.C_INT$LAYOUT;
+    public static OfInt __clockid_t = Constants$root.C_INT$LAYOUT;
+    public static OfAddress __timer_t = Constants$root.C_POINTER$LAYOUT;
+    public static OfLong __blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __blkcnt64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __fsword_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __syscall_slong_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __loff_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfAddress __caddr_t = Constants$root.C_POINTER$LAYOUT;
+    public static OfLong __intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt __sig_atomic_t = Constants$root.C_INT$LAYOUT;
+    public static OfShort int16_t = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt int32_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong int64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfShort int_least16_t = Constants$root.C_SHORT$LAYOUT;
+    public static OfInt int_least32_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong int_fast16_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong int_fast32_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong int_fast64_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfFloat _Float32 = Constants$root.C_FLOAT$LAYOUT;
+    public static OfDouble _Float64 = Constants$root.C_DOUBLE$LAYOUT;
+    public static OfDouble _Float32x = Constants$root.C_DOUBLE$LAYOUT;
     public static MethodHandle __ctype_get_mb_cur_max$MH() {
         return RuntimeHelper.requireNonNull(constants$0.__ctype_get_mb_cur_max$MH,"__ctype_get_mb_cur_max");
     }
-    /**
-     * {@snippet :
-     * unsigned long __ctype_get_mb_cur_max();
-     * }
-     */
-    public static long __ctype_get_mb_cur_max() {
+    public static long __ctype_get_mb_cur_max () {
         var mh$ = __ctype_get_mb_cur_max$MH();
         try {
             return (long)mh$.invokeExact();
@@ -1572,12 +440,7 @@ public class RapierC  {
     public static MethodHandle atof$MH() {
         return RuntimeHelper.requireNonNull(constants$0.atof$MH,"atof");
     }
-    /**
-     * {@snippet :
-     * double atof(char* __nptr);
-     * }
-     */
-    public static double atof(MemorySegment __nptr) {
+    public static double atof ( Addressable __nptr) {
         var mh$ = atof$MH();
         try {
             return (double)mh$.invokeExact(__nptr);
@@ -1588,12 +451,7 @@ public class RapierC  {
     public static MethodHandle atoi$MH() {
         return RuntimeHelper.requireNonNull(constants$0.atoi$MH,"atoi");
     }
-    /**
-     * {@snippet :
-     * int atoi(char* __nptr);
-     * }
-     */
-    public static int atoi(MemorySegment __nptr) {
+    public static int atoi ( Addressable __nptr) {
         var mh$ = atoi$MH();
         try {
             return (int)mh$.invokeExact(__nptr);
@@ -1604,12 +462,7 @@ public class RapierC  {
     public static MethodHandle atol$MH() {
         return RuntimeHelper.requireNonNull(constants$0.atol$MH,"atol");
     }
-    /**
-     * {@snippet :
-     * long atol(char* __nptr);
-     * }
-     */
-    public static long atol(MemorySegment __nptr) {
+    public static long atol ( Addressable __nptr) {
         var mh$ = atol$MH();
         try {
             return (long)mh$.invokeExact(__nptr);
@@ -1620,12 +473,7 @@ public class RapierC  {
     public static MethodHandle atoll$MH() {
         return RuntimeHelper.requireNonNull(constants$0.atoll$MH,"atoll");
     }
-    /**
-     * {@snippet :
-     * long long atoll(char* __nptr);
-     * }
-     */
-    public static long atoll(MemorySegment __nptr) {
+    public static long atoll ( Addressable __nptr) {
         var mh$ = atoll$MH();
         try {
             return (long)mh$.invokeExact(__nptr);
@@ -1636,12 +484,7 @@ public class RapierC  {
     public static MethodHandle strtod$MH() {
         return RuntimeHelper.requireNonNull(constants$0.strtod$MH,"strtod");
     }
-    /**
-     * {@snippet :
-     * double strtod(char* __nptr, char** __endptr);
-     * }
-     */
-    public static double strtod(MemorySegment __nptr, MemorySegment __endptr) {
+    public static double strtod ( Addressable __nptr,  Addressable __endptr) {
         var mh$ = strtod$MH();
         try {
             return (double)mh$.invokeExact(__nptr, __endptr);
@@ -1652,12 +495,7 @@ public class RapierC  {
     public static MethodHandle strtof$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtof$MH,"strtof");
     }
-    /**
-     * {@snippet :
-     * float strtof(char* __nptr, char** __endptr);
-     * }
-     */
-    public static float strtof(MemorySegment __nptr, MemorySegment __endptr) {
+    public static float strtof ( Addressable __nptr,  Addressable __endptr) {
         var mh$ = strtof$MH();
         try {
             return (float)mh$.invokeExact(__nptr, __endptr);
@@ -1668,12 +506,7 @@ public class RapierC  {
     public static MethodHandle strtol$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtol$MH,"strtol");
     }
-    /**
-     * {@snippet :
-     * long strtol(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtol(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtol ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtol$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1684,12 +517,7 @@ public class RapierC  {
     public static MethodHandle strtoul$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtoul$MH,"strtoul");
     }
-    /**
-     * {@snippet :
-     * unsigned long strtoul(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoul(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtoul ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtoul$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1700,12 +528,7 @@ public class RapierC  {
     public static MethodHandle strtoq$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtoq$MH,"strtoq");
     }
-    /**
-     * {@snippet :
-     * long long strtoq(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoq(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtoq ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtoq$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1716,12 +539,7 @@ public class RapierC  {
     public static MethodHandle strtouq$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtouq$MH,"strtouq");
     }
-    /**
-     * {@snippet :
-     * unsigned long long strtouq(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtouq(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtouq ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtouq$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1732,12 +550,7 @@ public class RapierC  {
     public static MethodHandle strtoll$MH() {
         return RuntimeHelper.requireNonNull(constants$1.strtoll$MH,"strtoll");
     }
-    /**
-     * {@snippet :
-     * long long strtoll(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoll(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtoll ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtoll$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1748,12 +561,7 @@ public class RapierC  {
     public static MethodHandle strtoull$MH() {
         return RuntimeHelper.requireNonNull(constants$2.strtoull$MH,"strtoull");
     }
-    /**
-     * {@snippet :
-     * unsigned long long strtoull(char* __nptr, char** __endptr, int __base);
-     * }
-     */
-    public static long strtoull(MemorySegment __nptr, MemorySegment __endptr, int __base) {
+    public static long strtoull ( Addressable __nptr,  Addressable __endptr,  int __base) {
         var mh$ = strtoull$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -1764,15 +572,10 @@ public class RapierC  {
     public static MethodHandle l64a$MH() {
         return RuntimeHelper.requireNonNull(constants$2.l64a$MH,"l64a");
     }
-    /**
-     * {@snippet :
-     * char* l64a(long __n);
-     * }
-     */
-    public static MemorySegment l64a(long __n) {
+    public static MemoryAddress l64a ( long __n) {
         var mh$ = l64a$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__n);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1780,12 +583,7 @@ public class RapierC  {
     public static MethodHandle a64l$MH() {
         return RuntimeHelper.requireNonNull(constants$2.a64l$MH,"a64l");
     }
-    /**
-     * {@snippet :
-     * long a64l(char* __s);
-     * }
-     */
-    public static long a64l(MemorySegment __s) {
+    public static long a64l ( Addressable __s) {
         var mh$ = a64l$MH();
         try {
             return (long)mh$.invokeExact(__s);
@@ -1793,225 +591,92 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    /**
-     * {@snippet :
-     * typedef unsigned char u_char;
-     * }
-     */
-    public static final OfByte u_char = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short u_short;
-     * }
-     */
-    public static final OfShort u_short = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int u_int;
-     * }
-     */
-    public static final OfInt u_int = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long u_long;
-     * }
-     */
-    public static final OfLong u_long = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long quad_t;
-     * }
-     */
-    public static final OfLong quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long u_quad_t;
-     * }
-     */
-    public static final OfLong u_quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long loff_t;
-     * }
-     */
-    public static final OfLong loff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long ino_t;
-     * }
-     */
-    public static final OfLong ino_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long dev_t;
-     * }
-     */
-    public static final OfLong dev_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int gid_t;
-     * }
-     */
-    public static final OfInt gid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int mode_t;
-     * }
-     */
-    public static final OfInt mode_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long nlink_t;
-     * }
-     */
-    public static final OfLong nlink_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uid_t;
-     * }
-     */
-    public static final OfInt uid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long off_t;
-     * }
-     */
-    public static final OfLong off_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int pid_t;
-     * }
-     */
-    public static final OfInt pid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int id_t;
-     * }
-     */
-    public static final OfInt id_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long ssize_t;
-     * }
-     */
-    public static final OfLong ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int daddr_t;
-     * }
-     */
-    public static final OfInt daddr_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef char* caddr_t;
-     * }
-     */
-    public static final OfAddress caddr_t = Constants$root.C_POINTER$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int key_t;
-     * }
-     */
-    public static final OfInt key_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long clock_t;
-     * }
-     */
-    public static final OfLong clock_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int clockid_t;
-     * }
-     */
-    public static final OfInt clockid_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long time_t;
-     * }
-     */
-    public static final OfLong time_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef void* timer_t;
-     * }
-     */
-    public static final OfAddress timer_t = Constants$root.C_POINTER$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long ulong;
-     * }
-     */
-    public static final OfLong ulong = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short ushort;
-     * }
-     */
-    public static final OfShort ushort = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int uint;
-     * }
-     */
-    public static final OfInt uint = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned char u_int8_t;
-     * }
-     */
-    public static final OfByte u_int8_t = Constants$root.C_CHAR$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned short u_int16_t;
-     * }
-     */
-    public static final OfShort u_int16_t = Constants$root.C_SHORT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int u_int32_t;
-     * }
-     */
-    public static final OfInt u_int32_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long u_int64_t;
-     * }
-     */
-    public static final OfLong u_int64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long register_t;
-     * }
-     */
-    public static final OfLong register_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long suseconds_t;
-     * }
-     */
-    public static final OfLong suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long __fd_mask;
-     * }
-     */
-    public static final OfLong __fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long fd_mask;
-     * }
-     */
-    public static final OfLong fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
-    public static MethodHandle select$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.select$MH,"select");
+    public static OfLong quad_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong loff_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong off_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt pid_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt daddr_t = Constants$root.C_INT$LAYOUT;
+    public static OfAddress caddr_t = Constants$root.C_POINTER$LAYOUT;
+    public static OfInt key_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong clock_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt clockid_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong time_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfAddress timer_t = Constants$root.C_POINTER$LAYOUT;
+    public static OfLong register_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static MethodHandle __bswap_16$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.__bswap_16$MH,"__bswap_16");
     }
-    /**
-     * {@snippet :
-     * int select(int __nfds, struct fd_set* __readfds, struct fd_set* __writefds, struct fd_set* __exceptfds, struct timeval* __timeout);
-     * }
-     */
-    public static int select(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout) {
+    public static short __bswap_16 ( short __bsx) {
+        var mh$ = __bswap_16$MH();
+        try {
+            return (short)mh$.invokeExact(__bsx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __bswap_32$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.__bswap_32$MH,"__bswap_32");
+    }
+    public static int __bswap_32 ( int __bsx) {
+        var mh$ = __bswap_32$MH();
+        try {
+            return (int)mh$.invokeExact(__bsx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __bswap_64$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.__bswap_64$MH,"__bswap_64");
+    }
+    public static long __bswap_64 ( long __bsx) {
+        var mh$ = __bswap_64$MH();
+        try {
+            return (long)mh$.invokeExact(__bsx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __uint16_identity$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.__uint16_identity$MH,"__uint16_identity");
+    }
+    public static short __uint16_identity ( short __x) {
+        var mh$ = __uint16_identity$MH();
+        try {
+            return (short)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __uint32_identity$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.__uint32_identity$MH,"__uint32_identity");
+    }
+    public static int __uint32_identity ( int __x) {
+        var mh$ = __uint32_identity$MH();
+        try {
+            return (int)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __uint64_identity$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.__uint64_identity$MH,"__uint64_identity");
+    }
+    public static long __uint64_identity ( long __x) {
+        var mh$ = __uint64_identity$MH();
+        try {
+            return (long)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static OfLong suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong __fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
+    public static MethodHandle select$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.select$MH,"select");
+    }
+    public static int select ( int __nfds,  Addressable __readfds,  Addressable __writefds,  Addressable __exceptfds,  Addressable __timeout) {
         var mh$ = select$MH();
         try {
             return (int)mh$.invokeExact(__nfds, __readfds, __writefds, __exceptfds, __timeout);
@@ -2020,14 +685,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle pselect$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.pselect$MH,"pselect");
+        return RuntimeHelper.requireNonNull(constants$3.pselect$MH,"pselect");
     }
-    /**
-     * {@snippet :
-     * int pselect(int __nfds, struct fd_set* __readfds, struct fd_set* __writefds, struct fd_set* __exceptfds, struct timespec* __timeout, struct __sigset_t* __sigmask);
-     * }
-     */
-    public static int pselect(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout, MemorySegment __sigmask) {
+    public static int pselect ( int __nfds,  Addressable __readfds,  Addressable __writefds,  Addressable __exceptfds,  Addressable __timeout,  Addressable __sigmask) {
         var mh$ = pselect$MH();
         try {
             return (int)mh$.invokeExact(__nfds, __readfds, __writefds, __exceptfds, __timeout, __sigmask);
@@ -2035,75 +695,14 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    /**
-     * {@snippet :
-     * typedef long blksize_t;
-     * }
-     */
-    public static final OfLong blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef long blkcnt_t;
-     * }
-     */
-    public static final OfLong blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long fsblkcnt_t;
-     * }
-     */
-    public static final OfLong fsblkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long fsfilcnt_t;
-     * }
-     */
-    public static final OfLong fsfilcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int __tss_t;
-     * }
-     */
-    public static final OfInt __tss_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long __thrd_t;
-     * }
-     */
-    public static final OfLong __thrd_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned long pthread_t;
-     * }
-     */
-    public static final OfLong pthread_t = Constants$root.C_LONG_LONG$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef unsigned int pthread_key_t;
-     * }
-     */
-    public static final OfInt pthread_key_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int pthread_once_t;
-     * }
-     */
-    public static final OfInt pthread_once_t = Constants$root.C_INT$LAYOUT;
-    /**
-     * {@snippet :
-     * typedef int pthread_spinlock_t;
-     * }
-     */
-    public static final OfInt pthread_spinlock_t = Constants$root.C_INT$LAYOUT;
+    public static OfLong blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfLong blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
+    public static OfInt pthread_once_t = Constants$root.C_INT$LAYOUT;
+    public static OfInt pthread_spinlock_t = Constants$root.C_INT$LAYOUT;
     public static MethodHandle random$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.random$MH,"random");
+        return RuntimeHelper.requireNonNull(constants$3.random$MH,"random");
     }
-    /**
-     * {@snippet :
-     * long random();
-     * }
-     */
-    public static long random() {
+    public static long random () {
         var mh$ = random$MH();
         try {
             return (long)mh$.invokeExact();
@@ -2112,14 +711,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle srandom$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.srandom$MH,"srandom");
+        return RuntimeHelper.requireNonNull(constants$4.srandom$MH,"srandom");
     }
-    /**
-     * {@snippet :
-     * void srandom(unsigned int __seed);
-     * }
-     */
-    public static void srandom(int __seed) {
+    public static void srandom ( int __seed) {
         var mh$ = srandom$MH();
         try {
             mh$.invokeExact(__seed);
@@ -2128,46 +722,31 @@ public class RapierC  {
         }
     }
     public static MethodHandle initstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.initstate$MH,"initstate");
+        return RuntimeHelper.requireNonNull(constants$4.initstate$MH,"initstate");
     }
-    /**
-     * {@snippet :
-     * char* initstate(unsigned int __seed, char* __statebuf, unsigned long __statelen);
-     * }
-     */
-    public static MemorySegment initstate(int __seed, MemorySegment __statebuf, long __statelen) {
+    public static MemoryAddress initstate ( int __seed,  Addressable __statebuf,  long __statelen) {
         var mh$ = initstate$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__seed, __statebuf, __statelen);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__seed, __statebuf, __statelen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle setstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.setstate$MH,"setstate");
+        return RuntimeHelper.requireNonNull(constants$4.setstate$MH,"setstate");
     }
-    /**
-     * {@snippet :
-     * char* setstate(char* __statebuf);
-     * }
-     */
-    public static MemorySegment setstate(MemorySegment __statebuf) {
+    public static MemoryAddress setstate ( Addressable __statebuf) {
         var mh$ = setstate$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__statebuf);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__statebuf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle random_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.random_r$MH,"random_r");
+        return RuntimeHelper.requireNonNull(constants$4.random_r$MH,"random_r");
     }
-    /**
-     * {@snippet :
-     * int random_r(struct random_data* __buf, int* __result);
-     * }
-     */
-    public static int random_r(MemorySegment __buf, MemorySegment __result) {
+    public static int random_r ( Addressable __buf,  Addressable __result) {
         var mh$ = random_r$MH();
         try {
             return (int)mh$.invokeExact(__buf, __result);
@@ -2176,14 +755,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle srandom_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.srandom_r$MH,"srandom_r");
+        return RuntimeHelper.requireNonNull(constants$4.srandom_r$MH,"srandom_r");
     }
-    /**
-     * {@snippet :
-     * int srandom_r(unsigned int __seed, struct random_data* __buf);
-     * }
-     */
-    public static int srandom_r(int __seed, MemorySegment __buf) {
+    public static int srandom_r ( int __seed,  Addressable __buf) {
         var mh$ = srandom_r$MH();
         try {
             return (int)mh$.invokeExact(__seed, __buf);
@@ -2192,14 +766,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle initstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.initstate_r$MH,"initstate_r");
+        return RuntimeHelper.requireNonNull(constants$4.initstate_r$MH,"initstate_r");
     }
-    /**
-     * {@snippet :
-     * int initstate_r(unsigned int __seed, char* __statebuf, unsigned long __statelen, struct random_data* __buf);
-     * }
-     */
-    public static int initstate_r(int __seed, MemorySegment __statebuf, long __statelen, MemorySegment __buf) {
+    public static int initstate_r ( int __seed,  Addressable __statebuf,  long __statelen,  Addressable __buf) {
         var mh$ = initstate_r$MH();
         try {
             return (int)mh$.invokeExact(__seed, __statebuf, __statelen, __buf);
@@ -2208,14 +777,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle setstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.setstate_r$MH,"setstate_r");
+        return RuntimeHelper.requireNonNull(constants$5.setstate_r$MH,"setstate_r");
     }
-    /**
-     * {@snippet :
-     * int setstate_r(char* __statebuf, struct random_data* __buf);
-     * }
-     */
-    public static int setstate_r(MemorySegment __statebuf, MemorySegment __buf) {
+    public static int setstate_r ( Addressable __statebuf,  Addressable __buf) {
         var mh$ = setstate_r$MH();
         try {
             return (int)mh$.invokeExact(__statebuf, __buf);
@@ -2224,14 +788,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle rand$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.rand$MH,"rand");
+        return RuntimeHelper.requireNonNull(constants$5.rand$MH,"rand");
     }
-    /**
-     * {@snippet :
-     * int rand();
-     * }
-     */
-    public static int rand() {
+    public static int rand () {
         var mh$ = rand$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2240,14 +799,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle srand$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.srand$MH,"srand");
+        return RuntimeHelper.requireNonNull(constants$5.srand$MH,"srand");
     }
-    /**
-     * {@snippet :
-     * void srand(unsigned int __seed);
-     * }
-     */
-    public static void srand(int __seed) {
+    public static void srand ( int __seed) {
         var mh$ = srand$MH();
         try {
             mh$.invokeExact(__seed);
@@ -2256,14 +810,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle rand_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.rand_r$MH,"rand_r");
+        return RuntimeHelper.requireNonNull(constants$5.rand_r$MH,"rand_r");
     }
-    /**
-     * {@snippet :
-     * int rand_r(unsigned int* __seed);
-     * }
-     */
-    public static int rand_r(MemorySegment __seed) {
+    public static int rand_r ( Addressable __seed) {
         var mh$ = rand_r$MH();
         try {
             return (int)mh$.invokeExact(__seed);
@@ -2272,14 +821,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle drand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.drand48$MH,"drand48");
+        return RuntimeHelper.requireNonNull(constants$5.drand48$MH,"drand48");
     }
-    /**
-     * {@snippet :
-     * double drand48();
-     * }
-     */
-    public static double drand48() {
+    public static double drand48 () {
         var mh$ = drand48$MH();
         try {
             return (double)mh$.invokeExact();
@@ -2288,14 +832,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle erand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.erand48$MH,"erand48");
+        return RuntimeHelper.requireNonNull(constants$5.erand48$MH,"erand48");
     }
-    /**
-     * {@snippet :
-     * double erand48(unsigned short __xsubi[3]);
-     * }
-     */
-    public static double erand48(MemorySegment __xsubi) {
+    public static double erand48 ( Addressable __xsubi) {
         var mh$ = erand48$MH();
         try {
             return (double)mh$.invokeExact(__xsubi);
@@ -2304,14 +843,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle lrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.lrand48$MH,"lrand48");
+        return RuntimeHelper.requireNonNull(constants$6.lrand48$MH,"lrand48");
     }
-    /**
-     * {@snippet :
-     * long lrand48();
-     * }
-     */
-    public static long lrand48() {
+    public static long lrand48 () {
         var mh$ = lrand48$MH();
         try {
             return (long)mh$.invokeExact();
@@ -2320,14 +854,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle nrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.nrand48$MH,"nrand48");
+        return RuntimeHelper.requireNonNull(constants$6.nrand48$MH,"nrand48");
     }
-    /**
-     * {@snippet :
-     * long nrand48(unsigned short __xsubi[3]);
-     * }
-     */
-    public static long nrand48(MemorySegment __xsubi) {
+    public static long nrand48 ( Addressable __xsubi) {
         var mh$ = nrand48$MH();
         try {
             return (long)mh$.invokeExact(__xsubi);
@@ -2336,14 +865,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle mrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.mrand48$MH,"mrand48");
+        return RuntimeHelper.requireNonNull(constants$6.mrand48$MH,"mrand48");
     }
-    /**
-     * {@snippet :
-     * long mrand48();
-     * }
-     */
-    public static long mrand48() {
+    public static long mrand48 () {
         var mh$ = mrand48$MH();
         try {
             return (long)mh$.invokeExact();
@@ -2352,14 +876,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle jrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.jrand48$MH,"jrand48");
+        return RuntimeHelper.requireNonNull(constants$6.jrand48$MH,"jrand48");
     }
-    /**
-     * {@snippet :
-     * long jrand48(unsigned short __xsubi[3]);
-     * }
-     */
-    public static long jrand48(MemorySegment __xsubi) {
+    public static long jrand48 ( Addressable __xsubi) {
         var mh$ = jrand48$MH();
         try {
             return (long)mh$.invokeExact(__xsubi);
@@ -2368,14 +887,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle srand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.srand48$MH,"srand48");
+        return RuntimeHelper.requireNonNull(constants$6.srand48$MH,"srand48");
     }
-    /**
-     * {@snippet :
-     * void srand48(long __seedval);
-     * }
-     */
-    public static void srand48(long __seedval) {
+    public static void srand48 ( long __seedval) {
         var mh$ = srand48$MH();
         try {
             mh$.invokeExact(__seedval);
@@ -2384,30 +898,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle seed48$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.seed48$MH,"seed48");
+        return RuntimeHelper.requireNonNull(constants$6.seed48$MH,"seed48");
     }
-    /**
-     * {@snippet :
-     * unsigned short* seed48(unsigned short __seed16v[3]);
-     * }
-     */
-    public static MemorySegment seed48(MemorySegment __seed16v) {
+    public static MemoryAddress seed48 ( Addressable __seed16v) {
         var mh$ = seed48$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__seed16v);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__seed16v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle lcong48$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.lcong48$MH,"lcong48");
+        return RuntimeHelper.requireNonNull(constants$7.lcong48$MH,"lcong48");
     }
-    /**
-     * {@snippet :
-     * void lcong48(unsigned short __param[7]);
-     * }
-     */
-    public static void lcong48(MemorySegment __param) {
+    public static void lcong48 ( Addressable __param) {
         var mh$ = lcong48$MH();
         try {
             mh$.invokeExact(__param);
@@ -2416,14 +920,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle drand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.drand48_r$MH,"drand48_r");
+        return RuntimeHelper.requireNonNull(constants$7.drand48_r$MH,"drand48_r");
     }
-    /**
-     * {@snippet :
-     * int drand48_r(struct drand48_data* __buffer, double* __result);
-     * }
-     */
-    public static int drand48_r(MemorySegment __buffer, MemorySegment __result) {
+    public static int drand48_r ( Addressable __buffer,  Addressable __result) {
         var mh$ = drand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
@@ -2432,14 +931,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle erand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.erand48_r$MH,"erand48_r");
+        return RuntimeHelper.requireNonNull(constants$7.erand48_r$MH,"erand48_r");
     }
-    /**
-     * {@snippet :
-     * int erand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, double* __result);
-     * }
-     */
-    public static int erand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
+    public static int erand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
         var mh$ = erand48_r$MH();
         try {
             return (int)mh$.invokeExact(__xsubi, __buffer, __result);
@@ -2448,14 +942,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle lrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.lrand48_r$MH,"lrand48_r");
+        return RuntimeHelper.requireNonNull(constants$7.lrand48_r$MH,"lrand48_r");
     }
-    /**
-     * {@snippet :
-     * int lrand48_r(struct drand48_data* __buffer, long* __result);
-     * }
-     */
-    public static int lrand48_r(MemorySegment __buffer, MemorySegment __result) {
+    public static int lrand48_r ( Addressable __buffer,  Addressable __result) {
         var mh$ = lrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
@@ -2464,14 +953,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle nrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.nrand48_r$MH,"nrand48_r");
+        return RuntimeHelper.requireNonNull(constants$7.nrand48_r$MH,"nrand48_r");
     }
-    /**
-     * {@snippet :
-     * int nrand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, long* __result);
-     * }
-     */
-    public static int nrand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
+    public static int nrand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
         var mh$ = nrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__xsubi, __buffer, __result);
@@ -2480,14 +964,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle mrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.mrand48_r$MH,"mrand48_r");
+        return RuntimeHelper.requireNonNull(constants$7.mrand48_r$MH,"mrand48_r");
     }
-    /**
-     * {@snippet :
-     * int mrand48_r(struct drand48_data* __buffer, long* __result);
-     * }
-     */
-    public static int mrand48_r(MemorySegment __buffer, MemorySegment __result) {
+    public static int mrand48_r ( Addressable __buffer,  Addressable __result) {
         var mh$ = mrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
@@ -2496,14 +975,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle jrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.jrand48_r$MH,"jrand48_r");
+        return RuntimeHelper.requireNonNull(constants$8.jrand48_r$MH,"jrand48_r");
     }
-    /**
-     * {@snippet :
-     * int jrand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, long* __result);
-     * }
-     */
-    public static int jrand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
+    public static int jrand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
         var mh$ = jrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__xsubi, __buffer, __result);
@@ -2512,14 +986,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle srand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.srand48_r$MH,"srand48_r");
+        return RuntimeHelper.requireNonNull(constants$8.srand48_r$MH,"srand48_r");
     }
-    /**
-     * {@snippet :
-     * int srand48_r(long __seedval, struct drand48_data* __buffer);
-     * }
-     */
-    public static int srand48_r(long __seedval, MemorySegment __buffer) {
+    public static int srand48_r ( long __seedval,  Addressable __buffer) {
         var mh$ = srand48_r$MH();
         try {
             return (int)mh$.invokeExact(__seedval, __buffer);
@@ -2528,14 +997,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle seed48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.seed48_r$MH,"seed48_r");
+        return RuntimeHelper.requireNonNull(constants$8.seed48_r$MH,"seed48_r");
     }
-    /**
-     * {@snippet :
-     * int seed48_r(unsigned short __seed16v[3], struct drand48_data* __buffer);
-     * }
-     */
-    public static int seed48_r(MemorySegment __seed16v, MemorySegment __buffer) {
+    public static int seed48_r ( Addressable __seed16v,  Addressable __buffer) {
         var mh$ = seed48_r$MH();
         try {
             return (int)mh$.invokeExact(__seed16v, __buffer);
@@ -2544,14 +1008,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle lcong48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.lcong48_r$MH,"lcong48_r");
+        return RuntimeHelper.requireNonNull(constants$8.lcong48_r$MH,"lcong48_r");
     }
-    /**
-     * {@snippet :
-     * int lcong48_r(unsigned short __param[7], struct drand48_data* __buffer);
-     * }
-     */
-    public static int lcong48_r(MemorySegment __param, MemorySegment __buffer) {
+    public static int lcong48_r ( Addressable __param,  Addressable __buffer) {
         var mh$ = lcong48_r$MH();
         try {
             return (int)mh$.invokeExact(__param, __buffer);
@@ -2560,14 +1019,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle arc4random$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.arc4random$MH,"arc4random");
+        return RuntimeHelper.requireNonNull(constants$8.arc4random$MH,"arc4random");
     }
-    /**
-     * {@snippet :
-     * unsigned int arc4random();
-     * }
-     */
-    public static int arc4random() {
+    public static int arc4random () {
         var mh$ = arc4random$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2576,14 +1030,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle arc4random_buf$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.arc4random_buf$MH,"arc4random_buf");
+        return RuntimeHelper.requireNonNull(constants$8.arc4random_buf$MH,"arc4random_buf");
     }
-    /**
-     * {@snippet :
-     * void arc4random_buf(void* __buf, unsigned long __size);
-     * }
-     */
-    public static void arc4random_buf(MemorySegment __buf, long __size) {
+    public static void arc4random_buf ( Addressable __buf,  long __size) {
         var mh$ = arc4random_buf$MH();
         try {
             mh$.invokeExact(__buf, __size);
@@ -2592,14 +1041,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle arc4random_uniform$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.arc4random_uniform$MH,"arc4random_uniform");
+        return RuntimeHelper.requireNonNull(constants$9.arc4random_uniform$MH,"arc4random_uniform");
     }
-    /**
-     * {@snippet :
-     * unsigned int arc4random_uniform(unsigned int __upper_bound);
-     * }
-     */
-    public static int arc4random_uniform(int __upper_bound) {
+    public static int arc4random_uniform ( int __upper_bound) {
         var mh$ = arc4random_uniform$MH();
         try {
             return (int)mh$.invokeExact(__upper_bound);
@@ -2608,62 +1052,42 @@ public class RapierC  {
         }
     }
     public static MethodHandle malloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.malloc$MH,"malloc");
+        return RuntimeHelper.requireNonNull(constants$9.malloc$MH,"malloc");
     }
-    /**
-     * {@snippet :
-     * void* malloc(unsigned long __size);
-     * }
-     */
-    public static MemorySegment malloc(long __size) {
+    public static MemoryAddress malloc ( long __size) {
         var mh$ = malloc$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle calloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.calloc$MH,"calloc");
+        return RuntimeHelper.requireNonNull(constants$9.calloc$MH,"calloc");
     }
-    /**
-     * {@snippet :
-     * void* calloc(unsigned long __nmemb, unsigned long __size);
-     * }
-     */
-    public static MemorySegment calloc(long __nmemb, long __size) {
+    public static MemoryAddress calloc ( long __nmemb,  long __size) {
         var mh$ = calloc$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__nmemb, __size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__nmemb, __size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.realloc$MH,"realloc");
+        return RuntimeHelper.requireNonNull(constants$9.realloc$MH,"realloc");
     }
-    /**
-     * {@snippet :
-     * void* realloc(void* __ptr, unsigned long __size);
-     * }
-     */
-    public static MemorySegment realloc(MemorySegment __ptr, long __size) {
+    public static MemoryAddress realloc ( Addressable __ptr,  long __size) {
         var mh$ = realloc$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__ptr, __size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__ptr, __size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle free$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.free$MH,"free");
+        return RuntimeHelper.requireNonNull(constants$9.free$MH,"free");
     }
-    /**
-     * {@snippet :
-     * void free(void* __ptr);
-     * }
-     */
-    public static void free(MemorySegment __ptr) {
+    public static void free ( Addressable __ptr) {
         var mh$ = free$MH();
         try {
             mh$.invokeExact(__ptr);
@@ -2672,62 +1096,42 @@ public class RapierC  {
         }
     }
     public static MethodHandle reallocarray$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.reallocarray$MH,"reallocarray");
+        return RuntimeHelper.requireNonNull(constants$9.reallocarray$MH,"reallocarray");
     }
-    /**
-     * {@snippet :
-     * void* reallocarray(void* __ptr, unsigned long __nmemb, unsigned long __size);
-     * }
-     */
-    public static MemorySegment reallocarray(MemorySegment __ptr, long __nmemb, long __size) {
+    public static MemoryAddress reallocarray ( Addressable __ptr,  long __nmemb,  long __size) {
         var mh$ = reallocarray$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__ptr, __nmemb, __size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__ptr, __nmemb, __size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle alloca$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.alloca$MH,"alloca");
+        return RuntimeHelper.requireNonNull(constants$10.alloca$MH,"alloca");
     }
-    /**
-     * {@snippet :
-     * void* alloca(unsigned long __size);
-     * }
-     */
-    public static MemorySegment alloca(long __size) {
+    public static MemoryAddress alloca ( long __size) {
         var mh$ = alloca$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle valloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.valloc$MH,"valloc");
+        return RuntimeHelper.requireNonNull(constants$10.valloc$MH,"valloc");
     }
-    /**
-     * {@snippet :
-     * void* valloc(unsigned long __size);
-     * }
-     */
-    public static MemorySegment valloc(long __size) {
+    public static MemoryAddress valloc ( long __size) {
         var mh$ = valloc$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle posix_memalign$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.posix_memalign$MH,"posix_memalign");
+        return RuntimeHelper.requireNonNull(constants$10.posix_memalign$MH,"posix_memalign");
     }
-    /**
-     * {@snippet :
-     * int posix_memalign(void** __memptr, unsigned long __alignment, unsigned long __size);
-     * }
-     */
-    public static int posix_memalign(MemorySegment __memptr, long __alignment, long __size) {
+    public static int posix_memalign ( Addressable __memptr,  long __alignment,  long __size) {
         var mh$ = posix_memalign$MH();
         try {
             return (int)mh$.invokeExact(__memptr, __alignment, __size);
@@ -2736,30 +1140,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle aligned_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.aligned_alloc$MH,"aligned_alloc");
+        return RuntimeHelper.requireNonNull(constants$10.aligned_alloc$MH,"aligned_alloc");
     }
-    /**
-     * {@snippet :
-     * void* aligned_alloc(unsigned long __alignment, unsigned long __size);
-     * }
-     */
-    public static MemorySegment aligned_alloc(long __alignment, long __size) {
+    public static MemoryAddress aligned_alloc ( long __alignment,  long __size) {
         var mh$ = aligned_alloc$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__alignment, __size);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__alignment, __size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle abort$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.abort$MH,"abort");
+        return RuntimeHelper.requireNonNull(constants$10.abort$MH,"abort");
     }
-    /**
-     * {@snippet :
-     * void abort();
-     * }
-     */
-    public static void abort() {
+    public static void abort () {
         var mh$ = abort$MH();
         try {
             mh$.invokeExact();
@@ -2768,14 +1162,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle atexit$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.atexit$MH,"atexit");
+        return RuntimeHelper.requireNonNull(constants$11.atexit$MH,"atexit");
     }
-    /**
-     * {@snippet :
-     * int atexit(void (*__func)());
-     * }
-     */
-    public static int atexit(MemorySegment __func) {
+    public static int atexit ( Addressable __func) {
         var mh$ = atexit$MH();
         try {
             return (int)mh$.invokeExact(__func);
@@ -2784,14 +1173,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle at_quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.at_quick_exit$MH,"at_quick_exit");
+        return RuntimeHelper.requireNonNull(constants$11.at_quick_exit$MH,"at_quick_exit");
     }
-    /**
-     * {@snippet :
-     * int at_quick_exit(void (*__func)());
-     * }
-     */
-    public static int at_quick_exit(MemorySegment __func) {
+    public static int at_quick_exit ( Addressable __func) {
         var mh$ = at_quick_exit$MH();
         try {
             return (int)mh$.invokeExact(__func);
@@ -2800,14 +1184,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle on_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.on_exit$MH,"on_exit");
+        return RuntimeHelper.requireNonNull(constants$12.on_exit$MH,"on_exit");
     }
-    /**
-     * {@snippet :
-     * int on_exit(void (*__func)(int,void*), void* __arg);
-     * }
-     */
-    public static int on_exit(MemorySegment __func, MemorySegment __arg) {
+    public static int on_exit ( Addressable __func,  Addressable __arg) {
         var mh$ = on_exit$MH();
         try {
             return (int)mh$.invokeExact(__func, __arg);
@@ -2816,14 +1195,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.exit$MH,"exit");
+        return RuntimeHelper.requireNonNull(constants$12.exit$MH,"exit");
     }
-    /**
-     * {@snippet :
-     * void exit(int __status);
-     * }
-     */
-    public static void exit(int __status) {
+    public static void exit ( int __status) {
         var mh$ = exit$MH();
         try {
             mh$.invokeExact(__status);
@@ -2832,14 +1206,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.quick_exit$MH,"quick_exit");
+        return RuntimeHelper.requireNonNull(constants$12.quick_exit$MH,"quick_exit");
     }
-    /**
-     * {@snippet :
-     * void quick_exit(int __status);
-     * }
-     */
-    public static void quick_exit(int __status) {
+    public static void quick_exit ( int __status) {
         var mh$ = quick_exit$MH();
         try {
             mh$.invokeExact(__status);
@@ -2848,14 +1217,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle _Exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$11._Exit$MH,"_Exit");
+        return RuntimeHelper.requireNonNull(constants$12._Exit$MH,"_Exit");
     }
-    /**
-     * {@snippet :
-     * void _Exit(int __status);
-     * }
-     */
-    public static void _Exit(int __status) {
+    public static void _Exit ( int __status) {
         var mh$ = _Exit$MH();
         try {
             mh$.invokeExact(__status);
@@ -2864,30 +1228,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle getenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.getenv$MH,"getenv");
+        return RuntimeHelper.requireNonNull(constants$12.getenv$MH,"getenv");
     }
-    /**
-     * {@snippet :
-     * char* getenv(char* __name);
-     * }
-     */
-    public static MemorySegment getenv(MemorySegment __name) {
+    public static MemoryAddress getenv ( Addressable __name) {
         var mh$ = getenv$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__name);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__name);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle putenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.putenv$MH,"putenv");
+        return RuntimeHelper.requireNonNull(constants$13.putenv$MH,"putenv");
     }
-    /**
-     * {@snippet :
-     * int putenv(char* __string);
-     * }
-     */
-    public static int putenv(MemorySegment __string) {
+    public static int putenv ( Addressable __string) {
         var mh$ = putenv$MH();
         try {
             return (int)mh$.invokeExact(__string);
@@ -2896,14 +1250,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle setenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.setenv$MH,"setenv");
+        return RuntimeHelper.requireNonNull(constants$13.setenv$MH,"setenv");
     }
-    /**
-     * {@snippet :
-     * int setenv(char* __name, char* __value, int __replace);
-     * }
-     */
-    public static int setenv(MemorySegment __name, MemorySegment __value, int __replace) {
+    public static int setenv ( Addressable __name,  Addressable __value,  int __replace) {
         var mh$ = setenv$MH();
         try {
             return (int)mh$.invokeExact(__name, __value, __replace);
@@ -2912,14 +1261,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle unsetenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.unsetenv$MH,"unsetenv");
+        return RuntimeHelper.requireNonNull(constants$13.unsetenv$MH,"unsetenv");
     }
-    /**
-     * {@snippet :
-     * int unsetenv(char* __name);
-     * }
-     */
-    public static int unsetenv(MemorySegment __name) {
+    public static int unsetenv ( Addressable __name) {
         var mh$ = unsetenv$MH();
         try {
             return (int)mh$.invokeExact(__name);
@@ -2928,14 +1272,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle clearenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.clearenv$MH,"clearenv");
+        return RuntimeHelper.requireNonNull(constants$13.clearenv$MH,"clearenv");
     }
-    /**
-     * {@snippet :
-     * int clearenv();
-     * }
-     */
-    public static int clearenv() {
+    public static int clearenv () {
         var mh$ = clearenv$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2944,30 +1283,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle mktemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.mktemp$MH,"mktemp");
+        return RuntimeHelper.requireNonNull(constants$13.mktemp$MH,"mktemp");
     }
-    /**
-     * {@snippet :
-     * char* mktemp(char* __template);
-     * }
-     */
-    public static MemorySegment mktemp(MemorySegment __template) {
+    public static MemoryAddress mktemp ( Addressable __template) {
         var mh$ = mktemp$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__template);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__template);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle mkstemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.mkstemp$MH,"mkstemp");
+        return RuntimeHelper.requireNonNull(constants$13.mkstemp$MH,"mkstemp");
     }
-    /**
-     * {@snippet :
-     * int mkstemp(char* __template);
-     * }
-     */
-    public static int mkstemp(MemorySegment __template) {
+    public static int mkstemp ( Addressable __template) {
         var mh$ = mkstemp$MH();
         try {
             return (int)mh$.invokeExact(__template);
@@ -2976,14 +1305,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle mkstemps$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.mkstemps$MH,"mkstemps");
+        return RuntimeHelper.requireNonNull(constants$14.mkstemps$MH,"mkstemps");
     }
-    /**
-     * {@snippet :
-     * int mkstemps(char* __template, int __suffixlen);
-     * }
-     */
-    public static int mkstemps(MemorySegment __template, int __suffixlen) {
+    public static int mkstemps ( Addressable __template,  int __suffixlen) {
         var mh$ = mkstemps$MH();
         try {
             return (int)mh$.invokeExact(__template, __suffixlen);
@@ -2992,30 +1316,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle mkdtemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.mkdtemp$MH,"mkdtemp");
+        return RuntimeHelper.requireNonNull(constants$14.mkdtemp$MH,"mkdtemp");
     }
-    /**
-     * {@snippet :
-     * char* mkdtemp(char* __template);
-     * }
-     */
-    public static MemorySegment mkdtemp(MemorySegment __template) {
+    public static MemoryAddress mkdtemp ( Addressable __template) {
         var mh$ = mkdtemp$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__template);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__template);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle system$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.system$MH,"system");
+        return RuntimeHelper.requireNonNull(constants$14.system$MH,"system");
     }
-    /**
-     * {@snippet :
-     * int system(char* __command);
-     * }
-     */
-    public static int system(MemorySegment __command) {
+    public static int system ( Addressable __command) {
         var mh$ = system$MH();
         try {
             return (int)mh$.invokeExact(__command);
@@ -3024,46 +1338,31 @@ public class RapierC  {
         }
     }
     public static MethodHandle realpath$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.realpath$MH,"realpath");
+        return RuntimeHelper.requireNonNull(constants$14.realpath$MH,"realpath");
     }
-    /**
-     * {@snippet :
-     * char* realpath(char* __name, char* __resolved);
-     * }
-     */
-    public static MemorySegment realpath(MemorySegment __name, MemorySegment __resolved) {
+    public static MemoryAddress realpath ( Addressable __name,  Addressable __resolved) {
         var mh$ = realpath$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__name, __resolved);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__name, __resolved);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle bsearch$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.bsearch$MH,"bsearch");
+        return RuntimeHelper.requireNonNull(constants$15.bsearch$MH,"bsearch");
     }
-    /**
-     * {@snippet :
-     * void* bsearch(void* __key, void* __base, unsigned long __nmemb, unsigned long __size, int (*__compar)(void*,void*));
-     * }
-     */
-    public static MemorySegment bsearch(MemorySegment __key, MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
+    public static MemoryAddress bsearch ( Addressable __key,  Addressable __base,  long __nmemb,  long __size,  Addressable __compar) {
         var mh$ = bsearch$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__key, __base, __nmemb, __size, __compar);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__key, __base, __nmemb, __size, __compar);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle qsort$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.qsort$MH,"qsort");
+        return RuntimeHelper.requireNonNull(constants$15.qsort$MH,"qsort");
     }
-    /**
-     * {@snippet :
-     * void qsort(void* __base, unsigned long __nmemb, unsigned long __size, int (*__compar)(void*,void*));
-     * }
-     */
-    public static void qsort(MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
+    public static void qsort ( Addressable __base,  long __nmemb,  long __size,  Addressable __compar) {
         var mh$ = qsort$MH();
         try {
             mh$.invokeExact(__base, __nmemb, __size, __compar);
@@ -3074,12 +1373,7 @@ public class RapierC  {
     public static MethodHandle abs$MH() {
         return RuntimeHelper.requireNonNull(constants$15.abs$MH,"abs");
     }
-    /**
-     * {@snippet :
-     * int abs(int __x);
-     * }
-     */
-    public static int abs(int __x) {
+    public static int abs ( int __x) {
         var mh$ = abs$MH();
         try {
             return (int)mh$.invokeExact(__x);
@@ -3090,12 +1384,7 @@ public class RapierC  {
     public static MethodHandle labs$MH() {
         return RuntimeHelper.requireNonNull(constants$15.labs$MH,"labs");
     }
-    /**
-     * {@snippet :
-     * long labs(long __x);
-     * }
-     */
-    public static long labs(long __x) {
+    public static long labs ( long __x) {
         var mh$ = labs$MH();
         try {
             return (long)mh$.invokeExact(__x);
@@ -3106,12 +1395,7 @@ public class RapierC  {
     public static MethodHandle llabs$MH() {
         return RuntimeHelper.requireNonNull(constants$15.llabs$MH,"llabs");
     }
-    /**
-     * {@snippet :
-     * long long llabs(long long __x);
-     * }
-     */
-    public static long llabs(long __x) {
+    public static long llabs ( long __x) {
         var mh$ = llabs$MH();
         try {
             return (long)mh$.invokeExact(__x);
@@ -3122,12 +1406,7 @@ public class RapierC  {
     public static MethodHandle div$MH() {
         return RuntimeHelper.requireNonNull(constants$15.div$MH,"div");
     }
-    /**
-     * {@snippet :
-     * struct div_t div(int __numer, int __denom);
-     * }
-     */
-    public static MemorySegment div(SegmentAllocator allocator, int __numer, int __denom) {
+    public static MemorySegment div ( SegmentAllocator allocator,  int __numer,  int __denom) {
         var mh$ = div$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
@@ -3136,14 +1415,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle ldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.ldiv$MH,"ldiv");
+        return RuntimeHelper.requireNonNull(constants$16.ldiv$MH,"ldiv");
     }
-    /**
-     * {@snippet :
-     * struct ldiv_t ldiv(long __numer, long __denom);
-     * }
-     */
-    public static MemorySegment ldiv(SegmentAllocator allocator, long __numer, long __denom) {
+    public static MemorySegment ldiv ( SegmentAllocator allocator,  long __numer,  long __denom) {
         var mh$ = ldiv$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
@@ -3152,14 +1426,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle lldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.lldiv$MH,"lldiv");
+        return RuntimeHelper.requireNonNull(constants$16.lldiv$MH,"lldiv");
     }
-    /**
-     * {@snippet :
-     * struct lldiv_t lldiv(long long __numer, long long __denom);
-     * }
-     */
-    public static MemorySegment lldiv(SegmentAllocator allocator, long __numer, long __denom) {
+    public static MemorySegment lldiv ( SegmentAllocator allocator,  long __numer,  long __denom) {
         var mh$ = lldiv$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
@@ -3170,15 +1439,10 @@ public class RapierC  {
     public static MethodHandle ecvt$MH() {
         return RuntimeHelper.requireNonNull(constants$16.ecvt$MH,"ecvt");
     }
-    /**
-     * {@snippet :
-     * char* ecvt(double __value, int __ndigit, int* __decpt, int* __sign);
-     * }
-     */
-    public static MemorySegment ecvt(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign) {
+    public static MemoryAddress ecvt ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign) {
         var mh$ = ecvt$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3186,15 +1450,10 @@ public class RapierC  {
     public static MethodHandle fcvt$MH() {
         return RuntimeHelper.requireNonNull(constants$16.fcvt$MH,"fcvt");
     }
-    /**
-     * {@snippet :
-     * char* fcvt(double __value, int __ndigit, int* __decpt, int* __sign);
-     * }
-     */
-    public static MemorySegment fcvt(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign) {
+    public static MemoryAddress fcvt ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign) {
         var mh$ = fcvt$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3202,15 +1461,10 @@ public class RapierC  {
     public static MethodHandle gcvt$MH() {
         return RuntimeHelper.requireNonNull(constants$16.gcvt$MH,"gcvt");
     }
-    /**
-     * {@snippet :
-     * char* gcvt(double __value, int __ndigit, char* __buf);
-     * }
-     */
-    public static MemorySegment gcvt(double __value, int __ndigit, MemorySegment __buf) {
+    public static MemoryAddress gcvt ( double __value,  int __ndigit,  Addressable __buf) {
         var mh$ = gcvt$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __buf);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __buf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3218,12 +1472,7 @@ public class RapierC  {
     public static MethodHandle ecvt_r$MH() {
         return RuntimeHelper.requireNonNull(constants$16.ecvt_r$MH,"ecvt_r");
     }
-    /**
-     * {@snippet :
-     * int ecvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, unsigned long __len);
-     * }
-     */
-    public static int ecvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
+    public static int ecvt_r ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign,  Addressable __buf,  long __len) {
         var mh$ = ecvt_r$MH();
         try {
             return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
@@ -3232,14 +1481,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle fcvt_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.fcvt_r$MH,"fcvt_r");
+        return RuntimeHelper.requireNonNull(constants$17.fcvt_r$MH,"fcvt_r");
     }
-    /**
-     * {@snippet :
-     * int fcvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, unsigned long __len);
-     * }
-     */
-    public static int fcvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
+    public static int fcvt_r ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign,  Addressable __buf,  long __len) {
         var mh$ = fcvt_r$MH();
         try {
             return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
@@ -3248,14 +1492,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle mblen$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.mblen$MH,"mblen");
+        return RuntimeHelper.requireNonNull(constants$17.mblen$MH,"mblen");
     }
-    /**
-     * {@snippet :
-     * int mblen(char* __s, unsigned long __n);
-     * }
-     */
-    public static int mblen(MemorySegment __s, long __n) {
+    public static int mblen ( Addressable __s,  long __n) {
         var mh$ = mblen$MH();
         try {
             return (int)mh$.invokeExact(__s, __n);
@@ -3266,12 +1505,7 @@ public class RapierC  {
     public static MethodHandle mbtowc$MH() {
         return RuntimeHelper.requireNonNull(constants$17.mbtowc$MH,"mbtowc");
     }
-    /**
-     * {@snippet :
-     * int mbtowc(int* __pwc, char* __s, unsigned long __n);
-     * }
-     */
-    public static int mbtowc(MemorySegment __pwc, MemorySegment __s, long __n) {
+    public static int mbtowc ( Addressable __pwc,  Addressable __s,  long __n) {
         var mh$ = mbtowc$MH();
         try {
             return (int)mh$.invokeExact(__pwc, __s, __n);
@@ -3282,12 +1516,7 @@ public class RapierC  {
     public static MethodHandle wctomb$MH() {
         return RuntimeHelper.requireNonNull(constants$17.wctomb$MH,"wctomb");
     }
-    /**
-     * {@snippet :
-     * int wctomb(char* __s, int __wchar);
-     * }
-     */
-    public static int wctomb(MemorySegment __s, int __wchar) {
+    public static int wctomb ( Addressable __s,  int __wchar) {
         var mh$ = wctomb$MH();
         try {
             return (int)mh$.invokeExact(__s, __wchar);
@@ -3298,12 +1527,7 @@ public class RapierC  {
     public static MethodHandle mbstowcs$MH() {
         return RuntimeHelper.requireNonNull(constants$17.mbstowcs$MH,"mbstowcs");
     }
-    /**
-     * {@snippet :
-     * unsigned long mbstowcs(int* __pwcs, char* __s, unsigned long __n);
-     * }
-     */
-    public static long mbstowcs(MemorySegment __pwcs, MemorySegment __s, long __n) {
+    public static long mbstowcs ( Addressable __pwcs,  Addressable __s,  long __n) {
         var mh$ = mbstowcs$MH();
         try {
             return (long)mh$.invokeExact(__pwcs, __s, __n);
@@ -3314,12 +1538,7 @@ public class RapierC  {
     public static MethodHandle wcstombs$MH() {
         return RuntimeHelper.requireNonNull(constants$17.wcstombs$MH,"wcstombs");
     }
-    /**
-     * {@snippet :
-     * unsigned long wcstombs(char* __s, int* __pwcs, unsigned long __n);
-     * }
-     */
-    public static long wcstombs(MemorySegment __s, MemorySegment __pwcs, long __n) {
+    public static long wcstombs ( Addressable __s,  Addressable __pwcs,  long __n) {
         var mh$ = wcstombs$MH();
         try {
             return (long)mh$.invokeExact(__s, __pwcs, __n);
@@ -3328,14 +1547,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle rpmatch$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.rpmatch$MH,"rpmatch");
+        return RuntimeHelper.requireNonNull(constants$18.rpmatch$MH,"rpmatch");
     }
-    /**
-     * {@snippet :
-     * int rpmatch(char* __response);
-     * }
-     */
-    public static int rpmatch(MemorySegment __response) {
+    public static int rpmatch ( Addressable __response) {
         var mh$ = rpmatch$MH();
         try {
             return (int)mh$.invokeExact(__response);
@@ -3344,14 +1558,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle getsubopt$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.getsubopt$MH,"getsubopt");
+        return RuntimeHelper.requireNonNull(constants$18.getsubopt$MH,"getsubopt");
     }
-    /**
-     * {@snippet :
-     * int getsubopt(char** __optionp, char** __tokens, char** __valuep);
-     * }
-     */
-    public static int getsubopt(MemorySegment __optionp, MemorySegment __tokens, MemorySegment __valuep) {
+    public static int getsubopt ( Addressable __optionp,  Addressable __tokens,  Addressable __valuep) {
         var mh$ = getsubopt$MH();
         try {
             return (int)mh$.invokeExact(__optionp, __tokens, __valuep);
@@ -3362,12 +1571,7 @@ public class RapierC  {
     public static MethodHandle getloadavg$MH() {
         return RuntimeHelper.requireNonNull(constants$18.getloadavg$MH,"getloadavg");
     }
-    /**
-     * {@snippet :
-     * int getloadavg(double __loadavg[], int __nelem);
-     * }
-     */
-    public static int getloadavg(MemorySegment __loadavg, int __nelem) {
+    public static int getloadavg ( Addressable __loadavg,  int __nelem) {
         var mh$ = getloadavg$MH();
         try {
             return (int)mh$.invokeExact(__loadavg, __nelem);
@@ -3375,85 +1579,35 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    /**
-     * {@snippet :
-     * typedef double Real;
-     * }
-     */
-    public static final OfDouble Real = Constants$root.C_DOUBLE$LAYOUT;
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule.Average = 0;
-     * }
-     */
+    public static OfDouble Real = Constants$root.C_DOUBLE$LAYOUT;
     public static int Average() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule.Min = 1;
-     * }
-     */
     public static int Min() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule.Multiply = 2;
-     * }
-     */
     public static int Multiply() {
         return (int)2L;
     }
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule.Max = 3;
-     * }
-     */
     public static int Max() {
         return (int)3L;
     }
-    /**
-     * {@snippet :
-     * enum RprRigidBodyType.Dynamic = 0;
-     * }
-     */
     public static int Dynamic() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * enum RprRigidBodyType.Fixed = 1;
-     * }
-     */
     public static int Fixed() {
         return (int)1L;
     }
-    /**
-     * {@snippet :
-     * enum RprRigidBodyType.KinematicPositionBased = 2;
-     * }
-     */
     public static int KinematicPositionBased() {
         return (int)2L;
     }
-    /**
-     * {@snippet :
-     * enum RprRigidBodyType.KinematicVelocityBased = 3;
-     * }
-     */
     public static int KinematicVelocityBased() {
         return (int)3L;
     }
     public static MethodHandle RprBroadPhase_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$18.RprBroadPhase_drop$MH,"RprBroadPhase_drop");
     }
-    /**
-     * {@snippet :
-     * void RprBroadPhase_drop(struct RprBroadPhase* this_);
-     * }
-     */
-    public static void RprBroadPhase_drop(MemorySegment this_) {
+    public static void RprBroadPhase_drop ( Addressable this_) {
         var mh$ = RprBroadPhase_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -3464,15 +1618,10 @@ public class RapierC  {
     public static MethodHandle RprBroadPhase_new$MH() {
         return RuntimeHelper.requireNonNull(constants$18.RprBroadPhase_new$MH,"RprBroadPhase_new");
     }
-    /**
-     * {@snippet :
-     * struct RprBroadPhase* RprBroadPhase_new();
-     * }
-     */
-    public static MemorySegment RprBroadPhase_new() {
+    public static MemoryAddress RprBroadPhase_new () {
         var mh$ = RprBroadPhase_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3480,12 +1629,7 @@ public class RapierC  {
     public static MethodHandle RprCCDSolver_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$18.RprCCDSolver_drop$MH,"RprCCDSolver_drop");
     }
-    /**
-     * {@snippet :
-     * void RprCCDSolver_drop(struct RprCCDSolver* this_);
-     * }
-     */
-    public static void RprCCDSolver_drop(MemorySegment this_) {
+    public static void RprCCDSolver_drop ( Addressable this_) {
         var mh$ = RprCCDSolver_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -3494,33 +1638,23 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCCDSolver_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.RprCCDSolver_new$MH,"RprCCDSolver_new");
+        return RuntimeHelper.requireNonNull(constants$19.RprCCDSolver_new$MH,"RprCCDSolver_new");
     }
-    /**
-     * {@snippet :
-     * struct RprCCDSolver* RprCCDSolver_new();
-     * }
-     */
-    public static MemorySegment RprCCDSolver_new() {
+    public static MemoryAddress RprCCDSolver_new () {
         var mh$ = RprCCDSolver_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprColliderBuilder_build$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.RprColliderBuilder_build$MH,"RprColliderBuilder_build");
+        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_build$MH,"RprColliderBuilder_build");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderBuilder_build(struct RprColliderBuilder* this_);
-     * }
-     */
-    public static MemorySegment RprColliderBuilder_build(MemorySegment this_) {
+    public static MemoryAddress RprColliderBuilder_build ( Addressable this_) {
         var mh$ = RprColliderBuilder_build$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3528,12 +1662,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_contact_force_event_threshold$MH() {
         return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_contact_force_event_threshold$MH,"RprColliderBuilder_contact_force_event_threshold");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_contact_force_event_threshold(struct RprColliderBuilder* this_, double threshold);
-     * }
-     */
-    public static void RprColliderBuilder_contact_force_event_threshold(MemorySegment this_, double threshold) {
+    public static void RprColliderBuilder_contact_force_event_threshold ( Addressable this_,  double threshold) {
         var mh$ = RprColliderBuilder_contact_force_event_threshold$MH();
         try {
             mh$.invokeExact(this_, threshold);
@@ -3544,12 +1673,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_density$MH() {
         return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_density$MH,"RprColliderBuilder_density");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_density(struct RprColliderBuilder* this_, double density);
-     * }
-     */
-    public static void RprColliderBuilder_density(MemorySegment this_, double density) {
+    public static void RprColliderBuilder_density ( Addressable this_,  double density) {
         var mh$ = RprColliderBuilder_density$MH();
         try {
             mh$.invokeExact(this_, density);
@@ -3560,12 +1684,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_drop$MH,"RprColliderBuilder_drop");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_drop(struct RprColliderBuilder* this_);
-     * }
-     */
-    public static void RprColliderBuilder_drop(MemorySegment this_) {
+    public static void RprColliderBuilder_drop ( Addressable this_) {
         var mh$ = RprColliderBuilder_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -3576,12 +1695,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_enabled$MH,"RprColliderBuilder_enabled");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_enabled(struct RprColliderBuilder* this_, _Bool enabled);
-     * }
-     */
-    public static void RprColliderBuilder_enabled(MemorySegment this_, boolean enabled) {
+    public static void RprColliderBuilder_enabled ( Addressable this_,  boolean enabled) {
         var mh$ = RprColliderBuilder_enabled$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -3590,14 +1704,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderBuilder_friction$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_friction$MH,"RprColliderBuilder_friction");
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_friction$MH,"RprColliderBuilder_friction");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_friction(struct RprColliderBuilder* this_, double friction);
-     * }
-     */
-    public static void RprColliderBuilder_friction(MemorySegment this_, double friction) {
+    public static void RprColliderBuilder_friction ( Addressable this_,  double friction) {
         var mh$ = RprColliderBuilder_friction$MH();
         try {
             mh$.invokeExact(this_, friction);
@@ -3606,14 +1715,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderBuilder_friction_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.RprColliderBuilder_friction_combine_rule$MH,"RprColliderBuilder_friction_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_friction_combine_rule$MH,"RprColliderBuilder_friction_combine_rule");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_friction_combine_rule(struct RprColliderBuilder* this_, enum RprCoefficientCombineRule rule);
-     * }
-     */
-    public static void RprColliderBuilder_friction_combine_rule(MemorySegment this_, int rule) {
+    public static void RprColliderBuilder_friction_combine_rule ( Addressable this_,  int rule) {
         var mh$ = RprColliderBuilder_friction_combine_rule$MH();
         try {
             mh$.invokeExact(this_, rule);
@@ -3624,12 +1728,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_mass$MH,"RprColliderBuilder_mass");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_mass(struct RprColliderBuilder* this_, double mass);
-     * }
-     */
-    public static void RprColliderBuilder_mass(MemorySegment this_, double mass) {
+    public static void RprColliderBuilder_mass ( Addressable this_,  double mass) {
         var mh$ = RprColliderBuilder_mass$MH();
         try {
             mh$.invokeExact(this_, mass);
@@ -3640,15 +1739,10 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_new$MH() {
         return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_new$MH,"RprColliderBuilder_new");
     }
-    /**
-     * {@snippet :
-     * struct RprColliderBuilder* RprColliderBuilder_new(struct RprSharedShape* shape);
-     * }
-     */
-    public static MemorySegment RprColliderBuilder_new(MemorySegment shape) {
+    public static MemoryAddress RprColliderBuilder_new ( Addressable shape) {
         var mh$ = RprColliderBuilder_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(shape);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(shape);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3656,12 +1750,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_position$MH() {
         return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_position$MH,"RprColliderBuilder_position");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_position(struct RprColliderBuilder* this_, struct RprIsometry position);
-     * }
-     */
-    public static void RprColliderBuilder_position(MemorySegment this_, MemorySegment position) {
+    public static void RprColliderBuilder_position ( Addressable this_,  MemorySegment position) {
         var mh$ = RprColliderBuilder_position$MH();
         try {
             mh$.invokeExact(this_, position);
@@ -3672,12 +1761,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_restitution$MH() {
         return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_restitution$MH,"RprColliderBuilder_restitution");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_restitution(struct RprColliderBuilder* this_, double restitution);
-     * }
-     */
-    public static void RprColliderBuilder_restitution(MemorySegment this_, double restitution) {
+    public static void RprColliderBuilder_restitution ( Addressable this_,  double restitution) {
         var mh$ = RprColliderBuilder_restitution$MH();
         try {
             mh$.invokeExact(this_, restitution);
@@ -3686,14 +1770,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderBuilder_restitution_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_restitution_combine_rule$MH,"RprColliderBuilder_restitution_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderBuilder_restitution_combine_rule$MH,"RprColliderBuilder_restitution_combine_rule");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_restitution_combine_rule(struct RprColliderBuilder* this_, enum RprCoefficientCombineRule rule);
-     * }
-     */
-    public static void RprColliderBuilder_restitution_combine_rule(MemorySegment this_, int rule) {
+    public static void RprColliderBuilder_restitution_combine_rule ( Addressable this_,  int rule) {
         var mh$ = RprColliderBuilder_restitution_combine_rule$MH();
         try {
             mh$.invokeExact(this_, rule);
@@ -3702,14 +1781,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderBuilder_rotation$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.RprColliderBuilder_rotation$MH,"RprColliderBuilder_rotation");
+        return RuntimeHelper.requireNonNull(constants$21.RprColliderBuilder_rotation$MH,"RprColliderBuilder_rotation");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_rotation(struct RprColliderBuilder* this_, struct RprAngVector rotation);
-     * }
-     */
-    public static void RprColliderBuilder_rotation(MemorySegment this_, MemorySegment rotation) {
+    public static void RprColliderBuilder_rotation ( Addressable this_,  MemorySegment rotation) {
         var mh$ = RprColliderBuilder_rotation$MH();
         try {
             mh$.invokeExact(this_, rotation);
@@ -3720,12 +1794,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_sensor$MH() {
         return RuntimeHelper.requireNonNull(constants$21.RprColliderBuilder_sensor$MH,"RprColliderBuilder_sensor");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_sensor(struct RprColliderBuilder* this_, _Bool sensor);
-     * }
-     */
-    public static void RprColliderBuilder_sensor(MemorySegment this_, boolean sensor) {
+    public static void RprColliderBuilder_sensor ( Addressable this_,  boolean sensor) {
         var mh$ = RprColliderBuilder_sensor$MH();
         try {
             mh$.invokeExact(this_, sensor);
@@ -3736,12 +1805,7 @@ public class RapierC  {
     public static MethodHandle RprColliderBuilder_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$21.RprColliderBuilder_translation$MH,"RprColliderBuilder_translation");
     }
-    /**
-     * {@snippet :
-     * void RprColliderBuilder_translation(struct RprColliderBuilder* this_, struct RprVector translation);
-     * }
-     */
-    public static void RprColliderBuilder_translation(MemorySegment this_, MemorySegment translation) {
+    public static void RprColliderBuilder_translation ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprColliderBuilder_translation$MH();
         try {
             mh$.invokeExact(this_, translation);
@@ -3752,12 +1816,7 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_contains$MH() {
         return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_contains$MH,"RprColliderSet_contains");
     }
-    /**
-     * {@snippet :
-     * _Bool RprColliderSet_contains(struct RprColliderSet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static boolean RprColliderSet_contains(MemorySegment this_, MemorySegment handle) {
+    public static boolean RprColliderSet_contains ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprColliderSet_contains$MH();
         try {
             return (boolean)mh$.invokeExact(this_, handle);
@@ -3768,12 +1827,7 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_drop$MH,"RprColliderSet_drop");
     }
-    /**
-     * {@snippet :
-     * void RprColliderSet_drop(struct RprColliderSet* this_);
-     * }
-     */
-    public static void RprColliderSet_drop(MemorySegment this_) {
+    public static void RprColliderSet_drop ( Addressable this_) {
         var mh$ = RprColliderSet_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -3782,33 +1836,23 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_get$MH,"RprColliderSet_get");
+        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_get$MH,"RprColliderSet_get");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderSet_get(struct RprColliderSet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static MemorySegment RprColliderSet_get(MemorySegment this_, MemorySegment handle) {
+    public static MemoryAddress RprColliderSet_get ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprColliderSet_get$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprColliderSet_get_mut$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.RprColliderSet_get_mut$MH,"RprColliderSet_get_mut");
+        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_get_mut$MH,"RprColliderSet_get_mut");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderSet_get_mut(struct RprColliderSet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static MemorySegment RprColliderSet_get_mut(MemorySegment this_, MemorySegment handle) {
+    public static MemoryAddress RprColliderSet_get_mut ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprColliderSet_get_mut$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3816,15 +1860,10 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_index$MH() {
         return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_index$MH,"RprColliderSet_index");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderSet_index(struct RprColliderSet* this_, struct RprArenaKey index);
-     * }
-     */
-    public static MemorySegment RprColliderSet_index(MemorySegment this_, MemorySegment index) {
+    public static MemoryAddress RprColliderSet_index ( Addressable this_,  MemorySegment index) {
         var mh$ = RprColliderSet_index$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, index);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, index);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3832,15 +1871,10 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_index_mut$MH() {
         return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_index_mut$MH,"RprColliderSet_index_mut");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderSet_index_mut(struct RprColliderSet* this_, struct RprArenaKey index);
-     * }
-     */
-    public static MemorySegment RprColliderSet_index_mut(MemorySegment this_, MemorySegment index) {
+    public static MemoryAddress RprColliderSet_index_mut ( Addressable this_,  MemorySegment index) {
         var mh$ = RprColliderSet_index_mut$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, index);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, index);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3848,12 +1882,7 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_insert$MH() {
         return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_insert$MH,"RprColliderSet_insert");
     }
-    /**
-     * {@snippet :
-     * struct RprArenaKey RprColliderSet_insert(struct RprColliderSet* this_, struct RprCollider* coll);
-     * }
-     */
-    public static MemorySegment RprColliderSet_insert(SegmentAllocator allocator, MemorySegment this_, MemorySegment coll) {
+    public static MemorySegment RprColliderSet_insert ( SegmentAllocator allocator,  Addressable this_,  Addressable coll) {
         var mh$ = RprColliderSet_insert$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, coll);
@@ -3864,12 +1893,7 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_insert_with_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_insert_with_parent$MH,"RprColliderSet_insert_with_parent");
     }
-    /**
-     * {@snippet :
-     * struct RprArenaKey RprColliderSet_insert_with_parent(struct RprColliderSet* this_, struct RprCollider* coll, struct RprArenaKey parent_handle, struct RprRigidBodySet* bodies);
-     * }
-     */
-    public static MemorySegment RprColliderSet_insert_with_parent(SegmentAllocator allocator, MemorySegment this_, MemorySegment coll, MemorySegment parent_handle, MemorySegment bodies) {
+    public static MemorySegment RprColliderSet_insert_with_parent ( SegmentAllocator allocator,  Addressable this_,  Addressable coll,  MemorySegment parent_handle,  Addressable bodies) {
         var mh$ = RprColliderSet_insert_with_parent$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, coll, parent_handle, bodies);
@@ -3878,14 +1902,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_is_empty$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_is_empty$MH,"RprColliderSet_is_empty");
+        return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_is_empty$MH,"RprColliderSet_is_empty");
     }
-    /**
-     * {@snippet :
-     * _Bool RprColliderSet_is_empty(struct RprColliderSet* this_);
-     * }
-     */
-    public static boolean RprColliderSet_is_empty(MemorySegment this_) {
+    public static boolean RprColliderSet_is_empty ( Addressable this_) {
         var mh$ = RprColliderSet_is_empty$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -3894,14 +1913,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprColliderSet_len$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.RprColliderSet_len$MH,"RprColliderSet_len");
+        return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_len$MH,"RprColliderSet_len");
     }
-    /**
-     * {@snippet :
-     * unsigned long RprColliderSet_len(struct RprColliderSet* this_);
-     * }
-     */
-    public static long RprColliderSet_len(MemorySegment this_) {
+    public static long RprColliderSet_len ( Addressable this_) {
         var mh$ = RprColliderSet_len$MH();
         try {
             return (long)mh$.invokeExact(this_);
@@ -3912,15 +1926,10 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_new$MH() {
         return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_new$MH,"RprColliderSet_new");
     }
-    /**
-     * {@snippet :
-     * struct RprColliderSet* RprColliderSet_new();
-     * }
-     */
-    public static MemorySegment RprColliderSet_new() {
+    public static MemoryAddress RprColliderSet_new () {
         var mh$ = RprColliderSet_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3928,15 +1937,10 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_remove$MH() {
         return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_remove$MH,"RprColliderSet_remove");
     }
-    /**
-     * {@snippet :
-     * struct RprCollider* RprColliderSet_remove(struct RprColliderSet* this_, struct RprArenaKey handle, struct RprIslandManager* islands, struct RprRigidBodySet* bodies, _Bool wake_up);
-     * }
-     */
-    public static MemorySegment RprColliderSet_remove(MemorySegment this_, MemorySegment handle, MemorySegment islands, MemorySegment bodies, boolean wake_up) {
+    public static MemoryAddress RprColliderSet_remove ( Addressable this_,  MemorySegment handle,  Addressable islands,  Addressable bodies,  boolean wake_up) {
         var mh$ = RprColliderSet_remove$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle, islands, bodies, wake_up);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle, islands, bodies, wake_up);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -3944,12 +1948,7 @@ public class RapierC  {
     public static MethodHandle RprColliderSet_set_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$23.RprColliderSet_set_parent$MH,"RprColliderSet_set_parent");
     }
-    /**
-     * {@snippet :
-     * void RprColliderSet_set_parent(struct RprColliderSet* this_, struct RprArenaKey handle, struct RprArenaKey new_parent_handle, struct RprRigidBodySet* bodies);
-     * }
-     */
-    public static void RprColliderSet_set_parent(MemorySegment this_, MemorySegment handle, MemorySegment new_parent_handle, MemorySegment bodies) {
+    public static void RprColliderSet_set_parent ( Addressable this_,  MemorySegment handle,  MemorySegment new_parent_handle,  Addressable bodies) {
         var mh$ = RprColliderSet_set_parent$MH();
         try {
             mh$.invokeExact(this_, handle, new_parent_handle, bodies);
@@ -3960,12 +1959,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_compute_aabb$MH() {
         return RuntimeHelper.requireNonNull(constants$23.RprCollider_compute_aabb$MH,"RprCollider_compute_aabb");
     }
-    /**
-     * {@snippet :
-     * struct RprAabb RprCollider_compute_aabb(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_compute_aabb(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_compute_aabb ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_compute_aabb$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -3974,14 +1968,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_compute_swept_aabb$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprCollider_compute_swept_aabb$MH,"RprCollider_compute_swept_aabb");
+        return RuntimeHelper.requireNonNull(constants$24.RprCollider_compute_swept_aabb$MH,"RprCollider_compute_swept_aabb");
     }
-    /**
-     * {@snippet :
-     * struct RprAabb RprCollider_compute_swept_aabb(struct RprCollider* this_, struct RprIsometry next_position);
-     * }
-     */
-    public static MemorySegment RprCollider_compute_swept_aabb(SegmentAllocator allocator, MemorySegment this_, MemorySegment next_position) {
+    public static MemorySegment RprCollider_compute_swept_aabb ( SegmentAllocator allocator,  Addressable this_,  MemorySegment next_position) {
         var mh$ = RprCollider_compute_swept_aabb$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, next_position);
@@ -3990,14 +1979,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_contact_force_event_threshold$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.RprCollider_contact_force_event_threshold$MH,"RprCollider_contact_force_event_threshold");
+        return RuntimeHelper.requireNonNull(constants$24.RprCollider_contact_force_event_threshold$MH,"RprCollider_contact_force_event_threshold");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_contact_force_event_threshold(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_contact_force_event_threshold(MemorySegment this_) {
+    public static double RprCollider_contact_force_event_threshold ( Addressable this_) {
         var mh$ = RprCollider_contact_force_event_threshold$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4008,12 +1992,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_density$MH() {
         return RuntimeHelper.requireNonNull(constants$24.RprCollider_density$MH,"RprCollider_density");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_density(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_density(MemorySegment this_) {
+    public static double RprCollider_density ( Addressable this_) {
         var mh$ = RprCollider_density$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4024,12 +2003,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$24.RprCollider_drop$MH,"RprCollider_drop");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_drop(struct RprCollider* this_);
-     * }
-     */
-    public static void RprCollider_drop(MemorySegment this_) {
+    public static void RprCollider_drop ( Addressable this_) {
         var mh$ = RprCollider_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4040,12 +2014,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_friction$MH() {
         return RuntimeHelper.requireNonNull(constants$24.RprCollider_friction$MH,"RprCollider_friction");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_friction(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_friction(MemorySegment this_) {
+    public static double RprCollider_friction ( Addressable this_) {
         var mh$ = RprCollider_friction$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4056,12 +2025,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_friction_combine_rule$MH() {
         return RuntimeHelper.requireNonNull(constants$24.RprCollider_friction_combine_rule$MH,"RprCollider_friction_combine_rule");
     }
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule RprCollider_friction_combine_rule(struct RprCollider* this_);
-     * }
-     */
-    public static int RprCollider_friction_combine_rule(MemorySegment this_) {
+    public static int RprCollider_friction_combine_rule ( Addressable this_) {
         var mh$ = RprCollider_friction_combine_rule$MH();
         try {
             return (int)mh$.invokeExact(this_);
@@ -4070,14 +2034,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_is_enabled$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprCollider_is_enabled$MH,"RprCollider_is_enabled");
+        return RuntimeHelper.requireNonNull(constants$25.RprCollider_is_enabled$MH,"RprCollider_is_enabled");
     }
-    /**
-     * {@snippet :
-     * _Bool RprCollider_is_enabled(struct RprCollider* this_);
-     * }
-     */
-    public static boolean RprCollider_is_enabled(MemorySegment this_) {
+    public static boolean RprCollider_is_enabled ( Addressable this_) {
         var mh$ = RprCollider_is_enabled$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -4086,14 +2045,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_is_sensor$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.RprCollider_is_sensor$MH,"RprCollider_is_sensor");
+        return RuntimeHelper.requireNonNull(constants$25.RprCollider_is_sensor$MH,"RprCollider_is_sensor");
     }
-    /**
-     * {@snippet :
-     * _Bool RprCollider_is_sensor(struct RprCollider* this_);
-     * }
-     */
-    public static boolean RprCollider_is_sensor(MemorySegment this_) {
+    public static boolean RprCollider_is_sensor ( Addressable this_) {
         var mh$ = RprCollider_is_sensor$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -4104,12 +2058,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$25.RprCollider_mass$MH,"RprCollider_mass");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_mass(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_mass(MemorySegment this_) {
+    public static double RprCollider_mass ( Addressable this_) {
         var mh$ = RprCollider_mass$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4120,12 +2069,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$25.RprCollider_parent$MH,"RprCollider_parent");
     }
-    /**
-     * {@snippet :
-     * struct RprArenaKey RprCollider_parent(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_parent(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_parent ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_parent$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -4136,12 +2080,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_position$MH() {
         return RuntimeHelper.requireNonNull(constants$25.RprCollider_position$MH,"RprCollider_position");
     }
-    /**
-     * {@snippet :
-     * struct RprIsometry RprCollider_position(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_position(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_position ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_position$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -4152,12 +2091,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_position_wrt_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$25.RprCollider_position_wrt_parent$MH,"RprCollider_position_wrt_parent");
     }
-    /**
-     * {@snippet :
-     * struct RprIsometry RprCollider_position_wrt_parent(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_position_wrt_parent(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_position_wrt_parent ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_position_wrt_parent$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -4166,14 +2100,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_restitution$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprCollider_restitution$MH,"RprCollider_restitution");
+        return RuntimeHelper.requireNonNull(constants$26.RprCollider_restitution$MH,"RprCollider_restitution");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_restitution(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_restitution(MemorySegment this_) {
+    public static double RprCollider_restitution ( Addressable this_) {
         var mh$ = RprCollider_restitution$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4182,14 +2111,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_restitution_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.RprCollider_restitution_combine_rule$MH,"RprCollider_restitution_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$26.RprCollider_restitution_combine_rule$MH,"RprCollider_restitution_combine_rule");
     }
-    /**
-     * {@snippet :
-     * enum RprCoefficientCombineRule RprCollider_restitution_combine_rule(struct RprCollider* this_);
-     * }
-     */
-    public static int RprCollider_restitution_combine_rule(MemorySegment this_) {
+    public static int RprCollider_restitution_combine_rule ( Addressable this_) {
         var mh$ = RprCollider_restitution_combine_rule$MH();
         try {
             return (int)mh$.invokeExact(this_);
@@ -4200,12 +2124,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_rotation$MH() {
         return RuntimeHelper.requireNonNull(constants$26.RprCollider_rotation$MH,"RprCollider_rotation");
     }
-    /**
-     * {@snippet :
-     * struct RprRotation RprCollider_rotation(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_rotation(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_rotation ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_rotation$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -4216,12 +2135,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_contact_force_event_threshold$MH() {
         return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_contact_force_event_threshold$MH,"RprCollider_set_contact_force_event_threshold");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_contact_force_event_threshold(struct RprCollider* this_, double threshold);
-     * }
-     */
-    public static void RprCollider_set_contact_force_event_threshold(MemorySegment this_, double threshold) {
+    public static void RprCollider_set_contact_force_event_threshold ( Addressable this_,  double threshold) {
         var mh$ = RprCollider_set_contact_force_event_threshold$MH();
         try {
             mh$.invokeExact(this_, threshold);
@@ -4232,12 +2146,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_density$MH() {
         return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_density$MH,"RprCollider_set_density");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_density(struct RprCollider* this_, double density);
-     * }
-     */
-    public static void RprCollider_set_density(MemorySegment this_, double density) {
+    public static void RprCollider_set_density ( Addressable this_,  double density) {
         var mh$ = RprCollider_set_density$MH();
         try {
             mh$.invokeExact(this_, density);
@@ -4248,12 +2157,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_enabled$MH,"RprCollider_set_enabled");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_enabled(struct RprCollider* this_, _Bool enabled);
-     * }
-     */
-    public static void RprCollider_set_enabled(MemorySegment this_, boolean enabled) {
+    public static void RprCollider_set_enabled ( Addressable this_,  boolean enabled) {
         var mh$ = RprCollider_set_enabled$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -4262,14 +2166,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_friction$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_friction$MH,"RprCollider_set_friction");
+        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_friction$MH,"RprCollider_set_friction");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_friction(struct RprCollider* this_, double coefficient);
-     * }
-     */
-    public static void RprCollider_set_friction(MemorySegment this_, double coefficient) {
+    public static void RprCollider_set_friction ( Addressable this_,  double coefficient) {
         var mh$ = RprCollider_set_friction$MH();
         try {
             mh$.invokeExact(this_, coefficient);
@@ -4278,14 +2177,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_friction_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.RprCollider_set_friction_combine_rule$MH,"RprCollider_set_friction_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_friction_combine_rule$MH,"RprCollider_set_friction_combine_rule");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_friction_combine_rule(struct RprCollider* this_, enum RprCoefficientCombineRule rule);
-     * }
-     */
-    public static void RprCollider_set_friction_combine_rule(MemorySegment this_, int rule) {
+    public static void RprCollider_set_friction_combine_rule ( Addressable this_,  int rule) {
         var mh$ = RprCollider_set_friction_combine_rule$MH();
         try {
             mh$.invokeExact(this_, rule);
@@ -4296,12 +2190,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_mass$MH,"RprCollider_set_mass");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_mass(struct RprCollider* this_, double mass);
-     * }
-     */
-    public static void RprCollider_set_mass(MemorySegment this_, double mass) {
+    public static void RprCollider_set_mass ( Addressable this_,  double mass) {
         var mh$ = RprCollider_set_mass$MH();
         try {
             mh$.invokeExact(this_, mass);
@@ -4312,12 +2201,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_position$MH() {
         return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_position$MH,"RprCollider_set_position");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_position(struct RprCollider* this_, struct RprIsometry position);
-     * }
-     */
-    public static void RprCollider_set_position(MemorySegment this_, MemorySegment position) {
+    public static void RprCollider_set_position ( Addressable this_,  MemorySegment position) {
         var mh$ = RprCollider_set_position$MH();
         try {
             mh$.invokeExact(this_, position);
@@ -4328,12 +2212,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_position_wrt_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_position_wrt_parent$MH,"RprCollider_set_position_wrt_parent");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_position_wrt_parent(struct RprCollider* this_, struct RprIsometry pos_wrt_parent);
-     * }
-     */
-    public static void RprCollider_set_position_wrt_parent(MemorySegment this_, MemorySegment pos_wrt_parent) {
+    public static void RprCollider_set_position_wrt_parent ( Addressable this_,  MemorySegment pos_wrt_parent) {
         var mh$ = RprCollider_set_position_wrt_parent$MH();
         try {
             mh$.invokeExact(this_, pos_wrt_parent);
@@ -4344,12 +2223,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_restitution$MH() {
         return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_restitution$MH,"RprCollider_set_restitution");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_restitution(struct RprCollider* this_, double coefficient);
-     * }
-     */
-    public static void RprCollider_set_restitution(MemorySegment this_, double coefficient) {
+    public static void RprCollider_set_restitution ( Addressable this_,  double coefficient) {
         var mh$ = RprCollider_set_restitution$MH();
         try {
             mh$.invokeExact(this_, coefficient);
@@ -4358,14 +2232,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_restitution_combine_rule$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_restitution_combine_rule$MH,"RprCollider_set_restitution_combine_rule");
+        return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_restitution_combine_rule$MH,"RprCollider_set_restitution_combine_rule");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_restitution_combine_rule(struct RprCollider* this_, enum RprCoefficientCombineRule rule);
-     * }
-     */
-    public static void RprCollider_set_restitution_combine_rule(MemorySegment this_, int rule) {
+    public static void RprCollider_set_restitution_combine_rule ( Addressable this_,  int rule) {
         var mh$ = RprCollider_set_restitution_combine_rule$MH();
         try {
             mh$.invokeExact(this_, rule);
@@ -4374,14 +2243,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_rotation$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.RprCollider_set_rotation$MH,"RprCollider_set_rotation");
+        return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_rotation$MH,"RprCollider_set_rotation");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_rotation(struct RprCollider* this_, struct RprRotation rotation);
-     * }
-     */
-    public static void RprCollider_set_rotation(MemorySegment this_, MemorySegment rotation) {
+    public static void RprCollider_set_rotation ( Addressable this_,  MemorySegment rotation) {
         var mh$ = RprCollider_set_rotation$MH();
         try {
             mh$.invokeExact(this_, rotation);
@@ -4392,12 +2256,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_rotation_wrt_parent$MH() {
         return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_rotation_wrt_parent$MH,"RprCollider_set_rotation_wrt_parent");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_rotation_wrt_parent(struct RprCollider* this_, struct RprAngVector rotation);
-     * }
-     */
-    public static void RprCollider_set_rotation_wrt_parent(MemorySegment this_, MemorySegment rotation) {
+    public static void RprCollider_set_rotation_wrt_parent ( Addressable this_,  MemorySegment rotation) {
         var mh$ = RprCollider_set_rotation_wrt_parent$MH();
         try {
             mh$.invokeExact(this_, rotation);
@@ -4408,12 +2267,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_sensor$MH() {
         return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_sensor$MH,"RprCollider_set_sensor");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_sensor(struct RprCollider* this_, _Bool is_sensor);
-     * }
-     */
-    public static void RprCollider_set_sensor(MemorySegment this_, boolean is_sensor) {
+    public static void RprCollider_set_sensor ( Addressable this_,  boolean is_sensor) {
         var mh$ = RprCollider_set_sensor$MH();
         try {
             mh$.invokeExact(this_, is_sensor);
@@ -4424,12 +2278,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_shape$MH() {
         return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_shape$MH,"RprCollider_set_shape");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_shape(struct RprCollider* this_, struct RprSharedShape* shape);
-     * }
-     */
-    public static void RprCollider_set_shape(MemorySegment this_, MemorySegment shape) {
+    public static void RprCollider_set_shape ( Addressable this_,  Addressable shape) {
         var mh$ = RprCollider_set_shape$MH();
         try {
             mh$.invokeExact(this_, shape);
@@ -4440,12 +2289,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_set_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_translation$MH,"RprCollider_set_translation");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_translation(struct RprCollider* this_, struct RprVector translation);
-     * }
-     */
-    public static void RprCollider_set_translation(MemorySegment this_, MemorySegment translation) {
+    public static void RprCollider_set_translation ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprCollider_set_translation$MH();
         try {
             mh$.invokeExact(this_, translation);
@@ -4454,14 +2298,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_set_translation_wrt_parent$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.RprCollider_set_translation_wrt_parent$MH,"RprCollider_set_translation_wrt_parent");
+        return RuntimeHelper.requireNonNull(constants$29.RprCollider_set_translation_wrt_parent$MH,"RprCollider_set_translation_wrt_parent");
     }
-    /**
-     * {@snippet :
-     * void RprCollider_set_translation_wrt_parent(struct RprCollider* this_, struct RprVector translation);
-     * }
-     */
-    public static void RprCollider_set_translation_wrt_parent(MemorySegment this_, MemorySegment translation) {
+    public static void RprCollider_set_translation_wrt_parent ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprCollider_set_translation_wrt_parent$MH();
         try {
             mh$.invokeExact(this_, translation);
@@ -4470,17 +2309,12 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprCollider_shape$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.RprCollider_shape$MH,"RprCollider_shape");
+        return RuntimeHelper.requireNonNull(constants$29.RprCollider_shape$MH,"RprCollider_shape");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprCollider_shape(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_shape(MemorySegment this_) {
+    public static MemoryAddress RprCollider_shape ( Addressable this_) {
         var mh$ = RprCollider_shape$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4488,12 +2322,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$29.RprCollider_translation$MH,"RprCollider_translation");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprCollider_translation(struct RprCollider* this_);
-     * }
-     */
-    public static MemorySegment RprCollider_translation(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprCollider_translation ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprCollider_translation$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -4504,12 +2333,7 @@ public class RapierC  {
     public static MethodHandle RprCollider_volume$MH() {
         return RuntimeHelper.requireNonNull(constants$29.RprCollider_volume$MH,"RprCollider_volume");
     }
-    /**
-     * {@snippet :
-     * double RprCollider_volume(struct RprCollider* this_);
-     * }
-     */
-    public static double RprCollider_volume(MemorySegment this_) {
+    public static double RprCollider_volume ( Addressable this_) {
         var mh$ = RprCollider_volume$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -4520,12 +2344,7 @@ public class RapierC  {
     public static MethodHandle RprImpulseJointSet_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$29.RprImpulseJointSet_drop$MH,"RprImpulseJointSet_drop");
     }
-    /**
-     * {@snippet :
-     * void RprImpulseJointSet_drop(struct RprImpulseJointSet* this_);
-     * }
-     */
-    public static void RprImpulseJointSet_drop(MemorySegment this_) {
+    public static void RprImpulseJointSet_drop ( Addressable this_) {
         var mh$ = RprImpulseJointSet_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4536,28 +2355,18 @@ public class RapierC  {
     public static MethodHandle RprImpulseJointSet_new$MH() {
         return RuntimeHelper.requireNonNull(constants$29.RprImpulseJointSet_new$MH,"RprImpulseJointSet_new");
     }
-    /**
-     * {@snippet :
-     * struct RprImpulseJointSet* RprImpulseJointSet_new();
-     * }
-     */
-    public static MemorySegment RprImpulseJointSet_new() {
+    public static MemoryAddress RprImpulseJointSet_new () {
         var mh$ = RprImpulseJointSet_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprIntegrationParametersDesc_default$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.RprIntegrationParametersDesc_default$MH,"RprIntegrationParametersDesc_default");
+        return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParametersDesc_default$MH,"RprIntegrationParametersDesc_default");
     }
-    /**
-     * {@snippet :
-     * struct RprIntegrationParametersDesc RprIntegrationParametersDesc_default();
-     * }
-     */
-    public static MemorySegment RprIntegrationParametersDesc_default(SegmentAllocator allocator) {
+    public static MemorySegment RprIntegrationParametersDesc_default ( SegmentAllocator allocator) {
         var mh$ = RprIntegrationParametersDesc_default$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
@@ -4566,14 +2375,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprIntegrationParameters_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
+        return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParameters_drop$MH,"RprIntegrationParameters_drop");
     }
-    /**
-     * {@snippet :
-     * void RprIntegrationParameters_drop(struct RprIntegrationParameters* this_);
-     * }
-     */
-    public static void RprIntegrationParameters_drop(MemorySegment this_) {
+    public static void RprIntegrationParameters_drop ( Addressable this_) {
         var mh$ = RprIntegrationParameters_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4584,15 +2388,10 @@ public class RapierC  {
     public static MethodHandle RprIntegrationParameters_new$MH() {
         return RuntimeHelper.requireNonNull(constants$30.RprIntegrationParameters_new$MH,"RprIntegrationParameters_new");
     }
-    /**
-     * {@snippet :
-     * struct RprIntegrationParameters* RprIntegrationParameters_new(struct RprIntegrationParametersDesc desc);
-     * }
-     */
-    public static MemorySegment RprIntegrationParameters_new(MemorySegment desc) {
+    public static MemoryAddress RprIntegrationParameters_new ( MemorySegment desc) {
         var mh$ = RprIntegrationParameters_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(desc);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(desc);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4600,12 +2399,7 @@ public class RapierC  {
     public static MethodHandle RprIslandManager_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$30.RprIslandManager_drop$MH,"RprIslandManager_drop");
     }
-    /**
-     * {@snippet :
-     * void RprIslandManager_drop(struct RprIslandManager* this_);
-     * }
-     */
-    public static void RprIslandManager_drop(MemorySegment this_) {
+    public static void RprIslandManager_drop ( Addressable this_) {
         var mh$ = RprIslandManager_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4616,15 +2410,10 @@ public class RapierC  {
     public static MethodHandle RprIslandManager_new$MH() {
         return RuntimeHelper.requireNonNull(constants$30.RprIslandManager_new$MH,"RprIslandManager_new");
     }
-    /**
-     * {@snippet :
-     * struct RprIslandManager* RprIslandManager_new();
-     * }
-     */
-    public static MemorySegment RprIslandManager_new() {
+    public static MemoryAddress RprIslandManager_new () {
         var mh$ = RprIslandManager_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4632,12 +2421,7 @@ public class RapierC  {
     public static MethodHandle RprMultibodyJointSet_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$30.RprMultibodyJointSet_drop$MH,"RprMultibodyJointSet_drop");
     }
-    /**
-     * {@snippet :
-     * void RprMultibodyJointSet_drop(struct RprMultibodyJointSet* this_);
-     * }
-     */
-    public static void RprMultibodyJointSet_drop(MemorySegment this_) {
+    public static void RprMultibodyJointSet_drop ( Addressable this_) {
         var mh$ = RprMultibodyJointSet_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4646,30 +2430,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprMultibodyJointSet_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.RprMultibodyJointSet_new$MH,"RprMultibodyJointSet_new");
+        return RuntimeHelper.requireNonNull(constants$31.RprMultibodyJointSet_new$MH,"RprMultibodyJointSet_new");
     }
-    /**
-     * {@snippet :
-     * struct RprMultibodyJointSet* RprMultibodyJointSet_new();
-     * }
-     */
-    public static MemorySegment RprMultibodyJointSet_new() {
+    public static MemoryAddress RprMultibodyJointSet_new () {
         var mh$ = RprMultibodyJointSet_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprNarrowPhase_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
+        return RuntimeHelper.requireNonNull(constants$31.RprNarrowPhase_drop$MH,"RprNarrowPhase_drop");
     }
-    /**
-     * {@snippet :
-     * void RprNarrowPhase_drop(struct RprNarrowPhase* this_);
-     * }
-     */
-    public static void RprNarrowPhase_drop(MemorySegment this_) {
+    public static void RprNarrowPhase_drop ( Addressable this_) {
         var mh$ = RprNarrowPhase_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4680,15 +2454,10 @@ public class RapierC  {
     public static MethodHandle RprNarrowPhase_new$MH() {
         return RuntimeHelper.requireNonNull(constants$31.RprNarrowPhase_new$MH,"RprNarrowPhase_new");
     }
-    /**
-     * {@snippet :
-     * struct RprNarrowPhase* RprNarrowPhase_new();
-     * }
-     */
-    public static MemorySegment RprNarrowPhase_new() {
+    public static MemoryAddress RprNarrowPhase_new () {
         var mh$ = RprNarrowPhase_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4696,12 +2465,7 @@ public class RapierC  {
     public static MethodHandle RprPhysicsPipeline_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$31.RprPhysicsPipeline_drop$MH,"RprPhysicsPipeline_drop");
     }
-    /**
-     * {@snippet :
-     * void RprPhysicsPipeline_drop(struct RprPhysicsPipeline* this_);
-     * }
-     */
-    public static void RprPhysicsPipeline_drop(MemorySegment this_) {
+    public static void RprPhysicsPipeline_drop ( Addressable this_) {
         var mh$ = RprPhysicsPipeline_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4712,15 +2476,10 @@ public class RapierC  {
     public static MethodHandle RprPhysicsPipeline_new$MH() {
         return RuntimeHelper.requireNonNull(constants$31.RprPhysicsPipeline_new$MH,"RprPhysicsPipeline_new");
     }
-    /**
-     * {@snippet :
-     * struct RprPhysicsPipeline* RprPhysicsPipeline_new();
-     * }
-     */
-    public static MemorySegment RprPhysicsPipeline_new() {
+    public static MemoryAddress RprPhysicsPipeline_new () {
         var mh$ = RprPhysicsPipeline_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4728,12 +2487,7 @@ public class RapierC  {
     public static MethodHandle RprPhysicsPipeline_step$MH() {
         return RuntimeHelper.requireNonNull(constants$31.RprPhysicsPipeline_step$MH,"RprPhysicsPipeline_step");
     }
-    /**
-     * {@snippet :
-     * void RprPhysicsPipeline_step(struct RprPhysicsPipeline* this_, struct RprVector gravity, struct RprIntegrationParameters* integration_parameters, struct RprIslandManager* islands, struct RprBroadPhase* broad_phase, struct RprNarrowPhase* narrow_phase, struct RprRigidBodySet* bodies, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, struct RprCCDSolver* ccd_solver, struct RprQueryPipeline* query_pipeline);
-     * }
-     */
-    public static void RprPhysicsPipeline_step(MemorySegment this_, MemorySegment gravity, MemorySegment integration_parameters, MemorySegment islands, MemorySegment broad_phase, MemorySegment narrow_phase, MemorySegment bodies, MemorySegment colliders, MemorySegment impulse_joints, MemorySegment multibody_joints, MemorySegment ccd_solver, MemorySegment query_pipeline) {
+    public static void RprPhysicsPipeline_step ( Addressable this_,  MemorySegment gravity,  Addressable integration_parameters,  Addressable islands,  Addressable broad_phase,  Addressable narrow_phase,  Addressable bodies,  Addressable colliders,  Addressable impulse_joints,  Addressable multibody_joints,  Addressable ccd_solver,  Addressable query_pipeline) {
         var mh$ = RprPhysicsPipeline_step$MH();
         try {
             mh$.invokeExact(this_, gravity, integration_parameters, islands, broad_phase, narrow_phase, bodies, colliders, impulse_joints, multibody_joints, ccd_solver, query_pipeline);
@@ -4742,14 +2496,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.RprQueryPipeline_drop$MH,"RprQueryPipeline_drop");
+        return RuntimeHelper.requireNonNull(constants$32.RprQueryPipeline_drop$MH,"RprQueryPipeline_drop");
     }
-    /**
-     * {@snippet :
-     * void RprQueryPipeline_drop(struct RprQueryPipeline* this_);
-     * }
-     */
-    public static void RprQueryPipeline_drop(MemorySegment this_) {
+    public static void RprQueryPipeline_drop ( Addressable this_) {
         var mh$ = RprQueryPipeline_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4758,17 +2507,12 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
+        return RuntimeHelper.requireNonNull(constants$32.RprQueryPipeline_new$MH,"RprQueryPipeline_new");
     }
-    /**
-     * {@snippet :
-     * struct RprQueryPipeline* RprQueryPipeline_new();
-     * }
-     */
-    public static MemorySegment RprQueryPipeline_new() {
+    public static MemoryAddress RprQueryPipeline_new () {
         var mh$ = RprQueryPipeline_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4776,12 +2520,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_additional_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_additional_mass$MH,"RprRigidBodyBuilder_additional_mass");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_additional_mass(struct RprRigidBodyBuilder* this_, double mass);
-     * }
-     */
-    public static void RprRigidBodyBuilder_additional_mass(MemorySegment this_, double mass) {
+    public static void RprRigidBodyBuilder_additional_mass ( Addressable this_,  double mass) {
         var mh$ = RprRigidBodyBuilder_additional_mass$MH();
         try {
             mh$.invokeExact(this_, mass);
@@ -4792,12 +2531,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_angular_damping$MH() {
         return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_angular_damping$MH,"RprRigidBodyBuilder_angular_damping");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_angular_damping(struct RprRigidBodyBuilder* this_, double factor);
-     * }
-     */
-    public static void RprRigidBodyBuilder_angular_damping(MemorySegment this_, double factor) {
+    public static void RprRigidBodyBuilder_angular_damping ( Addressable this_,  double factor) {
         var mh$ = RprRigidBodyBuilder_angular_damping$MH();
         try {
             mh$.invokeExact(this_, factor);
@@ -4808,12 +2542,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_angvel$MH() {
         return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_angvel$MH,"RprRigidBodyBuilder_angvel");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_angvel(struct RprRigidBodyBuilder* this_, struct RprAngVector angvel);
-     * }
-     */
-    public static void RprRigidBodyBuilder_angvel(MemorySegment this_, MemorySegment angvel) {
+    public static void RprRigidBodyBuilder_angvel ( Addressable this_,  MemorySegment angvel) {
         var mh$ = RprRigidBodyBuilder_angvel$MH();
         try {
             mh$.invokeExact(this_, angvel);
@@ -4824,28 +2553,18 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_build$MH() {
         return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_build$MH,"RprRigidBodyBuilder_build");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodyBuilder_build(struct RprRigidBodyBuilder* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_build(MemorySegment this_) {
+    public static MemoryAddress RprRigidBodyBuilder_build ( Addressable this_) {
         var mh$ = RprRigidBodyBuilder_build$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprRigidBodyBuilder_can_sleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_can_sleep$MH,"RprRigidBodyBuilder_can_sleep");
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_can_sleep$MH,"RprRigidBodyBuilder_can_sleep");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_can_sleep(struct RprRigidBodyBuilder* this_, _Bool can_sleep);
-     * }
-     */
-    public static void RprRigidBodyBuilder_can_sleep(MemorySegment this_, boolean can_sleep) {
+    public static void RprRigidBodyBuilder_can_sleep ( Addressable this_,  boolean can_sleep) {
         var mh$ = RprRigidBodyBuilder_can_sleep$MH();
         try {
             mh$.invokeExact(this_, can_sleep);
@@ -4854,14 +2573,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_ccd_enabled$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.RprRigidBodyBuilder_ccd_enabled$MH,"RprRigidBodyBuilder_ccd_enabled");
+        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_ccd_enabled$MH,"RprRigidBodyBuilder_ccd_enabled");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_ccd_enabled(struct RprRigidBodyBuilder* this_, _Bool enabled);
-     * }
-     */
-    public static void RprRigidBodyBuilder_ccd_enabled(MemorySegment this_, boolean enabled) {
+    public static void RprRigidBodyBuilder_ccd_enabled ( Addressable this_,  boolean enabled) {
         var mh$ = RprRigidBodyBuilder_ccd_enabled$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -4872,12 +2586,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_dominance_group$MH() {
         return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_dominance_group$MH,"RprRigidBodyBuilder_dominance_group");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_dominance_group(struct RprRigidBodyBuilder* this_, signed char group);
-     * }
-     */
-    public static void RprRigidBodyBuilder_dominance_group(MemorySegment this_, byte group) {
+    public static void RprRigidBodyBuilder_dominance_group ( Addressable this_,  byte group) {
         var mh$ = RprRigidBodyBuilder_dominance_group$MH();
         try {
             mh$.invokeExact(this_, group);
@@ -4888,12 +2597,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_drop$MH,"RprRigidBodyBuilder_drop");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_drop(struct RprRigidBodyBuilder* this_);
-     * }
-     */
-    public static void RprRigidBodyBuilder_drop(MemorySegment this_) {
+    public static void RprRigidBodyBuilder_drop ( Addressable this_) {
         var mh$ = RprRigidBodyBuilder_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -4904,15 +2608,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_dynamic$MH() {
         return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_dynamic$MH,"RprRigidBodyBuilder_dynamic");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_dynamic();
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_dynamic() {
+    public static MemoryAddress RprRigidBodyBuilder_dynamic () {
         var mh$ = RprRigidBodyBuilder_dynamic$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4920,12 +2619,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_enabled$MH,"RprRigidBodyBuilder_enabled");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_enabled(struct RprRigidBodyBuilder* this_, _Bool enabled);
-     * }
-     */
-    public static void RprRigidBodyBuilder_enabled(MemorySegment this_, boolean enabled) {
+    public static void RprRigidBodyBuilder_enabled ( Addressable this_,  boolean enabled) {
         var mh$ = RprRigidBodyBuilder_enabled$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -4934,30 +2628,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_fixed$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_fixed$MH,"RprRigidBodyBuilder_fixed");
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_fixed$MH,"RprRigidBodyBuilder_fixed");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_fixed();
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_fixed() {
+    public static MemoryAddress RprRigidBodyBuilder_fixed () {
         var mh$ = RprRigidBodyBuilder_fixed$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprRigidBodyBuilder_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.RprRigidBodyBuilder_gravity_scale$MH,"RprRigidBodyBuilder_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_gravity_scale$MH,"RprRigidBodyBuilder_gravity_scale");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_gravity_scale(struct RprRigidBodyBuilder* this_, double scale_factor);
-     * }
-     */
-    public static void RprRigidBodyBuilder_gravity_scale(MemorySegment this_, double scale_factor) {
+    public static void RprRigidBodyBuilder_gravity_scale ( Addressable this_,  double scale_factor) {
         var mh$ = RprRigidBodyBuilder_gravity_scale$MH();
         try {
             mh$.invokeExact(this_, scale_factor);
@@ -4968,15 +2652,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH() {
         return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_kinematic_position_based$MH,"RprRigidBodyBuilder_kinematic_position_based");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_kinematic_position_based();
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_kinematic_position_based() {
+    public static MemoryAddress RprRigidBodyBuilder_kinematic_position_based () {
         var mh$ = RprRigidBodyBuilder_kinematic_position_based$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4984,15 +2663,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH() {
         return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_kinematic_velocity_based$MH,"RprRigidBodyBuilder_kinematic_velocity_based");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_kinematic_velocity_based();
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_kinematic_velocity_based() {
+    public static MemoryAddress RprRigidBodyBuilder_kinematic_velocity_based () {
         var mh$ = RprRigidBodyBuilder_kinematic_velocity_based$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5000,12 +2674,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_linear_damping$MH() {
         return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_linear_damping$MH,"RprRigidBodyBuilder_linear_damping");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_linear_damping(struct RprRigidBodyBuilder* this_, double factor);
-     * }
-     */
-    public static void RprRigidBodyBuilder_linear_damping(MemorySegment this_, double factor) {
+    public static void RprRigidBodyBuilder_linear_damping ( Addressable this_,  double factor) {
         var mh$ = RprRigidBodyBuilder_linear_damping$MH();
         try {
             mh$.invokeExact(this_, factor);
@@ -5016,12 +2685,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_linvel$MH() {
         return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_linvel$MH,"RprRigidBodyBuilder_linvel");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_linvel(struct RprRigidBodyBuilder* this_, struct RprVector linvel);
-     * }
-     */
-    public static void RprRigidBodyBuilder_linvel(MemorySegment this_, MemorySegment linvel) {
+    public static void RprRigidBodyBuilder_linvel ( Addressable this_,  MemorySegment linvel) {
         var mh$ = RprRigidBodyBuilder_linvel$MH();
         try {
             mh$.invokeExact(this_, linvel);
@@ -5030,30 +2694,20 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_new$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_new$MH,"RprRigidBodyBuilder_new");
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_new$MH,"RprRigidBodyBuilder_new");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodyBuilder* RprRigidBodyBuilder_new(enum RprRigidBodyType body_type);
-     * }
-     */
-    public static MemorySegment RprRigidBodyBuilder_new(int body_type) {
+    public static MemoryAddress RprRigidBodyBuilder_new ( int body_type) {
         var mh$ = RprRigidBodyBuilder_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(body_type);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(body_type);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprRigidBodyBuilder_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.RprRigidBodyBuilder_position$MH,"RprRigidBodyBuilder_position");
+        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_position$MH,"RprRigidBodyBuilder_position");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_position(struct RprRigidBodyBuilder* this_, struct RprIsometry position);
-     * }
-     */
-    public static void RprRigidBodyBuilder_position(MemorySegment this_, MemorySegment position) {
+    public static void RprRigidBodyBuilder_position ( Addressable this_,  MemorySegment position) {
         var mh$ = RprRigidBodyBuilder_position$MH();
         try {
             mh$.invokeExact(this_, position);
@@ -5064,12 +2718,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_rotation$MH() {
         return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_rotation$MH,"RprRigidBodyBuilder_rotation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_rotation(struct RprRigidBodyBuilder* this_, struct RprAngVector rotation);
-     * }
-     */
-    public static void RprRigidBodyBuilder_rotation(MemorySegment this_, MemorySegment rotation) {
+    public static void RprRigidBodyBuilder_rotation ( Addressable this_,  MemorySegment rotation) {
         var mh$ = RprRigidBodyBuilder_rotation$MH();
         try {
             mh$.invokeExact(this_, rotation);
@@ -5080,12 +2729,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_sleeping$MH() {
         return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_sleeping$MH,"RprRigidBodyBuilder_sleeping");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_sleeping(struct RprRigidBodyBuilder* this_, _Bool sleeping);
-     * }
-     */
-    public static void RprRigidBodyBuilder_sleeping(MemorySegment this_, boolean sleeping) {
+    public static void RprRigidBodyBuilder_sleeping ( Addressable this_,  boolean sleeping) {
         var mh$ = RprRigidBodyBuilder_sleeping$MH();
         try {
             mh$.invokeExact(this_, sleeping);
@@ -5096,12 +2740,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodyBuilder_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$35.RprRigidBodyBuilder_translation$MH,"RprRigidBodyBuilder_translation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodyBuilder_translation(struct RprRigidBodyBuilder* this_, struct RprVector translation);
-     * }
-     */
-    public static void RprRigidBodyBuilder_translation(MemorySegment this_, MemorySegment translation) {
+    public static void RprRigidBodyBuilder_translation ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprRigidBodyBuilder_translation$MH();
         try {
             mh$.invokeExact(this_, translation);
@@ -5112,12 +2751,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_contains$MH() {
         return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_contains$MH,"RprRigidBodySet_contains");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBodySet_contains(struct RprRigidBodySet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static boolean RprRigidBodySet_contains(MemorySegment this_, MemorySegment handle) {
+    public static boolean RprRigidBodySet_contains ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprRigidBodySet_contains$MH();
         try {
             return (boolean)mh$.invokeExact(this_, handle);
@@ -5126,14 +2760,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_drop$MH,"RprRigidBodySet_drop");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBodySet_drop(struct RprRigidBodySet* this_);
-     * }
-     */
-    public static void RprRigidBodySet_drop(MemorySegment this_) {
+    public static void RprRigidBodySet_drop ( Addressable this_) {
         var mh$ = RprRigidBodySet_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -5142,17 +2771,12 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.RprRigidBodySet_get$MH,"RprRigidBodySet_get");
+        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_get$MH,"RprRigidBodySet_get");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_get(struct RprRigidBodySet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_get(MemorySegment this_, MemorySegment handle) {
+    public static MemoryAddress RprRigidBodySet_get ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprRigidBodySet_get$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5160,15 +2784,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_get_mut$MH() {
         return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_get_mut$MH,"RprRigidBodySet_get_mut");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_get_mut(struct RprRigidBodySet* this_, struct RprArenaKey handle);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_get_mut(MemorySegment this_, MemorySegment handle) {
+    public static MemoryAddress RprRigidBodySet_get_mut ( Addressable this_,  MemorySegment handle) {
         var mh$ = RprRigidBodySet_get_mut$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5176,15 +2795,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_index$MH() {
         return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_index$MH,"RprRigidBodySet_index");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_index(struct RprRigidBodySet* this_, struct RprArenaKey index);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_index(MemorySegment this_, MemorySegment index) {
+    public static MemoryAddress RprRigidBodySet_index ( Addressable this_,  MemorySegment index) {
         var mh$ = RprRigidBodySet_index$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, index);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, index);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5192,15 +2806,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_index_mut$MH() {
         return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_index_mut$MH,"RprRigidBodySet_index_mut");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_index_mut(struct RprRigidBodySet* this_, struct RprArenaKey index);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_index_mut(MemorySegment this_, MemorySegment index) {
+    public static MemoryAddress RprRigidBodySet_index_mut ( Addressable this_,  MemorySegment index) {
         var mh$ = RprRigidBodySet_index_mut$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, index);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, index);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5208,12 +2817,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_insert$MH() {
         return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
     }
-    /**
-     * {@snippet :
-     * struct RprArenaKey RprRigidBodySet_insert(struct RprRigidBodySet* this_, struct RprRigidBody* rb);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_insert(SegmentAllocator allocator, MemorySegment this_, MemorySegment rb) {
+    public static MemorySegment RprRigidBodySet_insert ( SegmentAllocator allocator,  Addressable this_,  Addressable rb) {
         var mh$ = RprRigidBodySet_insert$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, rb);
@@ -5222,14 +2826,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_is_empty$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_is_empty$MH,"RprRigidBodySet_is_empty");
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_is_empty$MH,"RprRigidBodySet_is_empty");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBodySet_is_empty(struct RprRigidBodySet* this_);
-     * }
-     */
-    public static boolean RprRigidBodySet_is_empty(MemorySegment this_) {
+    public static boolean RprRigidBodySet_is_empty ( Addressable this_) {
         var mh$ = RprRigidBodySet_is_empty$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5238,14 +2837,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_len$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.RprRigidBodySet_len$MH,"RprRigidBodySet_len");
+        return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_len$MH,"RprRigidBodySet_len");
     }
-    /**
-     * {@snippet :
-     * unsigned long RprRigidBodySet_len(struct RprRigidBodySet* this_);
-     * }
-     */
-    public static long RprRigidBodySet_len(MemorySegment this_) {
+    public static long RprRigidBodySet_len ( Addressable this_) {
         var mh$ = RprRigidBodySet_len$MH();
         try {
             return (long)mh$.invokeExact(this_);
@@ -5256,15 +2850,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_new$MH() {
         return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_new$MH,"RprRigidBodySet_new");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBodySet* RprRigidBodySet_new();
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_new() {
+    public static MemoryAddress RprRigidBodySet_new () {
         var mh$ = RprRigidBodySet_new$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5272,15 +2861,10 @@ public class RapierC  {
     public static MethodHandle RprRigidBodySet_remove$MH() {
         return RuntimeHelper.requireNonNull(constants$37.RprRigidBodySet_remove$MH,"RprRigidBodySet_remove");
     }
-    /**
-     * {@snippet :
-     * struct RprRigidBody* RprRigidBodySet_remove(struct RprRigidBodySet* this_, struct RprArenaKey handle, struct RprIslandManager* islands, struct RprColliderSet* colliders, struct RprImpulseJointSet* impulse_joints, struct RprMultibodyJointSet* multibody_joints, _Bool remove_attached_colliders);
-     * }
-     */
-    public static MemorySegment RprRigidBodySet_remove(MemorySegment this_, MemorySegment handle, MemorySegment islands, MemorySegment colliders, MemorySegment impulse_joints, MemorySegment multibody_joints, boolean remove_attached_colliders) {
+    public static MemoryAddress RprRigidBodySet_remove ( Addressable this_,  MemorySegment handle,  Addressable islands,  Addressable colliders,  Addressable impulse_joints,  Addressable multibody_joints,  boolean remove_attached_colliders) {
         var mh$ = RprRigidBodySet_remove$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(this_, handle, islands, colliders, impulse_joints, multibody_joints, remove_attached_colliders);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_, handle, islands, colliders, impulse_joints, multibody_joints, remove_attached_colliders);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -5288,12 +2872,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_add_force$MH() {
         return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_add_force$MH,"RprRigidBody_add_force");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_add_force(struct RprRigidBody* this_, struct RprVector force, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_add_force(MemorySegment this_, MemorySegment force, boolean wake_up) {
+    public static void RprRigidBody_add_force ( Addressable this_,  MemorySegment force,  boolean wake_up) {
         var mh$ = RprRigidBody_add_force$MH();
         try {
             mh$.invokeExact(this_, force, wake_up);
@@ -5304,12 +2883,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_add_force_at_point$MH() {
         return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_add_force_at_point(struct RprRigidBody* this_, struct RprVector force, struct RprVector point, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_add_force_at_point(MemorySegment this_, MemorySegment force, MemorySegment point, boolean wake_up) {
+    public static void RprRigidBody_add_force_at_point ( Addressable this_,  MemorySegment force,  MemorySegment point,  boolean wake_up) {
         var mh$ = RprRigidBody_add_force_at_point$MH();
         try {
             mh$.invokeExact(this_, force, point, wake_up);
@@ -5318,14 +2892,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_add_torque$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_add_torque$MH,"RprRigidBody_add_torque");
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_add_torque$MH,"RprRigidBody_add_torque");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_add_torque(struct RprRigidBody* this_, struct RprAngVector torque, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_add_torque(MemorySegment this_, MemorySegment torque, boolean wake_up) {
+    public static void RprRigidBody_add_torque ( Addressable this_,  MemorySegment torque,  boolean wake_up) {
         var mh$ = RprRigidBody_add_torque$MH();
         try {
             mh$.invokeExact(this_, torque, wake_up);
@@ -5334,14 +2903,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_angular_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.RprRigidBody_angular_damping$MH,"RprRigidBody_angular_damping");
+        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_angular_damping$MH,"RprRigidBody_angular_damping");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_angular_damping(struct RprRigidBody* this_);
-     * }
-     */
-    public static double RprRigidBody_angular_damping(MemorySegment this_) {
+    public static double RprRigidBody_angular_damping ( Addressable this_) {
         var mh$ = RprRigidBody_angular_damping$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -5352,12 +2916,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_angvel$MH() {
         return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_angvel$MH,"RprRigidBody_angvel");
     }
-    /**
-     * {@snippet :
-     * struct RprAngVector RprRigidBody_angvel(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_angvel(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_angvel ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_angvel$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5368,12 +2927,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_apply_impulse$MH() {
         return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_apply_impulse$MH,"RprRigidBody_apply_impulse");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_apply_impulse(struct RprRigidBody* this_, struct RprVector impulse, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_apply_impulse(MemorySegment this_, MemorySegment impulse, boolean wake_up) {
+    public static void RprRigidBody_apply_impulse ( Addressable this_,  MemorySegment impulse,  boolean wake_up) {
         var mh$ = RprRigidBody_apply_impulse$MH();
         try {
             mh$.invokeExact(this_, impulse, wake_up);
@@ -5384,12 +2938,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_apply_impulse_at_point$MH() {
         return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_apply_impulse_at_point$MH,"RprRigidBody_apply_impulse_at_point");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_apply_impulse_at_point(struct RprRigidBody* this_, struct RprVector impulse, struct RprVector point, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_apply_impulse_at_point(MemorySegment this_, MemorySegment impulse, MemorySegment point, boolean wake_up) {
+    public static void RprRigidBody_apply_impulse_at_point ( Addressable this_,  MemorySegment impulse,  MemorySegment point,  boolean wake_up) {
         var mh$ = RprRigidBody_apply_impulse_at_point$MH();
         try {
             mh$.invokeExact(this_, impulse, point, wake_up);
@@ -5400,12 +2949,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_apply_torque_impulse$MH() {
         return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_apply_torque_impulse(struct RprRigidBody* this_, struct RprAngVector torque_impulse, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_apply_torque_impulse(MemorySegment this_, MemorySegment torque_impulse, boolean wake_up) {
+    public static void RprRigidBody_apply_torque_impulse ( Addressable this_,  MemorySegment torque_impulse,  boolean wake_up) {
         var mh$ = RprRigidBody_apply_torque_impulse$MH();
         try {
             mh$.invokeExact(this_, torque_impulse, wake_up);
@@ -5414,14 +2958,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_body_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_body_type$MH,"RprRigidBody_body_type");
+        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_body_type$MH,"RprRigidBody_body_type");
     }
-    /**
-     * {@snippet :
-     * enum RprRigidBodyType RprRigidBody_body_type(struct RprRigidBody* this_);
-     * }
-     */
-    public static int RprRigidBody_body_type(MemorySegment this_) {
+    public static int RprRigidBody_body_type ( Addressable this_) {
         var mh$ = RprRigidBody_body_type$MH();
         try {
             return (int)mh$.invokeExact(this_);
@@ -5430,14 +2969,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_center_of_mass$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.RprRigidBody_center_of_mass$MH,"RprRigidBody_center_of_mass");
+        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_center_of_mass$MH,"RprRigidBody_center_of_mass");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprRigidBody_center_of_mass(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_center_of_mass(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_center_of_mass ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_center_of_mass$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5448,12 +2982,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_dominance_group$MH() {
         return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_dominance_group$MH,"RprRigidBody_dominance_group");
     }
-    /**
-     * {@snippet :
-     * signed char RprRigidBody_dominance_group(struct RprRigidBody* this_);
-     * }
-     */
-    public static byte RprRigidBody_dominance_group(MemorySegment this_) {
+    public static byte RprRigidBody_dominance_group ( Addressable this_) {
         var mh$ = RprRigidBody_dominance_group$MH();
         try {
             return (byte)mh$.invokeExact(this_);
@@ -5464,12 +2993,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_drop$MH() {
         return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_drop$MH,"RprRigidBody_drop");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_drop(struct RprRigidBody* this_);
-     * }
-     */
-    public static void RprRigidBody_drop(MemorySegment this_) {
+    public static void RprRigidBody_drop ( Addressable this_) {
         var mh$ = RprRigidBody_drop$MH();
         try {
             mh$.invokeExact(this_);
@@ -5480,12 +3004,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_effective_dominance_group$MH() {
         return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_effective_dominance_group$MH,"RprRigidBody_effective_dominance_group");
     }
-    /**
-     * {@snippet :
-     * short RprRigidBody_effective_dominance_group(struct RprRigidBody* this_);
-     * }
-     */
-    public static short RprRigidBody_effective_dominance_group(MemorySegment this_) {
+    public static short RprRigidBody_effective_dominance_group ( Addressable this_) {
         var mh$ = RprRigidBody_effective_dominance_group$MH();
         try {
             return (short)mh$.invokeExact(this_);
@@ -5496,12 +3015,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_enable_ccd$MH() {
         return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_enable_ccd$MH,"RprRigidBody_enable_ccd");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_enable_ccd(struct RprRigidBody* this_, _Bool enabled);
-     * }
-     */
-    public static void RprRigidBody_enable_ccd(MemorySegment this_, boolean enabled) {
+    public static void RprRigidBody_enable_ccd ( Addressable this_,  boolean enabled) {
         var mh$ = RprRigidBody_enable_ccd$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -5510,14 +3024,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_gravitational_potential_energy$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_gravitational_potential_energy$MH,"RprRigidBody_gravitational_potential_energy");
+        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_gravitational_potential_energy$MH,"RprRigidBody_gravitational_potential_energy");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_gravitational_potential_energy(struct RprRigidBody* this_, double dt, struct RprVector gravity);
-     * }
-     */
-    public static double RprRigidBody_gravitational_potential_energy(MemorySegment this_, double dt, MemorySegment gravity) {
+    public static double RprRigidBody_gravitational_potential_energy ( Addressable this_,  double dt,  MemorySegment gravity) {
         var mh$ = RprRigidBody_gravitational_potential_energy$MH();
         try {
             return (double)mh$.invokeExact(this_, dt, gravity);
@@ -5526,14 +3035,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.RprRigidBody_gravity_scale$MH,"RprRigidBody_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_gravity_scale$MH,"RprRigidBody_gravity_scale");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_gravity_scale(struct RprRigidBody* this_);
-     * }
-     */
-    public static double RprRigidBody_gravity_scale(MemorySegment this_) {
+    public static double RprRigidBody_gravity_scale ( Addressable this_) {
         var mh$ = RprRigidBody_gravity_scale$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -5544,12 +3048,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_ccd_active$MH() {
         return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_ccd_active$MH,"RprRigidBody_is_ccd_active");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_ccd_active(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_ccd_active(MemorySegment this_) {
+    public static boolean RprRigidBody_is_ccd_active ( Addressable this_) {
         var mh$ = RprRigidBody_is_ccd_active$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5560,12 +3059,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_ccd_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_ccd_enabled$MH,"RprRigidBody_is_ccd_enabled");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_ccd_enabled(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_ccd_enabled(MemorySegment this_) {
+    public static boolean RprRigidBody_is_ccd_enabled ( Addressable this_) {
         var mh$ = RprRigidBody_is_ccd_enabled$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5576,12 +3070,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_dynamic$MH() {
         return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_dynamic$MH,"RprRigidBody_is_dynamic");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_dynamic(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_dynamic(MemorySegment this_) {
+    public static boolean RprRigidBody_is_dynamic ( Addressable this_) {
         var mh$ = RprRigidBody_is_dynamic$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5592,12 +3081,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_enabled$MH,"RprRigidBody_is_enabled");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_enabled(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_enabled(MemorySegment this_) {
+    public static boolean RprRigidBody_is_enabled ( Addressable this_) {
         var mh$ = RprRigidBody_is_enabled$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5606,14 +3090,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_fixed$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_fixed$MH,"RprRigidBody_is_fixed");
+        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_fixed$MH,"RprRigidBody_is_fixed");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_fixed(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_fixed(MemorySegment this_) {
+    public static boolean RprRigidBody_is_fixed ( Addressable this_) {
         var mh$ = RprRigidBody_is_fixed$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5622,14 +3101,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_kinematic$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.RprRigidBody_is_kinematic$MH,"RprRigidBody_is_kinematic");
+        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_kinematic$MH,"RprRigidBody_is_kinematic");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_kinematic(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_kinematic(MemorySegment this_) {
+    public static boolean RprRigidBody_is_kinematic ( Addressable this_) {
         var mh$ = RprRigidBody_is_kinematic$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5640,12 +3114,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_rotation_locked$MH() {
         return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_rotation_locked$MH,"RprRigidBody_is_rotation_locked");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_is_rotation_locked(struct RprRigidBody* this_, _Bool *out[1]);
-     * }
-     */
-    public static void RprRigidBody_is_rotation_locked(MemorySegment this_, MemorySegment out) {
+    public static void RprRigidBody_is_rotation_locked ( Addressable this_,  Addressable out) {
         var mh$ = RprRigidBody_is_rotation_locked$MH();
         try {
             mh$.invokeExact(this_, out);
@@ -5656,12 +3125,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_sleeping$MH() {
         return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_sleeping$MH,"RprRigidBody_is_sleeping");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_sleeping(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_sleeping(MemorySegment this_) {
+    public static boolean RprRigidBody_is_sleeping ( Addressable this_) {
         var mh$ = RprRigidBody_is_sleeping$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5672,12 +3136,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_is_translation_locked$MH() {
         return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_is_translation_locked$MH,"RprRigidBody_is_translation_locked");
     }
-    /**
-     * {@snippet :
-     * _Bool RprRigidBody_is_translation_locked(struct RprRigidBody* this_);
-     * }
-     */
-    public static boolean RprRigidBody_is_translation_locked(MemorySegment this_) {
+    public static boolean RprRigidBody_is_translation_locked ( Addressable this_) {
         var mh$ = RprRigidBody_is_translation_locked$MH();
         try {
             return (boolean)mh$.invokeExact(this_);
@@ -5688,12 +3147,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_kinetic_energy$MH() {
         return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_kinetic_energy$MH,"RprRigidBody_kinetic_energy");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_kinetic_energy(struct RprRigidBody* this_);
-     * }
-     */
-    public static double RprRigidBody_kinetic_energy(MemorySegment this_) {
+    public static double RprRigidBody_kinetic_energy ( Addressable this_) {
         var mh$ = RprRigidBody_kinetic_energy$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -5702,14 +3156,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_linear_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_linear_damping$MH,"RprRigidBody_linear_damping");
+        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_linear_damping$MH,"RprRigidBody_linear_damping");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_linear_damping(struct RprRigidBody* this_);
-     * }
-     */
-    public static double RprRigidBody_linear_damping(MemorySegment this_) {
+    public static double RprRigidBody_linear_damping ( Addressable this_) {
         var mh$ = RprRigidBody_linear_damping$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -5718,14 +3167,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_linvel$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.RprRigidBody_linvel$MH,"RprRigidBody_linvel");
+        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_linvel$MH,"RprRigidBody_linvel");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprRigidBody_linvel(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_linvel(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_linvel ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_linvel$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5736,12 +3180,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_lock_translations$MH() {
         return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_lock_translations$MH,"RprRigidBody_lock_translations");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_lock_translations(struct RprRigidBody* this_, _Bool locked, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_lock_translations(MemorySegment this_, boolean locked, boolean wake_up) {
+    public static void RprRigidBody_lock_translations ( Addressable this_,  boolean locked,  boolean wake_up) {
         var mh$ = RprRigidBody_lock_translations$MH();
         try {
             mh$.invokeExact(this_, locked, wake_up);
@@ -5752,12 +3191,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_mass$MH,"RprRigidBody_mass");
     }
-    /**
-     * {@snippet :
-     * double RprRigidBody_mass(struct RprRigidBody* this_);
-     * }
-     */
-    public static double RprRigidBody_mass(MemorySegment this_) {
+    public static double RprRigidBody_mass ( Addressable this_) {
         var mh$ = RprRigidBody_mass$MH();
         try {
             return (double)mh$.invokeExact(this_);
@@ -5768,12 +3202,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_next_position$MH() {
         return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_next_position$MH,"RprRigidBody_next_position");
     }
-    /**
-     * {@snippet :
-     * struct RprIsometry RprRigidBody_next_position(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_next_position(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_next_position ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_next_position$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5784,12 +3213,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_position$MH() {
         return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_position$MH,"RprRigidBody_position");
     }
-    /**
-     * {@snippet :
-     * struct RprIsometry RprRigidBody_position(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_position(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_position ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_position$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5798,14 +3222,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_predict_position_using_velocity_and_forces$MH,"RprRigidBody_predict_position_using_velocity_and_forces");
+        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_predict_position_using_velocity_and_forces$MH,"RprRigidBody_predict_position_using_velocity_and_forces");
     }
-    /**
-     * {@snippet :
-     * struct RprIsometry RprRigidBody_predict_position_using_velocity_and_forces(struct RprRigidBody* this_, double dt);
-     * }
-     */
-    public static MemorySegment RprRigidBody_predict_position_using_velocity_and_forces(SegmentAllocator allocator, MemorySegment this_, double dt) {
+    public static MemorySegment RprRigidBody_predict_position_using_velocity_and_forces ( SegmentAllocator allocator,  Addressable this_,  double dt) {
         var mh$ = RprRigidBody_predict_position_using_velocity_and_forces$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, dt);
@@ -5814,14 +3233,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.RprRigidBody_recompute_mass_properties_from_colliders$MH,"RprRigidBody_recompute_mass_properties_from_colliders");
+        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_recompute_mass_properties_from_colliders$MH,"RprRigidBody_recompute_mass_properties_from_colliders");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_recompute_mass_properties_from_colliders(struct RprRigidBody* this_, struct RprColliderSet* colliders);
-     * }
-     */
-    public static void RprRigidBody_recompute_mass_properties_from_colliders(MemorySegment this_, MemorySegment colliders) {
+    public static void RprRigidBody_recompute_mass_properties_from_colliders ( Addressable this_,  Addressable colliders) {
         var mh$ = RprRigidBody_recompute_mass_properties_from_colliders$MH();
         try {
             mh$.invokeExact(this_, colliders);
@@ -5832,12 +3246,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_reset_forces$MH() {
         return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_reset_forces$MH,"RprRigidBody_reset_forces");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_reset_forces(struct RprRigidBody* this_, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_reset_forces(MemorySegment this_, boolean wake_up) {
+    public static void RprRigidBody_reset_forces ( Addressable this_,  boolean wake_up) {
         var mh$ = RprRigidBody_reset_forces$MH();
         try {
             mh$.invokeExact(this_, wake_up);
@@ -5848,12 +3257,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_reset_torques$MH() {
         return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_reset_torques$MH,"RprRigidBody_reset_torques");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_reset_torques(struct RprRigidBody* this_, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_reset_torques(MemorySegment this_, boolean wake_up) {
+    public static void RprRigidBody_reset_torques ( Addressable this_,  boolean wake_up) {
         var mh$ = RprRigidBody_reset_torques$MH();
         try {
             mh$.invokeExact(this_, wake_up);
@@ -5864,12 +3268,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_rotation$MH() {
         return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_rotation$MH,"RprRigidBody_rotation");
     }
-    /**
-     * {@snippet :
-     * struct RprRotation RprRigidBody_rotation(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_rotation(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_rotation ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_rotation$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -5880,12 +3279,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_additional_mass$MH() {
         return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_additional_mass$MH,"RprRigidBody_set_additional_mass");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_additional_mass(struct RprRigidBody* this_, double additional_mass, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_additional_mass(MemorySegment this_, double additional_mass, boolean wake_up) {
+    public static void RprRigidBody_set_additional_mass ( Addressable this_,  double additional_mass,  boolean wake_up) {
         var mh$ = RprRigidBody_set_additional_mass$MH();
         try {
             mh$.invokeExact(this_, additional_mass, wake_up);
@@ -5894,14 +3288,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_angular_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_angular_damping$MH,"RprRigidBody_set_angular_damping");
+        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_angular_damping$MH,"RprRigidBody_set_angular_damping");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_angular_damping(struct RprRigidBody* this_, double damping);
-     * }
-     */
-    public static void RprRigidBody_set_angular_damping(MemorySegment this_, double damping) {
+    public static void RprRigidBody_set_angular_damping ( Addressable this_,  double damping) {
         var mh$ = RprRigidBody_set_angular_damping$MH();
         try {
             mh$.invokeExact(this_, damping);
@@ -5910,14 +3299,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_angvel$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.RprRigidBody_set_angvel$MH,"RprRigidBody_set_angvel");
+        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_angvel$MH,"RprRigidBody_set_angvel");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_angvel(struct RprRigidBody* this_, struct RprVector angvel, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_angvel(MemorySegment this_, MemorySegment angvel, boolean wake_up) {
+    public static void RprRigidBody_set_angvel ( Addressable this_,  MemorySegment angvel,  boolean wake_up) {
         var mh$ = RprRigidBody_set_angvel$MH();
         try {
             mh$.invokeExact(this_, angvel, wake_up);
@@ -5928,12 +3312,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_body_type$MH() {
         return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_body_type$MH,"RprRigidBody_set_body_type");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_body_type(struct RprRigidBody* this_, enum RprRigidBodyType status, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_body_type(MemorySegment this_, int status, boolean wake_up) {
+    public static void RprRigidBody_set_body_type ( Addressable this_,  int status,  boolean wake_up) {
         var mh$ = RprRigidBody_set_body_type$MH();
         try {
             mh$.invokeExact(this_, status, wake_up);
@@ -5944,12 +3323,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_dominance_group$MH() {
         return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_dominance_group$MH,"RprRigidBody_set_dominance_group");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_dominance_group(struct RprRigidBody* this_, signed char dominance);
-     * }
-     */
-    public static void RprRigidBody_set_dominance_group(MemorySegment this_, byte dominance) {
+    public static void RprRigidBody_set_dominance_group ( Addressable this_,  byte dominance) {
         var mh$ = RprRigidBody_set_dominance_group$MH();
         try {
             mh$.invokeExact(this_, dominance);
@@ -5960,12 +3334,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_enabled$MH() {
         return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_enabled$MH,"RprRigidBody_set_enabled");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_enabled(struct RprRigidBody* this_, _Bool enabled);
-     * }
-     */
-    public static void RprRigidBody_set_enabled(MemorySegment this_, boolean enabled) {
+    public static void RprRigidBody_set_enabled ( Addressable this_,  boolean enabled) {
         var mh$ = RprRigidBody_set_enabled$MH();
         try {
             mh$.invokeExact(this_, enabled);
@@ -5976,12 +3345,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_enabled_rotations$MH() {
         return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_enabled_rotations$MH,"RprRigidBody_set_enabled_rotations");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_enabled_rotations(struct RprRigidBody* this_, _Bool allow_rotations_x, _Bool allow_rotations_y, _Bool allow_rotations_z, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_enabled_rotations(MemorySegment this_, boolean allow_rotations_x, boolean allow_rotations_y, boolean allow_rotations_z, boolean wake_up) {
+    public static void RprRigidBody_set_enabled_rotations ( Addressable this_,  boolean allow_rotations_x,  boolean allow_rotations_y,  boolean allow_rotations_z,  boolean wake_up) {
         var mh$ = RprRigidBody_set_enabled_rotations$MH();
         try {
             mh$.invokeExact(this_, allow_rotations_x, allow_rotations_y, allow_rotations_z, wake_up);
@@ -5990,14 +3354,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_enabled_translations$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_enabled_translations$MH,"RprRigidBody_set_enabled_translations");
+        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_enabled_translations$MH,"RprRigidBody_set_enabled_translations");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_enabled_translations(struct RprRigidBody* this_, _Bool allow_translation_x, _Bool allow_translation_y, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_enabled_translations(MemorySegment this_, boolean allow_translation_x, boolean allow_translation_y, boolean wake_up) {
+    public static void RprRigidBody_set_enabled_translations ( Addressable this_,  boolean allow_translation_x,  boolean allow_translation_y,  boolean wake_up) {
         var mh$ = RprRigidBody_set_enabled_translations$MH();
         try {
             mh$.invokeExact(this_, allow_translation_x, allow_translation_y, wake_up);
@@ -6006,14 +3365,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_gravity_scale$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.RprRigidBody_set_gravity_scale$MH,"RprRigidBody_set_gravity_scale");
+        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_gravity_scale$MH,"RprRigidBody_set_gravity_scale");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_gravity_scale(struct RprRigidBody* this_, double scale, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_gravity_scale(MemorySegment this_, double scale, boolean wake_up) {
+    public static void RprRigidBody_set_gravity_scale ( Addressable this_,  double scale,  boolean wake_up) {
         var mh$ = RprRigidBody_set_gravity_scale$MH();
         try {
             mh$.invokeExact(this_, scale, wake_up);
@@ -6024,12 +3378,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_linear_damping$MH() {
         return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_linear_damping$MH,"RprRigidBody_set_linear_damping");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_linear_damping(struct RprRigidBody* this_, double damping);
-     * }
-     */
-    public static void RprRigidBody_set_linear_damping(MemorySegment this_, double damping) {
+    public static void RprRigidBody_set_linear_damping ( Addressable this_,  double damping) {
         var mh$ = RprRigidBody_set_linear_damping$MH();
         try {
             mh$.invokeExact(this_, damping);
@@ -6040,12 +3389,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_linvel$MH() {
         return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_linvel$MH,"RprRigidBody_set_linvel");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_linvel(struct RprRigidBody* this_, struct RprVector linvel, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_linvel(MemorySegment this_, MemorySegment linvel, boolean wake_up) {
+    public static void RprRigidBody_set_linvel ( Addressable this_,  MemorySegment linvel,  boolean wake_up) {
         var mh$ = RprRigidBody_set_linvel$MH();
         try {
             mh$.invokeExact(this_, linvel, wake_up);
@@ -6056,12 +3400,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_next_kinematic_position$MH() {
         return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_next_kinematic_position$MH,"RprRigidBody_set_next_kinematic_position");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_next_kinematic_position(struct RprRigidBody* this_, struct RprIsometry pos);
-     * }
-     */
-    public static void RprRigidBody_set_next_kinematic_position(MemorySegment this_, MemorySegment pos) {
+    public static void RprRigidBody_set_next_kinematic_position ( Addressable this_,  MemorySegment pos) {
         var mh$ = RprRigidBody_set_next_kinematic_position$MH();
         try {
             mh$.invokeExact(this_, pos);
@@ -6072,12 +3411,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_next_kinematic_rotation$MH() {
         return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_next_kinematic_rotation$MH,"RprRigidBody_set_next_kinematic_rotation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_next_kinematic_rotation(struct RprRigidBody* this_, struct RprRotation rotation);
-     * }
-     */
-    public static void RprRigidBody_set_next_kinematic_rotation(MemorySegment this_, MemorySegment rotation) {
+    public static void RprRigidBody_set_next_kinematic_rotation ( Addressable this_,  MemorySegment rotation) {
         var mh$ = RprRigidBody_set_next_kinematic_rotation$MH();
         try {
             mh$.invokeExact(this_, rotation);
@@ -6086,14 +3420,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_next_kinematic_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_next_kinematic_translation$MH,"RprRigidBody_set_next_kinematic_translation");
+        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_next_kinematic_translation$MH,"RprRigidBody_set_next_kinematic_translation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_next_kinematic_translation(struct RprRigidBody* this_, struct RprVector translation);
-     * }
-     */
-    public static void RprRigidBody_set_next_kinematic_translation(MemorySegment this_, MemorySegment translation) {
+    public static void RprRigidBody_set_next_kinematic_translation ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprRigidBody_set_next_kinematic_translation$MH();
         try {
             mh$.invokeExact(this_, translation);
@@ -6102,14 +3431,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
+        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_position(struct RprRigidBody* this_, struct RprIsometry pos, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_position(MemorySegment this_, MemorySegment pos, boolean wake_up) {
+    public static void RprRigidBody_set_position ( Addressable this_,  MemorySegment pos,  boolean wake_up) {
         var mh$ = RprRigidBody_set_position$MH();
         try {
             mh$.invokeExact(this_, pos, wake_up);
@@ -6120,12 +3444,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_rotation$MH() {
         return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_rotation$MH,"RprRigidBody_set_rotation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_rotation(struct RprRigidBody* this_, struct RprRotation rotation, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_rotation(MemorySegment this_, MemorySegment rotation, boolean wake_up) {
+    public static void RprRigidBody_set_rotation ( Addressable this_,  MemorySegment rotation,  boolean wake_up) {
         var mh$ = RprRigidBody_set_rotation$MH();
         try {
             mh$.invokeExact(this_, rotation, wake_up);
@@ -6136,12 +3455,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_set_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_set_translation$MH,"RprRigidBody_set_translation");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_set_translation(struct RprRigidBody* this_, struct RprVector translation, _Bool wake_up);
-     * }
-     */
-    public static void RprRigidBody_set_translation(MemorySegment this_, MemorySegment translation, boolean wake_up) {
+    public static void RprRigidBody_set_translation ( Addressable this_,  MemorySegment translation,  boolean wake_up) {
         var mh$ = RprRigidBody_set_translation$MH();
         try {
             mh$.invokeExact(this_, translation, wake_up);
@@ -6152,12 +3466,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_sleep$MH() {
         return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_sleep$MH,"RprRigidBody_sleep");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_sleep(struct RprRigidBody* this_);
-     * }
-     */
-    public static void RprRigidBody_sleep(MemorySegment this_) {
+    public static void RprRigidBody_sleep ( Addressable this_) {
         var mh$ = RprRigidBody_sleep$MH();
         try {
             mh$.invokeExact(this_);
@@ -6168,12 +3477,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_translation$MH() {
         return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_translation$MH,"RprRigidBody_translation");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprRigidBody_translation(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_translation(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_translation ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_translation$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -6182,14 +3486,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_user_force$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_user_force$MH,"RprRigidBody_user_force");
+        return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_user_force$MH,"RprRigidBody_user_force");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprRigidBody_user_force(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_user_force(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_user_force ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_user_force$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -6198,14 +3497,9 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_user_torque$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
+        return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
     }
-    /**
-     * {@snippet :
-     * struct RprAngVector RprRigidBody_user_torque(struct RprRigidBody* this_);
-     * }
-     */
-    public static MemorySegment RprRigidBody_user_torque(SegmentAllocator allocator, MemorySegment this_) {
+    public static MemorySegment RprRigidBody_user_torque ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_user_torque$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_);
@@ -6216,12 +3510,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_velocity_at_point$MH() {
         return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_velocity_at_point$MH,"RprRigidBody_velocity_at_point");
     }
-    /**
-     * {@snippet :
-     * struct RprVector RprRigidBody_velocity_at_point(struct RprRigidBody* this_, struct RprVector point);
-     * }
-     */
-    public static MemorySegment RprRigidBody_velocity_at_point(SegmentAllocator allocator, MemorySegment this_, MemorySegment point) {
+    public static MemorySegment RprRigidBody_velocity_at_point ( SegmentAllocator allocator,  Addressable this_,  MemorySegment point) {
         var mh$ = RprRigidBody_velocity_at_point$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, this_, point);
@@ -6232,12 +3521,7 @@ public class RapierC  {
     public static MethodHandle RprRigidBody_wake_up$MH() {
         return RuntimeHelper.requireNonNull(constants$47.RprRigidBody_wake_up$MH,"RprRigidBody_wake_up");
     }
-    /**
-     * {@snippet :
-     * void RprRigidBody_wake_up(struct RprRigidBody* this_, _Bool strong);
-     * }
-     */
-    public static void RprRigidBody_wake_up(MemorySegment this_, boolean strong) {
+    public static void RprRigidBody_wake_up ( Addressable this_,  boolean strong) {
         var mh$ = RprRigidBody_wake_up$MH();
         try {
             mh$.invokeExact(this_, strong);
@@ -6248,12 +3532,7 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_acquire$MH() {
         return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_acquire$MH,"RprSharedShape_acquire");
     }
-    /**
-     * {@snippet :
-     * void RprSharedShape_acquire(struct RprSharedShape* this_);
-     * }
-     */
-    public static void RprSharedShape_acquire(MemorySegment this_) {
+    public static void RprSharedShape_acquire ( Addressable this_) {
         var mh$ = RprSharedShape_acquire$MH();
         try {
             mh$.invokeExact(this_);
@@ -6264,47 +3543,32 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_ball$MH() {
         return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_ball$MH,"RprSharedShape_ball");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprSharedShape_ball(struct RprBall ball);
-     * }
-     */
-    public static MemorySegment RprSharedShape_ball(MemorySegment ball) {
+    public static MemoryAddress RprSharedShape_ball ( MemorySegment ball) {
         var mh$ = RprSharedShape_ball$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(ball);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ball);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprSharedShape_capsule$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprSharedShape_capsule(struct RprCapsule capsule);
-     * }
-     */
-    public static MemorySegment RprSharedShape_capsule(MemorySegment capsule) {
+    public static MemoryAddress RprSharedShape_capsule ( MemorySegment capsule) {
         var mh$ = RprSharedShape_capsule$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(capsule);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(capsule);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprSharedShape_cuboid$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
+        return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprSharedShape_cuboid(struct RprCuboid cuboid);
-     * }
-     */
-    public static MemorySegment RprSharedShape_cuboid(MemorySegment cuboid) {
+    public static MemoryAddress RprSharedShape_cuboid ( MemorySegment cuboid) {
         var mh$ = RprSharedShape_cuboid$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(cuboid);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(cuboid);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6312,12 +3576,7 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_release$MH() {
         return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_release$MH,"RprSharedShape_release");
     }
-    /**
-     * {@snippet :
-     * void RprSharedShape_release(struct RprSharedShape* this_);
-     * }
-     */
-    public static void RprSharedShape_release(MemorySegment this_) {
+    public static void RprSharedShape_release ( Addressable this_) {
         var mh$ = RprSharedShape_release$MH();
         try {
             mh$.invokeExact(this_);
@@ -6328,15 +3587,10 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_segment$MH() {
         return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_segment$MH,"RprSharedShape_segment");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprSharedShape_segment(struct RprSegment segment);
-     * }
-     */
-    public static MemorySegment RprSharedShape_segment(MemorySegment segment) {
+    public static MemoryAddress RprSharedShape_segment ( MemorySegment segment) {
         var mh$ = RprSharedShape_segment$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(segment);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(segment);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6344,12 +3598,7 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_strong_count$MH() {
         return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
     }
-    /**
-     * {@snippet :
-     * unsigned long RprSharedShape_strong_count(struct RprSharedShape* this_);
-     * }
-     */
-    public static long RprSharedShape_strong_count(MemorySegment this_) {
+    public static long RprSharedShape_strong_count ( Addressable this_) {
         var mh$ = RprSharedShape_strong_count$MH();
         try {
             return (long)mh$.invokeExact(this_);
@@ -6360,608 +3609,233 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_triangle$MH() {
         return RuntimeHelper.requireNonNull(constants$48.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
     }
-    /**
-     * {@snippet :
-     * struct RprSharedShape* RprSharedShape_triangle(struct RprTriangle triangle);
-     * }
-     */
-    public static MemorySegment RprSharedShape_triangle(MemorySegment triangle) {
+    public static MemoryAddress RprSharedShape_triangle ( MemorySegment triangle) {
         var mh$ = RprSharedShape_triangle$MH();
         try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(triangle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(triangle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    /**
-     * {@snippet :
-     * #define NULL 0
-     * }
-     */
-    public static MemorySegment NULL() {
-        return constants$48.NULL$ADDR;
+    public static MemoryAddress NULL() {
+        return constants$49.NULL$ADDR;
     }
-    /**
-     * {@snippet :
-     * #define _POSIX_C_SOURCE 200809
-     * }
-     */
     public static long _POSIX_C_SOURCE() {
         return 200809L;
     }
-    /**
-     * {@snippet :
-     * #define __TIMESIZE 64
-     * }
-     */
     public static int __TIMESIZE() {
         return (int)64L;
     }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_60559_BFP__ 201404
-     * }
-     */
     public static long __STDC_IEC_60559_BFP__() {
         return 201404L;
     }
-    /**
-     * {@snippet :
-     * #define __STDC_IEC_60559_COMPLEX__ 201404
-     * }
-     */
     public static long __STDC_IEC_60559_COMPLEX__() {
         return 201404L;
     }
-    /**
-     * {@snippet :
-     * #define __STDC_ISO_10646__ 201706
-     * }
-     */
     public static long __STDC_ISO_10646__() {
         return 201706L;
     }
-    /**
-     * {@snippet :
-     * #define __WCHAR_MAX 2147483647
-     * }
-     */
     public static int __WCHAR_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define __WCHAR_MIN -2147483648
-     * }
-     */
     public static int __WCHAR_MIN() {
         return (int)-2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define INT8_MIN -128
-     * }
-     */
     public static int INT8_MIN() {
         return (int)-128L;
     }
-    /**
-     * {@snippet :
-     * #define INT16_MIN -32768
-     * }
-     */
     public static int INT16_MIN() {
         return (int)-32768L;
     }
-    /**
-     * {@snippet :
-     * #define INT32_MIN -2147483648
-     * }
-     */
     public static int INT32_MIN() {
         return (int)-2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define INT64_MIN -9223372036854775808
-     * }
-     */
     public static long INT64_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INT8_MAX 127
-     * }
-     */
     public static int INT8_MAX() {
         return (int)127L;
     }
-    /**
-     * {@snippet :
-     * #define INT16_MAX 32767
-     * }
-     */
     public static int INT16_MAX() {
         return (int)32767L;
     }
-    /**
-     * {@snippet :
-     * #define INT32_MAX 2147483647
-     * }
-     */
     public static int INT32_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define INT64_MAX 9223372036854775807
-     * }
-     */
     public static long INT64_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define UINT8_MAX 255
-     * }
-     */
     public static int UINT8_MAX() {
         return (int)255L;
     }
-    /**
-     * {@snippet :
-     * #define UINT16_MAX 65535
-     * }
-     */
     public static int UINT16_MAX() {
         return (int)65535L;
     }
-    /**
-     * {@snippet :
-     * #define UINT32_MAX 4294967295
-     * }
-     */
     public static int UINT32_MAX() {
         return (int)4294967295L;
     }
-    /**
-     * {@snippet :
-     * #define UINT64_MAX -1
-     * }
-     */
     public static long UINT64_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST8_MIN -128
-     * }
-     */
     public static int INT_LEAST8_MIN() {
         return (int)-128L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST16_MIN -32768
-     * }
-     */
     public static int INT_LEAST16_MIN() {
         return (int)-32768L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST32_MIN -2147483648
-     * }
-     */
     public static int INT_LEAST32_MIN() {
         return (int)-2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST64_MIN -9223372036854775808
-     * }
-     */
     public static long INT_LEAST64_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST8_MAX 127
-     * }
-     */
     public static int INT_LEAST8_MAX() {
         return (int)127L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST16_MAX 32767
-     * }
-     */
     public static int INT_LEAST16_MAX() {
         return (int)32767L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST32_MAX 2147483647
-     * }
-     */
     public static int INT_LEAST32_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define INT_LEAST64_MAX 9223372036854775807
-     * }
-     */
     public static long INT_LEAST64_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_LEAST8_MAX 255
-     * }
-     */
     public static int UINT_LEAST8_MAX() {
         return (int)255L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_LEAST16_MAX 65535
-     * }
-     */
     public static int UINT_LEAST16_MAX() {
         return (int)65535L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_LEAST32_MAX 4294967295
-     * }
-     */
     public static int UINT_LEAST32_MAX() {
         return (int)4294967295L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_LEAST64_MAX -1
-     * }
-     */
     public static long UINT_LEAST64_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST8_MIN -128
-     * }
-     */
     public static int INT_FAST8_MIN() {
         return (int)-128L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST16_MIN -9223372036854775808
-     * }
-     */
     public static long INT_FAST16_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST32_MIN -9223372036854775808
-     * }
-     */
     public static long INT_FAST32_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST64_MIN -9223372036854775808
-     * }
-     */
     public static long INT_FAST64_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST8_MAX 127
-     * }
-     */
     public static int INT_FAST8_MAX() {
         return (int)127L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST16_MAX 9223372036854775807
-     * }
-     */
     public static long INT_FAST16_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST32_MAX 9223372036854775807
-     * }
-     */
     public static long INT_FAST32_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define INT_FAST64_MAX 9223372036854775807
-     * }
-     */
     public static long INT_FAST64_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_FAST8_MAX 255
-     * }
-     */
     public static int UINT_FAST8_MAX() {
         return (int)255L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_FAST16_MAX -1
-     * }
-     */
     public static long UINT_FAST16_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_FAST32_MAX -1
-     * }
-     */
     public static long UINT_FAST32_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define UINT_FAST64_MAX -1
-     * }
-     */
     public static long UINT_FAST64_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define INTPTR_MIN -9223372036854775808
-     * }
-     */
     public static long INTPTR_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INTPTR_MAX 9223372036854775807
-     * }
-     */
     public static long INTPTR_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define UINTPTR_MAX -1
-     * }
-     */
     public static long UINTPTR_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define INTMAX_MIN -9223372036854775808
-     * }
-     */
     public static long INTMAX_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define INTMAX_MAX 9223372036854775807
-     * }
-     */
     public static long INTMAX_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define UINTMAX_MAX -1
-     * }
-     */
     public static long UINTMAX_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define PTRDIFF_MIN -9223372036854775808
-     * }
-     */
     public static long PTRDIFF_MIN() {
         return -9223372036854775808L;
     }
-    /**
-     * {@snippet :
-     * #define PTRDIFF_MAX 9223372036854775807
-     * }
-     */
     public static long PTRDIFF_MAX() {
         return 9223372036854775807L;
     }
-    /**
-     * {@snippet :
-     * #define SIG_ATOMIC_MIN -2147483648
-     * }
-     */
     public static int SIG_ATOMIC_MIN() {
         return (int)-2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define SIG_ATOMIC_MAX 2147483647
-     * }
-     */
     public static int SIG_ATOMIC_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define SIZE_MAX -1
-     * }
-     */
     public static long SIZE_MAX() {
         return -1L;
     }
-    /**
-     * {@snippet :
-     * #define WCHAR_MIN -2147483648
-     * }
-     */
     public static int WCHAR_MIN() {
         return (int)-2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define WCHAR_MAX 2147483647
-     * }
-     */
     public static int WCHAR_MAX() {
         return (int)2147483647L;
     }
-    /**
-     * {@snippet :
-     * #define WINT_MIN 0
-     * }
-     */
     public static int WINT_MIN() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define WINT_MAX 4294967295
-     * }
-     */
     public static int WINT_MAX() {
         return (int)4294967295L;
     }
-    /**
-     * {@snippet :
-     * #define __WCLONE 2147483648
-     * }
-     */
     public static int __WCLONE() {
         return (int)2147483648L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT16 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT16() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_DISTINCT_FLOAT128X 0
-     * }
-     */
     public static int __HAVE_DISTINCT_FLOAT128X() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __HAVE_FLOAT128_UNLIKE_LDBL 0
-     * }
-     */
     public static int __HAVE_FLOAT128_UNLIKE_LDBL() {
         return (int)0L;
     }
-    /**
-     * {@snippet :
-     * #define __BYTE_ORDER 1234
-     * }
-     */
     public static int __BYTE_ORDER() {
         return (int)1234L;
     }
-    /**
-     * {@snippet :
-     * #define __FLOAT_WORD_ORDER 1234
-     * }
-     */
     public static int __FLOAT_WORD_ORDER() {
         return (int)1234L;
     }
-    /**
-     * {@snippet :
-     * #define LITTLE_ENDIAN 1234
-     * }
-     */
     public static int LITTLE_ENDIAN() {
         return (int)1234L;
     }
-    /**
-     * {@snippet :
-     * #define BIG_ENDIAN 4321
-     * }
-     */
     public static int BIG_ENDIAN() {
         return (int)4321L;
     }
-    /**
-     * {@snippet :
-     * #define PDP_ENDIAN 3412
-     * }
-     */
     public static int PDP_ENDIAN() {
         return (int)3412L;
     }
-    /**
-     * {@snippet :
-     * #define BYTE_ORDER 1234
-     * }
-     */
     public static int BYTE_ORDER() {
         return (int)1234L;
     }
-    /**
-     * {@snippet :
-     * #define _SIGSET_NWORDS 16
-     * }
-     */
     public static long _SIGSET_NWORDS() {
         return 16L;
     }
-    /**
-     * {@snippet :
-     * #define __NFDBITS 64
-     * }
-     */
     public static int __NFDBITS() {
         return (int)64L;
     }
-    /**
-     * {@snippet :
-     * #define FD_SETSIZE 1024
-     * }
-     */
     public static int FD_SETSIZE() {
         return (int)1024L;
     }
-    /**
-     * {@snippet :
-     * #define NFDBITS 64
-     * }
-     */
     public static int NFDBITS() {
         return (int)64L;
     }
-    /**
-     * {@snippet :
-     * #define __PTHREAD_RWLOCK_ELISION_EXTRA 0
-     * }
-     */
     public static int __PTHREAD_RWLOCK_ELISION_EXTRA() {
         return (int)0L;
     }

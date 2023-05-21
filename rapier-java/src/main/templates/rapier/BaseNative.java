@@ -1,22 +1,22 @@
 package rapier;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 public abstract class BaseNative implements Native {
-    protected final MemorySegment self;
+    protected final MemoryAddress self;
 
-    protected BaseNative(MemorySegment memory) {
+    protected BaseNative(MemoryAddress memory) {
         this.self = memory;
     }
 
     @Override
-    public MemorySegment memory() {
+    public MemoryAddress memory() {
         return self;
     }
 
     @Override
     public String toString() {
-        return "%s@0x%x".formatted(getClass().getSimpleName(), memory().address());
+        return "%s@0x%x".formatted(getClass().getSimpleName(), memory().toRawLongValue());
     }
 
     @Override

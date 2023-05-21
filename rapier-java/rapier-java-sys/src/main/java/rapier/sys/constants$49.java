@@ -7,28 +7,9 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$49 {
+class constants$49 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$49() {}
-    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("a"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("b"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_FLOAT$LAYOUT).withName("_0")
-            ).withName("c")
-        ).withName("RprTriangle")
-    );
-    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_triangle",
-        constants$49.RprSharedShape_triangle$FUNC
-    );
-    static final MemorySegment NULL$ADDR = MemorySegment.ofAddress(0L);
+    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
 }
 
 

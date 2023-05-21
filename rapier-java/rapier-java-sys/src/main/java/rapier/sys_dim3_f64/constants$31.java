@@ -7,10 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$31 {
+class constants$31 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$31() {}
+    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_new",
+        constants$31.RprMultibodyJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$31.RprNarrowPhase_drop$FUNC
+    );
     static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
         "RprNarrowPhase_new",
@@ -49,18 +59,6 @@ final class constants$31 {
     static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
         "RprPhysicsPipeline_step",
         constants$31.RprPhysicsPipeline_step$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_drop",
-        constants$31.RprQueryPipeline_drop$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprQueryPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_new",
-        constants$31.RprQueryPipeline_new$FUNC
     );
 }
 

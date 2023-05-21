@@ -7,30 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * struct RprAngVector {
- *     double _0[1];
- * };
- * }
- */
 public class RprAngVector {
 
-    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(1, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x")
     ).withName("RprAngVector");
     public static MemoryLayout $LAYOUT() {
         return RprAngVector.$struct$LAYOUT;
     }
-    public static MemorySegment _0$slice(MemorySegment seg) {
-        return seg.asSlice(0, 8);
+    static final VarHandle x$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("x"));
+    public static VarHandle x$VH() {
+        return RprAngVector.x$VH;
+    }
+    public static double x$get(MemorySegment seg) {
+        return (double)RprAngVector.x$VH.get(seg);
+    }
+    public static void x$set( MemorySegment seg, double x) {
+        RprAngVector.x$VH.set(seg, x);
+    }
+    public static double x$get(MemorySegment seg, long index) {
+        return (double)RprAngVector.x$VH.get(seg.asSlice(index*sizeof()));
+    }
+    public static void x$set(MemorySegment seg, long index, double x) {
+        RprAngVector.x$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
 }
 
 

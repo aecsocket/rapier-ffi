@@ -7,16 +7,9 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * struct __pthread_internal_slist {
- *     struct __pthread_internal_slist* __next;
- * };
- * }
- */
 public class __pthread_internal_slist {
 
-    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_POINTER$LAYOUT.withName("__next")
     ).withName("__pthread_internal_slist");
     public static MemoryLayout $LAYOUT() {
@@ -26,36 +19,24 @@ public class __pthread_internal_slist {
     public static VarHandle __next$VH() {
         return __pthread_internal_slist.__next$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * struct __pthread_internal_slist* __next;
-     * }
-     */
-    public static MemorySegment __next$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)__pthread_internal_slist.__next$VH.get(seg);
+    public static MemoryAddress __next$get(MemorySegment seg) {
+        return (java.lang.foreign.MemoryAddress)__pthread_internal_slist.__next$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * struct __pthread_internal_slist* __next;
-     * }
-     */
-    public static void __next$set(MemorySegment seg, MemorySegment x) {
+    public static void __next$set( MemorySegment seg, MemoryAddress x) {
         __pthread_internal_slist.__next$VH.set(seg, x);
     }
-    public static MemorySegment __next$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)__pthread_internal_slist.__next$VH.get(seg.asSlice(index*sizeof()));
+    public static MemoryAddress __next$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemoryAddress)__pthread_internal_slist.__next$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void __next$set(MemorySegment seg, long index, MemorySegment x) {
+    public static void __next$set(MemorySegment seg, long index, MemoryAddress x) {
         __pthread_internal_slist.__next$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
 }
 
 

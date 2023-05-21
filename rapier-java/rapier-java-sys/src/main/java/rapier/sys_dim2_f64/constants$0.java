@@ -7,10 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$0 {
+class constants$0 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$0() {}
     static final FunctionDescriptor __ctype_get_mb_cur_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
     static final MethodHandle __ctype_get_mb_cur_max$MH = RuntimeHelper.downcallHandle(
         "__ctype_get_mb_cur_max",

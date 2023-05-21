@@ -8,7 +8,7 @@ import rapier.dynamics.IslandManager;
 import rapier.dynamics.RigidBodySet;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
@@ -42,13 +42,13 @@ public final class ColliderSet extends BaseNative implements Droppable {
     }
 
     public long insert(Collider.Mut coll) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             return ArenaKey.pack(RprColliderSet_insert(arena, self, coll.memory()));
         }
     }
 
     public long insertWithParent(Collider.Mut coll, long parentHandle, RigidBodySet bodies) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             return ArenaKey.pack(RprColliderSet_insert_with_parent(
                     arena,
                     self,
@@ -60,7 +60,7 @@ public final class ColliderSet extends BaseNative implements Droppable {
     }
 
     public void setParent(long handle, @Nullable Long newParentHandle, RigidBodySet bodies) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             RprColliderSet_set_parent(
                     self,
                     ArenaKey.unpack(arena, handle),
@@ -76,7 +76,7 @@ public final class ColliderSet extends BaseNative implements Droppable {
             RigidBodySet bodies,
             boolean wakeUp
     ) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             var res = RprColliderSet_remove(
                     self,
                     ArenaKey.unpack(arena, handle),
@@ -89,13 +89,13 @@ public final class ColliderSet extends BaseNative implements Droppable {
     }
 
     public Collider index(long index) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             return Collider.at(RprColliderSet_index(self, ArenaKey.unpack(arena, index)));
         }
     }
 
     public Collider.Mut indexMut(long index) {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             return Collider.atMut(RprColliderSet_index_mut(self, ArenaKey.unpack(arena, index)));
         }
     }

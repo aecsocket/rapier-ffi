@@ -9,16 +9,20 @@ Java bindings for the Rapier physics engine
 
 </div>
 
+(note: uses java 19 FFI API, can be upgraded to java 20)
+
+(note: you need `jextract` to point to a local install of jextract 19)
+
 ## Building
 
 ### Quick start
 
 Requirements:
-* [Java >=8](https://adoptium.net/temurin/releases/)
-* [Rust 2018 + Cargo](https://rustup.rs/)
+- [Java >=8](https://adoptium.net/temurin/releases/)
+- [Rust 2018 + Cargo](https://rustup.rs/)
 
 Optional: if updating rapier_ffi, also:
-* [cbindgen](https://github.com/mozilla/cbindgen)
+- [cbindgen](https://github.com/mozilla/cbindgen)
 
 ```shell
 git clone https://github.com/aecsocket/rapier-java

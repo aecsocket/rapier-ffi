@@ -7,16 +7,9 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * struct RprBall {
- *     double radius;
- * };
- * }
- */
 public class RprBall {
 
-    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("radius")
     ).withName("RprBall");
     public static MemoryLayout $LAYOUT() {
@@ -26,22 +19,10 @@ public class RprBall {
     public static VarHandle radius$VH() {
         return RprBall.radius$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * double radius;
-     * }
-     */
     public static double radius$get(MemorySegment seg) {
         return (double)RprBall.radius$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * double radius;
-     * }
-     */
-    public static void radius$set(MemorySegment seg, double x) {
+    public static void radius$set( MemorySegment seg, double x) {
         RprBall.radius$VH.set(seg, x);
     }
     public static double radius$get(MemorySegment seg, long index) {
@@ -52,10 +33,10 @@ public class RprBall {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
 }
 
 

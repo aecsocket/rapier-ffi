@@ -7,10 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$22 {
+class constants$22 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$22() {}
+    static final FunctionDescriptor RprColliderSet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprColliderSet_get$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_get",
+        constants$22.RprColliderSet_get$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprColliderSet_get_mut$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_get_mut",
+        constants$22.RprColliderSet_get_mut$FUNC
+    );
     static final FunctionDescriptor RprColliderSet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -59,20 +79,6 @@ final class constants$22 {
     static final MethodHandle RprColliderSet_insert_with_parent$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_insert_with_parent",
         constants$22.RprColliderSet_insert_with_parent$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderSet_is_empty$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_is_empty",
-        constants$22.RprColliderSet_is_empty$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderSet_len$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_len",
-        constants$22.RprColliderSet_len$FUNC
     );
 }
 

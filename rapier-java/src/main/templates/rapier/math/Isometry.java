@@ -1,7 +1,7 @@
 package rapier.math;
 
 import rapier.BaseNative;
-import rapier.sys.RprIso;
+import rapier.sys.RprIsometry;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -17,25 +17,25 @@ public final class Isometry extends BaseNative {
 
     public static Isometry of(SegmentAllocator alloc, Rotation rotation, Vector translation) {
         var memory = {{ sys }}.RprIso.allocate(alloc);
-        {{ sys }}.RprIso.rotation$slice(memory).copyFrom(rotation.memory());
-        {{ sys }}.RprIso.translation$slice(memory).copyFrom(translation.memory());
+        {{ sys }}.RprIsometry.rotation$slice(memory).copyFrom(rotation.memory());
+        {{ sys }}.RprIsometry.translation$slice(memory).copyFrom(translation.memory());
         return at(memory);
     }
 
     public Rotation getRotation() {
-        return Rotation.at({{ sys }}.RprIso.rotation$slice(self));
+        return Rotation.at({{ sys }}.RprIsometry.rotation$slice(self));
     }
 
     public void setRotation(Rotation rotation) {
-        {{ sys }}.RprIso.rotation$slice(self).copyFrom(rotation.memory());
+        {{ sys }}.RprIsometry.rotation$slice(self).copyFrom(rotation.memory());
     }
 
     public Vector getTranslation() {
-        return Vector.at({{ sys }}.RprIso.translation$slice(self));
+        return Vector.at({{ sys }}.RprIsometry.translation$slice(self));
     }
 
     public void setTranslation(Vector translation) {
-        {{ sys }}.RprIso.translation$slice(self).copyFrom(translation.memory());
+        {{ sys }}.RprIsometry.translation$slice(self).copyFrom(translation.memory());
     }
 
     @Override

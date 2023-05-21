@@ -7,10 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$23 {
+class constants$23 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$23() {}
+    static final FunctionDescriptor RprColliderSet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_is_empty$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_is_empty",
+        constants$23.RprColliderSet_is_empty$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_len$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_len",
+        constants$23.RprColliderSet_len$FUNC
+    );
     static final FunctionDescriptor RprColliderSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprColliderSet_new$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_new",
@@ -61,38 +73,6 @@ final class constants$23 {
     static final MethodHandle RprCollider_compute_aabb$MH = RuntimeHelper.downcallHandle(
         "RprCollider_compute_aabb",
         constants$23.RprCollider_compute_aabb$FUNC
-    );
-    static final FunctionDescriptor RprCollider_compute_swept_aabb$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("min"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("max")
-    ).withName("RprAabb"),
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(2, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprCollider_compute_swept_aabb$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_compute_swept_aabb",
-        constants$23.RprCollider_compute_swept_aabb$FUNC
-    );
-    static final FunctionDescriptor RprCollider_contact_force_event_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_contact_force_event_threshold",
-        constants$23.RprCollider_contact_force_event_threshold$FUNC
     );
 }
 

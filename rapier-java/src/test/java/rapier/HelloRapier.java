@@ -10,14 +10,14 @@ import rapier.shape.Cuboid;
 import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
-import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySession;
 
 public final class HelloRapier {
     @Test
     public void helloRapier() {
         Rapier.load();
 
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             var rigidBodySet = RigidBodySet.create();
             var colliderSet = ColliderSet.create();
 

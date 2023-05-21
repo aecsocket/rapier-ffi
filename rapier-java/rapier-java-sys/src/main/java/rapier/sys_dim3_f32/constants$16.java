@@ -7,10 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$16 {
+class constants$16 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$16() {}
+    static final FunctionDescriptor ldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
+    ),
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle ldiv$MH = RuntimeHelper.downcallHandle(
+        "ldiv",
+        constants$16.ldiv$FUNC
+    );
+    static final FunctionDescriptor lldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
+    ),
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle lldiv$MH = RuntimeHelper.downcallHandle(
+        "lldiv",
+        constants$16.lldiv$FUNC
+    );
     static final FunctionDescriptor ecvt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_INT$LAYOUT,
@@ -51,26 +71,6 @@ final class constants$16 {
     static final MethodHandle ecvt_r$MH = RuntimeHelper.downcallHandle(
         "ecvt_r",
         constants$16.ecvt_r$FUNC
-    );
-    static final FunctionDescriptor fcvt_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle fcvt_r$MH = RuntimeHelper.downcallHandle(
-        "fcvt_r",
-        constants$16.fcvt_r$FUNC
-    );
-    static final FunctionDescriptor mblen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle mblen$MH = RuntimeHelper.downcallHandle(
-        "mblen",
-        constants$16.mblen$FUNC
     );
 }
 

@@ -7,10 +7,24 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$18 {
+class constants$18 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$18() {}
+    static final FunctionDescriptor rpmatch$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle rpmatch$MH = RuntimeHelper.downcallHandle(
+        "rpmatch",
+        constants$18.rpmatch$FUNC
+    );
+    static final FunctionDescriptor getsubopt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle getsubopt$MH = RuntimeHelper.downcallHandle(
+        "getsubopt",
+        constants$18.getsubopt$FUNC
+    );
     static final FunctionDescriptor getloadavg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
@@ -37,18 +51,6 @@ final class constants$18 {
     static final MethodHandle RprCCDSolver_drop$MH = RuntimeHelper.downcallHandle(
         "RprCCDSolver_drop",
         constants$18.RprCCDSolver_drop$FUNC
-    );
-    static final FunctionDescriptor RprCCDSolver_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprCCDSolver_new$MH = RuntimeHelper.downcallHandle(
-        "RprCCDSolver_new",
-        constants$18.RprCCDSolver_new$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_build$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_build",
-        constants$18.RprColliderBuilder_build$FUNC
     );
 }
 

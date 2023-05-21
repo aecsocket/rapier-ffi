@@ -10,7 +10,7 @@ import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -30,7 +30,7 @@ public sealed class Collider extends BaseNative permits Collider.Mut {
     }
 
     public @Nullable Long getParent() {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             var res = ArenaKey.pack(RprCollider_parent(arena, self));
             return ArenaKey.isValid(res) ? res : null;
         }

@@ -7,18 +7,9 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * struct RprVector {
- *     double x;
- *     double y;
- *     double z;
- * };
- * }
- */
 public class RprVector {
 
-    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
         Constants$root.C_DOUBLE$LAYOUT.withName("z")
@@ -30,22 +21,10 @@ public class RprVector {
     public static VarHandle x$VH() {
         return RprVector.x$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * double x;
-     * }
-     */
     public static double x$get(MemorySegment seg) {
         return (double)RprVector.x$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * double x;
-     * }
-     */
-    public static void x$set(MemorySegment seg, double x) {
+    public static void x$set( MemorySegment seg, double x) {
         RprVector.x$VH.set(seg, x);
     }
     public static double x$get(MemorySegment seg, long index) {
@@ -58,22 +37,10 @@ public class RprVector {
     public static VarHandle y$VH() {
         return RprVector.y$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * double y;
-     * }
-     */
     public static double y$get(MemorySegment seg) {
         return (double)RprVector.y$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * double y;
-     * }
-     */
-    public static void y$set(MemorySegment seg, double x) {
+    public static void y$set( MemorySegment seg, double x) {
         RprVector.y$VH.set(seg, x);
     }
     public static double y$get(MemorySegment seg, long index) {
@@ -86,22 +53,10 @@ public class RprVector {
     public static VarHandle z$VH() {
         return RprVector.z$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * double z;
-     * }
-     */
     public static double z$get(MemorySegment seg) {
         return (double)RprVector.z$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * double z;
-     * }
-     */
-    public static void z$set(MemorySegment seg, double x) {
+    public static void z$set( MemorySegment seg, double x) {
         RprVector.z$VH.set(seg, x);
     }
     public static double z$get(MemorySegment seg, long index) {
@@ -112,10 +67,10 @@ public class RprVector {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
 }
 
 

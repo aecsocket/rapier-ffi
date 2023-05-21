@@ -7,10 +7,27 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$47 {
+class constants$47 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$47() {}
+    static final FunctionDescriptor RprRigidBody_user_force$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_user_force$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_user_force",
+        constants$47.RprRigidBody_user_force$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_user_torque$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x")
+    ).withName("RprAngVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_user_torque$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_user_torque",
+        constants$47.RprRigidBody_user_torque$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_velocity_at_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y")
@@ -48,37 +65,6 @@ final class constants$47 {
     static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_ball",
         constants$47.RprSharedShape_ball$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y")
-                ).withName("a"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y")
-                ).withName("b")
-            ).withName("segment"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("radius")
-        ).withName("RprCapsule")
-    );
-    static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_capsule",
-        constants$47.RprSharedShape_capsule$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
-    );
-    static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cuboid",
-        constants$47.RprSharedShape_cuboid$FUNC
     );
 }
 

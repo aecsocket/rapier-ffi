@@ -7,10 +7,24 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$27 {
+class constants$27 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$27() {}
+    static final FunctionDescriptor RprCollider_set_friction$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_friction",
+        constants$27.RprCollider_set_friction$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_friction_combine_rule",
+        constants$27.RprCollider_set_friction_combine_rule$FUNC
+    );
     static final FunctionDescriptor RprCollider_set_mass$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -23,7 +37,10 @@ final class constants$27 {
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(4, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
             ).withName("rotation"),
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("x"),
@@ -40,7 +57,10 @@ final class constants$27 {
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(4, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
             ).withName("rotation"),
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("x"),
@@ -60,24 +80,6 @@ final class constants$27 {
     static final MethodHandle RprCollider_set_restitution$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_restitution",
         constants$27.RprCollider_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution_combine_rule",
-        constants$27.RprCollider_set_restitution_combine_rule$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(4, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
-        ).withName("RprRotation")
-    );
-    static final MethodHandle RprCollider_set_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_rotation",
-        constants$27.RprCollider_set_rotation$FUNC
     );
 }
 

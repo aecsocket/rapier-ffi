@@ -7,10 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$32 {
+class constants$32 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$32() {}
+    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_drop",
+        constants$32.RprQueryPipeline_drop$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprQueryPipeline_new$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_new",
+        constants$32.RprQueryPipeline_new$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_additional_mass$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -30,7 +40,7 @@ final class constants$32 {
     static final FunctionDescriptor RprRigidBodyBuilder_angvel$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(1, Constants$root.C_DOUBLE$LAYOUT).withName("_0")
+            Constants$root.C_DOUBLE$LAYOUT.withName("x")
         ).withName("RprAngVector")
     );
     static final MethodHandle RprRigidBodyBuilder_angvel$MH = RuntimeHelper.downcallHandle(
@@ -43,22 +53,6 @@ final class constants$32 {
     static final MethodHandle RprRigidBodyBuilder_build$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_build",
         constants$32.RprRigidBodyBuilder_build$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_can_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_can_sleep",
-        constants$32.RprRigidBodyBuilder_can_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_ccd_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_ccd_enabled",
-        constants$32.RprRigidBodyBuilder_ccd_enabled$FUNC
     );
 }
 

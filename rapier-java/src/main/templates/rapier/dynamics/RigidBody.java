@@ -7,7 +7,7 @@ import rapier.geometry.ColliderSet;
 import rapier.math.*;
 import rapier.sys.RapierC;
 
-import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
@@ -56,7 +56,7 @@ public sealed class RigidBody extends BaseNative permits RigidBody.Mut {
     }
 
     public boolean[] isRotationLocked() {
-        try (var arena = Arena.openConfined()) {
+        try (var arena = MemorySession.openConfined()) {
             var out = arena.allocateArray(ValueLayout.JAVA_BOOLEAN, {% if dim2 %} 1 {% elseif dim3 %} 3 {% endif %});
             RprRigidBody_is_rotation_locked(self, out);
 {% if dim2 %}

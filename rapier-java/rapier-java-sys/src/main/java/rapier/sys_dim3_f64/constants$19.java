@@ -7,10 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-final class constants$19 {
+class constants$19 {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private constants$19() {}
+    static final FunctionDescriptor RprCCDSolver_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprCCDSolver_new$MH = RuntimeHelper.downcallHandle(
+        "RprCCDSolver_new",
+        constants$19.RprCCDSolver_new$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_build$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_build",
+        constants$19.RprColliderBuilder_build$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_contact_force_event_threshold$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -41,22 +51,6 @@ final class constants$19 {
     static final MethodHandle RprColliderBuilder_enabled$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_enabled",
         constants$19.RprColliderBuilder_enabled$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_friction$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_friction$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_friction",
-        constants$19.RprColliderBuilder_friction$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_friction_combine_rule",
-        constants$19.RprColliderBuilder_friction_combine_rule$FUNC
     );
 }
 

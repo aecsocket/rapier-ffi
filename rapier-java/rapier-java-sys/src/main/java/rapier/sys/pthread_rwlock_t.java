@@ -7,18 +7,9 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * union pthread_rwlock_t {
- *     struct __pthread_rwlock_arch_t __data;
- *     char __size[56];
- *     long __align;
- * };
- * }
- */
 public class pthread_rwlock_t {
 
-    static final UnionLayout $union$LAYOUT = MemoryLayout.unionLayout(
+    static final  GroupLayout $union$LAYOUT = MemoryLayout.unionLayout(
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("__readers"),
             Constants$root.C_INT$LAYOUT.withName("__writers"),
@@ -36,7 +27,7 @@ public class pthread_rwlock_t {
         ).withName("__data"),
         MemoryLayout.sequenceLayout(56, Constants$root.C_CHAR$LAYOUT).withName("__size"),
         Constants$root.C_LONG_LONG$LAYOUT.withName("__align")
-    ).withName("pthread_rwlock_t");
+    );
     public static MemoryLayout $LAYOUT() {
         return pthread_rwlock_t.$union$LAYOUT;
     }
@@ -50,22 +41,10 @@ public class pthread_rwlock_t {
     public static VarHandle __align$VH() {
         return pthread_rwlock_t.__align$VH;
     }
-    /**
-     * Getter for field:
-     * {@snippet :
-     * long __align;
-     * }
-     */
     public static long __align$get(MemorySegment seg) {
         return (long)pthread_rwlock_t.__align$VH.get(seg);
     }
-    /**
-     * Setter for field:
-     * {@snippet :
-     * long __align;
-     * }
-     */
-    public static void __align$set(MemorySegment seg, long x) {
+    public static void __align$set( MemorySegment seg, long x) {
         pthread_rwlock_t.__align$VH.set(seg, x);
     }
     public static long __align$get(MemorySegment seg, long index) {
@@ -76,10 +55,10 @@ public class pthread_rwlock_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
+    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
 }
 
 

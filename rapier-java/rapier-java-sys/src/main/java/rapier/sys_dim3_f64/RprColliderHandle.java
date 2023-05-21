@@ -7,15 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-/**
- * {@snippet :
- * typedef struct RprArenaKey RprColliderHandle;
- * }
- */
-public final class RprColliderHandle extends RprArenaKey {
+public class RprColliderHandle extends RprArenaKey {
 
-    // Suppresses default constructor, ensuring non-instantiability.
-    private RprColliderHandle() {}
 }
 
 
