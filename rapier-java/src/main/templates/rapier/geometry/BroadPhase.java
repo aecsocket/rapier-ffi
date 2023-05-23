@@ -1,16 +1,13 @@
 
 package rapier.geometry;
 
-import rapier.BaseNative;
-import rapier.DropFlag;
-import rapier.Droppable;
-import rapier.Native;
+import rapier.*;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class BroadPhase extends BaseNative implements Droppable {
+public final class BroadPhase extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -18,11 +15,11 @@ public final class BroadPhase extends BaseNative implements Droppable {
         dropped.drop(() -> RprBroadPhase_drop(self));
     }
 
-    protected BroadPhase(MemorySegment memory) {
+    private BroadPhase(MemoryAddress memory) {
         super(memory);
     }
 
-    public static BroadPhase at(MemorySegment memory) {
+    public static BroadPhase at(MemoryAddress memory) {
         return new BroadPhase(memory);
     }
 

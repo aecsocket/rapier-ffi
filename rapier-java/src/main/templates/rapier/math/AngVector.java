@@ -1,13 +1,13 @@
 package rapier.math;
 
-import rapier.BaseNative;
+import rapier.ValNative;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
-public final class AngVector extends BaseNative {
-    protected AngVector(MemorySegment memory) {
+public final class AngVector extends ValNative {
+    private AngVector(MemorySegment memory) {
         super(memory);
     }
 

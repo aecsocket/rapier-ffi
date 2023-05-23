@@ -1,14 +1,14 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class MultibodyJointSet extends BaseNative implements Droppable {
+public final class MultibodyJointSet extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -16,11 +16,11 @@ public final class MultibodyJointSet extends BaseNative implements Droppable {
         dropped.drop(() -> RprMultibodyJointSet_drop(self));
     }
 
-    protected MultibodyJointSet(MemorySegment memory) {
+    private MultibodyJointSet(MemoryAddress memory) {
         super(memory);
     }
 
-    public static MultibodyJointSet at(MemorySegment memory) {
+    public static MultibodyJointSet at(MemoryAddress memory) {
         return new MultibodyJointSet(memory);
     }
 

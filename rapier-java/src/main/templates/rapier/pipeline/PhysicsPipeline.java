@@ -1,9 +1,6 @@
 package rapier.pipeline;
 
-import rapier.BaseNative;
-import rapier.DropFlag;
-import rapier.Droppable;
-import rapier.Native;
+import rapier.*;
 import rapier.dynamics.IntegrationParameters;
 import rapier.dynamics.IslandManager;
 import rapier.dynamics.RigidBodySet;
@@ -16,11 +13,11 @@ import rapier.geometry.ColliderSet;
 import rapier.math.*;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class PhysicsPipeline extends BaseNative implements Droppable {
+public final class PhysicsPipeline extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -28,11 +25,11 @@ public final class PhysicsPipeline extends BaseNative implements Droppable {
         dropped.drop(() -> RprPhysicsPipeline_drop(self));
     }
 
-    protected PhysicsPipeline(MemorySegment memory) {
+    private PhysicsPipeline(MemoryAddress memory) {
         super(memory);
     }
 
-    public static PhysicsPipeline at(MemorySegment memory) {
+    public static PhysicsPipeline at(MemoryAddress memory) {
         return new PhysicsPipeline(memory);
     }
 

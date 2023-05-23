@@ -1,12 +1,10 @@
 package rapier.shape;
 
-import rapier.math.*;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public final class Capsule extends Shape {
-    protected Capsule(MemorySegment memory) {
+    private Capsule(MemorySegment memory) {
         super(memory);
     }
 

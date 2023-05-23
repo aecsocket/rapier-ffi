@@ -1,14 +1,14 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class CCDSolver extends BaseNative implements Droppable {
+public final class CCDSolver extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -16,11 +16,11 @@ public final class CCDSolver extends BaseNative implements Droppable {
         dropped.drop(() -> RprCCDSolver_drop(self));
     }
 
-    protected CCDSolver(MemorySegment memory) {
+    private CCDSolver(MemoryAddress memory) {
         super(memory);
     }
 
-    public static CCDSolver at(MemorySegment memory) {
+    public static CCDSolver at(MemoryAddress memory) {
         return new CCDSolver(memory);
     }
 

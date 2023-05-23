@@ -4,28 +4,30 @@ package rapier.geometry;
 import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 import rapier.data.ArenaKey;
 import rapier.math.*;
 import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
 import javax.annotation.Nullable;
+import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
-public sealed class Collider extends BaseNative permits Collider.Mut {
-    protected Collider(MemorySegment memory) {
+public sealed class Collider extends RefNative permits Collider.Mut {
+    protected Collider(MemoryAddress memory) {
         super(memory);
     }
 
-    public static Collider at(MemorySegment memory) {
+    public static Collider at(MemoryAddress memory) {
         return new Collider(memory);
     }
 
-    public static Mut atMut(MemorySegment memory) {
+    public static Mut atMut(MemoryAddress memory) {
         return new Mut(memory);
     }
 
@@ -113,7 +115,7 @@ public sealed class Collider extends BaseNative permits Collider.Mut {
             dropped.drop(() -> RprCollider_drop(self));
         }
 
-        protected Mut(MemorySegment memory) {
+        private Mut(MemoryAddress memory) {
             super(memory);
         }
 

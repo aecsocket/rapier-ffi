@@ -1,12 +1,12 @@
 package rapier.math;
 
-import rapier.BaseNative;
+import rapier.ValNative;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Aabb extends BaseNative {
-    protected Aabb(MemorySegment memory) {
+public final class Aabb extends ValNative {
+    private Aabb(MemorySegment memory) {
         super(memory);
     }
 

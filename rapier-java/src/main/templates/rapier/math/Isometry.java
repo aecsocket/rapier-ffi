@@ -1,13 +1,13 @@
 package rapier.math;
 
-import rapier.BaseNative;
+import rapier.ValNative;
 import rapier.sys.RprIsometry;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Isometry extends BaseNative {
-    protected Isometry(MemorySegment memory) {
+public final class Isometry extends ValNative {
+    private Isometry(MemorySegment memory) {
         super(memory);
     }
 
@@ -16,7 +16,7 @@ public final class Isometry extends BaseNative {
     }
 
     public static Isometry of(SegmentAllocator alloc, Rotation rotation, Vector translation) {
-        var memory = {{ sys }}.RprIso.allocate(alloc);
+        var memory = {{ sys }}.RprIsometry.allocate(alloc);
         {{ sys }}.RprIsometry.rotation$slice(memory).copyFrom(rotation.memory());
         {{ sys }}.RprIsometry.translation$slice(memory).copyFrom(translation.memory());
         return at(memory);

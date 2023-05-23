@@ -1,18 +1,18 @@
 package rapier.shape;
 
-import rapier.BaseNative;
 import rapier.RefCounted;
+import rapier.RefNative;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class SharedShape extends BaseNative implements RefCounted {
-    protected SharedShape(MemorySegment memory) {
+public final class SharedShape extends RefNative implements RefCounted {
+    private SharedShape(MemoryAddress memory) {
         super(memory);
     }
 
-    public static SharedShape at(MemorySegment memory) {
+    public static SharedShape at(MemoryAddress memory) {
         return new SharedShape(memory);
     }
 

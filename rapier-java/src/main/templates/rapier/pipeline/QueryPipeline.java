@@ -1,14 +1,14 @@
 package rapier.pipeline;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class QueryPipeline extends BaseNative implements Droppable {
+public final class QueryPipeline extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -16,11 +16,11 @@ public final class QueryPipeline extends BaseNative implements Droppable {
         dropped.drop(() -> RprQueryPipeline_drop(self));
     }
 
-    protected QueryPipeline(MemorySegment memory) {
+    private QueryPipeline(MemoryAddress memory) {
         super(memory);
     }
 
-    public static QueryPipeline at(MemorySegment memory) {
+    public static QueryPipeline at(MemoryAddress memory) {
         return new QueryPipeline(memory);
     }
 

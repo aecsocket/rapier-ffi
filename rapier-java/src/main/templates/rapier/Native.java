@@ -1,14 +1,13 @@
 package rapier;
 
 import javax.annotation.Nullable;
+import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.util.function.Consumer;
 
 public interface Native {
-    MemoryAddress memory();
+    Addressable memory();
 
-    static MemoryAddress memoryOrNull(@Nullable Native obj) {
+    static Addressable memoryOrNull(@Nullable Native obj) {
         return obj == null ? MemoryAddress.NULL : obj.memory();
     }
 }

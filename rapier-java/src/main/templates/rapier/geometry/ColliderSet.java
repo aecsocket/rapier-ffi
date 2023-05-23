@@ -1,19 +1,19 @@
 package rapier.geometry;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 import rapier.data.ArenaKey;
 import rapier.dynamics.IslandManager;
 import rapier.dynamics.RigidBodySet;
 
 import javax.annotation.Nullable;
+import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.MemorySegment;
 
 import static rapier.sys.RapierC.*;
 
-public final class ColliderSet extends BaseNative implements Droppable {
+public final class ColliderSet extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -21,11 +21,11 @@ public final class ColliderSet extends BaseNative implements Droppable {
         dropped.drop(() -> RprColliderSet_drop(self));
     }
 
-    protected ColliderSet(MemorySegment memory) {
+    private ColliderSet(MemoryAddress memory) {
         super(memory);
     }
 
-    public static ColliderSet at(MemorySegment memory) {
+    public static ColliderSet at(MemoryAddress memory) {
         return new ColliderSet(memory);
     }
 
@@ -84,7 +84,7 @@ public final class ColliderSet extends BaseNative implements Droppable {
                     bodies.memory(),
                     wakeUp
             );
-            return res.address() == 0 ? null : Collider.atMut(res);
+            return res.address().equals(MemoryAddress.NULL) ? null : Collider.atMut(res);
         }
     }
 

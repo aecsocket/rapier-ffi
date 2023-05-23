@@ -7,7 +7,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public final class Triangle extends Shape {
-    protected Triangle(MemorySegment memory) {
+    private Triangle(MemorySegment memory) {
         super(memory);
     }
 

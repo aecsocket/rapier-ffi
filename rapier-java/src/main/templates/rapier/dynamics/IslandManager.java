@@ -1,14 +1,14 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class IslandManager extends BaseNative implements Droppable {
+public final class IslandManager extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -16,11 +16,11 @@ public final class IslandManager extends BaseNative implements Droppable {
         dropped.drop(() -> RprIslandManager_drop(self));
     }
 
-    protected IslandManager(MemorySegment memory) {
+    private IslandManager(MemoryAddress memory) {
         super(memory);
     }
 
-    public static IslandManager at(MemorySegment memory) {
+    public static IslandManager at(MemoryAddress memory) {
         return new IslandManager(memory);
     }
 

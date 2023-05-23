@@ -7,7 +7,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public final class Segment extends Shape {
-    protected Segment(MemorySegment memory) {
+    private Segment(MemorySegment memory) {
         super(memory);
     }
 

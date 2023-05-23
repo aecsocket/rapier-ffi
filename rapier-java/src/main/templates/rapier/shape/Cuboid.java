@@ -7,7 +7,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public final class Cuboid extends Shape {
-    protected Cuboid(MemorySegment memory) {
+    private Cuboid(MemorySegment memory) {
         super(memory);
     }
 

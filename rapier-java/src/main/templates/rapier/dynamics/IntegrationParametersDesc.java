@@ -1,15 +1,13 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
+import rapier.ValNative;
 import rapier.sys.RprIntegrationParametersDesc;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-import static rapier.sys.RapierC.*;
-
-public final class IntegrationParametersDesc extends BaseNative {
-    protected IntegrationParametersDesc(MemorySegment memory) {
+public final class IntegrationParametersDesc extends ValNative {
+    private IntegrationParametersDesc(MemorySegment memory) {
         super(memory);
     }
 

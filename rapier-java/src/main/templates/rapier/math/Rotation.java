@@ -1,13 +1,13 @@
 package rapier.math;
 
-import rapier.BaseNative;
+import rapier.ValNative;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
-public final class Rotation extends BaseNative {
-    protected Rotation(MemorySegment memory) {
+public final class Rotation extends ValNative {
+    private Rotation(MemorySegment memory) {
         super(memory);
     }
 

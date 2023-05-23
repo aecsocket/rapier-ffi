@@ -1,17 +1,17 @@
 package rapier.geometry;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 import rapier.math.*;
 import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class ColliderBuilder extends BaseNative implements Droppable {
+public final class ColliderBuilder extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -19,11 +19,11 @@ public final class ColliderBuilder extends BaseNative implements Droppable {
         dropped.drop(() -> RprColliderBuilder_drop(self));
     }
 
-    protected ColliderBuilder(MemorySegment memory) {
+    private ColliderBuilder(MemoryAddress memory) {
         super(memory);
     }
 
-    public static ColliderBuilder at(MemorySegment memory) {
+    public static ColliderBuilder at(MemoryAddress memory) {
         return new ColliderBuilder(memory);
     }
 

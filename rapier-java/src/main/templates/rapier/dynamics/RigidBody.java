@@ -1,29 +1,26 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 import rapier.geometry.ColliderSet;
 import rapier.math.*;
 import rapier.sys.RapierC;
 
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 
 import static rapier.sys.RapierC.*;
 
-public sealed class RigidBody extends BaseNative permits RigidBody.Mut {
-    protected RigidBody(MemorySegment memory) {
+public sealed class RigidBody extends RefNative permits RigidBody.Mut {
+    private RigidBody(MemoryAddress memory) {
         super(memory);
     }
 
-    public static RigidBody at(MemorySegment memory) {
+    public static RigidBody at(MemoryAddress memory) {
         return new RigidBody(memory);
     }
 
-    public static Mut atMut(MemorySegment memory) {
+    public static Mut atMut(MemoryAddress memory) {
         return new Mut(memory);
     }
 
@@ -159,7 +156,7 @@ public sealed class RigidBody extends BaseNative permits RigidBody.Mut {
             dropped.drop(() -> RprRigidBody_drop(self));
         }
 
-        protected Mut(MemorySegment memory) {
+        private Mut(MemoryAddress memory) {
             super(memory);
         }
 

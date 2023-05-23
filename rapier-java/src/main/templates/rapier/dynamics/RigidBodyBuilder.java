@@ -1,16 +1,16 @@
 package rapier.dynamics;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.RefNative;
 import rapier.math.*;
 import rapier.sys.RapierC;
 
-import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemoryAddress;
 
 import static rapier.sys.RapierC.*;
 
-public final class RigidBodyBuilder extends BaseNative implements Droppable {
+public final class RigidBodyBuilder extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -18,11 +18,11 @@ public final class RigidBodyBuilder extends BaseNative implements Droppable {
         dropped.drop(() -> RprRigidBodyBuilder_drop(self));
     }
 
-    protected RigidBodyBuilder(MemorySegment memory) {
+    private RigidBodyBuilder(MemoryAddress memory) {
         super(memory);
     }
 
-    public static RigidBodyBuilder at(MemorySegment memory) {
+    public static RigidBodyBuilder at(MemoryAddress memory) {
         return new RigidBodyBuilder(memory);
     }
 

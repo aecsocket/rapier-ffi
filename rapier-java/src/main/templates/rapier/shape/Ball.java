@@ -4,7 +4,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public final class Ball extends Shape {
-    protected Ball(MemorySegment memory) {
+    private Ball(MemorySegment memory) {
         super(memory);
     }
 
