@@ -105,7 +105,7 @@ allow_constexpr = false
 sort_by = "Name"
 
 [macro_expansion]
-bitflags = false
+bitflags = true
 
 ############## Options for How Your Rust library Should Be Parsed ##############
 

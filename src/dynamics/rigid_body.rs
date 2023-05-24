@@ -306,7 +306,9 @@ pub unsafe extern "C" fn RprRigidBody_linvel(this: *const RprRigidBody) -> RprVe
 #[no_mangle]
 #[cfg(feature = "dim2")]
 pub unsafe extern "C" fn RprRigidBody_angvel(this: *const RprRigidBody) -> RprAngVector {
-    RprAngVector { x: this.get().0.angvel() }
+    RprAngVector {
+        x: this.get().0.angvel(),
+    }
 }
 
 #[no_mangle]

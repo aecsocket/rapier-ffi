@@ -37,6 +37,10 @@ impl RprVector {
     pub fn into_point(self) -> Point<Real> {
         cast(self)
     }
+
+    pub fn into_unit(self) -> UnitVector<Real> {
+        cast(self)
+    }
 }
 
 #[repr(C)]

@@ -1,3 +1,5 @@
+#![allow(non_upper_case_globals)]
+
 pub(crate) mod ffi;
 
 #[cfg(not(any(feature = "dim2", feature = "dim3")))]
@@ -21,9 +23,16 @@ pub(crate) mod prelude {
 
     pub use crate::data::arena::*;
     pub use crate::dynamics::{
-        ccd_solver::*, coefficient_combine_rule::*, impulse_joint_set::*,
-        integration_parameters::*, island_manager::*, multibody_joint_set::*, rigid_body::*,
-        rigid_body_set::*, rigid_body_set::*,
+        ccd_solver::*,
+        coefficient_combine_rule::*,
+        impulse_joint_set::*,
+        integration_parameters::*,
+        island_manager::*,
+        joint::{generic_joint::*, motor_model::*},
+        multibody_joint_set::*,
+        rigid_body::*,
+        rigid_body_set::*,
+        rigid_body_set::*,
     };
     pub use crate::geometry::{broad_phase::*, collider::*, collider_set::*, narrow_phase::*};
     pub use crate::math::*;

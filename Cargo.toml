@@ -21,6 +21,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 bytemuck = { version = "1.13.1", features = ["derive"] }
+bitflags = { version = "2.3.1", features = ["bytemuck"] }
 
 parry2d      = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
 rapier2d     = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
