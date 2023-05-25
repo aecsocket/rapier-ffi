@@ -31,15 +31,23 @@ pub(crate) mod prelude {
             generic_joint::*,
             impulse_joint::{impulse_joint::*, impulse_joint_set::*},
             motor_model::*,
+            multibody_joint::{multibody_joint::*, multibody_joint_set::*}
         },
-        multibody_joint_set::*,
         rigid_body::*,
         rigid_body_set::*,
         rigid_body_set::*,
     };
-    pub use crate::geometry::{broad_phase::*, collider::*, collider_set::*, narrow_phase::*};
+    pub use crate::geometry::{
+        broad_phase::*,
+        collider::*,
+        collider_set::*,
+        narrow_phase::*,
+    };
     pub use crate::math::*;
-    pub use crate::pipeline::{physics_pipeline::*, query_pipeline::*};
+    pub use crate::pipeline::{
+        physics_pipeline::*,
+        query_pipeline::*,
+    };
     pub use crate::shape::*;
 
     pub(crate) const INVALID_U32: u32 = u32::MAX;

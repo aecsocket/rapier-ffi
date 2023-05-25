@@ -40,3 +40,8 @@ impl RprArenaKey {
         }
     }
 }
+
+#[no_mangle]
+pub extern "C" fn RprArenaKey_invalid() -> RprArenaKey {
+    RprArenaKey::invalid()
+}
