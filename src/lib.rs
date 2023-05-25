@@ -25,6 +25,7 @@ pub(crate) mod prelude {
     pub use crate::dynamics::{
         ccd_solver::*,
         coefficient_combine_rule::*,
+        impulse_joint::*,
         impulse_joint_set::*,
         integration_parameters::*,
         island_manager::*,

@@ -72,6 +72,37 @@ impl RprAngVector {
 #[repr(C)]
 #[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
 #[cfg(feature = "dim2")]
+pub struct RprSpacialVector {
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
+}
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+#[cfg(feature = "dim3")]
+pub struct RprSpacialVector {
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
+    pub w: Real,
+    pub a: Real,
+    pub b: Real,
+}
+
+impl RprSpacialVector {
+    pub fn from_raw(raw: SpacialVector<Real>) -> Self {
+        cast(raw)
+    }
+
+    pub fn into_raw(self) -> SpacialVector<Real> {
+        cast(self)
+    }
+}
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+#[cfg(feature = "dim2")]
 pub struct RprRotation {
     pub re: Real,
     pub im: Real,
