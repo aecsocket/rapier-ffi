@@ -85,20 +85,3 @@ pub unsafe extern "C" fn RprRigidBodySet_get_mut(
         None => std::ptr::null_mut(),
     }
 }
-
-#[no_mangle]
-pub unsafe extern "C" fn RprRigidBodySet_index(
-    this: *const RprRigidBodySet,
-    index: RprRigidBodyHandle,
-) -> *const RprRigidBody {
-    (&this.get().0[index.into_raw()]) as *const RigidBody as *const RprRigidBody
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprRigidBodySet_index_mut(
-    this: *mut RprRigidBodySet,
-    index: RprRigidBodyHandle,
-) -> *mut RprRigidBody {
-    (&mut this.get_mut().0[RigidBodyHandle(index.into_raw())]) as *mut RigidBody
-        as *mut RprRigidBody
-}

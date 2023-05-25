@@ -116,19 +116,3 @@ pub unsafe extern "C" fn RprColliderSet_get_mut(
         None => std::ptr::null_mut(),
     }
 }
-
-#[no_mangle]
-pub unsafe extern "C" fn RprColliderSet_index(
-    this: *const RprColliderSet,
-    index: RprColliderHandle,
-) -> *const RprCollider {
-    (&this.get().0[index.into_raw()]) as *const Collider as *const RprCollider
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprColliderSet_index_mut(
-    this: *mut RprColliderSet,
-    index: RprColliderHandle,
-) -> *const RprCollider {
-    (&mut this.get_mut().0[ColliderHandle(index.into_raw())]) as *mut Collider as *mut RprCollider
-}
