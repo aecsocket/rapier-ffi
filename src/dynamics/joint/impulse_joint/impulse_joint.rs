@@ -29,7 +29,9 @@ pub unsafe extern "C" fn RprImpulseJoint_set_body2(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprImpulseJoint_data(this: *const RprImpulseJoint) -> *const RprGenericJoint {
+pub unsafe extern "C" fn RprImpulseJoint_data(
+    this: *const RprImpulseJoint,
+) -> *const RprGenericJoint {
     &this.get().0.data as *const GenericJoint as *const RprGenericJoint
 }
 

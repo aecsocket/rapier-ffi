@@ -58,7 +58,11 @@ pub unsafe extern "C" fn RprImpulseJointSet_get_mut(
     this: *mut RprImpulseJointSet,
     handle: RprImpulseJointHandle,
 ) -> *mut RprImpulseJoint {
-    match this.get_mut().0.get_mut(ImpulseJointHandle(handle.into_raw())) {
+    match this
+        .get_mut()
+        .0
+        .get_mut(ImpulseJointHandle(handle.into_raw()))
+    {
         Some(t) => t as *mut ImpulseJoint as *mut RprImpulseJoint,
         None => std::ptr::null_mut(),
     }
@@ -74,12 +78,17 @@ pub unsafe extern "C" fn RprImpulseJointSet_insert(
     data: *const RprGenericJoint,
     wake_up: bool,
 ) -> RprImpulseJointHandle {
-    RprImpulseJointHandle::from_raw(this.get_mut().0.insert(
-        RigidBodyHandle(body1.into_raw()),
-        RigidBodyHandle(body2.into_raw()),
-        data.read().0,
-        wake_up,
-    ).0)
+    RprImpulseJointHandle::from_raw(
+        this.get_mut()
+            .0
+            .insert(
+                RigidBodyHandle(body1.into_raw()),
+                RigidBodyHandle(body2.into_raw()),
+                data.read().0,
+                wake_up,
+            )
+            .0,
+    )
 }
 
 #[no_mangle]
@@ -88,7 +97,11 @@ pub unsafe extern "C" fn RprImpulseJointSet_remove(
     handle: RprImpulseJointHandle,
     wake_up: bool,
 ) -> *mut RprImpulseJoint {
-    match this.get_mut().0.remove(ImpulseJointHandle(handle.into_raw()), wake_up) {
+    match this
+        .get_mut()
+        .0
+        .remove(ImpulseJointHandle(handle.into_raw()), wake_up)
+    {
         // TODO I think this would return a dangling ptr, since the `t` would be dropped
         Some(t) => &mut RprImpulseJoint(t),
         None => std::ptr::null_mut(),

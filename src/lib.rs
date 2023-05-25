@@ -25,11 +25,13 @@ pub(crate) mod prelude {
     pub use crate::dynamics::{
         ccd_solver::*,
         coefficient_combine_rule::*,
-        impulse_joint::*,
-        impulse_joint_set::*,
         integration_parameters::*,
         island_manager::*,
-        joint::{generic_joint::*, motor_model::*},
+        joint::{
+            generic_joint::*,
+            impulse_joint::{impulse_joint::*, impulse_joint_set::*},
+            motor_model::*,
+        },
         multibody_joint_set::*,
         rigid_body::*,
         rigid_body_set::*,

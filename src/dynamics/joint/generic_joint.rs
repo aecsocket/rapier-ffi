@@ -494,5 +494,7 @@ pub unsafe extern "C" fn RprGenericJoint_set_motor(
     stiffness: Real,
     damping: Real,
 ) {
-    this.get_mut().0.set_motor(axis.into_raw(), target_pos, target_vel, stiffness, damping);
+    this.get_mut()
+        .0
+        .set_motor(axis.into_raw(), target_pos, target_vel, stiffness, damping);
 }
