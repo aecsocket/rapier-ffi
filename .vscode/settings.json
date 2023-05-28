@@ -2,5 +2,4 @@
     "rust-analyzer.cargo.features": [
         "dim3-f64"
     ],
-    "java.compile.nullAnalysis.mode": "automatic"
 }

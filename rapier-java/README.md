@@ -23,7 +23,6 @@ Optional: if updating rapier_ffi, also:
 ```shell
 git clone https://github.com/aecsocket/rapier-ffi
 cd rapier-ffi/rapier-java
-git submodule update --init
 ./gradlew build
 ```
 
