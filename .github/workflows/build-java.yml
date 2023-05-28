@@ -1,4 +1,4 @@
-name: Build
+name: Build Java
 
 on:
   push:
@@ -25,4 +25,4 @@ jobs:
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: |
-        ./gradlew --stacktrace build
+        rapier-java/gradlew --stacktrace build
