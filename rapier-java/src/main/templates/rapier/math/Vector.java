@@ -30,7 +30,6 @@ public final class Vector extends ValNative {
 {% elseif dim3 %}
     public static Vector of(SegmentAllocator alloc, {{ real }} x, {{ real }} y, {{ real }} z) {
         var memory = {{ sys }}.RprVector.allocate(alloc);
-        System.out.println(">> size = " + memory.byteSize());
         {{ sys }}.RprVector.x$set(memory, x);
         {{ sys }}.RprVector.y$set(memory, y);
         {{ sys }}.RprVector.z$set(memory, z);
