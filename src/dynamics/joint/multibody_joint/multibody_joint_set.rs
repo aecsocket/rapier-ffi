@@ -28,8 +28,7 @@ pub unsafe extern "C" fn RprMultibodyJointSet_insert(
         RigidBodyHandle(body2.into_raw()),
         data.read().0,
         wake_up,
-    )
-    {
+    ) {
         Some(t) => {
             out.write(RprMultibodyJointHandle::from_raw(t.0));
             true
@@ -44,7 +43,9 @@ pub unsafe extern "C" fn RprMultibodyJointSet_remove(
     handle: RprMultibodyJointHandle,
     wake_up: bool,
 ) {
-    this.get_mut().0.remove(MultibodyJointHandle(handle.into_raw()), wake_up)
+    this.get_mut()
+        .0
+        .remove(MultibodyJointHandle(handle.into_raw()), wake_up)
 }
 
 #[no_mangle]
@@ -53,7 +54,9 @@ pub unsafe extern "C" fn RprMultibodyJointSet_remove_multibody_articulations(
     handle: RprRigidBodyHandle,
     wake_up: bool,
 ) {
-    this.get_mut().0.remove_multibody_articulations(RigidBodyHandle(handle.into_raw()), wake_up)
+    this.get_mut()
+        .0
+        .remove_multibody_articulations(RigidBodyHandle(handle.into_raw()), wake_up)
 }
 
 #[no_mangle]
@@ -61,7 +64,9 @@ pub unsafe extern "C" fn RprMultibodyJointSet_remove_joints_attached_to_rigid_bo
     this: *mut RprMultibodyJointSet,
     rb_to_remove: RprRigidBodyHandle,
 ) {
-    this.get_mut().0.remove_joints_attached_to_rigid_body(RigidBodyHandle(rb_to_remove.into_raw()))
+    this.get_mut()
+        .0
+        .remove_joints_attached_to_rigid_body(RigidBodyHandle(rb_to_remove.into_raw()))
 }
 
 // TODO get
