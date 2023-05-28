@@ -1,7 +1,7 @@
 <div align="center">
 
 # rapier-java
-[![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-java/build.yml)](https://github.com/aecsocket/rapier-java/actions/workflows/build.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-java/build-java.yml)](https://github.com/aecsocket/rapier-java/actions/workflows/build-java.yml)
 
 Java bindings for the Rapier physics engine
 

@@ -1,7 +1,7 @@
 <div align="center">
 
 # rapier-ffi
-[![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-ffi/build.yml)](https://github.com/aecsocket/rapier-ffi/actions/workflows/build.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-ffi/build-ffi.yml)](https://github.com/aecsocket/rapier-ffi/actions/workflows/build-ffi.yml)
 
 FFI bindings for the [Rapier](https://github.com/dimforge/rapier/) physics engine
 
