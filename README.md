@@ -1,19 +1,18 @@
 <div align="center">
 
-# rapier_ffi
+# rapier-ffi
 [![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-ffi/build.yml)](https://github.com/aecsocket/rapier-ffi/actions/workflows/build.yml)
 
-C/FFI bindings for the [Rapier](https://github.com/dimforge/rapier/) physics engine
+FFI bindings for the [Rapier](https://github.com/dimforge/rapier/) physics engine
 
 ### [GitHub](https://github.com/aecsocket/rapier-ffi)
 
 </div>
 
-`rapier_ffi` is a crate providing binding code, written in Rust, to allow C code to interface with Rapier.
-These C bindings can also be extended to other languages like Java, in [rapier-java](https://github.com/aecsocket/rapier-java/).
+This repository provides bindings for the Rapier physics engine to various languages, including:
+- [C -> rapier-ffi](rapier-ffi/)
+- [Java -> rapier-java -> rapier-ffi](rapier-java/)
 
-The project supports different variants of the engine by activating one (only one!) of these features:
- - `dim2-f32`
- - `dim2-f64`
- - `dim3-f32`
- - `dim3-f64`
+Visit the individual subproject's README to see more details.
+
+This repository is dual-licensed Apache and MIT. This license applies to all subprojects.

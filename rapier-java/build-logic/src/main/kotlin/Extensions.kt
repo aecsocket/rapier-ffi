@@ -9,7 +9,7 @@ val Project.ciPublishCore: Provider<Boolean>
     get() = providers.environmentVariable("CI_PUBLISH_CORE").map { it.toBoolean() }.orElse(false)
 
 val Project.nativeDir: File
-    get() = rootDir.resolve("rapier-ffi")
+    get() = rootDir.resolve("../rapier-ffi")
 
 enum class BuildProfile(val cargoName: String, val outputName: String) {
     DEV     ("dev", "debug"),
