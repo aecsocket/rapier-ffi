@@ -1,0 +1,3 @@
+[submodule "rapier-ffi"]
+	path = rapier-ffi
+	url = https://github.com/aecsocket/rapier-ffi.git

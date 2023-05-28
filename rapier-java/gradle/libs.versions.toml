@@ -1,0 +1,15 @@
+[versions]
+indra = "3.0.1"
+jextract = "0.4.1"
+pebble = "3.1.6"
+findbugs = "3.0.2"
+junit = "5.9.2"
+
+[libraries]
+indra-common = { group = "net.kyori", name = "indra-common", version.ref = "indra" }
+indra-publishing-sonatype = { group = "net.kyori", name = "indra-publishing-sonatype", version.ref = "indra" }
+jextract = { group = "gradle.plugin.io.github.krakowski", name = "gradle-jextract", version.ref = "jextract" }
+pebble = { group = "io.pebbletemplates", name = "pebble", version.ref = "pebble" }
+findbugs = { group = "com.google.code.findbugs", name = "jsr305", version.ref = "findbugs" }
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
