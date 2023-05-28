@@ -68,15 +68,17 @@ public final class RigidBodySet extends RefNative implements Droppable {
         }
     }
 
-    public RigidBody index(long index) {
+    public @Nullable RigidBody get(long index) {
         try (var arena = MemorySession.openConfined()) {
-            return RigidBody.at(RprRigidBodySet_index(self, ArenaKey.unpack(arena, index)));
+            var res = RprRigidBodySet_get(self, ArenaKey.unpack(arena, index));
+            return res == null ? null : RigidBody.at(res);
         }
     }
 
-    public RigidBody.Mut indexMut(long index) {
+    public @Nullable RigidBody.Mut getMut(long index) {
         try (var arena = MemorySession.openConfined()) {
-            return RigidBody.atMut(RprRigidBodySet_index_mut(self, ArenaKey.unpack(arena, index)));
+            var res = RprRigidBodySet_get_mut(self, ArenaKey.unpack(arena, index));
+            return res == null ? null : RigidBody.atMut(res);
         }
     }
 }

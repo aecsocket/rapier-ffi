@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$22 {
 
+    static final FunctionDescriptor RprColliderSet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_drop",
+        constants$22.RprColliderSet_drop$FUNC
+    );
     static final FunctionDescriptor RprColliderSet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -30,28 +37,6 @@ class constants$22 {
     static final MethodHandle RprColliderSet_get_mut$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_get_mut",
         constants$22.RprColliderSet_get_mut$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprColliderSet_index$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_index",
-        constants$22.RprColliderSet_index$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_index_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprColliderSet_index_mut$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_index_mut",
-        constants$22.RprColliderSet_index_mut$FUNC
     );
     static final FunctionDescriptor RprColliderSet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
@@ -79,6 +64,13 @@ class constants$22 {
     static final MethodHandle RprColliderSet_insert_with_parent$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_insert_with_parent",
         constants$22.RprColliderSet_insert_with_parent$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_is_empty$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_is_empty",
+        constants$22.RprColliderSet_is_empty$FUNC
     );
 }
 

@@ -88,15 +88,17 @@ public final class ColliderSet extends RefNative implements Droppable {
         }
     }
 
-    public Collider index(long index) {
+    public @Nullable Collider get(long index) {
         try (var arena = MemorySession.openConfined()) {
-            return Collider.at(RprColliderSet_index(self, ArenaKey.unpack(arena, index)));
+            var res = RprColliderSet_get(self, ArenaKey.unpack(arena, index));
+            return res == null ? null : Collider.at(res);
         }
     }
 
-    public Collider.Mut indexMut(long index) {
+    public @Nullable Collider.Mut getMut(long index) {
         try (var arena = MemorySession.openConfined()) {
-            return Collider.atMut(RprColliderSet_index_mut(self, ArenaKey.unpack(arena, index)));
+            var res = RprColliderSet_get_mut(self, ArenaKey.unpack(arena, index));
+            return res == null ? null : Collider.atMut(res);
         }
     }
 }

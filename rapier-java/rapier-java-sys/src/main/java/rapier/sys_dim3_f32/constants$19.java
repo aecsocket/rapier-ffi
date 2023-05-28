@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$19 {
 
+    static final FunctionDescriptor RprCCDSolver_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCCDSolver_drop$MH = RuntimeHelper.downcallHandle(
+        "RprCCDSolver_drop",
+        constants$19.RprCCDSolver_drop$FUNC
+    );
     static final FunctionDescriptor RprCCDSolver_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprCCDSolver_new$MH = RuntimeHelper.downcallHandle(
         "RprCCDSolver_new",
@@ -43,14 +50,6 @@ class constants$19 {
     static final MethodHandle RprColliderBuilder_drop$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_drop",
         constants$19.RprColliderBuilder_drop$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_enabled",
-        constants$19.RprColliderBuilder_enabled$FUNC
     );
 }
 

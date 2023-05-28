@@ -33,6 +33,14 @@ class constants$18 {
         "getloadavg",
         constants$18.getloadavg$FUNC
     );
+    static final FunctionDescriptor RprArenaKey_invalid$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"));
+    static final MethodHandle RprArenaKey_invalid$MH = RuntimeHelper.downcallHandle(
+        "RprArenaKey_invalid",
+        constants$18.RprArenaKey_invalid$FUNC
+    );
     static final FunctionDescriptor RprBroadPhase_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -44,13 +52,6 @@ class constants$18 {
     static final MethodHandle RprBroadPhase_new$MH = RuntimeHelper.downcallHandle(
         "RprBroadPhase_new",
         constants$18.RprBroadPhase_new$FUNC
-    );
-    static final FunctionDescriptor RprCCDSolver_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCCDSolver_drop$MH = RuntimeHelper.downcallHandle(
-        "RprCCDSolver_drop",
-        constants$18.RprCCDSolver_drop$FUNC
     );
 }
 

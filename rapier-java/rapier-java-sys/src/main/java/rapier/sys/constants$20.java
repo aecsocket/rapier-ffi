@@ -9,6 +9,14 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$20 {
 
+    static final FunctionDescriptor RprColliderBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_enabled",
+        constants$20.RprColliderBuilder_enabled$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_friction$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -56,14 +64,6 @@ class constants$20 {
     static final MethodHandle RprColliderBuilder_position$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_position",
         constants$20.RprColliderBuilder_position$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_restitution",
-        constants$20.RprColliderBuilder_restitution$FUNC
     );
 }
 

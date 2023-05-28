@@ -9,13 +9,6 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$25 {
 
-    static final FunctionDescriptor RprCollider_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_is_enabled",
-        constants$25.RprCollider_is_enabled$FUNC
-    );
     static final FunctionDescriptor RprCollider_is_sensor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -71,6 +64,13 @@ class constants$25 {
     static final MethodHandle RprCollider_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
         "RprCollider_position_wrt_parent",
         constants$25.RprCollider_position_wrt_parent$FUNC
+    );
+    static final FunctionDescriptor RprCollider_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_restitution",
+        constants$25.RprCollider_restitution$FUNC
     );
 }
 

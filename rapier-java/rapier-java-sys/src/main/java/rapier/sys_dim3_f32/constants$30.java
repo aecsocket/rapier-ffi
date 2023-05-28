@@ -9,79 +9,66 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$30 {
 
-    static final FunctionDescriptor RprIntegrationParametersDesc_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-        Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-        Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-        Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-        Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-        Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-        Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-        Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-        Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-        Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-        MemoryLayout.paddingLayout(56),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-    ).withName("RprIntegrationParametersDesc"));
-    static final MethodHandle RprIntegrationParametersDesc_default$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParametersDesc_default",
-        constants$30.RprIntegrationParametersDesc_default$FUNC
-    );
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$30.RprIntegrationParameters_drop$FUNC
+    static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_limits",
+        constants$30.RprGenericJoint_limits$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParametersDesc")
-    );
-    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_new",
-        constants$30.RprIntegrationParameters_new$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_local_anchor1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$30.RprIslandManager_drop$FUNC
+    static final MethodHandle RprGenericJoint_local_anchor1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor1",
+        constants$30.RprGenericJoint_local_anchor1$FUNC
     );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$30.RprIslandManager_new$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_local_anchor2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_drop",
-        constants$30.RprMultibodyJointSet_drop$FUNC
+    static final MethodHandle RprGenericJoint_local_anchor2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor2",
+        constants$30.RprGenericJoint_local_anchor2$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_axis1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_axis1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_axis1",
+        constants$30.RprGenericJoint_local_axis1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_axis2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_axis2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_axis2",
+        constants$30.RprGenericJoint_local_axis2$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_lock_axes",
+        constants$30.RprGenericJoint_lock_axes$FUNC
     );
 }
 

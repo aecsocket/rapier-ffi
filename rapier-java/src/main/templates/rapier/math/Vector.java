@@ -1,6 +1,7 @@
 package rapier.math;
 
 import rapier.ValNative;
+import rapier.sys.RprVector;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -23,6 +24,16 @@ public final class Vector extends ValNative {
         return at(memory);
     }
 
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Vector... objs) {
+        var memory = {{ sys }}.RprVector.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            var obj = objs[i];
+            {{ sys }}.RprVector.x$set(memory, i, obj.getX());
+            {{ sys }}.RprVector.y$set(memory, i, obj.getY());
+        }
+        return memory;
+    }
+
     @Override
     public String toString() {
         return "(%f, %f)".formatted(getX(), getY());
@@ -34,6 +45,17 @@ public final class Vector extends ValNative {
         {{ sys }}.RprVector.y$set(memory, y);
         {{ sys }}.RprVector.z$set(memory, z);
         return at(memory);
+    }
+
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Vector... objs) {
+        var memory = {{ sys }}.RprVector.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            var obj = objs[i];
+            {{ sys }}.RprVector.x$set(memory, i, obj.getX());
+            {{ sys }}.RprVector.y$set(memory, i, obj.getY());
+            {{ sys }}.RprVector.z$set(memory, i, obj.getZ());
+        }
+        return memory;
     }
 
     @Override

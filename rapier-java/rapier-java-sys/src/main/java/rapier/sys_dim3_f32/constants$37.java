@@ -9,71 +9,71 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$37 {
 
-    static final FunctionDescriptor RprRigidBodySet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodySet_is_empty$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_is_empty",
-        constants$37.RprRigidBodySet_is_empty$FUNC
+    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_drop",
+        constants$37.RprIntegrationParameters_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
+            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
+            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
+            MemoryLayout.paddingLayout(32),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+            MemoryLayout.paddingLayout(56),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+        ).withName("RprIntegrationParametersDesc")
+    );
+    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_new",
+        constants$37.RprIntegrationParameters_new$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodySet_len$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_len",
-        constants$37.RprRigidBodySet_len$FUNC
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$37.RprIslandManager_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodySet_new$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_new",
-        constants$37.RprRigidBodySet_new$FUNC
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$37.RprIslandManager_new$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("min"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$37.RprJointLimits_default$FUNC
     );
-    static final MethodHandle RprRigidBodySet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_remove",
-        constants$37.RprRigidBodySet_remove$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_force$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_force$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_force",
-        constants$37.RprRigidBody_add_force$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_force_at_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_force_at_point$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_force_at_point",
-        constants$37.RprRigidBody_add_force_at_point$FUNC
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("target_vel"),
+        Constants$root.C_FLOAT$LAYOUT.withName("target_pos"),
+        Constants$root.C_FLOAT$LAYOUT.withName("stiffness"),
+        Constants$root.C_FLOAT$LAYOUT.withName("damping"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max_force"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model")
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$37.RprJointMotor_default$FUNC
     );
 }
 

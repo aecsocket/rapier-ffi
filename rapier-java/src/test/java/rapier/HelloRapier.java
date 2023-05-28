@@ -11,6 +11,7 @@ import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
 import java.lang.foreign.MemorySession;
+import java.util.Objects;
 
 public final class HelloRapier {
     @Test
@@ -58,7 +59,7 @@ public final class HelloRapier {
                         null
                 );
 
-                Vector translation = rigidBodySet.index(ballBodyHandle).getTranslation(arena);
+                Vector translation = Objects.requireNonNull(rigidBodySet.get(ballBodyHandle)).getTranslation(arena);
                 System.out.printf("Ball altitude: %f\n", translation.getY());
             }
             

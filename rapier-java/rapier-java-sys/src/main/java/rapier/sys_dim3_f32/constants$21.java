@@ -9,6 +9,14 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$21 {
 
+    static final FunctionDescriptor RprColliderBuilder_restitution$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_restitution",
+        constants$21.RprColliderBuilder_restitution$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
@@ -59,13 +67,6 @@ class constants$21 {
     static final MethodHandle RprColliderSet_contains$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_contains",
         constants$21.RprColliderSet_contains$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_drop",
-        constants$21.RprColliderSet_drop$FUNC
     );
 }
 
