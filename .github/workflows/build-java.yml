@@ -25,4 +25,5 @@ jobs:
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: |
-        rapier-java/gradlew --stacktrace build
+        cd rapier-java
+        ./gradlew --stacktrace build
