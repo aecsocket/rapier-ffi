@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: |
         cd rapier-java
-        ./gradlew --stacktrace build
+        ./gradlew --stacktrace --info build
