@@ -89,8 +89,7 @@ pub unsafe extern "C" fn RprColliderSet_remove(
         &mut bodies.get_mut().0,
         wake_up,
     ) {
-        // TODO I think this would return a dangling ptr, since the `t` would be dropped
-        Some(t) => &mut RprCollider(t),
+        Some(t) => leak_ptr(RprCollider(t)),
         None => std::ptr::null_mut(),
     }
 }

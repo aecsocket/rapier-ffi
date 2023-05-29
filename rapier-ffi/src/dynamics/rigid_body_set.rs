@@ -58,8 +58,7 @@ pub unsafe extern "C" fn RprRigidBodySet_remove(
         &mut multibody_joints.get_mut().0,
         remove_attached_colliders,
     ) {
-        // TODO I think this would return a dangling ptr, since the `t` would be dropped
-        Some(t) => &mut RprRigidBody(t),
+        Some(t) => leak_ptr(RprRigidBody(t)),
         None => std::ptr::null_mut(),
     }
 }
