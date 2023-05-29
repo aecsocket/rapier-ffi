@@ -126,5 +126,6 @@ buildNumber.properties
 
 # Common working directory
 run/
-build
+build/
+cargo-build/
 .gradle

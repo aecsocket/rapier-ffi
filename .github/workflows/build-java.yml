@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: |
         cd rapier-java
-        ./gradlew --stacktrace --info build
+        ./gradlew --stacktrace --info -PbuildProfile=release build

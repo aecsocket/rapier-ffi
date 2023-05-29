@@ -36,3 +36,6 @@ rapier3d     = { version = "0.17.2", optional = true, features = ["simd-stable",
 
 parry3d-f64  = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
 rapier3d-f64 = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
+
+[profile.release]
+codegen-units = 1
