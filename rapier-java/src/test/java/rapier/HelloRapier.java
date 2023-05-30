@@ -2,13 +2,14 @@ package rapier;
 
 import org.junit.jupiter.api.Test;
 import rapier.dynamics.*;
+import rapier.dynamics.joint.impulse.ImpulseJointSet;
+import rapier.dynamics.joint.multibody.MultibodyJointSet;
 import rapier.geometry.*;
 import rapier.math.Vector;
 import rapier.pipeline.PhysicsPipeline;
 import rapier.shape.Ball;
 import rapier.shape.Cuboid;
 import rapier.shape.SharedShape;
-import rapier.sys.RapierC;
 
 import java.lang.foreign.MemorySession;
 import java.util.Objects;
@@ -35,7 +36,7 @@ public final class HelloRapier {
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
             var gravity = Vector.of(arena, 0.0, -9.81, 0.0);
-            var integrationParameters = IntegrationParametersDesc.ofDefault(arena).build();
+            var integrationParameters = IntegrationParametersDesc.create(arena).build();
             var islandManager = IslandManager.create();
             var broadPhase = BroadPhase.create();
             var narrowPhase = NarrowPhase.create();

@@ -54,16 +54,15 @@ class constants$21 {
         "RprColliderBuilder_translation",
         constants$21.RprColliderBuilder_translation$FUNC
     );
-    static final FunctionDescriptor RprColliderSet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprColliderSet_contains$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_contains",
-        constants$21.RprColliderSet_contains$FUNC
+    static final FunctionDescriptor RprColliderMaterial_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("friction"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("restitution"),
+        Constants$root.C_INT$LAYOUT.withName("friction_combine_rule"),
+        Constants$root.C_INT$LAYOUT.withName("restitution_combine_rule")
+    ).withName("RprColliderMaterial"));
+    static final MethodHandle RprColliderMaterial_default$MH = RuntimeHelper.downcallHandle(
+        "RprColliderMaterial_default",
+        constants$21.RprColliderMaterial_default$FUNC
     );
 }
 

@@ -16,7 +16,7 @@ val testVariant = "dim3-f64"
 dependencies {
     // for IDE autocompletion
     implementation(projects.rapierJavaSys)
-    implementation(libs.findbugs)
+    implementation(libs.findbugs) // todo legacy
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)

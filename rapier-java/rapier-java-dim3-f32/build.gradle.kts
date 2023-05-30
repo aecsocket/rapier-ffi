@@ -5,6 +5,7 @@ plugins {
 dependencies {
     implementation(projects.rapierJavaSys)
     implementation(libs.findbugs)
+    implementation(libs.checker.qual)
 }
 
 variant {

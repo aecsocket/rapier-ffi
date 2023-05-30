@@ -4,6 +4,8 @@ import rapier.DropFlag;
 import rapier.Droppable;
 import rapier.RefNative;
 import rapier.data.ArenaKey;
+import rapier.dynamics.joint.impulse.ImpulseJointSet;
+import rapier.dynamics.joint.multibody.MultibodyJointSet;
 import rapier.geometry.ColliderSet;
 
 import javax.annotation.Nullable;

@@ -9,70 +9,58 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$38 {
 
-    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_drop",
-        constants$38.RprMultibodyJointSet_drop$FUNC
+    static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_dynamic_bodies",
+        constants$38.RprIslandManager_active_dynamic_bodies$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_insert$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_insert",
-        constants$38.RprMultibodyJointSet_insert$FUNC
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$38.RprIslandManager_active_kinematic_bodies$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_new",
-        constants$38.RprMultibodyJointSet_new$FUNC
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$38.RprIslandManager_drop$FUNC
     );
-    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove",
-        constants$38.RprMultibodyJointSet_remove$FUNC
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$38.RprIslandManager_new$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$38.RprJointLimits_default$FUNC
     );
-    static final MethodHandle RprMultibodyJointSet_remove_joints_attached_to_rigid_body$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove_joints_attached_to_rigid_body",
-        constants$38.RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_remove_multibody_articulations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprMultibodyJointSet_remove_multibody_articulations$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove_multibody_articulations",
-        constants$38.RprMultibodyJointSet_remove_multibody_articulations$FUNC
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_vel"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_pos"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("stiffness"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("damping"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_force"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model"),
+        MemoryLayout.paddingLayout(32)
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$38.RprJointMotor_default$FUNC
     );
 }
 

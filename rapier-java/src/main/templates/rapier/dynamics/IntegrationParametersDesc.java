@@ -11,11 +11,11 @@ public final class IntegrationParametersDesc extends ValNative {
         super(memory);
     }
 
-    private static IntegrationParametersDesc at(MemorySegment memory) {
+    public static IntegrationParametersDesc at(MemorySegment memory) {
         return new IntegrationParametersDesc(memory);
     }
 
-    public static IntegrationParametersDesc ofDefault(SegmentAllocator alloc) {
+    public static IntegrationParametersDesc create(SegmentAllocator alloc) {
         return at({{ sys }}.RapierC.RprIntegrationParametersDesc_default(alloc));
     }
 

@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$27 {
 
+    static final FunctionDescriptor RprCollider_set_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_enabled",
+        constants$27.RprCollider_set_enabled$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_friction$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_friction",
+        constants$27.RprCollider_set_friction$FUNC
+    );
     static final FunctionDescriptor RprCollider_set_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
@@ -58,22 +74,6 @@ class constants$27 {
     static final MethodHandle RprCollider_set_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_position_wrt_parent",
         constants$27.RprCollider_set_position_wrt_parent$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution",
-        constants$27.RprCollider_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution_combine_rule",
-        constants$27.RprCollider_set_restitution_combine_rule$FUNC
     );
 }
 

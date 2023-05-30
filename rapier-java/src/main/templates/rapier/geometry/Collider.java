@@ -87,6 +87,10 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         return {{ sys }}.RapierC.RprCollider_volume(self);
     }
 
+    public ColliderMaterial getMaterial(SegmentAllocator alloc) {
+        return ColliderMaterial.at({{ sys }}.RapierC.RprCollider_material(alloc, self));
+    }
+
     public {{ real }} getDensity() {
         return {{ sys }}.RapierC.RprCollider_density(self);
     }

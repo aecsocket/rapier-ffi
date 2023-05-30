@@ -1,16 +1,18 @@
 package rapier.data;
 
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 
 public final class ArenaKey {
     private ArenaKey() {}
 
     public static final long INVALID_KEY = 0xffffffff_ffffffffL;
 
-    public static long pack(MemorySegment memory) {
-        return memory.getAtIndex(ValueLayout.JAVA_LONG, 0);
+    public static long pack(Addressable memory, long index) {
+        return memory.address().getAtIndex(ValueLayout.JAVA_LONG, index);
+    }
+
+    public static long pack(Addressable memory) {
+        return pack(memory, 0);
     }
 
     public static MemorySegment unpack(SegmentAllocator alloc, long key) {

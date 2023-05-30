@@ -1,4 +1,4 @@
-package rapier.dynamics;
+package rapier.dynamics.joint.multibody;
 
 import rapier.DropFlag;
 import rapier.Droppable;
