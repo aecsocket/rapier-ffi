@@ -1,5 +1,59 @@
 use crate::prelude::*;
 
+/// The constraints solver-related properties of this collider (friction, restitution, etc.)
+#[repr(C)]
+#[derive(Debug, Clone, Copy)]
+pub struct RprColliderMaterial {
+    /// The friction coefficient of this collider.
+    ///
+    /// The greater the value, the stronger the friction forces will be.
+    /// Should be `>= 0`.
+    pub friction: Real,
+    /// The restitution coefficient of this collider.
+    ///
+    /// Increase this value to make contacts with this collider more "bouncy".
+    /// Should be `>= 0` and should generally not be greater than `1` (perfectly elastic
+    /// collision).
+    pub restitution: Real,
+    /// The rule applied to combine the friction coefficients of two colliders in contact.
+    pub friction_combine_rule: RprCoefficientCombineRule,
+    /// The rule applied to combine the restitution coefficients of two colliders.
+    pub restitution_combine_rule: RprCoefficientCombineRule,
+}
+
+impl RprColliderMaterial {
+    pub fn from_raw(raw: ColliderMaterial) -> Self {
+        Self {
+            friction: raw.friction,
+            restitution: raw.restitution,
+            friction_combine_rule: RprCoefficientCombineRule::from_raw(raw.friction_combine_rule),
+            restitution_combine_rule: RprCoefficientCombineRule::from_raw(
+                raw.restitution_combine_rule,
+            ),
+        }
+    }
+
+    pub fn into_raw(self) -> ColliderMaterial {
+        ColliderMaterial {
+            friction: self.friction,
+            restitution: self.restitution,
+            friction_combine_rule: self.friction_combine_rule.into_raw(),
+            restitution_combine_rule: self.restitution_combine_rule.into_raw(),
+        }
+    }
+}
+
+impl Default for RprColliderMaterial {
+    fn default() -> Self {
+        Self::from_raw(ColliderMaterial::default())
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn RprColliderMaterial_default() -> RprColliderMaterial {
+    RprColliderMaterial::default()
+}
+
 pub struct RprCollider(pub Collider);
 
 #[no_mangle]
@@ -182,7 +236,10 @@ pub unsafe extern "C" fn RprCollider_set_position_wrt_parent(
 
 // TODO (set_)solver_groups
 
-// TODO material
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_material(this: *const RprCollider) -> RprColliderMaterial {
+    RprColliderMaterial::from_raw(*this.get().0.material())
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_volume(this: *const RprCollider) -> Real {

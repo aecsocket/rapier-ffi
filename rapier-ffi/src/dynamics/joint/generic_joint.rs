@@ -298,11 +298,21 @@ pub unsafe extern "C" fn RprGenericJoint_lock_axes(
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_local_frame1(this: *const RprGenericJoint) -> RprIsometry {
+    RprIsometry::from_raw(this.get().0.local_frame1)
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn RprGenericJoint_set_local_frame1(
     this: *mut RprGenericJoint,
     local_frame: RprIsometry,
 ) {
     this.get_mut().0.set_local_frame1(local_frame.into_raw());
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_local_frame2(this: *const RprGenericJoint) -> RprIsometry {
+    RprIsometry::from_raw(this.get().0.local_frame2)
 }
 
 #[no_mangle]
@@ -397,15 +407,14 @@ pub unsafe extern "C" fn RprGenericJoint_limits(
     }
 }
 
-/// cbindgen:ptrs-as-arrays=[[limits; 2]]
 #[no_mangle]
 pub unsafe extern "C" fn RprGenericJoint_set_limits(
     this: *mut RprGenericJoint,
     axis: RprJointAxis,
-    limits: *const Real,
+    min: Real,
+    max: Real,
 ) {
-    let limits = [limits.read(), limits.offset(1).read()];
-    this.get_mut().0.set_limits(axis.into_raw(), limits);
+    this.get_mut().0.set_limits(axis.into_raw(), [min, max]);
 }
 
 #[no_mangle]

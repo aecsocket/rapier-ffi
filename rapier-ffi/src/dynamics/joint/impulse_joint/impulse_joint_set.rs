@@ -102,8 +102,7 @@ pub unsafe extern "C" fn RprImpulseJointSet_remove(
         .0
         .remove(ImpulseJointHandle(handle.into_raw()), wake_up)
     {
-        // TODO I think this would return a dangling ptr, since the `t` would be dropped
-        Some(t) => &mut RprImpulseJoint(t),
+        Some(t) => leak_ptr(RprImpulseJoint(t)),
         None => std::ptr::null_mut(),
     }
 }
