@@ -9,59 +9,78 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$32 {
 
-    static final FunctionDescriptor RprGenericJoint_motor_model$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor RprGenericJoint_local_axis2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_motor_model",
-        constants$32.RprGenericJoint_motor_model$FUNC
+    static final MethodHandle RprGenericJoint_local_axis2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_axis2",
+        constants$32.RprGenericJoint_local_axis2$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_new",
-        constants$32.RprGenericJoint_new$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_contacts_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_contacts_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_contacts_enabled",
-        constants$32.RprGenericJoint_set_contacts_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_enabled",
-        constants$32.RprGenericJoint_set_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_limits$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_limits",
-        constants$32.RprGenericJoint_set_limits$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprGenericJoint_local_frame1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w")
+        ).withName("rotation"),
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
             Constants$root.C_DOUBLE$LAYOUT.withName("y"),
             Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_local_anchor1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor1",
-        constants$32.RprGenericJoint_set_local_anchor1$FUNC
+    static final MethodHandle RprGenericJoint_local_frame1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame1",
+        constants$32.RprGenericJoint_local_frame1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame2",
+        constants$32.RprGenericJoint_local_frame2$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_lock_axes",
+        constants$32.RprGenericJoint_lock_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_locked_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_locked_axes",
+        constants$32.RprGenericJoint_locked_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motor$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor",
+        constants$32.RprGenericJoint_motor$FUNC
     );
 }
 

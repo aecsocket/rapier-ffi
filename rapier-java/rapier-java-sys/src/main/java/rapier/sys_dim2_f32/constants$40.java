@@ -9,69 +9,55 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$40 {
 
-    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
-        "RprNarrowPhase_drop",
-        constants$40.RprNarrowPhase_drop$FUNC
-    );
-    static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
-        "RprNarrowPhase_new",
-        constants$40.RprNarrowPhase_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_drop",
-        constants$40.RprPhysicsPipeline_drop$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_new",
-        constants$40.RprPhysicsPipeline_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$40.RprPhysicsPipeline_step$FUNC
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$40.RprIslandManager_active_kinematic_bodies$FUNC
     );
-    static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step_all$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step_all",
-        constants$40.RprPhysicsPipeline_step_all$FUNC
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$40.RprIslandManager_drop$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$40.RprIslandManager_new$FUNC
+    );
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("min"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$40.RprJointLimits_default$FUNC
+    );
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("target_vel"),
+        Constants$root.C_FLOAT$LAYOUT.withName("target_pos"),
+        Constants$root.C_FLOAT$LAYOUT.withName("stiffness"),
+        Constants$root.C_FLOAT$LAYOUT.withName("damping"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max_force"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model")
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$40.RprJointMotor_default$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_drop",
+        constants$40.RprMultibodyJointSet_drop$FUNC
     );
 }
 

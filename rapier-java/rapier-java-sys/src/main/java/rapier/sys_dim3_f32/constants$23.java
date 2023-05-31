@@ -9,6 +9,33 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$23 {
 
+    static final FunctionDescriptor RprColliderSet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_insert",
+        constants$23.RprColliderSet_insert$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_insert_with_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_insert_with_parent$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_insert_with_parent",
+        constants$23.RprColliderSet_insert_with_parent$FUNC
+    );
     static final FunctionDescriptor RprColliderSet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -41,40 +68,6 @@ class constants$23 {
     static final MethodHandle RprColliderSet_remove$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_remove",
         constants$23.RprColliderSet_remove$FUNC
-    );
-    static final FunctionDescriptor RprColliderSet_set_parent$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderSet_set_parent$MH = RuntimeHelper.downcallHandle(
-        "RprColliderSet_set_parent",
-        constants$23.RprColliderSet_set_parent$FUNC
-    );
-    static final FunctionDescriptor RprCollider_compute_aabb$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("min"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("max")
-    ).withName("RprAabb"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_compute_aabb$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_compute_aabb",
-        constants$23.RprCollider_compute_aabb$FUNC
     );
 }
 

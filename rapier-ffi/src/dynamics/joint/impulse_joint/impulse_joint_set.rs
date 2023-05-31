@@ -2,6 +2,34 @@ use crate::prelude::*;
 
 pub type RprImpulseJointHandle = RprArenaKey;
 
+pub struct RprImpulseJointVec<'a>(pub Vec<(ImpulseJointHandle, &'a ImpulseJoint)>);
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJointVec_drop(this: *mut RprImpulseJointVec) {
+    drop_ptr(this)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJointVec_len(this: *const RprImpulseJointVec) -> usize {
+    this.get().0.len()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJointVec_handle(
+    this: *const RprImpulseJointVec,
+    index: usize,
+) -> RprImpulseJointHandle {
+    RprImpulseJointHandle::from_raw(this.get().0[index].0 .0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJointVec_value(
+    this: *const RprImpulseJointVec,
+    index: usize,
+) -> *const RprImpulseJoint {
+    this.get().0[index].1 as *const ImpulseJoint as *const RprImpulseJoint
+}
+
 pub struct RprImpulseJointSet(pub ImpulseJointSet);
 
 #[no_mangle]
@@ -22,6 +50,12 @@ pub unsafe extern "C" fn RprImpulseJointSet_len(this: *const RprImpulseJointSet)
 #[no_mangle]
 pub unsafe extern "C" fn RprImpulseJointSet_is_empty(this: *const RprImpulseJointSet) -> bool {
     this.get().0.is_empty()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJointSet_all<'a>(this: *const RprImpulseJointSet) -> *mut RprImpulseJointVec<'a> {
+    let vec: Vec<(ImpulseJointHandle, &ImpulseJoint)> = this.get().0.iter().collect();
+    leak_ptr(RprImpulseJointVec(vec))
 }
 
 // TODO joint_graph

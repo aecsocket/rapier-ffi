@@ -9,62 +9,77 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$28 {
 
-    static final FunctionDescriptor RprCollider_set_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution",
-        constants$28.RprCollider_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution_combine_rule",
-        constants$28.RprCollider_set_restitution_combine_rule$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("RprRotation")
-    );
-    static final MethodHandle RprCollider_set_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_rotation",
-        constants$28.RprCollider_set_rotation$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_rotation_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprAngVector")
-    );
-    static final MethodHandle RprCollider_set_rotation_wrt_parent$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_rotation_wrt_parent",
-        constants$28.RprCollider_set_rotation_wrt_parent$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_sensor$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprCollider_set_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprCollider_set_sensor$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_sensor",
-        constants$28.RprCollider_set_sensor$FUNC
+    static final MethodHandle RprCollider_set_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_enabled",
+        constants$28.RprCollider_set_enabled$FUNC
     );
-    static final FunctionDescriptor RprCollider_set_shape$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprCollider_set_friction$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+        Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprCollider_set_shape$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_shape",
-        constants$28.RprCollider_set_shape$FUNC
+    static final MethodHandle RprCollider_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_friction",
+        constants$28.RprCollider_set_friction$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_friction_combine_rule",
+        constants$28.RprCollider_set_friction_combine_rule$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_mass$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_mass$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_mass",
+        constants$28.RprCollider_set_mass$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprCollider_set_position$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_position",
+        constants$28.RprCollider_set_position$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_position_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprCollider_set_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_position_wrt_parent",
+        constants$28.RprCollider_set_position_wrt_parent$FUNC
     );
 }
 

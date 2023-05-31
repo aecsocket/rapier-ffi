@@ -232,7 +232,16 @@ pub unsafe extern "C" fn RprRigidBody_set_additional_mass(
         .set_additional_mass(additional_mass, wake_up)
 }
 
-// TODO colliders
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBody_colliders(
+    this: *const RprRigidBody,
+    out_data: *mut *const RprColliderHandle,
+    out_len: *mut usize,
+) {
+    let slice = this.get().0.colliders();
+    *out_data = slice.as_ptr() as *const RprColliderHandle;
+    *out_len = slice.len();
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_is_dynamic(this: *const RprRigidBody) -> bool {

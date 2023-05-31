@@ -11,10 +11,15 @@ import rapier.geometry.ColliderSet;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
+import java.util.ArrayList;
+import java.util.List;
 
 import static rapier.sys.RapierC.*;
 
 public final class RigidBodySet extends RefNative implements Droppable {
+    public record Entry(long handle, RigidBody value) {}
+
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -40,6 +45,24 @@ public final class RigidBodySet extends RefNative implements Droppable {
 
     public boolean isEmpty() {
         return RprRigidBodySet_is_empty(self);
+    }
+
+    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+        var len = (int) RprRigidBodyVec_len(vec);
+        var res = new ArrayList<Entry>(len);
+        for (int i = 0; i < len; i++) {
+            var handle = ArenaKey.pack(RprRigidBodyVec_handle(alloc, vec, i));
+            var value = RigidBody.at(RprRigidBodyVec_value(vec, i));
+            res.add(new Entry(handle, value));
+        }
+        RprRigidBodyVec_drop(vec);
+        return res;
+    }
+
+    public List<Entry> all() {
+        try (var arena = MemorySession.openConfined()) {
+            return vecToList(arena, RprRigidBodySet_all(self));
+        }
     }
 
     public long insert(RigidBody.Mut rb) {

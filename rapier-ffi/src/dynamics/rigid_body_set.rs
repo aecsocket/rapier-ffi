@@ -2,6 +2,34 @@ use crate::prelude::*;
 
 pub type RprRigidBodyHandle = RprArenaKey;
 
+pub struct RprRigidBodyVec<'a>(pub Vec<(RigidBodyHandle, &'a RigidBody)>);
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyVec_drop(this: *mut RprRigidBodyVec) {
+    drop_ptr(this)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyVec_len(this: *const RprRigidBodyVec) -> usize {
+    this.get().0.len()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyVec_handle(
+    this: *const RprRigidBodyVec,
+    index: usize,
+) -> RprRigidBodyHandle {
+    RprRigidBodyHandle::from_raw(this.get().0[index].0 .0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyVec_value(
+    this: *const RprRigidBodyVec,
+    index: usize,
+) -> *const RprRigidBody {
+    this.get().0[index].1 as *const RigidBody as *const RprRigidBody
+}
+
 pub struct RprRigidBodySet(pub RigidBodySet);
 
 #[no_mangle]
@@ -22,6 +50,12 @@ pub unsafe extern "C" fn RprRigidBodySet_len(this: *const RprRigidBodySet) -> us
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBodySet_is_empty(this: *const RprRigidBodySet) -> bool {
     this.get().0.is_empty()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodySet_all<'a>(this: *const RprRigidBodySet) -> *mut RprRigidBodyVec<'a> {
+    let vec: Vec<(RigidBodyHandle, &RigidBody)> = this.get().0.iter().collect();
+    leak_ptr(RprRigidBodyVec(vec))
 }
 
 #[no_mangle]

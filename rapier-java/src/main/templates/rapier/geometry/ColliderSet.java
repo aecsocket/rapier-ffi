@@ -10,10 +10,15 @@ import rapier.dynamics.RigidBodySet;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
+import java.util.ArrayList;
+import java.util.List;
 
 import static rapier.sys.RapierC.*;
 
 public final class ColliderSet extends RefNative implements Droppable {
+    public record Entry(long handle, Collider value) {}
+
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -39,6 +44,30 @@ public final class ColliderSet extends RefNative implements Droppable {
 
     public boolean isEmpty() {
         return RprColliderSet_is_empty(self);
+    }
+
+    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+        var len = (int) RprColliderVec_len(vec);
+        var res = new ArrayList<Entry>(len);
+        for (int i = 0; i < len; i++) {
+            var handle = ArenaKey.pack(RprColliderVec_handle(alloc, vec, i));
+            var value = Collider.at(RprColliderVec_value(vec, i));
+            res.add(new Entry(handle, value));
+        }
+        RprColliderVec_drop(vec);
+        return res;
+    }
+
+    public List<Entry> all() {
+        try (var arena = MemorySession.openConfined()) {
+            return vecToList(arena, RprColliderSet_all(self));
+        }
+    }
+
+    public List<Entry> allEnabled() {
+        try (var arena = MemorySession.openConfined()) {
+            return vecToList(arena, RprColliderSet_all_enabled(self));
+        }
     }
 
     public long insert(Collider.Mut coll) {

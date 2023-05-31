@@ -3,6 +3,7 @@ package rapier.dynamics;
 import rapier.DropFlag;
 import rapier.Droppable;
 import rapier.RefNative;
+import rapier.data.ArenaKey;
 import rapier.geometry.ColliderSet;
 import rapier.math.*;
 import rapier.sys.RapierC;
@@ -74,6 +75,24 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public boolean isCcdActive() {
         return RprRigidBody_is_ccd_active(self);
+    }
+
+    public long[] getColliders() {
+        try (var arena = MemorySession.openConfined()) {
+            var nDataPtr = arena.allocate(C_POINTER);
+            var nLen = arena.allocate(C_LONG);
+            RprRigidBody_colliders(self, nDataPtr, nLen);
+
+            var dataPtr = nDataPtr.get(C_POINTER, 0);
+            // truncate long to int because our array is indexed by int
+            var len = (int) nLen.get(C_LONG, 0);
+
+            var res = new long[len];
+            for (int i = 0; i < len; i++) {
+                res[i] = ArenaKey.pack(dataPtr, i);
+            }
+            return res;
+        }
     }
 
     public boolean isDynamic() {

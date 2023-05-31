@@ -9,67 +9,71 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$25 {
 
-    static final FunctionDescriptor RprCollider_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_is_enabled",
-        constants$25.RprCollider_is_enabled$FUNC
-    );
-    static final FunctionDescriptor RprCollider_is_sensor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_is_sensor$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_is_sensor",
-        constants$25.RprCollider_is_sensor$FUNC
-    );
-    static final FunctionDescriptor RprCollider_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_mass$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_mass",
-        constants$25.RprCollider_mass$FUNC
-    );
-    static final FunctionDescriptor RprCollider_material$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("friction"),
-        Constants$root.C_FLOAT$LAYOUT.withName("restitution"),
-        Constants$root.C_INT$LAYOUT.withName("friction_combine_rule"),
-        Constants$root.C_INT$LAYOUT.withName("restitution_combine_rule")
-    ).withName("RprColliderMaterial"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_material$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_material",
-        constants$25.RprCollider_material$FUNC
-    );
-    static final FunctionDescriptor RprCollider_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_parent$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_parent",
-        constants$25.RprCollider_parent$FUNC
-    );
-    static final FunctionDescriptor RprCollider_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z"),
-            Constants$root.C_FLOAT$LAYOUT.withName("w")
-        ).withName("rotation"),
+    static final FunctionDescriptor RprCollider_compute_swept_aabb$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
             Constants$root.C_FLOAT$LAYOUT.withName("y"),
             Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("translation")
-    ).withName("RprIsometry"),
+        ).withName("min"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("max")
+    ).withName("RprAabb"),
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z"),
+                Constants$root.C_FLOAT$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprCollider_compute_swept_aabb$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_compute_swept_aabb",
+        constants$25.RprCollider_compute_swept_aabb$FUNC
+    );
+    static final FunctionDescriptor RprCollider_contact_force_event_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprCollider_position$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_position",
-        constants$25.RprCollider_position$FUNC
+    static final MethodHandle RprCollider_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_contact_force_event_threshold",
+        constants$25.RprCollider_contact_force_event_threshold$FUNC
+    );
+    static final FunctionDescriptor RprCollider_density$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_density$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_density",
+        constants$25.RprCollider_density$FUNC
+    );
+    static final FunctionDescriptor RprCollider_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_drop$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_drop",
+        constants$25.RprCollider_drop$FUNC
+    );
+    static final FunctionDescriptor RprCollider_friction$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_friction$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_friction",
+        constants$25.RprCollider_friction$FUNC
+    );
+    static final FunctionDescriptor RprCollider_friction_combine_rule$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_friction_combine_rule",
+        constants$25.RprCollider_friction_combine_rule$FUNC
     );
 }
 

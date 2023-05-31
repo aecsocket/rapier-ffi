@@ -8,10 +8,15 @@ import rapier.dynamics.joint.GenericJoint;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
+import java.util.ArrayList;
+import java.util.List;
 
 import static rapier.sys.RapierC.*;
 
 public final class ImpulseJointSet extends RefNative implements Droppable {
+    public record Entry(long handle, ImpulseJoint value) {}
+
     private final DropFlag dropped = new DropFlag();
 
     @Override
@@ -37,6 +42,24 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
 
     public boolean isEmpty() {
         return RprImpulseJointSet_is_empty(self);
+    }
+
+    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+        var len = (int) RprImpulseJointVec_len(vec);
+        var res = new ArrayList<Entry>(len);
+        for (int i = 0; i < len; i++) {
+            var handle = ArenaKey.pack(RprImpulseJointVec_handle(alloc, vec, i));
+            var value = ImpulseJoint.at(RprImpulseJointVec_value(vec, i));
+            res.add(new Entry(handle, value));
+        }
+        RprImpulseJointVec_drop(vec);
+        return res;
+    }
+
+    public List<Entry> all() {
+        try (var arena = MemorySession.openConfined()) {
+            return vecToList(arena, RprImpulseJointSet_all(self));
+        }
     }
 
     public boolean contains(long handle) {

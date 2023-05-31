@@ -2,6 +2,34 @@ use crate::prelude::*;
 
 pub type RprColliderHandle = RprArenaKey;
 
+pub struct RprColliderVec<'a>(pub Vec<(ColliderHandle, &'a Collider)>);
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderVec_drop(this: *mut RprColliderVec) {
+    drop_ptr(this)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderVec_len(this: *const RprColliderVec) -> usize {
+    this.get().0.len()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderVec_handle(
+    this: *const RprColliderVec,
+    index: usize,
+) -> RprColliderHandle {
+    RprColliderHandle::from_raw(this.get().0[index].0 .0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderVec_value(
+    this: *const RprColliderVec,
+    index: usize,
+) -> *const RprCollider {
+    this.get().0[index].1 as *const Collider as *const RprCollider
+}
+
 pub struct RprColliderSet(pub ColliderSet);
 
 #[no_mangle]
@@ -22,6 +50,22 @@ pub unsafe extern "C" fn RprColliderSet_len(this: *const RprColliderSet) -> usiz
 #[no_mangle]
 pub unsafe extern "C" fn RprColliderSet_is_empty(this: *const RprColliderSet) -> bool {
     this.get().0.is_empty()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_all<'a>(
+    this: *const RprColliderSet,
+) -> *mut RprColliderVec<'a> {
+    let vec: Vec<(ColliderHandle, &Collider)> = this.get().0.iter().collect();
+    leak_ptr(RprColliderVec(vec))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderSet_all_enabled<'a>(
+    this: *const RprColliderSet,
+) -> *mut RprColliderVec<'a> {
+    let vec: Vec<(ColliderHandle, &Collider)> = this.get().0.iter_enabled().collect();
+    leak_ptr(RprColliderVec(vec))
 }
 
 #[no_mangle]

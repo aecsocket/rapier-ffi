@@ -9,94 +9,55 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$37 {
 
-    static final FunctionDescriptor RprImpulseJoint_set_body2$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_new",
+        constants$37.RprImpulseJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprImpulseJoint_set_body2$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJoint_set_body2",
-        constants$37.RprImpulseJoint_set_body2$FUNC
+    static final MethodHandle RprImpulseJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_remove",
+        constants$37.RprImpulseJointSet_remove$FUNC
     );
-    static final FunctionDescriptor RprImpulseJoint_set_data$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprImpulseJointVec_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprImpulseJoint_set_data$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJoint_set_data",
-        constants$37.RprImpulseJoint_set_data$FUNC
+    static final MethodHandle RprImpulseJointVec_drop$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_drop",
+        constants$37.RprImpulseJointVec_drop$FUNC
     );
-    static final FunctionDescriptor RprImpulseJoint_set_impulses$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJointVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z"),
-            Constants$root.C_FLOAT$LAYOUT.withName("w"),
-            Constants$root.C_FLOAT$LAYOUT.withName("a"),
-            Constants$root.C_FLOAT$LAYOUT.withName("b")
-        ).withName("RprSpacialVector")
+        Constants$root.C_LONG_LONG$LAYOUT
     );
-    static final MethodHandle RprImpulseJoint_set_impulses$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJoint_set_impulses",
-        constants$37.RprImpulseJoint_set_impulses$FUNC
+    static final MethodHandle RprImpulseJointVec_handle$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_handle",
+        constants$37.RprImpulseJointVec_handle$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParametersDesc_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-        Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-        Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-        Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-        Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-        Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-        Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-        Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-        Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-        Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-        MemoryLayout.paddingLayout(56),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-    ).withName("RprIntegrationParametersDesc"));
-    static final MethodHandle RprIntegrationParametersDesc_default$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParametersDesc_default",
-        constants$37.RprIntegrationParametersDesc_default$FUNC
-    );
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJointVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$37.RprIntegrationParameters_drop$FUNC
+    static final MethodHandle RprImpulseJointVec_len$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_len",
+        constants$37.RprImpulseJointVec_len$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParametersDesc")
+    static final FunctionDescriptor RprImpulseJointVec_value$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_new",
-        constants$37.RprIntegrationParameters_new$FUNC
+    static final MethodHandle RprImpulseJointVec_value$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_value",
+        constants$37.RprImpulseJointVec_value$FUNC
     );
 }
 

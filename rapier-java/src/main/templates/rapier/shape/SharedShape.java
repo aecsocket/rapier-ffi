@@ -36,7 +36,15 @@ public final class SharedShape extends RefNative implements RefCounted {
         return at({{ sys }}.RapierC.RprSharedShape_capsule(shape.memory()));
     }
 
-    // TODO cylinder, cone
+{% if dim3 %}
+    public static SharedShape of(Cylinder shape) {
+        return at({{ sys }}.RapierC.RprSharedShape_cylinder(shape.memory()));
+    }
+
+    public static SharedShape of(Cone shape) {
+        return at({{ sys }}.RapierC.RprSharedShape_cone(shape.memory()));
+    }
+{% endif %}
 
     @Override
     public long strongCount() {
