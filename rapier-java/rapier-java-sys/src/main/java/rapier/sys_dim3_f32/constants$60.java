@@ -19,6 +19,13 @@ class constants$60 {
         "RprSharedShape_cylinder",
         constants$60.RprSharedShape_cylinder$FUNC
     );
+    static final FunctionDescriptor RprSharedShape_data$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_data$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_data",
+        constants$60.RprSharedShape_data$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -74,7 +81,6 @@ class constants$60 {
         "RprSharedShape_triangle",
         constants$60.RprSharedShape_triangle$FUNC
     );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
 }
 
 

@@ -24,13 +24,13 @@ public final class ArenaKey {
     }
 
     public static int index(long key) {
-        // upper 32 bits
-        return (int) (key >> 32);
+        // bottom 32 bits
+        return (int) key;
     }
 
     public static int generation(long key) {
-        // bottom 32 bits
-        return (int) key;
+        // upper 32 bits
+        return (int) (key >> 32);
     }
 
     public static String asString(long key) {

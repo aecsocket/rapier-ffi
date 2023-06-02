@@ -4399,6 +4399,17 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_data$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_data$MH,"RprSharedShape_data");
+    }
+    public static MemoryAddress RprSharedShape_data ( Addressable this_) {
+        var mh$ = RprSharedShape_data$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_release$MH() {
         return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_release$MH,"RprSharedShape_release");
     }
@@ -4444,7 +4455,7 @@ public class RapierC  {
         }
     }
     public static MemoryAddress NULL() {
-        return constants$60.NULL$ADDR;
+        return constants$61.NULL$ADDR;
     }
     public static long _POSIX_C_SOURCE() {
         return 200809L;

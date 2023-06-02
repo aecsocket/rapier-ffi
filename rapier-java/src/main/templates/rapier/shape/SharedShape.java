@@ -47,6 +47,11 @@ public final class SharedShape extends RefNative implements RefCounted {
 {% endif %}
 
     @Override
+    public MemoryAddress refData() {
+        return RprSharedShape_data(self);
+    }
+
+    @Override
     public long strongCount() {
         return RprSharedShape_strong_count(self);
     }

@@ -1,6 +1,10 @@
 package rapier;
 
-public interface RefCounted {
+import java.lang.foreign.MemoryAddress;
+
+public interface RefCounted extends Native {
+    MemoryAddress refData();
+
     long strongCount();
 
     void acquire();

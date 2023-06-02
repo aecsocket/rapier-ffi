@@ -4,14 +4,22 @@ use crate::prelude::*;
 
 pub struct RprSharedShape(pub SharedShape);
 
+// each RprSharedShape instance will probably be unique, since that's the point of using Arc's.
+// however the data stored inside an Arc is not unique, and that data (or at least a ptr to it)
+// might be useful for a caller, to e.g. key by a shape.
+#[no_mangle]
+pub unsafe extern "C" fn RprSharedShape_data(this: *const RprSharedShape) -> *const () {
+    Arc::as_ptr(&this.get().0.0) as *const ()
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_strong_count(this: *const RprSharedShape) -> usize {
-    Arc::strong_count(&this.get().0 .0)
+    Arc::strong_count(&this.get().0.0)
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_acquire(this: *const RprSharedShape) {
-    std::mem::forget(this.get().0.clone())
+    std::mem::forget(this.get().0.0.clone())
 }
 
 #[no_mangle]
