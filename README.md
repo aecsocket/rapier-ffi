@@ -16,3 +16,24 @@ This repository provides bindings for the Rapier physics engine to various langu
 Visit the individual subproject's README to see more details.
 
 This repository is dual-licensed Apache and MIT. This license applies to all subprojects.
+
+## Coverage
+
+- [ ] Shapes
+  - [x] Primitive convexes
+  - [ ] Compound
+  - [ ] Tri mesh + heightfield
+  - [ ] Polyline
+- [ ] Rigid bodies and colliders
+  - [x] Shape
+  - [x] Position
+  - [ ] Mass properties
+- [ ] Pipelines
+  - [x] Physics
+  - [ ] Query
+- [ ] Joints
+  - [x] Impulse
+  - [ ] Multibody
+- [ ] Controllers
+  - [ ] Character
+  - [ ] Vehicle

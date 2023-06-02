@@ -54,6 +54,14 @@ class constants$59 {
         "RprSharedShape_capsule",
         constants$59.RprSharedShape_capsule$FUNC
     );
+    static final FunctionDescriptor RprSharedShape_compound$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_compound$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_compound",
+        constants$59.RprSharedShape_compound$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("half_height"),
@@ -63,19 +71,6 @@ class constants$59 {
     static final MethodHandle RprSharedShape_cone$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cone",
         constants$59.RprSharedShape_cone$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
-    );
-    static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_cuboid",
-        constants$59.RprSharedShape_cuboid$FUNC
     );
 }
 

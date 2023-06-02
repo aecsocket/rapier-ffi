@@ -99,18 +99,18 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             throw new IllegalArgumentException("All arrays must be of the same length");
         }
         try (var arena = MemorySession.openConfined()) {
-            var nPipeline = Native.allocateArray(arena, pipeline);
+            var nPipeline = Native.allocatePtrArray(arena, pipeline);
             var nGravity = Vector.allocateArray(arena, gravity);
-            var nIntegrationParameters = Native.allocateArray(arena, integrationParameters);
-            var nIslands = Native.allocateArray(arena, islands);
-            var nBroadPhase = Native.allocateArray(arena, broadPhase);
-            var nNarrowPhase = Native.allocateArray(arena, narrowPhase);
-            var nBodies = Native.allocateArray(arena, bodies);
-            var nColliders = Native.allocateArray(arena, colliders);
-            var nImpulseJoints = Native.allocateArray(arena, impulseJoints);
-            var nMultibodyJoints = Native.allocateArray(arena, multibodyJoints);
-            var nCcdSolver = Native.allocateArray(arena, ccdSolver);
-            var nQueryPipeline = Native.allocateArray(arena, queryPipeline);
+            var nIntegrationParameters = Native.allocatePtrArray(arena, integrationParameters);
+            var nIslands = Native.allocatePtrArray(arena, islands);
+            var nBroadPhase = Native.allocatePtrArray(arena, broadPhase);
+            var nNarrowPhase = Native.allocatePtrArray(arena, narrowPhase);
+            var nBodies = Native.allocatePtrArray(arena, bodies);
+            var nColliders = Native.allocatePtrArray(arena, colliders);
+            var nImpulseJoints = Native.allocatePtrArray(arena, impulseJoints);
+            var nMultibodyJoints = Native.allocatePtrArray(arena, multibodyJoints);
+            var nCcdSolver = Native.allocatePtrArray(arena, ccdSolver);
+            var nQueryPipeline = Native.allocatePtrArray(arena, queryPipeline);
             {{ sys }}.RapierC.RprPhysicsPipeline_step_all(
                     pipeline.length,
                     nPipeline,

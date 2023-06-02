@@ -1,9 +1,13 @@
 package rapier.shape;
 
+import rapier.Native;
 import rapier.RefCounted;
 import rapier.RefNative;
+import rapier.math.Vector;
 
+import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 
 import static rapier.sys.RapierC.*;
 
@@ -34,6 +38,33 @@ public final class SharedShape extends RefNative implements RefCounted {
 
     public static SharedShape of(Capsule shape) {
         return at({{ sys }}.RapierC.RprSharedShape_capsule(shape.memory()));
+    }
+
+    public static SharedShape compound(CompoundChild... shapes) {
+        if (shapes.length == 0)
+            throw new IllegalArgumentException("Shapes must not be empty");
+
+        try (var arena = MemorySession.openConfined()) {
+            var nShapes = CompoundChild.allocateArray(arena, shapes);
+            var memory = {{ sys }}.RapierC.RprSharedShape_compound(nShapes, shapes.length);
+            return at(memory);
+        }
+    }
+
+    public static @Nullable SharedShape convexHull(Vector... points) {
+        try (var arena = MemorySession.openConfined()) {
+            var nPoints = Vector.allocateArray(arena, points);
+            var memory = {{ sys }}.RapierC.RprSharedShape_convex_hull(nPoints, points.length);
+            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+        }
+    }
+
+    public static @Nullable SharedShape roundConvexHull({{ real }} borderRadius, Vector... points) {
+        try (var arena = MemorySession.openConfined()) {
+            var nPoints = Vector.allocateArray(arena, points);
+            var memory = {{ sys }}.RapierC.RprSharedShape_round_convex_hull(nPoints, points.length, borderRadius);
+            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+        }
     }
 
 {% if dim3 %}

@@ -1,11 +1,5 @@
 use crate::prelude::*;
 
-pub type RprJointAxesMask = u8;
-
-fn joint_axes_mask_from(axes: RprJointAxesMask) -> JointAxesMask {
-    JointAxesMask::from_bits(axes).expect("invalid axes mask")
-}
-
 /// Identifiers of degrees of freedoms of a joint.
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
@@ -55,6 +49,12 @@ impl RprJointAxis {
             JointAxis::AngZ => Self::AngZ,
         }
     }
+}
+
+pub type RprJointAxesMask = u8;
+
+fn joint_axes_mask_from(rpr: RprJointAxesMask) -> JointAxesMask {
+    JointAxesMask::from_bits(rpr).expect("invalid flags")
 }
 
 /// The translational degree of freedom along the local X axis of a joint.

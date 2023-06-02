@@ -402,6 +402,27 @@ public class RapierC  {
     public static int RprJointAxesMask_Z() {
         return (int)4L;
     }
+    public static int RprTriMeshFlags_CONNECTED_COMPONENTS() {
+        return (int)2L;
+    }
+    public static int RprTriMeshFlags_DELETE_BAD_TOPOLOGY_TRIANGLES() {
+        return (int)4L;
+    }
+    public static int RprTriMeshFlags_DELETE_DEGENERATE_TRIANGLES() {
+        return (int)32L;
+    }
+    public static int RprTriMeshFlags_DELETE_DUPLICATE_TRIANGLES() {
+        return (int)64L;
+    }
+    public static int RprTriMeshFlags_HALF_EDGE_TOPOLOGY() {
+        return (int)1L;
+    }
+    public static int RprTriMeshFlags_MERGE_DUPLICATE_VERTICES() {
+        return (int)16L;
+    }
+    public static int RprTriMeshFlags_ORIENTED() {
+        return (int)8L;
+    }
     public static OfLong ptrdiff_t = Constants$root.C_LONG_LONG$LAYOUT;
     public static OfInt wchar_t = Constants$root.C_INT$LAYOUT;
     public static OfShort __int16_t = Constants$root.C_SHORT$LAYOUT;
@@ -1648,6 +1669,12 @@ public class RapierC  {
     }
     public static int KinematicVelocityBased() {
         return (int)3L;
+    }
+    public static int SurfaceOnly() {
+        return (int)0L;
+    }
+    public static int FloodFill() {
+        return (int)1L;
     }
     public static MethodHandle RprArenaKey_invalid$MH() {
         return RuntimeHelper.requireNonNull(constants$18.RprArenaKey_invalid$MH,"RprArenaKey_invalid");
@@ -4366,6 +4393,17 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_compound$MH() {
+        return RuntimeHelper.requireNonNull(constants$59.RprSharedShape_compound$MH,"RprSharedShape_compound");
+    }
+    public static MemoryAddress RprSharedShape_compound ( Addressable shapes_data,  long shapes_len) {
+        var mh$ = RprSharedShape_compound$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(shapes_data, shapes_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_cone$MH() {
         return RuntimeHelper.requireNonNull(constants$59.RprSharedShape_cone$MH,"RprSharedShape_cone");
     }
@@ -4377,8 +4415,52 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_convex_decomposition$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_convex_decomposition$MH,"RprSharedShape_convex_decomposition");
+    }
+    public static MemoryAddress RprSharedShape_convex_decomposition ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len) {
+        var mh$ = RprSharedShape_convex_decomposition$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_convex_decomposition_with_params$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_convex_decomposition_with_params$MH,"RprSharedShape_convex_decomposition_with_params");
+    }
+    public static MemoryAddress RprSharedShape_convex_decomposition_with_params ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  Addressable params) {
+        var mh$ = RprSharedShape_convex_decomposition_with_params$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len, params);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_convex_hull$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_convex_hull$MH,"RprSharedShape_convex_hull");
+    }
+    public static MemoryAddress RprSharedShape_convex_hull ( Addressable points_data,  long points_len) {
+        var mh$ = RprSharedShape_convex_hull$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(points_data, points_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_convex_mesh$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_convex_mesh$MH,"RprSharedShape_convex_mesh");
+    }
+    public static MemoryAddress RprSharedShape_convex_mesh ( Addressable points_data,  long points_len,  Addressable indices_data,  long indices_len) {
+        var mh$ = RprSharedShape_convex_mesh$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(points_data, points_len, indices_data, indices_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_cuboid$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
     }
     public static MemoryAddress RprSharedShape_cuboid ( MemorySegment cuboid) {
         var mh$ = RprSharedShape_cuboid$MH();
@@ -4400,7 +4482,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_data$MH,"RprSharedShape_data");
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_data$MH,"RprSharedShape_data");
     }
     public static MemoryAddress RprSharedShape_data ( Addressable this_) {
         var mh$ = RprSharedShape_data$MH();
@@ -4411,7 +4493,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_release$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_release$MH,"RprSharedShape_release");
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_release$MH,"RprSharedShape_release");
     }
     public static void RprSharedShape_release ( Addressable this_) {
         var mh$ = RprSharedShape_release$MH();
@@ -4421,8 +4503,52 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_round_convex_decomposition$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_convex_decomposition$MH,"RprSharedShape_round_convex_decomposition");
+    }
+    public static MemoryAddress RprSharedShape_round_convex_decomposition ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  double border_radius) {
+        var mh$ = RprSharedShape_round_convex_decomposition$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_round_convex_decomposition_with_params$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_convex_decomposition_with_params$MH,"RprSharedShape_round_convex_decomposition_with_params");
+    }
+    public static MemoryAddress RprSharedShape_round_convex_decomposition_with_params ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  Addressable params,  double border_radius) {
+        var mh$ = RprSharedShape_round_convex_decomposition_with_params$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len, params, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_round_convex_hull$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_convex_hull$MH,"RprSharedShape_round_convex_hull");
+    }
+    public static MemoryAddress RprSharedShape_round_convex_hull ( Addressable points_data,  long points_len,  double border_radius) {
+        var mh$ = RprSharedShape_round_convex_hull$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(points_data, points_len, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_round_convex_mesh$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_convex_mesh$MH,"RprSharedShape_round_convex_mesh");
+    }
+    public static MemoryAddress RprSharedShape_round_convex_mesh ( Addressable points_data,  long points_len,  Addressable indices_data,  long indices_len,  double border_radius) {
+        var mh$ = RprSharedShape_round_convex_mesh$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(points_data, points_len, indices_data, indices_len, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_segment$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_segment$MH,"RprSharedShape_segment");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_segment$MH,"RprSharedShape_segment");
     }
     public static MemoryAddress RprSharedShape_segment ( MemorySegment segment) {
         var mh$ = RprSharedShape_segment$MH();
@@ -4433,7 +4559,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_strong_count$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
     }
     public static long RprSharedShape_strong_count ( Addressable this_) {
         var mh$ = RprSharedShape_strong_count$MH();
@@ -4444,7 +4570,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_triangle$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
     }
     public static MemoryAddress RprSharedShape_triangle ( MemorySegment triangle) {
         var mh$ = RprSharedShape_triangle$MH();
@@ -4454,8 +4580,52 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_trimesh$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_trimesh$MH,"RprSharedShape_trimesh");
+    }
+    public static MemoryAddress RprSharedShape_trimesh ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len) {
+        var mh$ = RprSharedShape_trimesh$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_trimesh_with_flags$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_trimesh_with_flags$MH,"RprSharedShape_trimesh_with_flags");
+    }
+    public static MemoryAddress RprSharedShape_trimesh_with_flags ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  byte flags) {
+        var mh$ = RprSharedShape_trimesh_with_flags$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len, flags);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprVHACD_decompose$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.RprVHACD_decompose$MH,"RprVHACD_decompose");
+    }
+    public static MemoryAddress RprVHACD_decompose ( Addressable params,  Addressable points_data,  long points_len,  Addressable indices_data,  long indices_len,  boolean keep_voxel_to_primitives_map) {
+        var mh$ = RprVHACD_decompose$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(params, points_data, points_len, indices_data, indices_len, keep_voxel_to_primitives_map);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprVHACD_drop$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.RprVHACD_drop$MH,"RprVHACD_drop");
+    }
+    public static void RprVHACD_drop ( Addressable this_) {
+        var mh$ = RprVHACD_drop$MH();
+        try {
+            mh$.invokeExact(this_);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MemoryAddress NULL() {
-        return constants$61.NULL$ADDR;
+        return constants$63.NULL$ADDR;
     }
     public static long _POSIX_C_SOURCE() {
         return 200809L;

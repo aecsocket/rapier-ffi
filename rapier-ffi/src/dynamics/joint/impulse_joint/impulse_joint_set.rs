@@ -53,7 +53,9 @@ pub unsafe extern "C" fn RprImpulseJointSet_is_empty(this: *const RprImpulseJoin
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprImpulseJointSet_all<'a>(this: *const RprImpulseJointSet) -> *mut RprImpulseJointVec<'a> {
+pub unsafe extern "C" fn RprImpulseJointSet_all<'a>(
+    this: *const RprImpulseJointSet,
+) -> *mut RprImpulseJointVec<'a> {
     let vec: Vec<(ImpulseJointHandle, &ImpulseJoint)> = this.get().0.iter().collect();
     leak_ptr(RprImpulseJointVec(vec))
 }

@@ -53,7 +53,9 @@ pub unsafe extern "C" fn RprRigidBodySet_is_empty(this: *const RprRigidBodySet) 
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodySet_all<'a>(this: *const RprRigidBodySet) -> *mut RprRigidBodyVec<'a> {
+pub unsafe extern "C" fn RprRigidBodySet_all<'a>(
+    this: *const RprRigidBodySet,
+) -> *mut RprRigidBodyVec<'a> {
     let vec: Vec<(RigidBodyHandle, &RigidBody)> = this.get().0.iter().collect();
     leak_ptr(RprRigidBodyVec(vec))
 }

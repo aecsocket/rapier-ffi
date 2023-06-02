@@ -1,7 +1,5 @@
 package rapier;
 
-import rapier.sys.RapierC;
-
 import javax.annotation.Nullable;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -17,7 +15,7 @@ public interface Native {
         return obj == null ? MemoryAddress.NULL : obj.memory();
     }
 
-    static MemorySegment allocateArray(SegmentAllocator alloc, Native... objs) {
+    static MemorySegment allocatePtrArray(SegmentAllocator alloc, Native... objs) {
         var memory = alloc.allocateArray(C_POINTER, objs.length);
         for (int i = 0; i < objs.length; i++) {
             memory.setAtIndex(C_POINTER, i, memoryOrNull(objs[i]));
