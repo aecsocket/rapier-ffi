@@ -9,71 +9,63 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$32 {
 
-    static final FunctionDescriptor RprGenericJoint_local_axis2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y")
-    ).withName("RprVector"),
+    static final FunctionDescriptor RprCollider_set_shape$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_local_axis2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_axis2",
-        constants$32.RprGenericJoint_local_axis2$FUNC
+    static final MethodHandle RprCollider_set_shape$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_shape",
+        constants$32.RprCollider_set_shape$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_local_frame1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final FunctionDescriptor RprCollider_set_solver_groups$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("re"),
-            Constants$root.C_FLOAT$LAYOUT.withName("im")
-        ).withName("rotation"),
+            Constants$root.C_INT$LAYOUT.withName("memberships"),
+            Constants$root.C_INT$LAYOUT.withName("filter")
+        ).withName("RprInteractionGroups")
+    );
+    static final MethodHandle RprCollider_set_solver_groups$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_solver_groups",
+        constants$32.RprCollider_set_solver_groups$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
             Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
+        ).withName("RprVector")
     );
-    static final MethodHandle RprGenericJoint_local_frame1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame1",
-        constants$32.RprGenericJoint_local_frame1$FUNC
+    static final MethodHandle RprCollider_set_translation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_translation",
+        constants$32.RprCollider_set_translation$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("re"),
-            Constants$root.C_FLOAT$LAYOUT.withName("im")
-        ).withName("rotation"),
+    static final FunctionDescriptor RprCollider_set_translation_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
             Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("translation")
-    ).withName("RprIsometry"),
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprCollider_set_translation_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_translation_wrt_parent",
+        constants$32.RprCollider_set_translation_wrt_parent$FUNC
+    );
+    static final FunctionDescriptor RprCollider_shape$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame2",
-        constants$32.RprGenericJoint_local_frame2$FUNC
+    static final MethodHandle RprCollider_shape$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_shape",
+        constants$32.RprCollider_shape$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_lock_axes",
-        constants$32.RprGenericJoint_lock_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+    static final FunctionDescriptor RprCollider_solver_groups$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("memberships"),
+        Constants$root.C_INT$LAYOUT.withName("filter")
+    ).withName("RprInteractionGroups"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_locked_axes",
-        constants$32.RprGenericJoint_locked_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_motor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_motor$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_motor",
-        constants$32.RprGenericJoint_motor$FUNC
+    static final MethodHandle RprCollider_solver_groups$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_solver_groups",
+        constants$32.RprCollider_solver_groups$FUNC
     );
 }
 

@@ -9,6 +9,40 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$20 {
 
+    static final FunctionDescriptor RprColliderBuilder_collision_groups$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("memberships"),
+            Constants$root.C_INT$LAYOUT.withName("filter")
+        ).withName("RprInteractionGroups")
+    );
+    static final MethodHandle RprColliderBuilder_collision_groups$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_collision_groups",
+        constants$20.RprColliderBuilder_collision_groups$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_contact_force_event_threshold$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_contact_force_event_threshold",
+        constants$20.RprColliderBuilder_contact_force_event_threshold$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_density$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_density$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_density",
+        constants$20.RprColliderBuilder_density$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_drop$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_drop",
+        constants$20.RprColliderBuilder_drop$FUNC
+    );
     static final FunctionDescriptor RprColliderBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -24,49 +58,6 @@ class constants$20 {
     static final MethodHandle RprColliderBuilder_friction$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_friction",
         constants$20.RprColliderBuilder_friction$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_friction_combine_rule$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_friction_combine_rule$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_friction_combine_rule",
-        constants$20.RprColliderBuilder_friction_combine_rule$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_mass$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_mass$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_mass",
-        constants$20.RprColliderBuilder_mass$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_new$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_new",
-        constants$20.RprColliderBuilder_new$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_position$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z"),
-                Constants$root.C_FLOAT$LAYOUT.withName("w")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprColliderBuilder_position$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_position",
-        constants$20.RprColliderBuilder_position$FUNC
     );
 }
 

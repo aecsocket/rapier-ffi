@@ -13,7 +13,9 @@ pub const RprLockedAxes_TRANSLATION_LOCKED_Y: u8 = 1 << 1;
 /// Flag indicating that the rigid-body cannot translate along the `Z` axis.
 pub const RprLockedAxes_TRANSLATION_LOCKED_Z: u8 = 1 << 2;
 /// Flag indicating that the rigid-body cannot translate along any direction.
-pub const RprLockedAxes_TRANSLATION_LOCKED: u8 = RprLockedAxes_TRANSLATION_LOCKED_X | RprLockedAxes_TRANSLATION_LOCKED_Y | RprLockedAxes_TRANSLATION_LOCKED_Z;
+pub const RprLockedAxes_TRANSLATION_LOCKED: u8 = RprLockedAxes_TRANSLATION_LOCKED_X
+    | RprLockedAxes_TRANSLATION_LOCKED_Y
+    | RprLockedAxes_TRANSLATION_LOCKED_Z;
 /// Flag indicating that the rigid-body cannot rotate along the `X` axis.
 pub const RprLockedAxes_ROTATION_LOCKED_X: u8 = 1 << 3;
 /// Flag indicating that the rigid-body cannot rotate along the `Y` axis.
@@ -21,7 +23,9 @@ pub const RprLockedAxes_ROTATION_LOCKED_Y: u8 = 1 << 4;
 /// Flag indicating that the rigid-body cannot rotate along the `Z` axis.
 pub const RprLockedAxes_ROTATION_LOCKED_Z: u8 = 1 << 5;
 /// Combination of flags indicating that the rigid-body cannot rotate along any axis.
-pub const RprLockedAxes_ROTATION_LOCKED: u8 = RprLockedAxes_ROTATION_LOCKED_X | RprLockedAxes_ROTATION_LOCKED_Y | RprLockedAxes_ROTATION_LOCKED_Z;
+pub const RprLockedAxes_ROTATION_LOCKED: u8 = RprLockedAxes_ROTATION_LOCKED_X
+    | RprLockedAxes_ROTATION_LOCKED_Y
+    | RprLockedAxes_ROTATION_LOCKED_Z;
 
 /// The status of a body, governing the way it is affected by external forces.
 #[repr(C)]
@@ -70,52 +74,77 @@ impl RprRigidBodyType {
 pub struct RprRigidBodyActivation(pub RigidBodyActivation);
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_linear_threshold(this: *const RprRigidBodyActivation) -> Real {
+pub unsafe extern "C" fn RprRigidBodyActivation_linear_threshold(
+    this: *const RprRigidBodyActivation,
+) -> Real {
     this.get().0.linear_threshold
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_set_linear_threshold(this: *mut RprRigidBodyActivation, value: Real) {
+pub unsafe extern "C" fn RprRigidBodyActivation_set_linear_threshold(
+    this: *mut RprRigidBodyActivation,
+    value: Real,
+) {
     this.get_mut().0.linear_threshold = value;
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_angular_threshold(this: *const RprRigidBodyActivation) -> Real {
+pub unsafe extern "C" fn RprRigidBodyActivation_angular_threshold(
+    this: *const RprRigidBodyActivation,
+) -> Real {
     this.get().0.angular_threshold
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_set_angular_threshold(this: *mut RprRigidBodyActivation, value: Real) {
+pub unsafe extern "C" fn RprRigidBodyActivation_set_angular_threshold(
+    this: *mut RprRigidBodyActivation,
+    value: Real,
+) {
     this.get_mut().0.angular_threshold = value;
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_time_until_sleep(this: *const RprRigidBodyActivation) -> Real {
+pub unsafe extern "C" fn RprRigidBodyActivation_time_until_sleep(
+    this: *const RprRigidBodyActivation,
+) -> Real {
     this.get().0.time_until_sleep
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_set_time_until_sleep(this: *mut RprRigidBodyActivation, value: Real) {
+pub unsafe extern "C" fn RprRigidBodyActivation_set_time_until_sleep(
+    this: *mut RprRigidBodyActivation,
+    value: Real,
+) {
     this.get_mut().0.time_until_sleep = value;
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_time_since_can_sleep(this: *const RprRigidBodyActivation) -> Real {
+pub unsafe extern "C" fn RprRigidBodyActivation_time_since_can_sleep(
+    this: *const RprRigidBodyActivation,
+) -> Real {
     this.get().0.time_since_can_sleep
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_set_time_since_can_sleep(this: *mut RprRigidBodyActivation, value: Real) {
+pub unsafe extern "C" fn RprRigidBodyActivation_set_time_since_can_sleep(
+    this: *mut RprRigidBodyActivation,
+    value: Real,
+) {
     this.get_mut().0.time_since_can_sleep = value;
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_sleeping(this: *const RprRigidBodyActivation) -> bool {
+pub unsafe extern "C" fn RprRigidBodyActivation_sleeping(
+    this: *const RprRigidBodyActivation,
+) -> bool {
     this.get().0.sleeping
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyActivation_set_sleeping(this: *mut RprRigidBodyActivation, value: bool) {
+pub unsafe extern "C" fn RprRigidBodyActivation_set_sleeping(
+    this: *mut RprRigidBodyActivation,
+    value: bool,
+) {
     this.get_mut().0.sleeping = value;
 }
 
@@ -127,12 +156,16 @@ pub unsafe extern "C" fn RprRigidBody_drop(this: *mut RprRigidBody) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_activation(this: *const RprRigidBody) -> *const RprRigidBodyActivation {
+pub unsafe extern "C" fn RprRigidBody_activation(
+    this: *const RprRigidBody,
+) -> *const RprRigidBodyActivation {
     this.get().0.activation() as *const RigidBodyActivation as *const RprRigidBodyActivation
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_activation_mut(this: *mut RprRigidBody) -> *mut RprRigidBodyActivation {
+pub unsafe extern "C" fn RprRigidBody_activation_mut(
+    this: *mut RprRigidBody,
+) -> *mut RprRigidBodyActivation {
     this.get_mut().0.activation_mut() as *mut RigidBodyActivation as *mut RprRigidBodyActivation
 }
 
@@ -193,8 +226,14 @@ pub unsafe extern "C" fn RprRigidBody_effective_dominance_group(this: *const Rpr
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_set_locked_axes(this: *mut RprRigidBody, locked_axes: RprLockedAxes, wake_up: bool) {
-    this.get_mut().0.set_locked_axes(locked_axes_from(locked_axes), wake_up)
+pub unsafe extern "C" fn RprRigidBody_set_locked_axes(
+    this: *mut RprRigidBody,
+    locked_axes: RprLockedAxes,
+    wake_up: bool,
+) {
+    this.get_mut()
+        .0
+        .set_locked_axes(locked_axes_from(locked_axes), wake_up)
 }
 
 #[no_mangle]
@@ -203,7 +242,11 @@ pub unsafe extern "C" fn RprRigidBody_locked_axes(this: *const RprRigidBody) -> 
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_lock_rotations(this: *mut RprRigidBody, locked: bool, wake_up: bool) {
+pub unsafe extern "C" fn RprRigidBody_lock_rotations(
+    this: *mut RprRigidBody,
+    locked: bool,
+    wake_up: bool,
+) {
     this.get_mut().0.lock_rotations(locked, wake_up)
 }
 

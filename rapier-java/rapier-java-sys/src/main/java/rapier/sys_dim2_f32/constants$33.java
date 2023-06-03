@@ -9,58 +9,52 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$33 {
 
-    static final FunctionDescriptor RprGenericJoint_motor_model$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_translation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_translation",
+        constants$33.RprCollider_translation$FUNC
+    );
+    static final FunctionDescriptor RprCollider_volume$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_volume$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_volume",
+        constants$33.RprCollider_volume$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_contacts_enabled",
+        constants$33.RprGenericJoint_contacts_enabled$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_drop$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_drop",
+        constants$33.RprGenericJoint_drop$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_is_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_is_enabled",
+        constants$33.RprGenericJoint_is_enabled$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_motor_model",
-        constants$33.RprGenericJoint_motor_model$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_new",
-        constants$33.RprGenericJoint_new$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_contacts_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_contacts_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_contacts_enabled",
-        constants$33.RprGenericJoint_set_contacts_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_enabled",
-        constants$33.RprGenericJoint_set_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_limits$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_limits",
-        constants$33.RprGenericJoint_set_limits$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_anchor1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor1",
-        constants$33.RprGenericJoint_set_local_anchor1$FUNC
+    static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_limits",
+        constants$33.RprGenericJoint_limits$FUNC
     );
 }
 

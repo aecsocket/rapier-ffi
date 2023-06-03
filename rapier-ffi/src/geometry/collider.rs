@@ -1,5 +1,59 @@
 use crate::prelude::*;
 
+pub type RprActiveHooks = u32;
+
+pub fn active_hooks_from(rpr: RprActiveHooks) -> ActiveHooks {
+    ActiveHooks::from_bits(rpr).expect("invalid flags")
+}
+
+/// If set, Rapier will call `PhysicsHooks::filter_contact_pair` whenever relevant.
+pub const RprActiveHooks_FILTER_CONTACT_PAIRS: u32 = 0b0001;
+/// If set, Rapier will call `PhysicsHooks::filter_intersection_pair` whenever relevant.
+pub const RprActiveHooks_FILTER_INTERSECTION_PAIR: u32 = 0b0010;
+/// If set, Rapier will call `PhysicsHooks::modify_solver_contact` whenever relevant.
+pub const RprActiveHooks_MODIFY_SOLVER_CONTACTS: u32 = 0b0100;
+
+pub type RprActiveEvents = u32;
+
+pub fn active_events_from(rpr: RprActiveEvents) -> ActiveEvents {
+    ActiveEvents::from_bits(rpr).expect("invalid flags")
+}
+
+/// If set, Rapier will call `EventHandler::handle_collision_event`
+/// whenever relevant for this collider.
+pub const RprActiveEvents_COLLISION_EVENTS: u32 = 0b0001;
+/// If set, Rapier will call `EventHandler::handle_contact_force_event`
+/// whenever relevant for this collider.
+pub const RprActiveEvents_CONTACT_FORCE_EVENTS: u32 = 0b0010;
+
+pub type RprActiveCollisionTypes = u16;
+
+pub fn active_collision_types_from(rpr: RprActiveCollisionTypes) -> ActiveCollisionTypes {
+    ActiveCollisionTypes::from_bits(rpr).expect("invalid flags")
+}
+
+/// Enable collision-detection between a collider attached to a dynamic body
+/// and another collider attached to a dynamic body.
+pub const RprActiveCollisionTypes_DYNAMIC_DYNAMIC: u16 = 0b0000_0000_0000_0001;
+/// Enable collision-detection between a collider attached to a dynamic body
+/// and another collider attached to a kinematic body.
+pub const RprActiveCollisionTypes_DYNAMIC_KINEMATIC: u16 = 0b0000_0000_0000_1100;
+/// Enable collision-detection between a collider attached to a dynamic body
+/// and another collider attached to a fixed body (or not attached to any body).
+pub const RprActiveCollisionTypes_DYNAMIC_FIXED: u16 = 0b0000_0000_0000_0010;
+/// Enable collision-detection between a collider attached to a kinematic body
+/// and another collider attached to a kinematic body.
+pub const RprActiveCollisionTypes_KINEMATIC_KINEMATIC: u16 = 0b1100_1100_0000_0000;
+
+/// Enable collision-detection between a collider attached to a kinematic body
+/// and another collider attached to a fixed body (or not attached to any body).
+pub const RprActiveCollisionTypes_KINEMATIC_FIXED: u16 = 0b0010_0010_0000_0000;
+
+/// Enable collision-detection between a collider attached to a fixed body (or
+/// not attached to any body) and another collider attached to a fixed body (or
+/// not attached to any body).
+pub const RprActiveCollisionTypes_FIXED_FIXED: u16 = 0b0000_0000_0010_0000;
+
 /// The constraints solver-related properties of this collider (friction, restitution, etc.)
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
@@ -74,11 +128,52 @@ pub unsafe extern "C" fn RprCollider_is_sensor(this: *const RprCollider) -> bool
     this.get().0.is_sensor()
 }
 
-// TODO (set_)active_hooks
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_active_hooks(this: *const RprCollider) -> RprActiveHooks {
+    this.get().0.active_hooks().bits()
+}
 
-// TODO (set_)active_events
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_active_hooks(
+    this: *mut RprCollider,
+    active_hooks: RprActiveHooks,
+) {
+    this.get_mut()
+        .0
+        .set_active_hooks(active_hooks_from(active_hooks))
+}
 
-// TODO (set_)active_collision_types
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_active_events(this: *const RprCollider) -> RprActiveEvents {
+    this.get().0.active_events().bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_active_events(
+    this: *mut RprCollider,
+    active_events: RprActiveEvents,
+) {
+    this.get_mut()
+        .0
+        .set_active_events(active_events_from(active_events))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_active_collision_types(
+    this: *const RprCollider,
+) -> RprActiveCollisionTypes {
+    this.get().0.active_collision_types().bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_active_collision_types(
+    this: *mut RprCollider,
+    active_collision_types: RprActiveCollisionTypes,
+) {
+    this.get_mut()
+        .0
+        .set_active_collision_types(active_collision_types_from(active_collision_types))
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_friction(this: *const RprCollider) -> Real {
@@ -232,9 +327,25 @@ pub unsafe extern "C" fn RprCollider_set_position_wrt_parent(
         .set_position_wrt_parent(pos_wrt_parent.into_raw())
 }
 
-// TODO (set_)collision_groups
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_collision_groups(this: *const RprCollider) -> RprInteractionGroups {
+    RprInteractionGroups::from_raw(this.get().0.collision_groups())
+}
 
-// TODO (set_)solver_groups
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_collision_groups(this: *mut RprCollider, groups: RprInteractionGroups) {
+    this.get_mut().0.set_collision_groups(groups.into_raw())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_solver_groups(this: *const RprCollider) -> RprInteractionGroups {
+    RprInteractionGroups::from_raw(this.get().0.solver_groups())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprCollider_set_solver_groups(this: *mut RprCollider, groups: RprInteractionGroups) {
+    this.get_mut().0.set_solver_groups(groups.into_raw())
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprCollider_material(this: *const RprCollider) -> RprColliderMaterial {
@@ -322,8 +433,46 @@ pub unsafe extern "C" fn RprColliderBuilder_build(
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn RprColliderBuilder_collision_groups(this: *mut RprColliderBuilder, groups: RprInteractionGroups) {
+    this.rewrite(|t| RprColliderBuilder(t.0.collision_groups(groups.into_raw())))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderBuilder_solver_groups(this: *mut RprColliderBuilder, groups: RprInteractionGroups) {
+    this.rewrite(|t| RprColliderBuilder(t.0.solver_groups(groups.into_raw())))
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn RprColliderBuilder_sensor(this: *mut RprColliderBuilder, sensor: bool) {
     this.rewrite(|t| RprColliderBuilder(t.0.sensor(sensor)))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderBuilder_active_hooks(
+    this: *mut RprColliderBuilder,
+    active_hooks: RprActiveHooks,
+) {
+    this.rewrite(|t| RprColliderBuilder(t.0.active_hooks(active_hooks_from(active_hooks))))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderBuilder_active_events(
+    this: *mut RprColliderBuilder,
+    active_events: RprActiveEvents,
+) {
+    this.rewrite(|t| RprColliderBuilder(t.0.active_events(active_events_from(active_events))))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprColliderBuilder_active_collision_types(
+    this: *mut RprColliderBuilder,
+    active_collision_types: RprActiveCollisionTypes,
+) {
+    this.rewrite(|t| {
+        RprColliderBuilder(
+            t.0.active_collision_types(active_collision_types_from(active_collision_types)),
+        )
+    })
 }
 
 #[no_mangle]

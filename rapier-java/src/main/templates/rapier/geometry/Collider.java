@@ -42,6 +42,18 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         return RprCollider_is_sensor(self);
     }
 
+    public int getActiveHooks() {
+        return RprCollider_active_hooks(self);
+    }
+
+    public int getActiveEvents() {
+        return RprCollider_active_events(self);
+    }
+
+    public short getActiveCollisionTypes() {
+        return RprCollider_active_collision_types(self);
+    }
+
     public {{ real }} getFriction() {
         return {{ sys }}.RapierC.RprCollider_friction(self);
     }
@@ -81,6 +93,14 @@ public sealed class Collider extends RefNative permits Collider.Mut {
     public @Nullable Isometry getPositionWrtParent(SegmentAllocator alloc) {
         if (getParent() == null) return null;
         return Isometry.at({{ sys }}.RapierC.RprCollider_position_wrt_parent(alloc, self));
+    }
+
+    public InteractionGroups getCollisionGroups(SegmentAllocator alloc) {
+        return InteractionGroups.at(RprCollider_collision_groups(alloc, self));
+    }
+
+    public InteractionGroups getSolverGroups(SegmentAllocator alloc) {
+        return InteractionGroups.at(RprCollider_solver_groups(alloc, self));
     }
 
     public {{ real }} getVolume() {
@@ -125,6 +145,18 @@ public sealed class Collider extends RefNative permits Collider.Mut {
 
         public void setSensor(boolean isSensor) {
             RprCollider_set_sensor(self, isSensor);
+        }
+
+        public void setActiveHooks(int activeHooks) {
+            RprCollider_set_active_hooks(self, activeHooks);
+        }
+
+        public void setActiveEvents(int activeEvents) {
+            RprCollider_set_active_events(self, activeEvents);
+        }
+
+        public void setActiveCollisionTypes(short activeCollisionTypes) {
+            RprCollider_set_active_collision_types(self, activeCollisionTypes);
         }
 
         public void setFriction({{ real }} coefficient) {
@@ -173,6 +205,14 @@ public sealed class Collider extends RefNative permits Collider.Mut {
 
         public void setPositionWrtParent(Isometry posWrtParent) {
             {{ sys }}.RapierC.RprCollider_set_position_wrt_parent(self, posWrtParent.memory());
+        }
+
+        public void setCollisionGroups(InteractionGroups groups) {
+            RprCollider_set_collision_groups(self, groups.memory());
+        }
+
+        public void setSolverGroups(InteractionGroups groups) {
+            RprCollider_set_solver_groups(self, groups.memory());
         }
 
         public void setDensity({{ real }} density) {

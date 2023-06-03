@@ -9,70 +9,86 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$41 {
 
-    static final FunctionDescriptor RprMultibodyJointSet_insert$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprImpulseJoint_impulses$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("w"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("a"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("b")
+    ).withName("RprSpacialVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_insert",
-        constants$41.RprMultibodyJointSet_insert$FUNC
+    static final MethodHandle RprImpulseJoint_impulses$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_impulses",
+        constants$41.RprImpulseJoint_impulses$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_new",
-        constants$41.RprMultibodyJointSet_new$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove",
-        constants$41.RprMultibodyJointSet_remove$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJoint_set_body1$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
         ).withName("RprArenaKey")
     );
-    static final MethodHandle RprMultibodyJointSet_remove_joints_attached_to_rigid_body$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove_joints_attached_to_rigid_body",
-        constants$41.RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC
+    static final MethodHandle RprImpulseJoint_set_body1$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_body1",
+        constants$41.RprImpulseJoint_set_body1$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_remove_multibody_articulations$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJoint_set_body2$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
+        ).withName("RprArenaKey")
     );
-    static final MethodHandle RprMultibodyJointSet_remove_multibody_articulations$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove_multibody_articulations",
-        constants$41.RprMultibodyJointSet_remove_multibody_articulations$FUNC
+    static final MethodHandle RprImpulseJoint_set_body2$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_body2",
+        constants$41.RprImpulseJoint_set_body2$FUNC
     );
-    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJoint_set_data$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
-        "RprNarrowPhase_drop",
-        constants$41.RprNarrowPhase_drop$FUNC
+    static final MethodHandle RprImpulseJoint_set_data$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_data",
+        constants$41.RprImpulseJoint_set_data$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_set_impulses$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("a"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("b")
+        ).withName("RprSpacialVector")
+    );
+    static final MethodHandle RprImpulseJoint_set_impulses$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_impulses",
+        constants$41.RprImpulseJoint_set_impulses$FUNC
+    );
+    static final FunctionDescriptor RprIntegrationParametersDesc_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("dt"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("min_ccd_dt"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("erp"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("damping_ratio"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("joint_erp"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("joint_damping_ratio"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("allowed_linear_error"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_penetration_correction"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("prediction_distance"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+        Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+        MemoryLayout.paddingLayout(56),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+    ).withName("RprIntegrationParametersDesc"));
+    static final MethodHandle RprIntegrationParametersDesc_default$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParametersDesc_default",
+        constants$41.RprIntegrationParametersDesc_default$FUNC
     );
 }
 

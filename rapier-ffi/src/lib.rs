@@ -38,7 +38,8 @@ pub(crate) mod prelude {
         rigid_body_set::*,
     };
     pub use crate::geometry::{
-        bounding_sphere::*, broad_phase::*, collider::*, collider_set::*, narrow_phase::*, vhacd::*,
+        bounding_sphere::*, broad_phase::*, collider::*, collider_set::*, interaction_groups::*,
+        narrow_phase::*, vhacd::*,
     };
     pub use crate::math::*;
     pub use crate::pipeline::{physics_pipeline::*, query_pipeline::*};

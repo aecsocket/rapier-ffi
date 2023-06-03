@@ -90,8 +90,16 @@ pub extern "C" fn RprSharedShape_cone(half_height: Real, radius: Real) -> *mut R
 
 #[no_mangle]
 #[cfg(feature = "dim3")]
-pub extern "C" fn RprSharedShape_round_cone(half_height: Real, radius: Real, border_radius: Real) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape::round_cone(half_height, radius, border_radius)))
+pub extern "C" fn RprSharedShape_round_cone(
+    half_height: Real,
+    radius: Real,
+    border_radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cone(
+        half_height,
+        radius,
+        border_radius,
+    )))
 }
 
 #[no_mangle]
@@ -102,8 +110,16 @@ pub extern "C" fn RprSharedShape_cuboid(hx: Real, hy: Real) -> *mut RprSharedSha
 
 #[no_mangle]
 #[cfg(feature = "dim2")]
-pub extern "C" fn RprSharedShape_round_cuboid(hx: Real, hy: Real, border_radius: Real) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape::round_cuboid(hx, hy, border_radius)))
+pub extern "C" fn RprSharedShape_round_cuboid(
+    hx: Real,
+    hy: Real,
+    border_radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cuboid(
+        hx,
+        hy,
+        border_radius,
+    )))
 }
 
 #[no_mangle]
@@ -114,8 +130,18 @@ pub extern "C" fn RprSharedShape_cuboid(hx: Real, hy: Real, hz: Real) -> *mut Rp
 
 #[no_mangle]
 #[cfg(feature = "dim3")]
-pub extern "C" fn RprSharedShape_round_cuboid(hx: Real, hy: Real, hz: Real, border_radius: Real) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape::round_cuboid(hx, hy, hz, border_radius)))
+pub extern "C" fn RprSharedShape_round_cuboid(
+    hx: Real,
+    hy: Real,
+    hz: Real,
+    border_radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cuboid(
+        hx,
+        hy,
+        hz,
+        border_radius,
+    )))
 }
 
 #[no_mangle]
@@ -124,7 +150,11 @@ pub extern "C" fn RprSharedShape_capsule(
     b: RprVector,
     radius: Real,
 ) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape::capsule(a.into_point(), b.into_point(), radius)))
+    leak_ptr(RprSharedShape(SharedShape::capsule(
+        a.into_point(),
+        b.into_point(),
+        radius,
+    )))
 }
 
 #[no_mangle]
@@ -193,7 +223,11 @@ pub unsafe extern "C" fn RprSharedShape_trimesh(
     let indices: Vec<[u32; 3]> =
         std::slice::from_raw_parts(indices_data as *const u32 as *const [u32; 3], indices_len)
             .to_vec();
-    leak_ptr(RprSharedShape(SharedShape::trimesh_with_flags(vertices, indices, trimesh_flags_from(flags))))
+    leak_ptr(RprSharedShape(SharedShape::trimesh_with_flags(
+        vertices,
+        indices,
+        trimesh_flags_from(flags),
+    )))
 }
 
 /// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]

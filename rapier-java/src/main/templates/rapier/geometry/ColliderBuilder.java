@@ -35,8 +35,33 @@ public final class ColliderBuilder extends RefNative implements Droppable {
         return Collider.atMut(RprColliderBuilder_build(self));
     }
 
+    public ColliderBuilder collisionGroups(InteractionGroups groups) {
+        RprColliderBuilder_collision_groups(self, groups.memory());
+        return this;
+    }
+
+    public ColliderBuilder solverGroups(InteractionGroups groups) {
+        RprColliderBuilder_solver_groups(self, groups.memory());
+        return this;
+    }
+
     public ColliderBuilder sensor(boolean sensor) {
         RprColliderBuilder_sensor(self, sensor);
+        return this;
+    }
+
+    public ColliderBuilder activeHooks(int activeHooks) {
+        RprColliderBuilder_active_hooks(self, activeHooks);
+        return this;
+    }
+
+    public ColliderBuilder activeEvents(int activeEvents) {
+        RprColliderBuilder_active_events(self, activeEvents);
+        return this;
+    }
+
+    public ColliderBuilder activeCollisionTypes(short activeCollisionTypes) {
+        RprColliderBuilder_active_collision_types(self, activeCollisionTypes);
         return this;
     }
 

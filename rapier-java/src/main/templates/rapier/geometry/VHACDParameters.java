@@ -118,4 +118,21 @@ public final class VHACDParameters extends ValNative {
     public void setMaxConvexHulls(int maxConvexHulls) {
         {{ sys }}.RprVHACDParameters.max_convex_hulls$set(self, maxConvexHulls);
     }
+
+    public sealed interface FillMode permits FillMode.SurfaceOnly, FillMode.FloodFill {
+        final class SurfaceOnly implements FillMode {
+            private SurfaceOnly() {}
+
+            public static final SurfaceOnly INSTANCE = new SurfaceOnly();
+        }
+
+        record FloodFill(
+{% if dim2 %}
+                boolean detectCavities,
+                boolean detectSelfIntersections
+{% else %}
+                boolean detectCavities
+{% endif %}
+        ) implements FillMode {}
+    }
 }

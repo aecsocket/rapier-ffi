@@ -9,50 +9,52 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$44 {
 
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_since_can_sleep$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
-    static final MethodHandle RprRigidBodyActivation_set_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_since_can_sleep",
-        constants$44.RprRigidBodyActivation_set_time_since_can_sleep$FUNC
+    static final MethodHandle RprMultibodyJointSet_remove_joints_attached_to_rigid_body$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_joints_attached_to_rigid_body",
+        constants$44.RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_until_sleep$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprMultibodyJointSet_remove_multibody_articulations$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_set_time_until_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_until_sleep",
-        constants$44.RprRigidBodyActivation_set_time_until_sleep$FUNC
+    static final MethodHandle RprMultibodyJointSet_remove_multibody_articulations$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_multibody_articulations",
+        constants$44.RprMultibodyJointSet_remove_multibody_articulations$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_sleeping",
-        constants$44.RprRigidBodyActivation_sleeping$FUNC
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$44.RprNarrowPhase_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_time_since_can_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_new",
+        constants$44.RprNarrowPhase_new$FUNC
+    );
+    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_time_since_can_sleep",
-        constants$44.RprRigidBodyActivation_time_since_can_sleep$FUNC
+    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_drop",
+        constants$44.RprPhysicsPipeline_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_time_until_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_time_until_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_time_until_sleep",
-        constants$44.RprRigidBodyActivation_time_until_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_additional_mass$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_additional_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_additional_mass",
-        constants$44.RprRigidBodyBuilder_additional_mass$FUNC
+    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_new",
+        constants$44.RprPhysicsPipeline_new$FUNC
     );
 }
 

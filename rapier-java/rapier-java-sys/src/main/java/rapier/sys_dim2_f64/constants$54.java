@@ -9,48 +9,67 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$54 {
 
-    static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_angular_damping$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_ccd_enabled",
-        constants$54.RprRigidBody_is_ccd_enabled$FUNC
+    static final MethodHandle RprRigidBody_angular_damping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_angular_damping",
+        constants$54.RprRigidBody_angular_damping$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_angvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x")
+    ).withName("RprAngVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_dynamic",
-        constants$54.RprRigidBody_is_dynamic$FUNC
+    static final MethodHandle RprRigidBody_angvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_angvel",
+        constants$54.RprRigidBody_angvel$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_enabled",
-        constants$54.RprRigidBody_is_enabled$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_fixed$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_fixed",
-        constants$54.RprRigidBody_is_fixed$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_kinematic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_kinematic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_kinematic",
-        constants$54.RprRigidBody_is_kinematic$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_rotation_locked$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBody_apply_impulse$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_apply_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_apply_impulse",
+        constants$54.RprRigidBody_apply_impulse$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_apply_impulse_at_point$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_apply_impulse_at_point$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_apply_impulse_at_point",
+        constants$54.RprRigidBody_apply_impulse_at_point$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_apply_torque_impulse$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x")
+        ).withName("RprAngVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_apply_torque_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_apply_torque_impulse",
+        constants$54.RprRigidBody_apply_torque_impulse$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_rotation_locked",
-        constants$54.RprRigidBody_is_rotation_locked$FUNC
+    static final MethodHandle RprRigidBody_body_type$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_body_type",
+        constants$54.RprRigidBody_body_type$FUNC
     );
 }
 

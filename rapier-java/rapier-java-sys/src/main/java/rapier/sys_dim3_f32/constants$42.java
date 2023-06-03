@@ -9,70 +9,67 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$42 {
 
-    static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
-        "RprNarrowPhase_new",
-        constants$42.RprNarrowPhase_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_drop",
-        constants$42.RprPhysicsPipeline_drop$FUNC
+    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_drop",
+        constants$42.RprIntegrationParameters_drop$FUNC
     );
-    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_new",
-        constants$42.RprPhysicsPipeline_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
+            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
+            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
+            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
+            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
+            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
+            MemoryLayout.paddingLayout(32),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+            MemoryLayout.paddingLayout(56),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+        ).withName("RprIntegrationParametersDesc")
+    );
+    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_new",
+        constants$42.RprIntegrationParameters_new$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$42.RprPhysicsPipeline_step$FUNC
+    static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_dynamic_bodies",
+        constants$42.RprIslandManager_active_dynamic_bodies$FUNC
     );
-    static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step_all$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step_all",
-        constants$42.RprPhysicsPipeline_step_all$FUNC
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$42.RprIslandManager_active_kinematic_bodies$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_drop",
-        constants$42.RprQueryPipeline_drop$FUNC
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$42.RprIslandManager_drop$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$42.RprIslandManager_new$FUNC
     );
 }
 

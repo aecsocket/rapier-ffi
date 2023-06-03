@@ -9,55 +9,58 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$40 {
 
-    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJointVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_handle$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_handle",
+        constants$40.RprImpulseJointVec_handle$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_len$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_len",
+        constants$40.RprImpulseJointVec_len$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointVec_value$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_value$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_value",
+        constants$40.RprImpulseJointVec_value$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_body1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_active_kinematic_bodies",
-        constants$40.RprIslandManager_active_kinematic_bodies$FUNC
+    static final MethodHandle RprImpulseJoint_body1$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_body1",
+        constants$40.RprImpulseJoint_body1$FUNC
     );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJoint_body2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$40.RprIslandManager_drop$FUNC
+    static final MethodHandle RprImpulseJoint_body2$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_body2",
+        constants$40.RprImpulseJoint_body2$FUNC
     );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$40.RprIslandManager_new$FUNC
-    );
-    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("min"),
-        Constants$root.C_FLOAT$LAYOUT.withName("max"),
-        Constants$root.C_FLOAT$LAYOUT.withName("impulse")
-    ).withName("RprJointLimits"));
-    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
-        "RprJointLimits_default",
-        constants$40.RprJointLimits_default$FUNC
-    );
-    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("target_vel"),
-        Constants$root.C_FLOAT$LAYOUT.withName("target_pos"),
-        Constants$root.C_FLOAT$LAYOUT.withName("stiffness"),
-        Constants$root.C_FLOAT$LAYOUT.withName("damping"),
-        Constants$root.C_FLOAT$LAYOUT.withName("max_force"),
-        Constants$root.C_FLOAT$LAYOUT.withName("impulse"),
-        Constants$root.C_INT$LAYOUT.withName("model")
-    ).withName("RprJointMotor"));
-    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
-        "RprJointMotor_default",
-        constants$40.RprJointMotor_default$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprImpulseJoint_data$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_drop",
-        constants$40.RprMultibodyJointSet_drop$FUNC
+    static final MethodHandle RprImpulseJoint_data$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_data",
+        constants$40.RprImpulseJoint_data$FUNC
     );
 }
 
