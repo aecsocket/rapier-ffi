@@ -9,6 +9,18 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$63 {
 
+    static final FunctionDescriptor RprVHACD_decompose$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprVHACD_decompose$MH = RuntimeHelper.downcallHandle(
+        "RprVHACD_decompose",
+        constants$63.RprVHACD_decompose$FUNC
+    );
     static final FunctionDescriptor RprVHACD_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );

@@ -4602,8 +4602,19 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprVHACDParameters_default$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.RprVHACDParameters_default$MH,"RprVHACDParameters_default");
+    }
+    public static MemorySegment RprVHACDParameters_default ( SegmentAllocator allocator) {
+        var mh$ = RprVHACDParameters_default$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprVHACD_decompose$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.RprVHACD_decompose$MH,"RprVHACD_decompose");
+        return RuntimeHelper.requireNonNull(constants$63.RprVHACD_decompose$MH,"RprVHACD_decompose");
     }
     public static MemoryAddress RprVHACD_decompose ( Addressable params,  Addressable points_data,  long points_len,  Addressable indices_data,  long indices_len,  boolean keep_voxel_to_primitives_map) {
         var mh$ = RprVHACD_decompose$MH();

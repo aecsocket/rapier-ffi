@@ -28,7 +28,8 @@ public final class CompoundChild extends ValNative {
         var memory = {{ sys }}.RprCompoundChild.allocateArray(objs.length, alloc);
         for (int i = 0; i < objs.length; i++) {
             var obj = objs[i];
-            {{ sys }}.RprCompoundChild.delta$slice(memory, i).copyFrom(obj.getDelta().memory());
+            var offset = {{ sys }}.RprCompoundChild.sizeof();
+            {{ sys }}.RprCompoundChild.delta$slice(memory.asSlice(offset * i)).copyFrom(obj.getDelta().memory());
             {{ sys }}.RprCompoundChild.shape$set(memory, i, obj.getShape().memory());
         }
         return memory;

@@ -26,6 +26,24 @@ pub enum RprFillMode {
 }
 
 impl RprFillMode {
+    pub fn from_raw(raw: &FillMode) -> Self {
+        match raw {
+            FillMode::SurfaceOnly => Self::SurfaceOnly,
+            #[cfg(feature = "dim2")]
+            FillMode::FloodFill {
+                detect_cavities,
+                detect_self_intersections,
+            } => Self::FloodFill {
+                detect_cavities: *detect_cavities,
+                detect_self_intersections: *detect_self_intersections,
+            },
+            #[cfg(feature = "dim3")]
+            FillMode::FloodFill { detect_cavities } => Self::FloodFill {
+                detect_cavities: *detect_cavities,
+            }
+        }
+    }
+
     pub fn into_raw(&self) -> FillMode {
         match self {
             Self::SurfaceOnly => FillMode::SurfaceOnly,
@@ -97,6 +115,20 @@ pub struct RprVHACDParameters {
 }
 
 impl RprVHACDParameters {
+    pub fn from_raw(raw: &VHACDParameters) -> Self {
+        Self {
+            concavity: raw.concavity,
+            alpha: raw.alpha,
+            beta: raw.beta,
+            resolution: raw.resolution,
+            plane_downsampling: raw.plane_downsampling,
+            convex_hull_downsampling: raw.convex_hull_downsampling,
+            fill_mode: RprFillMode::from_raw(&raw.fill_mode),
+            convex_hull_approximation: raw.convex_hull_approximation,
+            max_convex_hulls: raw.max_convex_hulls,
+        }
+    }
+
     pub fn into_raw(&self) -> VHACDParameters {
         VHACDParameters {
             concavity: self.concavity,
@@ -110,6 +142,17 @@ impl RprVHACDParameters {
             max_convex_hulls: self.max_convex_hulls,
         }
     }
+}
+
+impl Default for RprVHACDParameters {
+    fn default() -> Self {
+        Self::from_raw(&VHACDParameters::default())
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn RprVHACDParameters_default() -> RprVHACDParameters {
+    RprVHACDParameters::default()
 }
 
 pub struct RprVHACD(pub VHACD);
