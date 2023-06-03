@@ -29,12 +29,8 @@ class constants$60 {
         constants$60.RprSharedShape_convex_hull$FUNC
     );
     static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cuboid",
@@ -47,23 +43,25 @@ class constants$60 {
         "RprSharedShape_data",
         constants$60.RprSharedShape_data$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprSharedShape_halfspace$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
     );
-    static final MethodHandle RprSharedShape_release$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_release",
-        constants$60.RprSharedShape_release$FUNC
+    static final MethodHandle RprSharedShape_halfspace$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_halfspace",
+        constants$60.RprSharedShape_halfspace$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_round_convex_decomposition$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprSharedShape_polyline$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
+        Constants$root.C_LONG_LONG$LAYOUT
     );
-    static final MethodHandle RprSharedShape_round_convex_decomposition$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_convex_decomposition",
-        constants$60.RprSharedShape_round_convex_decomposition$FUNC
+    static final MethodHandle RprSharedShape_polyline$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_polyline",
+        constants$60.RprSharedShape_polyline$FUNC
     );
 }
 

@@ -4,7 +4,7 @@ pub struct RprTriMesh(pub TriMesh);
 
 pub type RprTriMeshFlags = u8;
 
-pub fn tri_mesh_flags_from(rpr: RprTriMeshFlags) -> TriMeshFlags {
+pub fn trimesh_flags_from(rpr: RprTriMeshFlags) -> TriMeshFlags {
     TriMeshFlags::from_bits(rpr).expect("invalid flags")
 }
 

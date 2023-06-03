@@ -25,9 +25,7 @@ class constants$59 {
         constants$59.RprSharedShape_acquire$FUNC
     );
     static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("radius")
-        ).withName("RprBall")
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_ball$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_ball",
@@ -35,20 +33,16 @@ class constants$59 {
     );
     static final FunctionDescriptor RprSharedShape_capsule$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("z")
-                ).withName("a"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("z")
-                ).withName("b")
-            ).withName("segment"),
-            Constants$root.C_FLOAT$LAYOUT.withName("radius")
-        ).withName("RprCapsule")
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_capsule",
@@ -63,10 +57,8 @@ class constants$59 {
         constants$59.RprSharedShape_compound$FUNC
     );
     static final FunctionDescriptor RprSharedShape_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("half_height"),
-            Constants$root.C_FLOAT$LAYOUT.withName("radius")
-        ).withName("RprCone")
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_cone$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cone",

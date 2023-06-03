@@ -23,26 +23,6 @@ public final class SharedShape extends RefNative implements RefCounted {
         return new SharedShape(memory);
     }
 
-    public static SharedShape of(Segment shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_segment(shape.memory()));
-    }
-
-    public static SharedShape of(Cuboid shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_cuboid(shape.memory()));
-    }
-
-    public static SharedShape of(Triangle shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_triangle(shape.memory()));
-    }
-
-    public static SharedShape of(Ball shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_ball(shape.memory()));
-    }
-
-    public static SharedShape of(Capsule shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_capsule(shape.memory()));
-    }
-
     public static SharedShape compound(CompoundChild... shapes) {
         if (shapes.length == 0)
             throw new IllegalArgumentException("Shapes must not be empty");
@@ -54,11 +34,49 @@ public final class SharedShape extends RefNative implements RefCounted {
         }
     }
 
+    public static SharedShape ball({{ real }} radius) {
+        return at({{ sys }}.RapierC.RprSharedShape_ball(radius));
+    }
+
+    public static SharedShape halfspace(Vector outwardNormal) {
+        return at({{ sys }}.RapierC.RprSharedShape_halfspace(outwardNormal.memory()));
+    }
+
+    public static SharedShape capsule(Vector a, Vector b, {{ real }} radius) {
+        return at({{ sys }}.RapierC.RprSharedShape_capsule(a.memory(), b.memory(), radius));
+    }
+
+    public static SharedShape segment(Vector a, Vector b) {
+        return at({{ sys }}.RapierC.RprSharedShape_segment(a.memory(), b.memory()));
+    }
+
+    public static SharedShape triangle(Vector a, Vector b, Vector c) {
+        return at({{ sys }}.RapierC.RprSharedShape_triangle(a.memory(), b.memory(), c.memory()));
+    }
+
+    public static SharedShape roundTriangle(Vector a, Vector b, Vector c, {{ real }} borderRadius) {
+        return at({{ sys }}.RapierC.RprSharedShape_round_triangle(a.memory(), b.memory(), c.memory(), borderRadius));
+    }
+
+    public static SharedShape polyline(Vector[] vertices, int[][] indices) {
+        try (var arena = MemorySession.openConfined()) {
+            var nVertices = Vector.allocateArray(arena, vertices);
+            var nIndices = arena.allocateArray(C_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
+            var memory = {{ sys }}.RapierC.RprSharedShape_polyline(
+                    nVertices,
+                    vertices.length,
+                    nIndices,
+                    indices.length
+            );
+            return at(memory);
+        }
+    }
+
     public static SharedShape trimesh(Vector[] vertices, int[][] indices, byte flags) {
         try (var arena = MemorySession.openConfined()) {
             var nVertices = Vector.allocateArray(arena, vertices);
             var nIndices = arena.allocateArray(C_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
-            var memory = {{ sys }}.RapierC.RprSharedShape_trimesh_with_flags(
+            var memory = {{ sys }}.RapierC.RprSharedShape_trimesh(
                     nVertices,
                     vertices.length,
                     nIndices,
@@ -162,13 +180,36 @@ public final class SharedShape extends RefNative implements RefCounted {
         }
     }
 
-{% if dim3 %}
-    public static SharedShape of(Cylinder shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_cylinder(shape.memory()));
+{% if dim2 %}
+    public static SharedShape cuboid({{ real }} hx, {{ real }} hy) {
+        return at({{ sys }}.RapierC.RprSharedShape_cuboid(hx, hy));
     }
 
-    public static SharedShape of(Cone shape) {
-        return at({{ sys }}.RapierC.RprSharedShape_cone(shape.memory()));
+    public static SharedShape roundCuboid({{ real }} hx, {{ real }} hy, {{ real }} borderRadius) {
+        return at({{ sys }}.RapierC.RprSharedShape_round_cuboid(hx, hy, borderRadius));
+    }
+{% else %}
+    public static SharedShape cylinder({{ real }} halfHeight, {{ real }} radius) {
+        return at({{ sys }}.RapierC.RprSharedShape_cylinder(halfHeight, radius));
+    }
+
+    public static SharedShape roundCylinder({{ real }} halfHeight, {{ real }} radius, {{ real }} borderRadius) {
+        return at({{ sys }}.RapierC.RprSharedShape_round_cylinder(halfHeight, radius, borderRadius));
+    }
+    public static SharedShape cone({{ real }} halfHeight, {{ real }} radius) {
+        return at({{ sys }}.RapierC.RprSharedShape_cone(halfHeight, radius));
+    }
+
+    public static SharedShape roundCone({{ real }} halfHeight, {{ real }} radius, {{ real }} borderRadius) {
+        return at({{ sys }}.RapierC.RprSharedShape_round_cone(halfHeight, radius, borderRadius));
+    }
+
+    public static SharedShape cuboid({{ real }} hx, {{ real }} hy, {{ real }} hz) {
+        return at({{ sys }}.RapierC.RprSharedShape_cuboid(hx, hy, hz));
+    }
+
+    public static SharedShape roundCuboid({{ real }} hx, {{ real }} hy, {{ real }} hz, {{ real }} borderRadius) {
+        return at({{ sys }}.RapierC.RprSharedShape_round_cuboid(hx, hy, hz, borderRadius));
     }
 
     public static @Nullable SharedShape convexMesh(Vector[] points, int[][] indices) {

@@ -4356,10 +4356,10 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_ball$MH() {
         return RuntimeHelper.requireNonNull(constants$59.RprSharedShape_ball$MH,"RprSharedShape_ball");
     }
-    public static MemoryAddress RprSharedShape_ball ( MemorySegment ball) {
+    public static MemoryAddress RprSharedShape_ball ( double radius) {
         var mh$ = RprSharedShape_ball$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ball);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(radius);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4367,10 +4367,10 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_capsule$MH() {
         return RuntimeHelper.requireNonNull(constants$59.RprSharedShape_capsule$MH,"RprSharedShape_capsule");
     }
-    public static MemoryAddress RprSharedShape_capsule ( MemorySegment capsule) {
+    public static MemoryAddress RprSharedShape_capsule ( MemorySegment a,  MemorySegment b,  double radius) {
         var mh$ = RprSharedShape_capsule$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(capsule);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, b, radius);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4422,10 +4422,10 @@ public class RapierC  {
     public static MethodHandle RprSharedShape_cuboid$MH() {
         return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_cuboid$MH,"RprSharedShape_cuboid");
     }
-    public static MemoryAddress RprSharedShape_cuboid ( MemorySegment cuboid) {
+    public static MemoryAddress RprSharedShape_cuboid ( double hx,  double hy) {
         var mh$ = RprSharedShape_cuboid$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(cuboid);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(hx, hy);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -4441,8 +4441,30 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprSharedShape_halfspace$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_halfspace$MH,"RprSharedShape_halfspace");
+    }
+    public static MemoryAddress RprSharedShape_halfspace ( MemorySegment outward_normal) {
+        var mh$ = RprSharedShape_halfspace$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(outward_normal);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_polyline$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_polyline$MH,"RprSharedShape_polyline");
+    }
+    public static MemoryAddress RprSharedShape_polyline ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len) {
+        var mh$ = RprSharedShape_polyline$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprSharedShape_release$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_release$MH,"RprSharedShape_release");
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_release$MH,"RprSharedShape_release");
     }
     public static void RprSharedShape_release ( Addressable this_) {
         var mh$ = RprSharedShape_release$MH();
@@ -4453,7 +4475,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_round_convex_decomposition$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprSharedShape_round_convex_decomposition$MH,"RprSharedShape_round_convex_decomposition");
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_convex_decomposition$MH,"RprSharedShape_round_convex_decomposition");
     }
     public static MemoryAddress RprSharedShape_round_convex_decomposition ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  double border_radius) {
         var mh$ = RprSharedShape_round_convex_decomposition$MH();
@@ -4485,19 +4507,41 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprSharedShape_segment$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_segment$MH,"RprSharedShape_segment");
+    public static MethodHandle RprSharedShape_round_cuboid$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_cuboid$MH,"RprSharedShape_round_cuboid");
     }
-    public static MemoryAddress RprSharedShape_segment ( MemorySegment segment) {
+    public static MemoryAddress RprSharedShape_round_cuboid ( double hx,  double hy,  double border_radius) {
+        var mh$ = RprSharedShape_round_cuboid$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(hx, hy, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_round_triangle$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_round_triangle$MH,"RprSharedShape_round_triangle");
+    }
+    public static MemoryAddress RprSharedShape_round_triangle ( MemorySegment a,  MemorySegment b,  MemorySegment c,  double border_radius) {
+        var mh$ = RprSharedShape_round_triangle$MH();
+        try {
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, b, c, border_radius);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RprSharedShape_segment$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_segment$MH,"RprSharedShape_segment");
+    }
+    public static MemoryAddress RprSharedShape_segment ( MemorySegment a,  MemorySegment b) {
         var mh$ = RprSharedShape_segment$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(segment);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, b);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprSharedShape_strong_count$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_strong_count$MH,"RprSharedShape_strong_count");
     }
     public static long RprSharedShape_strong_count ( Addressable this_) {
         var mh$ = RprSharedShape_strong_count$MH();
@@ -4508,32 +4552,21 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_triangle$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_triangle$MH,"RprSharedShape_triangle");
     }
-    public static MemoryAddress RprSharedShape_triangle ( MemorySegment triangle) {
+    public static MemoryAddress RprSharedShape_triangle ( MemorySegment a,  MemorySegment b,  MemorySegment c) {
         var mh$ = RprSharedShape_triangle$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(triangle);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, b, c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle RprSharedShape_trimesh$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.RprSharedShape_trimesh$MH,"RprSharedShape_trimesh");
+        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_trimesh$MH,"RprSharedShape_trimesh");
     }
-    public static MemoryAddress RprSharedShape_trimesh ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len) {
+    public static MemoryAddress RprSharedShape_trimesh ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  byte flags) {
         var mh$ = RprSharedShape_trimesh$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle RprSharedShape_trimesh_with_flags$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.RprSharedShape_trimesh_with_flags$MH,"RprSharedShape_trimesh_with_flags");
-    }
-    public static MemoryAddress RprSharedShape_trimesh_with_flags ( Addressable vertices_data,  long vertices_len,  Addressable indices_data,  long indices_len,  byte flags) {
-        var mh$ = RprSharedShape_trimesh_with_flags$MH();
         try {
             return (java.lang.foreign.MemoryAddress)mh$.invokeExact(vertices_data, vertices_len, indices_data, indices_len, flags);
         } catch (Throwable ex$) {
@@ -4563,7 +4596,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprVHACD_drop$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.RprVHACD_drop$MH,"RprVHACD_drop");
+        return RuntimeHelper.requireNonNull(constants$63.RprVHACD_drop$MH,"RprVHACD_drop");
     }
     public static void RprVHACD_drop ( Addressable this_) {
         var mh$ = RprVHACD_drop$MH();
@@ -4574,7 +4607,7 @@ public class RapierC  {
         }
     }
     public static MemoryAddress NULL() {
-        return constants$62.NULL$ADDR;
+        return constants$63.NULL$ADDR;
     }
     public static long _POSIX_C_SOURCE() {
         return 200809L;

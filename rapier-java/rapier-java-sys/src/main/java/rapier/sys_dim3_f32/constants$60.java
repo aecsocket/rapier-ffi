@@ -49,23 +49,17 @@ class constants$60 {
         constants$60.RprSharedShape_convex_mesh$FUNC
     );
     static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("half_extents")
-        ).withName("RprCuboid")
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cuboid",
         constants$60.RprSharedShape_cuboid$FUNC
     );
     static final FunctionDescriptor RprSharedShape_cylinder$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("half_height"),
-            Constants$root.C_FLOAT$LAYOUT.withName("radius")
-        ).withName("RprCylinder")
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
     );
     static final MethodHandle RprSharedShape_cylinder$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cylinder",

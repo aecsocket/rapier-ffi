@@ -29,121 +29,6 @@ pub unsafe extern "C" fn RprSharedShape_release(this: *const RprSharedShape) {
     drop(this.read())
 }
 
-/// A segment shape.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprSegment {
-    /// The segment first point.
-    pub a: RprVector,
-    /// The segment second point.
-    pub b: RprVector,
-}
-
-#[no_mangle]
-pub extern "C" fn RprSharedShape_segment(segment: RprSegment) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Segment>(
-        segment,
-    )))))
-}
-
-/// A cuboid shape.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprCuboid {
-    /// The half-extents of the cuboid.
-    pub half_extents: RprVector,
-}
-
-#[no_mangle]
-pub extern "C" fn RprSharedShape_cuboid(cuboid: RprCuboid) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Cuboid>(
-        cuboid,
-    )))))
-}
-
-/// A triangle shape.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprTriangle {
-    /// The triangle first point.
-    pub a: RprVector,
-    /// The triangle second point.
-    pub b: RprVector,
-    /// The triangle third point.
-    pub c: RprVector,
-}
-
-#[no_mangle]
-pub extern "C" fn RprSharedShape_triangle(triangle: RprTriangle) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Triangle>(
-        triangle,
-    )))))
-}
-
-/// A ball shape.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprBall {
-    /// The radius of the ball.
-    pub radius: Real,
-}
-
-#[no_mangle]
-pub extern "C" fn RprSharedShape_ball(ball: RprBall) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Ball>(ball)))))
-}
-
-/// A capsule shape defined as a round segment.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprCapsule {
-    /// The axis and endpoint of the capsule.
-    pub segment: RprSegment,
-    /// The radius of the capsule.
-    pub radius: Real,
-}
-
-#[no_mangle]
-pub extern "C" fn RprSharedShape_capsule(capsule: RprCapsule) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Capsule>(
-        capsule,
-    )))))
-}
-
-/// A cylinder shape with its principal axis aligned with the `y` axis.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprCylinder {
-    /// The half-height of the cylinder.
-    pub half_height: Real,
-    /// The radius of the cylinder.
-    pub radius: Real,
-}
-
-#[no_mangle]
-#[cfg(feature = "dim3")]
-pub extern "C" fn RprSharedShape_cylinder(cylinder: RprCylinder) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Cylinder>(
-        cylinder,
-    )))))
-}
-
-/// A cone shape with its principal axis aligned with the `y` axis.
-#[repr(C)]
-#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
-pub struct RprCone {
-    /// The half-height of the cone.
-    pub half_height: Real,
-    /// The base radius of the cone.
-    pub radius: Real,
-}
-
-#[no_mangle]
-#[cfg(feature = "dim3")]
-pub extern "C" fn RprSharedShape_cone(cone: RprCone) -> *mut RprSharedShape {
-    leak_ptr(RprSharedShape(SharedShape(Arc::new(cast::<_, Cone>(cone)))))
-}
-
 #[repr(C)]
 pub struct RprCompoundChild {
     pub delta: RprIsometry,
@@ -165,38 +50,133 @@ pub unsafe extern "C" fn RprSharedShape_compound(
     leak_ptr(RprSharedShape(SharedShape::compound(shapes)))
 }
 
+#[no_mangle]
+pub extern "C" fn RprSharedShape_ball(radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::ball(radius)))
+}
+
+#[no_mangle]
+pub extern "C" fn RprSharedShape_halfspace(outward_normal: RprVector) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::halfspace(
+        outward_normal.into_unit(),
+    )))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_cylinder(half_height: Real, radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::cylinder(half_height, radius)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_round_cylinder(
+    half_height: Real,
+    radius: Real,
+    border_radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cylinder(
+        half_height,
+        radius,
+        border_radius,
+    )))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_cone(half_height: Real, radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::cone(half_height, radius)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_round_cone(half_height: Real, radius: Real, border_radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cone(half_height, radius, border_radius)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub extern "C" fn RprSharedShape_cuboid(hx: Real, hy: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::cuboid(hx, hy)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub extern "C" fn RprSharedShape_round_cuboid(hx: Real, hy: Real, border_radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cuboid(hx, hy, border_radius)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_cuboid(hx: Real, hy: Real, hz: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::cuboid(hx, hy, hz)))
+}
+
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub extern "C" fn RprSharedShape_round_cuboid(hx: Real, hy: Real, hz: Real, border_radius: Real) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_cuboid(hx, hy, hz, border_radius)))
+}
+
+#[no_mangle]
+pub extern "C" fn RprSharedShape_capsule(
+    a: RprVector,
+    b: RprVector,
+    radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::capsule(a.into_point(), b.into_point(), radius)))
+}
+
+#[no_mangle]
+pub extern "C" fn RprSharedShape_segment(a: RprVector, b: RprVector) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::segment(
+        a.into_point(),
+        b.into_point(),
+    )))
+}
+
+#[no_mangle]
+pub extern "C" fn RprSharedShape_triangle(
+    a: RprVector,
+    b: RprVector,
+    c: RprVector,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::triangle(
+        a.into_point(),
+        b.into_point(),
+        c.into_point(),
+    )))
+}
+
+#[no_mangle]
+pub extern "C" fn RprSharedShape_round_triangle(
+    a: RprVector,
+    b: RprVector,
+    c: RprVector,
+    border_radius: Real,
+) -> *mut RprSharedShape {
+    leak_ptr(RprSharedShape(SharedShape::round_triangle(
+        a.into_point(),
+        b.into_point(),
+        c.into_point(),
+        border_radius,
+    )))
+}
+
 /// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
 #[no_mangle]
-pub unsafe extern "C" fn RprSharedShape_trimesh_with_flags(
+pub unsafe extern "C" fn RprSharedShape_polyline(
     vertices_data: *const RprVector,
     vertices_len: usize,
     indices_data: *const u32,
     indices_len: usize,
-    flags: RprTriMeshFlags,
 ) -> *mut RprSharedShape {
-    let mut vertices: Vec<Point<Real>> = Vec::with_capacity(vertices_len);
-    for i in 0..vertices_len {
-        let i: isize = i.try_into().unwrap();
-        let vertex = vertices_data.offset(i).read();
-        vertices.push(vertex.into_point());
-    }
-
-    let mut indices: Vec<[u32; 3]> = Vec::with_capacity(indices_len);
-    for i in 0..indices_len {
-        let i: isize = i.try_into().unwrap();
-        let index_tri = [
-            indices_data.offset(i * 3).read(),
-            indices_data.offset(i * 3 + 1).read(),
-            indices_data.offset(i * 3 + 2).read(),
-        ];
-        indices.push(index_tri);
-    }
-
-    leak_ptr(RprSharedShape(SharedShape::trimesh_with_flags(
-        vertices,
-        indices,
-        tri_mesh_flags_from(flags),
-    )))
+    let vertices: Vec<Point<Real>> =
+        std::slice::from_raw_parts(vertices_data as *const Point<Real>, vertices_len).to_vec();
+    let indices: Option<Vec<[u32; 2]>> = indices_data.as_ref().map(|t| {
+        std::slice::from_raw_parts(t as *const u32 as *const [u32; 2], indices_len).to_vec()
+    });
+    leak_ptr(RprSharedShape(SharedShape::polyline(vertices, indices)))
 }
 
 /// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
@@ -206,31 +186,17 @@ pub unsafe extern "C" fn RprSharedShape_trimesh(
     vertices_len: usize,
     indices_data: *const u32,
     indices_len: usize,
+    flags: RprTriMeshFlags,
 ) -> *mut RprSharedShape {
-    let mut vertices: Vec<Point<Real>> = Vec::with_capacity(vertices_len);
-    for i in 0..vertices_len {
-        let i: isize = i.try_into().unwrap();
-        let vertex = vertices_data.offset(i).read();
-        vertices.push(vertex.into_point());
-    }
-
-    let mut indices: Vec<[u32; 3]> = Vec::with_capacity(indices_len);
-    for i in 0..indices_len {
-        let i: isize = i.try_into().unwrap();
-        let index_tri = [
-            indices_data.offset(i * 3).read(),
-            indices_data.offset(i * 3 + 1).read(),
-            indices_data.offset(i * 3 + 2).read(),
-        ];
-        indices.push(index_tri);
-    }
-
-    leak_ptr(RprSharedShape(SharedShape::trimesh(
-        vertices,
-        indices,
-    )))
+    let vertices: Vec<Point<Real>> =
+        std::slice::from_raw_parts(vertices_data as *const Point<Real>, vertices_len).to_vec();
+    let indices: Vec<[u32; 3]> =
+        std::slice::from_raw_parts(indices_data as *const u32 as *const [u32; 3], indices_len)
+            .to_vec();
+    leak_ptr(RprSharedShape(SharedShape::trimesh_with_flags(vertices, indices, trimesh_flags_from(flags))))
 }
 
+/// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_convex_decomposition(
     vertices_data: *const RprVector,
@@ -245,6 +211,7 @@ pub unsafe extern "C" fn RprSharedShape_convex_decomposition(
     )))
 }
 
+/// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_round_convex_decomposition(
     vertices_data: *const RprVector,
@@ -262,6 +229,7 @@ pub unsafe extern "C" fn RprSharedShape_round_convex_decomposition(
     )))
 }
 
+/// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_convex_decomposition_with_params(
     vertices_data: *const RprVector,
@@ -278,6 +246,7 @@ pub unsafe extern "C" fn RprSharedShape_convex_decomposition_with_params(
     ))
 }
 
+/// cbindgen:ptrs-as-arrays=[[vertices_data;], [indices_data;]]
 #[no_mangle]
 pub unsafe extern "C" fn RprSharedShape_round_convex_decomposition_with_params(
     vertices_data: *const RprVector,
@@ -309,7 +278,7 @@ pub unsafe extern "C" fn RprSharedShape_convex_hull(
     let points = std::slice::from_raw_parts(points_data as *const Point<Real>, points_len);
     match SharedShape::convex_hull(points) {
         None => std::ptr::null_mut(),
-        Some(t) => leak_ptr(RprSharedShape(t))
+        Some(t) => leak_ptr(RprSharedShape(t)),
     }
 }
 
@@ -323,7 +292,7 @@ pub unsafe extern "C" fn RprSharedShape_round_convex_hull(
     let points = std::slice::from_raw_parts(points_data as *const Point<Real>, points_len);
     match SharedShape::round_convex_hull(points, border_radius) {
         None => std::ptr::null_mut(),
-        Some(t) => leak_ptr(RprSharedShape(t))
+        Some(t) => leak_ptr(RprSharedShape(t)),
     }
 }
 
@@ -340,7 +309,7 @@ pub unsafe extern "C" fn RprSharedShape_convex_mesh(
     let indices = std::slice::from_raw_parts(indices_data as *const [u32; 3], indices_len);
     match SharedShape::convex_mesh(points, indices) {
         None => std::ptr::null_mut(),
-        Some(t) => leak_ptr(RprSharedShape(t))
+        Some(t) => leak_ptr(RprSharedShape(t)),
     }
 }
 
@@ -358,7 +327,7 @@ pub unsafe extern "C" fn RprSharedShape_round_convex_mesh(
     let indices = std::slice::from_raw_parts(indices_data as *const [u32; 3], indices_len);
     match SharedShape::round_convex_mesh(points, indices, border_radius) {
         None => std::ptr::null_mut(),
-        Some(t) => leak_ptr(RprSharedShape(t))
+        Some(t) => leak_ptr(RprSharedShape(t)),
     }
 }
 

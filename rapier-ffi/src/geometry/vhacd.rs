@@ -40,7 +40,7 @@ impl RprFillMode {
             #[cfg(feature = "dim3")]
             FillMode::FloodFill { detect_cavities } => Self::FloodFill {
                 detect_cavities: *detect_cavities,
-            }
+            },
         }
     }
 
