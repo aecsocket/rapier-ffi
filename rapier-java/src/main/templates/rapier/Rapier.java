@@ -35,8 +35,12 @@ public final class Rapier {
     }
 
     public static <T extends Droppable, R> R use(T obj, Function<T, R> fn) {
-        var res = fn.apply(obj);
-        obj.drop();
+        R res;
+        try {
+            res = fn.apply(obj);
+        } finally {
+            obj.drop();
+        }
         return res;
     }
 

@@ -21,17 +21,19 @@ This repository is dual-licensed Apache and MIT. This license applies to all sub
 
 - [ ] Shapes
   - [x] Primitive convexes
-  - [ ] Compound
-  - [ ] Tri mesh + heightfield
-  - [ ] Polyline
+  - [x] Compound
+  - [x] Polylines, convex hulls, meshes, decomposition
+  - [ ] Heightfield
 - [ ] Rigid bodies and colliders
   - [x] Shape
   - [x] Position
+  - [ ] Interaction groups
   - [ ] Mass properties
 - [ ] Pipelines
   - [x] Physics
   - [ ] Query
 - [ ] Joints
+  - [x] Generic data
   - [x] Impulse
   - [ ] Multibody
 - [ ] Controllers

@@ -25,6 +25,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         return new Mut(memory);
     }
 
+    public RigidBodyActivation getActivation() {
+        return RigidBodyActivation.at(RprRigidBody_activation(self));
+    }
+
     public boolean isEnabled() {
         return RprRigidBody_is_enabled(self);
     }
@@ -47,6 +51,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public short getEffectiveDominanceGroup() {
         return RprRigidBody_effective_dominance_group(self);
+    }
+
+    public byte getLockedAxes() {
+        return RprRigidBody_locked_axes(self);
     }
 
     public boolean isTranslationLocked() {
@@ -179,6 +187,11 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
             super(memory);
         }
 
+        @Override
+        public RigidBodyActivation.Mut getActivation() {
+            return RigidBodyActivation.atMut(RprRigidBody_activation_mut(self));
+        }
+
         public void setEnabled(boolean enabled) {
             RprRigidBody_set_enabled(self, enabled);
         }
@@ -193,6 +206,14 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void setBodyType(RigidBodyType status, boolean wakeUp) {
             RprRigidBody_set_body_type(self, status.ordinal(), wakeUp);
+        }
+
+        public void setLockedAxes(byte lockedAxes, boolean wakeUp) {
+            RprRigidBody_set_locked_axes(self, lockedAxes, wakeUp);
+        }
+
+        public void lockRotations(boolean locked, boolean wakeUp) {
+            RprRigidBody_lock_rotations(self, locked, wakeUp);
         }
 
         public void setEnabledRotations(

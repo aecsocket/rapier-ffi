@@ -21,10 +21,14 @@ public final class HelloRapier {
             var rigidBodySet = RigidBodySet.create();
             var colliderSet = ColliderSet.create();
 
+            // this floorShape has a ref count of 1
             var floorShape = SharedShape.cuboid(100.0, 0.1, 100.0);
+            // we pass the shape ref into the collider *without* incrementing it, so the collider owns it now
+            // if the collider is destroyed, the ref is decremented to 0 and the shape is freed
             var floorCollider = Rapier.use(ColliderBuilder.of(floorShape), ColliderBuilder::build);
             colliderSet.insert(floorCollider);
 
+            // use `.use` to drop this object after we're done with it
             var rigidBody = Rapier.use(RigidBodyBuilder.dynamic()
                     .translation(Vector.of(arena, 0.0, 10.0, 0.0)),
                     RigidBodyBuilder::build);

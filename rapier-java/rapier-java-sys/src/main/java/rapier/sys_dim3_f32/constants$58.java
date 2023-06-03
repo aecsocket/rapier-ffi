@@ -9,7 +9,7 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$58 {
 
-    static final FunctionDescriptor RprRigidBody_set_translation$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBody_set_angvel$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
@@ -18,65 +18,56 @@ class constants$58 {
         ).withName("RprVector"),
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBody_set_translation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_translation",
-        constants$58.RprRigidBody_set_translation$FUNC
+    static final MethodHandle RprRigidBody_set_angvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_angvel",
+        constants$58.RprRigidBody_set_angvel$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_sleep",
-        constants$58.RprRigidBody_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_translation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_translation",
-        constants$58.RprRigidBody_translation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_user_force$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_user_force$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_user_force",
-        constants$58.RprRigidBody_user_force$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_user_torque$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprAngVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_user_torque$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_user_torque",
-        constants$58.RprRigidBody_user_torque$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_velocity_at_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprVector"),
+    static final FunctionDescriptor RprRigidBody_set_body_type$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector")
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBody_velocity_at_point$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_velocity_at_point",
-        constants$58.RprRigidBody_velocity_at_point$FUNC
+    static final MethodHandle RprRigidBody_set_body_type$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_body_type",
+        constants$58.RprRigidBody_set_body_type$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_dominance_group$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_dominance_group",
+        constants$58.RprRigidBody_set_dominance_group$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_enabled",
+        constants$58.RprRigidBody_set_enabled$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_enabled_rotations$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_enabled_rotations$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_enabled_rotations",
+        constants$58.RprRigidBody_set_enabled_rotations$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_enabled_translations$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_enabled_translations$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_enabled_translations",
+        constants$58.RprRigidBody_set_enabled_translations$FUNC
     );
 }
 
