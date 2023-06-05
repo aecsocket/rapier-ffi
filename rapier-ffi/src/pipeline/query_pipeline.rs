@@ -46,10 +46,11 @@ pub struct RprQueryFilter {
 // haha this is so complicated
 impl RprQueryFilter {
     pub fn predicate(&self) -> Option<Box<dyn Fn(ColliderHandle, &Collider) -> bool>> {
+        let predicate = self.predicate.clone();
         match self.has_predicate {
             false => None,
             true => Some(Box::new(move |handle, coll| {
-                (self.predicate.clone())(
+                (predicate)(
                     RprColliderHandle::from_raw(handle.0),
                     coll as *const Collider as *const RprCollider,
                 )
@@ -274,201 +275,201 @@ impl RprShapeCast {
 
 pub struct RprQueryPipeline(pub QueryPipeline);
 
-// #[no_mangle]
-// pub extern "C" fn RprQueryPipeline_new() -> *mut RprQueryPipeline {
-//     leak_ptr(RprQueryPipeline(QueryPipeline::new()))
-// }
+#[no_mangle]
+pub extern "C" fn RprQueryPipeline_new() -> *mut RprQueryPipeline {
+    leak_ptr(RprQueryPipeline(QueryPipeline::new()))
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_drop(this: *mut RprQueryPipeline) {
-//     drop_ptr(this)
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_drop(this: *mut RprQueryPipeline) {
+    drop_ptr(this)
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_cast_ray(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     ray: RprRay,
-//     max_toi: Real,
-//     solid: bool,
-//     filter: RprQueryFilter,
-//     out: *mut RprSimpleRayResult,
-// ) -> bool {
-//     let predicate = filter.predicate();
-//     match this.get().0.cast_ray(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &ray.into_raw(),
-//         max_toi,
-//         solid,
-//         filter.into_raw(predicate),
-//     ) {
-//         None => false,
-//         Some(t) => {
-//             *out = RprSimpleRayResult::from_raw(t);
-//             true
-//         }
-//     }
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_cast_ray(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    ray: RprRay,
+    max_toi: Real,
+    solid: bool,
+    filter: RprQueryFilter,
+    out: *mut RprSimpleRayResult,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.cast_ray(
+        &bodies.get().0,
+        &colliders.get().0,
+        &ray.into_raw(),
+        max_toi,
+        solid,
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprSimpleRayResult::from_raw(t);
+            true
+        }
+    }
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_cast_ray_and_get_normal(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     ray: RprRay,
-//     max_toi: Real,
-//     solid: bool,
-//     filter: RprQueryFilter,
-//     out: *mut RprComplexRayResult,
-// ) -> bool {
-//     let predicate = filter.predicate();
-//     match this.get().0.cast_ray_and_get_normal(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &ray.into_raw(),
-//         max_toi,
-//         solid,
-//         filter.into_raw(predicate),
-//     ) {
-//         None => false,
-//         Some(t) => {
-//             *out = RprComplexRayResult::from_raw(t);
-//             true
-//         }
-//     }
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_cast_ray_and_get_normal(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    ray: RprRay,
+    max_toi: Real,
+    solid: bool,
+    filter: RprQueryFilter,
+    out: *mut RprComplexRayResult,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.cast_ray_and_get_normal(
+        &bodies.get().0,
+        &colliders.get().0,
+        &ray.into_raw(),
+        max_toi,
+        solid,
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprComplexRayResult::from_raw(t);
+            true
+        }
+    }
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_intersection_with_ray(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     ray: RprRay,
-//     max_toi: Real,
-//     solid: bool,
-//     filter: RprQueryFilter,
-//     callback: extern "C" fn(RprComplexRayResult) -> bool,
-// ) {
-//     let predicate = filter.predicate();
-//     this.get().0.intersections_with_ray(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &ray.into_raw(),
-//         max_toi,
-//         solid,
-//         filter.into_raw(predicate),
-//         |handle, isect| (callback)(RprComplexRayResult::from_raw((handle, isect))),
-//     )
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_intersection_with_ray(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    ray: RprRay,
+    max_toi: Real,
+    solid: bool,
+    filter: RprQueryFilter,
+    callback: extern "C" fn(RprComplexRayResult) -> bool,
+) {
+    let predicate = filter.predicate();
+    this.get().0.intersections_with_ray(
+        &bodies.get().0,
+        &colliders.get().0,
+        &ray.into_raw(),
+        max_toi,
+        solid,
+        filter.into_raw(&predicate),
+        |handle, isect| (callback)(RprComplexRayResult::from_raw((handle, isect))),
+    )
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_intersection_with_shape(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     shape_pos: RprIsometry,
-//     shape: *const RprSharedShape,
-//     filter: RprQueryFilter,
-//     out: *mut RprColliderHandle,
-// ) -> bool {
-//     let predicate = filter.predicate();
-//     match this.get().0.intersection_with_shape(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &shape_pos.into_raw(),
-//         shape.get().0.0.as_ref(),
-//         filter.into_raw(predicate),
-//     ) {
-//         None => false,
-//         Some(t) => {
-//             *out = RprColliderHandle::from_raw(t.0);
-//             true
-//         }
-//     }
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_intersection_with_shape(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    shape_pos: RprIsometry,
+    shape: *const RprSharedShape,
+    filter: RprQueryFilter,
+    out: *mut RprColliderHandle,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.intersection_with_shape(
+        &bodies.get().0,
+        &colliders.get().0,
+        &shape_pos.into_raw(),
+        shape.get().0.0.as_ref(),
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprColliderHandle::from_raw(t.0);
+            true
+        }
+    }
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_project_point(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     point: RprVector,
-//     solid: bool,
-//     filter: RprQueryFilter,
-//     out: *mut RprSimplePointProject,
-// ) -> bool {
-//     let predicate = filter.predicate();
-//     match this.get().0.project_point(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &point.into_point(),
-//         solid,
-//         filter.into_raw(predicate),
-//     ) {
-//         None => false,
-//         Some(t) => {
-//             *out = RprSimplePointProject::from_raw(t);
-//             true
-//         }
-//     }
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_project_point(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    point: RprVector,
+    solid: bool,
+    filter: RprQueryFilter,
+    out: *mut RprSimplePointProject,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.project_point(
+        &bodies.get().0,
+        &colliders.get().0,
+        &point.into_point(),
+        solid,
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprSimplePointProject::from_raw(t);
+            true
+        }
+    }
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_intersections_with_point(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     point: RprVector,
-//     filter: RprQueryFilter,
-//     callback: extern "C" fn(RprColliderHandle) -> bool,
-// ) {
-//     let predicate = filter.predicate();
-//     this.get().0.intersections_with_point(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &point.into_point(),
-//         filter.into_raw(predicate),
-//         |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
-//     )
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_intersections_with_point(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    point: RprVector,
+    filter: RprQueryFilter,
+    callback: extern "C" fn(RprColliderHandle) -> bool,
+) {
+    let predicate = filter.predicate();
+    this.get().0.intersections_with_point(
+        &bodies.get().0,
+        &colliders.get().0,
+        &point.into_point(),
+        filter.into_raw(&predicate),
+        |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
+    )
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_project_point_and_get_feature(
-//     this: *const RprQueryPipeline,
-//     bodies: *const RprRigidBodySet,
-//     colliders: *const RprColliderSet,
-//     point: RprVector,
-//     filter: RprQueryFilter,
-//     out: *mut RprComplexPointProject,
-// ) -> bool {
-//     let predicate = filter.predicate();
-//     match this.get().0.project_point_and_get_feature(
-//         &bodies.get().0,
-//         &colliders.get().0,
-//         &point.into_point(),
-//         filter.into_raw(predicate),
-//     ) {
-//         None => false,
-//         Some(t) => {
-//             *out = RprComplexPointProject::from_raw(t);
-//             true
-//         }
-//     }
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_project_point_and_get_feature(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    point: RprVector,
+    filter: RprQueryFilter,
+    out: *mut RprComplexPointProject,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.project_point_and_get_feature(
+        &bodies.get().0,
+        &colliders.get().0,
+        &point.into_point(),
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprComplexPointProject::from_raw(t);
+            true
+        }
+    }
+}
 
-// #[no_mangle]
-// pub unsafe extern "C" fn RprQueryPipeline_colliders_with_aabb_intersecting_aabb(
-//     this: *const RprQueryPipeline,
-//     aabb: RprAabb,
-//     callback: extern "C" fn(RprColliderHandle) -> bool,
-// ) {
-//     this.get().0.colliders_with_aabb_intersecting_aabb(
-//         &aabb.into_raw(),
-//         |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
-//     )
-// }
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_colliders_with_aabb_intersecting_aabb(
+    this: *const RprQueryPipeline,
+    aabb: RprAabb,
+    callback: extern "C" fn(RprColliderHandle) -> bool,
+) {
+    this.get().0.colliders_with_aabb_intersecting_aabb(
+        &aabb.into_raw(),
+        |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
+    )
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
@@ -484,8 +485,6 @@ pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
     out: *mut RprShapeCast,
 ) -> bool {
     let predicate = filter.predicate();
-    let filter = filter.into_raw(&predicate);
-
     match this.get().0.cast_shape(
         &bodies.get().0,
         &colliders.get().0,
@@ -494,7 +493,7 @@ pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
         shape.get().0.0.as_ref(),
         max_toi,
         stop_at_penetration,
-        filter,
+        filter.into_raw(&predicate),
     ) {
         None => false,
         Some(t) => {
