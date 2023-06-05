@@ -11,11 +11,13 @@ use crate::prelude::*;
 pub enum RprFillMode {
     /// Only consider full the voxels intersecting the surface of the
     /// shape being voxelized.
-    SurfaceOnly,
+    #[allow(non_camel_case_types)]
+    RprFillMode_SurfaceOnly,
     /// Use a flood-fill technique to consider fill the voxels intersecting
     /// the surface of the shape being voxelized, as well as all the voxels
     /// bounded of them.
-    FloodFill {
+    #[allow(non_camel_case_types)]
+    RprFillMode_FloodFill {
         /// Detects holes inside of a solid contour.
         detect_cavities: bool,
         /// Attempts to properly handle self-intersections.
@@ -28,7 +30,7 @@ pub enum RprFillMode {
 impl RprFillMode {
     pub fn from_raw(raw: &FillMode) -> Self {
         match raw {
-            FillMode::SurfaceOnly => Self::SurfaceOnly,
+            FillMode::SurfaceOnly => Self::RprFillMode_SurfaceOnly,
             #[cfg(feature = "dim2")]
             FillMode::FloodFill {
                 detect_cavities,
@@ -38,7 +40,7 @@ impl RprFillMode {
                 detect_self_intersections: *detect_self_intersections,
             },
             #[cfg(feature = "dim3")]
-            FillMode::FloodFill { detect_cavities } => Self::FloodFill {
+            FillMode::FloodFill { detect_cavities } => Self::RprFillMode_FloodFill {
                 detect_cavities: *detect_cavities,
             },
         }
@@ -46,7 +48,7 @@ impl RprFillMode {
 
     pub fn into_raw(&self) -> FillMode {
         match self {
-            Self::SurfaceOnly => FillMode::SurfaceOnly,
+            Self::RprFillMode_SurfaceOnly => FillMode::SurfaceOnly,
             #[cfg(feature = "dim2")]
             Self::FloodFill {
                 detect_cavities,
@@ -56,7 +58,7 @@ impl RprFillMode {
                 detect_self_intersections: *detect_self_intersections,
             },
             #[cfg(feature = "dim3")]
-            Self::FloodFill { detect_cavities } => FillMode::FloodFill {
+            Self::RprFillMode_FloodFill { detect_cavities } => FillMode::FloodFill {
                 detect_cavities: *detect_cavities,
             },
         }

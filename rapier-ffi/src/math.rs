@@ -191,3 +191,26 @@ impl RprAabb {
         }
     }
 }
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+pub struct RprRay {
+    pub origin: RprVector,
+    pub dir: RprVector,
+}
+
+impl RprRay {
+    pub fn from_raw(raw: Ray) -> Self {
+        Self {
+            origin: RprVector::from_point(raw.origin),
+            dir: RprVector::from_raw(raw.dir),
+        }
+    }
+
+    pub fn into_raw(self) -> Ray {
+        Ray {
+            origin: self.origin.into_point(),
+            dir: self.dir.into_raw(),
+        }
+    }
+}

@@ -328,22 +328,32 @@ pub unsafe extern "C" fn RprCollider_set_position_wrt_parent(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprCollider_collision_groups(this: *const RprCollider) -> RprInteractionGroups {
+pub unsafe extern "C" fn RprCollider_collision_groups(
+    this: *const RprCollider,
+) -> RprInteractionGroups {
     RprInteractionGroups::from_raw(this.get().0.collision_groups())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprCollider_set_collision_groups(this: *mut RprCollider, groups: RprInteractionGroups) {
+pub unsafe extern "C" fn RprCollider_set_collision_groups(
+    this: *mut RprCollider,
+    groups: RprInteractionGroups,
+) {
     this.get_mut().0.set_collision_groups(groups.into_raw())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprCollider_solver_groups(this: *const RprCollider) -> RprInteractionGroups {
+pub unsafe extern "C" fn RprCollider_solver_groups(
+    this: *const RprCollider,
+) -> RprInteractionGroups {
     RprInteractionGroups::from_raw(this.get().0.solver_groups())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprCollider_set_solver_groups(this: *mut RprCollider, groups: RprInteractionGroups) {
+pub unsafe extern "C" fn RprCollider_set_solver_groups(
+    this: *mut RprCollider,
+    groups: RprInteractionGroups,
+) {
     this.get_mut().0.set_solver_groups(groups.into_raw())
 }
 
@@ -433,12 +443,18 @@ pub unsafe extern "C" fn RprColliderBuilder_build(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprColliderBuilder_collision_groups(this: *mut RprColliderBuilder, groups: RprInteractionGroups) {
+pub unsafe extern "C" fn RprColliderBuilder_collision_groups(
+    this: *mut RprColliderBuilder,
+    groups: RprInteractionGroups,
+) {
     this.rewrite(|t| RprColliderBuilder(t.0.collision_groups(groups.into_raw())))
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprColliderBuilder_solver_groups(this: *mut RprColliderBuilder, groups: RprInteractionGroups) {
+pub unsafe extern "C" fn RprColliderBuilder_solver_groups(
+    this: *mut RprColliderBuilder,
+    groups: RprInteractionGroups,
+) {
     this.rewrite(|t| RprColliderBuilder(t.0.solver_groups(groups.into_raw())))
 }
 
