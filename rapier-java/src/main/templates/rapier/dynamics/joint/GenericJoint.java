@@ -27,7 +27,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         return new Mut(memory);
     }
 
-    public static Mut create(byte lockedAxes) {
+    public static Mut of(byte lockedAxes) {
         return atMut(RprGenericJoint_new(lockedAxes));
     }
 

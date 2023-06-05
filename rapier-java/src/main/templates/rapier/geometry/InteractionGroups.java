@@ -15,7 +15,7 @@ public final class InteractionGroups extends ValNative {
         return new InteractionGroups(memory);
     }
 
-    public static InteractionGroups create(SegmentAllocator alloc, int memberships, int filter) {
+    public static InteractionGroups of(SegmentAllocator alloc, int memberships, int filter) {
         var memory = RprInteractionGroups.allocate(alloc);
         RprInteractionGroups.memberships$set(memory, memberships);
         RprInteractionGroups.filter$set(memory, filter);
