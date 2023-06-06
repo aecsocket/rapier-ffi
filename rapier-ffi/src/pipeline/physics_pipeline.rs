@@ -132,7 +132,7 @@ pub unsafe extern "C" fn RprContactData_tangent_impulse(
     this: *const RprContactData,
     out_x: *mut Real,
 ) {
-    let t = &this.get().0.data.tangent_impulse;
+    let t = this.get().0.data.tangent_impulse;
     *out_x = t;
 }
 
@@ -598,7 +598,7 @@ pub struct RprEventHandler {
         dt: Real,
         bodies: *const RprRigidBodySet,
         colliders: *const RprColliderSet,
-        contact_pair: *const RprContactpair,
+        contact_pair: *const RprContactPair,
         total_force_magnitude: Real,
     ),
 }
