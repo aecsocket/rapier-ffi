@@ -35,7 +35,7 @@ impl RprFillMode {
             FillMode::FloodFill {
                 detect_cavities,
                 detect_self_intersections,
-            } => Self::FloodFill {
+            } => Self::RprFillMode_FloodFill {
                 detect_cavities: *detect_cavities,
                 detect_self_intersections: *detect_self_intersections,
             },
@@ -50,7 +50,7 @@ impl RprFillMode {
         match self {
             Self::RprFillMode_SurfaceOnly => FillMode::SurfaceOnly,
             #[cfg(feature = "dim2")]
-            Self::FloodFill {
+            Self::RprFillMode_FloodFill {
                 detect_cavities,
                 detect_self_intersections,
             } => FillMode::FloodFill {

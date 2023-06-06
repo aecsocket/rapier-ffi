@@ -1,3 +1,4 @@
+use rapier::parry::query::NonlinearRigidMotion;
 use rapier::parry::query::TOIStatus;
 
 use crate::prelude::*;
@@ -117,7 +118,7 @@ impl RprFeatureId {
             FeatureId::Vertex(id) => RprFeatureId::RprFeatureId_Vertex { id },
             #[cfg(feature = "dim3")]
             FeatureId::Edge(id) => RprFeatureId::RprFeatureId_Edge { id },
-            FeatureId::Face(id) => RprFeatureId::RprFeatureId_Edge { id },
+            FeatureId::Face(id) => RprFeatureId::RprFeatureId_Face { id },
             FeatureId::Unknown => RprFeatureId::RprFeatureId_Unknown,
         }
     }
@@ -154,7 +155,7 @@ pub struct RprSimplePointProject {
 impl RprSimplePointProject {
     pub fn from_raw(raw: (ColliderHandle, PointProjection)) -> Self {
         Self {
-            collider: RprColliderHandle::from_raw(raw.0.0),
+            collider: RprColliderHandle::from_raw(raw.0 .0),
             is_inside: raw.1.is_inside,
             point: RprVector::from_point(raw.1.point),
         }
@@ -173,7 +174,7 @@ pub struct RprComplexPointProject {
 impl RprComplexPointProject {
     pub fn from_raw(raw: (ColliderHandle, PointProjection, FeatureId)) -> Self {
         Self {
-            collider: RprColliderHandle::from_raw(raw.0.0),
+            collider: RprColliderHandle::from_raw(raw.0 .0),
             is_inside: raw.1.is_inside,
             point: RprVector::from_point(raw.1.point),
             feature_id: RprFeatureId::from_raw(raw.2),
@@ -267,8 +268,36 @@ pub struct RprShapeCast {
 impl RprShapeCast {
     pub fn from_raw(raw: (ColliderHandle, TOI)) -> Self {
         Self {
-            collider: RprColliderHandle::from_raw(raw.0.0),
+            collider: RprColliderHandle::from_raw(raw.0 .0),
             toi: RprTOI::from_raw(raw.1),
+        }
+    }
+}
+
+/// A nonlinear motion from a starting isometry traveling at constant translational and rotational velocity.
+#[repr(C)]
+#[derive(Debug, Clone, Copy)]
+pub struct RprNonlinearRigidMotion {
+    /// The starting isometry at `t = 0`.
+    pub start: RprIsometry,
+    /// The local-space point at which the rotational part of this motion is applied.
+    pub local_center: RprVector,
+    /// The translational velocity of this motion.
+    pub linvel: RprVector,
+    /// The angular velocity of this motion.
+    pub angvel: RprAngVector,
+}
+
+impl RprNonlinearRigidMotion {
+    pub fn into_raw(self) -> NonlinearRigidMotion {
+        NonlinearRigidMotion {
+            start: self.start.into_raw(),
+            local_center: self.local_center.into_point(),
+            linvel: self.linvel.into_raw(),
+            #[cfg(feature = "dim2")]
+            angvel: self.angvel.x,
+            #[cfg(feature = "dim3")]
+            angvel: self.angvel.into_raw(),
         }
     }
 }
@@ -379,7 +408,7 @@ pub unsafe extern "C" fn RprQueryPipeline_intersection_with_shape(
         &bodies.get().0,
         &colliders.get().0,
         &shape_pos.into_raw(),
-        shape.get().0.0.as_ref(),
+        shape.get().0 .0.as_ref(),
         filter.into_raw(&predicate),
     ) {
         None => false,
@@ -465,10 +494,11 @@ pub unsafe extern "C" fn RprQueryPipeline_colliders_with_aabb_intersecting_aabb(
     aabb: RprAabb,
     callback: extern "C" fn(RprColliderHandle) -> bool,
 ) {
-    this.get().0.colliders_with_aabb_intersecting_aabb(
-        &aabb.into_raw(),
-        |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
-    )
+    this.get()
+        .0
+        .colliders_with_aabb_intersecting_aabb(&aabb.into_raw(), |handle| {
+            (callback)(RprColliderHandle::from_raw(handle.0))
+        })
 }
 
 #[no_mangle]
@@ -490,7 +520,7 @@ pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
         &colliders.get().0,
         &shape_pos.into_raw(),
         &shape_vel.into_raw(),
-        shape.get().0.0.as_ref(),
+        shape.get().0 .0.as_ref(),
         max_toi,
         stop_at_penetration,
         filter.into_raw(&predicate),
@@ -501,4 +531,57 @@ pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
             true
         }
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprQuerypipeline_nonlinear_cast_shape(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    shape_motion: RprNonlinearRigidMotion,
+    shape: *const RprSharedShape,
+    start_time: Real,
+    end_time: Real,
+    stop_at_penetration: bool,
+    filter: RprQueryFilter,
+    out: *mut RprShapeCast,
+) -> bool {
+    let predicate = filter.predicate();
+    match this.get().0.nonlinear_cast_shape(
+        &bodies.get().0,
+        &colliders.get().0,
+        &shape_motion.into_raw(),
+        shape.get().0 .0.as_ref(),
+        start_time,
+        end_time,
+        stop_at_penetration,
+        filter.into_raw(&predicate),
+    ) {
+        None => false,
+        Some(t) => {
+            *out = RprShapeCast::from_raw(t);
+            true
+        }
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_intersections_with_shape(
+    this: *const RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    shape_pos: RprIsometry,
+    shape: *const RprSharedShape,
+    filter: RprQueryFilter,
+    callback: extern "C" fn(RprColliderHandle) -> bool,
+) {
+    let predicate = filter.predicate();
+    this.get().0.intersections_with_shape(
+        &bodies.get().0,
+        &colliders.get().0,
+        &shape_pos.into_raw(),
+        shape.get().0 .0.as_ref(),
+        filter.into_raw(&predicate),
+        |handle| (callback)(RprColliderHandle::from_raw(handle.0)),
+    );
 }

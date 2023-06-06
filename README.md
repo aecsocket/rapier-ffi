@@ -27,7 +27,7 @@ This repository is dual-licensed Apache and MIT. This license applies to all sub
 - [ ] Rigid bodies and colliders
   - [x] Shape
   - [x] Position
-  - [ ] Interaction groups
+  - [x] Interaction groups
   - [ ] Mass properties
 - [ ] Pipelines
   - [x] Physics
