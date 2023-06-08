@@ -12,20 +12,20 @@ import java.lang.foreign.SegmentAllocator;
 
 public final class EventHandler extends ValNative {
     public interface Fn {
-        void handleCollisionEvent(
+        default void handleCollisionEvent(
                 RigidBodySet bodies,
                 ColliderSet colliders,
                 CollisionEvent event,
                 ContactPair contactPair
-        );
+        ) {}
 
-        void handleContactForceEvent(
+        default void handleContactForceEvent(
                 {{ real }} dt,
                 RigidBodySet bodies,
                 ColliderSet colliders,
                 ContactPair contactPair,
                 {{ real }} totalForceMagnitude
-        );
+        ) {}
     }
 
     private EventHandler(MemorySegment memory) {

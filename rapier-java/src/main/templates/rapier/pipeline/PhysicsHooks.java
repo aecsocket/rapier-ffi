@@ -8,11 +8,15 @@ import java.lang.foreign.MemorySession;
 
 public final class PhysicsHooks extends ValNative {
     public interface Fn {
-        int filterContactPair(PairFilterContext context);
+        default int filterContactPair(PairFilterContext context) {
+            return SolverFlags.COMPUTE_IMPULSES;
+        }
 
-        boolean filterIntersectionPair(PairFilterContext context);
+        default boolean filterIntersectionPair(PairFilterContext context) {
+            return true;
+        }
 
-        void modifySolverContacts(ContactModificationContext context);
+        default void modifySolverContacts(ContactModificationContext context) {}
     }
 
     private PhysicsHooks(MemorySegment memory) {
