@@ -26,35 +26,39 @@ class constants$33 {
         "RprCollider_volume",
         constants$33.RprCollider_volume$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprContactData_dist$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_contacts_enabled",
-        constants$33.RprGenericJoint_contacts_enabled$FUNC
+    static final MethodHandle RprContactData_dist$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_dist",
+        constants$33.RprContactData_dist$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprContactData_impulse$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_drop$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_drop",
-        constants$33.RprGenericJoint_drop$FUNC
+    static final MethodHandle RprContactData_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_impulse",
+        constants$33.RprContactData_impulse$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprContactData_local_p1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_is_enabled",
-        constants$33.RprGenericJoint_is_enabled$FUNC
+    static final MethodHandle RprContactData_local_p1$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_local_p1",
+        constants$33.RprContactData_local_p1$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor RprContactData_local_p2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_limits",
-        constants$33.RprGenericJoint_limits$FUNC
+    static final MethodHandle RprContactData_local_p2$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_local_p2",
+        constants$33.RprContactData_local_p2$FUNC
     );
 }
 

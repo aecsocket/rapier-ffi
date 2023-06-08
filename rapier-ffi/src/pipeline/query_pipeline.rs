@@ -101,25 +101,21 @@ impl RprSimpleRayResult {
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 pub enum RprFeatureId {
-    #[allow(non_camel_case_types)]
-    RprFeatureId_Vertex { id: u32 },
+    Vertex { id: u32 },
     #[cfg(feature = "dim3")]
-    #[allow(non_camel_case_types)]
-    RprFeatureId_Edge { id: u32 },
-    #[allow(non_camel_case_types)]
-    RprFeatureId_Face { id: u32 },
-    #[allow(non_camel_case_types)]
-    RprFeatureId_Unknown,
+    Edge { id: u32 },
+    Face { id: u32 },
+    Unknown,
 }
 
 impl RprFeatureId {
     pub fn from_raw(raw: FeatureId) -> Self {
         match raw {
-            FeatureId::Vertex(id) => RprFeatureId::RprFeatureId_Vertex { id },
+            FeatureId::Vertex(id) => RprFeatureId::Vertex { id },
             #[cfg(feature = "dim3")]
-            FeatureId::Edge(id) => RprFeatureId::RprFeatureId_Edge { id },
-            FeatureId::Face(id) => RprFeatureId::RprFeatureId_Face { id },
-            FeatureId::Unknown => RprFeatureId::RprFeatureId_Unknown,
+            FeatureId::Edge(id) => RprFeatureId::Edge { id },
+            FeatureId::Face(id) => RprFeatureId::Face { id },
+            FeatureId::Unknown => RprFeatureId::Unknown,
         }
     }
 }
@@ -190,31 +186,27 @@ pub enum RprTOIStatus {
     ///
     /// The content of the `TOI` will still be a conservative approximation of the actual result so
     /// it is often fine to interpret this case as a success.
-    #[allow(non_camel_case_types)]
-    RprTOIStatus_OutOfIterations,
+    OutOfIterations,
     /// The TOI algorithm converged successfully.
-    #[allow(non_camel_case_types)]
-    RprTOIStatus_Converged,
+    Converged,
     /// Something went wrong during the TOI computation, likely due to numerical instabilities.
     ///
     /// The content of the `TOI` will still be a conservative approximation of the actual result so
     /// it is often fine to interpret this case as a success.
-    #[allow(non_camel_case_types)]
-    RprTOIStatus_Failed,
+    Failed,
     /// The two shape already overlap at the time 0.
     ///
     /// The witness points and normals provided by the `TOI` will have undefined values.
-    #[allow(non_camel_case_types)]
-    RprTOIStatus_Penetrating,
+    Penetrating,
 }
 
 impl RprTOIStatus {
     pub fn from_raw(raw: TOIStatus) -> Self {
         match raw {
-            TOIStatus::OutOfIterations => Self::RprTOIStatus_OutOfIterations,
-            TOIStatus::Converged => Self::RprTOIStatus_Converged,
-            TOIStatus::Failed => Self::RprTOIStatus_Failed,
-            TOIStatus::Penetrating => Self::RprTOIStatus_Penetrating,
+            TOIStatus::OutOfIterations => Self::OutOfIterations,
+            TOIStatus::Converged => Self::Converged,
+            TOIStatus::Failed => Self::Failed,
+            TOIStatus::Penetrating => Self::Penetrating,
         }
     }
 }

@@ -63,15 +63,15 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public boolean[] isRotationLocked() {
         try (var arena = MemorySession.openConfined()) {
-            var out = arena.allocateArray(ValueLayout.JAVA_BOOLEAN, {% if dim2 %} 1 {% elseif dim3 %} 3 {% endif %});
-            RprRigidBody_is_rotation_locked(self, out);
+            var res = arena.allocateArray(ValueLayout.JAVA_BOOLEAN, {% if dim2 %} 1 {% elseif dim3 %} 3 {% endif %});
+            RprRigidBody_is_rotation_locked(self, res);
 {% if dim2 %}
-            return new boolean[] { out.get(ValueLayout.JAVA_BOOLEAN, 0) };
+            return new boolean[] { res.get(ValueLayout.JAVA_BOOLEAN, 0) };
 {% elseif dim3 %}
             return new boolean[] {
-                    out.get(ValueLayout.JAVA_BOOLEAN, 0),
-                    out.get(ValueLayout.JAVA_BOOLEAN, 1),
-                    out.get(ValueLayout.JAVA_BOOLEAN, 2)
+                    res.get(ValueLayout.JAVA_BOOLEAN, 0),
+                    res.get(ValueLayout.JAVA_BOOLEAN, 1),
+                    res.get(ValueLayout.JAVA_BOOLEAN, 2)
             };
 {% endif %}
         }

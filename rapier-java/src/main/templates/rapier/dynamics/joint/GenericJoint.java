@@ -79,9 +79,9 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
 
     public @Nullable MotorModel getMotorModel(JointAxis axis) {
         try (var arena = MemorySession.openConfined()) {
-            var out = arena.allocate(C_INT);
-            if (RprGenericJoint_motor_model(self, axis.ordinal(), out)) {
-                return MotorModel.values()[out.get(C_INT, 0)];
+            var res = arena.allocate(C_INT);
+            if (RprGenericJoint_motor_model(self, axis.ordinal(), res)) {
+                return MotorModel.values()[res.get(C_INT, 0)];
             }
             return null;
         }
@@ -89,9 +89,9 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
 
     public @Nullable JointMotor getMotor(JointAxis axis) {
         try (var arena = MemorySession.openConfined()) {
-            var out = JointMotor.create(arena);
-            if (RprGenericJoint_motor(self, axis.ordinal(), out.memory())) {
-                return out;
+            var res = JointMotor.create(arena);
+            if (RprGenericJoint_motor(self, axis.ordinal(), res.memory())) {
+                return res;
             }
             return null;
         }

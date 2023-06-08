@@ -9,63 +9,57 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$39 {
 
-    static final FunctionDescriptor RprImpulseJointSet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final FunctionDescriptor RprContactModificationContext_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactModificationContext_solver_contacts$MH = RuntimeHelper.downcallHandle(
+        "RprContactModificationContext_solver_contacts",
+        constants$39.RprContactModificationContext_solver_contacts$FUNC
+    );
+    static final FunctionDescriptor RprContactModificationContext_user_data$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactModificationContext_user_data$MH = RuntimeHelper.downcallHandle(
+        "RprContactModificationContext_user_data",
+        constants$39.RprContactModificationContext_user_data$FUNC
+    );
+    static final FunctionDescriptor RprContactPair_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
     ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprImpulseJointSet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_insert",
-        constants$39.RprImpulseJointSet_insert$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJointSet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprImpulseJointSet_is_empty$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_is_empty",
-        constants$39.RprImpulseJointSet_is_empty$FUNC
+    static final MethodHandle RprContactPair_collider1$MH = RuntimeHelper.downcallHandle(
+        "RprContactPair_collider1",
+        constants$39.RprContactPair_collider1$FUNC
     );
-    static final FunctionDescriptor RprImpulseJointSet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+    static final FunctionDescriptor RprContactPair_collider2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprImpulseJointSet_len$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_len",
-        constants$39.RprImpulseJointSet_len$FUNC
+    static final MethodHandle RprContactPair_collider2$MH = RuntimeHelper.downcallHandle(
+        "RprContactPair_collider2",
+        constants$39.RprContactPair_collider2$FUNC
     );
-    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_new",
-        constants$39.RprImpulseJointSet_new$FUNC
+    static final FunctionDescriptor RprContactPair_has_any_active_contact$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final FunctionDescriptor RprImpulseJointSet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final MethodHandle RprContactPair_has_any_active_contact$MH = RuntimeHelper.downcallHandle(
+        "RprContactPair_has_any_active_contact",
+        constants$39.RprContactPair_has_any_active_contact$FUNC
+    );
+    static final FunctionDescriptor RprContactPair_manifolds$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprImpulseJointSet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_remove",
-        constants$39.RprImpulseJointSet_remove$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJointVec_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprImpulseJointVec_drop$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointVec_drop",
-        constants$39.RprImpulseJointVec_drop$FUNC
+    static final MethodHandle RprContactPair_manifolds$MH = RuntimeHelper.downcallHandle(
+        "RprContactPair_manifolds",
+        constants$39.RprContactPair_manifolds$FUNC
     );
 }
 

@@ -183,24 +183,8 @@ pub unsafe extern "C" fn RprContactManifold_local_n1(this: *const RprContactMani
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_local_n1(
-    this: *mut RprContactManifold,
-    value: RprVector,
-) {
-    this.get_mut().0.local_n1 = value.into_raw();
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn RprContactManifold_local_n2(this: *const RprContactManifold) -> RprVector {
     RprVector::from_raw(this.get().0.local_n2)
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_local_n2(
-    this: *mut RprContactManifold,
-    value: RprVector,
-) {
-    this.get_mut().0.local_n2 = value.into_raw();
 }
 
 #[no_mangle]
@@ -228,19 +212,6 @@ pub unsafe extern "C" fn RprContactManifold_subshape_pos1(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_clear_subshape_pos1(this: *mut RprContactManifold) {
-    this.get_mut().0.subshape_pos1 = None;
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_subshape_pos1(
-    this: *mut RprContactManifold,
-    value: RprIsometry,
-) {
-    this.get_mut().0.subshape_pos1 = Some(value.into_raw());
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn RprContactManifold_subshape_pos2(
     this: *const RprContactManifold,
     out: *mut RprIsometry,
@@ -252,19 +223,6 @@ pub unsafe extern "C" fn RprContactManifold_subshape_pos2(
             true
         }
     }
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_clear_subshape_pos2(this: *mut RprContactManifold) {
-    this.get_mut().0.subshape_pos2 = None;
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_subshape_pos2(
-    this: *mut RprContactManifold,
-    value: RprIsometry,
-) {
-    this.get_mut().0.subshape_pos2 = Some(value.into_raw());
 }
 
 #[no_mangle]
@@ -303,24 +261,8 @@ pub unsafe extern "C" fn RprContactManifold_solver_flags(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_solver_flags(
-    this: *mut RprContactManifold,
-    value: RprSolverFlags,
-) {
-    this.get_mut().0.data.solver_flags = solver_flags_from(value);
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn RprContactManifold_normal(this: *const RprContactManifold) -> RprVector {
     RprVector::from_raw(this.get().0.data.normal)
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_normal(
-    this: *mut RprContactManifold,
-    value: RprVector,
-) {
-    this.get_mut().0.data.normal = value.into_raw();
 }
 
 #[no_mangle]
@@ -342,24 +284,8 @@ pub unsafe extern "C" fn RprContactManifold_relative_dominance(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_relative_dominance(
-    this: *mut RprContactManifold,
-    value: i16,
-) {
-    this.get_mut().0.data.relative_dominance = value
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn RprContactManifold_user_data(this: *const RprContactManifold) -> u32 {
     this.get().0.data.user_data
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprContactManifold_set_user_data(
-    this: *mut RprContactManifold,
-    value: u32,
-) {
-    this.get_mut().0.data.user_data = value
 }
 
 pub struct RprContactModificationContext<'a>(pub ContactModificationContext<'a>);
@@ -468,16 +394,62 @@ pub unsafe extern "C" fn RprContactModificationContext_set_user_data(
     *this.get_mut().0.user_data = value
 }
 
-#[repr(C)]
-pub struct RprPairFilterContext {
-    pub bodies: *const RprRigidBodySet,
-    pub colliders: *const RprColliderSet,
-    pub collider1: RprColliderHandle,
-    pub collider2: RprColliderHandle,
-    pub has_rigid_body1: bool,
-    pub rigid_body1: RprRigidBodyHandle,
-    pub has_rigid_body2: bool,
-    pub rigid_body2: RprRigidBodyHandle,
+pub struct RprPairFilterContext<'a>(pub PairFilterContext<'a>);
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_bodies(
+    this: *const RprPairFilterContext,
+) -> *const RprRigidBodySet {
+    this.get().0.bodies as *const RigidBodySet as *const RprRigidBodySet
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_colliders(
+    this: *const RprPairFilterContext,
+) -> *const RprColliderSet {
+    this.get().0.colliders as *const ColliderSet as *const RprColliderSet
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_collider1(
+    this: *const RprPairFilterContext,
+) -> RprColliderHandle {
+    RprColliderHandle::from_raw(this.get().0.collider1.0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_collider2(
+    this: *const RprPairFilterContext,
+) -> RprColliderHandle {
+    RprColliderHandle::from_raw(this.get().0.collider2.0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_rigid_body1(
+    this: *const RprPairFilterContext,
+    out: *mut RprRigidBodyHandle,
+) -> bool {
+    match this.get().0.rigid_body1 {
+        None => false,
+        Some(t) => {
+            *out = RprRigidBodyHandle::from_raw(t.0);
+            true
+        }
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprPairFilterContext_rigid_body2(
+    this: *const RprPairFilterContext,
+    out: *mut RprRigidBodyHandle,
+) -> bool {
+    match this.get().0.rigid_body2 {
+        None => false,
+        Some(t) => {
+            *out = RprRigidBodyHandle::from_raw(t.0);
+            true
+        }
+    }
 }
 
 #[repr(C)]
@@ -521,14 +493,12 @@ pub const RprCollisionEventFlags_REMOVED: RprCollisionEventFlags = 0b0010;
 
 #[repr(C)]
 pub enum RprCollisionEvent {
-    #[allow(non_camel_case_types)]
-    RprCollisionEvent_Started {
+    Started {
         coll1: RprColliderHandle,
         coll2: RprColliderHandle,
         flags: RprCollisionEventFlags,
     },
-    #[allow(non_camel_case_types)]
-    RprCollisionEvent_Stopped {
+    Stopped {
         coll1: RprColliderHandle,
         coll2: RprColliderHandle,
         flags: RprCollisionEventFlags,
@@ -538,12 +508,12 @@ pub enum RprCollisionEvent {
 impl RprCollisionEvent {
     pub fn from_raw(raw: CollisionEvent) -> Self {
         match raw {
-            CollisionEvent::Started(coll1, coll2, flags) => Self::RprCollisionEvent_Started {
+            CollisionEvent::Started(coll1, coll2, flags) => Self::Started {
                 coll1: RprColliderHandle::from_raw(coll1.0),
                 coll2: RprColliderHandle::from_raw(coll2.0),
                 flags: flags.bits(),
             },
-            CollisionEvent::Stopped(coll1, coll2, flags) => Self::RprCollisionEvent_Stopped {
+            CollisionEvent::Stopped(coll1, coll2, flags) => Self::Stopped {
                 coll1: RprColliderHandle::from_raw(coll1.0),
                 coll2: RprColliderHandle::from_raw(coll2.0),
                 flags: flags.bits(),
@@ -603,6 +573,43 @@ pub struct RprEventHandler {
     ),
 }
 
+impl EventHandler for RprEventHandler {
+    fn handle_collision_event(
+        &self,
+        bodies: &RigidBodySet,
+        colliders: &ColliderSet,
+        event: CollisionEvent,
+        contact_pair: Option<&ContactPair>,
+    ) {
+        (self.handle_collision_event)(
+            bodies as *const RigidBodySet as *const RprRigidBodySet,
+            colliders as *const ColliderSet as *const RprColliderSet,
+            RprCollisionEvent::from_raw(event),
+            match contact_pair {
+                None => std::ptr::null(),
+                Some(t) => t as *const ContactPair as *const RprContactPair,
+            }
+        )
+    }
+    
+    fn handle_contact_force_event(
+        &self,
+        dt: Real,
+        bodies: &RigidBodySet,
+        colliders: &ColliderSet,
+        contact_pair: &ContactPair,
+        total_force_magnitude: Real,
+    ) {
+        (self.handle_contact_force_event)(
+            dt,
+            bodies as *const RigidBodySet as *const RprRigidBodySet,
+            colliders as *const ColliderSet as *const RprColliderSet,
+            contact_pair as *const ContactPair as *const RprContactPair,
+            total_force_magnitude,
+        )
+    }
+}
+
 pub struct RprPhysicsPipeline(pub PhysicsPipeline);
 
 #[no_mangle]
@@ -630,8 +637,13 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step(
     ccd_solver: *mut RprCCDSolver,
     query_pipeline: *mut RprQueryPipeline,
     hooks: *const RprPhysicsHooks,
+    events: *const RprEventHandler,
 ) {
     let hooks: &dyn PhysicsHooks = match hooks.as_ref() {
+        None => &(),
+        Some(t) => t,
+    };
+    let events: &dyn EventHandler = match events.as_ref() {
         None => &(),
         Some(t) => t,
     };
@@ -649,11 +661,11 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step(
         &mut ccd_solver.get_mut().0,
         query_pipeline.as_mut().map(|t| &mut t.0),
         hooks,
-        &(),
+        events,
     )
 }
 
-/// cbindgen:ptrs-as-arrays=[[pipeline;], [gravity;], [integration_parameters;], [islands;], [broad_phase;], [narrow_phase;], [bodies;], [colliders;], [impulse_joints;], [multibody_joints;], [ccd_solver;], [query_pipeline;]]
+/// cbindgen:ptrs-as-arrays=[[pipeline;], [gravity;], [integration_parameters;], [islands;], [broad_phase;], [narrow_phase;], [bodies;], [colliders;], [impulse_joints;], [multibody_joints;], [ccd_solver;], [query_pipeline;], [hooks;], [events;]]
 #[no_mangle]
 pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     len: usize,
@@ -670,6 +682,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     ccd_solver: *mut *mut RprCCDSolver,
     query_pipeline: *mut *mut RprQueryPipeline,
     hooks: *const *const RprPhysicsHooks,
+    events: *const *const RprEventHandler,
 ) {
     let pipeline = std::slice::from_raw_parts_mut(pipeline, len);
     let gravity = std::slice::from_raw_parts(gravity, len);
@@ -684,6 +697,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     let ccd_solver = std::slice::from_raw_parts_mut(ccd_solver, len);
     let query_pipeline = std::slice::from_raw_parts_mut(query_pipeline, len);
     let hooks = std::slice::from_raw_parts(hooks, len);
+    let events = std::slice::from_raw_parts(events, len);
 
     for (
         pipeline,
@@ -699,6 +713,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
         ccd_solver,
         query_pipeline,
         hooks,
+        events,
     ) in izip!(
         pipeline,
         gravity,
@@ -713,8 +728,13 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
         ccd_solver,
         query_pipeline,
         hooks,
+        events,
     ) {
         let hooks: &dyn PhysicsHooks = match hooks.as_ref() {
+            None => &(),
+            Some(t) => t,
+        };
+        let events: &dyn EventHandler = match events.as_ref() {
             None => &(),
             Some(t) => t,
         };
@@ -731,7 +751,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
             &mut (*ccd_solver).get_mut().0,
             Some(&mut (*query_pipeline).get_mut().0),
             hooks,
-            &(),
+            events,
         )
     }
 }

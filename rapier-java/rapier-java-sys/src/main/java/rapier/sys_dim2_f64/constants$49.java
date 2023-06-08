@@ -9,47 +9,68 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$49 {
 
-    static final FunctionDescriptor RprRigidBodyBuilder_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_fixed",
-        constants$49.RprRigidBodyBuilder_fixed$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_gravity_scale",
-        constants$49.RprRigidBodyBuilder_gravity_scale$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_kinematic_position_based",
-        constants$49.RprRigidBodyBuilder_kinematic_position_based$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_velocity_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_kinematic_velocity_based",
-        constants$49.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linear_damping",
-        constants$49.RprRigidBodyBuilder_linear_damping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_linvel$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
+            Constants$root.C_DOUBLE$LAYOUT.withName("dt"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("min_ccd_dt"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("erp"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("damping_ratio"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("joint_erp"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("joint_damping_ratio"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("allowed_linear_error"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("max_penetration_correction"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("prediction_distance"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+            MemoryLayout.paddingLayout(56),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+        ).withName("RprIntegrationParametersDesc")
     );
-    static final MethodHandle RprRigidBodyBuilder_linvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linvel",
-        constants$49.RprRigidBodyBuilder_linvel$FUNC
+    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_new",
+        constants$49.RprIntegrationParameters_new$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_dynamic_bodies",
+        constants$49.RprIslandManager_active_dynamic_bodies$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$49.RprIslandManager_active_kinematic_bodies$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$49.RprIslandManager_drop$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$49.RprIslandManager_new$FUNC
+    );
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$49.RprJointLimits_default$FUNC
     );
 }
 

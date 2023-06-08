@@ -57,3 +57,12 @@ pub unsafe extern "C" fn RprImpulseJoint_set_impulses(
 ) {
     this.get_mut().0.impulses = impulses.into_raw()
 }
+
+#[no_mangle]
+pub unsafe extern "C" fn RprImpulseJoint_retain_data(
+    this: *mut RprImpulseJoint,
+) -> *mut RprGenericJoint {
+    let data = this.get_mut().0.data;
+    drop(this);
+    leak_ptr(RprGenericJoint(data))
+}

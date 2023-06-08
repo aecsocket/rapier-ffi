@@ -74,5 +74,9 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         public void setImpulses(SpacialVector impulses) {
             RprImpulseJoint_set_impulses(self, impulses.memory());
         }
+
+        public GenericJoint.Mut retainData() {
+            return GenericJoint.atMut(RprImpulseJoint_retain_data(self));
+        }
     }
 }

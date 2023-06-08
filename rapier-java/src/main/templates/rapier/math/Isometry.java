@@ -22,6 +22,10 @@ public final class Isometry extends ValNative {
         return at(memory);
     }
 
+    public static Isometry create(SegmentAllocator alloc) {
+        return at({{ sys }}.RprIsometry.allocate(alloc));
+    }
+
     public Rotation getRotation() {
         return Rotation.at({{ sys }}.RprIsometry.rotation$slice(self));
     }

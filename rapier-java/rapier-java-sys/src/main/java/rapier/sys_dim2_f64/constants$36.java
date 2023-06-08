@@ -9,67 +9,51 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$36 {
 
-    static final FunctionDescriptor RprGenericJoint_set_enabled$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprContactManifold_rigid_body2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_enabled",
-        constants$36.RprGenericJoint_set_enabled$FUNC
+    static final MethodHandle RprContactManifold_rigid_body2$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_rigid_body2",
+        constants$36.RprContactManifold_rigid_body2$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_set_limits$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprContactManifold_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_limits",
-        constants$36.RprGenericJoint_set_limits$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor1$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_local_anchor1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor1",
-        constants$36.RprGenericJoint_set_local_anchor1$FUNC
+    static final MethodHandle RprContactManifold_solver_contacts$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_solver_contacts",
+        constants$36.RprContactManifold_solver_contacts$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor2$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprContactManifold_solver_flags$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_solver_flags$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_solver_flags",
+        constants$36.RprContactManifold_solver_flags$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_subshape1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_subshape1$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_subshape1",
+        constants$36.RprContactManifold_subshape1$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_subshape2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_subshape2$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_subshape2",
+        constants$36.RprContactManifold_subshape2$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_subshape_pos1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_local_anchor2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor2",
-        constants$36.RprGenericJoint_set_local_anchor2$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_axis1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_axis1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_axis1",
-        constants$36.RprGenericJoint_set_local_axis1$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_axis2$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_axis2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_axis2",
-        constants$36.RprGenericJoint_set_local_axis2$FUNC
+    static final MethodHandle RprContactManifold_subshape_pos1$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_subshape_pos1",
+        constants$36.RprContactManifold_subshape_pos1$FUNC
     );
 }
 

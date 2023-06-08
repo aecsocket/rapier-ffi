@@ -51,7 +51,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             ImpulseJointSet impulseJoints,
             MultibodyJointSet multibodyJoints,
             CCDSolver ccdSolver,
-            @Nullable QueryPipeline queryPipeline
+            @Nullable QueryPipeline queryPipeline,
+            @Nullable PhysicsHooks hooks,
+            @Nullable EventHandler events
     ) {
         {{ sys }}.RapierC.RprPhysicsPipeline_step(
                 self,
@@ -65,7 +67,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                 impulseJoints.memory(),
                 multibodyJoints.memory(),
                 ccdSolver.memory(),
-                Native.memoryOrNull(queryPipeline)
+                Native.memoryOrNull(queryPipeline),
+                Native.memoryOrNull(hooks),
+                Native.memoryOrNull(events)
         );
     }
 
@@ -81,7 +85,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             ImpulseJointSet[] impulseJoints,
             MultibodyJointSet[] multibodyJoints,
             CCDSolver[] ccdSolver,
-            @Nonnull QueryPipeline[] queryPipeline // non-null array, nullable contents
+            @Nonnull QueryPipeline[] queryPipeline, // non-null array, nullable contents
+            @Nonnull PhysicsHooks[] hooks,
+            @Nonnull EventHandler[] events
     ) {
         if (
                 pipeline.length != gravity.length
@@ -95,6 +101,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                 || impulseJoints.length != multibodyJoints.length
                 || multibodyJoints.length != ccdSolver.length
                 || ccdSolver.length != queryPipeline.length
+                || queryPipeline.length != hooks.length
+                || hooks.length != events.length
         ) {
             throw new IllegalArgumentException("All arrays must be of the same length");
         }
@@ -111,6 +119,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             var nMultibodyJoints = Native.allocatePtrArray(arena, multibodyJoints);
             var nCcdSolver = Native.allocatePtrArray(arena, ccdSolver);
             var nQueryPipeline = Native.allocatePtrArray(arena, queryPipeline);
+            var nHooks = Native.allocatePtrArray(arena, hooks);
+            var nEvents = Native.allocatePtrArray(arena, events);
             {{ sys }}.RapierC.RprPhysicsPipeline_step_all(
                     pipeline.length,
                     nPipeline,
@@ -124,7 +134,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                     nImpulseJoints,
                     nMultibodyJoints,
                     nCcdSolver,
-                    nQueryPipeline
+                    nQueryPipeline,
+                    nHooks,
+                    nEvents
             );
         }
     }

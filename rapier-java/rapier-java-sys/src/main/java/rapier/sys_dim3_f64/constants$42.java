@@ -9,66 +9,56 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$42 {
 
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_motor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$42.RprIntegrationParameters_drop$FUNC
+    static final MethodHandle RprGenericJoint_motor$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor",
+        constants$42.RprGenericJoint_motor$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("dt"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("erp"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("joint_erp"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("prediction_distance"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParametersDesc")
-    );
-    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_new",
-        constants$42.RprIntegrationParameters_new$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_motor_model$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_active_dynamic_bodies",
-        constants$42.RprIslandManager_active_dynamic_bodies$FUNC
+    static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor_model",
+        constants$42.RprGenericJoint_motor_model$FUNC
     );
-    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_new",
+        constants$42.RprGenericJoint_new$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_set_contacts_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_set_contacts_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_set_contacts_enabled",
+        constants$42.RprGenericJoint_set_contacts_enabled$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_set_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_active_kinematic_bodies",
-        constants$42.RprIslandManager_active_kinematic_bodies$FUNC
+    static final MethodHandle RprGenericJoint_set_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_set_enabled",
+        constants$42.RprGenericJoint_set_enabled$FUNC
     );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprGenericJoint_set_limits$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$42.RprIslandManager_drop$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$42.RprIslandManager_new$FUNC
+    static final MethodHandle RprGenericJoint_set_limits$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_set_limits",
+        constants$42.RprGenericJoint_set_limits$FUNC
     );
 }
 

@@ -59,6 +59,8 @@ public final class HelloRapier {
                         impulseJointSet,
                         multibodyJointSet,
                         ccdSolver,
+                        null,
+                        null,
                         null
                 );
 

@@ -9,52 +9,54 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$46 {
 
-    static final FunctionDescriptor RprRigidBodyActivation_set_angular_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_angular_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_angular_threshold",
-        constants$46.RprRigidBodyActivation_set_angular_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_linear_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_linear_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_linear_threshold",
-        constants$46.RprRigidBodyActivation_set_linear_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_sleeping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_sleeping",
-        constants$46.RprRigidBodyActivation_set_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_since_can_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_since_can_sleep",
-        constants$46.RprRigidBodyActivation_set_time_since_can_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_until_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_time_until_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_until_sleep",
-        constants$46.RprRigidBodyActivation_set_time_until_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprImpulseJointSet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_sleeping",
-        constants$46.RprRigidBodyActivation_sleeping$FUNC
+    static final MethodHandle RprImpulseJointSet_len$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_len",
+        constants$46.RprImpulseJointSet_len$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_new",
+        constants$46.RprImpulseJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_remove",
+        constants$46.RprImpulseJointSet_remove$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointVec_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_drop$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_drop",
+        constants$46.RprImpulseJointVec_drop$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_handle$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_handle",
+        constants$46.RprImpulseJointVec_handle$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointVec_len$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointVec_len",
+        constants$46.RprImpulseJointVec_len$FUNC
     );
 }
 

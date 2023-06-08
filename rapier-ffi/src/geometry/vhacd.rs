@@ -11,13 +11,11 @@ use crate::prelude::*;
 pub enum RprFillMode {
     /// Only consider full the voxels intersecting the surface of the
     /// shape being voxelized.
-    #[allow(non_camel_case_types)]
-    RprFillMode_SurfaceOnly,
+    SurfaceOnly,
     /// Use a flood-fill technique to consider fill the voxels intersecting
     /// the surface of the shape being voxelized, as well as all the voxels
     /// bounded of them.
-    #[allow(non_camel_case_types)]
-    RprFillMode_FloodFill {
+    FloodFill {
         /// Detects holes inside of a solid contour.
         detect_cavities: bool,
         /// Attempts to properly handle self-intersections.
@@ -30,17 +28,17 @@ pub enum RprFillMode {
 impl RprFillMode {
     pub fn from_raw(raw: &FillMode) -> Self {
         match raw {
-            FillMode::SurfaceOnly => Self::RprFillMode_SurfaceOnly,
+            FillMode::SurfaceOnly => Self::SurfaceOnly,
             #[cfg(feature = "dim2")]
             FillMode::FloodFill {
                 detect_cavities,
                 detect_self_intersections,
-            } => Self::RprFillMode_FloodFill {
+            } => Self::FloodFill {
                 detect_cavities: *detect_cavities,
                 detect_self_intersections: *detect_self_intersections,
             },
             #[cfg(feature = "dim3")]
-            FillMode::FloodFill { detect_cavities } => Self::RprFillMode_FloodFill {
+            FillMode::FloodFill { detect_cavities } => Self::FloodFill {
                 detect_cavities: *detect_cavities,
             },
         }
@@ -48,9 +46,9 @@ impl RprFillMode {
 
     pub fn into_raw(&self) -> FillMode {
         match self {
-            Self::RprFillMode_SurfaceOnly => FillMode::SurfaceOnly,
+            Self::SurfaceOnly => FillMode::SurfaceOnly,
             #[cfg(feature = "dim2")]
-            Self::RprFillMode_FloodFill {
+            Self::FloodFill {
                 detect_cavities,
                 detect_self_intersections,
             } => FillMode::FloodFill {
@@ -58,7 +56,7 @@ impl RprFillMode {
                 detect_self_intersections: *detect_self_intersections,
             },
             #[cfg(feature = "dim3")]
-            Self::RprFillMode_FloodFill { detect_cavities } => FillMode::FloodFill {
+            Self::FloodFill { detect_cavities } => FillMode::FloodFill {
                 detect_cavities: *detect_cavities,
             },
         }
