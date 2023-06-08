@@ -9,14 +9,79 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$81 {
 
-    static final FunctionDescriptor RprVHACD_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_friction",
+        constants$81.RprSolverContact_set_friction$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSolverContact_set_point$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_point",
+        constants$81.RprSolverContact_set_point$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_restitution$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_set_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_restitution",
+        constants$81.RprSolverContact_set_restitution$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_tangent_velocity",
+        constants$81.RprSolverContact_set_tangent_velocity$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprVHACD_drop$MH = RuntimeHelper.downcallHandle(
-        "RprVHACD_drop",
-        constants$81.RprVHACD_drop$FUNC
+    static final MethodHandle RprSolverContact_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_tangent_velocity",
+        constants$81.RprSolverContact_tangent_velocity$FUNC
     );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
+    static final FunctionDescriptor RprVHACDParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("concavity"),
+        Constants$root.C_FLOAT$LAYOUT.withName("alpha"),
+        Constants$root.C_FLOAT$LAYOUT.withName("beta"),
+        Constants$root.C_INT$LAYOUT.withName("resolution"),
+        Constants$root.C_INT$LAYOUT.withName("plane_downsampling"),
+        Constants$root.C_INT$LAYOUT.withName("convex_hull_downsampling"),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("tag"),
+            MemoryLayout.unionLayout(
+                MemoryLayout.structLayout(
+                    Constants$root.C_BOOL$LAYOUT.withName("detect_cavities"),
+                    Constants$root.C_BOOL$LAYOUT.withName("detect_self_intersections")
+                ).withName("flood_fill")
+            ).withName("$anon$0"),
+            MemoryLayout.paddingLayout(16)
+        ).withName("fill_mode"),
+        Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
+        MemoryLayout.paddingLayout(24),
+        Constants$root.C_INT$LAYOUT.withName("max_convex_hulls")
+    ).withName("RprVHACDParameters"));
+    static final MethodHandle RprVHACDParameters_default$MH = RuntimeHelper.downcallHandle(
+        "RprVHACDParameters_default",
+        constants$81.RprVHACDParameters_default$FUNC
+    );
 }
 
 

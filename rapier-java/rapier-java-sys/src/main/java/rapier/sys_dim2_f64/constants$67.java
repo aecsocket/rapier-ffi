@@ -9,52 +9,52 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$67 {
 
-    static final FunctionDescriptor RprRigidBody_gravitational_potential_energy$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_body_type$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_body_type",
+        constants$67.RprRigidBody_body_type$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_center_of_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_center_of_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_center_of_mass",
+        constants$67.RprRigidBody_center_of_mass$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_colliders$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprRigidBody_gravitational_potential_energy$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_gravitational_potential_energy",
-        constants$67.RprRigidBody_gravitational_potential_energy$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_gravity_scale$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_gravity_scale",
-        constants$67.RprRigidBody_gravity_scale$FUNC
+    static final MethodHandle RprRigidBody_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_colliders",
+        constants$67.RprRigidBody_colliders$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_is_ccd_active$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_ccd_active$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_ccd_active",
-        constants$67.RprRigidBody_is_ccd_active$FUNC
+    static final MethodHandle RprRigidBody_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_dominance_group",
+        constants$67.RprRigidBody_dominance_group$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_ccd_enabled",
-        constants$67.RprRigidBody_is_ccd_enabled$FUNC
+    static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_drop",
+        constants$67.RprRigidBody_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_dynamic",
-        constants$67.RprRigidBody_is_dynamic$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_enabled",
-        constants$67.RprRigidBody_is_enabled$FUNC
+    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_effective_dominance_group",
+        constants$67.RprRigidBody_effective_dominance_group$FUNC
     );
 }
 

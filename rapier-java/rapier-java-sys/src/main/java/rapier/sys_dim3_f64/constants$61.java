@@ -9,71 +9,44 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$61 {
 
-    static final FunctionDescriptor RprRigidBodyBuilder_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_new$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_new",
-        constants$61.RprRigidBodyBuilder_new$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_position$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("w")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprRigidBodyBuilder_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_position",
-        constants$61.RprRigidBodyBuilder_position$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprAngVector")
-    );
-    static final MethodHandle RprRigidBodyBuilder_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_rotation",
-        constants$61.RprRigidBodyBuilder_rotation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_sleeping$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodyBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_sleeping",
-        constants$61.RprRigidBodyBuilder_sleeping$FUNC
+    static final MethodHandle RprRigidBodyBuilder_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_enabled",
+        constants$61.RprRigidBodyBuilder_enabled$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodyBuilder_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_fixed",
+        constants$61.RprRigidBodyBuilder_fixed$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
+        Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_translation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_translation",
-        constants$61.RprRigidBodyBuilder_translation$FUNC
+    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_gravity_scale",
+        constants$61.RprRigidBodyBuilder_gravity_scale$FUNC
     );
-    static final FunctionDescriptor RprRigidBodySet_all$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_kinematic_position_based",
+        constants$61.RprRigidBodyBuilder_kinematic_position_based$FUNC
     );
-    static final MethodHandle RprRigidBodySet_all$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_all",
-        constants$61.RprRigidBodySet_all$FUNC
+    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_velocity_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_kinematic_velocity_based",
+        constants$61.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_linear_damping",
+        constants$61.RprRigidBodyBuilder_linear_damping$FUNC
     );
 }
 

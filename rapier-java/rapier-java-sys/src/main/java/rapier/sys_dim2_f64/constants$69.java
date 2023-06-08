@@ -9,54 +9,48 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$69 {
 
-    static final FunctionDescriptor RprRigidBody_linear_damping$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_linear_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_linear_damping",
-        constants$69.RprRigidBody_linear_damping$FUNC
+    static final MethodHandle RprRigidBody_is_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_enabled",
+        constants$69.RprRigidBody_is_enabled$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_linvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
+    static final FunctionDescriptor RprRigidBody_is_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_linvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_linvel",
-        constants$69.RprRigidBody_linvel$FUNC
+    static final MethodHandle RprRigidBody_is_fixed$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_fixed",
+        constants$69.RprRigidBody_is_fixed$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_lock_rotations$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBody_is_kinematic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_kinematic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_kinematic",
+        constants$69.RprRigidBody_is_kinematic$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_rotation_locked$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_lock_rotations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_lock_rotations",
-        constants$69.RprRigidBody_lock_rotations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_lock_translations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_lock_translations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_lock_translations",
-        constants$69.RprRigidBody_lock_translations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_locked_axes",
-        constants$69.RprRigidBody_locked_axes$FUNC
+    static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_rotation_locked",
+        constants$69.RprRigidBody_is_rotation_locked$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_mass$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_is_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_mass",
-        constants$69.RprRigidBody_mass$FUNC
+    static final MethodHandle RprRigidBody_is_sleeping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_sleeping",
+        constants$69.RprRigidBody_is_sleeping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_translation_locked$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_translation_locked$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_translation_locked",
+        constants$69.RprRigidBody_is_translation_locked$FUNC
     );
 }
 

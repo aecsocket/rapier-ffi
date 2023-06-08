@@ -9,64 +9,57 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$52 {
 
-    static final FunctionDescriptor RprPairFilterContext_colliders$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_colliders$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_colliders",
-        constants$52.RprPairFilterContext_colliders$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_rigid_body1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_rigid_body1$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_rigid_body1",
-        constants$52.RprPairFilterContext_rigid_body1$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_rigid_body2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_rigid_body2$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_rigid_body2",
-        constants$52.RprPairFilterContext_rigid_body2$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_drop",
-        constants$52.RprPhysicsPipeline_drop$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_new",
-        constants$52.RprPhysicsPipeline_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprMultibodyJointSet_remove_joints_attached_to_rigid_body$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_joints_attached_to_rigid_body",
+        constants$52.RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_remove_multibody_articulations$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_remove_multibody_articulations$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_multibody_articulations",
+        constants$52.RprMultibodyJointSet_remove_multibody_articulations$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$52.RprPhysicsPipeline_step$FUNC
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$52.RprNarrowPhase_drop$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_new",
+        constants$52.RprNarrowPhase_new$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_bodies",
+        constants$52.RprPairFilterContext_bodies$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_collider1$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_collider1",
+        constants$52.RprPairFilterContext_collider1$FUNC
     );
 }
 

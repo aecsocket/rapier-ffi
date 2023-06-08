@@ -35,6 +35,18 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         return RprGenericJoint_locked_axes(self);
     }
 
+    public byte getLimitAxes() {
+        return RprGenericJoint_limit_axes(self);
+    }
+
+    public byte getMotorAxes() {
+        return RprGenericJoint_motor_axes(self);
+    }
+
+    public byte getCoupledAxes() {
+        return RprGenericJoint_coupled_axes(self);
+    }
+
     public boolean isEnabled() {
         return RprGenericJoint_is_enabled(self);
     }
@@ -107,6 +119,22 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
 
         private Mut(MemoryAddress memory) {
             super(memory);
+        }
+
+        public void setLockedAxes(byte value) {
+            RprGenericJoint_set_locked_axes(self, value);
+        }
+
+        public void setLimitAxes(byte value) {
+            RprGenericJoint_set_limit_axes(self, value);
+        }
+
+        public void setMotorAxes(byte value) {
+            RprGenericJoint_set_motor_axes(self, value);
+        }
+
+        public void setCoupledAxes(byte value) {
+            RprGenericJoint_set_coupled_axes(self, value);
         }
 
         public void setEnabled(boolean enabled) {

@@ -9,65 +9,52 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$54 {
 
-    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("min"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("max")
-        ).withName("RprAabb"),
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_colliders_with_aabb_intersecting_aabb",
-        constants$54.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC
+    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_step",
+        constants$54.RprPhysicsPipeline_step$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_drop",
-        constants$54.RprQueryPipeline_drop$FUNC
+    static final MethodHandle RprPhysicsPipeline_step_all$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_step_all",
+        constants$54.RprPhysicsPipeline_step_all$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("collider"),
-            Constants$root.C_FLOAT$LAYOUT.withName("toi"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("normal"),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("tag"),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("vertex"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("edge"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("face")
-                ).withName("$anon$0")
-            ).withName("feature")
-        ).withName("RprComplexRayResult")
-    );
-    static final MethodHandle RprQueryPipeline_intersection_with_ray$callback$MH = RuntimeHelper.downcallHandle(
-        constants$54.RprQueryPipeline_intersection_with_ray$callback$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprQueryPipeline_cast_ray$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -111,11 +98,11 @@ class constants$54 {
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_intersection_with_ray$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_intersection_with_ray",
-        constants$54.RprQueryPipeline_intersection_with_ray$FUNC
+    static final MethodHandle RprQueryPipeline_cast_ray$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_cast_ray",
+        constants$54.RprQueryPipeline_cast_ray$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_intersection_with_shape$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_cast_ray_and_get_normal$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -123,16 +110,16 @@ class constants$54 {
             MemoryLayout.structLayout(
                 Constants$root.C_FLOAT$LAYOUT.withName("x"),
                 Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z"),
-                Constants$root.C_FLOAT$LAYOUT.withName("w")
-            ).withName("rotation"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
+            ).withName("origin"),
             MemoryLayout.structLayout(
                 Constants$root.C_FLOAT$LAYOUT.withName("x"),
                 Constants$root.C_FLOAT$LAYOUT.withName("y"),
                 Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("translation")
-        ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT,
+            ).withName("dir")
+        ).withName("RprRay"),
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("flags"),
             Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
@@ -159,9 +146,70 @@ class constants$54 {
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_intersection_with_shape$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_intersection_with_shape",
-        constants$54.RprQueryPipeline_intersection_with_shape$FUNC
+    static final MethodHandle RprQueryPipeline_cast_ray_and_get_normal$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_cast_ray_and_get_normal",
+        constants$54.RprQueryPipeline_cast_ray_and_get_normal$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_cast_shape$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z"),
+                Constants$root.C_FLOAT$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
+            MemoryLayout.paddingLayout(56),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_cast_shape$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_cast_shape",
+        constants$54.RprQueryPipeline_cast_shape$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
 }
 

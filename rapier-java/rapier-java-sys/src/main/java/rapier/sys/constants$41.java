@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$41 {
 
+    static final FunctionDescriptor RprGenericJoint_local_anchor1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_anchor1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor1",
+        constants$41.RprGenericJoint_local_anchor1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_anchor2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_anchor2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor2",
+        constants$41.RprGenericJoint_local_anchor2$FUNC
+    );
     static final FunctionDescriptor RprGenericJoint_local_axis1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("x"),
         Constants$root.C_FLOAT$LAYOUT.withName("y")
@@ -60,21 +80,6 @@ class constants$41 {
     static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_local_frame2",
         constants$41.RprGenericJoint_local_frame2$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_lock_axes",
-        constants$41.RprGenericJoint_lock_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_locked_axes",
-        constants$41.RprGenericJoint_locked_axes$FUNC
     );
 }
 

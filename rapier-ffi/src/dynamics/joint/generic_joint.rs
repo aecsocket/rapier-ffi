@@ -274,9 +274,62 @@ pub unsafe extern "C" fn RprGenericJoint_drop(this: *mut RprGenericJoint) {
 
 #[no_mangle]
 pub unsafe extern "C" fn RprGenericJoint_locked_axes(
-    this: *mut RprGenericJoint,
+    this: *const RprGenericJoint,
 ) -> RprJointAxesMask {
-    this.get_mut().0.locked_axes.bits()
+    this.get().0.locked_axes.bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_locked_axes(
+    this: *mut RprGenericJoint,
+    value: RprJointAxesMask,
+) {
+    this.get_mut().0.locked_axes = joint_axes_mask_from(value)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_limit_axes(
+    this: *const RprGenericJoint,
+) -> RprJointAxesMask {
+    this.get().0.limit_axes.bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_limit_axes(
+    this: *mut RprGenericJoint,
+    value: RprJointAxesMask,
+) {
+    this.get_mut().0.limit_axes = joint_axes_mask_from(value)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_motor_axes(
+    this: *const RprGenericJoint,
+) -> RprJointAxesMask {
+    this.get().0.motor_axes.bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_motor_axes(
+    this: *mut RprGenericJoint,
+    value: RprJointAxesMask,
+) {
+    this.get_mut().0.motor_axes = joint_axes_mask_from(value)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_coupled_axes(
+    this: *const RprGenericJoint,
+) -> RprJointAxesMask {
+    this.get().0.coupled_axes.bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_coupled_axes(
+    this: *mut RprGenericJoint,
+    value: RprJointAxesMask,
+) {
+    this.get_mut().0.coupled_axes = joint_axes_mask_from(value)
 }
 
 #[no_mangle]

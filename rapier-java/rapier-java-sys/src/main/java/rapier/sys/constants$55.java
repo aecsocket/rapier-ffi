@@ -9,77 +9,83 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$55 {
 
-    static final FunctionDescriptor RprQueryPipeline_intersections_with_point$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
         ).withName("RprArenaKey")
     );
-    static final MethodHandle RprQueryPipeline_intersections_with_point$callback$MH = RuntimeHelper.downcallHandle(
-        constants$55.RprQueryPipeline_intersections_with_point$callback$FUNC
+    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$MH = RuntimeHelper.downcallHandle(
+        constants$55.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_intersections_with_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprQueryPipeline_intersections_with_point$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_intersections_with_point",
-        constants$55.RprQueryPipeline_intersections_with_point$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_intersections_with_shape$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprQueryPipeline_intersections_with_shape$callback$MH = RuntimeHelper.downcallHandle(
-        constants$55.RprQueryPipeline_intersections_with_shape$callback$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_intersections_with_shape$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("re"),
-                Constants$root.C_FLOAT$LAYOUT.withName("im")
-            ).withName("rotation"),
             MemoryLayout.structLayout(
                 Constants$root.C_FLOAT$LAYOUT.withName("x"),
                 Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry"),
+            ).withName("min"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("max")
+        ).withName("RprAabb"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_colliders_with_aabb_intersecting_aabb",
+        constants$55.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_drop",
+        constants$55.RprQueryPipeline_drop$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("collider"),
+            Constants$root.C_FLOAT$LAYOUT.withName("toi"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("normal"),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("tag"),
+                MemoryLayout.unionLayout(
+                    MemoryLayout.structLayout(
+                        Constants$root.C_INT$LAYOUT.withName("id")
+                    ).withName("vertex"),
+                    MemoryLayout.structLayout(
+                        Constants$root.C_INT$LAYOUT.withName("id")
+                    ).withName("face")
+                ).withName("$anon$0")
+            ).withName("feature")
+        ).withName("RprComplexRayResult")
+    );
+    static final MethodHandle RprQueryPipeline_intersection_with_ray$callback$MH = RuntimeHelper.downcallHandle(
+        constants$55.RprQueryPipeline_intersection_with_ray$callback$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("origin"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("dir")
+        ).withName("RprRay"),
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("flags"),
             Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
@@ -106,9 +112,9 @@ class constants$55 {
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_intersections_with_shape$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_intersections_with_shape",
-        constants$55.RprQueryPipeline_intersections_with_shape$FUNC
+    static final MethodHandle RprQueryPipeline_intersection_with_ray$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_intersection_with_ray",
+        constants$55.RprQueryPipeline_intersection_with_ray$FUNC
     );
 }
 
