@@ -4092,6 +4092,17 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprQueryFilter_default$MH() {
+        return RuntimeHelper.requireNonNull(constants$54.RprQueryFilter_default$MH,"RprQueryFilter_default");
+    }
+    public static MemorySegment RprQueryFilter_default ( SegmentAllocator allocator) {
+        var mh$ = RprQueryFilter_default$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprQueryPipeline_cast_ray$MH() {
         return RuntimeHelper.requireNonNull(constants$54.RprQueryPipeline_cast_ray$MH,"RprQueryPipeline_cast_ray");
     }
@@ -4148,7 +4159,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprQueryPipeline_intersection_with_ray$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.RprQueryPipeline_intersection_with_ray$MH,"RprQueryPipeline_intersection_with_ray");
+        return RuntimeHelper.requireNonNull(constants$56.RprQueryPipeline_intersection_with_ray$MH,"RprQueryPipeline_intersection_with_ray");
     }
     public static void RprQueryPipeline_intersection_with_ray ( Addressable this_,  Addressable bodies,  Addressable colliders,  MemorySegment ray,  double max_toi,  boolean solid,  MemorySegment filter,  Addressable callback) {
         var mh$ = RprQueryPipeline_intersection_with_ray$MH();
@@ -4202,6 +4213,17 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle RprQueryPipeline_nonlinear_cast_shape$MH() {
+        return RuntimeHelper.requireNonNull(constants$57.RprQueryPipeline_nonlinear_cast_shape$MH,"RprQueryPipeline_nonlinear_cast_shape");
+    }
+    public static boolean RprQueryPipeline_nonlinear_cast_shape ( Addressable this_,  Addressable bodies,  Addressable colliders,  MemorySegment shape_motion,  Addressable shape,  double start_time,  double end_time,  boolean stop_at_penetration,  MemorySegment filter,  Addressable out) {
+        var mh$ = RprQueryPipeline_nonlinear_cast_shape$MH();
+        try {
+            return (boolean)mh$.invokeExact(this_, bodies, colliders, shape_motion, shape, start_time, end_time, stop_at_penetration, filter, out);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle RprQueryPipeline_project_point$MH() {
         return RuntimeHelper.requireNonNull(constants$57.RprQueryPipeline_project_point$MH,"RprQueryPipeline_project_point");
     }
@@ -4224,19 +4246,8 @@ public class RapierC  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle RprQuerypipeline_nonlinear_cast_shape$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.RprQuerypipeline_nonlinear_cast_shape$MH,"RprQuerypipeline_nonlinear_cast_shape");
-    }
-    public static boolean RprQuerypipeline_nonlinear_cast_shape ( Addressable this_,  Addressable bodies,  Addressable colliders,  MemorySegment shape_motion,  Addressable shape,  double start_time,  double end_time,  boolean stop_at_penetration,  MemorySegment filter,  Addressable out) {
-        var mh$ = RprQuerypipeline_nonlinear_cast_shape$MH();
-        try {
-            return (boolean)mh$.invokeExact(this_, bodies, colliders, shape_motion, shape, start_time, end_time, stop_at_penetration, filter, out);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle RprRigidBodyActivation_angular_threshold$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.RprRigidBodyActivation_angular_threshold$MH,"RprRigidBodyActivation_angular_threshold");
+        return RuntimeHelper.requireNonNull(constants$58.RprRigidBodyActivation_angular_threshold$MH,"RprRigidBodyActivation_angular_threshold");
     }
     public static double RprRigidBodyActivation_angular_threshold ( Addressable this_) {
         var mh$ = RprRigidBodyActivation_angular_threshold$MH();
@@ -4302,7 +4313,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyActivation_set_time_until_sleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.RprRigidBodyActivation_set_time_until_sleep$MH,"RprRigidBodyActivation_set_time_until_sleep");
+        return RuntimeHelper.requireNonNull(constants$59.RprRigidBodyActivation_set_time_until_sleep$MH,"RprRigidBodyActivation_set_time_until_sleep");
     }
     public static void RprRigidBodyActivation_set_time_until_sleep ( Addressable this_,  double value) {
         var mh$ = RprRigidBodyActivation_set_time_until_sleep$MH();
@@ -4368,7 +4379,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_angvel$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.RprRigidBodyBuilder_angvel$MH,"RprRigidBodyBuilder_angvel");
+        return RuntimeHelper.requireNonNull(constants$60.RprRigidBodyBuilder_angvel$MH,"RprRigidBodyBuilder_angvel");
     }
     public static void RprRigidBodyBuilder_angvel ( Addressable this_,  MemorySegment angvel) {
         var mh$ = RprRigidBodyBuilder_angvel$MH();
@@ -4434,7 +4445,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_dynamic$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.RprRigidBodyBuilder_dynamic$MH,"RprRigidBodyBuilder_dynamic");
+        return RuntimeHelper.requireNonNull(constants$61.RprRigidBodyBuilder_dynamic$MH,"RprRigidBodyBuilder_dynamic");
     }
     public static MemoryAddress RprRigidBodyBuilder_dynamic () {
         var mh$ = RprRigidBodyBuilder_dynamic$MH();
@@ -4500,7 +4511,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_linear_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.RprRigidBodyBuilder_linear_damping$MH,"RprRigidBodyBuilder_linear_damping");
+        return RuntimeHelper.requireNonNull(constants$62.RprRigidBodyBuilder_linear_damping$MH,"RprRigidBodyBuilder_linear_damping");
     }
     public static void RprRigidBodyBuilder_linear_damping ( Addressable this_,  double factor) {
         var mh$ = RprRigidBodyBuilder_linear_damping$MH();
@@ -4566,7 +4577,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyBuilder_translation$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.RprRigidBodyBuilder_translation$MH,"RprRigidBodyBuilder_translation");
+        return RuntimeHelper.requireNonNull(constants$63.RprRigidBodyBuilder_translation$MH,"RprRigidBodyBuilder_translation");
     }
     public static void RprRigidBodyBuilder_translation ( Addressable this_,  MemorySegment translation) {
         var mh$ = RprRigidBodyBuilder_translation$MH();
@@ -4632,7 +4643,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodySet_insert$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
+        return RuntimeHelper.requireNonNull(constants$64.RprRigidBodySet_insert$MH,"RprRigidBodySet_insert");
     }
     public static MemorySegment RprRigidBodySet_insert ( SegmentAllocator allocator,  Addressable this_,  Addressable rb) {
         var mh$ = RprRigidBodySet_insert$MH();
@@ -4698,7 +4709,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBodyVec_handle$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.RprRigidBodyVec_handle$MH,"RprRigidBodyVec_handle");
+        return RuntimeHelper.requireNonNull(constants$65.RprRigidBodyVec_handle$MH,"RprRigidBodyVec_handle");
     }
     public static MemorySegment RprRigidBodyVec_handle ( SegmentAllocator allocator,  Addressable this_,  long index) {
         var mh$ = RprRigidBodyVec_handle$MH();
@@ -4764,7 +4775,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_add_force_at_point$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
+        return RuntimeHelper.requireNonNull(constants$66.RprRigidBody_add_force_at_point$MH,"RprRigidBody_add_force_at_point");
     }
     public static void RprRigidBody_add_force_at_point ( Addressable this_,  MemorySegment force,  MemorySegment point,  boolean wake_up) {
         var mh$ = RprRigidBody_add_force_at_point$MH();
@@ -4830,7 +4841,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_apply_torque_impulse$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
+        return RuntimeHelper.requireNonNull(constants$67.RprRigidBody_apply_torque_impulse$MH,"RprRigidBody_apply_torque_impulse");
     }
     public static void RprRigidBody_apply_torque_impulse ( Addressable this_,  MemorySegment torque_impulse,  boolean wake_up) {
         var mh$ = RprRigidBody_apply_torque_impulse$MH();
@@ -4896,7 +4907,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_effective_dominance_group$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.RprRigidBody_effective_dominance_group$MH,"RprRigidBody_effective_dominance_group");
+        return RuntimeHelper.requireNonNull(constants$68.RprRigidBody_effective_dominance_group$MH,"RprRigidBody_effective_dominance_group");
     }
     public static short RprRigidBody_effective_dominance_group ( Addressable this_) {
         var mh$ = RprRigidBody_effective_dominance_group$MH();
@@ -4962,7 +4973,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_dynamic$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.RprRigidBody_is_dynamic$MH,"RprRigidBody_is_dynamic");
+        return RuntimeHelper.requireNonNull(constants$69.RprRigidBody_is_dynamic$MH,"RprRigidBody_is_dynamic");
     }
     public static boolean RprRigidBody_is_dynamic ( Addressable this_) {
         var mh$ = RprRigidBody_is_dynamic$MH();
@@ -5028,7 +5039,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_is_translation_locked$MH() {
-        return RuntimeHelper.requireNonNull(constants$69.RprRigidBody_is_translation_locked$MH,"RprRigidBody_is_translation_locked");
+        return RuntimeHelper.requireNonNull(constants$70.RprRigidBody_is_translation_locked$MH,"RprRigidBody_is_translation_locked");
     }
     public static boolean RprRigidBody_is_translation_locked ( Addressable this_) {
         var mh$ = RprRigidBody_is_translation_locked$MH();
@@ -5094,7 +5105,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_locked_axes$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.RprRigidBody_locked_axes$MH,"RprRigidBody_locked_axes");
+        return RuntimeHelper.requireNonNull(constants$71.RprRigidBody_locked_axes$MH,"RprRigidBody_locked_axes");
     }
     public static byte RprRigidBody_locked_axes ( Addressable this_) {
         var mh$ = RprRigidBody_locked_axes$MH();
@@ -5160,7 +5171,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_reset_forces$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.RprRigidBody_reset_forces$MH,"RprRigidBody_reset_forces");
+        return RuntimeHelper.requireNonNull(constants$72.RprRigidBody_reset_forces$MH,"RprRigidBody_reset_forces");
     }
     public static void RprRigidBody_reset_forces ( Addressable this_,  boolean wake_up) {
         var mh$ = RprRigidBody_reset_forces$MH();
@@ -5226,7 +5237,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_body_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.RprRigidBody_set_body_type$MH,"RprRigidBody_set_body_type");
+        return RuntimeHelper.requireNonNull(constants$73.RprRigidBody_set_body_type$MH,"RprRigidBody_set_body_type");
     }
     public static void RprRigidBody_set_body_type ( Addressable this_,  int status,  boolean wake_up) {
         var mh$ = RprRigidBody_set_body_type$MH();
@@ -5292,7 +5303,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_linear_damping$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.RprRigidBody_set_linear_damping$MH,"RprRigidBody_set_linear_damping");
+        return RuntimeHelper.requireNonNull(constants$74.RprRigidBody_set_linear_damping$MH,"RprRigidBody_set_linear_damping");
     }
     public static void RprRigidBody_set_linear_damping ( Addressable this_,  double damping) {
         var mh$ = RprRigidBody_set_linear_damping$MH();
@@ -5358,7 +5369,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_set_position$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
+        return RuntimeHelper.requireNonNull(constants$75.RprRigidBody_set_position$MH,"RprRigidBody_set_position");
     }
     public static void RprRigidBody_set_position ( Addressable this_,  MemorySegment pos,  boolean wake_up) {
         var mh$ = RprRigidBody_set_position$MH();
@@ -5424,7 +5435,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprRigidBody_user_torque$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
+        return RuntimeHelper.requireNonNull(constants$76.RprRigidBody_user_torque$MH,"RprRigidBody_user_torque");
     }
     public static MemorySegment RprRigidBody_user_torque ( SegmentAllocator allocator,  Addressable this_) {
         var mh$ = RprRigidBody_user_torque$MH();
@@ -5490,7 +5501,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_compound$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.RprSharedShape_compound$MH,"RprSharedShape_compound");
+        return RuntimeHelper.requireNonNull(constants$77.RprSharedShape_compound$MH,"RprSharedShape_compound");
     }
     public static MemoryAddress RprSharedShape_compound ( Addressable shapes_data,  long shapes_len) {
         var mh$ = RprSharedShape_compound$MH();
@@ -5556,7 +5567,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_halfspace$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.RprSharedShape_halfspace$MH,"RprSharedShape_halfspace");
+        return RuntimeHelper.requireNonNull(constants$78.RprSharedShape_halfspace$MH,"RprSharedShape_halfspace");
     }
     public static MemoryAddress RprSharedShape_halfspace ( MemorySegment outward_normal) {
         var mh$ = RprSharedShape_halfspace$MH();
@@ -5622,7 +5633,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSharedShape_round_cuboid$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.RprSharedShape_round_cuboid$MH,"RprSharedShape_round_cuboid");
+        return RuntimeHelper.requireNonNull(constants$79.RprSharedShape_round_cuboid$MH,"RprSharedShape_round_cuboid");
     }
     public static MemoryAddress RprSharedShape_round_cuboid ( double hx,  double hy,  double border_radius) {
         var mh$ = RprSharedShape_round_cuboid$MH();
@@ -5688,7 +5699,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSolverContact_dist$MH() {
-        return RuntimeHelper.requireNonNull(constants$79.RprSolverContact_dist$MH,"RprSolverContact_dist");
+        return RuntimeHelper.requireNonNull(constants$80.RprSolverContact_dist$MH,"RprSolverContact_dist");
     }
     public static double RprSolverContact_dist ( Addressable this_) {
         var mh$ = RprSolverContact_dist$MH();
@@ -5754,7 +5765,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprSolverContact_set_dist$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.RprSolverContact_set_dist$MH,"RprSolverContact_set_dist");
+        return RuntimeHelper.requireNonNull(constants$81.RprSolverContact_set_dist$MH,"RprSolverContact_set_dist");
     }
     public static void RprSolverContact_set_dist ( Addressable this_,  double value) {
         var mh$ = RprSolverContact_set_dist$MH();
@@ -5820,7 +5831,7 @@ public class RapierC  {
         }
     }
     public static MethodHandle RprVHACDParameters_default$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.RprVHACDParameters_default$MH,"RprVHACDParameters_default");
+        return RuntimeHelper.requireNonNull(constants$82.RprVHACDParameters_default$MH,"RprVHACDParameters_default");
     }
     public static MemorySegment RprVHACDParameters_default ( SegmentAllocator allocator) {
         var mh$ = RprVHACDParameters_default$MH();

@@ -9,6 +9,11 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$61 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_dynamic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_dynamic",
+        constants$61.RprRigidBodyBuilder_dynamic$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -39,14 +44,6 @@ class constants$61 {
     static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_kinematic_velocity_based",
         constants$61.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linear_damping",
-        constants$61.RprRigidBodyBuilder_linear_damping$FUNC
     );
 }
 

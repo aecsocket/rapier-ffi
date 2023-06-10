@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$69 {
 
+    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_dynamic",
+        constants$69.RprRigidBody_is_dynamic$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -44,13 +51,6 @@ class constants$69 {
     static final MethodHandle RprRigidBody_is_sleeping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_sleeping",
         constants$69.RprRigidBody_is_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_translation_locked$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_translation_locked$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_translation_locked",
-        constants$69.RprRigidBody_is_translation_locked$FUNC
     );
 }
 

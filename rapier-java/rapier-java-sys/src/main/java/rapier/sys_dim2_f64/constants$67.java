@@ -9,6 +9,17 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$67 {
 
+    static final FunctionDescriptor RprRigidBody_apply_torque_impulse$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x")
+        ).withName("RprAngVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_apply_torque_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_apply_torque_impulse",
+        constants$67.RprRigidBody_apply_torque_impulse$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -48,13 +59,6 @@ class constants$67 {
     static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_drop",
         constants$67.RprRigidBody_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_effective_dominance_group",
-        constants$67.RprRigidBody_effective_dominance_group$FUNC
     );
 }
 

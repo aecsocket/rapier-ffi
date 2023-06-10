@@ -40,22 +40,23 @@ pub struct RprQueryFilter {
     pub exclude_collider: RprColliderHandle,
     pub has_exclude_rigid_body: bool,
     pub exclude_rigid_body: RprRigidBodyHandle,
-    pub has_predicate: bool,
-    pub predicate: extern "C" fn(RprColliderHandle, *const RprCollider) -> bool,
+    pub predicate: *const extern "C" fn(RprColliderHandle, *const RprCollider) -> bool,
 }
 
 // haha this is so complicated
 impl RprQueryFilter {
-    pub fn predicate(&self) -> Option<Box<dyn Fn(ColliderHandle, &Collider) -> bool>> {
-        let predicate = self.predicate.clone();
-        match self.has_predicate {
-            false => None,
-            true => Some(Box::new(move |handle, coll| {
-                (predicate)(
-                    RprColliderHandle::from_raw(handle.0),
-                    coll as *const Collider as *const RprCollider,
-                )
-            })),
+    pub unsafe fn predicate(&self) -> Option<Box<dyn Fn(ColliderHandle, &Collider) -> bool>> {
+        match self.predicate.as_ref() {
+            None => None,
+            Some(t) => {
+                let predicate = (*t).clone();
+                Some(Box::new(move |handle, coll| {
+                    (predicate)(
+                        RprColliderHandle::from_raw(handle.0),
+                        coll as *const Collider as *const RprCollider,
+                    )
+                }))
+            }
         }
     }
 
@@ -80,6 +81,26 @@ impl RprQueryFilter {
             predicate: predicate.as_ref().map(|b| b.as_ref()),
         }
     }
+}
+
+impl Default for RprQueryFilter {
+    fn default() -> Self {
+        Self {
+            flags: 0,
+            has_groups: false,
+            groups: RprInteractionGroups::default(),
+            has_exclude_collider: false,
+            exclude_collider: RprColliderHandle::invalid(),
+            has_exclude_rigid_body: false,
+            exclude_rigid_body: RprRigidBodyHandle::invalid(),
+            predicate: std::ptr::null(),
+        }
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryFilter_default() -> RprQueryFilter {
+    RprQueryFilter::default()
 }
 
 #[repr(C)]
@@ -164,7 +185,7 @@ pub struct RprComplexPointProject {
     pub collider: RprColliderHandle,
     pub is_inside: bool,
     pub point: RprVector,
-    pub feature_id: RprFeatureId,
+    pub feature: RprFeatureId,
 }
 
 impl RprComplexPointProject {
@@ -173,7 +194,7 @@ impl RprComplexPointProject {
             collider: RprColliderHandle::from_raw(raw.0 .0),
             is_inside: raw.1.is_inside,
             point: RprVector::from_point(raw.1.point),
-            feature_id: RprFeatureId::from_raw(raw.2),
+            feature: RprFeatureId::from_raw(raw.2),
         }
     }
 }
@@ -526,7 +547,7 @@ pub unsafe extern "C" fn RprQueryPipeline_cast_shape(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprQuerypipeline_nonlinear_cast_shape(
+pub unsafe extern "C" fn RprQueryPipeline_nonlinear_cast_shape(
     this: *const RprQueryPipeline,
     bodies: *const RprRigidBodySet,
     colliders: *const RprColliderSet,

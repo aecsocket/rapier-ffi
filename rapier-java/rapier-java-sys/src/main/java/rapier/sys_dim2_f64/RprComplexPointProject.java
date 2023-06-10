@@ -30,7 +30,7 @@ public class RprComplexPointProject {
                     Constants$root.C_INT$LAYOUT.withName("id")
                 ).withName("face")
             ).withName("$anon$0")
-        ).withName("feature_id")
+        ).withName("feature")
     ).withName("RprComplexPointProject");
     public static MemoryLayout $LAYOUT() {
         return RprComplexPointProject.$struct$LAYOUT;
@@ -57,7 +57,7 @@ public class RprComplexPointProject {
     public static MemorySegment point$slice(MemorySegment seg) {
         return seg.asSlice(16, 16);
     }
-    public static MemorySegment feature_id$slice(MemorySegment seg) {
+    public static MemorySegment feature$slice(MemorySegment seg) {
         return seg.asSlice(32, 8);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }

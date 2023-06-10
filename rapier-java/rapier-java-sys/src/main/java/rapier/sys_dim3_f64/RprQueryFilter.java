@@ -29,8 +29,6 @@ public class RprQueryFilter {
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
         ).withName("exclude_rigid_body"),
-        Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
-        MemoryLayout.paddingLayout(56),
         Constants$root.C_POINTER$LAYOUT.withName("predicate")
     ).withName("RprQueryFilter");
     public static MemoryLayout $LAYOUT() {
@@ -108,22 +106,6 @@ public class RprQueryFilter {
     }
     public static MemorySegment exclude_rigid_body$slice(MemorySegment seg) {
         return seg.asSlice(32, 8);
-    }
-    static final VarHandle has_predicate$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("has_predicate"));
-    public static VarHandle has_predicate$VH() {
-        return RprQueryFilter.has_predicate$VH;
-    }
-    public static boolean has_predicate$get(MemorySegment seg) {
-        return (boolean)RprQueryFilter.has_predicate$VH.get(seg);
-    }
-    public static void has_predicate$set( MemorySegment seg, boolean x) {
-        RprQueryFilter.has_predicate$VH.set(seg, x);
-    }
-    public static boolean has_predicate$get(MemorySegment seg, long index) {
-        return (boolean)RprQueryFilter.has_predicate$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void has_predicate$set(MemorySegment seg, long index, boolean x) {
-        RprQueryFilter.has_predicate$VH.set(seg.asSlice(index*sizeof()), x);
     }
     static final FunctionDescriptor predicate$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         MemoryLayout.structLayout(

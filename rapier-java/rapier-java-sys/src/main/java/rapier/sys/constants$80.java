@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$80 {
 
+    static final FunctionDescriptor RprSolverContact_dist$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_dist$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_dist",
+        constants$80.RprSolverContact_dist$FUNC
+    );
     static final FunctionDescriptor RprSolverContact_friction$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -46,14 +53,6 @@ class constants$80 {
     static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_restitution",
         constants$80.RprSolverContact_restitution$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_dist$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_dist$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_dist",
-        constants$80.RprSolverContact_set_dist$FUNC
     );
 }
 

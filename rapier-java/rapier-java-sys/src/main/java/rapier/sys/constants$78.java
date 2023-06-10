@@ -9,6 +9,16 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$78 {
 
+    static final FunctionDescriptor RprSharedShape_halfspace$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_halfspace$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_halfspace",
+        constants$78.RprSharedShape_halfspace$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_polyline$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
@@ -57,15 +67,6 @@ class constants$78 {
     static final MethodHandle RprSharedShape_round_convex_hull$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_round_convex_hull",
         constants$78.RprSharedShape_round_convex_hull$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_cuboid",
-        constants$78.RprSharedShape_round_cuboid$FUNC
     );
 }
 

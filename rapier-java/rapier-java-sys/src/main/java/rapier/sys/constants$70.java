@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$70 {
 
+    static final FunctionDescriptor RprRigidBody_is_translation_locked$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_translation_locked$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_translation_locked",
+        constants$70.RprRigidBody_is_translation_locked$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_kinetic_energy$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -50,13 +57,6 @@ class constants$70 {
     static final MethodHandle RprRigidBody_lock_translations$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_lock_translations",
         constants$70.RprRigidBody_lock_translations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_locked_axes",
-        constants$70.RprRigidBody_locked_axes$FUNC
     );
 }
 

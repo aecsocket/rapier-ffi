@@ -17,7 +17,7 @@ public interface RprQueryPipeline_intersections_with_shape$callback {
         MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
         return (java.lang.foreign.MemorySegment __x0) -> {
             try {
-                return (boolean)constants$56.RprQueryPipeline_intersections_with_shape$callback$MH.invokeExact((Addressable)symbol, __x0);
+                return (boolean)constants$57.RprQueryPipeline_intersections_with_shape$callback$MH.invokeExact((Addressable)symbol, __x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

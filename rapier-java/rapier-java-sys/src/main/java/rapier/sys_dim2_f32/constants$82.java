@@ -9,6 +9,31 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$82 {
 
+    static final FunctionDescriptor RprVHACDParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("concavity"),
+        Constants$root.C_FLOAT$LAYOUT.withName("alpha"),
+        Constants$root.C_FLOAT$LAYOUT.withName("beta"),
+        Constants$root.C_INT$LAYOUT.withName("resolution"),
+        Constants$root.C_INT$LAYOUT.withName("plane_downsampling"),
+        Constants$root.C_INT$LAYOUT.withName("convex_hull_downsampling"),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("tag"),
+            MemoryLayout.unionLayout(
+                MemoryLayout.structLayout(
+                    Constants$root.C_BOOL$LAYOUT.withName("detect_cavities"),
+                    Constants$root.C_BOOL$LAYOUT.withName("detect_self_intersections")
+                ).withName("flood_fill")
+            ).withName("$anon$0"),
+            MemoryLayout.paddingLayout(16)
+        ).withName("fill_mode"),
+        Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
+        MemoryLayout.paddingLayout(24),
+        Constants$root.C_INT$LAYOUT.withName("max_convex_hulls")
+    ).withName("RprVHACDParameters"));
+    static final MethodHandle RprVHACDParameters_default$MH = RuntimeHelper.downcallHandle(
+        "RprVHACDParameters_default",
+        constants$82.RprVHACDParameters_default$FUNC
+    );
     static final FunctionDescriptor RprVHACD_decompose$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,

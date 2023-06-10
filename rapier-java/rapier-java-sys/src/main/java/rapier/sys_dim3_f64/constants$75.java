@@ -9,6 +9,27 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$75 {
 
+    static final FunctionDescriptor RprRigidBody_set_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_position",
+        constants$75.RprRigidBody_set_position$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_set_rotation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -64,17 +85,6 @@ class constants$75 {
     static final MethodHandle RprRigidBody_user_force$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_user_force",
         constants$75.RprRigidBody_user_force$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_user_torque$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprAngVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_user_torque$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_user_torque",
-        constants$75.RprRigidBody_user_torque$FUNC
     );
 }
 

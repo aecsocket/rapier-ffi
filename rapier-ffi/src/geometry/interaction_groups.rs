@@ -7,7 +7,7 @@ pub fn group_from(rpr: RprGroup) -> Group {
 }
 
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Default)]
 pub struct RprInteractionGroups {
     pub memberships: RprGroup,
     pub filter: RprGroup,

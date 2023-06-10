@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$68 {
 
+    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_effective_dominance_group",
+        constants$68.RprRigidBody_effective_dominance_group$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_enable_ccd$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -50,13 +57,6 @@ class constants$68 {
     static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_ccd_enabled",
         constants$68.RprRigidBody_is_ccd_enabled$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_dynamic",
-        constants$68.RprRigidBody_is_dynamic$FUNC
     );
 }
 

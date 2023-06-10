@@ -9,6 +9,17 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$76 {
 
+    static final FunctionDescriptor RprRigidBody_user_torque$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprAngVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_user_torque$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_user_torque",
+        constants$76.RprRigidBody_user_torque$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_velocity_at_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("x"),
         Constants$root.C_FLOAT$LAYOUT.withName("y"),
@@ -63,14 +74,6 @@ class constants$76 {
     static final MethodHandle RprSharedShape_capsule$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_capsule",
         constants$76.RprSharedShape_capsule$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_compound$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_compound$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_compound",
-        constants$76.RprSharedShape_compound$FUNC
     );
 }
 

@@ -9,6 +9,13 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$71 {
 
+    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_locked_axes",
+        constants$71.RprRigidBody_locked_axes$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -72,14 +79,6 @@ class constants$71 {
     static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_recompute_mass_properties_from_colliders",
         constants$71.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_reset_forces$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_reset_forces$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_reset_forces",
-        constants$71.RprRigidBody_reset_forces$FUNC
     );
 }
 

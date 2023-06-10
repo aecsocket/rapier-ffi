@@ -53,6 +53,32 @@ class constants$54 {
         "RprPhysicsPipeline_step_all",
         constants$54.RprPhysicsPipeline_step_all$FUNC
     );
+    static final FunctionDescriptor RprQueryFilter_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("flags"),
+        Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+        MemoryLayout.paddingLayout(24),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("memberships"),
+            Constants$root.C_INT$LAYOUT.withName("filter")
+        ).withName("groups"),
+        Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+        MemoryLayout.paddingLayout(24),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("exclude_collider"),
+        Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+        MemoryLayout.paddingLayout(24),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("exclude_rigid_body"),
+        Constants$root.C_POINTER$LAYOUT.withName("predicate")
+    ).withName("RprQueryFilter"));
+    static final MethodHandle RprQueryFilter_default$MH = RuntimeHelper.downcallHandle(
+        "RprQueryFilter_default",
+        constants$54.RprQueryFilter_default$FUNC
+    );
     static final FunctionDescriptor RprQueryPipeline_cast_ray$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -89,8 +115,6 @@ class constants$54 {
                 Constants$root.C_INT$LAYOUT.withName("index"),
                 Constants$root.C_INT$LAYOUT.withName("generation")
             ).withName("exclude_rigid_body"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
-            MemoryLayout.paddingLayout(56),
             Constants$root.C_POINTER$LAYOUT.withName("predicate")
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
@@ -135,8 +159,6 @@ class constants$54 {
                 Constants$root.C_INT$LAYOUT.withName("index"),
                 Constants$root.C_INT$LAYOUT.withName("generation")
             ).withName("exclude_rigid_body"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
-            MemoryLayout.paddingLayout(56),
             Constants$root.C_POINTER$LAYOUT.withName("predicate")
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
@@ -186,8 +208,6 @@ class constants$54 {
                 Constants$root.C_INT$LAYOUT.withName("index"),
                 Constants$root.C_INT$LAYOUT.withName("generation")
             ).withName("exclude_rigid_body"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_predicate"),
-            MemoryLayout.paddingLayout(56),
             Constants$root.C_POINTER$LAYOUT.withName("predicate")
         ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
@@ -195,12 +215,6 @@ class constants$54 {
     static final MethodHandle RprQueryPipeline_cast_shape$MH = RuntimeHelper.downcallHandle(
         "RprQueryPipeline_cast_shape",
         constants$54.RprQueryPipeline_cast_shape$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
     );
 }
 

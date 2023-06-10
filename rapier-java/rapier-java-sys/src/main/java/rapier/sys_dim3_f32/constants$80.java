@@ -9,6 +9,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$80 {
 
+    static final FunctionDescriptor RprSharedShape_round_cylinder$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_round_cylinder$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_round_cylinder",
+        constants$80.RprSharedShape_round_cylinder$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_round_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
@@ -85,13 +94,6 @@ class constants$80 {
     static final MethodHandle RprSharedShape_trimesh$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_trimesh",
         constants$80.RprSharedShape_trimesh$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_dist$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_dist$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_dist",
-        constants$80.RprSolverContact_dist$FUNC
     );
 }
 

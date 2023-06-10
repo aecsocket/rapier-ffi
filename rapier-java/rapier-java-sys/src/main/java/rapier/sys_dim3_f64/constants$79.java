@@ -9,6 +9,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$79 {
 
+    static final FunctionDescriptor RprSharedShape_round_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_round_cone$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_round_cone",
+        constants$79.RprSharedShape_round_cone$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_round_convex_decomposition$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
@@ -61,15 +70,6 @@ class constants$79 {
     static final MethodHandle RprSharedShape_round_cuboid$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_round_cuboid",
         constants$79.RprSharedShape_round_cuboid$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_cylinder$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_cylinder$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_cylinder",
-        constants$79.RprSharedShape_round_cylinder$FUNC
     );
 }
 
