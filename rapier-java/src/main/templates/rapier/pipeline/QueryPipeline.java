@@ -16,6 +16,7 @@ import rapier.sys.*;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -56,6 +57,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
     }
 
     public @Nullable SimpleRayResult castRay(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Ray ray,
@@ -63,23 +65,22 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = SimpleRayResult.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_cast_ray(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    ray.memory(),
-                    maxToi,
-                    solid,
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = SimpleRayResult.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_cast_ray(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                ray.memory(),
+                maxToi,
+                solid,
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public @Nullable ComplexRayResult castRayAndGetNormal(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Ray ray,
@@ -87,20 +88,18 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = ComplexRayResult.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_cast_ray_and_get_normal(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    ray.memory(),
-                    maxToi,
-                    solid,
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = ComplexRayResult.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_cast_ray_and_get_normal(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                ray.memory(),
+                maxToi,
+                solid,
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public void intersectionWithRay(
@@ -129,47 +128,45 @@ public final class QueryPipeline extends RefNative implements Droppable {
     }
 
     public @Nullable Long intersectionWithShape(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Isometry shapePos,
             SharedShape shape,
             QueryFilter filter
-    ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocate(C_LONG, 0);
-            if ({{ sys }}.RapierC.RprQueryPipeline_intersection_with_shape(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    shapePos.memory(),
-                    shape.memory(),
-                    filter.memory(),
-                    res
-            )) return ArenaKey.pack(res);
-            return null;
-        }
+) {
+        var res = alloc.allocate(C_LONG, 0);
+        if ({{ sys }}.RapierC.RprQueryPipeline_intersection_with_shape(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                shapePos.memory(),
+                shape.memory(),
+                filter.memory(),
+                res
+        )) return ArenaKey.pack(res);
+        return null;
     }
 
     public @Nullable SimplePointProject projectPoint(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Vector point,
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = SimplePointProject.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_project_point(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    point.memory(),
-                    solid,
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = SimplePointProject.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_project_point(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                point.memory(),
+                solid,
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public void intersectionsWithPoint(
@@ -194,23 +191,22 @@ public final class QueryPipeline extends RefNative implements Droppable {
     }
 
     public @Nullable ComplexPointProject projectPointAndGetFeature(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Vector point,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = ComplexPointProject.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_project_point_and_get_feature(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    point.memory(),
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = ComplexPointProject.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_project_point_and_get_feature(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                point.memory(),
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public void collidersWithAabbIntersectingAabb(
@@ -229,6 +225,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
     }
 
     public @Nullable ShapeCast castShape(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Isometry shapePos,
@@ -238,25 +235,24 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean stopAtPenetration,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = ShapeCast.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_cast_shape(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    shapePos.memory(),
-                    shapeVel.memory(),
-                    shape.memory(),
-                    maxToi,
-                    stopAtPenetration,
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = ShapeCast.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_cast_shape(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                shapePos.memory(),
+                shapeVel.memory(),
+                shape.memory(),
+                maxToi,
+                stopAtPenetration,
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public @Nullable ShapeCast nonlinearCastShape(
+            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             NonlinearRigidMotion shapeMotion,
@@ -266,22 +262,20 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean stopAtPenetration,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var res = ShapeCast.of(arena);
-            if ({{ sys }}.RapierC.RprQueryPipeline_nonlinear_cast_shape(
-                    self,
-                    bodies.memory(),
-                    colliders.memory(),
-                    shapeMotion.memory(),
-                    shape.memory(),
-                    startTime,
-                    endTime,
-                    stopAtPenetration,
-                    filter.memory(),
-                    res.memory()
-            )) return res;
-            return null;
-        }
+        var res = ShapeCast.of(alloc);
+        if ({{ sys }}.RapierC.RprQueryPipeline_nonlinear_cast_shape(
+                self,
+                bodies.memory(),
+                colliders.memory(),
+                shapeMotion.memory(),
+                shape.memory(),
+                startTime,
+                endTime,
+                stopAtPenetration,
+                filter.memory(),
+                res.memory()
+        )) return res;
+        return null;
     }
 
     public void intersectionsWithShape(

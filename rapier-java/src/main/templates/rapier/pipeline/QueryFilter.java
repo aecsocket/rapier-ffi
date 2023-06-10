@@ -78,4 +78,21 @@ public final class QueryFilter extends ValNative {
             }
         }
     }
+
+    public @Nullable Long getExcludeRigidBody() {
+        return RprQueryFilter.has_exclude_rigid_body$get(self)
+                ? ArenaKey.pack(RprQueryFilter.exclude_rigid_body$slice(self))
+                : null;
+    }
+
+    public void setExcludeRigidBody(@Nullable Long value) {
+        if (value == null) {
+            RprQueryFilter.has_exclude_rigid_body$set(self, false);
+        } else {
+            RprQueryFilter.has_exclude_rigid_body$set(self, true);
+            try (var arena = MemorySession.openConfined()) {
+                RprQueryFilter.exclude_rigid_body$slice(self).copyFrom(ArenaKey.unpack(arena, value));
+            }
+        }
+    }
 }
