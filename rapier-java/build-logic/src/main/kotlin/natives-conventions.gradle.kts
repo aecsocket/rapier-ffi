@@ -34,11 +34,14 @@ afterEvaluate {
                 "--features", featureName,           // select the current variant as a crate feature
                 "--profile", buildProfile.cargoName, // profile to build with (determines optimizations, asserts etc.)
                 "--target-dir", targetDir,
+                //"--target", "x86_64-unknown-linux-gnu",
             )
+            //environment["RUSTFLAGS"] = "-Z sanitizer=address -C link-arg=-lasan"
         }.get()
 
         jar {
             dependsOn(assembleNatives)
+            //from("$targetDir/x86_64-unknown-linux-gnu/${buildProfile.outputName}/${nativesExt.libraryFileName.get()}") {
             from("$targetDir/${buildProfile.outputName}/${nativesExt.libraryFileName.get()}") {
                 into("rapier/${nativesExt.outputDirName.get()}")
             }
