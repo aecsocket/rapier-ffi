@@ -8,7 +8,11 @@ public final class ArenaKey {
     public static final long INVALID_KEY = 0xffffffff_ffffffffL;
 
     public static long pack(Addressable memory, long index) {
-        return memory.address().getAtIndex(ValueLayout.JAVA_LONG, index);
+        // RprArenaKey only guarantees alignment to 8 bytes; reading a JAVA_LONG requires 16-byte alignment
+        // therefore we read in two separate passes
+        long kIndex = memory.address().getAtIndex(ValueLayout.JAVA_INT, index * 2);
+        long kGen = memory.address().getAtIndex(ValueLayout.JAVA_INT, index * 2 + 1);
+        return kIndex | (kGen << 32);
     }
 
     public static long pack(Addressable memory) {

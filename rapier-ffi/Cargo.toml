@@ -26,15 +26,19 @@ itertools = "0.10.5"
 rayon = "1.7.0"
 
 parry2d      = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
+#rapier2d     = { path = "../../rapier/crates/rapier2d", optional = true, features = ["simd-stable", "parallel"] }
 rapier2d     = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
 
 parry2d-f64  = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
+#rapier2d-f64 = { path = "../../rapier/crates/rapier2d-f64", optional = true, features = ["simd-stable", "parallel"] }
 rapier2d-f64 = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
 
 parry3d      = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
+#rapier3d     = { path = "../../rapier/crates/rapier3d", optional = true, features = ["simd-stable", "parallel"] }
 rapier3d     = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
 
 parry3d-f64  = { version = "0.13.4", optional = true, features = ["bytemuck-serialize"] }
+#rapier3d-f64 = { path = "../../rapier/crates/rapier3d-f64", optional = true, features = ["simd-stable", "parallel"] }
 rapier3d-f64 = { version = "0.17.2", optional = true, features = ["simd-stable", "parallel"] }
 
 [profile.release]
