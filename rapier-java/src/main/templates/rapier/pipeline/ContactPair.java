@@ -2,12 +2,9 @@ package rapier.pipeline;
 
 import rapier.RefNative;
 import rapier.data.ArenaKey;
-import rapier.math.Vector;
-import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 

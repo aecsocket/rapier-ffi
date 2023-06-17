@@ -1,5 +1,3 @@
-use std::io::Write;
-
 pub(crate) fn leak_ptr<T>(t: T) -> *mut T {
     Box::leak(Box::new(t))
 }
@@ -8,19 +6,10 @@ pub(crate) unsafe fn drop_ptr<T>(raw: *mut T) {
     drop(Box::from_raw(raw))
 }
 
+#[inline]
 #[track_caller]
-fn print_and_abort() -> ! {
-    let location = std::panic::Location::caller();
-    let mut stderr = std::io::stderr();
-    let _ = writeln!(
-        stderr,
-        "passed invalid pointer to foreign function, aborting. {file}:{line}:{column}",
-        file = location.file(),
-        line = location.line(),
-        column = location.column(),
-    );
-    let _ = stderr.flush();
-    std::process::abort()
+fn ptr_panic< T : ?Sized>(ptr: *const T) -> ! {
+    panic!("passed invalid pointer to foreign function: {}", ptr as *const () as usize);
 }
 
 pub(crate) trait ConstOrAbort<T: ?Sized> {
@@ -31,10 +20,9 @@ impl<T: ?Sized> ConstOrAbort<T> for *const T {
     #[inline]
     #[track_caller]
     unsafe fn get<'a>(self) -> &'a T {
-        if self.is_null() {
-            print_and_abort()
-        } else {
-            unsafe { &*self }
+        match self.as_ref() {
+            Some(t) => t,
+            None => ptr_panic(self),
         }
     }
 }
@@ -43,10 +31,9 @@ impl<T: ?Sized> ConstOrAbort<T> for *mut T {
     #[inline]
     #[track_caller]
     unsafe fn get<'a>(self) -> &'a T {
-        if self.is_null() {
-            print_and_abort()
-        } else {
-            unsafe { &*self }
+        match self.as_ref() {
+            Some(t) => t,
+            None => ptr_panic(self),
         }
     }
 }
@@ -59,10 +46,9 @@ impl<T: ?Sized> MutOrAbort<T> for *mut T {
     #[inline]
     #[track_caller]
     unsafe fn get_mut<'a>(self) -> &'a mut T {
-        if self.is_null() {
-            print_and_abort()
-        } else {
-            unsafe { &mut *self }
+        match self.as_mut() {
+            Some(t) => t,
+            None => ptr_panic(self),
         }
     }
 }
