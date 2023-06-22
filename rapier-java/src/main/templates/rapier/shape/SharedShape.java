@@ -114,7 +114,7 @@ public final class SharedShape extends RefNative implements RefCounted {
                     vertices.length,
                     nIndices,
                     indices.length,
-                    params.memory()
+                    params.allocate(arena)
             );
             return at(memory);
         }
@@ -148,7 +148,7 @@ public final class SharedShape extends RefNative implements RefCounted {
                     vertices.length,
                     nIndices,
                     indices.length,
-                    params.memory(),
+                    params.allocate(arena),
                     borderRadius
             );
             return at(memory);
