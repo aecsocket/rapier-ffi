@@ -40,8 +40,10 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         return GenericJoint.at(RprImpulseJoint_data(self));
     }
 
-    public SpacialVector getImpulses(SegmentAllocator alloc) {
-        return SpacialVector.at(RprImpulseJoint_impulses(alloc, self));
+    public SpacialVector getImpulses() {
+        try (var arena = MemorySession.openConfined()) {
+            return SpacialVector.from(RprImpulseJoint_impulses(arena, self));
+        }
     }
 
     public static final class Mut extends ImpulseJoint {
@@ -72,7 +74,9 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         }
 
         public void setImpulses(SpacialVector impulses) {
-            RprImpulseJoint_set_impulses(self, impulses.memory());
+            try (var arena = MemorySession.openConfined()) {
+                RprImpulseJoint_set_impulses(self, impulses.allocate(arena));
+            }
         }
 
         public GenericJoint.Mut retainData() {

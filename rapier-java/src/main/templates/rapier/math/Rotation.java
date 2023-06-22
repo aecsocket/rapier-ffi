@@ -1,85 +1,76 @@
 package rapier.math;
 
-import rapier.ValNative;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
-public final class Rotation extends ValNative {
-    private Rotation(MemorySegment memory) {
-        super(memory);
-    }
-
-    public static Rotation at(MemorySegment memory) {
-        return new Rotation(memory);
-    }
-
+public record Rotation(
 {% if dim2 %}
-    public static Rotation of(SegmentAllocator alloc, {{ real }} re, {{ real }} im) {
-        return at(alloc.allocateArray({{ realLayout }}, re, im));
-    }
-
-    public {{ real }} getRe() {
-        return self.getAtIndex({{ realLayout }}, 0);
-    }
-
-    public void setRe({{ real }} re) {
-        self.setAtIndex({{ realLayout }}, 0, re);
-    }
-
-    public {{ real }} getIm() {
-        return self.getAtIndex({{ realLayout }}, 1);
-    }
-
-    public void setIm({{ real }} im) {
-        self.setAtIndex({{ realLayout }}, 1, im);
-    }
-
-    @Override
-    public String toString() {
-        return "(%f + %fi)".formatted(getRe(), getIm());
-    }
-{% elseif dim3 %}
-    public static Rotation of(SegmentAllocator alloc, {{ real }} x, {{ real }} y, {{ real }} z, {{ real }} w) {
-        return at(alloc.allocateArray({{ realLayout }}, x, y, z, w));
-    }
-
-    public {{ real }} getX() {
-        return self.getAtIndex({{ realLayout }}, 0);
-    }
-
-    public void setX({{ real }} x) {
-        self.setAtIndex({{ realLayout }}, 0, x);
-    }
-
-    public {{ real }} getY() {
-        return self.getAtIndex({{ realLayout }}, 1);
-    }
-
-    public void setY({{ real }} y) {
-        self.setAtIndex({{ realLayout }}, 1, y);
-    }
-
-    public {{ real }} getZ() {
-        return self.getAtIndex({{ realLayout }}, 2);
-    }
-
-    public void setZ({{ real }} z) {
-        self.setAtIndex({{ realLayout }}, 2, z);
-    }
-
-    public {{ real }} getW() {
-        return self.getAtIndex({{ realLayout }}, 3);
-    }
-
-    public void setW({{ real }} w) {
-        self.setAtIndex({{ realLayout }}, 3, w);
-    }
-
-    @Override
-    public String toString() {
-        return "(%f + %fi + %fj + %fk)".formatted(getW(), getX(), getY(), getZ());
-    }
+        {{ real }} re,
+        {{ real }} im
+{% else %}
+        {{ real }} x,
+        {{ real }} y,
+        {{ real }} z,
+        {{ real }} w
 {% endif %}
+) {
+    public static Rotation identity() {
+        return new Rotation(
+{% if dim2 %}
+                1.0f, 0.0f
+{% else %}
+                0.0f, 0.0f, 0.0f, 1.0f
+{% endif %}
+        );
+    }
+
+    public static Rotation from(MemorySegment memory) {
+        return new Rotation(
+{% if dim2 %}
+                {{ sys }}.RprRotation.re$get(memory),
+                {{ sys }}.RprRotation.im$get(memory)
+{% else %}
+                {{ sys }}.RprRotation.x$get(memory),
+                {{ sys }}.RprRotation.y$get(memory),
+                {{ sys }}.RprRotation.z$get(memory),
+                {{ sys }}.RprRotation.w$get(memory)
+{% endif %}
+        );
+    }
+
+    public void into(MemorySegment memory) {
+{% if dim2 %}
+        {{ sys }}.RprRotation.re$set(memory, re);
+        {{ sys }}.RprRotation.im$set(memory, im);
+{% else %}
+        {{ sys }}.RprRotation.x$set(memory, x);
+        {{ sys }}.RprRotation.y$set(memory, y);
+        {{ sys }}.RprRotation.z$set(memory, z);
+        {{ sys }}.RprRotation.w$set(memory, w);
+{% endif %}
+    }
+
+    public MemorySegment allocate(SegmentAllocator alloc) {
+        var memory = {{ sys }}.RprRotation.allocate(alloc);
+        into(memory);
+        return memory;
+    }
+
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Rotation... objs) {
+        var memory = {{ sys }}.RprRotation.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice({{ sys }}.RprRotation.sizeof() * i));
+        }
+        return memory;
+    }
+
+    @Override
+    public String toString() {
+{% if dim2 %}
+        return "(%f + %fi)".formatted(re, im);
+{% else %}
+        return "(%f + %fi + %fj + %fk)".formatted(w, x, y, z);
+{% endif %}
+    }
 }

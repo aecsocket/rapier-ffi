@@ -7,6 +7,7 @@ import rapier.math.*;
 import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 
 import static rapier.sys.RapierC.*;
 
@@ -61,17 +62,23 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
     }
 
     public RigidBodyBuilder translation(Vector translation) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.allocate(arena));
+        }
         return this;
     }
 
     public RigidBodyBuilder rotation(AngVector rotation) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.allocate(arena));
+        }
         return this;
     }
 
     public RigidBodyBuilder position(Isometry position) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.allocate(arena));
+        }
         return this;
     }
 
@@ -91,12 +98,16 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
     }
 
     public RigidBodyBuilder linvel(Vector linvel) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.allocate(arena));
+        }
         return this;
     }
 
     public RigidBodyBuilder angvel(AngVector angvel) {
-        {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.allocate(arena));
+        }
         return this;
     }
 

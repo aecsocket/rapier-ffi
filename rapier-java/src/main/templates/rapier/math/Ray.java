@@ -1,41 +1,40 @@
 package rapier.math;
 
-import rapier.ValNative;
-import rapier.sys.RprRay;
-import rapier.sys.RprVector;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Ray extends ValNative {
-    private Ray(MemorySegment memory) {
-        super(memory);
+public record Ray(
+        Vector origin,
+        Vector dir
+) {
+    public static Ray from(MemorySegment memory) {
+        return new Ray(
+                Vector.from({{ sys }}.RprRay.origin$slice(memory)),
+                Vector.from({{ sys }}.RprRay.dir$slice(memory))
+        );
     }
 
-    public static Ray at(MemorySegment memory) {
-        return new Ray(memory);
+    public void into(MemorySegment memory) {
+        origin.into({{ sys }}.RprRay.origin$slice(memory));
+        dir.into({{ sys }}.RprRay.dir$slice(memory));
     }
 
-    public static Ray of(SegmentAllocator alloc, Vector origin, Vector dir) {
+    public MemorySegment allocate(SegmentAllocator alloc) {
         var memory = {{ sys }}.RprRay.allocate(alloc);
-        {{ sys }}.RprRay.origin$slice(memory).copyFrom(origin.memory());
-        {{ sys }}.RprRay.dir$slice(memory).copyFrom(dir.memory());
-        return at(memory);
+        into(memory);
+        return memory;
     }
 
-    public Vector getOrigin() {
-        return Vector.at({{ sys }}.RprRay.origin$slice(self));
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Ray... objs) {
+        var memory = {{ sys }}.RprRay.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice({{ sys }}.RprRay.sizeof() * i));
+        }
+        return memory;
     }
 
-    public void setOrigin(Vector value) {
-        {{ sys }}.RprRay.origin$slice(self).copyFrom(value.memory());
-    }
-
-    public Vector getDir() {
-        return Vector.at({{ sys }}.RprRay.dir$slice(self));
-    }
-
-    public void setDir(Vector value) {
-        {{ sys }}.RprRay.dir$slice(self).copyFrom(value.memory());
+    @Override
+    public String toString() {
+        return "Ray[%s -> %s]".formatted(origin, dir);
     }
 }

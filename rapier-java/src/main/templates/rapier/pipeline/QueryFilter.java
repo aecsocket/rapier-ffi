@@ -49,7 +49,7 @@ public final class QueryFilter extends ValNative {
 
     public @Nullable InteractionGroups getGroups() {
         return RprQueryFilter.has_groups$get(self)
-                ? InteractionGroups.at(RprQueryFilter.groups$slice(self))
+                ? InteractionGroups.from(RprQueryFilter.groups$slice(self))
                 : null;
     }
 
@@ -58,7 +58,7 @@ public final class QueryFilter extends ValNative {
             RprQueryFilter.has_groups$set(self, false);
         } else {
             RprQueryFilter.has_groups$set(self, true);
-            RprQueryFilter.groups$slice(self).copyFrom(value.memory());
+            value.into(RprQueryFilter.groups$slice(self));
         }
     }
 

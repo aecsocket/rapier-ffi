@@ -83,12 +83,16 @@ public final class ContactModificationContext extends RefNative {
         }
     }
 
-    public Vector getNormal(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprContactModificationContext_normal(alloc, self));
+    public Vector getNormal() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprContactModificationContext_normal(arena, self));
+        }
     }
 
     public void setNormal(Vector value) {
-        {{ sys }}.RapierC.RprContactModificationContext_set_normal(self, value.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprContactModificationContext_set_normal(self, value.allocate(arena));
+        }
     }
 
     public int getUserData() {

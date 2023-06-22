@@ -55,22 +55,24 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             @Nullable PhysicsHooks hooks,
             @Nullable EventHandler events
     ) {
-        {{ sys }}.RapierC.RprPhysicsPipeline_step(
-                self,
-                gravity.memory(),
-                integrationParameters.memory(),
-                islands.memory(),
-                broadPhase.memory(),
-                narrowPhase.memory(),
-                bodies.memory(),
-                colliders.memory(),
-                impulseJoints.memory(),
-                multibodyJoints.memory(),
-                ccdSolver.memory(),
-                Native.memoryOrNull(queryPipeline),
-                Native.memoryOrNull(hooks),
-                Native.memoryOrNull(events)
-        );
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprPhysicsPipeline_step(
+                    self,
+                    gravity.allocate(arena),
+                    integrationParameters.memory(),
+                    islands.memory(),
+                    broadPhase.memory(),
+                    narrowPhase.memory(),
+                    bodies.memory(),
+                    colliders.memory(),
+                    impulseJoints.memory(),
+                    multibodyJoints.memory(),
+                    ccdSolver.memory(),
+                    Native.memoryOrNull(queryPipeline),
+                    Native.memoryOrNull(hooks),
+                    Native.memoryOrNull(events)
+            );
+        }
     }
 
     public static void stepAll(

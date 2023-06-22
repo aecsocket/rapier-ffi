@@ -1,49 +1,47 @@
 package rapier.math;
 
-import rapier.ValNative;
-import rapier.sys.RprIsometry;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Isometry extends ValNative {
-    private Isometry(MemorySegment memory) {
-        super(memory);
+public record Isometry(
+        Rotation rotation,
+        Vector translation
+) {
+    public static Isometry identity() {
+        return new Isometry(
+                Rotation.identity(),
+                Vector.zero()
+        );
     }
 
-    public static Isometry at(MemorySegment memory) {
-        return new Isometry(memory);
+    public static Isometry from(MemorySegment memory) {
+        return new Isometry(
+                Rotation.from({{ sys }}.RprIsometry.rotation$slice(memory)),
+                Vector.from({{ sys }}.RprIsometry.translation$slice(memory))
+        );
     }
 
-    public static Isometry of(SegmentAllocator alloc, Rotation rotation, Vector translation) {
+    public void into(MemorySegment memory) {
+        rotation.into({{ sys }}.RprIsometry.rotation$slice(memory));
+        translation.into({{ sys }}.RprIsometry.translation$slice(memory));
+    }
+
+    public MemorySegment allocate(SegmentAllocator alloc) {
         var memory = {{ sys }}.RprIsometry.allocate(alloc);
-        {{ sys }}.RprIsometry.rotation$slice(memory).copyFrom(rotation.memory());
-        {{ sys }}.RprIsometry.translation$slice(memory).copyFrom(translation.memory());
-        return at(memory);
+        into(memory);
+        return memory;
     }
 
-    public static Isometry create(SegmentAllocator alloc) {
-        return at({{ sys }}.RprIsometry.allocate(alloc));
-    }
-
-    public Rotation getRotation() {
-        return Rotation.at({{ sys }}.RprIsometry.rotation$slice(self));
-    }
-
-    public void setRotation(Rotation rotation) {
-        {{ sys }}.RprIsometry.rotation$slice(self).copyFrom(rotation.memory());
-    }
-
-    public Vector getTranslation() {
-        return Vector.at({{ sys }}.RprIsometry.translation$slice(self));
-    }
-
-    public void setTranslation(Vector translation) {
-        {{ sys }}.RprIsometry.translation$slice(self).copyFrom(translation.memory());
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Isometry... objs) {
+        var memory = {{ sys }}.RprIsometry.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice({{ sys }}.RprIsometry.sizeof() * i));
+        }
+        return memory;
     }
 
     @Override
     public String toString() {
-        return "Iso[%s, %s]".formatted(getTranslation(), getRotation());
+        return "Isometry[%s, %s]".formatted(rotation, translation);
     }
 }

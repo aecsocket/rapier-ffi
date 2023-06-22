@@ -19,12 +19,16 @@ public final class SolverContact extends RefNative {
         return new SolverContact(memory);
     }
 
-    public Vector getPoint(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprSolverContact_point(alloc, self));
+    public Vector getPoint() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprSolverContact_point(arena, self));
+        }
     }
 
     public void setPoint(Vector value) {
-        {{ sys }}.RapierC.RprSolverContact_set_point(self, value.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprSolverContact_set_point(self, value.allocate(arena));
+        }
     }
 
     public {{ real }} getDist() {
@@ -51,12 +55,16 @@ public final class SolverContact extends RefNative {
         {{ sys }}.RapierC.RprSolverContact_set_restitution(self, value);
     }
 
-    public Vector getTangentVelocity(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprSolverContact_tangent_velocity(alloc, self));
+    public Vector getTangentVelocity() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprSolverContact_tangent_velocity(arena, self));
+        }
     }
 
     public void setTangentVelocity(Vector value) {
-        {{ sys }}.RapierC.RprSolverContact_set_tangent_velocity(self, value.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprSolverContact_set_tangent_velocity(self, value.allocate(arena));
+        }
     }
 
     public boolean isNew() {

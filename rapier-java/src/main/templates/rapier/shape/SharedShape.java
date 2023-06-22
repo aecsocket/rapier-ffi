@@ -39,23 +39,33 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static SharedShape halfspace(Vector outwardNormal) {
-        return at({{ sys }}.RapierC.RprSharedShape_halfspace(outwardNormal.memory()));
+        try (var arena = MemorySession.openConfined()) {
+            return at({{ sys }}.RapierC.RprSharedShape_halfspace(outwardNormal.allocate(arena)));
+        }
     }
 
     public static SharedShape capsule(Vector a, Vector b, {{ real }} radius) {
-        return at({{ sys }}.RapierC.RprSharedShape_capsule(a.memory(), b.memory(), radius));
+        try (var arena = MemorySession.openConfined()) {
+            return at({{ sys }}.RapierC.RprSharedShape_capsule(a.allocate(arena), b.allocate(arena), radius));
+        }
     }
 
     public static SharedShape segment(Vector a, Vector b) {
-        return at({{ sys }}.RapierC.RprSharedShape_segment(a.memory(), b.memory()));
+        try (var arena = MemorySession.openConfined()) {
+            return at({{ sys }}.RapierC.RprSharedShape_segment(a.allocate(arena), b.allocate(arena)));
+        }
     }
 
     public static SharedShape triangle(Vector a, Vector b, Vector c) {
-        return at({{ sys }}.RapierC.RprSharedShape_triangle(a.memory(), b.memory(), c.memory()));
+        try (var arena = MemorySession.openConfined()) {
+            return at({{ sys }}.RapierC.RprSharedShape_triangle(a.allocate(arena), b.allocate(arena), c.allocate(arena)));
+        }
     }
 
     public static SharedShape roundTriangle(Vector a, Vector b, Vector c, {{ real }} borderRadius) {
-        return at({{ sys }}.RapierC.RprSharedShape_round_triangle(a.memory(), b.memory(), c.memory(), borderRadius));
+        try (var arena = MemorySession.openConfined()) {
+            return at({{ sys }}.RapierC.RprSharedShape_round_triangle(a.allocate(arena), b.allocate(arena), c.allocate(arena), borderRadius));
+        }
     }
 
     public static SharedShape polyline(Vector[] vertices, int[][] indices) {

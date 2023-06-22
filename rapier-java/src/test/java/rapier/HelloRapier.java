@@ -30,14 +30,14 @@ public final class HelloRapier {
 
             // use `.use` to drop this object after we're done with it
             var rigidBody = Rapier.use(RigidBodyBuilder.dynamic()
-                    .translation(Vector.of(arena, 0.0, 10.0, 0.0)),
+                    .translation(new Vector(0.0, 10.0, 0.0)),
                     RigidBodyBuilder::build);
             var ballShape = SharedShape.ball(0.5);
             var ballCollider = Rapier.use(ColliderBuilder.of(ballShape).restitution(0.7), ColliderBuilder::build);
             long ballBodyHandle = rigidBodySet.insert(rigidBody);
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
-            var gravity = Vector.of(arena, 0.0, -9.81, 0.0);
+            var gravity = new Vector(0.0, -9.81, 0.0);
             var integrationParameters = IntegrationParametersDesc.create(arena).build();
             var islandManager = IslandManager.create();
             var broadPhase = BroadPhase.create();
@@ -64,8 +64,8 @@ public final class HelloRapier {
                         null
                 );
 
-                Vector translation = Objects.requireNonNull(rigidBodySet.get(ballBodyHandle)).getTranslation(arena);
-                System.out.printf("Ball altitude: %f\n", translation.getY());
+                Vector translation = Objects.requireNonNull(rigidBodySet.get(ballBodyHandle)).getTranslation();
+                System.out.printf("Ball altitude: %f\n", translation.y());
             }
             
             physicsPipeline.drop();

@@ -42,12 +42,16 @@ public final class ContactManifold extends RefNative {
         }
     }
 
-    public Vector getLocalN1(SegmentAllocator alloc) {
-        return Vector.at({{sys}}.RapierC.RprContactManifold_local_n1(alloc, self));
+    public Vector getLocalN1() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{sys}}.RapierC.RprContactManifold_local_n1(arena, self));
+        }
     }
 
     public Vector getLocalN2(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprContactManifold_local_n2(alloc, self));
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprContactManifold_local_n2(arena, self));
+        }
     }
 
     public int getSubshape1() {
@@ -58,18 +62,22 @@ public final class ContactManifold extends RefNative {
         return RprContactManifold_subshape2(self);
     }
 
-    public @Nullable Isometry getSubshapePos1(SegmentAllocator alloc) {
-        var res = Isometry.create(alloc);
-        if (RprContactManifold_subshape_pos1(self, res.memory()))
-            return res;
-        return null;
+    public @Nullable Isometry getSubshapePos1() {
+        try (var arena = MemorySession.openConfined()) {
+            var res = Isometry.identity().allocate(arena);
+            if (RprContactManifold_subshape_pos1(self, res))
+                return Isometry.from(res);
+            return null;
+        }
     }
 
-    public @Nullable Isometry getSubshapePos2(SegmentAllocator alloc) {
-        var res = Isometry.create(alloc);
-        if (RprContactManifold_subshape_pos2(self, res.memory()))
-            return res;
-        return null;
+    public @Nullable Isometry getSubshapePos2() {
+        try (var arena = MemorySession.openConfined()) {
+            var res = Isometry.identity().allocate(arena);
+            if (RprContactManifold_subshape_pos2(self, res))
+                return Isometry.from(res);
+            return null;
+        }
     }
 
     public @Nullable Long getRigidBody1() {

@@ -1,44 +1,40 @@
 package rapier.math;
 
-import rapier.ValNative;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class Aabb extends ValNative {
-    private Aabb(MemorySegment memory) {
-        super(memory);
+public record Aabb(
+        Vector min,
+        Vector max
+) {
+    public static Aabb from(MemorySegment memory) {
+        return new Aabb(
+                Vector.from({{ sys }}.RprAabb.min$slice(memory)),
+                Vector.from({{ sys }}.RprAabb.max$slice(memory))
+        );
     }
 
-    public static Aabb at(MemorySegment memory) {
-        return new Aabb(memory);
+    public void into(MemorySegment memory) {
+        min.into({{ sys }}.RprAabb.min$slice(memory));
+        max.into({{ sys }}.RprAabb.max$slice(memory));
     }
 
-    public static Aabb of(SegmentAllocator alloc, Vector min, Vector max) {
+    public MemorySegment allocate(SegmentAllocator alloc) {
         var memory = {{ sys }}.RprAabb.allocate(alloc);
-        {{ sys }}.RprAabb.min$slice(memory).copyFrom(min.memory());
-        {{ sys }}.RprAabb.max$slice(memory).copyFrom(max.memory());
-        return at(memory);
+        into(memory);
+        return memory;
     }
 
-    public Vector getMin() {
-        return Vector.at({{ sys }}.RprAabb.min$slice(self));
-    }
-
-    public void setMin(Vector min) {
-        {{ sys }}.RprAabb.min$slice(self).copyFrom(min.memory());
-    }
-
-    public Vector getMax() {
-        return Vector.at({{ sys }}.RprAabb.max$slice(self));
-    }
-
-    public void setMax(Vector max) {
-        {{ sys }}.RprAabb.max$slice(self).copyFrom(max.memory());
+    public static MemorySegment allocateArray(SegmentAllocator alloc, Aabb... objs) {
+        var memory = {{ sys }}.RprAabb.allocateArray(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice({{ sys }}.RprAabb.sizeof() * i));
+        }
+        return memory;
     }
 
     @Override
     public String toString() {
-        return "[%s .. %s]".formatted(getMin(), getMax());
+        return "Aabb[%s .. %s]".formatted(min, max);
     }
 }

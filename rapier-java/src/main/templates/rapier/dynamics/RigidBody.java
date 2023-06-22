@@ -45,8 +45,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         return RigidBodyType.values()[RprRigidBody_body_type(self)];
     }
 
-    public Vector getCenterOfMass(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprRigidBody_center_of_mass(alloc, self));
+    public Vector getCenterOfMass() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_center_of_mass(arena, self));
+        }
     }
 
     public short getEffectiveDominanceGroup() {
@@ -119,8 +121,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         return {{ sys }}.RapierC.RprRigidBody_mass(self);
     }
 
-    public Isometry getNextPosition(SegmentAllocator alloc) {
-        return Isometry.at({{ sys }}.RapierC.RprRigidBody_next_position(alloc, self));
+    public Isometry getNextPosition() {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprRigidBody_next_position(arena, self));
+        }
     }
 
     public {{ real }} getGravityScale() {
@@ -135,36 +139,58 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         return RprRigidBody_is_sleeping(self);
     }
 
-    public Vector getLinearVelocity(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprRigidBody_linvel(alloc, self));
+    public Vector getLinearVelocity() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_linvel(arena, self));
+        }
     }
 
-    public AngVector getAngularVelocity(SegmentAllocator alloc) {
-        return AngVector.at({{ sys }}.RapierC.RprRigidBody_angvel(alloc, self));
+    public AngVector getAngularVelocity() {
+        try (var arena = MemorySession.openConfined()) {
+            return AngVector.from({{ sys }}.RapierC.RprRigidBody_angvel(arena, self));
+        }
     }
 
-    public Isometry getPosition(SegmentAllocator alloc) {
-        return Isometry.at({{ sys }}.RapierC.RprRigidBody_position(alloc, self));
+    public Isometry getPosition() {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprRigidBody_position(arena, self));
+        }
     }
 
-    public Vector getTranslation(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprRigidBody_translation(alloc, self));
+    public Vector getTranslation() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_translation(arena, self));
+        }
     }
 
-    public Isometry predictPositionUsingVelocityAndForces(SegmentAllocator alloc, {{ real }} dt) {
-        return Isometry.at({{ sys }}.RapierC.RprRigidBody_predict_position_using_velocity_and_forces(alloc, self, dt));
+    public Rotation getRotation() {
+        try (var arena = MemorySession.openConfined()) {
+            return Rotation.from({{ sys }}.RapierC.RprRigidBody_rotation(arena, self));
+        }
     }
 
-    public Vector getUserForce(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprRigidBody_user_force(alloc, self));
+    public Isometry predictPositionUsingVelocityAndForces({{ real }} dt) {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprRigidBody_predict_position_using_velocity_and_forces(arena, self, dt));
+        }
     }
 
-    public AngVector getUserTorque(SegmentAllocator alloc) {
-        return AngVector.at({{ sys }}.RapierC.RprRigidBody_user_torque(alloc, self));
+    public Vector getUserForce() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_user_force(arena, self));
+        }
     }
 
-    public Vector velocityAtPoint(SegmentAllocator alloc, Vector point) {
-        return Vector.at({{ sys }}.RapierC.RprRigidBody_velocity_at_point(alloc, self, point.memory()));
+    public AngVector getUserTorque() {
+        try (var arena = MemorySession.openConfined()) {
+            return AngVector.from({{ sys }}.RapierC.RprRigidBody_user_torque(arena, self));
+        }
+    }
+
+    public Vector velocityAtPoint(Vector point) {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_velocity_at_point(arena, self, point.allocate(arena)));
+        }
     }
 
     public {{ real }} getKineticEnergy() {
@@ -172,7 +198,9 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
     }
 
     public {{ real }} getGravitationalPotentialEnergy({{ real }} dt, Vector gravity) {
-        return {{ sys }}.RapierC.RprRigidBody_gravitational_potential_energy(self, dt, gravity.memory());
+        try (var arena = MemorySession.openConfined()) {
+            return {{ sys }}.RapierC.RprRigidBody_gravitational_potential_energy(self, dt, gravity.allocate(arena));
+        }
     }
 
     public static final class Mut extends RigidBody implements Droppable {
@@ -288,39 +316,51 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         }
 
         public void setLinearVelocity(Vector linvel, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.allocate(arena), wakeUp);
+            }
         }
 
         public void setAngularVelocity(AngVector angvel, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_set_angvel(self, angvel.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_angvel(self, angvel.allocate(arena), wakeUp);
+            }
         }
 
         public void setTranslation(Vector translation, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_set_translation(self, translation.memory(), wakeUp);
-        }
-
-        public Rotation getRotation(SegmentAllocator alloc) {
-            return Rotation.at({{ sys }}.RapierC.RprRigidBody_rotation(alloc, self));
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_translation(self, translation.allocate(arena), wakeUp);
+            }
         }
 
         public void setRotation(Rotation rotation, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_set_rotation(self, rotation.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_rotation(self, rotation.allocate(arena), wakeUp);
+            }
         }
 
         public void setPosition(Isometry pos, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_set_position(self, pos.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_position(self, pos.allocate(arena), wakeUp);
+            }
         }
 
         public void setNextKinematicRotation(Rotation rotation) {
-            {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_rotation(self, rotation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_rotation(self, rotation.allocate(arena));
+            }
         }
 
         public void setNextKinematicTranslation(Vector translation) {
-            {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_translation(self, translation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_translation(self, translation.allocate(arena));
+            }
         }
 
         public void setNextKinematicPosition(Isometry pos) {
-            {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_position(self, pos.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_position(self, pos.allocate(arena));
+            }
         }
 
         public void resetForces(boolean wakeUp) {
@@ -332,27 +372,39 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         }
 
         public void addForce(Vector force, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_add_force(self, force.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_add_force(self, force.allocate(arena), wakeUp);
+            }
         }
 
         public void addTorque(AngVector torque, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_add_torque(self, torque.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_add_torque(self, torque.allocate(arena), wakeUp);
+            }
         }
 
         public void addForceAtPoint(Vector force, Vector point, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_add_force_at_point(self, force.memory(), point.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_add_force_at_point(self, force.allocate(arena), point.allocate(arena), wakeUp);
+            }
         }
 
         public void applyImpulse(Vector impulse, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_apply_impulse(self, impulse.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_apply_impulse(self, impulse.allocate(arena), wakeUp);
+            }
         }
 
         public void applyTorqueImpulse(AngVector torqueImpulse, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_apply_torque_impulse(self, torqueImpulse.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_apply_torque_impulse(self, torqueImpulse.allocate(arena), wakeUp);
+            }
         }
 
         public void applyImpulseAtPoint(Vector impulse, Vector point, boolean wakeUp) {
-            {{ sys }}.RapierC.RprRigidBody_apply_impulse_at_point(self, impulse.memory(), point.memory(), wakeUp);
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprRigidBody_apply_impulse_at_point(self, impulse.allocate(arena), point.allocate(arena), wakeUp);
+            }
         }
     }
 }

@@ -20,20 +20,28 @@ public final class ContactData extends RefNative {
         return new ContactData(memory);
     }
 
-    public Vector getLocalP1(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprContactData_local_p1(alloc, self));
+    public Vector getLocalP1() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprContactData_local_p1(arena, self));
+        }
     }
 
     public void setLocalP1(Vector value) {
-        {{ sys }}.RapierC.RprContactData_set_local_p1(self, value.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprContactData_set_local_p1(self, value.allocate(arena));
+        }
     }
 
-    public Vector getLocalP2(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprContactData_local_p2(alloc, self));
+    public Vector getLocalP2() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprContactData_local_p2(arena, self));
+        }
     }
 
     public void setLocalP2(Vector value) {
-        {{ sys }}.RapierC.RprContactData_set_local_p2(self, value.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprContactData_set_local_p2(self, value.allocate(arena));
+        }
     }
 
     public {{ real }} getDist() {

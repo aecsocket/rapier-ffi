@@ -78,37 +78,51 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         return {{ sys }}.RapierC.RprCollider_is_enabled(self);
     }
 
-    public Vector getTranslation(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprCollider_translation(alloc, self));
+    public Vector getTranslation() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprCollider_translation(arena, self));
+        }
     }
 
-    public Rotation getRotation(SegmentAllocator alloc) {
-        return Rotation.at({{ sys }}.RapierC.RprCollider_rotation(alloc, self));
+    public Rotation getRotation() {
+        try (var arena = MemorySession.openConfined()) {
+            return Rotation.from({{ sys }}.RapierC.RprCollider_rotation(arena, self));
+        }
     }
 
-    public Isometry getPosition(SegmentAllocator alloc) {
-        return Isometry.at({{ sys }}.RapierC.RprCollider_position(alloc, self));
+    public Isometry getPosition() {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprCollider_position(arena, self));
+        }
     }
 
-    public @Nullable Isometry getPositionWrtParent(SegmentAllocator alloc) {
+    public @Nullable Isometry getPositionWrtParent() {
         if (getParent() == null) return null;
-        return Isometry.at({{ sys }}.RapierC.RprCollider_position_wrt_parent(alloc, self));
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{sys}}.RapierC.RprCollider_position_wrt_parent(arena, self));
+        }
     }
 
-    public InteractionGroups getCollisionGroups(SegmentAllocator alloc) {
-        return InteractionGroups.at(RprCollider_collision_groups(alloc, self));
+    public InteractionGroups getCollisionGroups() {
+        try (var arena = MemorySession.openConfined()) {
+            return InteractionGroups.from(RprCollider_collision_groups(arena, self));
+        }
     }
 
-    public InteractionGroups getSolverGroups(SegmentAllocator alloc) {
-        return InteractionGroups.at(RprCollider_solver_groups(alloc, self));
+    public InteractionGroups getSolverGroups() {
+        try (var arena = MemorySession.openConfined()) {
+            return InteractionGroups.from(RprCollider_solver_groups(arena, self));
+        }
     }
 
     public {{ real }} getVolume() {
         return {{ sys }}.RapierC.RprCollider_volume(self);
     }
 
-    public ColliderMaterial getMaterial(SegmentAllocator alloc) {
-        return ColliderMaterial.at({{ sys }}.RapierC.RprCollider_material(alloc, self));
+    public ColliderMaterial getMaterial() {
+        try (var arena = MemorySession.openConfined()) {
+            return ColliderMaterial.from({{ sys }}.RapierC.RprCollider_material(arena, self));
+        }
     }
 
     public {{ real }} getDensity() {
@@ -123,12 +137,16 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         return SharedShape.at({{ sys }}.RapierC.RprCollider_shape(self));
     }
 
-    public Aabb computeAabb(SegmentAllocator alloc) {
-        return Aabb.at({{ sys }}.RapierC.RprCollider_compute_aabb(alloc, self));
+    public Aabb computeAabb() {
+        try (var arena = MemorySession.openConfined()) {
+            return Aabb.from({{ sys }}.RapierC.RprCollider_compute_aabb(arena, self));
+        }
     }
 
-    public Aabb computeSweptAabb(SegmentAllocator alloc, Isometry nextPosition) {
-        return Aabb.at({{ sys }}.RapierC.RprCollider_compute_swept_aabb(alloc, self, nextPosition.memory()));
+    public Aabb computeSweptAabb(Isometry nextPosition) {
+        try (var arena = MemorySession.openConfined()) {
+            return Aabb.from({{ sys }}.RapierC.RprCollider_compute_swept_aabb(arena, self, nextPosition.allocate(arena)));
+        }
     }
 
     public static final class Mut extends Collider implements Droppable {
@@ -184,35 +202,51 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         }
 
         public void setTranslation(Vector translation) {
-            {{ sys }}.RapierC.RprCollider_set_translation(self, translation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_translation(self, translation.allocate(arena));
+            }
         }
 
         public void setRotation(AngVector rotation) {
-            {{ sys }}.RapierC.RprCollider_set_rotation(self, rotation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_rotation(self, rotation.allocate(arena));
+            }
         }
 
         public void setPosition(Isometry position) {
-            {{ sys }}.RapierC.RprCollider_set_position(self, position.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_position(self, position.allocate(arena));
+            }
         }
 
         public void setTranslationWrtParent(Vector translation) {
-            {{ sys }}.RapierC.RprCollider_set_translation_wrt_parent(self, translation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_translation_wrt_parent(self, translation.allocate(arena));
+            }
         }
 
         public void setRotationWrtParent(AngVector rotation) {
-            {{ sys }}.RapierC.RprCollider_set_rotation_wrt_parent(self, rotation.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_rotation_wrt_parent(self, rotation.allocate(arena));
+            }
         }
 
         public void setPositionWrtParent(Isometry posWrtParent) {
-            {{ sys }}.RapierC.RprCollider_set_position_wrt_parent(self, posWrtParent.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprCollider_set_position_wrt_parent(self, posWrtParent.allocate(arena));
+            }
         }
 
         public void setCollisionGroups(InteractionGroups groups) {
-            RprCollider_set_collision_groups(self, groups.memory());
+            try (var arena = MemorySession.openConfined()) {
+                RprCollider_set_collision_groups(self, groups.allocate(arena));
+            }
         }
 
         public void setSolverGroups(InteractionGroups groups) {
-            RprCollider_set_solver_groups(self, groups.memory());
+            try (var arena = MemorySession.openConfined()) {
+                RprCollider_set_solver_groups(self, groups.allocate(arena));
+            }
         }
 
         public void setDensity({{ real }} density) {

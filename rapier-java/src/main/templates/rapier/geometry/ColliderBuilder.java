@@ -8,6 +8,7 @@ import rapier.shape.SharedShape;
 import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 
 import static rapier.sys.RapierC.*;
 
@@ -36,12 +37,16 @@ public final class ColliderBuilder extends RefNative implements Droppable {
     }
 
     public ColliderBuilder collisionGroups(InteractionGroups groups) {
-        RprColliderBuilder_collision_groups(self, groups.memory());
+        try (var arena = MemorySession.openConfined()) {
+            RprColliderBuilder_collision_groups(self, groups.allocate(arena));
+        }
         return this;
     }
 
     public ColliderBuilder solverGroups(InteractionGroups groups) {
-        RprColliderBuilder_solver_groups(self, groups.memory());
+        try (var arena = MemorySession.openConfined()) {
+            RprColliderBuilder_solver_groups(self, groups.allocate(arena));
+        }
         return this;
     }
 
@@ -101,17 +106,23 @@ public final class ColliderBuilder extends RefNative implements Droppable {
     }
 
     public ColliderBuilder translation(Vector translation) {
-        {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.allocate(arena));
+        }
         return this;
     }
 
     public ColliderBuilder rotation(AngVector rotation) {
-        {{ sys }}.RapierC.RprColliderBuilder_rotation(self, rotation.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprColliderBuilder_rotation(self, rotation.allocate(arena));
+        }
         return this;
     }
 
     public ColliderBuilder position(Isometry pos) {
-        {{ sys }}.RapierC.RprColliderBuilder_position(self, pos.memory());
+        try (var arena = MemorySession.openConfined()) {
+            {{ sys }}.RapierC.RprColliderBuilder_position(self, pos.allocate(arena));
+        }
         return this;
     }
 

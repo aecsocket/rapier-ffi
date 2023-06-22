@@ -1,40 +1,29 @@
 package rapier.geometry;
 
-import rapier.ValNative;
 import rapier.sys.RprInteractionGroups;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class InteractionGroups extends ValNative {
-    private InteractionGroups(MemorySegment memory) {
-        super(memory);
+public record InteractionGroups(
+        int memberships,
+        int filter
+) {
+    public static InteractionGroups from(MemorySegment memory) {
+        return new InteractionGroups(
+                RprInteractionGroups.memberships$get(memory),
+                RprInteractionGroups.filter$get(memory)
+        );
     }
 
-    public static InteractionGroups at(MemorySegment memory) {
-        return new InteractionGroups(memory);
-    }
-
-    public static InteractionGroups of(SegmentAllocator alloc, int memberships, int filter) {
-        var memory = RprInteractionGroups.allocate(alloc);
+    public void into(MemorySegment memory) {
         RprInteractionGroups.memberships$set(memory, memberships);
         RprInteractionGroups.filter$set(memory, filter);
-        return at(memory);
     }
 
-    public int getMemberships() {
-        return RprInteractionGroups.memberships$get(self);
-    }
-
-    public void setMemberships(int value) {
-        RprInteractionGroups.memberships$set(self, value);
-    }
-
-    public int getFilter() {
-        return RprInteractionGroups.filter$get(self);
-    }
-
-    public void setFilter(int value) {
-        RprInteractionGroups.filter$set(self, value);
+    public MemorySegment allocate(SegmentAllocator alloc) {
+        var memory = RprInteractionGroups.allocate(alloc);
+        into(memory);
+        return memory;
     }
 }

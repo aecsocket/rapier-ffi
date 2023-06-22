@@ -51,28 +51,40 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         return RprGenericJoint_is_enabled(self);
     }
 
-    public Isometry getLocalFrame1(SegmentAllocator alloc) {
-        return Isometry.at({{ sys }}.RapierC.RprGenericJoint_local_frame1(alloc, self));
+    public Isometry getLocalFrame1() {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprGenericJoint_local_frame1(arena, self));
+        }
     }
 
-    public Isometry getLocalFrame2(SegmentAllocator alloc) {
-        return Isometry.at({{ sys }}.RapierC.RprGenericJoint_local_frame2(alloc, self));
+    public Isometry getLocalFrame2() {
+        try (var arena = MemorySession.openConfined()) {
+            return Isometry.from({{ sys }}.RapierC.RprGenericJoint_local_frame2(arena, self));
+        }
     }
 
-    public Vector getLocalAxis1(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprGenericJoint_local_axis1(alloc, self));
+    public Vector getLocalAxis1() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_axis1(arena, self));
+        }
     }
 
-    public Vector getLocalAxis2(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprGenericJoint_local_axis2(alloc, self));
+    public Vector getLocalAxis2() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_axis2(arena, self));
+        }
     }
 
-    public Vector getLocalAnchor1(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprGenericJoint_local_anchor1(alloc, self));
+    public Vector getLocalAnchor1() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_anchor1(arena, self));
+        }
     }
 
-    public Vector getLocalAnchor2(SegmentAllocator alloc) {
-        return Vector.at({{ sys }}.RapierC.RprGenericJoint_local_anchor2(alloc, self));
+    public Vector getLocalAnchor2() {
+        try (var arena = MemorySession.openConfined()) {
+            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_anchor2(arena, self));
+        }
     }
 
     public boolean getContactsEnabled() {
@@ -146,27 +158,39 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         }
 
         public void setLocalFrame1(Isometry localFrame) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_frame1(self, localFrame.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_frame1(self, localFrame.allocate(arena));
+            }
         }
 
         public void setLocalFrame2(Isometry localFrame) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_frame2(self, localFrame.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_frame2(self, localFrame.allocate(arena));
+            }
         }
 
         public void setLocalAxis1(Vector localAxis) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_axis1(self, localAxis.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_axis1(self, localAxis.allocate(arena));
+            }
         }
 
         public void setLocalAxis2(Vector localAxis) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_axis2(self, localAxis.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_axis2(self, localAxis.allocate(arena));
+            }
         }
 
         public void setLocalAnchor1(Vector localAnchor) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_anchor1(self, localAnchor.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_anchor1(self, localAnchor.allocate(arena));
+            }
         }
 
         public void setLocalAnchor2(Vector localAnchor) {
-            {{ sys }}.RapierC.RprGenericJoint_set_local_anchor2(self, localAnchor.memory());
+            try (var arena = MemorySession.openConfined()) {
+                {{ sys }}.RapierC.RprGenericJoint_set_local_anchor2(self, localAnchor.allocate(arena));
+            }
         }
 
         public void setContactsEnabled(boolean enabled) {
