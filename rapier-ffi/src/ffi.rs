@@ -8,8 +8,11 @@ pub(crate) unsafe fn drop_ptr<T>(raw: *mut T) {
 
 #[inline]
 #[track_caller]
-fn ptr_panic< T : ?Sized>(ptr: *const T) -> ! {
-    panic!("passed invalid pointer to foreign function: {}", ptr as *const () as usize);
+fn ptr_panic<T: ?Sized>(ptr: *const T) -> ! {
+    panic!(
+        "passed invalid pointer to foreign function: {}",
+        ptr as *const () as usize
+    );
 }
 
 pub(crate) trait ConstOrAbort<T: ?Sized> {

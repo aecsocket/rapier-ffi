@@ -9,6 +9,23 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$79 {
 
+    static final FunctionDescriptor RprSharedShape_polyline$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_polyline$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_polyline",
+        constants$79.RprSharedShape_polyline$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_release$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_release",
+        constants$79.RprSharedShape_release$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_round_cone$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT,
@@ -49,27 +66,6 @@ class constants$79 {
     static final MethodHandle RprSharedShape_round_convex_hull$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_round_convex_hull",
         constants$79.RprSharedShape_round_convex_hull$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_convex_mesh$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_convex_mesh$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_convex_mesh",
-        constants$79.RprSharedShape_round_convex_mesh$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_cuboid",
-        constants$79.RprSharedShape_round_cuboid$FUNC
     );
 }
 

@@ -9,6 +9,29 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$65 {
 
+    static final FunctionDescriptor RprRigidBodySet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_remove",
+        constants$65.RprRigidBodySet_remove$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyVec_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_drop",
+        constants$65.RprRigidBodyVec_drop$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
@@ -41,25 +64,6 @@ class constants$65 {
     static final MethodHandle RprRigidBody_activation$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_activation",
         constants$65.RprRigidBody_activation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_activation_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_activation_mut$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_activation_mut",
-        constants$65.RprRigidBody_activation_mut$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_add_force$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_force$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_force",
-        constants$65.RprRigidBody_add_force$FUNC
     );
 }
 

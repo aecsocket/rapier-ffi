@@ -9,6 +9,27 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$82 {
 
+    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_tangent_velocity",
+        constants$82.RprSolverContact_set_tangent_velocity$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_tangent_velocity",
+        constants$82.RprSolverContact_tangent_velocity$FUNC
+    );
     static final FunctionDescriptor RprVHACDParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("concavity"),
         Constants$root.C_FLOAT$LAYOUT.withName("alpha"),

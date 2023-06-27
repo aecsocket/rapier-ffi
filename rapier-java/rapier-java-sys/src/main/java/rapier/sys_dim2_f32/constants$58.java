@@ -9,6 +9,25 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$58 {
 
+    static final FunctionDescriptor RprQueryPipeline_update$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_update$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_update",
+        constants$58.RprQueryPipeline_update$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_update_all$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_update_all$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_update_all",
+        constants$58.RprQueryPipeline_update_all$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyActivation_angular_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -38,22 +57,6 @@ class constants$58 {
     static final MethodHandle RprRigidBodyActivation_set_linear_threshold$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyActivation_set_linear_threshold",
         constants$58.RprRigidBodyActivation_set_linear_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_sleeping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_sleeping",
-        constants$58.RprRigidBodyActivation_set_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_since_can_sleep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_since_can_sleep",
-        constants$58.RprRigidBodyActivation_set_time_since_can_sleep$FUNC
     );
 }
 

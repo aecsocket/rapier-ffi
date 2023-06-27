@@ -9,6 +9,16 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$62 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_kinematic_position_based",
+        constants$62.RprRigidBodyBuilder_kinematic_position_based$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_velocity_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_kinematic_velocity_based",
+        constants$62.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -51,24 +61,6 @@ class constants$62 {
     static final MethodHandle RprRigidBodyBuilder_position$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_position",
         constants$62.RprRigidBodyBuilder_position$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x")
-        ).withName("RprAngVector")
-    );
-    static final MethodHandle RprRigidBodyBuilder_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_rotation",
-        constants$62.RprRigidBodyBuilder_rotation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_sleeping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_sleeping",
-        constants$62.RprRigidBodyBuilder_sleeping$FUNC
     );
 }
 

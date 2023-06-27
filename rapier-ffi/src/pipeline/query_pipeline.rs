@@ -1,3 +1,4 @@
+use itertools::izip;
 use rapier::parry::query::NonlinearRigidMotion;
 use rapier::parry::query::TOIStatus;
 
@@ -122,10 +123,16 @@ impl RprSimpleRayResult {
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 pub enum RprFeatureId {
-    Vertex { id: u32 },
+    Vertex {
+        id: u32,
+    },
     #[cfg(feature = "dim3")]
-    Edge { id: u32 },
-    Face { id: u32 },
+    Edge {
+        id: u32,
+    },
+    Face {
+        id: u32,
+    },
     Unknown,
 }
 
@@ -325,6 +332,35 @@ pub extern "C" fn RprQueryPipeline_new() -> *mut RprQueryPipeline {
 #[no_mangle]
 pub unsafe extern "C" fn RprQueryPipeline_drop(this: *mut RprQueryPipeline) {
     drop_ptr(this)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_update(
+    this: *mut RprQueryPipeline,
+    bodies: *const RprRigidBodySet,
+    colliders: *const RprColliderSet,
+) {
+    this.get_mut().0.update(&bodies.get().0, &colliders.get().0)
+}
+
+/// cbindgen:ptrs-as-arrays=[[pipeline;], [bodies;], [colliders;]]
+#[no_mangle]
+pub unsafe extern "C" fn RprQueryPipeline_update_all(
+    len: usize,
+    pipeline: *const *mut RprQueryPipeline,
+    bodies: *const *const RprRigidBodySet,
+    colliders: *const *const RprColliderSet,
+) {
+    let pipeline = std::slice::from_raw_parts(pipeline, len);
+    let bodies = std::slice::from_raw_parts(bodies, len);
+    let colliders = std::slice::from_raw_parts(colliders, len);
+
+    for (pipeline, bodies, colliders) in izip!(pipeline, bodies, colliders,) {
+        (*pipeline)
+            .get_mut()
+            .0
+            .update(&(*bodies).get().0, &(*colliders).get().0)
+    }
 }
 
 #[no_mangle]

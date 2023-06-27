@@ -9,6 +9,28 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$64 {
 
+    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get",
+        constants$64.RprRigidBodySet_get$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get_mut",
+        constants$64.RprRigidBodySet_get_mut$FUNC
+    );
     static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
@@ -38,29 +60,6 @@ class constants$64 {
     static final MethodHandle RprRigidBodySet_new$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_new",
         constants$64.RprRigidBodySet_new$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_remove",
-        constants$64.RprRigidBodySet_remove$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyVec_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyVec_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyVec_drop",
-        constants$64.RprRigidBodyVec_drop$FUNC
     );
 }
 

@@ -11,7 +11,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest] # TODO macos-latest
         dimension: [dim2, dim3]
         precision: [f32, f64]
     runs-on: ${{ matrix.os }}

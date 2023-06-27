@@ -2,6 +2,7 @@ package rapier.pipeline;
 
 import rapier.DropFlag;
 import rapier.Droppable;
+import rapier.Native;
 import rapier.RefNative;
 import rapier.data.ArenaKey;
 import rapier.dynamics.RigidBodySet;
@@ -54,6 +55,37 @@ public final class QueryPipeline extends RefNative implements Droppable {
 
     public static QueryPipeline create() {
         return at(RprQueryPipeline_new());
+    }
+
+    public void update(
+            RigidBodySet bodies,
+            ColliderSet colliders
+    ) {
+        RprQueryPipeline_update(self, bodies.memory(), colliders.memory());
+    }
+
+    public static void updateAll(
+            QueryPipeline[] pipeline,
+            RigidBodySet[] bodies,
+            ColliderSet[] colliders
+    ) {
+        if (
+                pipeline.length != bodies.length
+                || bodies.length != colliders.length
+        ) {
+            throw new IllegalArgumentException("All arrays must be of the same length");
+        }
+        try (var arena = MemorySession.openConfined()) {
+            var nPipeline = Native.allocatePtrArray(arena, pipeline);
+            var nBodies = Native.allocatePtrArray(arena, bodies);
+            var nColliders = Native.allocatePtrArray(arena, colliders);
+            RprQueryPipeline_update_all(
+                    pipeline.length,
+                    nPipeline,
+                    nBodies,
+                    nColliders
+            );
+        }
     }
 
     public @Nullable SimpleRayResult castRay(

@@ -9,6 +9,35 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$80 {
 
+    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_triangle",
+        constants$80.RprSharedShape_triangle$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_trimesh$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_trimesh$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_trimesh",
+        constants$80.RprSharedShape_trimesh$FUNC
+    );
     static final FunctionDescriptor RprSolverContact_dist$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -36,23 +65,6 @@ class constants$80 {
     static final MethodHandle RprSolverContact_is_new$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_is_new",
         constants$80.RprSolverContact_is_new$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_point",
-        constants$80.RprSolverContact_point$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_restitution",
-        constants$80.RprSolverContact_restitution$FUNC
     );
 }
 

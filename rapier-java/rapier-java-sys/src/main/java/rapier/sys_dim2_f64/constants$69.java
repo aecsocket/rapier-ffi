@@ -9,6 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$69 {
 
+    static final FunctionDescriptor RprRigidBody_is_ccd_active$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_ccd_active$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_ccd_active",
+        constants$69.RprRigidBody_is_ccd_active$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_ccd_enabled",
+        constants$69.RprRigidBody_is_ccd_enabled$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -36,21 +50,6 @@ class constants$69 {
     static final MethodHandle RprRigidBody_is_kinematic$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_kinematic",
         constants$69.RprRigidBody_is_kinematic$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_rotation_locked$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_rotation_locked",
-        constants$69.RprRigidBody_is_rotation_locked$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_sleeping",
-        constants$69.RprRigidBody_is_sleeping$FUNC
     );
 }
 

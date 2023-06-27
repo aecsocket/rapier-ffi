@@ -1,4 +1,5 @@
 use itertools::izip;
+use rayon::prelude::{IntoParallelIterator, IntoParallelRefIterator, ParallelBridge};
 
 use crate::prelude::*;
 
@@ -470,11 +471,15 @@ impl PhysicsHooks for RprPhysicsHooks {
     }
 
     fn filter_intersection_pair(&self, context: &PairFilterContext) -> bool {
-        (self.filter_intersection_pair)(context as *const PairFilterContext as *const RprPairFilterContext)
+        (self.filter_intersection_pair)(
+            context as *const PairFilterContext as *const RprPairFilterContext,
+        )
     }
 
     fn modify_solver_contacts(&self, context: &mut ContactModificationContext) {
-        (self.modify_solver_contacts)(context as *mut ContactModificationContext as *mut RprContactModificationContext)
+        (self.modify_solver_contacts)(
+            context as *mut ContactModificationContext as *mut RprContactModificationContext,
+        )
     }
 }
 
@@ -588,10 +593,10 @@ impl EventHandler for RprEventHandler {
             match contact_pair {
                 None => std::ptr::null(),
                 Some(t) => t as *const ContactPair as *const RprContactPair,
-            }
+            },
         )
     }
-    
+
     fn handle_contact_force_event(
         &self,
         dt: Real,
@@ -669,33 +674,33 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step(
 #[no_mangle]
 pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     len: usize,
-    pipeline: *mut *mut RprPhysicsPipeline,
+    pipeline: *const *mut RprPhysicsPipeline,
     gravity: *const RprVector,
     integration_parameters: *const *const RprIntegrationParameters,
-    islands: *mut *mut RprIslandManager,
-    broad_phase: *mut *mut RprBroadPhase,
-    narrow_phase: *mut *mut RprNarrowPhase,
-    bodies: *mut *mut RprRigidBodySet,
-    colliders: *mut *mut RprColliderSet,
-    impulse_joints: *mut *mut RprImpulseJointSet,
-    multibody_joints: *mut *mut RprMultibodyJointSet,
-    ccd_solver: *mut *mut RprCCDSolver,
-    query_pipeline: *mut *mut RprQueryPipeline,
+    islands: *const *mut RprIslandManager,
+    broad_phase: *const *mut RprBroadPhase,
+    narrow_phase: *const *mut RprNarrowPhase,
+    bodies: *const *mut RprRigidBodySet,
+    colliders: *const *mut RprColliderSet,
+    impulse_joints: *const *mut RprImpulseJointSet,
+    multibody_joints: *const *mut RprMultibodyJointSet,
+    ccd_solver: *const *mut RprCCDSolver,
+    query_pipeline: *const *mut RprQueryPipeline,
     hooks: *const *const RprPhysicsHooks,
     events: *const *const RprEventHandler,
 ) {
-    let pipeline = std::slice::from_raw_parts_mut(pipeline, len);
+    let pipeline = std::slice::from_raw_parts(pipeline, len);
     let gravity = std::slice::from_raw_parts(gravity, len);
     let integration_parameters = std::slice::from_raw_parts(integration_parameters, len);
-    let islands = std::slice::from_raw_parts_mut(islands, len);
-    let broad_phase = std::slice::from_raw_parts_mut(broad_phase, len);
-    let narrow_phase = std::slice::from_raw_parts_mut(narrow_phase, len);
-    let bodies = std::slice::from_raw_parts_mut(bodies, len);
-    let colliders = std::slice::from_raw_parts_mut(colliders, len);
-    let impulse_joints = std::slice::from_raw_parts_mut(impulse_joints, len);
-    let multibody_joints = std::slice::from_raw_parts_mut(multibody_joints, len);
-    let ccd_solver = std::slice::from_raw_parts_mut(ccd_solver, len);
-    let query_pipeline = std::slice::from_raw_parts_mut(query_pipeline, len);
+    let islands = std::slice::from_raw_parts(islands, len);
+    let broad_phase = std::slice::from_raw_parts(broad_phase, len);
+    let narrow_phase = std::slice::from_raw_parts(narrow_phase, len);
+    let bodies = std::slice::from_raw_parts(bodies, len);
+    let colliders = std::slice::from_raw_parts(colliders, len);
+    let impulse_joints = std::slice::from_raw_parts(impulse_joints, len);
+    let multibody_joints = std::slice::from_raw_parts(multibody_joints, len);
+    let ccd_solver = std::slice::from_raw_parts(ccd_solver, len);
+    let query_pipeline = std::slice::from_raw_parts(query_pipeline, len);
     let hooks = std::slice::from_raw_parts(hooks, len);
     let events = std::slice::from_raw_parts(events, len);
 
@@ -730,6 +735,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
         hooks,
         events,
     ) {
+        let query_pipeline: Option<&mut QueryPipeline> = query_pipeline.as_mut().map(|t| &mut (*t).0);
         let hooks: &dyn PhysicsHooks = match hooks.as_ref() {
             None => &(),
             Some(t) => t,
@@ -749,7 +755,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
             &mut (*impulse_joints).get_mut().0,
             &mut (*multibody_joints).get_mut().0,
             &mut (*ccd_solver).get_mut().0,
-            Some(&mut (*query_pipeline).get_mut().0),
+            query_pipeline,
             hooks,
             events,
         )

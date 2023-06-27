@@ -9,6 +9,24 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$63 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x")
+        ).withName("RprAngVector")
+    );
+    static final MethodHandle RprRigidBodyBuilder_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_rotation",
+        constants$63.RprRigidBodyBuilder_rotation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_sleeping$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_sleeping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_sleeping",
+        constants$63.RprRigidBodyBuilder_sleeping$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -44,28 +62,6 @@ class constants$63 {
     static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_drop",
         constants$63.RprRigidBodySet_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_get",
-        constants$63.RprRigidBodySet_get$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_get_mut",
-        constants$63.RprRigidBodySet_get_mut$FUNC
     );
 }
 
