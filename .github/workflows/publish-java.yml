@@ -29,6 +29,7 @@ jobs:
         ./gradlew --stacktrace --info -PbuildProfile=release build
     - name: Get version type
       run: |
+        cd rapier-java
         VERSION_TYPE=$(./gradlew -q --console=plain --no-daemon printVersionType)
         echo VERSION_TYPE=$VERSION_TYPE
         echo VERSION_TYPE=$VERSION_TYPE >> $GITHUB_ENV
