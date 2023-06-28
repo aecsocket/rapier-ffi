@@ -14,6 +14,13 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         dimension: [dim2, dim3]
         precision: [f32, f64]
+        include:
+        - os: ubuntu-latest
+          # these two params don't matter, since we will publish all variants anyway
+          # this is just to make sure only one of these jobs publishes all variants
+          dimension: dim2
+          precision: f32
+          publish-core: true
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -47,6 +54,7 @@ jobs:
         cd rapier-java
         ./gradlew publish
       env:
+        CI_PUBLISH_CORE: ${{ matrix.publish-core }}
         ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
         ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
     - name: Publish release
@@ -55,6 +63,7 @@ jobs:
         cd rapier-java
         ./gradlew -PforceSign=true publishToSonatype closeSonatypeStagingRepository
       env:
+        CI_PUBLISH_CORE: ${{ matrix.publish-core }}
         ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
         ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
         ORG_GRADLE_PROJECT_mavenSigningKey: ${{ secrets.SIGNING_KEY }}
