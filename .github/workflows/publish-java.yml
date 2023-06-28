@@ -35,6 +35,7 @@ jobs:
     - name: Publish snapshot
       if: ${{ env.VERSION_TYPE == 'snapshot' }}
       run: |
+        cd rapier-java
         ./gradlew publish
       env:
         ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
@@ -42,6 +43,7 @@ jobs:
     - name: Publish release
       if: ${{ env.VERSION_TYPE == 'release' }}
       run: |
+        cd rapier-java
         ./gradlew -PforceSign=true publishToSonatype closeSonatypeStagingRepository
       env:
         ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
