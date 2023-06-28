@@ -2,6 +2,8 @@
 
 # rapier-java
 [![CI](https://img.shields.io/github/actions/workflow/status/aecsocket/rapier-ffi/build-java.yml)](https://github.com/aecsocket/rapier-ffi/actions/workflows/build-java.yml)
+![Release](https://img.shields.io/maven-central/v/io.github.aecsocket/rapier-java?label=release)
+![Snapshot](https://img.shields.io/nexus/s/io.github.aecsocket/rapier-java?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)
 
 Java bindings for the Rapier physics engine
 
