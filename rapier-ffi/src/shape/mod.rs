@@ -365,4 +365,27 @@ pub unsafe extern "C" fn RprSharedShape_round_convex_mesh(
     }
 }
 
+/*
+    /// Initializes an heightfield shape defined by its set of height and a scale
+    /// factor along each coordinate axis.
+    #[cfg(feature = "dim2")]
+    pub fn heightfield(heights: na::DVector<Real>, scale: Vector<Real>) -> Self {
+        SharedShape(Arc::new(HeightField::new(heights, scale)))
+    }
+
+    /// Initializes an heightfield shape on the x-z plane defined by its set of height and a scale
+    /// factor along each coordinate axis.
+    #[cfg(feature = "dim3")]
+    pub fn heightfield(heights: na::DMatrix<Real>, scale: Vector<Real>) -> Self {
+        SharedShape(Arc::new(HeightField::new(heights, scale)))
+    } */
+
+// #[cfg(feature = "dim3")]
+// pub unsafe extern "C" fn RprSharedShape_heightfield(
+//     scale: RprVector,
+// ) -> *mut RprSharedShape {
+//     let heights = DMatrix::from_
+//     SharedShape::heightfield(heights, scale)
+// }
+
 // TODO heightfield

@@ -214,3 +214,59 @@ impl RprRay {
         }
     }
 }
+
+#[repr(C)]
+#[cfg(feature = "dim2")]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+pub struct RprAngularInertia {
+    pub x: Real,
+}
+
+#[repr(C)]
+#[cfg(feature = "dim3")]
+#[derive(Debug, Clone, Copy, bytemuck::Pod, bytemuck::Zeroable)]
+pub struct RprAngularInertia {
+    /// The component at the first row and first column of this matrix.
+    pub m11: Real,
+    /// The component at the first row and second column of this matrix.
+    pub m12: Real,
+    /// The component at the first row and third column of this matrix.
+    pub m13: Real,
+    /// The component at the second row and second column of this matrix.
+    pub m22: Real,
+    /// The component at the second row and third column of this matrix.
+    pub m23: Real,
+    /// The component at the third row and third column of this matrix.
+    pub m33: Real,
+}
+
+#[cfg(feature = "dim2")]
+impl RprAngularInertia {
+    pub fn from_raw(raw: AngularInertia<Real>) -> Self {
+        Self {
+            x: raw,
+        }
+    }
+
+    pub fn into_raw(self) -> AngularInertia<Real> {
+        self.x
+    }
+}
+
+#[cfg(feature = "dim3")]
+impl RprAngularInertia {
+    pub fn from_raw(raw: AngularInertia<Real>) -> Self {
+        Self {
+            m11: raw.m11,
+            m12: raw.m12,
+            m13: raw.m13,
+            m22: raw.m22,
+            m23: raw.m23,
+            m33: raw.m33,
+        }
+    }
+
+    pub fn into_raw(self) -> AngularInertia<Real> {
+        AngularInertia::new(self.m11, self.m12, self.m13, self.m22, self.m23, self.m33)
+    }
+}

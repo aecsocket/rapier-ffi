@@ -24,14 +24,14 @@ This repository is dual-licensed Apache and MIT. This license applies to all sub
   - [x] Compound
   - [x] Polylines, convex hulls, meshes, decomposition
   - [ ] Heightfield
-- [ ] Rigid bodies and colliders
+- [x] Rigid bodies and colliders
   - [x] Shape
   - [x] Position
   - [x] Interaction groups
-  - [ ] Mass properties
-- [ ] Pipelines
+  - [x] Mass properties
+- [x] Pipelines
   - [x] Physics
-  - [ ] Query
+  - [x] Query
 - [ ] Joints
   - [x] Generic data
   - [x] Impulse

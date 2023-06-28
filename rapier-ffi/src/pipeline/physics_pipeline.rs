@@ -1,7 +1,5 @@
 use itertools::izip;
-use rayon::prelude::{
-    IntoParallelIterator, IntoParallelRefIterator, ParallelBridge, ParallelIterator,
-};
+use rayon::prelude::{IntoParallelIterator, ParallelIterator};
 
 use crate::prelude::*;
 

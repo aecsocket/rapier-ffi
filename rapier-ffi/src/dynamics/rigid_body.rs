@@ -148,6 +148,130 @@ pub unsafe extern "C" fn RprRigidBodyActivation_set_sleeping(
     this.get_mut().0.sleeping = value;
 }
 
+pub struct RprRigidBodyMassProps(pub RigidBodyMassProps);
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_flags(this: *const RprRigidBodyMassProps) -> RprLockedAxes {
+    this.get().0.flags.bits()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_local_mprops(this: *const RprRigidBodyMassProps) -> RprMassProperties {
+    RprMassProperties::from_raw(this.get().0.local_mprops)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_additional_local_mprops(
+    this: *const RprRigidBodyMassProps,
+    out: *mut RprRigidBodyAdditionalMassProps,
+) -> bool {
+    match &this.get().0.additional_local_mprops {
+        Some(t) => {
+            *out = RprRigidBodyAdditionalMassProps::from_raw(*t.as_ref());
+            true
+        }
+        None => false,
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_world_com(this: *const RprRigidBodyMassProps) -> RprVector {
+    RprVector::from_point(this.get().0.world_com)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_inv_mass(this: *const RprRigidBodyMassProps) -> RprVector {
+    RprVector::from_raw(this.get().0.effective_inv_mass)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_world_inv_inertia_sqrt(this: *const RprRigidBodyMassProps) -> RprAngularInertia {
+    RprAngularInertia::from_raw(this.get().0.effective_world_inv_inertia_sqrt)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_mass(this: *const RprRigidBodyMassProps) -> Real {
+    this.get().0.mass()
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_mass(this: *const RprRigidBodyMassProps) -> RprVector {
+    RprVector::from_raw(this.get().0.effective_mass())
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_angular_inertia(this: *const RprRigidBodyMassProps) -> RprAngularInertia {
+    RprAngularInertia::from_raw(this.get().0.effective_angular_inertia())
+}
+
+/// The local mass properties of a rigid-body.
+#[repr(C)]
+#[derive(Copy, Clone, Debug)]
+pub struct RprMassProperties {
+    /// The center of mass of a rigid-body expressed in its local-space.
+    pub local_com: RprVector,
+    /// The inverse of the mass of a rigid-body.
+    ///
+    /// If this is zero, the rigid-body is assumed to have infinite mass.
+    pub inv_mass: Real,
+    /// The inverse of the principal angular inertia of the rigid-body.
+    ///
+    /// Components set to zero are assumed to be infinite along the corresponding principal axis.
+    pub inv_principal_inertia_sqrt: RprAngVector,
+    #[cfg(feature = "dim3")]
+    /// The principal vectors of the local angular inertia tensor of the rigid-body.
+    pub principal_inertia_local_frame: RprRotation,
+}
+
+impl RprMassProperties {
+    pub fn from_raw(raw: MassProperties) -> Self {
+        Self {
+            local_com: RprVector::from_point(raw.local_com),
+            inv_mass: raw.inv_mass,
+            inv_principal_inertia_sqrt: RprAngVector::from_raw(raw.inv_principal_inertia_sqrt),
+            #[cfg(feature = "dim3")]
+            principal_inertia_local_frame: RprRotation::from_raw(raw.principal_inertia_local_frame),
+        }
+    }
+
+    pub fn into_raw(self) -> MassProperties {
+        MassProperties {
+            local_com: self.local_com.into_point(),
+            inv_mass: self.inv_mass,
+            inv_principal_inertia_sqrt: self.inv_principal_inertia_sqrt.into_raw(),
+            #[cfg(feature = "dim3")]
+            principal_inertia_local_frame: self.principal_inertia_local_frame.into_raw(),
+        }
+    }
+}
+
+/// Mass and angular inertia added to a rigid-body on top of its attached colliders’ contributions.
+#[repr(C)]
+#[derive(Copy, Clone, Debug)]
+pub enum RprRigidBodyAdditionalMassProps {
+    /// Mass properties to be added as-is.
+    MassProps(RprMassProperties),
+    /// Mass to be added to the rigid-body. This will also automatically scale
+    /// the attached colliders total angular inertia to account for the added mass.
+    Mass(Real),
+}
+
+impl RprRigidBodyAdditionalMassProps {
+    pub fn from_raw(raw: RigidBodyAdditionalMassProps) -> Self {
+        match raw {
+            RigidBodyAdditionalMassProps::MassProps(m) => Self::MassProps(RprMassProperties::from_raw(m)),
+            RigidBodyAdditionalMassProps::Mass(m) => Self::Mass(m),
+        }
+    }
+
+    pub fn into_raw(self) -> RigidBodyAdditionalMassProps {
+        match self {
+            Self::MassProps(m) => RigidBodyAdditionalMassProps::MassProps(m.into_raw()),
+            Self::Mass(m) => RigidBodyAdditionalMassProps::Mass(m),
+        }
+    }
+}
+
 pub struct RprRigidBody(pub RigidBody);
 
 #[no_mangle]
