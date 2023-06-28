@@ -15,9 +15,12 @@ import java.util.Objects;
 public final class HelloRapier {
     @Test
     public void helloRapier() {
+        // load native libraries from the JAR, as provided by the various natives subprojects
         Rapier.load();
 
+        // use the Java Foreign Function API to be able to allocate memory on the stack via `arena`
         try (var arena = MemorySession.openConfined()) {
+            // create some Rapier structs on the heap
             var rigidBodySet = RigidBodySet.create();
             var colliderSet = ColliderSet.create();
 
@@ -28,7 +31,8 @@ public final class HelloRapier {
             var floorCollider = Rapier.use(ColliderBuilder.of(floorShape), ColliderBuilder::build);
             colliderSet.insert(floorCollider);
 
-            // use `.use` to drop this object after we're done with it
+            // use `Rapier.use` to drop this object after we're done with it
+            // (after `RigidBodyBuilder::build` is called, or whatever function you pass in there)
             var rigidBody = Rapier.use(RigidBodyBuilder.dynamic()
                     .translation(new Vector(0.0, 10.0, 0.0)),
                     RigidBodyBuilder::build);
@@ -37,7 +41,9 @@ public final class HelloRapier {
             long ballBodyHandle = rigidBodySet.insert(rigidBody);
             colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
+            // Vectors are managed on the Java side, and are converted to/from native objects when they need to be
             var gravity = new Vector(0.0, -9.81, 0.0);
+            // set up a bunch more Rapier structures
             var integrationParameters = IntegrationParametersDesc.create(arena).build();
             var islandManager = IslandManager.create();
             var broadPhase = BroadPhase.create();
@@ -68,6 +74,7 @@ public final class HelloRapier {
                 System.out.printf("Ball altitude: %f\n", translation.y());
             }
             
+            // make sure to clean up after ourselves
             physicsPipeline.drop();
             ccdSolver.drop();
             multibodyJointSet.drop();
@@ -80,8 +87,6 @@ public final class HelloRapier {
             // will automatically drop its contents
             colliderSet.drop();
             rigidBodySet.drop();
-            // gravity is allocated on the Java side, not the native side
-            // so it gets deallocated when we exit the arena's scope
         }
     }
 }
