@@ -10,7 +10,7 @@ pub(crate) unsafe fn drop_ptr<T>(raw: *mut T) {
 #[track_caller]
 fn ptr_panic<T: ?Sized>(ptr: *const T) -> ! {
     panic!(
-        "passed invalid pointer to foreign function: {}",
+        "passed invalid pointer to foreign function: {:x}",
         ptr as *const () as usize
     );
 }

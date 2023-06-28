@@ -1,6 +1,8 @@
 use itertools::izip;
 use rapier::parry::query::NonlinearRigidMotion;
 use rapier::parry::query::TOIStatus;
+use rayon::prelude::IntoParallelIterator;
+use rayon::prelude::ParallelIterator;
 
 use crate::prelude::*;
 
@@ -351,16 +353,34 @@ pub unsafe extern "C" fn RprQueryPipeline_update_all(
     bodies: *const *const RprRigidBodySet,
     colliders: *const *const RprColliderSet,
 ) {
-    let pipeline = std::slice::from_raw_parts(pipeline, len);
-    let bodies = std::slice::from_raw_parts(bodies, len);
-    let colliders = std::slice::from_raw_parts(colliders, len);
+    struct Entry {
+        pipeline: *mut RprQueryPipeline,
+        bodies: *const RprRigidBodySet,
+        colliders: *const RprColliderSet,
+    }
 
-    for (pipeline, bodies, colliders) in izip!(pipeline, bodies, colliders,) {
-        (*pipeline)
+    unsafe impl Send for Entry {}
+    unsafe impl Sync for Entry {}
+
+    izip!(
+        std::slice::from_raw_parts(pipeline, len),
+        std::slice::from_raw_parts(bodies, len),
+        std::slice::from_raw_parts(colliders, len),
+    )
+    .map(|(pipeline, bodies, colliders)| Entry {
+        pipeline: *pipeline,
+        bodies: *bodies,
+        colliders: *colliders,
+    })
+    .collect::<Vec<Entry>>()
+    .into_par_iter()
+    .for_each(|entry| {
+        entry
+            .pipeline
             .get_mut()
             .0
-            .update(&(*bodies).get().0, &(*colliders).get().0)
-    }
+            .update(&entry.bodies.get().0, &entry.colliders.get().0)
+    });
 }
 
 #[no_mangle]

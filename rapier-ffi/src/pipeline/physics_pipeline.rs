@@ -1,5 +1,7 @@
 use itertools::izip;
-use rayon::prelude::{IntoParallelIterator, IntoParallelRefIterator, ParallelBridge};
+use rayon::prelude::{
+    IntoParallelIterator, IntoParallelRefIterator, ParallelBridge, ParallelIterator,
+};
 
 use crate::prelude::*;
 
@@ -689,75 +691,102 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     hooks: *const *const RprPhysicsHooks,
     events: *const *const RprEventHandler,
 ) {
-    let pipeline = std::slice::from_raw_parts(pipeline, len);
-    let gravity = std::slice::from_raw_parts(gravity, len);
-    let integration_parameters = std::slice::from_raw_parts(integration_parameters, len);
-    let islands = std::slice::from_raw_parts(islands, len);
-    let broad_phase = std::slice::from_raw_parts(broad_phase, len);
-    let narrow_phase = std::slice::from_raw_parts(narrow_phase, len);
-    let bodies = std::slice::from_raw_parts(bodies, len);
-    let colliders = std::slice::from_raw_parts(colliders, len);
-    let impulse_joints = std::slice::from_raw_parts(impulse_joints, len);
-    let multibody_joints = std::slice::from_raw_parts(multibody_joints, len);
-    let ccd_solver = std::slice::from_raw_parts(ccd_solver, len);
-    let query_pipeline = std::slice::from_raw_parts(query_pipeline, len);
-    let hooks = std::slice::from_raw_parts(hooks, len);
-    let events = std::slice::from_raw_parts(events, len);
+    struct Entry {
+        pipeline: *mut RprPhysicsPipeline,
+        gravity: RprVector,
+        integration_parameters: *const RprIntegrationParameters,
+        islands: *mut RprIslandManager,
+        broad_phase: *mut RprBroadPhase,
+        narrow_phase: *mut RprNarrowPhase,
+        bodies: *mut RprRigidBodySet,
+        colliders: *mut RprColliderSet,
+        impulse_joints: *mut RprImpulseJointSet,
+        multibody_joints: *mut RprMultibodyJointSet,
+        ccd_solver: *mut RprCCDSolver,
+        query_pipeline: *mut RprQueryPipeline,
+        hooks: *const RprPhysicsHooks,
+        events: *const RprEventHandler,
+    }
 
-    for (
-        pipeline,
-        gravity,
-        integration_parameters,
-        islands,
-        broad_phase,
-        narrow_phase,
-        bodies,
-        colliders,
-        impulse_joints,
-        multibody_joints,
-        ccd_solver,
-        query_pipeline,
-        hooks,
-        events,
-    ) in izip!(
-        pipeline,
-        gravity,
-        integration_parameters,
-        islands,
-        broad_phase,
-        narrow_phase,
-        bodies,
-        colliders,
-        impulse_joints,
-        multibody_joints,
-        ccd_solver,
-        query_pipeline,
-        hooks,
-        events,
-    ) {
-        let query_pipeline: Option<&mut QueryPipeline> = query_pipeline.as_mut().map(|t| &mut (*t).0);
-        let hooks: &dyn PhysicsHooks = match hooks.as_ref() {
+    unsafe impl Send for Entry {}
+    unsafe impl Sync for Entry {}
+
+    izip!(
+        std::slice::from_raw_parts(pipeline, len),
+        std::slice::from_raw_parts(gravity, len),
+        std::slice::from_raw_parts(integration_parameters, len),
+        std::slice::from_raw_parts(islands, len),
+        std::slice::from_raw_parts(broad_phase, len),
+        std::slice::from_raw_parts(narrow_phase, len),
+        std::slice::from_raw_parts(bodies, len),
+        std::slice::from_raw_parts(colliders, len),
+        std::slice::from_raw_parts(impulse_joints, len),
+        std::slice::from_raw_parts(multibody_joints, len),
+        std::slice::from_raw_parts(ccd_solver, len),
+        std::slice::from_raw_parts(query_pipeline, len),
+        std::slice::from_raw_parts(hooks, len),
+        std::slice::from_raw_parts(events, len),
+    )
+    .map(
+        |(
+            pipeline,
+            gravity,
+            integration_parameters,
+            islands,
+            broad_phase,
+            narrow_phase,
+            bodies,
+            colliders,
+            impulse_joints,
+            multibody_joints,
+            ccd_solver,
+            query_pipeline,
+            hooks,
+            events,
+        )| Entry {
+            pipeline: *pipeline,
+            gravity: *gravity,
+            integration_parameters: *integration_parameters,
+            islands: *islands,
+            broad_phase: *broad_phase,
+            narrow_phase: *narrow_phase,
+            bodies: *bodies,
+            colliders: *colliders,
+            impulse_joints: *impulse_joints,
+            multibody_joints: *multibody_joints,
+            ccd_solver: *ccd_solver,
+            query_pipeline: *query_pipeline,
+            hooks: *hooks,
+            events: *events,
+        },
+    )
+    .collect::<Vec<Entry>>()
+    .into_par_iter()
+    .for_each(|entry| {
+        let query_pipeline: Option<&mut QueryPipeline> =
+            entry.query_pipeline.as_mut().map(|t| &mut (*t).0);
+        let hooks: &dyn PhysicsHooks = match entry.hooks.as_ref() {
             None => &(),
             Some(t) => t,
         };
-        let events: &dyn EventHandler = match events.as_ref() {
+        let events: &dyn EventHandler = match entry.events.as_ref() {
             None => &(),
             Some(t) => t,
         };
-        (*pipeline).get_mut().0.step(
-            &gravity.into_raw(),
-            &(*integration_parameters).get().0,
-            &mut (*islands).get_mut().0,
-            &mut (*broad_phase).get_mut().0,
-            &mut (*narrow_phase).get_mut().0,
-            &mut (*bodies).get_mut().0,
-            &mut (*colliders).get_mut().0,
-            &mut (*impulse_joints).get_mut().0,
-            &mut (*multibody_joints).get_mut().0,
-            &mut (*ccd_solver).get_mut().0,
+        entry.pipeline.get_mut().0.step(
+            &entry.gravity.into_raw(),
+            &entry.integration_parameters.get().0,
+            &mut entry.islands.get_mut().0,
+            &mut entry.broad_phase.get_mut().0,
+            &mut entry.narrow_phase.get_mut().0,
+            &mut entry.bodies.get_mut().0,
+            &mut entry.colliders.get_mut().0,
+            &mut entry.impulse_joints.get_mut().0,
+            &mut entry.multibody_joints.get_mut().0,
+            &mut entry.ccd_solver.get_mut().0,
             query_pipeline,
             hooks,
             events,
         )
-    }
+    })
 }
