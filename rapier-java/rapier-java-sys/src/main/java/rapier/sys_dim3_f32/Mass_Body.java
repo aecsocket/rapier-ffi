@@ -7,29 +7,29 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-public class RprFeatureId_Edge_Body {
+public class Mass_Body {
 
     static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("id")
-    ).withName("RprFeatureId_Edge_Body");
+        Constants$root.C_FLOAT$LAYOUT.withName("mass")
+    ).withName("Mass_Body");
     public static MemoryLayout $LAYOUT() {
-        return RprFeatureId_Edge_Body.$struct$LAYOUT;
+        return Mass_Body.$struct$LAYOUT;
     }
-    static final VarHandle id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    public static VarHandle id$VH() {
-        return RprFeatureId_Edge_Body.id$VH;
+    static final VarHandle mass$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("mass"));
+    public static VarHandle mass$VH() {
+        return Mass_Body.mass$VH;
     }
-    public static int id$get(MemorySegment seg) {
-        return (int)RprFeatureId_Edge_Body.id$VH.get(seg);
+    public static float mass$get(MemorySegment seg) {
+        return (float)Mass_Body.mass$VH.get(seg);
     }
-    public static void id$set( MemorySegment seg, int x) {
-        RprFeatureId_Edge_Body.id$VH.set(seg, x);
+    public static void mass$set( MemorySegment seg, float x) {
+        Mass_Body.mass$VH.set(seg, x);
     }
-    public static int id$get(MemorySegment seg, long index) {
-        return (int)RprFeatureId_Edge_Body.id$VH.get(seg.asSlice(index*sizeof()));
+    public static float mass$get(MemorySegment seg, long index) {
+        return (float)Mass_Body.mass$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void id$set(MemorySegment seg, long index, int x) {
-        RprFeatureId_Edge_Body.id$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void mass$set(MemorySegment seg, long index, float x) {
+        Mass_Body.mass$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

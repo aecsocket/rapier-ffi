@@ -26,27 +26,27 @@ public sealed interface FeatureId {
             case 0 -> {
                 var body = {{ sys }}.RprFeatureId.vertex$slice(memory);
                 yield new Vertex(
-                        {{ sys }}.RprFeatureId_Vertex_Body.id$get(body)
+                        {{ sys }}.Vertex_Body.id$get(body)
                 );
             }
 {% if dim2 %}
             case 1 -> {
                 var body = {{ sys }}.RprFeatureId.face$slice(memory);
                 yield new Face(
-                        {{ sys }}.RprFeatureId_Face_Body.id$get(body)
+                        {{ sys }}.Face_Body.id$get(body)
                 );
             }
 {% else %}
             case 1 -> {
                 var body = {{ sys }}.RprFeatureId.edge$slice(memory);
                 yield new Edge(
-                        {{ sys }}.RprFeatureId_Edge_Body.id$get(body)
+                        {{ sys }}.Edge_Body.id$get(body)
                 );
             }
             case 2 -> {
                 var body = {{ sys }}.RprFeatureId.face$slice(memory);
                 yield new Face(
-                        {{ sys }}.RprFeatureId_Face_Body.id$get(body)
+                        {{ sys }}.Face_Body.id$get(body)
                 );
             }
 {% endif %}

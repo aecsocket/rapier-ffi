@@ -51,6 +51,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
         }
     }
 
+    public RigidBodyMassProps getMassProperties() {
+        return RigidBodyMassProps.at({{ sys }}.RapierC.RprRigidBody_mass_properties(self));
+    }
+
     public short getEffectiveDominanceGroup() {
         return RprRigidBody_effective_dominance_group(self);
     }

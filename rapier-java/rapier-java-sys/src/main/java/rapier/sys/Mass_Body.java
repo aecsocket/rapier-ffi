@@ -7,26 +7,29 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-public class RprSegment {
+public class Mass_Body {
 
     static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("a"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("b")
-    ).withName("RprSegment");
+        Constants$root.C_FLOAT$LAYOUT.withName("mass")
+    ).withName("Mass_Body");
     public static MemoryLayout $LAYOUT() {
-        return RprSegment.$struct$LAYOUT;
+        return Mass_Body.$struct$LAYOUT;
     }
-    public static MemorySegment a$slice(MemorySegment seg) {
-        return seg.asSlice(0, 8);
+    static final VarHandle mass$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("mass"));
+    public static VarHandle mass$VH() {
+        return Mass_Body.mass$VH;
     }
-    public static MemorySegment b$slice(MemorySegment seg) {
-        return seg.asSlice(8, 8);
+    public static float mass$get(MemorySegment seg) {
+        return (float)Mass_Body.mass$VH.get(seg);
+    }
+    public static void mass$set( MemorySegment seg, float x) {
+        Mass_Body.mass$VH.set(seg, x);
+    }
+    public static float mass$get(MemorySegment seg, long index) {
+        return (float)Mass_Body.mass$VH.get(seg.asSlice(index*sizeof()));
+    }
+    public static void mass$set(MemorySegment seg, long index, float x) {
+        Mass_Body.mass$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

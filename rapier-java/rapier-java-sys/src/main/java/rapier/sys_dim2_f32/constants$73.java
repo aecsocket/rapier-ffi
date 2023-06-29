@@ -16,6 +16,13 @@ class constants$73 {
         "RprRigidBody_mass",
         constants$73.RprRigidBody_mass$FUNC
     );
+    static final FunctionDescriptor RprRigidBody_mass_properties$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_mass_properties$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_mass_properties",
+        constants$73.RprRigidBody_mass_properties$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_next_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("re"),
@@ -72,14 +79,6 @@ class constants$73 {
     static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_recompute_mass_properties_from_colliders",
         constants$73.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_reset_forces$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_reset_forces$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_reset_forces",
-        constants$73.RprRigidBody_reset_forces$FUNC
     );
 }
 

@@ -19,11 +19,11 @@ This repository is dual-licensed Apache and MIT. This license applies to all sub
 
 ## Coverage
 
-- [ ] Shapes
+- [x] Shapes
   - [x] Primitive convexes
   - [x] Compound
   - [x] Polylines, convex hulls, meshes, decomposition
-  - [ ] Heightfield
+  - [x] Heightfield
 - [x] Rigid bodies and colliders
   - [x] Shape
   - [x] Position

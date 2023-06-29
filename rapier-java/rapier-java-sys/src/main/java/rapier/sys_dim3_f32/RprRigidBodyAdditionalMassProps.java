@@ -31,11 +31,11 @@ public class RprRigidBodyAdditionalMassProps {
                         Constants$root.C_FLOAT$LAYOUT.withName("z"),
                         Constants$root.C_FLOAT$LAYOUT.withName("w")
                     ).withName("principal_inertia_local_frame")
-                ).withName("mass_props")
-            ).withName("$anon$0"),
+                ).withName("props")
+            ).withName("mass_props"),
             MemoryLayout.structLayout(
                 Constants$root.C_FLOAT$LAYOUT.withName("mass")
-            ).withName("$anon$1")
+            ).withName("mass")
         ).withName("$anon$0")
     ).withName("RprRigidBodyAdditionalMassProps");
     public static MemoryLayout $LAYOUT() {
@@ -60,21 +60,8 @@ public class RprRigidBodyAdditionalMassProps {
     public static MemorySegment mass_props$slice(MemorySegment seg) {
         return seg.asSlice(4, 44);
     }
-    static final VarHandle mass$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("$anon$0"), MemoryLayout.PathElement.groupElement("$anon$1"), MemoryLayout.PathElement.groupElement("mass"));
-    public static VarHandle mass$VH() {
-        return RprRigidBodyAdditionalMassProps.mass$VH;
-    }
-    public static float mass$get(MemorySegment seg) {
-        return (float)RprRigidBodyAdditionalMassProps.mass$VH.get(seg);
-    }
-    public static void mass$set( MemorySegment seg, float x) {
-        RprRigidBodyAdditionalMassProps.mass$VH.set(seg, x);
-    }
-    public static float mass$get(MemorySegment seg, long index) {
-        return (float)RprRigidBodyAdditionalMassProps.mass$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void mass$set(MemorySegment seg, long index, float x) {
-        RprRigidBodyAdditionalMassProps.mass$VH.set(seg.asSlice(index*sizeof()), x);
+    public static MemorySegment mass$slice(MemorySegment seg) {
+        return seg.asSlice(4, 4);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

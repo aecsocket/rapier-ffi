@@ -10,6 +10,7 @@ import rapier.sys.RapierC;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
 import static rapier.sys.RapierC.*;
@@ -198,6 +199,13 @@ public final class SharedShape extends RefNative implements RefCounted {
     public static SharedShape roundCuboid({{ real }} hx, {{ real }} hy, {{ real }} borderRadius) {
         return at({{ sys }}.RapierC.RprSharedShape_round_cuboid(hx, hy, borderRadius));
     }
+
+    public static SharedShape heightfield({{ real }}[] heights, Vector scale) {
+        try (var arena = MemorySession.openConfined()) {
+            var nHeightsData = arena.allocateArray({{ realLayout }}, heights);
+            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heights.length, nHeightsData, scale.allocate(arena)));
+        }
+    }
 {% else %}
     public static SharedShape cylinder({{ real }} halfHeight, {{ real }} radius) {
         return at({{ sys }}.RapierC.RprSharedShape_cylinder(halfHeight, radius));
@@ -248,6 +256,20 @@ public final class SharedShape extends RefNative implements RefCounted {
                     borderRadius
             );
             return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+        }
+    }
+
+    public static SharedShape heightfield(
+            int heightsRows,
+            int heightsCols,
+            {{ real }}[] heightsData,
+            Vector scale
+    ) {
+        if (heightsRows * heightsCols != heightsData.length)
+            throw new IllegalArgumentException("heightsRows * heightsCols must equal heightsData.length");
+        try (var arena = MemorySession.openConfined()) {
+            var nHeightsData = arena.allocateArray({{ realLayout }}, heightsData);
+            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heightsRows, heightsCols, nHeightsData, scale.allocate(arena)));
         }
     }
 {% endif %}

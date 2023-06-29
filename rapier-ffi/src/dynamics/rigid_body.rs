@@ -250,24 +250,32 @@ impl RprMassProperties {
 #[derive(Copy, Clone, Debug)]
 pub enum RprRigidBodyAdditionalMassProps {
     /// Mass properties to be added as-is.
-    MassProps(RprMassProperties),
+    MassProps {
+        props: RprMassProperties
+    },
     /// Mass to be added to the rigid-body. This will also automatically scale
     /// the attached colliders total angular inertia to account for the added mass.
-    Mass(Real),
+    Mass {
+        mass: Real
+    },
 }
 
 impl RprRigidBodyAdditionalMassProps {
     pub fn from_raw(raw: RigidBodyAdditionalMassProps) -> Self {
         match raw {
-            RigidBodyAdditionalMassProps::MassProps(m) => Self::MassProps(RprMassProperties::from_raw(m)),
-            RigidBodyAdditionalMassProps::Mass(m) => Self::Mass(m),
+            RigidBodyAdditionalMassProps::MassProps(props) => Self::MassProps {
+                props: RprMassProperties::from_raw(props)
+            },
+            RigidBodyAdditionalMassProps::Mass(mass) => Self::Mass {
+                mass
+            },
         }
     }
 
     pub fn into_raw(self) -> RigidBodyAdditionalMassProps {
         match self {
-            Self::MassProps(m) => RigidBodyAdditionalMassProps::MassProps(m.into_raw()),
-            Self::Mass(m) => RigidBodyAdditionalMassProps::Mass(m),
+            Self::MassProps { props } => RigidBodyAdditionalMassProps::MassProps(props.into_raw()),
+            Self::Mass { mass } => RigidBodyAdditionalMassProps::Mass(mass),
         }
     }
 }
@@ -342,7 +350,10 @@ pub unsafe extern "C" fn RprRigidBody_center_of_mass(this: *const RprRigidBody) 
     RprVector::from_point(*this.get().0.center_of_mass())
 }
 
-// TODO mass_properties
+#[no_mangle]
+pub unsafe extern "C" fn RprRigidBody_mass_properties(this: *const RprRigidBody) -> *const RprRigidBodyMassProps {
+    this.get().0.mass_properties() as *const RigidBodyMassProps as *const RprRigidBodyMassProps
+}
 
 #[no_mangle]
 pub unsafe extern "C" fn RprRigidBody_effective_dominance_group(this: *const RprRigidBody) -> i16 {

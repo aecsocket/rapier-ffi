@@ -365,27 +365,47 @@ pub unsafe extern "C" fn RprSharedShape_round_convex_mesh(
     }
 }
 
-/*
-    /// Initializes an heightfield shape defined by its set of height and a scale
-    /// factor along each coordinate axis.
-    #[cfg(feature = "dim2")]
-    pub fn heightfield(heights: na::DVector<Real>, scale: Vector<Real>) -> Self {
-        SharedShape(Arc::new(HeightField::new(heights, scale)))
-    }
+/// cbindgen:ptrs-as-arrays=[[heights_data;]]
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub unsafe extern "C" fn RprSharedShape_heightfield(
+    heights_len: usize,
+    heights_data: *const Real,
+    scale: RprVector,
+) -> *mut RprSharedShape {
+    use rapier::parry::na::{Dyn, U1, VecStorage};
 
-    /// Initializes an heightfield shape on the x-z plane defined by its set of height and a scale
-    /// factor along each coordinate axis.
-    #[cfg(feature = "dim3")]
-    pub fn heightfield(heights: na::DMatrix<Real>, scale: Vector<Real>) -> Self {
-        SharedShape(Arc::new(HeightField::new(heights, scale)))
-    } */
+    let heights_data = std::slice::from_raw_parts(heights_data, heights_len);
+    let heights_data: VecStorage<Real, Dyn, U1> = VecStorage::new(
+        Dyn(heights_len),
+        U1,
+        heights_data.to_vec(),
+    );
+    leak_ptr(RprSharedShape(SharedShape::heightfield(
+        DVector::from_data(heights_data),
+        scale.into_raw(),
+    )))
+}
 
-// #[cfg(feature = "dim3")]
-// pub unsafe extern "C" fn RprSharedShape_heightfield(
-//     scale: RprVector,
-// ) -> *mut RprSharedShape {
-//     let heights = DMatrix::from_
-//     SharedShape::heightfield(heights, scale)
-// }
+/// cbindgen:ptrs-as-arrays=[[heights_data;]]
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub unsafe extern "C" fn RprSharedShape_heightfield(
+    heights_rows: usize,
+    heights_cols: usize,
+    heights_data: *const Real,
+    scale: RprVector,
+) -> *mut RprSharedShape {
+    use rapier::parry::na::{Dyn, VecStorage};
 
-// TODO heightfield
+    let heights_data = std::slice::from_raw_parts(heights_data, heights_rows * heights_cols);
+    let heights_data: VecStorage<Real, Dyn, Dyn> = VecStorage::new(
+        Dyn(heights_rows),
+        Dyn(heights_cols),
+        heights_data.to_vec(),
+    );
+    leak_ptr(RprSharedShape(SharedShape::heightfield(
+        DMatrix::from_data(heights_data),
+        scale.into_raw(),
+    )))
+}
