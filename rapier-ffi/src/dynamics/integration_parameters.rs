@@ -2,8 +2,8 @@ use crate::prelude::*;
 
 /// Parameters for a time-step of the physics engine.
 #[repr(C)]
-#[derive(Copy, Clone, Debug)]
-pub struct RprIntegrationParametersDesc {
+#[derive(Clone, Copy, Debug)]
+pub struct RprIntegrationParameters {
     /// The timestep length (default: `1.0 / 60.0`)
     pub dt: Real,
     /// Minimum timestep size when using CCD with multiple substeps (default `1.0 / 60.0 / 100.0`)
@@ -58,60 +58,55 @@ pub struct RprIntegrationParametersDesc {
     pub max_ccd_substeps: usize,
 }
 
-impl Default for RprIntegrationParametersDesc {
-    fn default() -> Self {
+impl RprIntegrationParameters {
+    pub fn from_raw(raw: IntegrationParameters) -> Self {
         Self {
-            dt: 1.0 / 60.0,
-            min_ccd_dt: 1.0 / 60.0 / 100.0,
-            erp: 0.8,
-            damping_ratio: 0.25,
-            joint_erp: 1.0,
-            joint_damping_ratio: 1.0,
-            allowed_linear_error: 0.001,
-            max_penetration_correction: Real::MAX,
-            prediction_distance: 0.002,
-            max_velocity_iterations: 4,
-            max_velocity_friction_iterations: 8,
-            max_stabilization_iterations: 1,
-            interleave_restitution_and_friction_resolution: true,
-            min_island_size: 128,
-            max_ccd_substeps: 1,
+            dt: raw.dt,
+            min_ccd_dt: raw.min_ccd_dt,
+            erp: raw.erp,
+            damping_ratio: raw.damping_ratio,
+            joint_erp: raw.joint_erp,
+            joint_damping_ratio: raw.joint_damping_ratio,
+            allowed_linear_error: raw.allowed_linear_error,
+            max_penetration_correction: raw.max_penetration_correction,
+            prediction_distance: raw.prediction_distance,
+            max_velocity_iterations: raw.max_velocity_iterations,
+            max_velocity_friction_iterations: raw.max_velocity_friction_iterations,
+            max_stabilization_iterations: raw.max_stabilization_iterations,
+            interleave_restitution_and_friction_resolution: raw.interleave_restitution_and_friction_resolution,
+            min_island_size: raw.min_island_size,
+            max_ccd_substeps: raw.max_ccd_substeps,
+        }
+    }
+
+    pub fn into_raw(self) -> IntegrationParameters {
+        IntegrationParameters {
+            dt: self.dt,
+            min_ccd_dt: self.min_ccd_dt,
+            erp: self.erp,
+            damping_ratio: self.damping_ratio,
+            joint_erp: self.joint_erp,
+            joint_damping_ratio: self.joint_damping_ratio,
+            allowed_linear_error: self.allowed_linear_error,
+            max_penetration_correction: self.max_penetration_correction,
+            prediction_distance: self.prediction_distance,
+            max_velocity_iterations: self.max_velocity_iterations,
+            max_velocity_friction_iterations: self.max_velocity_friction_iterations,
+            max_stabilization_iterations: self.max_stabilization_iterations,
+            interleave_restitution_and_friction_resolution: self.interleave_restitution_and_friction_resolution,
+            min_island_size: self.min_island_size,
+            max_ccd_substeps: self.max_ccd_substeps,
         }
     }
 }
 
-#[no_mangle]
-pub extern "C" fn RprIntegrationParametersDesc_default() -> RprIntegrationParametersDesc {
-    Default::default()
-}
-
-pub struct RprIntegrationParameters(pub IntegrationParameters);
-
-#[no_mangle]
-pub extern "C" fn RprIntegrationParameters_new(
-    desc: RprIntegrationParametersDesc,
-) -> *mut RprIntegrationParameters {
-    leak_ptr(RprIntegrationParameters(IntegrationParameters {
-        dt: desc.dt,
-        min_ccd_dt: desc.min_ccd_dt,
-        erp: desc.erp,
-        damping_ratio: desc.damping_ratio,
-        joint_erp: desc.joint_erp,
-        joint_damping_ratio: desc.joint_damping_ratio,
-        allowed_linear_error: desc.allowed_linear_error,
-        max_penetration_correction: desc.max_penetration_correction,
-        prediction_distance: desc.prediction_distance,
-        max_velocity_iterations: desc.max_velocity_iterations,
-        max_velocity_friction_iterations: desc.max_velocity_friction_iterations,
-        max_stabilization_iterations: desc.max_stabilization_iterations,
-        interleave_restitution_and_friction_resolution: desc
-            .interleave_restitution_and_friction_resolution,
-        min_island_size: desc.min_island_size,
-        max_ccd_substeps: desc.max_ccd_substeps,
-    }))
+impl Default for RprIntegrationParameters {
+    fn default() -> Self {
+        Self::from_raw(IntegrationParameters::default())
+    }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprIntegrationParameters_drop(this: *mut RprIntegrationParameters) {
-    drop_ptr(this)
+pub extern "C" fn RprIntegrationParameters_default() -> RprIntegrationParameters {
+    RprIntegrationParameters::default()
 }

@@ -9,50 +9,149 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$59 {
 
-    static final FunctionDescriptor RprRigidBodyActivation_set_sleeping$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_sleeping",
-        constants$59.RprRigidBodyActivation_set_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_since_can_sleep$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_since_can_sleep",
-        constants$59.RprRigidBodyActivation_set_time_since_can_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_time_until_sleep$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_time_until_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_time_until_sleep",
-        constants$59.RprRigidBodyActivation_set_time_until_sleep$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("origin"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("dir")
+        ).withName("RprRay"),
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_sleeping",
-        constants$59.RprRigidBodyActivation_sleeping$FUNC
+    static final MethodHandle RprQueryPipeline_intersection_with_ray$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_intersection_with_ray",
+        constants$59.RprQueryPipeline_intersection_with_ray$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_time_since_can_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_intersection_with_shape$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_time_since_can_sleep",
-        constants$59.RprRigidBodyActivation_time_since_can_sleep$FUNC
+    static final MethodHandle RprQueryPipeline_intersection_with_shape$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_intersection_with_shape",
+        constants$59.RprQueryPipeline_intersection_with_shape$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_time_until_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_intersections_with_point$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprQueryPipeline_intersections_with_point$callback$MH = RuntimeHelper.downcallHandle(
+        constants$59.RprQueryPipeline_intersections_with_point$callback$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_intersections_with_point$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyActivation_time_until_sleep$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_time_until_sleep",
-        constants$59.RprRigidBodyActivation_time_until_sleep$FUNC
+    static final MethodHandle RprQueryPipeline_intersections_with_point$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_intersections_with_point",
+        constants$59.RprQueryPipeline_intersections_with_point$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_intersections_with_shape$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
 }
 

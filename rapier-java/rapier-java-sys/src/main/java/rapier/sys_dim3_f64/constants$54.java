@@ -9,221 +9,66 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$54 {
 
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprKinematicCharacterController_snap_to_ground$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$54.RprPhysicsPipeline_step$FUNC
+    static final MethodHandle RprKinematicCharacterController_snap_to_ground$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_snap_to_ground",
+        constants$54.RprKinematicCharacterController_snap_to_ground$FUNC
     );
-    static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprKinematicCharacterController_up$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprPhysicsPipeline_step_all$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step_all",
-        constants$54.RprPhysicsPipeline_step_all$FUNC
+    static final MethodHandle RprKinematicCharacterController_up$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_up",
+        constants$54.RprKinematicCharacterController_up$FUNC
     );
-    static final FunctionDescriptor RprQueryFilter_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("flags"),
-        Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-        MemoryLayout.paddingLayout(24),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("memberships"),
-            Constants$root.C_INT$LAYOUT.withName("filter")
-        ).withName("groups"),
-        Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-        MemoryLayout.paddingLayout(24),
+    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_drop",
+        constants$54.RprMultibodyJointSet_drop$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_insert$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("exclude_collider"),
-        Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-        MemoryLayout.paddingLayout(24),
+        ).withName("RprArenaKey"),
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("exclude_rigid_body"),
-        Constants$root.C_POINTER$LAYOUT.withName("predicate")
-    ).withName("RprQueryFilter"));
-    static final MethodHandle RprQueryFilter_default$MH = RuntimeHelper.downcallHandle(
-        "RprQueryFilter_default",
-        constants$54.RprQueryFilter_default$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_cast_ray$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("origin"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("dir")
-        ).withName("RprRay"),
-        Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_cast_ray$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_cast_ray",
-        constants$54.RprQueryPipeline_cast_ray$FUNC
+    static final MethodHandle RprMultibodyJointSet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_insert",
+        constants$54.RprMultibodyJointSet_insert$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_cast_ray_and_get_normal$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("origin"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("dir")
-        ).withName("RprRay"),
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_new",
+        constants$54.RprMultibodyJointSet_new$FUNC
     );
-    static final MethodHandle RprQueryPipeline_cast_ray_and_get_normal$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_cast_ray_and_get_normal",
-        constants$54.RprQueryPipeline_cast_ray_and_get_normal$FUNC
+    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
     );
-    static final FunctionDescriptor RprQueryPipeline_cast_shape$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("w")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("translation")
-        ).withName("RprIsometry"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprQueryPipeline_cast_shape$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_cast_shape",
-        constants$54.RprQueryPipeline_cast_shape$FUNC
+    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove",
+        constants$54.RprMultibodyJointSet_remove$FUNC
     );
 }
 

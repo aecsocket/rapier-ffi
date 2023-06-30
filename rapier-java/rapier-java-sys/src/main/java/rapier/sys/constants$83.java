@@ -9,58 +9,67 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$83 {
 
-    static final FunctionDescriptor RprSolverContact_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+    static final FunctionDescriptor RprSharedShape_halfspace$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_halfspace$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_halfspace",
+        constants$83.RprSharedShape_halfspace$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_heightfield$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_heightfield$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_heightfield",
+        constants$83.RprSharedShape_heightfield$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_polyline$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_polyline$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_polyline",
+        constants$83.RprSharedShape_polyline$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_release$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_restitution",
-        constants$83.RprSolverContact_restitution$FUNC
+    static final MethodHandle RprSharedShape_release$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_release",
+        constants$83.RprSharedShape_release$FUNC
     );
-    static final FunctionDescriptor RprSolverContact_set_dist$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprSharedShape_round_convex_decomposition$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_round_convex_decomposition$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_round_convex_decomposition",
+        constants$83.RprSharedShape_round_convex_decomposition$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_round_convex_decomposition_with_params$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
     );
-    static final MethodHandle RprSolverContact_set_dist$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_dist",
-        constants$83.RprSolverContact_set_dist$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_friction",
-        constants$83.RprSolverContact_set_friction$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_point",
-        constants$83.RprSolverContact_set_point$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_restitution",
-        constants$83.RprSolverContact_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_tangent_velocity",
-        constants$83.RprSolverContact_set_tangent_velocity$FUNC
+    static final MethodHandle RprSharedShape_round_convex_decomposition_with_params$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_round_convex_decomposition_with_params",
+        constants$83.RprSharedShape_round_convex_decomposition_with_params$FUNC
     );
 }
 

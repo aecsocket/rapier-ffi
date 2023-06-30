@@ -59,7 +59,7 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             {{ sys }}.RapierC.RprPhysicsPipeline_step(
                     self,
                     gravity.allocate(arena),
-                    integrationParameters.memory(),
+                    integrationParameters.allocate(arena),
                     islands.memory(),
                     broadPhase.memory(),
                     narrowPhase.memory(),
@@ -111,7 +111,7 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
         try (var arena = MemorySession.openConfined()) {
             var nPipeline = Native.allocatePtrArray(arena, pipeline);
             var nGravity = Vector.allocateArray(arena, gravity);
-            var nIntegrationParameters = Native.allocatePtrArray(arena, integrationParameters);
+            var nIntegrationParameters = IntegrationParameters.allocateArray(arena, integrationParameters);
             var nIslands = Native.allocatePtrArray(arena, islands);
             var nBroadPhase = Native.allocatePtrArray(arena, broadPhase);
             var nNarrowPhase = Native.allocatePtrArray(arena, narrowPhase);

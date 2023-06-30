@@ -61,7 +61,7 @@ class constants$49 {
         "RprImpulseJoint_set_impulses",
         constants$49.RprImpulseJoint_set_impulses$FUNC
     );
-    static final FunctionDescriptor RprIntegrationParametersDesc_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+    static final FunctionDescriptor RprIntegrationParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("dt"),
         Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
         Constants$root.C_FLOAT$LAYOUT.withName("erp"),
@@ -79,10 +79,10 @@ class constants$49 {
         MemoryLayout.paddingLayout(56),
         Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
         Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-    ).withName("RprIntegrationParametersDesc"));
-    static final MethodHandle RprIntegrationParametersDesc_default$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParametersDesc_default",
-        constants$49.RprIntegrationParametersDesc_default$FUNC
+    ).withName("RprIntegrationParameters"));
+    static final MethodHandle RprIntegrationParameters_default$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_default",
+        constants$49.RprIntegrationParameters_default$FUNC
     );
 }
 

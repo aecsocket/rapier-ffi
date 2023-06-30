@@ -9,70 +9,46 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$51 {
 
-    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
-    ).withName("RprJointLimits"));
-    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
-        "RprJointLimits_default",
-        constants$51.RprJointLimits_default$FUNC
-    );
-    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("target_vel"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("target_pos"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("stiffness"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("damping"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("max_force"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("impulse"),
-        Constants$root.C_INT$LAYOUT.withName("model"),
-        MemoryLayout.paddingLayout(32)
-    ).withName("RprJointMotor"));
-    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
-        "RprJointMotor_default",
-        constants$51.RprJointMotor_default$FUNC
-    );
-    static final FunctionDescriptor RprMultibodyJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprKinematicCharacterController_autostep$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_drop",
-        constants$51.RprMultibodyJointSet_drop$FUNC
+    static final MethodHandle RprKinematicCharacterController_autostep$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_autostep",
+        constants$51.RprKinematicCharacterController_autostep$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_insert$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprKinematicCharacterController_clear_autostep$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprMultibodyJointSet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_insert",
-        constants$51.RprMultibodyJointSet_insert$FUNC
+    static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_autostep",
+        constants$51.RprKinematicCharacterController_clear_autostep$FUNC
     );
-    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_new",
-        constants$51.RprMultibodyJointSet_new$FUNC
+    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
+    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_snap_to_ground",
+        constants$51.RprKinematicCharacterController_clear_snap_to_ground$FUNC
     );
-    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprMultibodyJointSet_remove",
-        constants$51.RprMultibodyJointSet_remove$FUNC
+    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_default",
+        constants$51.RprKinematicCharacterController_default$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_max_slope_climb_angle$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_max_slope_climb_angle",
+        constants$51.RprKinematicCharacterController_max_slope_climb_angle$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_min_slope_slide_angle$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_min_slope_slide_angle$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_min_slope_slide_angle",
+        constants$51.RprKinematicCharacterController_min_slope_slide_angle$FUNC
     );
 }
 

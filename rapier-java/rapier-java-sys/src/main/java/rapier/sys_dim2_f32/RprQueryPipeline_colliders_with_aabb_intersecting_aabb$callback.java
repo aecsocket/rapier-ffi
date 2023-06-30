@@ -11,13 +11,13 @@ public interface RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback
 
     boolean apply(java.lang.foreign.MemorySegment _x0);
     static MemorySegment allocate(RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback.class, fi, constants$55.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC, session);
+        return RuntimeHelper.upcallStub(RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback.class, fi, constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC, session);
     }
     static RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback ofAddress(MemoryAddress addr, MemorySession session) {
         MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
         return (java.lang.foreign.MemorySegment __x0) -> {
             try {
-                return (boolean)constants$55.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$MH.invokeExact((Addressable)symbol, __x0);
+                return (boolean)constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$MH.invokeExact((Addressable)symbol, __x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -9,80 +9,63 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$68 {
 
-    static final FunctionDescriptor RprRigidBody_add_torque$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprAngVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_add_torque$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_add_torque",
-        constants$68.RprRigidBody_add_torque$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_angular_damping$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprRigidBodySet_all$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_angular_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_angular_damping",
-        constants$68.RprRigidBody_angular_damping$FUNC
+    static final MethodHandle RprRigidBodySet_all$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_all",
+        constants$68.RprRigidBodySet_all$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_angvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprAngVector"),
+    static final FunctionDescriptor RprRigidBodySet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprRigidBodySet_contains$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_contains",
+        constants$68.RprRigidBodySet_contains$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_angvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_angvel",
-        constants$68.RprRigidBody_angvel$FUNC
+    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_drop",
+        constants$68.RprRigidBodySet_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_apply_impulse$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
-    static final MethodHandle RprRigidBody_apply_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_apply_impulse",
-        constants$68.RprRigidBody_apply_impulse$FUNC
+    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get",
+        constants$68.RprRigidBodySet_get$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_apply_impulse_at_point$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
-    static final MethodHandle RprRigidBody_apply_impulse_at_point$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_apply_impulse_at_point",
-        constants$68.RprRigidBody_apply_impulse_at_point$FUNC
+    static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get_mut",
+        constants$68.RprRigidBodySet_get_mut$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_apply_torque_impulse$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprAngVector"),
-        Constants$root.C_BOOL$LAYOUT
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_apply_torque_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_apply_torque_impulse",
-        constants$68.RprRigidBody_apply_torque_impulse$FUNC
+    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_insert",
+        constants$68.RprRigidBodySet_insert$FUNC
     );
 }
 

@@ -19,8 +19,10 @@ extern crate rapier3d_f64 as rapier;
 pub(crate) mod prelude {
     pub use super::ffi::*;
     pub use bytemuck::cast;
+    pub use rapier::control::*;
     pub use rapier::prelude::*;
 
+    pub use crate::control::*;
     pub use crate::data::arena::*;
     pub use crate::dynamics::{
         ccd_solver::*,
@@ -48,6 +50,7 @@ pub(crate) mod prelude {
     pub(crate) const INVALID_U32: u32 = u32::MAX;
 }
 
+pub mod control;
 pub mod data;
 pub mod dynamics;
 pub mod geometry;

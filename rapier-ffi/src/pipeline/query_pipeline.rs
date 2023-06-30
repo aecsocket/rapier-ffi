@@ -210,7 +210,7 @@ impl RprComplexPointProject {
 
 /// The status of the time-of-impact computation algorithm.
 #[repr(C)]
-#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug)]
 pub enum RprTOIStatus {
     /// The TOI algorithm ran out of iterations before achieving convergence.
     ///
@@ -239,11 +239,20 @@ impl RprTOIStatus {
             TOIStatus::Penetrating => Self::Penetrating,
         }
     }
+
+    pub fn into_raw(self) -> TOIStatus {
+        match self {
+            Self::OutOfIterations => TOIStatus::OutOfIterations,
+            Self::Converged => TOIStatus::Converged,
+            Self::Failed => TOIStatus::Failed,
+            Self::Penetrating => TOIStatus::Penetrating,
+        }
+    }
 }
 
 /// The result of a time-of-impact (TOI) computation.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub struct RprTOI {
     /// The time at which the objects touch.
     pub toi: Real,
@@ -276,6 +285,17 @@ impl RprTOI {
             normal1: RprVector::from_raw(*raw.normal1),
             normal2: RprVector::from_raw(*raw.normal2),
             status: RprTOIStatus::from_raw(raw.status),
+        }
+    }
+
+    pub fn into_raw(self) -> TOI {
+        TOI {
+            toi: self.toi,
+            witness1: self.witness1.into_point(),
+            witness2: self.witness2.into_point(),
+            normal1: self.normal1.into_unit(),
+            normal2: self.normal2.into_unit(),
+            status: self.status.into_raw(),
         }
     }
 }

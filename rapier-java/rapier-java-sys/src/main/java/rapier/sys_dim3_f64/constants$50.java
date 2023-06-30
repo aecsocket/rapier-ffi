@@ -9,37 +9,6 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$50 {
 
-    static final FunctionDescriptor RprIntegrationParameters_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIntegrationParameters_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_drop",
-        constants$50.RprIntegrationParameters_drop$FUNC
-    );
-    static final FunctionDescriptor RprIntegrationParameters_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("dt"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("erp"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("joint_erp"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("prediction_distance"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParametersDesc")
-    );
-    static final MethodHandle RprIntegrationParameters_new$MH = RuntimeHelper.downcallHandle(
-        "RprIntegrationParameters_new",
-        constants$50.RprIntegrationParameters_new$FUNC
-    );
     static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -69,6 +38,29 @@ class constants$50 {
     static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
         "RprIslandManager_new",
         constants$50.RprIslandManager_new$FUNC
+    );
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$50.RprJointLimits_default$FUNC
+    );
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_vel"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_pos"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("stiffness"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("damping"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_force"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model"),
+        MemoryLayout.paddingLayout(32)
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$50.RprJointMotor_default$FUNC
     );
 }
 

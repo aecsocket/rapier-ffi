@@ -631,7 +631,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_drop(this: *mut RprPhysicsPipeline) 
 pub unsafe extern "C" fn RprPhysicsPipeline_step(
     this: *mut RprPhysicsPipeline,
     gravity: RprVector,
-    integration_parameters: *const RprIntegrationParameters,
+    integration_parameters: RprIntegrationParameters,
     islands: *mut RprIslandManager,
     broad_phase: *mut RprBroadPhase,
     narrow_phase: *mut RprNarrowPhase,
@@ -655,7 +655,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step(
 
     this.get_mut().0.step(
         &gravity.into_raw(),
-        &integration_parameters.get().0,
+        &integration_parameters.into_raw(),
         &mut islands.get_mut().0,
         &mut broad_phase.get_mut().0,
         &mut narrow_phase.get_mut().0,
@@ -676,7 +676,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     len: usize,
     pipeline: *const *mut RprPhysicsPipeline,
     gravity: *const RprVector,
-    integration_parameters: *const *const RprIntegrationParameters,
+    integration_parameters: *const RprIntegrationParameters,
     islands: *const *mut RprIslandManager,
     broad_phase: *const *mut RprBroadPhase,
     narrow_phase: *const *mut RprNarrowPhase,
@@ -692,7 +692,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
     struct Entry {
         pipeline: *mut RprPhysicsPipeline,
         gravity: RprVector,
-        integration_parameters: *const RprIntegrationParameters,
+        integration_parameters: RprIntegrationParameters,
         islands: *mut RprIslandManager,
         broad_phase: *mut RprBroadPhase,
         narrow_phase: *mut RprNarrowPhase,
@@ -773,7 +773,7 @@ pub unsafe extern "C" fn RprPhysicsPipeline_step_all(
         };
         entry.pipeline.get_mut().0.step(
             &entry.gravity.into_raw(),
-            &entry.integration_parameters.get().0,
+            &entry.integration_parameters.into_raw(),
             &mut entry.islands.get_mut().0,
             &mut entry.broad_phase.get_mut().0,
             &mut entry.narrow_phase.get_mut().0,

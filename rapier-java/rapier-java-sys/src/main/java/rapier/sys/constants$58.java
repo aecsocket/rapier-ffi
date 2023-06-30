@@ -9,54 +9,66 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$58 {
 
-    static final FunctionDescriptor RprQueryPipeline_update$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$MH = RuntimeHelper.downcallHandle(
+        constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("min"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("max")
+        ).withName("RprAabb"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_update$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_update",
-        constants$58.RprQueryPipeline_update$FUNC
+    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_colliders_with_aabb_intersecting_aabb",
+        constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_update_all$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_update_all$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_update_all",
-        constants$58.RprQueryPipeline_update_all$FUNC
+    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_drop",
+        constants$58.RprQueryPipeline_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyActivation_angular_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("collider"),
+            Constants$root.C_FLOAT$LAYOUT.withName("toi"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("normal"),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("tag"),
+                MemoryLayout.unionLayout(
+                    MemoryLayout.structLayout(
+                        Constants$root.C_INT$LAYOUT.withName("id")
+                    ).withName("vertex"),
+                    MemoryLayout.structLayout(
+                        Constants$root.C_INT$LAYOUT.withName("id")
+                    ).withName("face")
+                ).withName("$anon$0")
+            ).withName("feature")
+        ).withName("RprComplexRayResult")
     );
-    static final MethodHandle RprRigidBodyActivation_angular_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_angular_threshold",
-        constants$58.RprRigidBodyActivation_angular_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_linear_threshold$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_linear_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_linear_threshold",
-        constants$58.RprRigidBodyActivation_linear_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_angular_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_angular_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_angular_threshold",
-        constants$58.RprRigidBodyActivation_set_angular_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_linear_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_linear_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_linear_threshold",
-        constants$58.RprRigidBodyActivation_set_linear_threshold$FUNC
+    static final MethodHandle RprQueryPipeline_intersection_with_ray$callback$MH = RuntimeHelper.downcallHandle(
+        constants$58.RprQueryPipeline_intersection_with_ray$callback$FUNC
     );
 }
 
