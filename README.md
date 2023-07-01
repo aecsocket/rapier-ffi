@@ -36,6 +36,6 @@ This repository is dual-licensed Apache and MIT. This license applies to all sub
   - [x] Generic data
   - [x] Impulse
   - [ ] Multibody
-- [ ] Controllers
-  - [ ] Character
-  - [ ] Vehicle
+- [x] Controllers
+  - [x] Character
+  - [x] Vehicle

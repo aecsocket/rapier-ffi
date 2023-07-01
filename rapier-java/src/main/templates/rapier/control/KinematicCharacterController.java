@@ -1,4 +1,4 @@
-package control;
+package rapier.control;
 
 import rapier.*;
 import rapier.dynamics.RigidBodySet;

@@ -1,4 +1,4 @@
-package control;
+package rapier.control;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;

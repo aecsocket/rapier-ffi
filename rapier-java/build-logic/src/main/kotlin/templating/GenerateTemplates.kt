@@ -67,6 +67,9 @@ abstract class GenerateTemplates : DefaultTask() {
             override fun postVisitDirectory(dir: Path, exc: IOException?) = FileVisitResult.CONTINUE
 
             override fun visitFile(file: Path, attrs: BasicFileAttributes): FileVisitResult {
+                // is this all insanely hacky? yes
+                // does it work? yes
+                // do I care? no
                 if (file.name == "__real.java") {
                     return FileVisitResult.CONTINUE
                 }
