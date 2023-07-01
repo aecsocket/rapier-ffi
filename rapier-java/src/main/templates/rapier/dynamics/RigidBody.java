@@ -184,7 +184,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public Vector velocityAtPoint(Vector point) {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprRigidBody_velocity_at_point(arena, self, point.allocate(arena)));
+            return Vector.from({{ sys }}.RapierC.RprRigidBody_velocity_at_point(arena, self, point.allocInto(arena)));
         }
     }
 
@@ -194,7 +194,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public {{ real }} getGravitationalPotentialEnergy({{ real }} dt, Vector gravity) {
         try (var arena = MemorySession.openConfined()) {
-            return {{ sys }}.RapierC.RprRigidBody_gravitational_potential_energy(self, dt, gravity.allocate(arena));
+            return {{ sys }}.RapierC.RprRigidBody_gravitational_potential_energy(self, dt, gravity.allocInto(arena));
         }
     }
 
@@ -312,7 +312,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void setLinearVelocity(Vector linvel, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_set_linvel(self, linvel.allocInto(arena), wakeUp);
             }
         }
 
@@ -324,7 +324,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void setTranslation(Vector translation, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_set_translation(self, translation.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_set_translation(self, translation.allocInto(arena), wakeUp);
             }
         }
 
@@ -348,7 +348,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void setNextKinematicTranslation(Vector translation) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_translation(self, translation.allocate(arena));
+                {{ sys }}.RapierC.RprRigidBody_set_next_kinematic_translation(self, translation.allocInto(arena));
             }
         }
 
@@ -368,7 +368,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void addForce(Vector force, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_add_force(self, force.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_add_force(self, force.allocInto(arena), wakeUp);
             }
         }
 
@@ -380,13 +380,13 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void addForceAtPoint(Vector force, Vector point, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_add_force_at_point(self, force.allocate(arena), point.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_add_force_at_point(self, force.allocInto(arena), point.allocInto(arena), wakeUp);
             }
         }
 
         public void applyImpulse(Vector impulse, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_apply_impulse(self, impulse.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_apply_impulse(self, impulse.allocInto(arena), wakeUp);
             }
         }
 
@@ -398,7 +398,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
         public void applyImpulseAtPoint(Vector impulse, Vector point, boolean wakeUp) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprRigidBody_apply_impulse_at_point(self, impulse.allocate(arena), point.allocate(arena), wakeUp);
+                {{ sys }}.RapierC.RprRigidBody_apply_impulse_at_point(self, impulse.allocInto(arena), point.allocInto(arena), wakeUp);
             }
         }
     }

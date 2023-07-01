@@ -9,80 +9,61 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$44 {
 
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor2$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("im")
+        ).withName("rotation"),
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
             Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_local_anchor2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor2",
-        constants$44.RprGenericJoint_set_local_anchor2$FUNC
+    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame2",
+        constants$44.RprGenericJoint_local_frame2$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_set_local_axis1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_axis1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_axis1",
-        constants$44.RprGenericJoint_set_local_axis1$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_axis2$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_axis2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_axis2",
-        constants$44.RprGenericJoint_set_local_axis2$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_frame1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("re"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("im")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprGenericJoint_set_local_frame1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_frame1",
-        constants$44.RprGenericJoint_set_local_frame1$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_frame2$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("re"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("im")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprGenericJoint_set_local_frame2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_frame2",
-        constants$44.RprGenericJoint_set_local_frame2$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_locked_axes$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_CHAR$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_set_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_locked_axes",
-        constants$44.RprGenericJoint_set_locked_axes$FUNC
+    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_lock_axes",
+        constants$44.RprGenericJoint_lock_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_locked_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_locked_axes",
+        constants$44.RprGenericJoint_locked_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motor$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motor$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor",
+        constants$44.RprGenericJoint_motor$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motor_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motor_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor_axes",
+        constants$44.RprGenericJoint_motor_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motor_model$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor_model",
+        constants$44.RprGenericJoint_motor_model$FUNC
     );
 }
 

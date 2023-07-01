@@ -9,90 +9,58 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$85 {
 
-    static final FunctionDescriptor RprSharedShape_round_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprSharedShape_convex_hull$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_convex_hull$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_convex_hull",
+        constants$85.RprSharedShape_convex_hull$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_convex_mesh$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_convex_mesh$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_convex_mesh",
+        constants$85.RprSharedShape_convex_mesh$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_cuboid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprSharedShape_round_cuboid$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_cuboid",
-        constants$85.RprSharedShape_round_cuboid$FUNC
+    static final MethodHandle RprSharedShape_cuboid$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_cuboid",
+        constants$85.RprSharedShape_cuboid$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_round_cylinder$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprSharedShape_cylinder$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
     );
-    static final MethodHandle RprSharedShape_round_cylinder$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_cylinder",
-        constants$85.RprSharedShape_round_cylinder$FUNC
+    static final MethodHandle RprSharedShape_cylinder$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_cylinder",
+        constants$85.RprSharedShape_cylinder$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_round_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_triangle$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_triangle",
-        constants$85.RprSharedShape_round_triangle$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_segment$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSharedShape_segment$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_segment",
-        constants$85.RprSharedShape_segment$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_strong_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+    static final FunctionDescriptor RprSharedShape_data$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSharedShape_strong_count$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_strong_count",
-        constants$85.RprSharedShape_strong_count$FUNC
+    static final MethodHandle RprSharedShape_data$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_data",
+        constants$85.RprSharedShape_data$FUNC
     );
-    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
+    static final FunctionDescriptor RprSharedShape_halfspace$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
             Constants$root.C_DOUBLE$LAYOUT.withName("y"),
             Constants$root.C_DOUBLE$LAYOUT.withName("z")
         ).withName("RprVector")
     );
-    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_triangle",
-        constants$85.RprSharedShape_triangle$FUNC
+    static final MethodHandle RprSharedShape_halfspace$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_halfspace",
+        constants$85.RprSharedShape_halfspace$FUNC
     );
 }
 

@@ -9,49 +9,75 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$40 {
 
-    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_contacts_enabled",
-        constants$40.RprGenericJoint_contacts_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_coupled_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_coupled_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_coupled_axes",
-        constants$40.RprGenericJoint_coupled_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_drop$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_drop",
-        constants$40.RprGenericJoint_drop$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_is_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_is_enabled",
-        constants$40.RprGenericJoint_is_enabled$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_limit_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_limit_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_limit_axes",
-        constants$40.RprGenericJoint_limit_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_add_wheel$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("suspension_stiffness"),
+            Constants$root.C_FLOAT$LAYOUT.withName("suspension_compression"),
+            Constants$root.C_FLOAT$LAYOUT.withName("suspension_damping"),
+            Constants$root.C_FLOAT$LAYOUT.withName("max_suspension_travel"),
+            Constants$root.C_FLOAT$LAYOUT.withName("friction_slip"),
+            Constants$root.C_FLOAT$LAYOUT.withName("max_suspension_force")
+        ).withName("RprWheelTuning")
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_add_wheel$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_add_wheel",
+        constants$40.RprDynamicRayCastVehicleController_add_wheel$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_chassis$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_limits",
-        constants$40.RprGenericJoint_limits$FUNC
+    static final MethodHandle RprDynamicRayCastVehicleController_chassis$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_chassis",
+        constants$40.RprDynamicRayCastVehicleController_chassis$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_current_vehicle_speed$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_current_vehicle_speed$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_current_vehicle_speed",
+        constants$40.RprDynamicRayCastVehicleController_current_vehicle_speed$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_drop$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_drop",
+        constants$40.RprDynamicRayCastVehicleController_drop$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_index_forward_axis$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_index_forward_axis$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_index_forward_axis",
+        constants$40.RprDynamicRayCastVehicleController_index_forward_axis$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_index_up_axis$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_index_up_axis$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_index_up_axis",
+        constants$40.RprDynamicRayCastVehicleController_index_up_axis$FUNC
     );
 }
 

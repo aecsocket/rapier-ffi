@@ -7,37 +7,49 @@ public record Isometry(
         Rotation rotation,
         Vector translation
 ) {
+    public static long sizeof() {
+        return rapier.sys.RprIsometry.sizeof();
+    }
+
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprIsometry.allocate(alloc);
+    }
+
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprIsometry.allocateArray(len, alloc);
+    }
+
+    public void into(MemorySegment memory) {
+        rotation.into(rapier.sys.RprIsometry.rotation$slice(memory));
+        translation.into(rapier.sys.RprIsometry.translation$slice(memory));
+    }
+
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
+    }
+
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, Isometry... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
+    }
+
+    public static Isometry from(MemorySegment memory) {
+        return new Isometry(
+                Rotation.from(rapier.sys.RprIsometry.rotation$slice(memory)),
+                Vector.from(rapier.sys.RprIsometry.translation$slice(memory))
+        );
+    }
+
     public static Isometry identity() {
         return new Isometry(
                 Rotation.identity(),
                 Vector.zero()
         );
-    }
-
-    public static Isometry from(MemorySegment memory) {
-        return new Isometry(
-                Rotation.from({{ sys }}.RprIsometry.rotation$slice(memory)),
-                Vector.from({{ sys }}.RprIsometry.translation$slice(memory))
-        );
-    }
-
-    public void into(MemorySegment memory) {
-        rotation.into({{ sys }}.RprIsometry.rotation$slice(memory));
-        translation.into({{ sys }}.RprIsometry.translation$slice(memory));
-    }
-
-    public MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprIsometry.allocate(alloc);
-        into(memory);
-        return memory;
-    }
-
-    public static MemorySegment allocateArray(SegmentAllocator alloc, Isometry... objs) {
-        var memory = {{ sys }}.RprIsometry.allocateArray(objs.length, alloc);
-        for (int i = 0; i < objs.length; i++) {
-            objs[i].into(memory.asSlice({{ sys }}.RprIsometry.sizeof() * i));
-        }
-        return memory;
     }
 
     @Override

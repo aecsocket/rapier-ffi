@@ -107,7 +107,7 @@ public final class ColliderBuilder extends RefNative implements Droppable {
 
     public ColliderBuilder translation(Vector translation) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.allocate(arena));
+            {{ sys }}.RapierC.RprColliderBuilder_translation(self, translation.allocInto(arena));
         }
         return this;
     }

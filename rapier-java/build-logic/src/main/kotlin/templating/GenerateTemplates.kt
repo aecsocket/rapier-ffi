@@ -1,15 +1,18 @@
 package templating
 
+import BuildVariant
 import com.mitchellbosecke.pebble.PebbleEngine
 import com.mitchellbosecke.pebble.loader.FileLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.MapProperty
+import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.IOException
+import java.io.StringWriter
 import java.nio.file.FileVisitResult
 import java.nio.file.FileVisitor
 import java.nio.file.Files
@@ -24,21 +27,31 @@ abstract class GenerateTemplates : DefaultTask() {
     abstract val sourceDir: DirectoryProperty
 
     @get:Input
-    abstract val context: MapProperty<String, Any>
+    abstract val variant: Property<BuildVariant>
 
     @get:OutputDirectory
     abstract val outputDir: DirectoryProperty
 
     @TaskAction
     fun generate() {
-        val sourceDir: Path = sourceDir.get().asFile.toPath()
-        val outputDir: Path = outputDir.get().asFile.toPath()
-        val context: Map<String, Any> = context.get()
+        val sourceDir = sourceDir.get().asFile.toPath()
+        val outputDir = outputDir.get().asFile.toPath()
+        val variant = variant.get()
+
+        val dimension = variant.dimension
+        val precision = variant.precision
+        val real = precision.type
+        val sysPkg = "rapier.sys_${dimension.key}_${precision.key}."
+
+        val context: Map<String, Any> = mapOf(
+            "dim2" to (dimension == Dimension.DIM2),
+            "dim3" to (dimension == Dimension.DIM3),
+        )
 
         val loader = FileLoader()
         val engine: PebbleEngine = PebbleEngine.Builder()
             .loader(loader)
-            .strictVariables(true)
+            //.strictVariables(true)
             .defaultLocale(Locale.ROOT)
             .autoEscaping(false)
             .build()
@@ -56,9 +69,17 @@ abstract class GenerateTemplates : DefaultTask() {
                 val output = outputDir.resolve(relative)
 
                 Files.createDirectories(output.parent)
-                Files.newBufferedWriter(output).use { writer ->
+                val text = StringWriter().use { writer ->
                     template.evaluate(writer, context)
+                    writer.toString()
                 }
+                Files.writeString(output, text
+                    .replace("import rapier.__real;", "// using real = $real")
+                    .replace("__real", real)
+                    .replace("rapier.sys_dim2.", sysPkg)
+                    .replace("rapier.sys_dim3.", sysPkg)
+                    .replace("rapier.sys.", sysPkg)
+                    .replace("import rapier.sys_", "[ERROR!] rapier.sys_"))
 
                 return FileVisitResult.CONTINUE
             }

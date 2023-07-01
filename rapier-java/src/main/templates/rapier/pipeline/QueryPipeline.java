@@ -197,7 +197,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     self,
                     bodies.memory(),
                     colliders.memory(),
-                    point.allocate(arena),
+                    point.allocInto(arena),
                     solid,
                     filter.memory(),
                     res
@@ -218,7 +218,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     self,
                     bodies.memory(),
                     colliders.memory(),
-                    point.allocate(arena),
+                    point.allocInto(arena),
                     filter.memory(),
                     {{ sys }}.RprQueryPipeline_intersections_with_point$callback.allocate(result -> {
                         return callback.run(ArenaKey.pack(result));
@@ -239,7 +239,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     self,
                     bodies.memory(),
                     colliders.memory(),
-                    point.allocate(arena),
+                    point.allocInto(arena),
                     filter.memory(),
                     res
             )) return ComplexPointProject.from(res);

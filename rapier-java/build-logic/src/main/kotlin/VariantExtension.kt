@@ -1,4 +1,5 @@
 import org.gradle.api.provider.Property
+import java.io.Serializable
 
 enum class Dimension(val key: String) {
     DIM2    ("dim2"),
@@ -9,6 +10,11 @@ enum class Precision(val key: String, val type: String, val zero: String, val la
     F32 ("f32", type = "float",  zero = "0.0f", layout = "ValueLayout.JAVA_FLOAT"),
     F64 ("f64", type = "double", zero = "0.0",  layout = "ValueLayout.JAVA_DOUBLE"),
 }
+
+data class BuildVariant(
+    val dimension: Dimension,
+    val precision: Precision,
+) : Serializable
 
 abstract class VariantExtension {
     abstract val name: Property<String>

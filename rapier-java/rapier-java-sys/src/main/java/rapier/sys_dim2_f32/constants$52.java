@@ -9,161 +9,67 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$52 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_move_shape$events$FUNC = FunctionDescriptor.ofVoid(
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("handle"),
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("re"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("im")
-                ).withName("rotation"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y")
-                ).withName("translation")
-            ).withName("character_pos"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation_applied"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation_remaining"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("toi"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y")
-                ).withName("witness1"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y")
-                ).withName("witness2"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y")
-                ).withName("normal1"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                    Constants$root.C_FLOAT$LAYOUT.withName("y")
-                ).withName("normal2"),
-                Constants$root.C_INT$LAYOUT.withName("status")
-            ).withName("toi")
-        ).withName("RprCharacterCollision")
+    static final FunctionDescriptor RprIntegrationParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("dt"),
+        Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
+        Constants$root.C_FLOAT$LAYOUT.withName("erp"),
+        Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
+        Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
+        Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
+        Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
+        Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
+        MemoryLayout.paddingLayout(32),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
+        Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
+        MemoryLayout.paddingLayout(56),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
+        Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
+    ).withName("RprIntegrationParameters"));
+    static final MethodHandle RprIntegrationParameters_default$MH = RuntimeHelper.downcallHandle(
+        "RprIntegrationParameters_default",
+        constants$52.RprIntegrationParameters_default$FUNC
     );
-    static final MethodHandle RprKinematicCharacterController_move_shape$events$MH = RuntimeHelper.downcallHandle(
-        constants$52.RprKinematicCharacterController_move_shape$events$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_move_shape$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
+    static final FunctionDescriptor RprIslandManager_active_dynamic_bodies$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("re"),
-                Constants$root.C_FLOAT$LAYOUT.withName("im")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprKinematicCharacterController_move_shape$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_move_shape",
-        constants$52.RprKinematicCharacterController_move_shape$FUNC
+    static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_dynamic_bodies",
+        constants$52.RprIslandManager_active_dynamic_bodies$FUNC
     );
-    static final FunctionDescriptor RprKinematicCharacterController_offset$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("tag"),
-        MemoryLayout.unionLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("relative")
-            ).withName("$anon$0"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("absolute")
-            ).withName("$anon$1")
-        ).withName("$anon$0")
-    ).withName("RprCharacterLength"),
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprKinematicCharacterController_offset$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_offset",
-        constants$52.RprKinematicCharacterController_offset$FUNC
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$52.RprIslandManager_active_kinematic_bodies$FUNC
     );
-    static final FunctionDescriptor RprKinematicCharacterController_set_autostep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("tag"),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_FLOAT$LAYOUT.withName("relative")
-                    ).withName("$anon$0"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_FLOAT$LAYOUT.withName("absolute")
-                    ).withName("$anon$1")
-                ).withName("$anon$0")
-            ).withName("max_height"),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("tag"),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_FLOAT$LAYOUT.withName("relative")
-                    ).withName("$anon$0"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_FLOAT$LAYOUT.withName("absolute")
-                    ).withName("$anon$1")
-                ).withName("$anon$0")
-            ).withName("min_width"),
-            Constants$root.C_BOOL$LAYOUT.withName("include_dynamic_bodies"),
-            MemoryLayout.paddingLayout(24)
-        ).withName("RprCharacterAutostep")
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprKinematicCharacterController_set_autostep$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_autostep",
-        constants$52.RprKinematicCharacterController_set_autostep$FUNC
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$52.RprIslandManager_drop$FUNC
     );
-    static final FunctionDescriptor RprKinematicCharacterController_set_max_slope_climb_angle$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$52.RprIslandManager_new$FUNC
     );
-    static final MethodHandle RprKinematicCharacterController_set_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_max_slope_climb_angle",
-        constants$52.RprKinematicCharacterController_set_max_slope_climb_angle$FUNC
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("min"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$52.RprJointLimits_default$FUNC
     );
 }
 

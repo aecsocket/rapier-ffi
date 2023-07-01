@@ -1,16 +1,13 @@
 package rapier.shape;
 
-import rapier.Native;
 import rapier.RefCounted;
 import rapier.RefNative;
 import rapier.geometry.VHACDParameters;
 import rapier.math.Vector;
-import rapier.sys.RapierC;
 
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
 import static rapier.sys.RapierC.*;
@@ -41,7 +38,7 @@ public final class SharedShape extends RefNative implements RefCounted {
 
     public static SharedShape halfspace(Vector outwardNormal) {
         try (var arena = MemorySession.openConfined()) {
-            return at({{ sys }}.RapierC.RprSharedShape_halfspace(outwardNormal.allocate(arena)));
+            return at({{ sys }}.RapierC.RprSharedShape_halfspace(outwardNormal.allocInto(arena)));
         }
     }
 
@@ -53,13 +50,13 @@ public final class SharedShape extends RefNative implements RefCounted {
 
     public static SharedShape segment(Vector a, Vector b) {
         try (var arena = MemorySession.openConfined()) {
-            return at({{ sys }}.RapierC.RprSharedShape_segment(a.allocate(arena), b.allocate(arena)));
+            return at({{ sys }}.RapierC.RprSharedShape_segment(a.allocInto(arena), b.allocInto(arena)));
         }
     }
 
     public static SharedShape triangle(Vector a, Vector b, Vector c) {
         try (var arena = MemorySession.openConfined()) {
-            return at({{ sys }}.RapierC.RprSharedShape_triangle(a.allocate(arena), b.allocate(arena), c.allocate(arena)));
+            return at({{ sys }}.RapierC.RprSharedShape_triangle(a.allocInto(arena), b.allocInto(arena), c.allocInto(arena)));
         }
     }
 
@@ -203,7 +200,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     public static SharedShape heightfield({{ real }}[] heights, Vector scale) {
         try (var arena = MemorySession.openConfined()) {
             var nHeightsData = arena.allocateArray({{ realLayout }}, heights);
-            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heights.length, nHeightsData, scale.allocate(arena)));
+            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heights.length, nHeightsData, scale.allocInto(arena)));
         }
     }
 {% else %}
@@ -269,7 +266,7 @@ public final class SharedShape extends RefNative implements RefCounted {
             throw new IllegalArgumentException("heightsRows * heightsCols must equal heightsData.length");
         try (var arena = MemorySession.openConfined()) {
             var nHeightsData = arena.allocateArray({{ realLayout }}, heightsData);
-            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heightsRows, heightsCols, nHeightsData, scale.allocate(arena)));
+            return SharedShape.at({{ sys }}.RapierC.RprSharedShape_heightfield(heightsRows, heightsCols, nHeightsData, scale.allocInto(arena)));
         }
     }
 {% endif %}

@@ -10,7 +10,6 @@ import rapier.sys.RapierC;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -91,7 +90,7 @@ public final class ContactModificationContext extends RefNative {
 
     public void setNormal(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactModificationContext_set_normal(self, value.allocate(arena));
+            {{ sys }}.RapierC.RprContactModificationContext_set_normal(self, value.allocInto(arena));
         }
     }
 

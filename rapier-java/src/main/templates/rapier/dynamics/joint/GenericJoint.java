@@ -3,6 +3,7 @@ package rapier.dynamics.joint;
 import rapier.DropFlag;
 import rapier.Droppable;
 import rapier.RefNative;
+import rapier.__real;
 import rapier.math.Isometry;
 import rapier.math.Vector;
 import rapier.sys.RapierC;
@@ -10,7 +11,6 @@ import rapier.sys.RapierC;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -28,73 +28,73 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public static Mut of(byte lockedAxes) {
-        return atMut(RprGenericJoint_new(lockedAxes));
+        return atMut(rapier.sys.RapierC.RprGenericJoint_new(lockedAxes));
     }
 
     public byte getLockedAxes() {
-        return RprGenericJoint_locked_axes(self);
+        return rapier.sys.RapierC.RprGenericJoint_locked_axes(self);
     }
 
     public byte getLimitAxes() {
-        return RprGenericJoint_limit_axes(self);
+        return rapier.sys.RapierC.RprGenericJoint_limit_axes(self);
     }
 
     public byte getMotorAxes() {
-        return RprGenericJoint_motor_axes(self);
+        return rapier.sys.RapierC.RprGenericJoint_motor_axes(self);
     }
 
     public byte getCoupledAxes() {
-        return RprGenericJoint_coupled_axes(self);
+        return rapier.sys.RapierC.RprGenericJoint_coupled_axes(self);
     }
 
     public boolean isEnabled() {
-        return RprGenericJoint_is_enabled(self);
+        return rapier.sys.RapierC.RprGenericJoint_is_enabled(self);
     }
 
     public Isometry getLocalFrame1() {
         try (var arena = MemorySession.openConfined()) {
-            return Isometry.from({{ sys }}.RapierC.RprGenericJoint_local_frame1(arena, self));
+            return Isometry.from(rapier.sys.RapierC.RprGenericJoint_local_frame1(arena, self));
         }
     }
 
     public Isometry getLocalFrame2() {
         try (var arena = MemorySession.openConfined()) {
-            return Isometry.from({{ sys }}.RapierC.RprGenericJoint_local_frame2(arena, self));
+            return Isometry.from(rapier.sys.RapierC.RprGenericJoint_local_frame2(arena, self));
         }
     }
 
     public Vector getLocalAxis1() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_axis1(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_axis1(arena, self));
         }
     }
 
     public Vector getLocalAxis2() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_axis2(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_axis2(arena, self));
         }
     }
 
     public Vector getLocalAnchor1() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_anchor1(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_anchor1(arena, self));
         }
     }
 
     public Vector getLocalAnchor2() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprGenericJoint_local_anchor2(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_anchor2(arena, self));
         }
     }
 
     public boolean getContactsEnabled() {
-        return RprGenericJoint_contacts_enabled(self);
+        return rapier.sys.RapierC.RprGenericJoint_contacts_enabled(self);
     }
 
     public @Nullable JointLimits getLimits(JointAxis axis) {
         try (var arena = MemorySession.openConfined()) {
             var res = JointLimits.create(arena);
-            if ({{ sys }}.RapierC.RprGenericJoint_limits(self, axis.ordinal(), res.memory())) {
+            if (rapier.sys.RapierC.RprGenericJoint_limits(self, axis.ordinal(), res.memory())) {
                 return res;
             }
             return null;
@@ -104,7 +104,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     public @Nullable MotorModel getMotorModel(JointAxis axis) {
         try (var arena = MemorySession.openConfined()) {
             var res = arena.allocate(C_INT);
-            if (RprGenericJoint_motor_model(self, axis.ordinal(), res)) {
+            if (rapier.sys.RapierC.RprGenericJoint_motor_model(self, axis.ordinal(), res)) {
                 return MotorModel.values()[res.get(C_INT, 0)];
             }
             return null;
@@ -114,7 +114,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     public @Nullable JointMotor getMotor(JointAxis axis) {
         try (var arena = MemorySession.openConfined()) {
             var res = JointMotor.create(arena);
-            if (RprGenericJoint_motor(self, axis.ordinal(), res.memory())) {
+            if (rapier.sys.RapierC.RprGenericJoint_motor(self, axis.ordinal(), res.memory())) {
                 return res;
             }
             return null;
@@ -126,7 +126,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
 
         @Override
         public void drop() {
-            dropped.drop(() -> RprGenericJoint_drop(self));
+            dropped.drop(() -> rapier.sys.RapierC.RprGenericJoint_drop(self));
         }
 
         private Mut(MemoryAddress memory) {
@@ -134,91 +134,91 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         }
 
         public void setLockedAxes(byte value) {
-            RprGenericJoint_set_locked_axes(self, value);
+            rapier.sys.RapierC.RprGenericJoint_set_locked_axes(self, value);
         }
 
         public void setLimitAxes(byte value) {
-            RprGenericJoint_set_limit_axes(self, value);
+            rapier.sys.RapierC.RprGenericJoint_set_limit_axes(self, value);
         }
 
         public void setMotorAxes(byte value) {
-            RprGenericJoint_set_motor_axes(self, value);
+            rapier.sys.RapierC.RprGenericJoint_set_motor_axes(self, value);
         }
 
         public void setCoupledAxes(byte value) {
-            RprGenericJoint_set_coupled_axes(self, value);
+            rapier.sys.RapierC.RprGenericJoint_set_coupled_axes(self, value);
         }
 
         public void setEnabled(boolean enabled) {
-            RprGenericJoint_set_enabled(self, enabled);
+            rapier.sys.RapierC.RprGenericJoint_set_enabled(self, enabled);
         }
 
         public void lockAxes(byte axes) {
-            RprGenericJoint_lock_axes(self, axes);
+            rapier.sys.RapierC.RprGenericJoint_lock_axes(self, axes);
         }
 
         public void setLocalFrame1(Isometry localFrame) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_frame1(self, localFrame.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_frame1(self, localFrame.allocate(arena));
             }
         }
 
         public void setLocalFrame2(Isometry localFrame) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_frame2(self, localFrame.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_frame2(self, localFrame.allocate(arena));
             }
         }
 
         public void setLocalAxis1(Vector localAxis) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_axis1(self, localAxis.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_axis1(self, localAxis.allocInto(arena));
             }
         }
 
         public void setLocalAxis2(Vector localAxis) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_axis2(self, localAxis.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_axis2(self, localAxis.allocInto(arena));
             }
         }
 
         public void setLocalAnchor1(Vector localAnchor) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_anchor1(self, localAnchor.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_anchor1(self, localAnchor.allocInto(arena));
             }
         }
 
         public void setLocalAnchor2(Vector localAnchor) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprGenericJoint_set_local_anchor2(self, localAnchor.allocate(arena));
+                rapier.sys.RapierC.RprGenericJoint_set_local_anchor2(self, localAnchor.allocInto(arena));
             }
         }
 
         public void setContactsEnabled(boolean enabled) {
-            RprGenericJoint_set_contacts_enabled(self, enabled);
+            rapier.sys.RapierC.prGenericJoint_set_contacts_enabled(self, enabled);
         }
 
-        public void setLimits(JointAxis axis, {{ real }} min, {{ real }} max) {
-            {{ sys }}.RapierC.RprGenericJoint_set_limits(self, axis.ordinal(), min, max);
+        public void setLimits(JointAxis axis, __real min, __real max) {
+            rapier.sys.RapierC.RprGenericJoint_set_limits(self, axis.ordinal(), min, max);
         }
 
         public void setMotorModel(JointAxis axis, MotorModel model) {
-            RprGenericJoint_set_motor_model(self, axis.ordinal(), model.ordinal());
+            rapier.sys.RapierC.RprGenericJoint_set_motor_model(self, axis.ordinal(), model.ordinal());
         }
 
-        public void setMotorVelocity(JointAxis axis, {{ real }} targetVel, {{ real }} factor) {
-            {{ sys }}.RapierC.RprGenericJoint_set_motor_velocity(self, axis.ordinal(), targetVel, factor);
+        public void setMotorVelocity(JointAxis axis, __real targetVel, __real factor) {
+            rapier.sys.RapierC.RprGenericJoint_set_motor_velocity(self, axis.ordinal(), targetVel, factor);
         }
 
-        public void setMotorPosition(JointAxis axis, {{ real }} targetPos, {{ real }} stiffness, {{ real }} damping) {
-            {{ sys }}.RapierC.RprGenericJoint_set_motor_position(self, axis.ordinal(), targetPos, stiffness, damping);
+        public void setMotorPosition(JointAxis axis, __real targetPos, __real stiffness, __real damping) {
+            rapier.sys.RapierC.RprGenericJoint_set_motor_position(self, axis.ordinal(), targetPos, stiffness, damping);
         }
 
-        public void setMotorMaxForce(JointAxis axis, {{ real }} maxForce) {
-            {{ sys }}.RapierC.RprGenericJoint_set_motor_max_force(self, axis.ordinal(), maxForce);
+        public void setMotorMaxForce(JointAxis axis, __real maxForce) {
+            rapier.sys.RapierC.RprGenericJoint_set_motor_max_force(self, axis.ordinal(), maxForce);
         }
 
-        public void setMotor(JointAxis axis, {{ real }} targetPos, {{ real }} targetVel, {{ real }} stiffness, {{ real }} damping) {
-            {{ sys }}.RapierC.RprGenericJoint_set_motor(self, axis.ordinal(), targetPos, targetVel, stiffness, damping);
+        public void setMotor(JointAxis axis, __real targetPos, __real targetVel, __real stiffness, __real damping) {
+            rapier.sys.RapierC.RprGenericJoint_set_motor(self, axis.ordinal(), targetPos, targetVel, stiffness, damping);
         }
     }
 }

@@ -9,72 +9,55 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$58 {
 
-    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
+    static final FunctionDescriptor RprPairFilterContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$MH = RuntimeHelper.downcallHandle(
-        constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC
+    static final MethodHandle RprPairFilterContext_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_bodies",
+        constants$58.RprPairFilterContext_bodies$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprPairFilterContext_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_collider1$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_collider1",
+        constants$58.RprPairFilterContext_collider1$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_collider2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_collider2$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_collider2",
+        constants$58.RprPairFilterContext_collider2$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_colliders$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_colliders",
+        constants$58.RprPairFilterContext_colliders$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_rigid_body1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("min"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("max")
-        ).withName("RprAabb"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_colliders_with_aabb_intersecting_aabb",
-        constants$58.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC
+    static final MethodHandle RprPairFilterContext_rigid_body1$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_rigid_body1",
+        constants$58.RprPairFilterContext_rigid_body1$FUNC
     );
-    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprPairFilterContext_rigid_body2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_drop",
-        constants$58.RprQueryPipeline_drop$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("collider"),
-            Constants$root.C_FLOAT$LAYOUT.withName("toi"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y"),
-                Constants$root.C_FLOAT$LAYOUT.withName("z")
-            ).withName("normal"),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("tag"),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("vertex"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("edge"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("id")
-                    ).withName("face")
-                ).withName("$anon$0")
-            ).withName("feature")
-        ).withName("RprComplexRayResult")
-    );
-    static final MethodHandle RprQueryPipeline_intersection_with_ray$callback$MH = RuntimeHelper.downcallHandle(
-        constants$58.RprQueryPipeline_intersection_with_ray$callback$FUNC
+    static final MethodHandle RprPairFilterContext_rigid_body2$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_rigid_body2",
+        constants$58.RprPairFilterContext_rigid_body2$FUNC
     );
 }
 

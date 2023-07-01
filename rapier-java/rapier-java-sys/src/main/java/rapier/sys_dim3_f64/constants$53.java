@@ -9,78 +9,53 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$53 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_set_min_slope_slide_angle$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_vel"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("target_pos"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("stiffness"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("damping"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_force"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model"),
+        MemoryLayout.paddingLayout(32)
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$53.RprJointMotor_default$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_autostep$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_set_min_slope_slide_angle$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_min_slope_slide_angle",
-        constants$53.RprKinematicCharacterController_set_min_slope_slide_angle$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_set_offset$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("tag"),
-            MemoryLayout.paddingLayout(32),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-                ).withName("$anon$0"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-                ).withName("$anon$1")
-            ).withName("$anon$0")
-        ).withName("RprCharacterLength")
-    );
-    static final MethodHandle RprKinematicCharacterController_set_offset$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_offset",
-        constants$53.RprKinematicCharacterController_set_offset$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_set_slide$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_set_slide$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_slide",
-        constants$53.RprKinematicCharacterController_set_slide$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_set_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("tag"),
-            MemoryLayout.paddingLayout(32),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-                ).withName("$anon$0"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-                ).withName("$anon$1")
-            ).withName("$anon$0")
-        ).withName("RprCharacterLength")
-    );
-    static final MethodHandle RprKinematicCharacterController_set_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_snap_to_ground",
-        constants$53.RprKinematicCharacterController_set_snap_to_ground$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_set_up$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprKinematicCharacterController_set_up$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_set_up",
-        constants$53.RprKinematicCharacterController_set_up$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_slide$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprKinematicCharacterController_slide$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_slide",
-        constants$53.RprKinematicCharacterController_slide$FUNC
+    static final MethodHandle RprKinematicCharacterController_autostep$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_autostep",
+        constants$53.RprKinematicCharacterController_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_clear_autostep$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_autostep",
+        constants$53.RprKinematicCharacterController_clear_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_snap_to_ground",
+        constants$53.RprKinematicCharacterController_clear_snap_to_ground$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_default",
+        constants$53.RprKinematicCharacterController_default$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_max_slope_climb_angle$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_max_slope_climb_angle",
+        constants$53.RprKinematicCharacterController_max_slope_climb_angle$FUNC
     );
 }
 

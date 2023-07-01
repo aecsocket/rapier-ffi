@@ -9,53 +9,52 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$72 {
 
-    static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor RprRigidBodyVec_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_body_type$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_body_type",
-        constants$72.RprRigidBody_body_type$FUNC
+    static final MethodHandle RprRigidBodyVec_drop$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_drop",
+        constants$72.RprRigidBodyVec_drop$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_center_of_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_center_of_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_center_of_mass",
-        constants$72.RprRigidBody_center_of_mass$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_colliders$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodyVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_handle$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_handle",
+        constants$72.RprRigidBodyVec_handle$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_len$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_len",
+        constants$72.RprRigidBodyVec_len$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyVec_value$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_value$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_value",
+        constants$72.RprRigidBodyVec_value$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_activation$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_colliders$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_colliders",
-        constants$72.RprRigidBody_colliders$FUNC
+    static final MethodHandle RprRigidBody_activation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_activation",
+        constants$72.RprRigidBody_activation$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+    static final FunctionDescriptor RprRigidBody_activation_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBody_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_dominance_group",
-        constants$72.RprRigidBody_dominance_group$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_drop",
-        constants$72.RprRigidBody_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_effective_dominance_group",
-        constants$72.RprRigidBody_effective_dominance_group$FUNC
+    static final MethodHandle RprRigidBody_activation_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_activation_mut",
+        constants$72.RprRigidBody_activation_mut$FUNC
     );
 }
 

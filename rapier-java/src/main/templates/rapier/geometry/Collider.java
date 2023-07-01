@@ -1,7 +1,6 @@
 
 package rapier.geometry;
 
-import rapier.BaseNative;
 import rapier.DropFlag;
 import rapier.Droppable;
 import rapier.RefNative;
@@ -13,8 +12,6 @@ import rapier.sys.RapierC;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -203,7 +200,7 @@ public sealed class Collider extends RefNative permits Collider.Mut {
 
         public void setTranslation(Vector translation) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprCollider_set_translation(self, translation.allocate(arena));
+                {{ sys }}.RapierC.RprCollider_set_translation(self, translation.allocInto(arena));
             }
         }
 
@@ -221,7 +218,7 @@ public sealed class Collider extends RefNative permits Collider.Mut {
 
         public void setTranslationWrtParent(Vector translation) {
             try (var arena = MemorySession.openConfined()) {
-                {{ sys }}.RapierC.RprCollider_set_translation_wrt_parent(self, translation.allocate(arena));
+                {{ sys }}.RapierC.RprCollider_set_translation_wrt_parent(self, translation.allocInto(arena));
             }
         }
 

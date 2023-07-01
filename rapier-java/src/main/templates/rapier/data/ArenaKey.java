@@ -8,8 +8,6 @@ public record ArenaKey(
         int index,
         int generation
 ) {
-    public static final ArenaKey INVALID = new ArenaKey(0xffffffff, 0xffffffff);
-
     public static long sizeof() {
         return RprArenaKey.sizeof();
     }
@@ -60,6 +58,8 @@ public record ArenaKey(
         }
         return res;
     }
+
+    public static final ArenaKey INVALID = new ArenaKey(0xffffffff, 0xffffffff);
 
     public boolean isValid() {
         return !equals(INVALID);

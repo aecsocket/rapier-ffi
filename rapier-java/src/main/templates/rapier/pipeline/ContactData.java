@@ -6,8 +6,6 @@ import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
 
 import static rapier.sys.RapierC.*;
 
@@ -28,7 +26,7 @@ public final class ContactData extends RefNative {
 
     public void setLocalP1(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactData_set_local_p1(self, value.allocate(arena));
+            {{ sys }}.RapierC.RprContactData_set_local_p1(self, value.allocInto(arena));
         }
     }
 
@@ -40,7 +38,7 @@ public final class ContactData extends RefNative {
 
     public void setLocalP2(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactData_set_local_p2(self, value.allocate(arena));
+            {{ sys }}.RapierC.RprContactData_set_local_p2(self, value.allocInto(arena));
         }
     }
 

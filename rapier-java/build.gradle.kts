@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.aecsocket"
-version = "0.1.0-SNAPSHOT"
+version = "0.2.0-SNAPSHOT"
 description = "Java bindings for the Rapier physics engine"
 
 val testVariant = "dim3-f64"
@@ -36,6 +36,9 @@ dependencies {
 // for IDE autocompletion
 extensions.configure<IdeaModel> {
     module {
-        sourceDirs.add(file("$projectDir/src/main/templates"))
+        sourceDirs.addAll(listOf(
+            file("$projectDir/src/main/templates"),
+            file("${project(":rapier-java-sys").projectDir}/src/main/templates"),
+        ))
     }
 }

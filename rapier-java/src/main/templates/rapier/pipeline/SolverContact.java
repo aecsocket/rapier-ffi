@@ -6,7 +6,6 @@ import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -27,7 +26,7 @@ public final class SolverContact extends RefNative {
 
     public void setPoint(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprSolverContact_set_point(self, value.allocate(arena));
+            {{ sys }}.RapierC.RprSolverContact_set_point(self, value.allocInto(arena));
         }
     }
 
@@ -63,7 +62,7 @@ public final class SolverContact extends RefNative {
 
     public void setTangentVelocity(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprSolverContact_set_tangent_velocity(self, value.allocate(arena));
+            {{ sys }}.RapierC.RprSolverContact_set_tangent_velocity(self, value.allocInto(arena));
         }
     }
 
