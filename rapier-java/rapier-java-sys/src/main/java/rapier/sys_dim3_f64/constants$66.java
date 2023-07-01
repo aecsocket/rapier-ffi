@@ -9,6 +9,25 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$66 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_angvel$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprAngVector")
+    );
+    static final MethodHandle RprRigidBodyBuilder_angvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_angvel",
+        constants$66.RprRigidBodyBuilder_angvel$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_build$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_build$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_build",
+        constants$66.RprRigidBodyBuilder_build$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_can_sleep$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -39,19 +58,6 @@ class constants$66 {
     static final MethodHandle RprRigidBodyBuilder_drop$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_drop",
         constants$66.RprRigidBodyBuilder_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_dynamic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_dynamic",
-        constants$66.RprRigidBodyBuilder_dynamic$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_enabled",
-        constants$66.RprRigidBodyBuilder_enabled$FUNC
     );
 }
 

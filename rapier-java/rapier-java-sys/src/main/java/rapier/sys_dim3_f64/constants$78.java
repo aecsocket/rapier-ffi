@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$78 {
 
+    static final FunctionDescriptor RprRigidBody_linvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_linvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_linvel",
+        constants$78.RprRigidBody_linvel$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_lock_rotations$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_lock_rotations$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_lock_rotations",
+        constants$78.RprRigidBody_lock_rotations$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_lock_translations$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT,
@@ -38,44 +58,6 @@ class constants$78 {
     static final MethodHandle RprRigidBody_mass_properties$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_mass_properties",
         constants$78.RprRigidBody_mass_properties$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_next_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_next_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_next_position",
-        constants$78.RprRigidBody_next_position$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_position",
-        constants$78.RprRigidBody_position$FUNC
     );
 }
 

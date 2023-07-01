@@ -9,6 +9,21 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$77 {
 
+    static final FunctionDescriptor RprRigidBody_is_kinematic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_kinematic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_kinematic",
+        constants$77.RprRigidBody_is_kinematic$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_rotation_locked$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_rotation_locked",
+        constants$77.RprRigidBody_is_rotation_locked$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_is_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -36,26 +51,6 @@ class constants$77 {
     static final MethodHandle RprRigidBody_linear_damping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_linear_damping",
         constants$77.RprRigidBody_linear_damping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_linvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_linvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_linvel",
-        constants$77.RprRigidBody_linvel$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_lock_rotations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_lock_rotations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_lock_rotations",
-        constants$77.RprRigidBody_lock_rotations$FUNC
     );
 }
 

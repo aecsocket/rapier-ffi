@@ -9,15 +9,76 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$80 {
 
-    static final FunctionDescriptor RprRigidBody_set_angular_damping$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBody_set_next_kinematic_position$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("im")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y")
+            ).withName("translation")
+        ).withName("RprIsometry")
     );
-    static final MethodHandle RprRigidBody_set_angular_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_angular_damping",
-        constants$80.RprRigidBody_set_angular_damping$FUNC
+    static final MethodHandle RprRigidBody_set_next_kinematic_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_next_kinematic_position",
+        constants$80.RprRigidBody_set_next_kinematic_position$FUNC
     );
-    static final FunctionDescriptor RprRigidBody_set_angvel$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBody_set_next_kinematic_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("im")
+        ).withName("RprRotation")
+    );
+    static final MethodHandle RprRigidBody_set_next_kinematic_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_next_kinematic_rotation",
+        constants$80.RprRigidBody_set_next_kinematic_rotation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_next_kinematic_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprRigidBody_set_next_kinematic_translation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_next_kinematic_translation",
+        constants$80.RprRigidBody_set_next_kinematic_translation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_position$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("im")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_position",
+        constants$80.RprRigidBody_set_position$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("im")
+        ).withName("RprRotation"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_rotation",
+        constants$80.RprRigidBody_set_rotation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
@@ -25,45 +86,9 @@ class constants$80 {
         ).withName("RprVector"),
         Constants$root.C_BOOL$LAYOUT
     );
-    static final MethodHandle RprRigidBody_set_angvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_angvel",
-        constants$80.RprRigidBody_set_angvel$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_body_type$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_body_type$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_body_type",
-        constants$80.RprRigidBody_set_body_type$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_dominance_group$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_dominance_group",
-        constants$80.RprRigidBody_set_dominance_group$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled",
-        constants$80.RprRigidBody_set_enabled$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_enabled_rotations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_enabled_rotations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_enabled_rotations",
-        constants$80.RprRigidBody_set_enabled_rotations$FUNC
+    static final MethodHandle RprRigidBody_set_translation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_translation",
+        constants$80.RprRigidBody_set_translation$FUNC
     );
 }
 

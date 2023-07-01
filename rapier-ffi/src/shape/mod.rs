@@ -373,14 +373,11 @@ pub unsafe extern "C" fn RprSharedShape_heightfield(
     heights_data: *const Real,
     scale: RprVector,
 ) -> *mut RprSharedShape {
-    use rapier::parry::na::{Dyn, U1, VecStorage};
+    use rapier::parry::na::{Dyn, VecStorage, U1};
 
     let heights_data = std::slice::from_raw_parts(heights_data, heights_len);
-    let heights_data: VecStorage<Real, Dyn, U1> = VecStorage::new(
-        Dyn(heights_len),
-        U1,
-        heights_data.to_vec(),
-    );
+    let heights_data: VecStorage<Real, Dyn, U1> =
+        VecStorage::new(Dyn(heights_len), U1, heights_data.to_vec());
     leak_ptr(RprSharedShape(SharedShape::heightfield(
         DVector::from_data(heights_data),
         scale.into_raw(),
@@ -399,11 +396,8 @@ pub unsafe extern "C" fn RprSharedShape_heightfield(
     use rapier::parry::na::{Dyn, VecStorage};
 
     let heights_data = std::slice::from_raw_parts(heights_data, heights_rows * heights_cols);
-    let heights_data: VecStorage<Real, Dyn, Dyn> = VecStorage::new(
-        Dyn(heights_rows),
-        Dyn(heights_cols),
-        heights_data.to_vec(),
-    );
+    let heights_data: VecStorage<Real, Dyn, Dyn> =
+        VecStorage::new(Dyn(heights_rows), Dyn(heights_cols), heights_data.to_vec());
     leak_ptr(RprSharedShape(SharedShape::heightfield(
         DMatrix::from_data(heights_data),
         scale.into_raw(),

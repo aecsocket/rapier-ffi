@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$68 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_linear_damping",
+        constants$68.RprRigidBodyBuilder_linear_damping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_linvel$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprRigidBodyBuilder_linvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_linvel",
+        constants$68.RprRigidBodyBuilder_linvel$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
     );
@@ -55,26 +75,6 @@ class constants$68 {
     static final MethodHandle RprRigidBodyBuilder_sleeping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_sleeping",
         constants$68.RprRigidBodyBuilder_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprRigidBodyBuilder_translation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_translation",
-        constants$68.RprRigidBodyBuilder_translation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyMassProps_additional_local_mprops$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_additional_local_mprops$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_additional_local_mprops",
-        constants$68.RprRigidBodyMassProps_additional_local_mprops$FUNC
     );
 }
 

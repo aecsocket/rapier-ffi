@@ -9,6 +9,25 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$91 {
 
+    static final FunctionDescriptor RprVHACD_decompose$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprVHACD_decompose$MH = RuntimeHelper.downcallHandle(
+        "RprVHACD_decompose",
+        constants$91.RprVHACD_decompose$FUNC
+    );
+    static final FunctionDescriptor RprVHACD_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprVHACD_drop$MH = RuntimeHelper.downcallHandle(
+        "RprVHACD_drop",
+        constants$91.RprVHACD_drop$FUNC
+    );
     static final FunctionDescriptor RprWheelTuning_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("suspension_stiffness"),
         Constants$root.C_DOUBLE$LAYOUT.withName("suspension_compression"),
@@ -49,28 +68,6 @@ class constants$91 {
     static final MethodHandle RprWheel_brake$MH = RuntimeHelper.downcallHandle(
         "RprWheel_brake",
         constants$91.RprWheel_brake$FUNC
-    );
-    static final FunctionDescriptor RprWheel_center$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_center$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_center",
-        constants$91.RprWheel_center$FUNC
-    );
-    static final FunctionDescriptor RprWheel_chassis_connection_point_cs$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_chassis_connection_point_cs$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_chassis_connection_point_cs",
-        constants$91.RprWheel_chassis_connection_point_cs$FUNC
     );
 }
 

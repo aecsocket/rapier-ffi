@@ -131,8 +131,41 @@ impl RprEffectiveCharacterMovement {
 pub struct RprKinematicCharacterController(pub KinematicCharacterController);
 
 #[no_mangle]
-pub extern "C" fn RprKinematicCharacterController_default() -> *mut RprKinematicCharacterController {
-    leak_ptr(RprKinematicCharacterController(KinematicCharacterController::default()))
+pub unsafe extern "C" fn RprKinematicCharacterController_new(
+    up: RprVector,
+    offset: RprCharacterLength,
+    slide: bool,
+    autostep: *const RprCharacterAutostep,
+    max_slope_climb_angle: Real,
+    min_slope_slide_angle: Real,
+    snap_to_ground: *const RprCharacterLength,
+) -> *mut RprKinematicCharacterController {
+    leak_ptr(RprKinematicCharacterController(
+        KinematicCharacterController {
+            up: up.into_unit(),
+            offset: offset.into_raw(),
+            slide,
+            autostep: autostep.as_ref().map(|t| t.into_raw()),
+            max_slope_climb_angle,
+            min_slope_slide_angle,
+            snap_to_ground: snap_to_ground.as_ref().map(|t| t.into_raw()),
+        },
+    ))
+}
+
+#[no_mangle]
+pub extern "C" fn RprKinematicCharacterController_default() -> *mut RprKinematicCharacterController
+{
+    leak_ptr(RprKinematicCharacterController(
+        KinematicCharacterController::default(),
+    ))
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprKinematicCharacterController_drop(
+    this: *mut RprKinematicCharacterController,
+) {
+    drop_ptr(this)
 }
 
 #[no_mangle]
@@ -287,7 +320,7 @@ pub unsafe extern "C" fn RprKinematicCharacterController_move_shape(
         &bodies.get().0,
         &colliders.get().0,
         &queries.get().0,
-        character_shape.get().0.0.as_ref(),
+        character_shape.get().0 .0.as_ref(),
         &character_pos.into_raw(),
         desired_translation.into_raw(),
         filter.into_raw(&predicate),
@@ -313,7 +346,7 @@ pub unsafe extern "C" fn RprKinematicCharacterController_solve_character_collisi
         &mut bodies.get_mut().0,
         &colliders.get().0,
         &queries.get().0,
-        character_shape.get().0.0.as_ref(),
+        character_shape.get().0 .0.as_ref(),
         character_mass,
         &collision.into_raw(),
         filter.into_raw(&predicate),

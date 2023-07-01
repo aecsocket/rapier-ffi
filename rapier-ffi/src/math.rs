@@ -243,9 +243,7 @@ pub struct RprAngularInertia {
 #[cfg(feature = "dim2")]
 impl RprAngularInertia {
     pub fn from_raw(raw: AngularInertia<Real>) -> Self {
-        Self {
-            x: raw,
-        }
+        Self { x: raw }
     }
 
     pub fn into_raw(self) -> AngularInertia<Real> {

@@ -9,57 +9,14 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$88 {
 
-    static final FunctionDescriptor RprSolverContact_is_new$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprVHACD_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprSolverContact_is_new$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_is_new",
-        constants$88.RprSolverContact_is_new$FUNC
+    static final MethodHandle RprVHACD_drop$MH = RuntimeHelper.downcallHandle(
+        "RprVHACD_drop",
+        constants$88.RprVHACD_drop$FUNC
     );
-    static final FunctionDescriptor RprSolverContact_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_point",
-        constants$88.RprSolverContact_point$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_restitution",
-        constants$88.RprSolverContact_restitution$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_dist$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_dist$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_dist",
-        constants$88.RprSolverContact_set_dist$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_friction",
-        constants$88.RprSolverContact_set_friction$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_point",
-        constants$88.RprSolverContact_set_point$FUNC
-    );
+    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
 }
 
 

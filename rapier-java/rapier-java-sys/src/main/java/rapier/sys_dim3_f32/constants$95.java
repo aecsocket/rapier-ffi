@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$95 {
 
+    static final FunctionDescriptor RprWheel_set_forward_impulse$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_forward_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_forward_impulse",
+        constants$95.RprWheel_set_forward_impulse$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_max_suspension_force$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_max_suspension_force$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_max_suspension_force",
+        constants$95.RprWheel_set_max_suspension_force$FUNC
+    );
     static final FunctionDescriptor RprWheel_set_max_suspension_travel$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -40,22 +56,6 @@ class constants$95 {
     static final MethodHandle RprWheel_set_side_impulse$MH = RuntimeHelper.downcallHandle(
         "RprWheel_set_side_impulse",
         constants$95.RprWheel_set_side_impulse$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_steering$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_steering$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_steering",
-        constants$95.RprWheel_set_steering$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_suspension_rest_length$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_suspension_rest_length$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_suspension_rest_length",
-        constants$95.RprWheel_set_suspension_rest_length$FUNC
     );
 }
 

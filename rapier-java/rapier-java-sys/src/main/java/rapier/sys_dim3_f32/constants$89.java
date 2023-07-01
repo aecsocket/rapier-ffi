@@ -9,6 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$89 {
 
+    static final FunctionDescriptor RprSolverContact_friction$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_friction$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_friction",
+        constants$89.RprSolverContact_friction$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_is_bouncy$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_is_bouncy$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_is_bouncy",
+        constants$89.RprSolverContact_is_bouncy$FUNC
+    );
     static final FunctionDescriptor RprSolverContact_is_new$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -41,26 +55,6 @@ class constants$89 {
     static final MethodHandle RprSolverContact_set_dist$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_set_dist",
         constants$89.RprSolverContact_set_dist$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_friction",
-        constants$89.RprSolverContact_set_friction$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_point",
-        constants$89.RprSolverContact_set_point$FUNC
     );
 }
 

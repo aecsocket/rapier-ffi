@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$75 {
 
+    static final FunctionDescriptor RprRigidBody_colliders$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_colliders",
+        constants$75.RprRigidBody_colliders$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_dominance_group",
+        constants$75.RprRigidBody_dominance_group$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -43,20 +59,6 @@ class constants$75 {
     static final MethodHandle RprRigidBody_gravitational_potential_energy$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_gravitational_potential_energy",
         constants$75.RprRigidBody_gravitational_potential_energy$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_gravity_scale$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_gravity_scale",
-        constants$75.RprRigidBody_gravity_scale$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_ccd_active$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_ccd_active$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_ccd_active",
-        constants$75.RprRigidBody_is_ccd_active$FUNC
     );
 }
 

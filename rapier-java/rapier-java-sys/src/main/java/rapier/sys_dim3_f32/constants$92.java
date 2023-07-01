@@ -9,6 +9,28 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$92 {
 
+    static final FunctionDescriptor RprWheel_center$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_center$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_center",
+        constants$92.RprWheel_center$FUNC
+    );
+    static final FunctionDescriptor RprWheel_chassis_connection_point_cs$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_chassis_connection_point_cs$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_chassis_connection_point_cs",
+        constants$92.RprWheel_chassis_connection_point_cs$FUNC
+    );
     static final FunctionDescriptor RprWheel_damping_compression$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -40,20 +62,6 @@ class constants$92 {
     static final MethodHandle RprWheel_engine_force$MH = RuntimeHelper.downcallHandle(
         "RprWheel_engine_force",
         constants$92.RprWheel_engine_force$FUNC
-    );
-    static final FunctionDescriptor RprWheel_forward_impulse$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_forward_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_forward_impulse",
-        constants$92.RprWheel_forward_impulse$FUNC
-    );
-    static final FunctionDescriptor RprWheel_max_suspension_force$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_max_suspension_force$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_max_suspension_force",
-        constants$92.RprWheel_max_suspension_force$FUNC
     );
 }
 

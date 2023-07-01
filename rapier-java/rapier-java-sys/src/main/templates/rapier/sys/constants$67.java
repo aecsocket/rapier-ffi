@@ -9,47 +9,58 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$67 {
 
-    static final FunctionDescriptor RprRigidBodyBuilder_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_fixed",
-        constants$67.RprRigidBodyBuilder_fixed$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor RprRigidBodyMassProps_additional_local_mprops$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_gravity_scale",
-        constants$67.RprRigidBodyBuilder_gravity_scale$FUNC
+    static final MethodHandle RprRigidBodyMassProps_additional_local_mprops$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_additional_local_mprops",
+        constants$67.RprRigidBodyMassProps_additional_local_mprops$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_kinematic_position_based",
-        constants$67.RprRigidBodyBuilder_kinematic_position_based$FUNC
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_angular_inertia$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x")
+    ).withName("RprAngularInertia"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_velocity_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_kinematic_velocity_based",
-        constants$67.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
+    static final MethodHandle RprRigidBodyMassProps_effective_angular_inertia$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_angular_inertia",
+        constants$67.RprRigidBodyMassProps_effective_angular_inertia$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_inv_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linear_damping",
-        constants$67.RprRigidBodyBuilder_linear_damping$FUNC
+    static final MethodHandle RprRigidBodyMassProps_effective_inv_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_inv_mass",
+        constants$67.RprRigidBodyMassProps_effective_inv_mass$FUNC
     );
-    static final FunctionDescriptor RprRigidBodyBuilder_linvel$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprRigidBodyBuilder_linvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linvel",
-        constants$67.RprRigidBodyBuilder_linvel$FUNC
+    static final MethodHandle RprRigidBodyMassProps_effective_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_mass",
+        constants$67.RprRigidBodyMassProps_effective_mass$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x")
+    ).withName("RprAngularInertia"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_world_inv_inertia_sqrt",
+        constants$67.RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_flags$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_flags$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_flags",
+        constants$67.RprRigidBodyMassProps_flags$FUNC
     );
 }
 

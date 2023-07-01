@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$90 {
 
+    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_friction",
+        constants$90.RprSolverContact_set_friction$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSolverContact_set_point$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_point",
+        constants$90.RprSolverContact_set_point$FUNC
+    );
     static final FunctionDescriptor RprSolverContact_set_restitution$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -64,25 +84,6 @@ class constants$90 {
     static final MethodHandle RprVHACDParameters_default$MH = RuntimeHelper.downcallHandle(
         "RprVHACDParameters_default",
         constants$90.RprVHACDParameters_default$FUNC
-    );
-    static final FunctionDescriptor RprVHACD_decompose$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprVHACD_decompose$MH = RuntimeHelper.downcallHandle(
-        "RprVHACD_decompose",
-        constants$90.RprVHACD_decompose$FUNC
-    );
-    static final FunctionDescriptor RprVHACD_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprVHACD_drop$MH = RuntimeHelper.downcallHandle(
-        "RprVHACD_drop",
-        constants$90.RprVHACD_drop$FUNC
     );
 }
 

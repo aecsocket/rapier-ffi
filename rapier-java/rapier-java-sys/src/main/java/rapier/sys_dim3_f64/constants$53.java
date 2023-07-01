@@ -50,12 +50,12 @@ class constants$53 {
         "RprKinematicCharacterController_default",
         constants$53.RprKinematicCharacterController_default$FUNC
     );
-    static final FunctionDescriptor RprKinematicCharacterController_max_slope_climb_angle$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+    static final FunctionDescriptor RprKinematicCharacterController_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprKinematicCharacterController_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_max_slope_climb_angle",
-        constants$53.RprKinematicCharacterController_max_slope_climb_angle$FUNC
+    static final MethodHandle RprKinematicCharacterController_drop$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_drop",
+        constants$53.RprKinematicCharacterController_drop$FUNC
     );
 }
 

@@ -9,6 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$73 {
 
+    static final FunctionDescriptor RprRigidBody_activation$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_activation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_activation",
+        constants$73.RprRigidBody_activation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_activation_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_activation_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_activation_mut",
+        constants$73.RprRigidBody_activation_mut$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_add_force$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -59,30 +73,6 @@ class constants$73 {
     static final MethodHandle RprRigidBody_angular_damping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_angular_damping",
         constants$73.RprRigidBody_angular_damping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_angvel$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprAngVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_angvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_angvel",
-        constants$73.RprRigidBody_angvel$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_apply_impulse$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_apply_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_apply_impulse",
-        constants$73.RprRigidBody_apply_impulse$FUNC
     );
 }
 

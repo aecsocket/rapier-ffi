@@ -9,6 +9,21 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$84 {
 
+    static final FunctionDescriptor RprRigidBody_wake_up$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_wake_up$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_wake_up",
+        constants$84.RprRigidBody_wake_up$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_acquire$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_acquire$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_acquire",
+        constants$84.RprSharedShape_acquire$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_ball$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
     );
@@ -48,27 +63,6 @@ class constants$84 {
     static final MethodHandle RprSharedShape_cone$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_cone",
         constants$84.RprSharedShape_cone$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_convex_decomposition$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_convex_decomposition$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_convex_decomposition",
-        constants$84.RprSharedShape_convex_decomposition$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_convex_decomposition_with_params$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_convex_decomposition_with_params$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_convex_decomposition_with_params",
-        constants$84.RprSharedShape_convex_decomposition_with_params$FUNC
     );
 }
 

@@ -151,12 +151,16 @@ pub unsafe extern "C" fn RprRigidBodyActivation_set_sleeping(
 pub struct RprRigidBodyMassProps(pub RigidBodyMassProps);
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_flags(this: *const RprRigidBodyMassProps) -> RprLockedAxes {
+pub unsafe extern "C" fn RprRigidBodyMassProps_flags(
+    this: *const RprRigidBodyMassProps,
+) -> RprLockedAxes {
     this.get().0.flags.bits()
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_local_mprops(this: *const RprRigidBodyMassProps) -> RprMassProperties {
+pub unsafe extern "C" fn RprRigidBodyMassProps_local_mprops(
+    this: *const RprRigidBodyMassProps,
+) -> RprMassProperties {
     RprMassProperties::from_raw(this.get().0.local_mprops)
 }
 
@@ -175,17 +179,23 @@ pub unsafe extern "C" fn RprRigidBodyMassProps_additional_local_mprops(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_world_com(this: *const RprRigidBodyMassProps) -> RprVector {
+pub unsafe extern "C" fn RprRigidBodyMassProps_world_com(
+    this: *const RprRigidBodyMassProps,
+) -> RprVector {
     RprVector::from_point(this.get().0.world_com)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_effective_inv_mass(this: *const RprRigidBodyMassProps) -> RprVector {
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_inv_mass(
+    this: *const RprRigidBodyMassProps,
+) -> RprVector {
     RprVector::from_raw(this.get().0.effective_inv_mass)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_effective_world_inv_inertia_sqrt(this: *const RprRigidBodyMassProps) -> RprAngularInertia {
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_world_inv_inertia_sqrt(
+    this: *const RprRigidBodyMassProps,
+) -> RprAngularInertia {
     RprAngularInertia::from_raw(this.get().0.effective_world_inv_inertia_sqrt)
 }
 
@@ -195,12 +205,16 @@ pub unsafe extern "C" fn RprRigidBodyMassProps_mass(this: *const RprRigidBodyMas
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_effective_mass(this: *const RprRigidBodyMassProps) -> RprVector {
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_mass(
+    this: *const RprRigidBodyMassProps,
+) -> RprVector {
     RprVector::from_raw(this.get().0.effective_mass())
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBodyMassProps_effective_angular_inertia(this: *const RprRigidBodyMassProps) -> RprAngularInertia {
+pub unsafe extern "C" fn RprRigidBodyMassProps_effective_angular_inertia(
+    this: *const RprRigidBodyMassProps,
+) -> RprAngularInertia {
     RprAngularInertia::from_raw(this.get().0.effective_angular_inertia())
 }
 
@@ -250,25 +264,19 @@ impl RprMassProperties {
 #[derive(Copy, Clone, Debug)]
 pub enum RprRigidBodyAdditionalMassProps {
     /// Mass properties to be added as-is.
-    MassProps {
-        props: RprMassProperties
-    },
+    MassProps { props: RprMassProperties },
     /// Mass to be added to the rigid-body. This will also automatically scale
     /// the attached colliders total angular inertia to account for the added mass.
-    Mass {
-        mass: Real
-    },
+    Mass { mass: Real },
 }
 
 impl RprRigidBodyAdditionalMassProps {
     pub fn from_raw(raw: RigidBodyAdditionalMassProps) -> Self {
         match raw {
             RigidBodyAdditionalMassProps::MassProps(props) => Self::MassProps {
-                props: RprMassProperties::from_raw(props)
+                props: RprMassProperties::from_raw(props),
             },
-            RigidBodyAdditionalMassProps::Mass(mass) => Self::Mass {
-                mass
-            },
+            RigidBodyAdditionalMassProps::Mass(mass) => Self::Mass { mass },
         }
     }
 
@@ -351,7 +359,9 @@ pub unsafe extern "C" fn RprRigidBody_center_of_mass(this: *const RprRigidBody) 
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprRigidBody_mass_properties(this: *const RprRigidBody) -> *const RprRigidBodyMassProps {
+pub unsafe extern "C" fn RprRigidBody_mass_properties(
+    this: *const RprRigidBody,
+) -> *const RprRigidBodyMassProps {
     this.get().0.mass_properties() as *const RigidBodyMassProps as *const RprRigidBodyMassProps
 }
 

@@ -87,7 +87,7 @@ public record IntegrationParameters(
         );
     }
 
-    public static IntegrationParameters fromDefault() {
+    public static IntegrationParameters defaults() {
         try (var arena = MemorySession.openConfined()) {
             var memory = rapier.sys.RapierC.RprIntegrationParameters_default(arena);
             return from(memory);

@@ -9,6 +9,44 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$88 {
 
+    static final FunctionDescriptor RprSharedShape_round_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_round_triangle$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_round_triangle",
+        constants$88.RprSharedShape_round_triangle$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_segment$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_segment$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_segment",
+        constants$88.RprSharedShape_segment$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_strong_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -54,20 +92,6 @@ class constants$88 {
     static final MethodHandle RprSolverContact_dist$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_dist",
         constants$88.RprSolverContact_dist$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_friction$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_friction$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_friction",
-        constants$88.RprSolverContact_friction$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_is_bouncy$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_is_bouncy$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_is_bouncy",
-        constants$88.RprSolverContact_is_bouncy$FUNC
     );
 }
 

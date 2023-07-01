@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$69 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprRigidBodyBuilder_translation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_translation",
+        constants$69.RprRigidBodyBuilder_translation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_additional_local_mprops$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_additional_local_mprops$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_additional_local_mprops",
+        constants$69.RprRigidBodyMassProps_additional_local_mprops$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyMassProps_effective_angular_inertia$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("m11"),
         Constants$root.C_DOUBLE$LAYOUT.withName("m12"),
@@ -58,38 +78,6 @@ class constants$69 {
     static final MethodHandle RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyMassProps_effective_world_inv_inertia_sqrt",
         constants$69.RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyMassProps_flags$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_flags$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_flags",
-        constants$69.RprRigidBodyMassProps_flags$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyMassProps_local_mprops$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("local_com"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("inv_mass"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("inv_principal_inertia_sqrt"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("principal_inertia_local_frame")
-    ).withName("RprMassProperties"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_local_mprops$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_local_mprops",
-        constants$69.RprRigidBodyMassProps_local_mprops$FUNC
     );
 }
 

@@ -9,6 +9,19 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$67 {
 
+    static final FunctionDescriptor RprRigidBodyBuilder_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_dynamic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_dynamic",
+        constants$67.RprRigidBodyBuilder_dynamic$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_enabled",
+        constants$67.RprRigidBodyBuilder_enabled$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyBuilder_fixed$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_fixed",
@@ -31,26 +44,6 @@ class constants$67 {
     static final MethodHandle RprRigidBodyBuilder_kinematic_velocity_based$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_kinematic_velocity_based",
         constants$67.RprRigidBodyBuilder_kinematic_velocity_based$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_linear_damping$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_linear_damping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linear_damping",
-        constants$67.RprRigidBodyBuilder_linear_damping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_linvel$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprRigidBodyBuilder_linvel$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_linvel",
-        constants$67.RprRigidBodyBuilder_linvel$FUNC
     );
 }
 

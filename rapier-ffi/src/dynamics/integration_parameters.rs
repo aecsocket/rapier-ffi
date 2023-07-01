@@ -73,7 +73,8 @@ impl RprIntegrationParameters {
             max_velocity_iterations: raw.max_velocity_iterations,
             max_velocity_friction_iterations: raw.max_velocity_friction_iterations,
             max_stabilization_iterations: raw.max_stabilization_iterations,
-            interleave_restitution_and_friction_resolution: raw.interleave_restitution_and_friction_resolution,
+            interleave_restitution_and_friction_resolution: raw
+                .interleave_restitution_and_friction_resolution,
             min_island_size: raw.min_island_size,
             max_ccd_substeps: raw.max_ccd_substeps,
         }
@@ -93,7 +94,8 @@ impl RprIntegrationParameters {
             max_velocity_iterations: self.max_velocity_iterations,
             max_velocity_friction_iterations: self.max_velocity_friction_iterations,
             max_stabilization_iterations: self.max_stabilization_iterations,
-            interleave_restitution_and_friction_resolution: self.interleave_restitution_and_friction_resolution,
+            interleave_restitution_and_friction_resolution: self
+                .interleave_restitution_and_friction_resolution,
             min_island_size: self.min_island_size,
             max_ccd_substeps: self.max_ccd_substeps,
         }

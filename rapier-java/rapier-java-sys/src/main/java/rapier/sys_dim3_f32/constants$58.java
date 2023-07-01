@@ -9,6 +9,18 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$58 {
 
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$58.RprNarrowPhase_drop$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_new",
+        constants$58.RprNarrowPhase_new$FUNC
+    );
     static final FunctionDescriptor RprPairFilterContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -42,22 +54,6 @@ class constants$58 {
     static final MethodHandle RprPairFilterContext_colliders$MH = RuntimeHelper.downcallHandle(
         "RprPairFilterContext_colliders",
         constants$58.RprPairFilterContext_colliders$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_rigid_body1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_rigid_body1$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_rigid_body1",
-        constants$58.RprPairFilterContext_rigid_body1$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_rigid_body2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_rigid_body2$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_rigid_body2",
-        constants$58.RprPairFilterContext_rigid_body2$FUNC
     );
 }
 

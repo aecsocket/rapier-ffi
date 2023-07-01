@@ -9,6 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$93 {
 
+    static final FunctionDescriptor RprWheel_forward_impulse$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_forward_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_forward_impulse",
+        constants$93.RprWheel_forward_impulse$FUNC
+    );
+    static final FunctionDescriptor RprWheel_max_suspension_force$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_max_suspension_force$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_max_suspension_force",
+        constants$93.RprWheel_max_suspension_force$FUNC
+    );
     static final FunctionDescriptor RprWheel_max_suspension_travel$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -41,26 +55,6 @@ class constants$93 {
     static final MethodHandle RprWheel_set_axle_cs$MH = RuntimeHelper.downcallHandle(
         "RprWheel_set_axle_cs",
         constants$93.RprWheel_set_axle_cs$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_brake$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_brake$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_brake",
-        constants$93.RprWheel_set_brake$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_chassis_connection_point_cs$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprWheel_set_chassis_connection_point_cs$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_chassis_connection_point_cs",
-        constants$93.RprWheel_set_chassis_connection_point_cs$FUNC
     );
 }
 

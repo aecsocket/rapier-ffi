@@ -63,9 +63,7 @@ pub extern "C" fn RprWheelTuning_default() -> RprWheelTuning {
 pub struct RprWheel(pub Wheel);
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_chassis_connection_point_cs(
-    this: *const RprWheel,
-) -> RprVector {
+pub unsafe extern "C" fn RprWheel_chassis_connection_point_cs(this: *const RprWheel) -> RprVector {
     RprVector::from_point(this.get().0.chassis_connection_point_cs)
 }
 
@@ -78,242 +76,162 @@ pub unsafe extern "C" fn RprWheel_set_chassis_connection_point_cs(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_direction_cs(
-    this: *const RprWheel,
-) -> RprVector {
+pub unsafe extern "C" fn RprWheel_direction_cs(this: *const RprWheel) -> RprVector {
     RprVector::from_raw(this.get().0.direction_cs)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_direction_cs(
-    this: *mut RprWheel,
-    value: RprVector,
-) {
+pub unsafe extern "C" fn RprWheel_set_direction_cs(this: *mut RprWheel, value: RprVector) {
     this.get_mut().0.direction_cs = value.into_raw()
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_axle_cs(
-    this: *const RprWheel,
-) -> RprVector {
+pub unsafe extern "C" fn RprWheel_axle_cs(this: *const RprWheel) -> RprVector {
     RprVector::from_raw(this.get().0.axle_cs)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_axle_cs(
-    this: *mut RprWheel,
-    value: RprVector,
-) {
+pub unsafe extern "C" fn RprWheel_set_axle_cs(this: *mut RprWheel, value: RprVector) {
     this.get_mut().0.axle_cs = value.into_raw()
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_suspension_rest_length(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_suspension_rest_length(this: *const RprWheel) -> Real {
     this.get().0.suspension_rest_length
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_suspension_rest_length(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_suspension_rest_length(this: *mut RprWheel, value: Real) {
     this.get_mut().0.suspension_rest_length = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_max_suspension_travel(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_max_suspension_travel(this: *const RprWheel) -> Real {
     this.get().0.max_suspension_travel
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_max_suspension_travel(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_max_suspension_travel(this: *mut RprWheel, value: Real) {
     this.get_mut().0.max_suspension_travel = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_radius(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_radius(this: *const RprWheel) -> Real {
     this.get().0.radius
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_radius(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_radius(this: *mut RprWheel, value: Real) {
     this.get_mut().0.radius = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_suspension_stiffness(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_suspension_stiffness(this: *const RprWheel) -> Real {
     this.get().0.suspension_stiffness
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_suspension_stiffness(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_suspension_stiffness(this: *mut RprWheel, value: Real) {
     this.get_mut().0.suspension_stiffness = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_damping_compression(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_damping_compression(this: *const RprWheel) -> Real {
     this.get().0.damping_compression
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_damping_compression(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_damping_compression(this: *mut RprWheel, value: Real) {
     this.get_mut().0.damping_compression = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_damping_relaxation(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_damping_relaxation(this: *const RprWheel) -> Real {
     this.get().0.damping_relaxation
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_damping_relaxation(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_damping_relaxation(this: *mut RprWheel, value: Real) {
     this.get_mut().0.damping_relaxation = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_rotation(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_rotation(this: *const RprWheel) -> Real {
     this.get().0.rotation
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_rotation(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_rotation(this: *mut RprWheel, value: Real) {
     this.get_mut().0.rotation = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_max_suspension_force(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_max_suspension_force(this: *const RprWheel) -> Real {
     this.get().0.max_suspension_force
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_max_suspension_force(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_max_suspension_force(this: *mut RprWheel, value: Real) {
     this.get_mut().0.max_suspension_force = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_forward_impulse(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_forward_impulse(this: *const RprWheel) -> Real {
     this.get().0.forward_impulse
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_forward_impulse(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_forward_impulse(this: *mut RprWheel, value: Real) {
     this.get_mut().0.forward_impulse = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_side_impulse(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_side_impulse(this: *const RprWheel) -> Real {
     this.get().0.side_impulse
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_side_impulse(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_side_impulse(this: *mut RprWheel, value: Real) {
     this.get_mut().0.side_impulse = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_steering(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_steering(this: *const RprWheel) -> Real {
     this.get().0.steering
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_steering(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_steering(this: *mut RprWheel, value: Real) {
     this.get_mut().0.steering = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_engine_force(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_engine_force(this: *const RprWheel) -> Real {
     this.get().0.engine_force
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_engine_force(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_engine_force(this: *mut RprWheel, value: Real) {
     this.get_mut().0.engine_force = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_brake(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_brake(this: *const RprWheel) -> Real {
     this.get().0.brake
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_brake(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_brake(this: *mut RprWheel, value: Real) {
     this.get_mut().0.brake = value
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_wheel_suspension_force(
-    this: *const RprWheel,
-) -> Real {
+pub unsafe extern "C" fn RprWheel_wheel_suspension_force(this: *const RprWheel) -> Real {
     this.get().0.wheel_suspension_force
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprWheel_set_wheel_suspension_force(
-    this: *mut RprWheel,
-    value: Real,
-) {
+pub unsafe extern "C" fn RprWheel_set_wheel_suspension_force(this: *mut RprWheel, value: Real) {
     this.get_mut().0.wheel_suspension_force = value
 }
 
@@ -338,13 +256,15 @@ pub struct RprDynamicRayCastVehicleController(pub DynamicRayCastVehicleControlle
 pub extern "C" fn RprDynamicRayCastVehicleController_new(
     chassis: RprRigidBodyHandle,
 ) -> *mut RprDynamicRayCastVehicleController {
-    leak_ptr(RprDynamicRayCastVehicleController(DynamicRayCastVehicleController::new(
-        RigidBodyHandle(chassis.into_raw()),
-    )))
+    leak_ptr(RprDynamicRayCastVehicleController(
+        DynamicRayCastVehicleController::new(RigidBodyHandle(chassis.into_raw())),
+    ))
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprDynamicRayCastVehicleController_drop(this: *mut RprDynamicRayCastVehicleController) {
+pub unsafe extern "C" fn RprDynamicRayCastVehicleController_drop(
+    this: *mut RprDynamicRayCastVehicleController,
+) {
     drop_ptr(this)
 }
 

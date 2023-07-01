@@ -9,6 +9,44 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$79 {
 
+    static final FunctionDescriptor RprRigidBody_next_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_next_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_next_position",
+        constants$79.RprRigidBody_next_position$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_position$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_position$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_position",
+        constants$79.RprRigidBody_position$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_predict_position_using_velocity_and_forces$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
@@ -52,27 +90,6 @@ class constants$79 {
     static final MethodHandle RprRigidBody_reset_torques$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_reset_torques",
         constants$79.RprRigidBody_reset_torques$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_rotation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("w")
-    ).withName("RprRotation"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_rotation",
-        constants$79.RprRigidBody_rotation$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_set_additional_mass$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_set_additional_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_set_additional_mass",
-        constants$79.RprRigidBody_set_additional_mass$FUNC
     );
 }
 

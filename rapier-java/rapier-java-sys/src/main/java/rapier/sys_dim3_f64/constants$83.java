@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$83 {
 
+    static final FunctionDescriptor RprRigidBody_set_translation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_translation$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_translation",
+        constants$83.RprRigidBody_set_translation$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_sleep$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_sleep$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_sleep",
+        constants$83.RprRigidBody_sleep$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
@@ -57,21 +77,6 @@ class constants$83 {
     static final MethodHandle RprRigidBody_velocity_at_point$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_velocity_at_point",
         constants$83.RprRigidBody_velocity_at_point$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_wake_up$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_wake_up$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_wake_up",
-        constants$83.RprRigidBody_wake_up$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_acquire$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_acquire$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_acquire",
-        constants$83.RprSharedShape_acquire$FUNC
     );
 }
 

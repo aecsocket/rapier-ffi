@@ -9,6 +9,33 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$61 {
 
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
+            ).withName("min"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y"),
+                Constants$root.C_FLOAT$LAYOUT.withName("z")
+            ).withName("max")
+        ).withName("RprAabb"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_colliders_with_aabb_intersecting_aabb$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_colliders_with_aabb_intersecting_aabb",
+        constants$61.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_drop",
+        constants$61.RprQueryPipeline_drop$FUNC
+    );
     static final FunctionDescriptor RprQueryPipeline_intersection_with_ray$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         MemoryLayout.structLayout(
             MemoryLayout.structLayout(
@@ -131,15 +158,6 @@ class constants$61 {
     static final MethodHandle RprQueryPipeline_intersection_with_shape$MH = RuntimeHelper.downcallHandle(
         "RprQueryPipeline_intersection_with_shape",
         constants$61.RprQueryPipeline_intersection_with_shape$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_intersections_with_point$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprQueryPipeline_intersections_with_point$callback$MH = RuntimeHelper.downcallHandle(
-        constants$61.RprQueryPipeline_intersections_with_point$callback$FUNC
     );
 }
 

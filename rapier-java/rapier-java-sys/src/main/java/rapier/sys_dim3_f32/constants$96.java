@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$96 {
 
+    static final FunctionDescriptor RprWheel_set_steering$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_steering$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_steering",
+        constants$96.RprWheel_set_steering$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_suspension_rest_length$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_suspension_rest_length$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_suspension_rest_length",
+        constants$96.RprWheel_set_suspension_rest_length$FUNC
+    );
     static final FunctionDescriptor RprWheel_set_suspension_stiffness$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -38,24 +54,6 @@ class constants$96 {
     static final MethodHandle RprWheel_steering$MH = RuntimeHelper.downcallHandle(
         "RprWheel_steering",
         constants$96.RprWheel_steering$FUNC
-    );
-    static final FunctionDescriptor RprWheel_suspension$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y"),
-        Constants$root.C_FLOAT$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_suspension$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_suspension",
-        constants$96.RprWheel_suspension$FUNC
-    );
-    static final FunctionDescriptor RprWheel_suspension_rest_length$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_suspension_rest_length$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_suspension_rest_length",
-        constants$96.RprWheel_suspension_rest_length$FUNC
     );
 }
 

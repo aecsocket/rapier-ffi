@@ -9,6 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$76 {
 
+    static final FunctionDescriptor RprRigidBody_gravity_scale$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_gravity_scale$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_gravity_scale",
+        constants$76.RprRigidBody_gravity_scale$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_ccd_active$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_ccd_active$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_ccd_active",
+        constants$76.RprRigidBody_is_ccd_active$FUNC
+    );
     static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -36,21 +50,6 @@ class constants$76 {
     static final MethodHandle RprRigidBody_is_fixed$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_fixed",
         constants$76.RprRigidBody_is_fixed$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_kinematic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_kinematic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_kinematic",
-        constants$76.RprRigidBody_is_kinematic$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_rotation_locked$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_rotation_locked",
-        constants$76.RprRigidBody_is_rotation_locked$FUNC
     );
 }
 

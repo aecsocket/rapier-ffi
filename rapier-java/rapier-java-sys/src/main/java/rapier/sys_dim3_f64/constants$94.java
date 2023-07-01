@@ -9,6 +9,26 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$94 {
 
+    static final FunctionDescriptor RprWheel_set_brake$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_brake$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_brake",
+        constants$94.RprWheel_set_brake$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_chassis_connection_point_cs$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprWheel_set_chassis_connection_point_cs$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_chassis_connection_point_cs",
+        constants$94.RprWheel_set_chassis_connection_point_cs$FUNC
+    );
     static final FunctionDescriptor RprWheel_set_damping_compression$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -44,22 +64,6 @@ class constants$94 {
     static final MethodHandle RprWheel_set_engine_force$MH = RuntimeHelper.downcallHandle(
         "RprWheel_set_engine_force",
         constants$94.RprWheel_set_engine_force$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_forward_impulse$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_forward_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_forward_impulse",
-        constants$94.RprWheel_set_forward_impulse$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_max_suspension_force$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_max_suspension_force$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_max_suspension_force",
-        constants$94.RprWheel_set_max_suspension_force$FUNC
     );
 }
 

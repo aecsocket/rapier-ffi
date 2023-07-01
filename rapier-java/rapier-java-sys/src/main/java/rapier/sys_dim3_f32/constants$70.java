@@ -9,6 +9,38 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$70 {
 
+    static final FunctionDescriptor RprRigidBodyMassProps_flags$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_flags$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_flags",
+        constants$70.RprRigidBodyMassProps_flags$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_local_mprops$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("local_com"),
+        Constants$root.C_FLOAT$LAYOUT.withName("inv_mass"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("inv_principal_inertia_sqrt"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z"),
+            Constants$root.C_FLOAT$LAYOUT.withName("w")
+        ).withName("principal_inertia_local_frame")
+    ).withName("RprMassProperties"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_local_mprops$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_local_mprops",
+        constants$70.RprRigidBodyMassProps_local_mprops$FUNC
+    );
     static final FunctionDescriptor RprRigidBodyMassProps_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -44,24 +76,6 @@ class constants$70 {
     static final MethodHandle RprRigidBodySet_contains$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_contains",
         constants$70.RprRigidBodySet_contains$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_drop",
-        constants$70.RprRigidBodySet_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_get",
-        constants$70.RprRigidBodySet_get$FUNC
     );
 }
 

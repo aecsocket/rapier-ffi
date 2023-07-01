@@ -9,6 +9,24 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$86 {
 
+    static final FunctionDescriptor RprSharedShape_data$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSharedShape_data$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_data",
+        constants$86.RprSharedShape_data$FUNC
+    );
+    static final FunctionDescriptor RprSharedShape_halfspace$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSharedShape_halfspace$MH = RuntimeHelper.downcallHandle(
+        "RprSharedShape_halfspace",
+        constants$86.RprSharedShape_halfspace$FUNC
+    );
     static final FunctionDescriptor RprSharedShape_heightfield$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
@@ -48,29 +66,6 @@ class constants$86 {
     static final MethodHandle RprSharedShape_round_cone$MH = RuntimeHelper.downcallHandle(
         "RprSharedShape_round_cone",
         constants$86.RprSharedShape_round_cone$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_convex_decomposition$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_convex_decomposition$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_convex_decomposition",
-        constants$86.RprSharedShape_round_convex_decomposition$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_round_convex_decomposition_with_params$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_round_convex_decomposition_with_params$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_round_convex_decomposition_with_params",
-        constants$86.RprSharedShape_round_convex_decomposition_with_params$FUNC
     );
 }
 

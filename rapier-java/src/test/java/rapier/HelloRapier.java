@@ -42,7 +42,7 @@ public final class HelloRapier {
         // Vectors are managed on the Java side, and are converted to/from native objects when they need to be
         var gravity = new Vector(0.0, -9.81, 0.0);
         // set up a bunch more Rapier structures
-        var integrationParameters = IntegrationParameters.fromDefault();
+        var integrationParameters = IntegrationParameters.defaults();
         var islandManager = IslandManager.create();
         var broadPhase = BroadPhase.create();
         var narrowPhase = NarrowPhase.create();

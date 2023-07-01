@@ -9,84 +9,77 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$41 {
 
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_new$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_new",
-        constants$41.RprDynamicRayCastVehicleController_new$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_set_chassis$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_set_chassis$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_set_chassis",
-        constants$41.RprDynamicRayCastVehicleController_set_chassis$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_set_index_forward_axis$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_set_index_forward_axis$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_set_index_forward_axis",
-        constants$41.RprDynamicRayCastVehicleController_set_index_forward_axis$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_set_index_up_axis$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_set_index_up_axis$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_set_index_up_axis",
-        constants$41.RprDynamicRayCastVehicleController_set_index_up_axis$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_update_vehicle$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_update_vehicle$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_update_vehicle",
-        constants$41.RprDynamicRayCastVehicleController_update_vehicle$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_wheels$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor RprGenericJoint_local_anchor1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle RprDynamicRayCastVehicleController_wheels$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_wheels",
-        constants$41.RprDynamicRayCastVehicleController_wheels$FUNC
+    static final MethodHandle RprGenericJoint_local_anchor1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor1",
+        constants$41.RprGenericJoint_local_anchor1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_anchor2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_anchor2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_anchor2",
+        constants$41.RprGenericJoint_local_anchor2$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_axis1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_axis1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_axis1",
+        constants$41.RprGenericJoint_local_axis1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_axis2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_axis2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_axis2",
+        constants$41.RprGenericJoint_local_axis2$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_frame1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("im")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_frame1$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame1",
+        constants$41.RprGenericJoint_local_frame1$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("im")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame2",
+        constants$41.RprGenericJoint_local_frame2$FUNC
     );
 }
 
