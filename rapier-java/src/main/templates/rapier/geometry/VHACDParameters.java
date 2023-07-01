@@ -19,6 +19,18 @@ public record VHACDParameters(
         boolean convexHullApproximation,
         int maxConvexHulls
 ) {
+    public static long sizeof() {
+        return {{ sys }}.RprVHACDParameters.sizeof();
+    }
+
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return {{ sys }}.RprVHACDParameters.allocate(alloc);
+    }
+
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return {{ sys }}.RprVHACDParameters.allocateArray(alloc, len);
+    }
+
     public void into(MemorySegment memory) {
         {{ sys }}.RprVHACDParameters.concavity$set(memory, concavity);
         {{ sys }}.RprVHACDParameters.alpha$set(memory, alpha);
@@ -40,9 +52,17 @@ public record VHACDParameters(
         {{ sys }}.RprVHACDParameters.max_convex_hulls$set(memory, maxConvexHulls);
     }
 
-    public MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprVHACDParameters.allocate(alloc);
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = allocate(alloc);
         into(memory);
+        return memory;
+    }
+
+    public static MemorySegment allocSliceInto(SegmentAllocator alloc, VHACDParameters... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
         return memory;
     }
 

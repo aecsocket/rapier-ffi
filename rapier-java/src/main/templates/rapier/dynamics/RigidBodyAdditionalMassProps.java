@@ -1,5 +1,6 @@
 package rapier.dynamics;
 
+import rapier.data.ArenaKey;
 import rapier.sys.RprRigidBodyAdditionalMassProps;
 
 import java.lang.foreign.MemorySegment;
@@ -9,6 +10,18 @@ public sealed interface RigidBodyAdditionalMassProps {
     record MassProps(MassProperties props) implements RigidBodyAdditionalMassProps {}
 
     record Mass({{ real }} mass) implements RigidBodyAdditionalMassProps {}
+
+    static long sizeof() {
+        return {{ sys }}.RprRigidBodyAdditionalMassProps.sizeof();
+    }
+
+    static MemorySegment alloc(SegmentAllocator alloc) {
+        return {{ sys }}.RprRigidBodyAdditionalMassProps.allocate(alloc);
+    }
+
+    static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return {{ sys }}.RprRigidBodyAdditionalMassProps.allocateArray(len, alloc);
+    }
 
     static RigidBodyAdditionalMassProps from(MemorySegment memory) {
         var tag = RprRigidBodyAdditionalMassProps.tag$get(memory);
@@ -27,10 +40,5 @@ public sealed interface RigidBodyAdditionalMassProps {
             }
             default -> throw new IllegalArgumentException("Invalid tag " + tag);
         };
-    }
-
-    static MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprRigidBodyAdditionalMassProps.allocate(alloc);
-        return memory;
     }
 }

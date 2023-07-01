@@ -31,10 +31,10 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         return new Mut(memory);
     }
 
-    public @Nullable Long getParent() {
+    public @Nullable ArenaKey getParent() {
         try (var arena = MemorySession.openConfined()) {
-            var res = ArenaKey.pack(RprCollider_parent(arena, self));
-            return ArenaKey.isValid(res) ? res : null;
+            var res = ArenaKey.from(RprCollider_parent(arena, self));
+            return res.isValid() ? res : null;
         }
     }
 

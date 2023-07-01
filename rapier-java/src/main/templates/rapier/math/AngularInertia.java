@@ -16,6 +16,14 @@ public record AngularInertia(
         {{ real }} m33
 {% endif %}
 ) {
+    public static long sizeof() {
+        return {{ sys }}.RprAngularInertia.sizeof();
+    }
+
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return RprArenaKey.allocate(alloc);
+    }
+
     public static AngularInertia from(MemorySegment memory) {
         return new AngularInertia(
 {% if dim2 %}

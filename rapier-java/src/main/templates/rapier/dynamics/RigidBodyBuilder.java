@@ -63,21 +63,21 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
 
     public RigidBodyBuilder translation(Vector translation) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.allocate(arena));
+            {{ sys }}.RapierC.RprRigidBodyBuilder_translation(self, translation.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder rotation(AngVector rotation) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.allocate(arena));
+            {{ sys }}.RapierC.RprRigidBodyBuilder_rotation(self, rotation.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder position(Isometry position) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.allocate(arena));
+            {{ sys }}.RapierC.RprRigidBodyBuilder_position(self, position.allocInto(arena));
         }
         return this;
     }
@@ -99,14 +99,14 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
 
     public RigidBodyBuilder linvel(Vector linvel) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.allocate(arena));
+            {{ sys }}.RapierC.RprRigidBodyBuilder_linvel(self, linvel.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder angvel(AngVector angvel) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.allocate(arena));
+            {{ sys }}.RapierC.RprRigidBodyBuilder_angvel(self, angvel.allocInto(arena));
         }
         return this;
     }

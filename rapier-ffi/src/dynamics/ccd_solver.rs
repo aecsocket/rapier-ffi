@@ -1,5 +1,4 @@
 use crate::prelude::*;
-
 pub struct RprCCDSolver(pub CCDSolver);
 
 #[no_mangle]

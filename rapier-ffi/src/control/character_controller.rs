@@ -102,6 +102,32 @@ impl RprCharacterCollision {
     }
 }
 
+/// The effective movement computed by the character controller.
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct RprEffectiveCharacterMovement {
+    /// The movement to apply.
+    pub translation: RprVector,
+    /// Is the character touching the ground after applying `EffectiveKineamticMovement::translation`?
+    pub grounded: bool,
+}
+
+impl RprEffectiveCharacterMovement {
+    pub fn from_raw(raw: EffectiveCharacterMovement) -> Self {
+        Self {
+            translation: RprVector::from_raw(raw.translation),
+            grounded: raw.grounded,
+        }
+    }
+
+    pub fn into_raw(self) -> EffectiveCharacterMovement {
+        EffectiveCharacterMovement {
+            translation: self.translation.into_raw(),
+            grounded: self.grounded,
+        }
+    }
+}
+
 pub struct RprKinematicCharacterController(pub KinematicCharacterController);
 
 #[no_mangle]
@@ -242,24 +268,6 @@ pub unsafe extern "C" fn RprKinematicCharacterController_clear_snap_to_ground(
     this.get_mut().0.snap_to_ground = None
 }
 
-/*
-    /// Computes the possible movement for a shape.
-    pub fn move_shape(
-        &self,
-        dt: Real,
-        bodies: &RigidBodySet,
-        colliders: &ColliderSet,
-        queries: &QueryPipeline,
-        character_shape: &dyn Shape,
-        character_pos: &Isometry<Real>,
-        desired_translation: Vector<Real>,
-        filter: QueryFilter,
-        mut events: impl FnMut(CharacterCollision),
-    ) -> EffectiveCharacterMovement {
-        
-        
-    pub predicate: *const extern "C" fn(RprColliderHandle, *const RprCollider) -> bool,*/
-
 #[no_mangle]
 pub unsafe extern "C" fn RprKinematicCharacterController_move_shape(
     this: *const RprKinematicCharacterController,
@@ -272,6 +280,42 @@ pub unsafe extern "C" fn RprKinematicCharacterController_move_shape(
     desired_translation: RprVector,
     filter: RprQueryFilter,
     events: *const extern "C" fn(RprCharacterCollision),
-) {
+) -> RprEffectiveCharacterMovement {
+    let predicate = filter.predicate();
+    RprEffectiveCharacterMovement::from_raw(this.get().0.move_shape(
+        dt,
+        &bodies.get().0,
+        &colliders.get().0,
+        &queries.get().0,
+        character_shape.get().0.0.as_ref(),
+        &character_pos.into_raw(),
+        desired_translation.into_raw(),
+        filter.into_raw(&predicate),
+        |coll| (*events)(RprCharacterCollision::from_raw(coll)),
+    ))
+}
 
+#[no_mangle]
+pub unsafe extern "C" fn RprKinematicCharacterController_solve_character_collision_impulses(
+    this: *const RprKinematicCharacterController,
+    dt: Real,
+    bodies: *mut RprRigidBodySet,
+    colliders: *const RprColliderSet,
+    queries: *const RprQueryPipeline,
+    character_shape: *const RprSharedShape,
+    character_mass: Real,
+    collision: RprCharacterCollision,
+    filter: RprQueryFilter,
+) {
+    let predicate = filter.predicate();
+    this.get().0.solve_character_collision_impulses(
+        dt,
+        &mut bodies.get_mut().0,
+        &colliders.get().0,
+        &queries.get().0,
+        character_shape.get().0.0.as_ref(),
+        character_mass,
+        &collision.into_raw(),
+        filter.into_raw(&predicate),
+    )
 }

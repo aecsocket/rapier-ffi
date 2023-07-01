@@ -1,43 +1,72 @@
 package rapier.data;
 
+import rapier.sys.RprArenaKey;
+
 import java.lang.foreign.*;
 
-public final class ArenaKey {
-    private ArenaKey() {}
+public record ArenaKey(
+        int index,
+        int generation
+) {
+    public static final ArenaKey INVALID = new ArenaKey(0xffffffff, 0xffffffff);
 
-    public static final long INVALID_KEY = 0xffffffff_ffffffffL;
-
-    public static long pack(Addressable memory, long index) {
-        // RprArenaKey only guarantees alignment to 8 bytes; reading a JAVA_LONG requires 16-byte alignment
-        // therefore we read in two separate passes
-        long kIndex = memory.address().getAtIndex(ValueLayout.JAVA_INT, index * 2);
-        long kGen = memory.address().getAtIndex(ValueLayout.JAVA_INT, index * 2 + 1);
-        return kIndex | (kGen << 32);
+    public static long sizeof() {
+        return RprArenaKey.sizeof();
     }
 
-    public static long pack(Addressable memory) {
-        return pack(memory, 0);
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return RprArenaKey.allocate(alloc);
     }
 
-    public static MemorySegment unpack(SegmentAllocator alloc, long key) {
-        return alloc.allocate(ValueLayout.JAVA_LONG, key);
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return RprArenaKey.allocateArray(len, alloc);
     }
 
-    public static boolean isValid(long key) {
-        return key != INVALID_KEY;
+    public void into(MemorySegment memory) {
+        RprArenaKey.index$set(memory, index);
+        RprArenaKey.generation$set(memory, generation);
     }
 
-    public static int index(long key) {
-        // bottom 32 bits
-        return (int) key;
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
     }
 
-    public static int generation(long key) {
-        // upper 32 bits
-        return (int) (key >> 32);
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, ArenaKey... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
     }
 
-    public static String asString(long key) {
-        return index(key) + "/" + generation(key);
+    public static ArenaKey from(MemorySegment memory) {
+        return new ArenaKey(
+                RprArenaKey.index$get(memory),
+                RprArenaKey.generation$get(memory)
+        );
+    }
+
+    public static ArenaKey[] fromSlice(MemoryAddress data, int len) {
+        var res = new ArenaKey[len];
+        // TODO: we won't need to do this in Java 20 i dont think
+        try (var arena = MemorySession.openConfined()) {
+            for (int i = 0; i < len; i++) {
+                // SAFETY: lo;l
+                var elem = MemorySegment.ofAddress(data.addOffset(sizeof() * i), sizeof(), arena);
+                res[i] = ArenaKey.from(elem);
+            }
+        }
+        return res;
+    }
+
+    public boolean isValid() {
+        return !equals(INVALID);
+    }
+
+    @Override
+    public String toString() {
+        return index + "/" + generation;
     }
 }

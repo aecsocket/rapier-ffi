@@ -17,7 +17,7 @@ import java.util.List;
 import static rapier.sys.RapierC.*;
 
 public final class ColliderSet extends RefNative implements Droppable {
-    public record Entry(long handle, Collider value) {}
+    public record Entry(ArenaKey handle, Collider value) {}
 
     private final DropFlag dropped = new DropFlag();
 
@@ -50,7 +50,7 @@ public final class ColliderSet extends RefNative implements Droppable {
         var len = (int) RprColliderVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
-            var handle = ArenaKey.pack(RprColliderVec_handle(alloc, vec, i));
+            var handle = ArenaKey.from(RprColliderVec_handle(alloc, vec, i));
             var value = Collider.at(RprColliderVec_value(vec, i));
             res.add(new Entry(handle, value));
         }
@@ -70,37 +70,37 @@ public final class ColliderSet extends RefNative implements Droppable {
         }
     }
 
-    public long insert(Collider.Mut coll) {
+    public ArenaKey insert(Collider.Mut coll) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprColliderSet_insert(arena, self, coll.memory()));
+            return ArenaKey.from(RprColliderSet_insert(arena, self, coll.memory()));
         }
     }
 
-    public long insertWithParent(Collider.Mut coll, long parentHandle, RigidBodySet bodies) {
+    public ArenaKey insertWithParent(Collider.Mut coll, ArenaKey parentHandle, RigidBodySet bodies) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprColliderSet_insert_with_parent(
+            return ArenaKey.from(RprColliderSet_insert_with_parent(
                     arena,
                     self,
                     coll.memory(),
-                    ArenaKey.unpack(arena, parentHandle),
+                    parentHandle.allocInto(arena),
                     bodies.memory()
             ));
         }
     }
 
-    public void setParent(long handle, @Nullable Long newParentHandle, RigidBodySet bodies) {
+    public void setParent(ArenaKey handle, @Nullable ArenaKey newParentHandle, RigidBodySet bodies) {
         try (var arena = MemorySession.openConfined()) {
             RprColliderSet_set_parent(
                     self,
-                    ArenaKey.unpack(arena, handle),
-                    ArenaKey.unpack(arena, newParentHandle == null ? ArenaKey.INVALID_KEY : newParentHandle),
+                    handle.allocInto(arena),
+                    (newParentHandle == null ? ArenaKey.INVALID : newParentHandle).allocInto(arena),
                     bodies.memory()
             );
         }
     }
 
     public @Nullable Collider.Mut remove(
-            long handle,
+            ArenaKey handle,
             IslandManager islands,
             RigidBodySet bodies,
             boolean wakeUp
@@ -108,7 +108,7 @@ public final class ColliderSet extends RefNative implements Droppable {
         try (var arena = MemorySession.openConfined()) {
             var res = RprColliderSet_remove(
                     self,
-                    ArenaKey.unpack(arena, handle),
+                    handle.allocInto(arena),
                     islands.memory(),
                     bodies.memory(),
                     wakeUp
@@ -117,16 +117,16 @@ public final class ColliderSet extends RefNative implements Droppable {
         }
     }
 
-    public @Nullable Collider get(long index) {
+    public @Nullable Collider get(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprColliderSet_get(self, ArenaKey.unpack(arena, index));
+            var res = RprColliderSet_get(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : Collider.at(res);
         }
     }
 
-    public @Nullable Collider.Mut getMut(long index) {
+    public @Nullable Collider.Mut getMut(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprColliderSet_get_mut(self, ArenaKey.unpack(arena, index));
+            var res = RprColliderSet_get_mut(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : Collider.atMut(res);
         }
     }

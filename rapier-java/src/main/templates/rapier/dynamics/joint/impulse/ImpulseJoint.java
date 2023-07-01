@@ -7,7 +7,6 @@ import rapier.math.SpacialVector;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 import static rapier.sys.RapierC.*;
 
@@ -24,15 +23,15 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         return new Mut(memory);
     }
 
-    public long getBody1() {
+    public ArenaKey getBody1() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprImpulseJoint_body1(arena, self));
+            return ArenaKey.from(RprImpulseJoint_body1(arena, self));
         }
     }
 
-    public long getBody2() {
+    public ArenaKey getBody2() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprImpulseJoint_body2(arena, self));
+            return ArenaKey.from(RprImpulseJoint_body2(arena, self));
         }
     }
 
@@ -52,15 +51,15 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         }
 
 
-        public void setBody1(long body1) {
+        public void setBody1(ArenaKey body1) {
             try (var arena = MemorySession.openConfined()) {
-                RprImpulseJoint_set_body1(self, ArenaKey.unpack(arena, body1));
+                RprImpulseJoint_set_body1(self, body1.allocInto(arena));
             }
         }
 
-        public void setBody2(long body2) {
+        public void setBody2(ArenaKey body2) {
             try (var arena = MemorySession.openConfined()) {
-                RprImpulseJoint_set_body2(self, ArenaKey.unpack(arena, body2));
+                RprImpulseJoint_set_body2(self, body2.allocInto(arena));
             }
         }
 

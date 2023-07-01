@@ -18,7 +18,7 @@ import java.util.List;
 import static rapier.sys.RapierC.*;
 
 public final class RigidBodySet extends RefNative implements Droppable {
-    public record Entry(long handle, RigidBody value) {}
+    public record Entry(ArenaKey handle, RigidBody value) {}
 
     private final DropFlag dropped = new DropFlag();
 
@@ -51,7 +51,7 @@ public final class RigidBodySet extends RefNative implements Droppable {
         var len = (int) RprRigidBodyVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
-            var handle = ArenaKey.pack(RprRigidBodyVec_handle(alloc, vec, i));
+            var handle = ArenaKey.from(RprRigidBodyVec_handle(alloc, vec, i));
             var value = RigidBody.at(RprRigidBodyVec_value(vec, i));
             res.add(new Entry(handle, value));
         }
@@ -65,14 +65,14 @@ public final class RigidBodySet extends RefNative implements Droppable {
         }
     }
 
-    public long insert(RigidBody.Mut rb) {
+    public ArenaKey insert(RigidBody.Mut rb) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprRigidBodySet_insert(arena, self, rb.memory()));
+            return ArenaKey.from(RprRigidBodySet_insert(arena, self, rb.memory()));
         }
     }
 
     public @Nullable RigidBody.Mut remove(
-            long handle,
+            ArenaKey handle,
             IslandManager islands,
             ColliderSet colliders,
             ImpulseJointSet impulseJoints,
@@ -82,7 +82,7 @@ public final class RigidBodySet extends RefNative implements Droppable {
         try (var arena = MemorySession.openConfined()) {
             var res = RprRigidBodySet_remove(
                     self,
-                    ArenaKey.unpack(arena, handle),
+                    handle.allocInto(arena),
                     islands.memory(),
                     colliders.memory(),
                     impulseJoints.memory(),
@@ -93,16 +93,16 @@ public final class RigidBodySet extends RefNative implements Droppable {
         }
     }
 
-    public @Nullable RigidBody get(long index) {
+    public @Nullable RigidBody get(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprRigidBodySet_get(self, ArenaKey.unpack(arena, index));
+            var res = RprRigidBodySet_get(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : RigidBody.at(res);
         }
     }
 
-    public @Nullable RigidBody.Mut getMut(long index) {
+    public @Nullable RigidBody.Mut getMut(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprRigidBodySet_get_mut(self, ArenaKey.unpack(arena, index));
+            var res = RprRigidBodySet_get_mut(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : RigidBody.atMut(res);
         }
     }

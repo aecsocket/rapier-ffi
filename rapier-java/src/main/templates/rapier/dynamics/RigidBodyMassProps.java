@@ -31,7 +31,7 @@ public final class RigidBodyMassProps extends RefNative {
 
     public @Nullable RigidBodyAdditionalMassProps getAdditionalLocalMProps() {
         try (var arena = MemorySession.openConfined()) {
-            var res = RigidBodyAdditionalMassProps.allocate(arena);
+            var res = RigidBodyAdditionalMassProps.alloc(arena);
             if ({{ sys }}.RapierC.RprRigidBodyMassProps_additional_local_mprops(self, res)) {
                 return RigidBodyAdditionalMassProps.from(res);
             }

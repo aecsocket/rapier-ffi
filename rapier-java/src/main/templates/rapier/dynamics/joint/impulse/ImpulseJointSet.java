@@ -15,7 +15,7 @@ import java.util.List;
 import static rapier.sys.RapierC.*;
 
 public final class ImpulseJointSet extends RefNative implements Droppable {
-    public record Entry(long handle, ImpulseJoint value) {}
+    public record Entry(ArenaKey handle, ImpulseJoint value) {}
 
     private final DropFlag dropped = new DropFlag();
 
@@ -48,7 +48,7 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
         var len = (int) RprImpulseJointVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
-            var handle = ArenaKey.pack(RprImpulseJointVec_handle(alloc, vec, i));
+            var handle = ArenaKey.from(RprImpulseJointVec_handle(alloc, vec, i));
             var value = ImpulseJoint.at(RprImpulseJointVec_value(vec, i));
             res.add(new Entry(handle, value));
         }
@@ -62,40 +62,40 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
         }
     }
 
-    public boolean contains(long handle) {
+    public boolean contains(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return RprImpulseJointSet_contains(self, ArenaKey.unpack(arena, handle));
+            return RprImpulseJointSet_contains(self, handle.allocInto(arena));
         }
     }
 
-    public ImpulseJoint get(long handle) {
+    public ImpulseJoint get(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.at(RprImpulseJointSet_get(self, ArenaKey.unpack(arena, handle)));
+            return ImpulseJoint.at(RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
-    public ImpulseJoint.Mut getMut(long handle) {
+    public ImpulseJoint.Mut getMut(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.atMut(RprImpulseJointSet_get(self, ArenaKey.unpack(arena, handle)));
+            return ImpulseJoint.atMut(RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
-    public long insert(long body1, long body2, GenericJoint data, boolean wakeUp) {
+    public ArenaKey insert(ArenaKey body1, ArenaKey body2, GenericJoint data, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprImpulseJointSet_insert(
+            return ArenaKey.from(RprImpulseJointSet_insert(
                     arena,
                     self,
-                    ArenaKey.unpack(arena, body1),
-                    ArenaKey.unpack(arena, body2),
+                    body1.allocInto(arena),
+                    body2.allocInto(arena),
                     data.memory(),
                     wakeUp
             ));
         }
     }
 
-    public ImpulseJoint.Mut remove(long handle, boolean wakeUp) {
+    public ImpulseJoint.Mut remove(ArenaKey handle, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.atMut(RprImpulseJointSet_remove(self, ArenaKey.unpack(arena, handle), wakeUp));
+            return ImpulseJoint.atMut(RprImpulseJointSet_remove(self, handle.allocInto(arena), wakeUp));
         }
     }
 }

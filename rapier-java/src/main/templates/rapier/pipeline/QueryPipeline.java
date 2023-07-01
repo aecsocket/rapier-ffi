@@ -254,7 +254,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
         try (var arena = MemorySession.openConfined()) {
             {{ sys }}.RapierC.RprQueryPipeline_colliders_with_aabb_intersecting_aabb(
                     self,
-                    aabb.allocate(arena),
+                    aabb.alloc(arena),
                     {{ sys }}.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback.allocate(result -> {
                         return callback.run(ArenaKey.pack(result));
                     }, arena)

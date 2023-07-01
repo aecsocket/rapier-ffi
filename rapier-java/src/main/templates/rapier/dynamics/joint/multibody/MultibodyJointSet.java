@@ -32,30 +32,37 @@ public final class MultibodyJointSet extends RefNative implements Droppable {
         return at(RprMultibodyJointSet_new());
     }
 
-    public @Nullable Long insert(long body1, long body2, GenericJoint.Mut data, boolean wakeUp) {
+    public @Nullable Long insert(ArenaKey body1, ArenaKey body2, GenericJoint.Mut data, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
             var res = arena.allocate(C_LONG, 0);
-            if (RprMultibodyJointSet_insert(self, ArenaKey.unpack(arena, body1), ArenaKey.unpack(arena, body2), data.memory(), wakeUp, res))
+            if (RprMultibodyJointSet_insert(
+                    self,
+                    body1.allocInto(arena),
+                    body2.allocInto(arena),
+                    data.memory(),
+                    wakeUp,
+                    res
+            ))
                 return res.get(C_LONG, 0);
             return null;
         }
     }
 
-    public void remove(long handle, boolean wakeUp) {
+    public void remove(ArenaKey handle, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            RprMultibodyJointSet_remove(self, ArenaKey.unpack(arena, handle), wakeUp);
+            RprMultibodyJointSet_remove(self, handle.allocInto(arena), wakeUp);
         }
     }
 
-    public void removeMultibodyArticulations(long handle, boolean wakeUp) {
+    public void removeMultibodyArticulations(ArenaKey handle, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            RprMultibodyJointSet_remove_multibody_articulations(self, ArenaKey.unpack(arena, handle), wakeUp);
+            RprMultibodyJointSet_remove_multibody_articulations(self, handle.allocInto(arena), wakeUp);
         }
     }
 
-    public void removeJointsAttachedToRigidBody(long rbToRemove) {
+    public void removeJointsAttachedToRigidBody(ArenaKey rbToRemove) {
         try (var arena = MemorySession.openConfined()) {
-            RprMultibodyJointSet_remove_joints_attached_to_rigid_body(self, ArenaKey.unpack(arena, rbToRemove));
+            RprMultibodyJointSet_remove_joints_attached_to_rigid_body(self, rbToRemove.allocInto(arena));
         }
     }
 }

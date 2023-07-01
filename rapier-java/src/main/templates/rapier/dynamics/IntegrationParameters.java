@@ -24,6 +24,50 @@ public record IntegrationParameters(
         long minIslandSize,
         long maxCcdSubsteps
 ) {
+    public static long sizeof() {
+        return {{ sys }}.RprIntegrationParameters.sizeof();
+    }
+
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return {{ sys }}.RprIntegrationParameters.allocate(alloc);
+    }
+
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return {{ sys }}.RprIntegrationParameters.allocateArray(len, alloc);
+    }
+
+    public void into(MemorySegment memory) {
+        {{ sys }}.RprIntegrationParameters.dt$set(memory, dt);
+        {{ sys }}.RprIntegrationParameters.min_ccd_dt$set(memory, minCcdDt);
+        {{ sys }}.RprIntegrationParameters.erp$set(memory, erp);
+        {{ sys }}.RprIntegrationParameters.damping_ratio$set(memory, dampingRatio);
+        {{ sys }}.RprIntegrationParameters.joint_erp$set(memory, jointErp);
+        {{ sys }}.RprIntegrationParameters.joint_damping_ratio$set(memory, jointDampingRatio);
+        {{ sys }}.RprIntegrationParameters.allowed_linear_error$set(memory, allowedLinearError);
+        {{ sys }}.RprIntegrationParameters.max_penetration_correction$set(memory, maxPenetrationCorrection);
+        {{ sys }}.RprIntegrationParameters.prediction_distance$set(memory, predictionDistance);
+        {{ sys }}.RprIntegrationParameters.max_velocity_iterations$set(memory, maxVelocityIterations);
+        {{ sys }}.RprIntegrationParameters.max_velocity_friction_iterations$set(memory, maxVelocityFrictionIterations);
+        {{ sys }}.RprIntegrationParameters.max_stabilization_iterations$set(memory, maxStabilizationIterations);
+        {{ sys }}.RprIntegrationParameters.interleave_restitution_and_friction_resolution$set(memory, interleaveRestitutionAndFrictionResolution);
+        {{ sys }}.RprIntegrationParameters.min_island_size$set(memory, minIslandSize);
+        {{ sys }}.RprIntegrationParameters.max_ccd_substeps$set(memory, maxCcdSubsteps);
+    }
+
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
+    }
+
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, IntegrationParameters... objs) {
+        var memory = allocSlice(objs.length, alloc);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
+    }
+
     public static IntegrationParameters from(MemorySegment memory) {
         return new IntegrationParameters(
                 {{ sys }}.RprIntegrationParameters.dt$get(memory),
@@ -49,37 +93,5 @@ public record IntegrationParameters(
             var memory = {{ sys }}.RapierC.RprIntegrationParameters_default(arena);
             return from(memory);
         }
-    }
-
-    public void into(MemorySegment memory) {
-        {{ sys }}.RprIntegrationParameters.dt$set(memory, dt);
-        {{ sys }}.RprIntegrationParameters.min_ccd_dt$set(memory, minCcdDt);
-        {{ sys }}.RprIntegrationParameters.erp$set(memory, erp);
-        {{ sys }}.RprIntegrationParameters.damping_ratio$set(memory, dampingRatio);
-        {{ sys }}.RprIntegrationParameters.joint_erp$set(memory, jointErp);
-        {{ sys }}.RprIntegrationParameters.joint_damping_ratio$set(memory, jointDampingRatio);
-        {{ sys }}.RprIntegrationParameters.allowed_linear_error$set(memory, allowedLinearError);
-        {{ sys }}.RprIntegrationParameters.max_penetration_correction$set(memory, maxPenetrationCorrection);
-        {{ sys }}.RprIntegrationParameters.prediction_distance$set(memory, predictionDistance);
-        {{ sys }}.RprIntegrationParameters.max_velocity_iterations$set(memory, maxVelocityIterations);
-        {{ sys }}.RprIntegrationParameters.max_velocity_friction_iterations$set(memory, maxVelocityFrictionIterations);
-        {{ sys }}.RprIntegrationParameters.max_stabilization_iterations$set(memory, maxStabilizationIterations);
-        {{ sys }}.RprIntegrationParameters.interleave_restitution_and_friction_resolution$set(memory, interleaveRestitutionAndFrictionResolution);
-        {{ sys }}.RprIntegrationParameters.min_island_size$set(memory, minIslandSize);
-        {{ sys }}.RprIntegrationParameters.max_ccd_substeps$set(memory, maxCcdSubsteps);
-    }
-
-    public MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprIntegrationParameters.allocate(alloc);
-        into(memory);
-        return memory;
-    }
-
-    public static MemorySegment allocateArray(SegmentAllocator alloc, IntegrationParameters... objs) {
-        var memory = {{ sys }}.RprIntegrationParameters.allocateArray(objs.length, alloc);
-        for (int i = 0; i < objs.length; i++) {
-            objs[i].into(memory.asSlice({{ sys }}.RprIntegrationParameters.sizeof() * i));
-        }
-        return memory;
     }
 }
