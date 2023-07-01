@@ -9,8 +9,6 @@ import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 
-import static rapier.sys.RapierC.*;
-
 public final class PairFilterContext extends RefNative {
     private PairFilterContext(MemoryAddress memory) {
         super(memory);
@@ -21,39 +19,39 @@ public final class PairFilterContext extends RefNative {
     }
 
     public RigidBodySet getBodies() {
-        return RigidBodySet.at(RprPairFilterContext_bodies(self));
+        return RigidBodySet.at(rapier.sys.RapierC.RprPairFilterContext_bodies(self));
     }
 
     public ColliderSet getColliders() {
-        return ColliderSet.at(RprPairFilterContext_colliders(self));
+        return ColliderSet.at(rapier.sys.RapierC.RprPairFilterContext_colliders(self));
     }
 
-    public long getCollider1() {
+    public ArenaKey getCollider1() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprPairFilterContext_collider1(arena, self));
+            return ArenaKey.from(rapier.sys.RapierC.RprPairFilterContext_collider1(arena, self));
         }
     }
 
-    public long getCollider2() {
+    public ArenaKey getCollider2() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprPairFilterContext_collider2(arena, self));
+            return ArenaKey.from(rapier.sys.RapierC.RprPairFilterContext_collider2(arena, self));
         }
     }
 
-    public @Nullable Long getRigidBody1() {
+    public @Nullable ArenaKey getRigidBody1() {
         try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocate(C_LONG, 0);
-            if (RprPairFilterContext_rigid_body1(self, res))
-                return res.get(C_LONG, 0);
+            var res = ArenaKey.alloc(arena);
+            if (rapier.sys.RapierC.RprPairFilterContext_rigid_body1(self, res))
+                return ArenaKey.from(res);
             return null;
         }
     }
 
-    public @Nullable Long getRigidBody2() {
+    public @Nullable ArenaKey getRigidBody2() {
         try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocate(C_LONG, 0);
-            if (RprPairFilterContext_rigid_body2(self, res))
-                return res.get(C_LONG, 0);
+            var res = ArenaKey.alloc(arena);
+            if (rapier.sys.RapierC.RprPairFilterContext_rigid_body2(self, res))
+                return ArenaKey.from(res);
             return null;
         }
     }

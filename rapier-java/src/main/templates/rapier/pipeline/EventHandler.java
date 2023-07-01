@@ -1,18 +1,17 @@
 package rapier.pipeline;
 
-import rapier.ValNative;
+import rapier.__real;
 import rapier.dynamics.RigidBodySet;
 import rapier.geometry.ColliderSet;
-import rapier.sys.RprEventHandler;
-import rapier.sys.RprPhysicsHooks;
 
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 
-public final class EventHandler extends ValNative {
+public record EventHandler(
+        Fn fn
+) {
     public interface Fn {
         default void handleCollisionEvent(
                 RigidBodySet bodies,
@@ -22,42 +21,66 @@ public final class EventHandler extends ValNative {
         ) {}
 
         default void handleContactForceEvent(
-                {{ real }} dt,
+                __real dt,
                 RigidBodySet bodies,
                 ColliderSet colliders,
                 ContactPair contactPair,
-                {{ real }} totalForceMagnitude
+                __real totalForceMagnitude
         ) {}
     }
 
-    private EventHandler(MemorySegment memory) {
-        super(memory);
+    public static long sizeof() {
+        return rapier.sys.RprEventHandler.sizeof();
     }
 
-    public static EventHandler at(MemorySegment memory) {
-        return new EventHandler(memory);
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprEventHandler.allocate(alloc);
     }
 
-    // todo MemorySession -> SegmentAllocator
-    public static EventHandler of(MemorySession alloc, Fn fn) {
-        var memory = RprEventHandler.allocate(alloc);
-        {{ sys }}.RprEventHandler.handle_collision_event$set(memory, {{ sys }}.RprEventHandler.handle_collision_event.allocate((bodies, colliders, event, contactPair) -> {
-            fn.handleCollisionEvent(
-                    RigidBodySet.at(bodies),
-                    ColliderSet.at(colliders),
-                    CollisionEvent.from(event),
-                    contactPair.equals(MemoryAddress.NULL) ? null : ContactPair.at(contactPair)
-            );
-        }, alloc).address());
-        {{ sys }}.RprEventHandler.handle_contact_force_event$set(memory, {{ sys }}.RprEventHandler.handle_contact_force_event.allocate((dt, bodies, colliders, contactPair, totalForceMagnitude) -> {
-            fn.handleContactForceEvent(
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprEventHandler.allocateArray(len, alloc);
+    }
+
+    public void into(MemorySegment memory) {
+        rapier.sys.RprEventHandler.handle_collision_event$set(memory, rapier.sys.RprEventHandler.handle_collision_event.allocate(
+                (bodies,
+                 colliders,
+                 event,
+                 contactPair
+                ) -> fn.handleCollisionEvent(
+                        RigidBodySet.at(bodies),
+                        ColliderSet.at(colliders),
+                        CollisionEvent.from(event),
+                        contactPair.equals(MemoryAddress.NULL) ? null : ContactPair.at(contactPair)
+                ), memory.session()).address()
+        );
+        rapier.sys.RprEventHandler.handle_contact_force_event$set(memory, rapier.sys.RprEventHandler.handle_contact_force_event.allocate(
+                (dt,
+                 bodies,
+                 colliders,
+                 contactPair,
+                 totalForceMagnitude
+                ) -> fn.handleContactForceEvent(
                     dt,
                     RigidBodySet.at(bodies),
                     ColliderSet.at(colliders),
                     ContactPair.at(contactPair),
                     totalForceMagnitude
-            );
-        }, alloc).address());
-        return at(memory);
+                ), memory.session()).address()
+        );
+    }
+
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
+    }
+
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, EventHandler... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
     }
 }

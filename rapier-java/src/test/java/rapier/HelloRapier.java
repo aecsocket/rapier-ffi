@@ -1,6 +1,7 @@
 package rapier;
 
 import org.junit.jupiter.api.Test;
+import rapier.data.ArenaKey;
 import rapier.dynamics.*;
 import rapier.dynamics.joint.impulse.ImpulseJointSet;
 import rapier.dynamics.joint.multibody.MultibodyJointSet;
@@ -35,7 +36,7 @@ public final class HelloRapier {
                 RigidBodyBuilder::build);
         var ballShape = SharedShape.ball(0.5);
         var ballCollider = Rapier.use(ColliderBuilder.of(ballShape).restitution(0.7), ColliderBuilder::build);
-        long ballBodyHandle = rigidBodySet.insert(rigidBody);
+        ArenaKey ballBodyHandle = rigidBodySet.insert(rigidBody);
         colliderSet.insertWithParent(ballCollider, ballBodyHandle, rigidBodySet);
 
         // Vectors are managed on the Java side, and are converted to/from native objects when they need to be

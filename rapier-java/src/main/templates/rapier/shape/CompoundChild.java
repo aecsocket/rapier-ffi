@@ -1,8 +1,6 @@
 package rapier.shape;
 
-import rapier.ValNative;
 import rapier.math.Isometry;
-import rapier.sys.RprCompoundChild;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -11,29 +9,41 @@ public record CompoundChild(
         Isometry delta,
         SharedShape shape
 ) {
-    public static CompoundChild from(MemorySegment memory) {
-        return new CompoundChild(
-                Isometry.from({{ sys }}.RprCompoundChild.delta$slice(memory)),
-                SharedShape.at({{ sys }}.RprCompoundChild.shape$get(memory))
-        );
+    public static long sizeof() {
+        return rapier.sys.RprCompoundChild.sizeof();
+    }
+
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprCompoundChild.allocate(alloc);
+    }
+
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprCompoundChild.allocateArray(len, alloc);
     }
 
     public void into(MemorySegment memory) {
-        delta.into({{ sys }}.RprCompoundChild.delta$slice(memory));
-        {{ sys }}.RprCompoundChild.shape$set(memory, shape.memory());
+        delta.into(rapier.sys.RprCompoundChild.delta$slice(memory));
+        rapier.sys.RprCompoundChild.shape$set(memory, shape.memory());
     }
 
-    public MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprCompoundChild.allocate(alloc);
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
         into(memory);
         return memory;
     }
 
-    public static MemorySegment allocateArray(SegmentAllocator alloc, CompoundChild... objs) {
-        var memory = {{ sys }}.RprCompoundChild.allocateArray(objs.length, alloc);
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, CompoundChild... objs) {
+        var memory = allocSlice(alloc, objs.length);
         for (int i = 0; i < objs.length; i++) {
-            objs[i].into(memory.asSlice({{ sys }}.RprCompoundChild.sizeof() * i));
+            objs[i].into(memory.asSlice(sizeof() * i));
         }
         return memory;
+    }
+
+    public static CompoundChild from(MemorySegment memory) {
+        return new CompoundChild(
+                Isometry.from(rapier.sys.RprCompoundChild.delta$slice(memory)),
+                SharedShape.at(rapier.sys.RprCompoundChild.shape$get(memory))
+        );
     }
 }

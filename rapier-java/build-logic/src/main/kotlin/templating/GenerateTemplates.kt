@@ -20,6 +20,7 @@ import java.nio.file.Path
 import java.nio.file.attribute.BasicFileAttributes
 import java.util.Locale
 import kotlin.io.path.absolutePathString
+import kotlin.io.path.name
 import kotlin.io.path.relativeTo
 
 abstract class GenerateTemplates : DefaultTask() {
@@ -46,6 +47,8 @@ abstract class GenerateTemplates : DefaultTask() {
         val context: Map<String, Any> = mapOf(
             "dim2" to (dimension == Dimension.DIM2),
             "dim3" to (dimension == Dimension.DIM3),
+            "f32" to (precision == Precision.F32),
+            "f64" to (precision == Precision.F64),
         )
 
         val loader = FileLoader()
@@ -64,6 +67,10 @@ abstract class GenerateTemplates : DefaultTask() {
             override fun postVisitDirectory(dir: Path, exc: IOException?) = FileVisitResult.CONTINUE
 
             override fun visitFile(file: Path, attrs: BasicFileAttributes): FileVisitResult {
+                if (file.name == "__real.java") {
+                    return FileVisitResult.CONTINUE
+                }
+
                 val template = engine.getTemplate(file.absolutePathString())
                 val relative = file.relativeTo(sourceDir)
                 val output = outputDir.resolve(relative)
@@ -79,7 +86,8 @@ abstract class GenerateTemplates : DefaultTask() {
                     .replace("rapier.sys_dim2.", sysPkg)
                     .replace("rapier.sys_dim3.", sysPkg)
                     .replace("rapier.sys.", sysPkg)
-                    .replace("import rapier.sys_", "[ERROR!] rapier.sys_"))
+                    .replace("import rapier.sys_", "[ERROR!]")
+                    .replace("import static rapier.sys_", "[ERROR!]"))
 
                 return FileVisitResult.CONTINUE
             }

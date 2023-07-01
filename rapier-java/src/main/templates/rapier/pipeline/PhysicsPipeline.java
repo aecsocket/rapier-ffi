@@ -11,21 +11,18 @@ import rapier.geometry.BroadPhase;
 import rapier.geometry.NarrowPhase;
 import rapier.geometry.ColliderSet;
 import rapier.math.*;
-import rapier.sys.RapierC;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 
-import static rapier.sys.RapierC.*;
-
 public final class PhysicsPipeline extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
     public void drop() {
-        dropped.drop(() -> RprPhysicsPipeline_drop(self));
+        dropped.drop(() -> rapier.sys.RapierC.RprPhysicsPipeline_drop(self));
     }
 
     private PhysicsPipeline(MemoryAddress memory) {
@@ -37,7 +34,7 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
     }
 
     public static PhysicsPipeline create() {
-        return at(RprPhysicsPipeline_new());
+        return at(rapier.sys.RapierC.RprPhysicsPipeline_new());
     }
 
     public void step(
@@ -56,10 +53,10 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             @Nullable EventHandler events
     ) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprPhysicsPipeline_step(
+            rapier.sys.RapierC.RprPhysicsPipeline_step(
                     self,
                     gravity.allocInto(arena),
-                    integrationParameters.allocate(arena),
+                    integrationParameters.allocInto(arena),
                     islands.memory(),
                     broadPhase.memory(),
                     narrowPhase.memory(),
@@ -69,8 +66,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                     multibodyJoints.memory(),
                     ccdSolver.memory(),
                     Native.memoryOrNull(queryPipeline),
-                    Native.memoryOrNull(hooks),
-                    Native.memoryOrNull(events)
+                    hooks == null ? MemoryAddress.NULL : hooks.allocInto(arena),
+                    events == null ? MemoryAddress.NULL : events.allocInto(arena)
             );
         }
     }
@@ -109,21 +106,21 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             throw new IllegalArgumentException("All arrays must be of the same length");
         }
         try (var arena = MemorySession.openConfined()) {
-            var nPipeline = Native.allocatePtrArray(arena, pipeline);
-            var nGravity = Vector.allocateArray(arena, gravity);
-            var nIntegrationParameters = IntegrationParameters.allocateArray(arena, integrationParameters);
-            var nIslands = Native.allocatePtrArray(arena, islands);
-            var nBroadPhase = Native.allocatePtrArray(arena, broadPhase);
-            var nNarrowPhase = Native.allocatePtrArray(arena, narrowPhase);
-            var nBodies = Native.allocatePtrArray(arena, bodies);
-            var nColliders = Native.allocatePtrArray(arena, colliders);
-            var nImpulseJoints = Native.allocatePtrArray(arena, impulseJoints);
-            var nMultibodyJoints = Native.allocatePtrArray(arena, multibodyJoints);
-            var nCcdSolver = Native.allocatePtrArray(arena, ccdSolver);
-            var nQueryPipeline = Native.allocatePtrArray(arena, queryPipeline);
-            var nHooks = Native.allocatePtrArray(arena, hooks);
-            var nEvents = Native.allocatePtrArray(arena, events);
-            {{ sys }}.RapierC.RprPhysicsPipeline_step_all(
+            var nPipeline = Native.allocPtrSlice(arena, pipeline);
+            var nGravity = Vector.allocIntoSlice(arena, gravity);
+            var nIntegrationParameters = IntegrationParameters.allocIntoSlice(arena, integrationParameters);
+            var nIslands = Native.allocPtrSlice(arena, islands);
+            var nBroadPhase = Native.allocPtrSlice(arena, broadPhase);
+            var nNarrowPhase = Native.allocPtrSlice(arena, narrowPhase);
+            var nBodies = Native.allocPtrSlice(arena, bodies);
+            var nColliders = Native.allocPtrSlice(arena, colliders);
+            var nImpulseJoints = Native.allocPtrSlice(arena, impulseJoints);
+            var nMultibodyJoints = Native.allocPtrSlice(arena, multibodyJoints);
+            var nCcdSolver = Native.allocPtrSlice(arena, ccdSolver);
+            var nQueryPipeline = Native.allocPtrSlice(arena, queryPipeline);
+            var nHooks = PhysicsHooks.allocIntoSlice(arena, hooks);
+            var nEvents = EventHandler.allocIntoSlice(arena, events);
+            rapier.sys.RapierC.RprPhysicsPipeline_step_all(
                     pipeline.length,
                     nPipeline,
                     nGravity,

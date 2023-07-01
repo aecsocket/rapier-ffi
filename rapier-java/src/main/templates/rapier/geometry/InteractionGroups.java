@@ -1,7 +1,5 @@
 package rapier.geometry;
 
-import rapier.sys.RprInteractionGroups;
-
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -10,15 +8,15 @@ public record InteractionGroups(
         int filter
 ) {
     public static long sizeof() {
-        return RprInteractionGroups.sizeof();
+        return rapier.sys.RprInteractionGroups.sizeof();
     }
 
     public static MemorySegment alloc(SegmentAllocator alloc) {
-        return RprInteractionGroups.allocate(alloc);
+        return rapier.sys.RprInteractionGroups.allocate(alloc);
     }
 
     public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
-        return RprInteractionGroups.allocateArray(len, alloc);
+        return rapier.sys.RprInteractionGroups.allocateArray(len, alloc);
     }
 
     public MemorySegment allocInto(SegmentAllocator alloc) {
@@ -27,7 +25,7 @@ public record InteractionGroups(
         return memory;
     }
 
-    public static MemorySegment allocSliceInto(SegmentAllocator alloc, InteractionGroups... objs) {
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, InteractionGroups... objs) {
         var memory = allocSlice(alloc, objs.length);
         for (int i = 0; i < objs.length; i++) {
             objs[i].into(memory.asSlice(sizeof() * i));
@@ -36,14 +34,14 @@ public record InteractionGroups(
     }
 
     public void into(MemorySegment memory) {
-        RprInteractionGroups.memberships$set(memory, memberships);
-        RprInteractionGroups.filter$set(memory, filter);
+        rapier.sys.RprInteractionGroups.memberships$set(memory, memberships);
+        rapier.sys.RprInteractionGroups.filter$set(memory, filter);
     }
 
     public static InteractionGroups from(MemorySegment memory) {
         return new InteractionGroups(
-                RprInteractionGroups.memberships$get(memory),
-                RprInteractionGroups.filter$get(memory)
+                rapier.sys.RprInteractionGroups.memberships$get(memory),
+                rapier.sys.RprInteractionGroups.filter$get(memory)
         );
     }
 }

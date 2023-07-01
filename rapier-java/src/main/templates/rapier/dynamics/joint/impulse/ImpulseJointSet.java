@@ -12,8 +12,6 @@ import java.lang.foreign.SegmentAllocator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static rapier.sys.RapierC.*;
-
 public final class ImpulseJointSet extends RefNative implements Droppable {
     public record Entry(ArenaKey handle, ImpulseJoint value) {}
 
@@ -21,7 +19,7 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
 
     @Override
     public void drop() {
-        dropped.drop(() -> RprImpulseJointSet_drop(self));
+        dropped.drop(() -> rapier.sys.RapierC.RprImpulseJointSet_drop(self));
     }
 
     private ImpulseJointSet(MemoryAddress memory) {
@@ -33,56 +31,56 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
     }
 
     public static ImpulseJointSet create() {
-        return at(RprImpulseJointSet_new());
+        return at(rapier.sys.RapierC.RprImpulseJointSet_new());
     }
 
     public long size() {
-        return RprImpulseJointSet_len(self);
+        return rapier.sys.RapierC.RprImpulseJointSet_len(self);
     }
 
     public boolean isEmpty() {
-        return RprImpulseJointSet_is_empty(self);
+        return rapier.sys.RapierC.RprImpulseJointSet_is_empty(self);
     }
 
     private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
-        var len = (int) RprImpulseJointVec_len(vec);
+        var len = (int) rapier.sys.RapierC.RprImpulseJointVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
-            var handle = ArenaKey.from(RprImpulseJointVec_handle(alloc, vec, i));
-            var value = ImpulseJoint.at(RprImpulseJointVec_value(vec, i));
+            var handle = ArenaKey.from(rapier.sys.RapierC.RprImpulseJointVec_handle(alloc, vec, i));
+            var value = ImpulseJoint.at(rapier.sys.RapierC.RprImpulseJointVec_value(vec, i));
             res.add(new Entry(handle, value));
         }
-        RprImpulseJointVec_drop(vec);
+        rapier.sys.RapierC.RprImpulseJointVec_drop(vec);
         return res;
     }
 
     public List<Entry> all() {
         try (var arena = MemorySession.openConfined()) {
-            return vecToList(arena, RprImpulseJointSet_all(self));
+            return vecToList(arena, rapier.sys.RapierC.RprImpulseJointSet_all(self));
         }
     }
 
     public boolean contains(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return RprImpulseJointSet_contains(self, handle.allocInto(arena));
+            return rapier.sys.RapierC.RprImpulseJointSet_contains(self, handle.allocInto(arena));
         }
     }
 
     public ImpulseJoint get(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.at(RprImpulseJointSet_get(self, handle.allocInto(arena)));
+            return ImpulseJoint.at(rapier.sys.RapierC.RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
     public ImpulseJoint.Mut getMut(ArenaKey handle) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.atMut(RprImpulseJointSet_get(self, handle.allocInto(arena)));
+            return ImpulseJoint.atMut(rapier.sys.RapierC.RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
     public ArenaKey insert(ArenaKey body1, ArenaKey body2, GenericJoint data, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.from(RprImpulseJointSet_insert(
+            return ArenaKey.from(rapier.sys.RapierC.RprImpulseJointSet_insert(
                     arena,
                     self,
                     body1.allocInto(arena),
@@ -95,7 +93,7 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
 
     public ImpulseJoint.Mut remove(ArenaKey handle, boolean wakeUp) {
         try (var arena = MemorySession.openConfined()) {
-            return ImpulseJoint.atMut(RprImpulseJointSet_remove(self, handle.allocInto(arena), wakeUp));
+            return ImpulseJoint.atMut(rapier.sys.RapierC.RprImpulseJointSet_remove(self, handle.allocInto(arena), wakeUp));
         }
     }
 }

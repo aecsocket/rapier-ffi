@@ -1,12 +1,9 @@
 package rapier;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static rapier.sys.RapierC.C_POINTER;
+import java.lang.foreign.*;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 public interface Native {
     Addressable memory();
@@ -15,11 +12,26 @@ public interface Native {
         return obj == null ? MemoryAddress.NULL : obj.memory();
     }
 
-    static MemorySegment allocatePtrArray(SegmentAllocator alloc, Native... objs) {
-        var memory = alloc.allocateArray(C_POINTER, objs.length);
+    static MemorySegment allocPtrSlice(SegmentAllocator alloc, Native... objs) {
+        var memory = alloc.allocateArray(ValueLayout.ADDRESS, objs.length);
         for (int i = 0; i < objs.length; i++) {
-            memory.setAtIndex(C_POINTER, i, memoryOrNull(objs[i]));
+            memory.setAtIndex(ValueLayout.ADDRESS, i, memoryOrNull(objs[i]));
         }
         return memory;
+    }
+
+    static <T extends Native> T[] fromPtrSlice(
+            MemoryAddress data,
+            int len,
+            IntFunction<T[]> createArray,
+            Function<MemoryAddress, T> map
+    ) {
+        var ptrSize = ValueLayout.ADDRESS.byteSize();
+        var res = createArray.apply(len);
+        for (int i = 0; i < len; i++) {
+            var elem = data.addOffset(ptrSize * i).get(ValueLayout.ADDRESS, 0);
+            res[i] = map.apply(elem);
+        }
+        return res;
     }
 }

@@ -1,45 +1,44 @@
 package rapier.dynamics.joint;
 
-import rapier.ValNative;
-import rapier.sys.RprJointLimits;
+import rapier.__real;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class JointLimits extends ValNative {
-    private JointLimits(MemorySegment memory) {
-        super(memory);
+public record JointLimits(
+        __real min,
+        __real max,
+        __real impulse
+) {
+    public static long sizeof() {
+        return rapier.sys.RprJointLimits.sizeof();
     }
 
-    public static JointLimits at(MemorySegment memory) {
-        return new JointLimits(memory);
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprJointLimits.allocate(alloc);
     }
 
-    public static JointLimits create(SegmentAllocator alloc) {
-        return at({{ sys }}.RapierC.RprJointLimits_default(alloc));
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprJointLimits.allocateArray(len, alloc);
     }
 
-    public {{ real }} getMin() {
-        return {{ sys }}.RprJointLimits.min$get(self);
+    public void into(MemorySegment memory) {
+        rapier.sys.RprJointLimits.min$set(memory, min);
+        rapier.sys.RprJointLimits.max$set(memory, max);
+        rapier.sys.RprJointLimits.impulse$set(memory, impulse);
     }
 
-    public void setMin({{ real }} min) {
-        {{ sys }}.RprJointLimits.min$set(self, min);
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
     }
 
-    public {{ real }} getMax() {
-        return {{ sys }}.RprJointLimits.min$get(self);
-    }
-
-    public void setMax({{ real }} max) {
-        {{ sys }}.RprJointLimits.max$set(self, max);
-    }
-
-    public {{ real }} getImpulse() {
-        return {{ sys }}.RprJointLimits.impulse$get(self);
-    }
-
-    public void setImpulse({{ real }} impulse) {
-        {{ sys }}.RprJointLimits.impulse$set(self, impulse);
+    public static JointLimits from(MemorySegment memory) {
+        return new JointLimits(
+                rapier.sys.RprJointLimits.min$get(memory),
+                rapier.sys.RprJointLimits.max$get(memory),
+                rapier.sys.RprJointLimits.impulse$get(memory)
+        );
     }
 }

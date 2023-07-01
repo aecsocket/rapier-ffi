@@ -72,7 +72,8 @@ public record Rotation(
 /*{% else %}*/
                 rapier.sys_dim3.RprRotation.x$get(memory),
                 rapier.sys_dim3.RprRotation.y$get(memory),
-                rapier.sys_dim3.RprRotation.z$get(memory)
+                rapier.sys_dim3.RprRotation.z$get(memory),
+                rapier.sys_dim3.RprRotation.w$get(memory)
 /*{% endif %}*/
         );
     }

@@ -1,7 +1,5 @@
 package rapier.data;
 
-import rapier.sys.RprArenaKey;
-
 import java.lang.foreign.*;
 
 public record ArenaKey(
@@ -9,20 +7,20 @@ public record ArenaKey(
         int generation
 ) {
     public static long sizeof() {
-        return RprArenaKey.sizeof();
+        return rapier.sys.RprArenaKey.sizeof();
     }
 
     public static MemorySegment alloc(SegmentAllocator alloc) {
-        return RprArenaKey.allocate(alloc);
+        return rapier.sys.RprArenaKey.allocate(alloc);
     }
 
     public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
-        return RprArenaKey.allocateArray(len, alloc);
+        return rapier.sys.RprArenaKey.allocateArray(len, alloc);
     }
 
     public void into(MemorySegment memory) {
-        RprArenaKey.index$set(memory, index);
-        RprArenaKey.generation$set(memory, generation);
+        rapier.sys.RprArenaKey.index$set(memory, index);
+        rapier.sys.RprArenaKey.generation$set(memory, generation);
     }
 
     public MemorySegment allocInto(SegmentAllocator alloc) {
@@ -41,8 +39,8 @@ public record ArenaKey(
 
     public static ArenaKey from(MemorySegment memory) {
         return new ArenaKey(
-                RprArenaKey.index$get(memory),
-                RprArenaKey.generation$get(memory)
+                rapier.sys.RprArenaKey.index$get(memory),
+                rapier.sys.RprArenaKey.generation$get(memory)
         );
     }
 

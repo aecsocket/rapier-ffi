@@ -1,36 +1,33 @@
 package rapier.geometry;
 
-import rapier.ValNative;
-import rapier.dynamics.joint.MotorModel;
-import rapier.sys.RprColliderMaterial;
-import rapier.sys.RprJointMotor;
+import rapier.__real;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public record ColliderMaterial(
-        {{ real }} friction,
-        {{ real }} restitution,
+        __real friction,
+        __real restitution,
         CoefficientCombineRule frictionCombineRule,
         CoefficientCombineRule restitutionCombineRule
 ) {
     public static long sizeof() {
-        return {{ sys }}.RprColliderMaterial.sizeof();
+        return rapier.sys.RprColliderMaterial.sizeof();
     }
 
     public static MemorySegment alloc(SegmentAllocator alloc) {
-        return {{ sys }}.RprColliderMaterial.allocate(alloc);
+        return rapier.sys.RprColliderMaterial.allocate(alloc);
     }
 
     public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
-        return {{ sys }}.RprColliderMaterial.allocateArray(len, alloc);
+        return rapier.sys.RprColliderMaterial.allocateArray(len, alloc);
     }
 
     public void into(MemorySegment memory) {
-        {{ sys }}.RprColliderMaterial.friction$set(memory, friction);
-        {{ sys }}.RprColliderMaterial.restitution$set(memory, restitution);
-        {{ sys }}.RprColliderMaterial.friction_combine_rule$set(memory, frictionCombineRule.ordinal());
-        {{ sys }}.RprColliderMaterial.restitution_combine_rule$set(memory, restitutionCombineRule.ordinal());
+        rapier.sys.RprColliderMaterial.friction$set(memory, friction);
+        rapier.sys.RprColliderMaterial.restitution$set(memory, restitution);
+        rapier.sys.RprColliderMaterial.friction_combine_rule$set(memory, frictionCombineRule.ordinal());
+        rapier.sys.RprColliderMaterial.restitution_combine_rule$set(memory, restitutionCombineRule.ordinal());
     }
 
     public MemorySegment allocInto(SegmentAllocator alloc) {
@@ -49,10 +46,10 @@ public record ColliderMaterial(
 
     public static ColliderMaterial from(MemorySegment memory) {
         return new ColliderMaterial(
-                {{ sys }}.RprColliderMaterial.friction$get(memory),
-                {{ sys }}.RprColliderMaterial.restitution$get(memory),
-                CoefficientCombineRule.values()[{{ sys }}.RprColliderMaterial.friction_combine_rule$get(memory)],
-                CoefficientCombineRule.values()[{{ sys }}.RprColliderMaterial.restitution_combine_rule$get(memory)]
+                rapier.sys.RprColliderMaterial.friction$get(memory),
+                rapier.sys.RprColliderMaterial.restitution$get(memory),
+                CoefficientCombineRule.values()[rapier.sys.RprColliderMaterial.friction_combine_rule$get(memory)],
+                CoefficientCombineRule.values()[rapier.sys.RprColliderMaterial.restitution_combine_rule$get(memory)]
         );
     }
 }

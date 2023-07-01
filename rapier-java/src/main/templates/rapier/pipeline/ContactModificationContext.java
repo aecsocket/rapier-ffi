@@ -1,17 +1,16 @@
 package rapier.pipeline;
 
+import rapier.Native;
 import rapier.RefNative;
 import rapier.data.ArenaKey;
 import rapier.dynamics.RigidBodySet;
 import rapier.geometry.ColliderSet;
 import rapier.math.Vector;
-import rapier.sys.RapierC;
 
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-
-import static rapier.sys.RapierC.*;
+import java.lang.foreign.ValueLayout;
 
 public final class ContactModificationContext extends RefNative {
     private ContactModificationContext(MemoryAddress memory) {
@@ -23,82 +22,78 @@ public final class ContactModificationContext extends RefNative {
     }
 
     public RigidBodySet getBodies() {
-        return RigidBodySet.at(RprContactModificationContext_bodies(self));
+        return RigidBodySet.at(rapier.sys.RapierC.RprContactModificationContext_bodies(self));
     }
 
     public ColliderSet getColliders() {
-        return ColliderSet.at(RprContactModificationContext_colliders(self));
+        return ColliderSet.at(rapier.sys.RapierC.RprContactModificationContext_colliders(self));
     }
 
-    public long getCollider1() {
+    public ArenaKey getCollider1() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprContactModificationContext_collider1(arena, self));
+            return ArenaKey.from(rapier.sys.RapierC.RprContactModificationContext_collider1(arena, self));
         }
     }
 
-    public long getCollider2() {
+    public ArenaKey getCollider2() {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.pack(RprContactModificationContext_collider2(arena, self));
+            return ArenaKey.from(rapier.sys.RapierC.RprContactModificationContext_collider2(arena, self));
         }
     }
 
-    public @Nullable Long getRigidBody1() {
+    public @Nullable ArenaKey getRigidBody1() {
         try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocate(C_LONG, 0);
-            if (RprContactModificationContext_rigid_body1(self, res))
-                return res.get(C_LONG, 0);
+            var res = ArenaKey.alloc(arena);
+            if (rapier.sys.RapierC.RprContactModificationContext_rigid_body1(self, res))
+                return ArenaKey.from(res);
             return null;
         }
     }
 
-    public @Nullable Long getRigidBody2() {
+    public @Nullable ArenaKey getRigidBody2() {
         try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocate(C_LONG, 0);
-            if (RprContactModificationContext_rigid_body2(self, res))
-                return res.get(C_LONG, 0);
+            var res = ArenaKey.alloc(arena);
+            if (rapier.sys.RapierC.RprContactModificationContext_rigid_body2(self, res))
+                return ArenaKey.from(res);
             return null;
         }
     }
 
     public ContactManifold getManifold() {
-        return ContactManifold.at(RprContactModificationContext_manifold(self));
+        return ContactManifold.at(rapier.sys.RapierC.RprContactModificationContext_manifold(self));
     }
 
     public SolverContact[] getSolverContacts() {
         try (var arena = MemorySession.openConfined()) {
-            var nDataPtr = arena.allocate(C_POINTER);
-            var nLen = arena.allocate(C_LONG);
-            RprContactModificationContext_solver_contacts(self, nDataPtr, nLen);
-
-            var dataPtr = nDataPtr.get(C_POINTER, 0);
-            // truncate long to int because our array is indexed by int
-            var len = (int) nLen.get(C_LONG, 0);
-
-            var res = new SolverContact[len];
-            for (int i = 0; i < len; i++) {
-                res[i] = SolverContact.at(dataPtr.getAtIndex(C_POINTER, i));
-            }
-            return res;
+            var data = arena.allocate(ValueLayout.ADDRESS);
+            var len = arena.allocate(ValueLayout.JAVA_LONG);
+            rapier.sys.RapierC.RprContactModificationContext_solver_contacts(self, data, len);
+            return Native.fromPtrSlice(
+                    data.get(ValueLayout.ADDRESS, 0),
+                    (int) len.get(ValueLayout.JAVA_LONG, 0),
+                    SolverContact[]::new,
+                    SolverContact::at
+            );
         }
     }
 
     public Vector getNormal() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprContactModificationContext_normal(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprContactModificationContext_normal(arena, self));
         }
     }
 
     public void setNormal(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactModificationContext_set_normal(self, value.allocInto(arena));
+            rapier.sys.RapierC.RprContactModificationContext_set_normal(self, value.allocInto(arena));
         }
     }
 
     public int getUserData() {
-        return RprContactModificationContext_user_data(self);
+        return rapier.sys.RapierC.RprContactModificationContext_user_data(self);
     }
 
     public void setUserData(int value) {
-        RprContactModificationContext_set_user_data(self, value);
+        rapier.sys.RapierC.RprContactModificationContext_set_user_data(self, value);
     }
 }

@@ -14,8 +14,6 @@ import java.lang.foreign.SegmentAllocator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static rapier.sys.RapierC.*;
-
 public final class ColliderSet extends RefNative implements Droppable {
     public record Entry(ArenaKey handle, Collider value) {}
 
@@ -23,7 +21,7 @@ public final class ColliderSet extends RefNative implements Droppable {
 
     @Override
     public void drop() {
-        dropped.drop(() -> RprColliderSet_drop(self));
+        dropped.drop(() -> rapier.sys.RapierC.RprColliderSet_drop(self));
     }
 
     private ColliderSet(MemoryAddress memory) {
@@ -35,50 +33,50 @@ public final class ColliderSet extends RefNative implements Droppable {
     }
 
     public static ColliderSet create() {
-        return at(RprColliderSet_new());
+        return at(rapier.sys.RapierC.RprColliderSet_new());
     }
 
     public long size() {
-        return RprColliderSet_len(self);
+        return rapier.sys.RapierC.RprColliderSet_len(self);
     }
 
     public boolean isEmpty() {
-        return RprColliderSet_is_empty(self);
+        return rapier.sys.RapierC.RprColliderSet_is_empty(self);
     }
 
     private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
-        var len = (int) RprColliderVec_len(vec);
+        var len = (int) rapier.sys.RapierC.RprColliderVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
-            var handle = ArenaKey.from(RprColliderVec_handle(alloc, vec, i));
-            var value = Collider.at(RprColliderVec_value(vec, i));
+            var handle = ArenaKey.from(rapier.sys.RapierC.RprColliderVec_handle(alloc, vec, i));
+            var value = Collider.at(rapier.sys.RapierC.RprColliderVec_value(vec, i));
             res.add(new Entry(handle, value));
         }
-        RprColliderVec_drop(vec);
+        rapier.sys.RapierC.RprColliderVec_drop(vec);
         return res;
     }
 
     public List<Entry> all() {
         try (var arena = MemorySession.openConfined()) {
-            return vecToList(arena, RprColliderSet_all(self));
+            return vecToList(arena, rapier.sys.RapierC.RprColliderSet_all(self));
         }
     }
 
     public List<Entry> allEnabled() {
         try (var arena = MemorySession.openConfined()) {
-            return vecToList(arena, RprColliderSet_all_enabled(self));
+            return vecToList(arena, rapier.sys.RapierC.RprColliderSet_all_enabled(self));
         }
     }
 
     public ArenaKey insert(Collider.Mut coll) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.from(RprColliderSet_insert(arena, self, coll.memory()));
+            return ArenaKey.from(rapier.sys.RapierC.RprColliderSet_insert(arena, self, coll.memory()));
         }
     }
 
     public ArenaKey insertWithParent(Collider.Mut coll, ArenaKey parentHandle, RigidBodySet bodies) {
         try (var arena = MemorySession.openConfined()) {
-            return ArenaKey.from(RprColliderSet_insert_with_parent(
+            return ArenaKey.from(rapier.sys.RapierC.RprColliderSet_insert_with_parent(
                     arena,
                     self,
                     coll.memory(),
@@ -90,7 +88,7 @@ public final class ColliderSet extends RefNative implements Droppable {
 
     public void setParent(ArenaKey handle, @Nullable ArenaKey newParentHandle, RigidBodySet bodies) {
         try (var arena = MemorySession.openConfined()) {
-            RprColliderSet_set_parent(
+            rapier.sys.RapierC.RprColliderSet_set_parent(
                     self,
                     handle.allocInto(arena),
                     (newParentHandle == null ? ArenaKey.INVALID : newParentHandle).allocInto(arena),
@@ -106,7 +104,7 @@ public final class ColliderSet extends RefNative implements Droppable {
             boolean wakeUp
     ) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprColliderSet_remove(
+            var res = rapier.sys.RapierC.RprColliderSet_remove(
                     self,
                     handle.allocInto(arena),
                     islands.memory(),
@@ -119,14 +117,14 @@ public final class ColliderSet extends RefNative implements Droppable {
 
     public @Nullable Collider get(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprColliderSet_get(self, index.allocInto(arena));
+            var res = rapier.sys.RapierC.RprColliderSet_get(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : Collider.at(res);
         }
     }
 
     public @Nullable Collider.Mut getMut(ArenaKey index) {
         try (var arena = MemorySession.openConfined()) {
-            var res = RprColliderSet_get_mut(self, index.allocInto(arena));
+            var res = rapier.sys.RapierC.RprColliderSet_get_mut(self, index.allocInto(arena));
             return res.equals(MemoryAddress.NULL) ? null : Collider.atMut(res);
         }
     }

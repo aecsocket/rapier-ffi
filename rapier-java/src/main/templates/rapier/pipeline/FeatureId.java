@@ -1,16 +1,13 @@
 package rapier.pipeline;
 
-import rapier.data.ArenaKey;
-import rapier.sys.*;
-
 import java.lang.foreign.MemorySegment;
 
 public sealed interface FeatureId {
     record Vertex(int id) implements FeatureId {}
 
-{% if dim3 %}
+/*{% if dim3 %}*/
     record Edge(int id) implements FeatureId {}
-{% endif %}
+/*{% endif %}*/
 
     record Face(int id) implements FeatureId {}
 
@@ -21,35 +18,35 @@ public sealed interface FeatureId {
     }
 
     static FeatureId from(MemorySegment memory) {
-        var tag = {{ sys }}.RprFeatureId.tag$get(memory);
+        var tag = rapier.sys.RprFeatureId.tag$get(memory);
         return switch (tag) {
             case 0 -> {
-                var body = {{ sys }}.RprFeatureId.vertex$slice(memory);
+                var body = rapier.sys.RprFeatureId.vertex$slice(memory);
                 yield new Vertex(
-                        {{ sys }}.Vertex_Body.id$get(body)
+                        rapier.sys.Vertex_Body.id$get(body)
                 );
             }
-{% if dim2 %}
+/*{% if dim2 %}*/
             case 1 -> {
-                var body = {{ sys }}.RprFeatureId.face$slice(memory);
+                var body = rapier.sys.RprFeatureId.face$slice(memory);
                 yield new Face(
-                        {{ sys }}.Face_Body.id$get(body)
+                        rapier.sys.Face_Body.id$get(body)
                 );
             }
-{% else %}
+/*{% else %}*/
             case 1 -> {
-                var body = {{ sys }}.RprFeatureId.edge$slice(memory);
+                var body = rapier.sys_dim3.RprFeatureId.edge$slice(memory);
                 yield new Edge(
-                        {{ sys }}.Edge_Body.id$get(body)
+                        rapier.sys_dim3.Edge_Body.id$get(body)
                 );
             }
             case 2 -> {
-                var body = {{ sys }}.RprFeatureId.face$slice(memory);
+                var body = rapier.sys.RprFeatureId.face$slice(memory);
                 yield new Face(
-                        {{ sys }}.Face_Body.id$get(body)
+                        rapier.sys.Face_Body.id$get(body)
                 );
             }
-{% endif %}
+/*{% endif %}*/
             default -> throw new IllegalArgumentException("Invalid tag " + tag);
         };
     }

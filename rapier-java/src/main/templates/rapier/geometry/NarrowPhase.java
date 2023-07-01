@@ -6,14 +6,12 @@ import rapier.RefNative;
 
 import java.lang.foreign.MemoryAddress;
 
-import static rapier.sys.RapierC.*;
-
 public final class NarrowPhase extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
     public void drop() {
-        dropped.drop(() -> RprNarrowPhase_drop(self));
+        dropped.drop(() -> rapier.sys.RapierC.RprNarrowPhase_drop(self));
     }
 
     private NarrowPhase(MemoryAddress memory) {
@@ -25,6 +23,6 @@ public final class NarrowPhase extends RefNative implements Droppable {
     }
 
     public static NarrowPhase create() {
-        return at(RprNarrowPhase_new());
+        return at(rapier.sys.RapierC.RprNarrowPhase_new());
     }
 }

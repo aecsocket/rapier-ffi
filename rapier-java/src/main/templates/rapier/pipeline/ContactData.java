@@ -1,13 +1,12 @@
 package rapier.pipeline;
 
+import rapier.Real;
 import rapier.RefNative;
+import rapier.__real;
 import rapier.math.Vector;
-import rapier.sys.RapierC;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-
-import static rapier.sys.RapierC.*;
 
 public final class ContactData extends RefNative {
     private ContactData(MemoryAddress memory) {
@@ -20,66 +19,77 @@ public final class ContactData extends RefNative {
 
     public Vector getLocalP1() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprContactData_local_p1(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprContactData_local_p1(arena, self));
         }
     }
 
     public void setLocalP1(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactData_set_local_p1(self, value.allocInto(arena));
+            rapier.sys.RapierC.RprContactData_set_local_p1(self, value.allocInto(arena));
         }
     }
 
     public Vector getLocalP2() {
         try (var arena = MemorySession.openConfined()) {
-            return Vector.from({{ sys }}.RapierC.RprContactData_local_p2(arena, self));
+            return Vector.from(rapier.sys.RapierC.RprContactData_local_p2(arena, self));
         }
     }
 
     public void setLocalP2(Vector value) {
         try (var arena = MemorySession.openConfined()) {
-            {{ sys }}.RapierC.RprContactData_set_local_p2(self, value.allocInto(arena));
+            rapier.sys.RapierC.RprContactData_set_local_p2(self, value.allocInto(arena));
         }
     }
 
-    public {{ real }} getDist() {
-        return {{ sys }}.RapierC.RprContactData_dist(self);
+    public __real getDist() {
+        return rapier.sys.RapierC.RprContactData_dist(self);
     }
 
-    public void setDist({{ real }} value) {
-        {{ sys }}.RapierC.RprContactData_set_dist(self, value);
+    public void setDist(__real value) {
+        rapier.sys.RapierC.RprContactData_set_dist(self, value);
     }
 
-    public {{ real }} getImpulse() {
-        return {{ sys }}.RapierC.RprContactData_impulse(self);
+    public __real getImpulse() {
+        return rapier.sys.RapierC.RprContactData_impulse(self);
     }
 
-    public void setImpulse({{ real }} value) {
-        {{ sys }}.RapierC.RprContactData_set_impulse(self, value);
+    public void setImpulse(__real value) {
+        rapier.sys.RapierC.RprContactData_set_impulse(self, value);
     }
 
-    public {{ real }}[] getTangentImpulse() {
+    public record TangentImpulse(
+            __real x/*{% if dim3 %}*/,
+            __real y
+/*{% endif %}*/
+    ) {}
+
+    public TangentImpulse getTangentImpulse() {
         try (var arena = MemorySession.openConfined()) {
-{% if dim2 %}
-            var nX = arena.allocate(C_LONG, 0);
-            {{ sys }}.RapierC.RprContactData_tangent_impulse(self, nX);
-            return new {{ real }}[] { nX.get({{ realLayout }}, 0) };
-{% else %}
-            var nX = arena.allocate(C_LONG, 0);
-            var nY = arena.allocate(C_LONG, 0);
-            {{ sys }}.RapierC.RprContactData_tangent_impulse(self, nX, nY);
-            return new {{ real }}[] { nX.get({{ realLayout }}, 0), nY.get({{ realLayout }}, 0) };
-{% endif %}
+/*{% if dim2 %}*/
+            var nX = arena.allocate(Real.layout());
+            rapier.sys.RapierC.RprContactData_tangent_impulse(self, nX);
+            return new TangentImpulse(
+                    nX.get(Real.layout(), 0)
+            );
+/*{% else %}*/
+            var nX = arena.allocate(Real.layout(), 0);
+            var nY = arena.allocate(Real.layout(), 0);
+            rapier.sys.RapierC.RprContactData_tangent_impulse(self, nX, nY);
+            return new TangentImpulse(
+                    nX.get(Real.layout(), 0),
+                    nY.get(Real.layout(), 0)
+            );
+/*{% endif %}*/
         }
     }
 
 {% if dim2 %}
-    public void setTangentImpulse({{ real }} x) {
-        {{ sys }}.RapierC.RprContactData_set_tangent_impulse(self, x);
+    public void setTangentImpulse(__real x) {
+        rapier.sys.RapierC.RprContactData_set_tangent_impulse(self, x);
     }
 {% else %}
-    public void setTangentImpulse({{ real }} x, {{ real }} y) {
-        {{ sys }}.RapierC.RprContactData_set_tangent_impulse(self, x, y);
+    public void setTangentImpulse(__real x, __real y) {
+        rapier.sys.RapierC.RprContactData_set_tangent_impulse(self, x, y);
     }
 {% endif %}
 }

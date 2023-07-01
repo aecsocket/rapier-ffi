@@ -1,78 +1,56 @@
 package rapier.dynamics.joint;
 
-import rapier.ValNative;
-import rapier.sys.RprJointLimits;
-import rapier.sys.RprJointMotor;
+import rapier.__real;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-public final class JointMotor extends ValNative {
-    private JointMotor(MemorySegment memory) {
-        super(memory);
+public record JointMotor(
+        __real targetVel,
+        __real targetPos,
+        __real stiffness,
+        __real damping,
+        __real maxForce,
+        __real impulse,
+        MotorModel model
+) {
+    public static long sizeof() {
+        return rapier.sys.RprJointMotor.sizeof();
     }
 
-    public static JointMotor at(MemorySegment memory) {
-        return new JointMotor(memory);
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprJointMotor.allocate(alloc);
     }
 
-    public static JointMotor create(SegmentAllocator alloc) {
-        return at({{ sys }}.RapierC.RprJointMotor_default(alloc));
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprJointMotor.allocateArray(len, alloc);
     }
 
-    public {{ real }} getTargetVel() {
-        return {{ sys }}.RprJointMotor.target_vel$get(self);
+    public void into(MemorySegment memory) {
+        rapier.sys.RprJointMotor.target_vel$set(memory, targetVel);
+        rapier.sys.RprJointMotor.target_pos$set(memory, targetPos);
+        rapier.sys.RprJointMotor.stiffness$set(memory, stiffness);
+        rapier.sys.RprJointMotor.damping$set(memory, damping);
+        rapier.sys.RprJointMotor.max_force$set(memory, maxForce);
+        rapier.sys.RprJointMotor.impulse$set(memory, impulse);
+        rapier.sys.RprJointMotor.model$set(memory, model.ordinal());
     }
 
-    public void setTargetVel({{ real }} targetVel) {
-        {{ sys }}.RprJointMotor.target_vel$set(self, targetVel);
+    public MemorySegment allocInto(SegmentAllocator alloc) {
+        var memory = alloc(alloc);
+        into(memory);
+        return memory;
     }
 
-    public {{ real }} getTargetPos() {
-        return {{ sys }}.RprJointMotor.target_pos$get(self);
-    }
-
-    public void setTargetPos({{ real }} targetPos) {
-        {{ sys }}.RprJointMotor.target_pos$set(self, targetPos);
-    }
-
-    public {{ real }} getStiffness() {
-        return {{ sys }}.RprJointMotor.stiffness$get(self);
-    }
-
-    public void setStiffness({{ real }} stiffness) {
-        {{ sys }}.RprJointMotor.stiffness$set(self, stiffness);
-    }
-
-    public {{ real }} getDamping() {
-        return {{ sys }}.RprJointMotor.damping$get(self);
-    }
-
-    public void setDamping({{ real }} damping) {
-        {{ sys }}.RprJointMotor.damping$set(self, damping);
-    }
-
-    public {{ real }} getMaxForce() {
-        return {{ sys }}.RprJointMotor.max_force$get(self);
-    }
-
-    public void setMaxForce({{ real }} maxForce) {
-        {{ sys }}.RprJointMotor.max_force$set(self, maxForce);
-    }
-
-    public {{ real }} getImpulse() {
-        return {{ sys }}.RprJointMotor.impulse$get(self);
-    }
-
-    public void setImpulse({{ real }} impulse) {
-        {{ sys }}.RprJointMotor.impulse$set(self, impulse);
-    }
-
-    public MotorModel getModel() {
-        return MotorModel.values()[{{ sys }}.RprJointMotor.model$get(self)];
-    }
-
-    public void setModel(MotorModel model) {
-        {{ sys }}.RprJointMotor.model$set(self, model.ordinal());
+    public static JointMotor from(MemorySegment memory) {
+        return new JointMotor(
+                rapier.sys.RprJointMotor.target_vel$get(memory),
+                rapier.sys.RprJointMotor.target_pos$get(memory),
+                rapier.sys.RprJointMotor.stiffness$get(memory),
+                rapier.sys.RprJointMotor.damping$get(memory),
+                rapier.sys.RprJointMotor.max_force$get(memory),
+                rapier.sys.RprJointMotor.impulse$get(memory),
+                MotorModel.values()[rapier.sys.RprJointMotor.model$get(memory)]
+        );
     }
 }

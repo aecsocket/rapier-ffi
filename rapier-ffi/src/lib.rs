@@ -22,10 +22,9 @@ pub(crate) mod prelude {
     pub use rapier::control::*;
     pub use rapier::prelude::*;
 
-    pub use crate::control::{
-        character_controller::*,
-        ray_cast_vehicle_controller::*,
-    };
+    pub use crate::control::character_controller::*;
+    #[cfg(feature = "dim3")]
+    pub use crate::control::ray_cast_vehicle_controller::*;
     pub use crate::data::arena::*;
     pub use crate::dynamics::{
         ccd_solver::*,

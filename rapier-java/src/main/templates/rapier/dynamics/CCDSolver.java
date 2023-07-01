@@ -6,14 +6,12 @@ import rapier.RefNative;
 
 import java.lang.foreign.MemoryAddress;
 
-import static rapier.sys.RapierC.*;
-
 public final class CCDSolver extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
 
     @Override
     public void drop() {
-        dropped.drop(() -> RprCCDSolver_drop(self));
+        dropped.drop(() -> rapier.sys.RapierC.RprCCDSolver_drop(self));
     }
 
     private CCDSolver(MemoryAddress memory) {
@@ -25,6 +23,6 @@ public final class CCDSolver extends RefNative implements Droppable {
     }
 
     public static CCDSolver create() {
-        return at(RprCCDSolver_new());
+        return at(rapier.sys.RapierC.RprCCDSolver_new());
     }
 }

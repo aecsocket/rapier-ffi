@@ -30,7 +30,7 @@ public record Aabb(
         return memory;
     }
 
-    public static MemorySegment allocInto(SegmentAllocator alloc, Aabb... objs) {
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, Aabb... objs) {
         var memory = allocSlice(alloc, objs.length);
         for (int i = 0; i < objs.length; i++) {
             objs[i].into(memory.asSlice(sizeof() * i));

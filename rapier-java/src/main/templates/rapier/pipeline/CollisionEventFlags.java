@@ -1,11 +1,9 @@
 package rapier.pipeline;
 
-import static rapier.sys.RapierC.*;
-
 public final class CollisionEventFlags {
     private CollisionEventFlags() {}
 
-    public static final int SENSOR = RprCollisionEventFlags_SENSOR();
+    public static final int SENSOR = rapier.sys.RapierC.RprCollisionEventFlags_SENSOR();
 
-    public static final int REMOVED = RprCollisionEventFlags_REMOVED();
+    public static final int REMOVED = rapier.sys.RapierC.RprCollisionEventFlags_REMOVED();
 }

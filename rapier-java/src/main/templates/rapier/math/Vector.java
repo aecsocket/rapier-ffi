@@ -46,7 +46,7 @@ public record Vector(
         return memory;
     }
 
-    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, SpacialVector... objs) {
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, Vector... objs) {
         var memory = allocSlice(alloc, objs.length);
         for (int i = 0; i < objs.length; i++) {
             objs[i].into(memory.asSlice(sizeof() * i));

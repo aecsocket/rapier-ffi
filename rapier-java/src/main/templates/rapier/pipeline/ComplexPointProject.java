@@ -7,22 +7,29 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 public record ComplexPointProject(
-        long collider,
+        ArenaKey collider,
         boolean isInside,
         Vector point,
         FeatureId feature
 ) {
-    public static ComplexPointProject from(MemorySegment memory) {
-        return new ComplexPointProject(
-                ArenaKey.pack({{ sys }}.RprComplexPointProject.collider$slice(memory)),
-                {{ sys }}.RprComplexPointProject.is_inside$get(memory),
-                Vector.from({{ sys }}.RprComplexPointProject.point$slice(memory)),
-                FeatureId.from({{ sys }}.RprComplexPointProject.feature$slice(memory))
-        );
+    public static long sizeof() {
+        return rapier.sys.RprComplexPointProject.sizeof();
     }
 
-    public static MemorySegment allocate(SegmentAllocator alloc) {
-        var memory = {{ sys }}.RprComplexPointProject.allocate(alloc);
-        return memory;
+    public static MemorySegment alloc(SegmentAllocator alloc) {
+        return rapier.sys.RprComplexPointProject.allocate(alloc);
+    }
+
+    public static MemorySegment allocSlice(SegmentAllocator alloc, int len) {
+        return rapier.sys.RprComplexPointProject.allocateArray(len, alloc);
+    }
+
+    public static ComplexPointProject from(MemorySegment memory) {
+        return new ComplexPointProject(
+                ArenaKey.from(rapier.sys.RprComplexPointProject.collider$slice(memory)),
+                rapier.sys.RprComplexPointProject.is_inside$get(memory),
+                Vector.from(rapier.sys.RprComplexPointProject.point$slice(memory)),
+                FeatureId.from(rapier.sys.RprComplexPointProject.feature$slice(memory))
+        );
     }
 }
