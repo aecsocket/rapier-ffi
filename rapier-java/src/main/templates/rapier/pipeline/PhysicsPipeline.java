@@ -16,6 +16,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.ValueLayout;
 
 public final class PhysicsPipeline extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
@@ -53,6 +54,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             @Nullable EventHandler events
     ) {
         try (var arena = MemorySession.openConfined()) {
+            var hooksPtr = hooks == null ? MemoryAddress.NULL : PhysicsHooks.allocInto(hooks, arena);
+            var eventsPtr = events == null ? MemoryAddress.NULL : EventHandler.allocInto(events, arena);
             rapier.sys.RapierC.RprPhysicsPipeline_step(
                     self,
                     gravity.allocInto(arena),
@@ -66,8 +69,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                     multibodyJoints.memory(),
                     ccdSolver.memory(),
                     Native.memoryOrNull(queryPipeline),
-                    hooks == null ? MemoryAddress.NULL : hooks.allocInto(arena),
-                    events == null ? MemoryAddress.NULL : events.allocInto(arena)
+                    hooksPtr.address(),
+                    eventsPtr.address()
             );
         }
     }
@@ -120,6 +123,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             var nQueryPipeline = Native.allocPtrSlice(arena, queryPipeline);
             var nHooks = PhysicsHooks.allocIntoSlice(arena, hooks);
             var nEvents = EventHandler.allocIntoSlice(arena, events);
+
+            var hooksPtr = arena.allocate(ValueLayout.ADDRESS, nHooks);
+            var eventsPtr = arena.allocate(ValueLayout.ADDRESS, nEvents);
             rapier.sys.RapierC.RprPhysicsPipeline_step_all(
                     pipeline.length,
                     nPipeline,
@@ -134,8 +140,8 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
                     nMultibodyJoints,
                     nCcdSolver,
                     nQueryPipeline,
-                    nHooks,
-                    nEvents
+                    hooksPtr.address(),
+                    eventsPtr.address()
             );
         }
     }
