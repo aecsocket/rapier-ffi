@@ -44,9 +44,8 @@ class constants$40 {
         "RprGenericJoint_limit_axes",
         constants$40.RprGenericJoint_limit_axes$FUNC
     );
-    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
     static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(

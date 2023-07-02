@@ -9,6 +9,21 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$43 {
 
+    static final FunctionDescriptor RprGenericJoint_motors$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motors$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motors",
+        constants$43.RprGenericJoint_motors$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_new",
+        constants$43.RprGenericJoint_new$FUNC
+    );
     static final FunctionDescriptor RprGenericJoint_set_contacts_enabled$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -40,27 +55,6 @@ class constants$43 {
     static final MethodHandle RprGenericJoint_set_limit_axes$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_set_limit_axes",
         constants$43.RprGenericJoint_set_limit_axes$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_limits$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_limits$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_limits",
-        constants$43.RprGenericJoint_set_limits$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_local_anchor1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprGenericJoint_set_local_anchor1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_local_anchor1",
-        constants$43.RprGenericJoint_set_local_anchor1$FUNC
     );
 }
 

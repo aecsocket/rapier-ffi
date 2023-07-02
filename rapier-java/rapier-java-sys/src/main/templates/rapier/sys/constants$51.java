@@ -9,6 +9,40 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$51 {
 
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$51.RprIslandManager_drop$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$51.RprIslandManager_new$FUNC
+    );
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("min"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$51.RprJointLimits_default$FUNC
+    );
+    static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("target_vel"),
+        Constants$root.C_FLOAT$LAYOUT.withName("target_pos"),
+        Constants$root.C_FLOAT$LAYOUT.withName("stiffness"),
+        Constants$root.C_FLOAT$LAYOUT.withName("damping"),
+        Constants$root.C_FLOAT$LAYOUT.withName("max_force"),
+        Constants$root.C_FLOAT$LAYOUT.withName("impulse"),
+        Constants$root.C_INT$LAYOUT.withName("model")
+    ).withName("RprJointMotor"));
+    static final MethodHandle RprJointMotor_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointMotor_default",
+        constants$51.RprJointMotor_default$FUNC
+    );
     static final FunctionDescriptor RprKinematicCharacterController_autostep$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
@@ -23,32 +57,6 @@ class constants$51 {
     static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_clear_autostep",
         constants$51.RprKinematicCharacterController_clear_autostep$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_snap_to_ground",
-        constants$51.RprKinematicCharacterController_clear_snap_to_ground$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_default",
-        constants$51.RprKinematicCharacterController_default$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_drop$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_drop",
-        constants$51.RprKinematicCharacterController_drop$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_max_slope_climb_angle$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_max_slope_climb_angle",
-        constants$51.RprKinematicCharacterController_max_slope_climb_angle$FUNC
     );
 }
 

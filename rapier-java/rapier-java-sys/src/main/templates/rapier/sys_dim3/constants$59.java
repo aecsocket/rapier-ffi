@@ -9,6 +9,40 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$59 {
 
+    static final FunctionDescriptor RprPairFilterContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_bodies",
+        constants$59.RprPairFilterContext_bodies$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_collider1$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_collider1",
+        constants$59.RprPairFilterContext_collider1$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_collider2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_collider2$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_collider2",
+        constants$59.RprPairFilterContext_collider2$FUNC
+    );
+    static final FunctionDescriptor RprPairFilterContext_colliders$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPairFilterContext_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprPairFilterContext_colliders",
+        constants$59.RprPairFilterContext_colliders$FUNC
+    );
     static final FunctionDescriptor RprPairFilterContext_rigid_body1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
@@ -24,81 +58,6 @@ class constants$59 {
     static final MethodHandle RprPairFilterContext_rigid_body2$MH = RuntimeHelper.downcallHandle(
         "RprPairFilterContext_rigid_body2",
         constants$59.RprPairFilterContext_rigid_body2$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_drop",
-        constants$59.RprPhysicsPipeline_drop$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_new",
-        constants$59.RprPhysicsPipeline_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParameters"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$59.RprPhysicsPipeline_step$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_step_all$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step_all",
-        constants$59.RprPhysicsPipeline_step_all$FUNC
     );
 }
 

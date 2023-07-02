@@ -9,6 +9,15 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$41 {
 
+    static final FunctionDescriptor RprGenericJoint_limits_for$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_limits_for$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_limits_for",
+        constants$41.RprGenericJoint_limits_for$FUNC
+    );
     static final FunctionDescriptor RprGenericJoint_local_anchor1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y")
@@ -64,22 +73,6 @@ class constants$41 {
     static final MethodHandle RprGenericJoint_local_frame1$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_local_frame1",
         constants$41.RprGenericJoint_local_frame1$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("im")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame2",
-        constants$41.RprGenericJoint_local_frame2$FUNC
     );
 }
 

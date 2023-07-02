@@ -9,6 +9,36 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$97 {
 
+    static final FunctionDescriptor RprWheel_set_suspension_stiffness$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_suspension_stiffness$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_suspension_stiffness",
+        constants$97.RprWheel_set_suspension_stiffness$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_wheel_suspension_force$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_wheel_suspension_force$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_wheel_suspension_force",
+        constants$97.RprWheel_set_wheel_suspension_force$FUNC
+    );
+    static final FunctionDescriptor RprWheel_side_impulse$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_side_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_side_impulse",
+        constants$97.RprWheel_side_impulse$FUNC
+    );
+    static final FunctionDescriptor RprWheel_steering$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_steering$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_steering",
+        constants$97.RprWheel_steering$FUNC
+    );
     static final FunctionDescriptor RprWheel_suspension$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
@@ -27,21 +57,6 @@ class constants$97 {
         "RprWheel_suspension_rest_length",
         constants$97.RprWheel_suspension_rest_length$FUNC
     );
-    static final FunctionDescriptor RprWheel_suspension_stiffness$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_suspension_stiffness$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_suspension_stiffness",
-        constants$97.RprWheel_suspension_stiffness$FUNC
-    );
-    static final FunctionDescriptor RprWheel_wheel_suspension_force$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_wheel_suspension_force$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_wheel_suspension_force",
-        constants$97.RprWheel_wheel_suspension_force$FUNC
-    );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
 }
 
 

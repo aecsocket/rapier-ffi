@@ -9,6 +9,48 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$56 {
 
+    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove",
+        constants$56.RprMultibodyJointSet_remove$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprMultibodyJointSet_remove_joints_attached_to_rigid_body$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_joints_attached_to_rigid_body",
+        constants$56.RprMultibodyJointSet_remove_joints_attached_to_rigid_body$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_remove_multibody_articulations$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_remove_multibody_articulations$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove_multibody_articulations",
+        constants$56.RprMultibodyJointSet_remove_multibody_articulations$FUNC
+    );
+    static final FunctionDescriptor RprNarrowPhase_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprNarrowPhase_drop$MH = RuntimeHelper.downcallHandle(
+        "RprNarrowPhase_drop",
+        constants$56.RprNarrowPhase_drop$FUNC
+    );
     static final FunctionDescriptor RprNarrowPhase_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprNarrowPhase_new$MH = RuntimeHelper.downcallHandle(
         "RprNarrowPhase_new",
@@ -20,41 +62,6 @@ class constants$56 {
     static final MethodHandle RprPairFilterContext_bodies$MH = RuntimeHelper.downcallHandle(
         "RprPairFilterContext_bodies",
         constants$56.RprPairFilterContext_bodies$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_collider1$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_collider1",
-        constants$56.RprPairFilterContext_collider1$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_collider2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_collider2$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_collider2",
-        constants$56.RprPairFilterContext_collider2$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_colliders$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_colliders$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_colliders",
-        constants$56.RprPairFilterContext_colliders$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_rigid_body1$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_rigid_body1$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_rigid_body1",
-        constants$56.RprPairFilterContext_rigid_body1$FUNC
     );
 }
 

@@ -1,8 +1,11 @@
 package rapier.dynamics.joint;
 
 import rapier.__real;
+import rapier.data.ArenaKey;
 
+import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 
 public record JointLimits(
@@ -34,11 +37,27 @@ public record JointLimits(
         return memory;
     }
 
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, JointLimits... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
+    }
+
     public static JointLimits from(MemorySegment memory) {
         return new JointLimits(
                 rapier.sys.RprJointLimits.min$get(memory),
                 rapier.sys.RprJointLimits.max$get(memory),
                 rapier.sys.RprJointLimits.impulse$get(memory)
         );
+    }
+
+    public static JointLimits[] fromSlice(MemorySegment data, int len) {
+        var res = new JointLimits[len];
+        for (int i = 0; i < len; i++) {
+            res[i] = JointLimits.from(data.asSlice(sizeof() * i));
+        }
+        return res;
     }
 }

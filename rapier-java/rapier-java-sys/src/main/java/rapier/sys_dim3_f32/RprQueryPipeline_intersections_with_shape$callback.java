@@ -11,13 +11,13 @@ public interface RprQueryPipeline_intersections_with_shape$callback {
 
     boolean apply(java.lang.foreign.MemorySegment _x0);
     static MemorySegment allocate(RprQueryPipeline_intersections_with_shape$callback fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(RprQueryPipeline_intersections_with_shape$callback.class, fi, constants$62.RprQueryPipeline_intersections_with_shape$callback$FUNC, session);
+        return RuntimeHelper.upcallStub(RprQueryPipeline_intersections_with_shape$callback.class, fi, constants$63.RprQueryPipeline_intersections_with_shape$callback$FUNC, session);
     }
     static RprQueryPipeline_intersections_with_shape$callback ofAddress(MemoryAddress addr, MemorySession session) {
         MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
         return (java.lang.foreign.MemorySegment __x0) -> {
             try {
-                return (boolean)constants$62.RprQueryPipeline_intersections_with_shape$callback$MH.invokeExact((Addressable)symbol, __x0);
+                return (boolean)constants$63.RprQueryPipeline_intersections_with_shape$callback$MH.invokeExact((Addressable)symbol, __x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

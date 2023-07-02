@@ -44,15 +44,10 @@ public record ArenaKey(
         );
     }
 
-    public static ArenaKey[] fromSlice(MemoryAddress data, int len) {
+    public static ArenaKey[] fromSlice(MemorySegment data, int len) {
         var res = new ArenaKey[len];
-        // TODO: we won't need to do this in Java 20 i dont think
-        try (var arena = MemorySession.openConfined()) {
-            for (int i = 0; i < len; i++) {
-                // SAFETY: lo;l
-                var elem = MemorySegment.ofAddress(data.addOffset(sizeof() * i), sizeof(), arena);
-                res[i] = ArenaKey.from(elem);
-            }
+        for (int i = 0; i < len; i++) {
+            res[i] = ArenaKey.from(data.asSlice(sizeof() * i));
         }
         return res;
     }

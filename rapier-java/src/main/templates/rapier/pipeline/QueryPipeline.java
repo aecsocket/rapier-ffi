@@ -13,7 +13,6 @@ import rapier.shape.SharedShape;
 import javax.annotation.Nullable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
 
 public final class QueryPipeline extends RefNative implements Droppable {
     public interface IntersectionWithRayCallback {
@@ -158,7 +157,6 @@ public final class QueryPipeline extends RefNative implements Droppable {
     }
 
     public @Nullable ArenaKey intersectionWithShape(
-            SegmentAllocator alloc,
             RigidBodySet bodies,
             ColliderSet colliders,
             Isometry shapePos,

@@ -42,6 +42,14 @@ public record JointMotor(
         return memory;
     }
 
+    public static MemorySegment allocIntoSlice(SegmentAllocator alloc, JointMotor... objs) {
+        var memory = allocSlice(alloc, objs.length);
+        for (int i = 0; i < objs.length; i++) {
+            objs[i].into(memory.asSlice(sizeof() * i));
+        }
+        return memory;
+    }
+
     public static JointMotor from(MemorySegment memory) {
         return new JointMotor(
                 rapier.sys.RprJointMotor.target_vel$get(memory),
@@ -52,5 +60,13 @@ public record JointMotor(
                 rapier.sys.RprJointMotor.impulse$get(memory),
                 MotorModel.values()[rapier.sys.RprJointMotor.model$get(memory)]
         );
+    }
+
+    public static JointMotor[] fromSlice(MemorySegment data, int len) {
+        var res = new JointMotor[len];
+        for (int i = 0; i < len; i++) {
+            res[i] = JointMotor.from(data.asSlice(sizeof() * i));
+        }
+        return res;
     }
 }

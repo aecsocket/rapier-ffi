@@ -9,6 +9,38 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$96 {
 
+    static final FunctionDescriptor RprWheel_set_max_suspension_travel$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_max_suspension_travel$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_max_suspension_travel",
+        constants$96.RprWheel_set_max_suspension_travel$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_radius$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_radius$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_radius",
+        constants$96.RprWheel_set_radius$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_rotation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_rotation$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_rotation",
+        constants$96.RprWheel_set_rotation$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_side_impulse$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_side_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_side_impulse",
+        constants$96.RprWheel_set_side_impulse$FUNC
+    );
     static final FunctionDescriptor RprWheel_set_steering$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT
@@ -24,36 +56,6 @@ class constants$96 {
     static final MethodHandle RprWheel_set_suspension_rest_length$MH = RuntimeHelper.downcallHandle(
         "RprWheel_set_suspension_rest_length",
         constants$96.RprWheel_set_suspension_rest_length$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_suspension_stiffness$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_suspension_stiffness$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_suspension_stiffness",
-        constants$96.RprWheel_set_suspension_stiffness$FUNC
-    );
-    static final FunctionDescriptor RprWheel_set_wheel_suspension_force$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprWheel_set_wheel_suspension_force$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_set_wheel_suspension_force",
-        constants$96.RprWheel_set_wheel_suspension_force$FUNC
-    );
-    static final FunctionDescriptor RprWheel_side_impulse$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_side_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_side_impulse",
-        constants$96.RprWheel_side_impulse$FUNC
-    );
-    static final FunctionDescriptor RprWheel_steering$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_steering$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_steering",
-        constants$96.RprWheel_steering$FUNC
     );
 }
 

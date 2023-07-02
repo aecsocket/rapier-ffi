@@ -11,7 +11,7 @@ public interface RprQueryPipeline_intersections_with_point$callback {
 
     boolean apply(java.lang.foreign.MemorySegment _x0);
     static MemorySegment allocate(RprQueryPipeline_intersections_with_point$callback fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(RprQueryPipeline_intersections_with_point$callback.class, fi, constants$59.RprQueryPipeline_intersections_with_point$callback$FUNC, session);
+        return RuntimeHelper.upcallStub(RprQueryPipeline_intersections_with_point$callback.class, fi, constants$60.RprQueryPipeline_intersections_with_point$callback$FUNC, session);
     }
     static RprQueryPipeline_intersections_with_point$callback ofAddress(MemoryAddress addr, MemorySession session) {
         MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);

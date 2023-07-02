@@ -9,6 +9,51 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$52 {
 
+    static final FunctionDescriptor RprImpulseJoint_set_body1$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprImpulseJoint_set_body1$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_body1",
+        constants$52.RprImpulseJoint_set_body1$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_set_body2$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprImpulseJoint_set_body2$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_body2",
+        constants$52.RprImpulseJoint_set_body2$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_set_data$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJoint_set_data$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_data",
+        constants$52.RprImpulseJoint_set_data$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_set_impulses$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("w"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("a"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("b")
+        ).withName("RprSpacialVector")
+    );
+    static final MethodHandle RprImpulseJoint_set_impulses$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_set_impulses",
+        constants$52.RprImpulseJoint_set_impulses$FUNC
+    );
     static final FunctionDescriptor RprIntegrationParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("dt"),
         Constants$root.C_DOUBLE$LAYOUT.withName("min_ccd_dt"),
@@ -39,36 +84,6 @@ class constants$52 {
     static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
         "RprIslandManager_active_dynamic_bodies",
         constants$52.RprIslandManager_active_dynamic_bodies$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_active_kinematic_bodies",
-        constants$52.RprIslandManager_active_kinematic_bodies$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$52.RprIslandManager_drop$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$52.RprIslandManager_new$FUNC
-    );
-    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
-    ).withName("RprJointLimits"));
-    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
-        "RprJointLimits_default",
-        constants$52.RprJointLimits_default$FUNC
     );
 }
 

@@ -9,6 +9,39 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$87 {
 
+    static final FunctionDescriptor RprSolverContact_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_point$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_point",
+        constants$87.RprSolverContact_point$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_restitution",
+        constants$87.RprSolverContact_restitution$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_dist$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_set_dist$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_dist",
+        constants$87.RprSolverContact_set_dist$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_friction$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_set_friction$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_friction",
+        constants$87.RprSolverContact_set_friction$FUNC
+    );
     static final FunctionDescriptor RprSolverContact_set_point$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -27,65 +60,6 @@ class constants$87 {
     static final MethodHandle RprSolverContact_set_restitution$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_set_restitution",
         constants$87.RprSolverContact_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_tangent_velocity",
-        constants$87.RprSolverContact_set_tangent_velocity$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_tangent_velocity",
-        constants$87.RprSolverContact_tangent_velocity$FUNC
-    );
-    static final FunctionDescriptor RprVHACDParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("concavity"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("alpha"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("beta"),
-        Constants$root.C_INT$LAYOUT.withName("resolution"),
-        Constants$root.C_INT$LAYOUT.withName("plane_downsampling"),
-        Constants$root.C_INT$LAYOUT.withName("convex_hull_downsampling"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("tag"),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_BOOL$LAYOUT.withName("detect_cavities"),
-                    Constants$root.C_BOOL$LAYOUT.withName("detect_self_intersections")
-                ).withName("flood_fill")
-            ).withName("$anon$0"),
-            MemoryLayout.paddingLayout(16)
-        ).withName("fill_mode"),
-        Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
-        MemoryLayout.paddingLayout(24),
-        Constants$root.C_INT$LAYOUT.withName("max_convex_hulls"),
-        MemoryLayout.paddingLayout(32)
-    ).withName("RprVHACDParameters"));
-    static final MethodHandle RprVHACDParameters_default$MH = RuntimeHelper.downcallHandle(
-        "RprVHACDParameters_default",
-        constants$87.RprVHACDParameters_default$FUNC
-    );
-    static final FunctionDescriptor RprVHACD_decompose$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprVHACD_decompose$MH = RuntimeHelper.downcallHandle(
-        "RprVHACD_decompose",
-        constants$87.RprVHACD_decompose$FUNC
     );
 }
 

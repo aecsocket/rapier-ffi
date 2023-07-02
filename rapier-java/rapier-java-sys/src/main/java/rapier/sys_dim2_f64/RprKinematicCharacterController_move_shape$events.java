@@ -17,7 +17,7 @@ public interface RprKinematicCharacterController_move_shape$events {
         MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
         return (java.lang.foreign.MemorySegment __x0) -> {
             try {
-                constants$52.RprKinematicCharacterController_move_shape$events$MH.invokeExact((Addressable)symbol, __x0);
+                constants$53.RprKinematicCharacterController_move_shape$events$MH.invokeExact((Addressable)symbol, __x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

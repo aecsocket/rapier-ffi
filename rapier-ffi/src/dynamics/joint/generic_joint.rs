@@ -273,6 +273,32 @@ pub unsafe extern "C" fn RprGenericJoint_drop(this: *mut RprGenericJoint) {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_local_frame1(this: *const RprGenericJoint) -> RprIsometry {
+    RprIsometry::from_raw(this.get().0.local_frame1)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_local_frame1(
+    this: *mut RprGenericJoint,
+    value: RprIsometry,
+) {
+    this.get_mut().0.local_frame1 = value.into_raw();
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_local_frame2(this: *const RprGenericJoint) -> RprIsometry {
+    RprIsometry::from_raw(this.get().0.local_frame2)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_local_frame2(
+    this: *mut RprGenericJoint,
+    value: RprIsometry,
+) {
+    this.get_mut().0.local_frame2 = value.into_raw();
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn RprGenericJoint_locked_axes(
     this: *const RprGenericJoint,
 ) -> RprJointAxesMask {
@@ -332,6 +358,107 @@ pub unsafe extern "C" fn RprGenericJoint_set_coupled_axes(
     this.get_mut().0.coupled_axes = joint_axes_mask_from(value)
 }
 
+/// cbindgen:ptrs-as-arrays=[[out; 3]]
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub unsafe extern "C" fn RprGenericJoint_limits(
+    this: *const RprGenericJoint,
+    out: *mut RprJointLimits,
+) {
+    let arr = this.get().0.limits.map(|x| RprJointLimits::from_raw(x));
+    out.cast::<[RprJointLimits; SPATIAL_DIM]>().write(arr);
+}
+
+/// cbindgen:ptrs-as-arrays=[[out; 6]]
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub unsafe extern "C" fn RprGenericJoint_limits(
+    this: *const RprGenericJoint,
+    out: *mut RprJointLimits,
+) {
+    let arr = this.get().0.limits.map(|x| RprJointLimits::from_raw(x));
+    out.cast::<[RprJointLimits; SPATIAL_DIM]>().write(arr);
+}
+
+/// cbindgen:ptrs-as-arrays=[[value; 3]]
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub unsafe extern "C" fn RprGenericJoint_set_limits(
+    this: *mut RprGenericJoint,
+    value: *const RprJointLimits
+) {
+    let arr = value.cast::<[RprJointLimits; SPATIAL_DIM]>().read();
+    this.get_mut().0.limits = arr.map(|x| x.into_raw());
+}
+
+/// cbindgen:ptrs-as-arrays=[[value; 6]]
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub unsafe extern "C" fn RprGenericJoint_set_limits(
+    this: *mut RprGenericJoint,
+    value: *const RprJointLimits
+) {
+    let arr = value.cast::<[RprJointLimits; SPATIAL_DIM]>().read();
+    this.get_mut().0.limits = arr.map(|x| x.into_raw());
+}
+
+/// cbindgen:ptrs-as-arrays=[[out; 3]]
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub unsafe extern "C" fn RprGenericJoint_motors(
+    this: *const RprGenericJoint,
+    out: *mut RprJointMotor,
+) {
+    let arr = this.get().0.motors.map(|x| RprJointMotor::from_raw(x));
+    out.cast::<[RprJointMotor; SPATIAL_DIM]>().write(arr);
+}
+
+/// cbindgen:ptrs-as-arrays=[[out; 6]]
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub unsafe extern "C" fn RprGenericJoint_motors(
+    this: *const RprGenericJoint,
+    out: *mut RprJointMotor,
+) {
+    let arr = this.get().0.motors.map(|x| RprJointMotor::from_raw(x));
+    out.cast::<[RprJointMotor; SPATIAL_DIM]>().write(arr);
+}
+
+/// cbindgen:ptrs-as-arrays=[[value; 3]]
+#[no_mangle]
+#[cfg(feature = "dim2")]
+pub unsafe extern "C" fn RprGenericJoint_set_motors(
+    this: *mut RprGenericJoint,
+    value: *const RprJointMotor,
+) {
+    let arr = value.cast::<[RprJointMotor; SPATIAL_DIM]>().read();
+    this.get_mut().0.motors = arr.map(|x| x.into_raw());
+}
+
+/// cbindgen:ptrs-as-arrays=[[value; 6]]
+#[no_mangle]
+#[cfg(feature = "dim3")]
+pub unsafe extern "C" fn RprGenericJoint_set_motors(
+    this: *mut RprGenericJoint,
+    value: *const RprJointMotor,
+) {
+    let arr = value.cast::<[RprJointMotor; SPATIAL_DIM]>().read();
+    this.get_mut().0.motors = arr.map(|x| x.into_raw());
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_contacts_enabled(this: *const RprGenericJoint) -> bool {
+    this.get().0.contacts_enabled
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn RprGenericJoint_set_contacts_enabled(
+    this: *mut RprGenericJoint,
+    value: bool,
+) {
+    this.get_mut().0.contacts_enabled = value;
+}
+
 #[no_mangle]
 pub unsafe extern "C" fn RprGenericJoint_is_enabled(this: *const RprGenericJoint) -> bool {
     this.get().0.is_enabled()
@@ -348,32 +475,6 @@ pub unsafe extern "C" fn RprGenericJoint_lock_axes(
     axes: RprJointAxesMask,
 ) {
     this.get_mut().0.lock_axes(joint_axes_mask_from(axes));
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_local_frame1(this: *const RprGenericJoint) -> RprIsometry {
-    RprIsometry::from_raw(this.get().0.local_frame1)
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_set_local_frame1(
-    this: *mut RprGenericJoint,
-    local_frame: RprIsometry,
-) {
-    this.get_mut().0.set_local_frame1(local_frame.into_raw());
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_local_frame2(this: *const RprGenericJoint) -> RprIsometry {
-    RprIsometry::from_raw(this.get().0.local_frame2)
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_set_local_frame2(
-    this: *mut RprGenericJoint,
-    local_frame: RprIsometry,
-) {
-    this.get_mut().0.set_local_frame2(local_frame.into_raw());
 }
 
 #[no_mangle]
@@ -433,20 +534,7 @@ pub unsafe extern "C" fn RprGenericJoint_set_local_anchor2(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_contacts_enabled(this: *const RprGenericJoint) -> bool {
-    this.get().0.contacts_enabled()
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_set_contacts_enabled(
-    this: *mut RprGenericJoint,
-    enabled: bool,
-) {
-    this.get_mut().0.set_contacts_enabled(enabled);
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_limits(
+pub unsafe extern "C" fn RprGenericJoint_limits_for(
     this: *const RprGenericJoint,
     axis: RprJointAxis,
     out: *mut RprJointLimits,
@@ -461,7 +549,7 @@ pub unsafe extern "C" fn RprGenericJoint_limits(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn RprGenericJoint_set_limits(
+pub unsafe extern "C" fn RprGenericJoint_set_limits_for(
     this: *mut RprGenericJoint,
     axis: RprJointAxis,
     min: Real,

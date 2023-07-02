@@ -14,4 +14,20 @@ public final class Real {
         return ValueLayout.JAVA_DOUBLE;
     }
 /*{% endif %}*/
+
+    public static int angDim() {
+/*{% if dim2 %}*/
+        return 1;
+/*{% else %}*/
+        return 3;
+/*{% endif %}*/
+    }
+
+    public static int spatialDim() {
+/*{% if dim2 %}*/
+        return 3;
+/*{% else %}*/
+        return 6;
+/*{% endif %}*/
+    }
 }

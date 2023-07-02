@@ -9,6 +9,36 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$53 {
 
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$53.RprIslandManager_active_kinematic_bodies$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$53.RprIslandManager_drop$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_new",
+        constants$53.RprIslandManager_new$FUNC
+    );
+    static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("min"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("impulse")
+    ).withName("RprJointLimits"));
+    static final MethodHandle RprJointLimits_default$MH = RuntimeHelper.downcallHandle(
+        "RprJointLimits_default",
+        constants$53.RprJointLimits_default$FUNC
+    );
     static final FunctionDescriptor RprJointMotor_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("target_vel"),
         Constants$root.C_DOUBLE$LAYOUT.withName("target_pos"),
@@ -30,32 +60,6 @@ class constants$53 {
     static final MethodHandle RprKinematicCharacterController_autostep$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_autostep",
         constants$53.RprKinematicCharacterController_autostep$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_clear_autostep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_autostep",
-        constants$53.RprKinematicCharacterController_clear_autostep$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_snap_to_ground",
-        constants$53.RprKinematicCharacterController_clear_snap_to_ground$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_default",
-        constants$53.RprKinematicCharacterController_default$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_drop$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_drop",
-        constants$53.RprKinematicCharacterController_drop$FUNC
     );
 }
 

@@ -9,6 +9,22 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 class constants$42 {
 
+    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("re"),
+            Constants$root.C_FLOAT$LAYOUT.withName("im")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_local_frame2",
+        constants$42.RprGenericJoint_local_frame2$FUNC
+    );
     static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_CHAR$LAYOUT
@@ -48,13 +64,6 @@ class constants$42 {
     static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_motor_model",
         constants$42.RprGenericJoint_motor_model$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_new",
-        constants$42.RprGenericJoint_new$FUNC
     );
 }
 

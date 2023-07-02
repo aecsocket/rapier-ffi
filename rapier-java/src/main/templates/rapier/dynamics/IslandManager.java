@@ -6,6 +6,7 @@ import rapier.RefNative;
 import rapier.data.ArenaKey;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 
@@ -34,7 +35,10 @@ public final class IslandManager extends RefNative implements Droppable {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprIslandManager_active_kinematic_bodies(self, data, len);
-            return ArenaKey.fromSlice(data.get(ValueLayout.ADDRESS, 0), (int) len.get(ValueLayout.JAVA_LONG, 0));
+
+            var ptr = data.get(ValueLayout.ADDRESS, 0);
+            int iLen = (int) len.get(ValueLayout.JAVA_LONG, 0);
+            return ArenaKey.fromSlice(MemorySegment.ofAddress(ptr, ArenaKey.sizeof() * iLen, arena), iLen);
         }
     }
 
@@ -43,7 +47,10 @@ public final class IslandManager extends RefNative implements Droppable {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprIslandManager_active_dynamic_bodies(self, data, len);
-            return ArenaKey.fromSlice(data.get(ValueLayout.ADDRESS, 0), (int) len.get(ValueLayout.JAVA_LONG, 0));
+
+            var ptr = data.get(ValueLayout.ADDRESS, 0);
+            int iLen = (int) len.get(ValueLayout.JAVA_LONG, 0);
+            return ArenaKey.fromSlice(MemorySegment.ofAddress(ptr, ArenaKey.sizeof() * iLen, arena), iLen);
         }
     }
 }

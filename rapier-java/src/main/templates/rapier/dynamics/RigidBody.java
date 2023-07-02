@@ -1,9 +1,6 @@
 package rapier.dynamics;
 
-import rapier.DropFlag;
-import rapier.Droppable;
-import rapier.RefNative;
-import rapier.__real;
+import rapier.*;
 import rapier.data.ArenaKey;
 import rapier.geometry.ColliderSet;
 import rapier.math.*;
@@ -74,7 +71,7 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
 
     public RotationLock isRotationLocked() {
         try (var arena = MemorySession.openConfined()) {
-            var res = arena.allocateArray(ValueLayout.JAVA_BOOLEAN, /*{% if dim2 %}*/ 1 /*{% else %}*/ 3 /*{% endif %}*/);
+            var res = arena.allocateArray(ValueLayout.JAVA_BOOLEAN, Real.angDim());
             rapier.sys.RapierC.RprRigidBody_is_rotation_locked(self, res);
 /*{% if dim2 %}*/
             return new RotationLock(
@@ -103,7 +100,10 @@ public sealed class RigidBody extends RefNative permits RigidBody.Mut {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprRigidBody_colliders(self, data, len);
-            return ArenaKey.fromSlice(data.get(ValueLayout.ADDRESS, 0), (int) len.get(ValueLayout.JAVA_LONG, 0));
+
+            var ptr = data.get(ValueLayout.ADDRESS, 0);
+            int iLen = (int) len.get(ValueLayout.JAVA_LONG, 0);
+            return ArenaKey.fromSlice(MemorySegment.ofAddress(ptr, ArenaKey.sizeof() * iLen, arena), iLen);
         }
     }
 

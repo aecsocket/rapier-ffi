@@ -50,7 +50,7 @@ dependencies {
 To get started with the library, you must load the Rapier shared library, either by:
 - manually calling `System.load` or `System.loadLibrary` to load a `librapier_ffi` dll/so/dylib
 - calling `Rapier.load` to load the libraries from a corresponding variant binary, like `rapier-java-dim3-f32-linux-x86`
-- 
+
 Then use the library as you normally would.
 
 Some notes on usage:
