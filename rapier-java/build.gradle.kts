@@ -9,7 +9,7 @@ plugins {
 
 group = "io.github.aecsocket"
 
-version = "0.2.0-SNAPSHOT"
+version = "0.2.1-SNAPSHOT"
 
 description = "Java bindings for the Rapier physics engine"
 
