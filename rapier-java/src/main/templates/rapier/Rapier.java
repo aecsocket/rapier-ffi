@@ -34,8 +34,8 @@ public final class Rapier {
             var libFile = Files.createTempFile("rapier", null);
             Files.copy(resourceIn, libFile, StandardCopyOption.REPLACE_EXISTING);
             System.load(libFile.toAbsolutePath().toString());
-        } catch (IOException ex) {
-            throw new RuntimeException("Could not load native library", ex);
+        } catch (RuntimeException | IOException ex) {
+            throw new RuntimeException("Could not load native library from " + resourcePath, ex);
         }
     }
 
