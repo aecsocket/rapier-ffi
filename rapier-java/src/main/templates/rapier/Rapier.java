@@ -1,5 +1,6 @@
 package rapier;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -15,14 +16,18 @@ public final class Rapier {
     public static void load() {
         if (loaded.getAndSet(true)) return;
 
-        var platform = CpuPlatform.get();
-        var resourcePath = "rapier/" + switch (platform) {
-            case LINUX -> "linux_x86/librapier_ffi.so";
-            case WINDOWS -> "windows_x86/rapier_ffi.dll";
-            case MACOS -> "macos_x86/librapier_ffi.dylib";
+        var arch = switch (CpuArchitecture.get()) {
+            case AARCH64 -> "aarch64";
+            case ARM -> "arm";
+            case X86 -> "x86";
+        };
+        var resourcePath = "rapier/" + switch (CpuPlatform.get()) {
+            case LINUX -> "linux_" + arch + "/librapier_ffi.so";
+            case WINDOWS -> "windows_" + arch + "/rapier_ffi.dll";
+            case MACOS -> "macos_" + arch + "/librapier_ffi.dylib";
         };
 
-        try (var resourceIn = Rapier.class.getClassLoader().getResourceAsStream(resourcePath)) {
+        try (@Nullable var resourceIn = Rapier.class.getClassLoader().getResourceAsStream(resourcePath)) {
             if (resourceIn == null) {
                 throw new RuntimeException("No native library in JAR at " + resourcePath);
             }
@@ -57,6 +62,25 @@ public final class Rapier {
             if (os.contains("mac os x") || os.contains("darwin")) return MACOS;
 
             throw new RuntimeException("Unsupported OS '" + System.getProperty("os.name") + "'");
+        }
+    }
+
+    public enum CpuArchitecture {
+        AARCH64,
+        ARM,
+        X86;
+
+        public static CpuArchitecture get() {
+            var arch = System.getProperty("os.arch")
+                    .toLowerCase(Locale.ROOT)
+                    .replaceAll("[^a-z0-9]+", "");
+
+            return switch (arch) {
+                case "aarch64" -> AARCH64;
+                case "arm", "arm32" -> ARM;
+                case "x8664", "amd64", "ia32e", "em64t", "x64" -> X86;
+                default -> throw new RuntimeException("Unsupported architecture '" + System.getProperty("os.arch") + "'");
+            };
         }
     }
 }

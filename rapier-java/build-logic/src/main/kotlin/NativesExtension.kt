@@ -7,5 +7,9 @@ abstract class NativesExtension {
 
     abstract val libraryFileName: Property<String>
 
-    abstract val outputDirName: Property<String>
+    abstract val buildTarget: Property<String>
+
+    abstract val platformName: Property<String>
+
+    abstract val archName: Property<String>
 }

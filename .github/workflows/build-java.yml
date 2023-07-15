@@ -11,7 +11,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        # TODO: Ubuntu 20.04 has libc 2.31. We want to target CentOS 7, with libc 2.17 (minimum Rust ver.)
+        os: [ubuntu-20.04, windows-latest, macos-latest]
         dimension: [dim2, dim3]
         precision: [f32, f64]
     runs-on: ${{ matrix.os }}

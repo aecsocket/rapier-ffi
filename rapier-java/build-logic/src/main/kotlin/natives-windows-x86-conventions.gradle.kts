@@ -1,9 +1,8 @@
 plugins {
-    id("natives-conventions")
+    id("natives-windows-conventions")
 }
 
 extensions.getByType<NativesExtension>().apply {
-    platformPredicate.set { it.isWindows }
-    libraryFileName.set("rapier_ffi.dll")
-    outputDirName.set("windows_x86")
+    buildTarget.set("x86_64-pc-windows-gnu")
+    archName.set("x86")
 }

@@ -1,9 +1,8 @@
 plugins {
-    id("natives-conventions")
+    id("natives-macos-conventions")
 }
 
 extensions.getByType<NativesExtension>().apply {
-    platformPredicate.set { it.isMacOsX }
-    libraryFileName.set("librapier_ffi.dylib")
-    outputDirName.set("macos_x86")
+    buildTarget.set("x86_64-apple-darwin")
+    archName.set("x86")
 }

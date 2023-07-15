@@ -19,8 +19,9 @@ afterEvaluate {
     apply(plugin = "publishing-conventions")
 
     tasks {
+        val buildTarget = nativesExt.buildTarget.get()
         // build into this directory
-        val targetDir = "$projectDir/.gradle/cargo/"
+        val targetDir = "$projectDir/.gradle/cargo"
 
         val assembleNatives = register<Exec>("assembleNatives") {
             doFirst {
@@ -29,21 +30,25 @@ afterEvaluate {
 
             workingDir = file(nativeDir)
             commandLine = listOf(
-                "cargo",                             // build tool for Rust
-                "build",                             // build this project (incl. native libraries because of `Cargo.toml`)
-                "--features", featureName,           // select the current variant as a crate feature
-                "--profile", buildProfile.cargoName, // profile to build with (determines optimizations, asserts etc.)
+                // build tool for Rust
+                "cargo",
+                // build this project (into native shared libraries because of `Cargo.toml`)
+                "build",
+                // select the current variant as a crate feature
+                "--features", featureName,
+                // profile to build with (determines optimizations, asserts etc.)
+                "--profile", buildProfile.cargoName,
+                // build using this as the workspace folder
                 "--target-dir", targetDir,
-                //"--target", "x86_64-unknown-linux-gnu",
+                "--target", buildTarget,
             )
             //environment["RUSTFLAGS"] = "-Z sanitizer=address -C link-arg=-lasan"
         }.get()
 
         jar {
             dependsOn(assembleNatives)
-            //from("$targetDir/x86_64-unknown-linux-gnu/${buildProfile.outputName}/${nativesExt.libraryFileName.get()}") {
-            from("$targetDir/${buildProfile.outputName}/${nativesExt.libraryFileName.get()}") {
-                into("rapier/${nativesExt.outputDirName.get()}")
+            from("$targetDir/$buildTarget/${buildProfile.outputName}/${nativesExt.libraryFileName.get()}") {
+                into("rapier/${nativesExt.platformName.get()}_${nativesExt.archName.get()}")
             }
         }
     }
