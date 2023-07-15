@@ -12,8 +12,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, windows-latest, macos-latest]
-        dimension: [dim2, dim3]
-        precision: [f32, f64]
         include:
         - os: ubuntu-20.04
           # these two params don't matter, since we will publish all variants anyway
