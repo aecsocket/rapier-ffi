@@ -13,11 +13,8 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-latest, macos-latest]
         include:
+        # the OS doesn't actually matter, we just need this to only ever run once
         - os: ubuntu-20.04
-          # these two params don't matter, since we will publish all variants anyway
-          # this is just to make sure only one of these jobs publishes all variants
-          dimension: dim2
-          precision: f32
           publish-core: true
     runs-on: ${{ matrix.os }}
 
