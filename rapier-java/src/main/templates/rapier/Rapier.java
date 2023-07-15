@@ -16,7 +16,7 @@ public final class Rapier {
     public static void load() {
         if (loaded.getAndSet(true)) return;
 
-        var arch = switch (CpuArchitecture.get()) {
+        var arch = switch (CpuArch.get()) {
             case AARCH64 -> "aarch64";
             case ARM -> "arm";
             case X86 -> "x86";
@@ -26,16 +26,19 @@ public final class Rapier {
             case WINDOWS -> "windows_" + arch + "/rapier_ffi.dll";
             case MACOS -> "macos_" + arch + "/librapier_ffi.dylib";
         };
+        var debugInfo = resourcePath +
+                " arch: " + CpuArch.raw() + " / " + CpuArch.get() +
+                " platform: " + CpuPlatform.raw() + " / " + CpuPlatform.get();
 
         try (@Nullable var resourceIn = Rapier.class.getClassLoader().getResourceAsStream(resourcePath)) {
             if (resourceIn == null) {
-                throw new RuntimeException("No native library in JAR at " + resourcePath);
+                throw new RuntimeException("No native library in JAR (" + debugInfo + ")");
             }
             var libFile = Files.createTempFile("rapier", null);
             Files.copy(resourceIn, libFile, StandardCopyOption.REPLACE_EXISTING);
             System.load(libFile.toAbsolutePath().toString());
         } catch (IOException | UnsatisfiedLinkError ex) {
-            throw new RuntimeException("Could not load native library from " + resourcePath, ex);
+            throw new RuntimeException("Could not load native library (" + debugInfo + ")", ex);
         }
     }
 
@@ -54,8 +57,12 @@ public final class Rapier {
         WINDOWS,
         MACOS;
 
+        public static String raw() {
+            return System.getProperty("os.name");
+        }
+
         public static CpuPlatform get() {
-            var os = System.getProperty("os.name").toLowerCase(Locale.ROOT);
+            var os = raw().toLowerCase(Locale.ROOT);
 
             if (os.contains("linux")) return LINUX;
             if (os.contains("windows")) return WINDOWS;
@@ -65,13 +72,17 @@ public final class Rapier {
         }
     }
 
-    public enum CpuArchitecture {
+    public enum CpuArch {
         AARCH64,
         ARM,
         X86;
 
-        public static CpuArchitecture get() {
-            var arch = System.getProperty("os.arch")
+        public static String raw() {
+            return System.getProperty("os.arch");
+        }
+
+        public static CpuArch get() {
+            var arch = raw()
                     .toLowerCase(Locale.ROOT)
                     .replaceAll("[^a-z0-9]+", "");
 
