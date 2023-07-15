@@ -15,7 +15,7 @@ jobs:
         dimension: [dim2, dim3]
         precision: [f32, f64]
         include:
-        - os: ubuntu-latest
+        - os: ubuntu-20.04
           # these two params don't matter, since we will publish all variants anyway
           # this is just to make sure only one of these jobs publishes all variants
           dimension: dim2
@@ -30,6 +30,10 @@ jobs:
         distribution: temurin
         java-version: 19
     - uses: gradle/gradle-build-action@v2
+    - name: Add build targets
+      if: ${{ matrix.os == 'ubuntu-20.04' }}
+      run: |
+        rustup target add aarch64-unknown-linux-gnu
     - name: Build
       run: |
         cd rapier-java
