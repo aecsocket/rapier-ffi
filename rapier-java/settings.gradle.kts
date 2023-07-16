@@ -16,7 +16,7 @@ listOf("dim2", "dim3").forEach { dimension ->
     val variantProject = "rapier-java-$dimension-$precision"
     include(variantProject)
 
-    listOf("linux-x86", "linux-aarch64", "windows-x86", "macos-x86").forEach { native ->
+    listOf("linux-x86", "linux-aarch64", "windows-x86", "macos-x86", "macos-aarch64").forEach { native ->
       val nativesProject = "$variantProject:$variantProject-$native"
       include(nativesProject)
       project(":$nativesProject").projectDir = file("rapier-java-$dimension-$precision/$native")

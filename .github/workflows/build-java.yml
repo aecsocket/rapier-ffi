@@ -13,18 +13,21 @@ jobs:
     container: centos:7
     steps:
     - uses: actions/checkout@v3
-    - name: Add build targets
+    - name: Add dependencies
       run: |
         yum -y update
-        yum -y install curl
+        yum -y install epel-release
+        yum repolist
+        yum -y install curl gcc-aarch64-linux-gnu
+    - name: Add Rust build targets
+      run: |
         curl https://sh.rustup.rs -sSf | sh -s -- -y
         source "$HOME/.cargo/env"
         rustup target add aarch64-unknown-linux-gnu
-        yum -y install gcc-aarch64-linux-gnu
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
-        java-version: 8
+        java-version: 11
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: |
@@ -38,7 +41,21 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
-        java-version: 8
+        java-version: 11
+    - uses: gradle/gradle-build-action@v2
+    - name: Build
+      run: |
+        cd rapier-java
+        ./gradlew --stacktrace --info -PbuildProfile=release build
+  
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 11
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: |
