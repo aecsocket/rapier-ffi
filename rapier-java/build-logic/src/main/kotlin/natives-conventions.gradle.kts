@@ -40,9 +40,9 @@ afterEvaluate {
                 "--profile", buildProfile.cargoName,
                 // build using this as the workspace folder
                 "--target-dir", targetDir,
+                // (cross-)compile to this target platform + CPU architecture
                 "--target", buildTarget,
             )
-            //environment["RUSTFLAGS"] = "-Z sanitizer=address -C link-arg=-lasan"
         }.get()
 
         jar {

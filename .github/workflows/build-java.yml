@@ -8,21 +8,21 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        # TODO: Ubuntu 20.04 has libc 2.31. We want to target CentOS 7, with libc 2.17 (minimum Rust ver.)
-        os: [ubuntu-20.04, windows-latest, macos-latest]
-        dimension: [dim2, dim3]
-        precision: [f32, f64]
-    runs-on: ${{ matrix.os }}
+  build-linux:
+    runs-on: ubuntu-latest
+    container: centos:7
 
     steps:
     - uses: actions/checkout@v3
+    - name: Add build targets
+      run: |
+        rustup target add aarch64-unknown-linux-gnu
+        sudo yum install gcc-aarch64-linux-gnu
     - uses: actions/setup-java@v3
       with:
         distribution: temurin
-        java-version: 17
+        java-version: 8
+        
     - uses: gradle/gradle-build-action@v2
     - name: Build
       run: |
