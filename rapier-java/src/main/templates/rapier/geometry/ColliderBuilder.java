@@ -7,8 +7,8 @@ import rapier.__real;
 import rapier.math.*;
 import rapier.shape.SharedShape;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class ColliderBuilder extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
@@ -18,11 +18,11 @@ public final class ColliderBuilder extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprColliderBuilder_drop(self));
     }
 
-    private ColliderBuilder(MemoryAddress memory) {
+    private ColliderBuilder(MemorySegment memory) {
         super(memory);
     }
 
-    public static ColliderBuilder at(MemoryAddress memory) {
+    public static ColliderBuilder at(MemorySegment memory) {
         return new ColliderBuilder(memory);
     }
 
@@ -35,14 +35,14 @@ public final class ColliderBuilder extends RefNative implements Droppable {
     }
 
     public ColliderBuilder collisionGroups(InteractionGroups groups) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderBuilder_collision_groups(self, groups.allocInto(arena));
         }
         return this;
     }
 
     public ColliderBuilder solverGroups(InteractionGroups groups) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderBuilder_solver_groups(self, groups.allocInto(arena));
         }
         return this;
@@ -104,21 +104,21 @@ public final class ColliderBuilder extends RefNative implements Droppable {
     }
 
     public ColliderBuilder translation(Vector translation) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderBuilder_translation(self, translation.allocInto(arena));
         }
         return this;
     }
 
     public ColliderBuilder rotation(AngVector rotation) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderBuilder_rotation(self, rotation.allocInto(arena));
         }
         return this;
     }
 
     public ColliderBuilder position(Isometry pos) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderBuilder_position(self, pos.allocInto(arena));
         }
         return this;

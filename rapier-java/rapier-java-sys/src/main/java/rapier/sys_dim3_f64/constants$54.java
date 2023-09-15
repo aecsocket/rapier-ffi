@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$54 {
+final class constants$54 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_clear_autostep$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_autostep",
-        constants$54.RprKinematicCharacterController_clear_autostep$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_snap_to_ground",
-        constants$54.RprKinematicCharacterController_clear_snap_to_ground$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$54() {}
     static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_default",
@@ -48,6 +36,65 @@ class constants$54 {
     static final MethodHandle RprKinematicCharacterController_min_slope_slide_angle$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_min_slope_slide_angle",
         constants$54.RprKinematicCharacterController_min_slope_slide_angle$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_move_shape$events$FUNC = FunctionDescriptor.ofVoid(
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("handle"),
+            MemoryLayout.structLayout(
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("w")
+                ).withName("rotation"),
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
+                ).withName("translation")
+            ).withName("character_pos"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation_applied"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation_remaining"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("toi"),
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
+                ).withName("witness1"),
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
+                ).withName("witness2"),
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
+                ).withName("normal1"),
+                MemoryLayout.structLayout(
+                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
+                ).withName("normal2"),
+                Constants$root.C_INT$LAYOUT.withName("status"),
+                MemoryLayout.paddingLayout(32)
+            ).withName("toi")
+        ).withName("RprCharacterCollision")
+    );
+    static final MethodHandle RprKinematicCharacterController_move_shape$events$MH = RuntimeHelper.downcallHandle(
+        constants$54.RprKinematicCharacterController_move_shape$events$FUNC
     );
 }
 

@@ -7,19 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprCharacterLength {
+ *     enum RprCharacterLength_Tag tag;
+ *     union union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3) {
+ *         struct struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5) {
+ *             double relative;
+ *         };
+ *         struct struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5) {
+ *             double absolute;
+ *         };
+ *     };
+ * };
+ * }
+ */
 public class RprCharacterLength {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("tag"),
         MemoryLayout.paddingLayout(32),
         MemoryLayout.unionLayout(
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-            ).withName("$anon$0"),
+            ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5)"),
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-            ).withName("$anon$1")
-        ).withName("$anon$0")
+            ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5)")
+        ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3)")
     ).withName("RprCharacterLength");
     public static MemoryLayout $LAYOUT() {
         return RprCharacterLength.$struct$LAYOUT;
@@ -28,10 +43,22 @@ public class RprCharacterLength {
     public static VarHandle tag$VH() {
         return RprCharacterLength.tag$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum RprCharacterLength_Tag tag;
+     * }
+     */
     public static int tag$get(MemorySegment seg) {
         return (int)RprCharacterLength.tag$VH.get(seg);
     }
-    public static void tag$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum RprCharacterLength_Tag tag;
+     * }
+     */
+    public static void tag$set(MemorySegment seg, int x) {
         RprCharacterLength.tag$VH.set(seg, x);
     }
     public static int tag$get(MemorySegment seg, long index) {
@@ -40,44 +67,12 @@ public class RprCharacterLength {
     public static void tag$set(MemorySegment seg, long index, int x) {
         RprCharacterLength.tag$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle relative$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("$anon$0"), MemoryLayout.PathElement.groupElement("$anon$0"), MemoryLayout.PathElement.groupElement("relative"));
-    public static VarHandle relative$VH() {
-        return RprCharacterLength.relative$VH;
-    }
-    public static double relative$get(MemorySegment seg) {
-        return (double)RprCharacterLength.relative$VH.get(seg);
-    }
-    public static void relative$set( MemorySegment seg, double x) {
-        RprCharacterLength.relative$VH.set(seg, x);
-    }
-    public static double relative$get(MemorySegment seg, long index) {
-        return (double)RprCharacterLength.relative$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void relative$set(MemorySegment seg, long index, double x) {
-        RprCharacterLength.relative$VH.set(seg.asSlice(index*sizeof()), x);
-    }
-    static final VarHandle absolute$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("$anon$0"), MemoryLayout.PathElement.groupElement("$anon$1"), MemoryLayout.PathElement.groupElement("absolute"));
-    public static VarHandle absolute$VH() {
-        return RprCharacterLength.absolute$VH;
-    }
-    public static double absolute$get(MemorySegment seg) {
-        return (double)RprCharacterLength.absolute$VH.get(seg);
-    }
-    public static void absolute$set( MemorySegment seg, double x) {
-        RprCharacterLength.absolute$VH.set(seg, x);
-    }
-    public static double absolute$get(MemorySegment seg, long index) {
-        return (double)RprCharacterLength.absolute$VH.get(seg.asSlice(index*sizeof()));
-    }
-    public static void absolute$set(MemorySegment seg, long index, double x) {
-        RprCharacterLength.absolute$VH.set(seg.asSlice(index*sizeof()), x);
-    }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

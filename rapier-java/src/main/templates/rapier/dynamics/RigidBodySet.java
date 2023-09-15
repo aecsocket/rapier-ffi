@@ -9,8 +9,8 @@ import rapier.dynamics.joint.multibody.MultibodyJointSet;
 import rapier.geometry.ColliderSet;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ public final class RigidBodySet extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprRigidBodySet_drop(self));
     }
 
-    private RigidBodySet(MemoryAddress memory) {
+    private RigidBodySet(MemorySegment memory) {
         super(memory);
     }
 
-    public static RigidBodySet at(MemoryAddress memory) {
+    public static RigidBodySet at(MemorySegment memory) {
         return new RigidBodySet(memory);
     }
 
@@ -45,7 +45,7 @@ public final class RigidBodySet extends RefNative implements Droppable {
         return rapier.sys.RapierC.RprRigidBodySet_is_empty(self);
     }
 
-    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+    private List<Entry> vecToList(SegmentAllocator alloc, MemorySegment vec) {
         var len = (int) rapier.sys.RapierC.RprRigidBodyVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
@@ -58,13 +58,13 @@ public final class RigidBodySet extends RefNative implements Droppable {
     }
 
     public List<Entry> all() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return vecToList(arena, rapier.sys.RapierC.RprRigidBodySet_all(self));
         }
     }
 
     public ArenaKey insert(RigidBody.Mut rb) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprRigidBodySet_insert(arena, self, rb.memory()));
         }
     }
@@ -77,7 +77,7 @@ public final class RigidBodySet extends RefNative implements Droppable {
             MultibodyJointSet multibodyJoints,
             boolean removeAttachedColliders
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprRigidBodySet_remove(
                     self,
                     handle.allocInto(arena),
@@ -87,21 +87,21 @@ public final class RigidBodySet extends RefNative implements Droppable {
                     multibodyJoints.memory(),
                     removeAttachedColliders
             );
-            return res.address().equals(MemoryAddress.NULL) ? null : RigidBody.atMut(res);
+            return res.equals(MemorySegment.NULL) ? null : RigidBody.atMut(res);
         }
     }
 
     public @Nullable RigidBody get(ArenaKey index) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprRigidBodySet_get(self, index.allocInto(arena));
-            return res.equals(MemoryAddress.NULL) ? null : RigidBody.at(res);
+            return res.equals(MemorySegment.NULL) ? null : RigidBody.at(res);
         }
     }
 
     public @Nullable RigidBody.Mut getMut(ArenaKey index) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprRigidBodySet_get_mut(self, index.allocInto(arena));
-            return res.equals(MemoryAddress.NULL) ? null : RigidBody.atMut(res);
+            return res.equals(MemorySegment.NULL) ? null : RigidBody.atMut(res);
         }
     }
 }

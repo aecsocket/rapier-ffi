@@ -7,23 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$57 {
+final class constants$57 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_slide$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_slide$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_slide",
-        constants$57.RprKinematicCharacterController_slide$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_snap_to_ground$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_snap_to_ground",
-        constants$57.RprKinematicCharacterController_snap_to_ground$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$57() {}
     static final FunctionDescriptor RprKinematicCharacterController_solve_character_collision_impulses$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_FLOAT$LAYOUT,
@@ -147,6 +134,23 @@ class constants$57 {
     static final MethodHandle RprMultibodyJointSet_insert$MH = RuntimeHelper.downcallHandle(
         "RprMultibodyJointSet_insert",
         constants$57.RprMultibodyJointSet_insert$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprMultibodyJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_new",
+        constants$57.RprMultibodyJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprMultibodyJointSet_remove$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprMultibodyJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprMultibodyJointSet_remove",
+        constants$57.RprMultibodyJointSet_remove$FUNC
     );
 }
 

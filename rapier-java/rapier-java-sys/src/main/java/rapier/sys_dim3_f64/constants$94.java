@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$94 {
+final class constants$94 {
 
-    static final FunctionDescriptor RprWheel_max_suspension_travel$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_max_suspension_travel$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_max_suspension_travel",
-        constants$94.RprWheel_max_suspension_travel$FUNC
-    );
-    static final FunctionDescriptor RprWheel_radius$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_radius$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_radius",
-        constants$94.RprWheel_radius$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$94() {}
     static final FunctionDescriptor RprWheel_rotation$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -61,6 +49,22 @@ class constants$94 {
     static final MethodHandle RprWheel_set_chassis_connection_point_cs$MH = RuntimeHelper.downcallHandle(
         "RprWheel_set_chassis_connection_point_cs",
         constants$94.RprWheel_set_chassis_connection_point_cs$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_damping_compression$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_damping_compression$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_damping_compression",
+        constants$94.RprWheel_set_damping_compression$FUNC
+    );
+    static final FunctionDescriptor RprWheel_set_damping_relaxation$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprWheel_set_damping_relaxation$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_set_damping_relaxation",
+        constants$94.RprWheel_set_damping_relaxation$FUNC
     );
 }
 

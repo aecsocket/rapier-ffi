@@ -3,7 +3,7 @@ package rapier.dynamics;
 import rapier.__real;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 
 public record IntegrationParameters(
@@ -88,7 +88,7 @@ public record IntegrationParameters(
     }
 
     public static IntegrationParameters defaults() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return from(rapier.sys.RapierC.RprIntegrationParameters_default(arena));
         }
     }

@@ -7,29 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$88 {
+final class constants$88 {
 
-    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_tangent_velocity",
-        constants$88.RprSolverContact_set_tangent_velocity$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("x"),
-        Constants$root.C_FLOAT$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_tangent_velocity",
-        constants$88.RprSolverContact_tangent_velocity$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$88() {}
     static final FunctionDescriptor RprVHACDParameters_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("concavity"),
         Constants$root.C_FLOAT$LAYOUT.withName("alpha"),
@@ -44,7 +25,7 @@ class constants$88 {
                     Constants$root.C_BOOL$LAYOUT.withName("detect_cavities"),
                     Constants$root.C_BOOL$LAYOUT.withName("detect_self_intersections")
                 ).withName("flood_fill")
-            ).withName("$anon$0"),
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1334:3)"),
             MemoryLayout.paddingLayout(16)
         ).withName("fill_mode"),
         Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
@@ -74,7 +55,7 @@ class constants$88 {
         "RprVHACD_drop",
         constants$88.RprVHACD_drop$FUNC
     );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
+    static final MemorySegment NULL$ADDR = MemorySegment.ofAddress(0L);
 }
 
 

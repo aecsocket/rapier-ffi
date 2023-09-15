@@ -7,25 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$87 {
+final class constants$87 {
 
-    static final FunctionDescriptor RprSolverContact_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_point$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_point",
-        constants$87.RprSolverContact_point$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_restitution$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_restitution",
-        constants$87.RprSolverContact_restitution$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$87() {}
     static final FunctionDescriptor RprSolverContact_set_dist$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -60,6 +45,27 @@ class constants$87 {
     static final MethodHandle RprSolverContact_set_restitution$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_set_restitution",
         constants$87.RprSolverContact_set_restitution$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector")
+    );
+    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_set_tangent_velocity",
+        constants$87.RprSolverContact_set_tangent_velocity$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_tangent_velocity$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_tangent_velocity",
+        constants$87.RprSolverContact_tangent_velocity$FUNC
     );
 }
 

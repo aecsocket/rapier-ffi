@@ -7,9 +7,17 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprRotation {
+ *     double re;
+ *     double im;
+ * };
+ * }
+ */
 public class RprRotation {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("re"),
         Constants$root.C_DOUBLE$LAYOUT.withName("im")
     ).withName("RprRotation");
@@ -20,10 +28,22 @@ public class RprRotation {
     public static VarHandle re$VH() {
         return RprRotation.re$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double re;
+     * }
+     */
     public static double re$get(MemorySegment seg) {
         return (double)RprRotation.re$VH.get(seg);
     }
-    public static void re$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double re;
+     * }
+     */
+    public static void re$set(MemorySegment seg, double x) {
         RprRotation.re$VH.set(seg, x);
     }
     public static double re$get(MemorySegment seg, long index) {
@@ -36,10 +56,22 @@ public class RprRotation {
     public static VarHandle im$VH() {
         return RprRotation.im$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double im;
+     * }
+     */
     public static double im$get(MemorySegment seg) {
         return (double)RprRotation.im$VH.get(seg);
     }
-    public static void im$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double im;
+     * }
+     */
+    public static void im$set(MemorySegment seg, double x) {
         RprRotation.im$VH.set(seg, x);
     }
     public static double im$get(MemorySegment seg, long index) {
@@ -50,10 +82,10 @@ public class RprRotation {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

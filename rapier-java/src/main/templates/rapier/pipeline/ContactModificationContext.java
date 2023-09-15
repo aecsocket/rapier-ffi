@@ -8,16 +8,16 @@ import rapier.geometry.ColliderSet;
 import rapier.math.Vector;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 
 public final class ContactModificationContext extends RefNative {
-    private ContactModificationContext(MemoryAddress memory) {
+    private ContactModificationContext(MemorySegment memory) {
         super(memory);
     }
 
-    public static ContactModificationContext at(MemoryAddress memory) {
+    public static ContactModificationContext at(MemorySegment memory) {
         return new ContactModificationContext(memory);
     }
 
@@ -30,19 +30,19 @@ public final class ContactModificationContext extends RefNative {
     }
 
     public ArenaKey getCollider1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprContactModificationContext_collider1(arena, self));
         }
     }
 
     public ArenaKey getCollider2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprContactModificationContext_collider2(arena, self));
         }
     }
 
     public @Nullable ArenaKey getRigidBody1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprContactModificationContext_rigid_body1(self, res))
                 return ArenaKey.from(res);
@@ -51,7 +51,7 @@ public final class ContactModificationContext extends RefNative {
     }
 
     public @Nullable ArenaKey getRigidBody2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprContactModificationContext_rigid_body2(self, res))
                 return ArenaKey.from(res);
@@ -64,7 +64,7 @@ public final class ContactModificationContext extends RefNative {
     }
 
     public SolverContact[] getSolverContacts() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprContactModificationContext_solver_contacts(self, data, len);
@@ -78,13 +78,13 @@ public final class ContactModificationContext extends RefNative {
     }
 
     public Vector getNormal() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprContactModificationContext_normal(arena, self));
         }
     }
 
     public void setNormal(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprContactModificationContext_set_normal(self, value.allocInto(arena));
         }
     }

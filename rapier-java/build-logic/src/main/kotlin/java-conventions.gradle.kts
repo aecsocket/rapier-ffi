@@ -9,7 +9,7 @@ plugins {
 
 indra {
   javaVersions {
-    target(19)
+    target(20)
     previewFeaturesEnabled(true)
   }
 }

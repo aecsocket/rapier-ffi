@@ -7,9 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprPhysicsHooks {
+ *     unsigned int (*filter_contact_pair)(struct RprPairFilterContext*);
+ *     _Bool (*filter_intersection_pair)(struct RprPairFilterContext*);
+ *     void (*modify_solver_contacts)(struct RprContactModificationContext*);
+ * };
+ * }
+ */
 public class RprPhysicsHooks {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_POINTER$LAYOUT.withName("filter_contact_pair"),
         Constants$root.C_POINTER$LAYOUT.withName("filter_intersection_pair"),
         Constants$root.C_POINTER$LAYOUT.withName("modify_solver_contacts")
@@ -23,17 +32,22 @@ public class RprPhysicsHooks {
     static final MethodHandle filter_contact_pair$MH = RuntimeHelper.downcallHandle(
         RprPhysicsHooks.filter_contact_pair$FUNC
     );
+    /**
+     * {@snippet :
+ * unsigned int (*filter_contact_pair)(struct RprPairFilterContext*);
+     * }
+     */
     public interface filter_contact_pair {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(filter_contact_pair fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(filter_contact_pair.class, fi, RprPhysicsHooks.filter_contact_pair$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(filter_contact_pair fi, SegmentScope scope) {
+            return RuntimeHelper.upcallStub(filter_contact_pair.class, fi, RprPhysicsHooks.filter_contact_pair$FUNC, scope);
         }
-        static filter_contact_pair ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static filter_contact_pair ofAddress(MemorySegment addr, SegmentScope scope) {
+            MemorySegment symbol = MemorySegment.ofAddress(addr.address(), 0, scope);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)RprPhysicsHooks.filter_contact_pair$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)RprPhysicsHooks.filter_contact_pair$MH.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -45,20 +59,32 @@ public class RprPhysicsHooks {
     public static VarHandle filter_contact_pair$VH() {
         return RprPhysicsHooks.filter_contact_pair$VH;
     }
-    public static MemoryAddress filter_contact_pair$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.filter_contact_pair$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int (*filter_contact_pair)(struct RprPairFilterContext*);
+     * }
+     */
+    public static MemorySegment filter_contact_pair$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.filter_contact_pair$VH.get(seg);
     }
-    public static void filter_contact_pair$set( MemorySegment seg, MemoryAddress x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int (*filter_contact_pair)(struct RprPairFilterContext*);
+     * }
+     */
+    public static void filter_contact_pair$set(MemorySegment seg, MemorySegment x) {
         RprPhysicsHooks.filter_contact_pair$VH.set(seg, x);
     }
-    public static MemoryAddress filter_contact_pair$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.filter_contact_pair$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment filter_contact_pair$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.filter_contact_pair$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void filter_contact_pair$set(MemorySegment seg, long index, MemoryAddress x) {
+    public static void filter_contact_pair$set(MemorySegment seg, long index, MemorySegment x) {
         RprPhysicsHooks.filter_contact_pair$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static filter_contact_pair filter_contact_pair (MemorySegment segment, MemorySession session) {
-        return filter_contact_pair.ofAddress(filter_contact_pair$get(segment), session);
+    public static filter_contact_pair filter_contact_pair(MemorySegment segment, SegmentScope scope) {
+        return filter_contact_pair.ofAddress(filter_contact_pair$get(segment), scope);
     }
     static final FunctionDescriptor filter_intersection_pair$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
@@ -66,17 +92,22 @@ public class RprPhysicsHooks {
     static final MethodHandle filter_intersection_pair$MH = RuntimeHelper.downcallHandle(
         RprPhysicsHooks.filter_intersection_pair$FUNC
     );
+    /**
+     * {@snippet :
+ * _Bool (*filter_intersection_pair)(struct RprPairFilterContext*);
+     * }
+     */
     public interface filter_intersection_pair {
 
-        boolean apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(filter_intersection_pair fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(filter_intersection_pair.class, fi, RprPhysicsHooks.filter_intersection_pair$FUNC, session);
+        boolean apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(filter_intersection_pair fi, SegmentScope scope) {
+            return RuntimeHelper.upcallStub(filter_intersection_pair.class, fi, RprPhysicsHooks.filter_intersection_pair$FUNC, scope);
         }
-        static filter_intersection_pair ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static filter_intersection_pair ofAddress(MemorySegment addr, SegmentScope scope) {
+            MemorySegment symbol = MemorySegment.ofAddress(addr.address(), 0, scope);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (boolean)RprPhysicsHooks.filter_intersection_pair$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (boolean)RprPhysicsHooks.filter_intersection_pair$MH.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -88,20 +119,32 @@ public class RprPhysicsHooks {
     public static VarHandle filter_intersection_pair$VH() {
         return RprPhysicsHooks.filter_intersection_pair$VH;
     }
-    public static MemoryAddress filter_intersection_pair$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.filter_intersection_pair$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool (*filter_intersection_pair)(struct RprPairFilterContext*);
+     * }
+     */
+    public static MemorySegment filter_intersection_pair$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.filter_intersection_pair$VH.get(seg);
     }
-    public static void filter_intersection_pair$set( MemorySegment seg, MemoryAddress x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool (*filter_intersection_pair)(struct RprPairFilterContext*);
+     * }
+     */
+    public static void filter_intersection_pair$set(MemorySegment seg, MemorySegment x) {
         RprPhysicsHooks.filter_intersection_pair$VH.set(seg, x);
     }
-    public static MemoryAddress filter_intersection_pair$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.filter_intersection_pair$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment filter_intersection_pair$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.filter_intersection_pair$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void filter_intersection_pair$set(MemorySegment seg, long index, MemoryAddress x) {
+    public static void filter_intersection_pair$set(MemorySegment seg, long index, MemorySegment x) {
         RprPhysicsHooks.filter_intersection_pair$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static filter_intersection_pair filter_intersection_pair (MemorySegment segment, MemorySession session) {
-        return filter_intersection_pair.ofAddress(filter_intersection_pair$get(segment), session);
+    public static filter_intersection_pair filter_intersection_pair(MemorySegment segment, SegmentScope scope) {
+        return filter_intersection_pair.ofAddress(filter_intersection_pair$get(segment), scope);
     }
     static final FunctionDescriptor modify_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
@@ -109,17 +152,22 @@ public class RprPhysicsHooks {
     static final MethodHandle modify_solver_contacts$MH = RuntimeHelper.downcallHandle(
         RprPhysicsHooks.modify_solver_contacts$FUNC
     );
+    /**
+     * {@snippet :
+ * void (*modify_solver_contacts)(struct RprContactModificationContext*);
+     * }
+     */
     public interface modify_solver_contacts {
 
-        void apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(modify_solver_contacts fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(modify_solver_contacts.class, fi, RprPhysicsHooks.modify_solver_contacts$FUNC, session);
+        void apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(modify_solver_contacts fi, SegmentScope scope) {
+            return RuntimeHelper.upcallStub(modify_solver_contacts.class, fi, RprPhysicsHooks.modify_solver_contacts$FUNC, scope);
         }
-        static modify_solver_contacts ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static modify_solver_contacts ofAddress(MemorySegment addr, SegmentScope scope) {
+            MemorySegment symbol = MemorySegment.ofAddress(addr.address(), 0, scope);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    RprPhysicsHooks.modify_solver_contacts$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    RprPhysicsHooks.modify_solver_contacts$MH.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -131,27 +179,39 @@ public class RprPhysicsHooks {
     public static VarHandle modify_solver_contacts$VH() {
         return RprPhysicsHooks.modify_solver_contacts$VH;
     }
-    public static MemoryAddress modify_solver_contacts$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.modify_solver_contacts$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void (*modify_solver_contacts)(struct RprContactModificationContext*);
+     * }
+     */
+    public static MemorySegment modify_solver_contacts$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.modify_solver_contacts$VH.get(seg);
     }
-    public static void modify_solver_contacts$set( MemorySegment seg, MemoryAddress x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void (*modify_solver_contacts)(struct RprContactModificationContext*);
+     * }
+     */
+    public static void modify_solver_contacts$set(MemorySegment seg, MemorySegment x) {
         RprPhysicsHooks.modify_solver_contacts$VH.set(seg, x);
     }
-    public static MemoryAddress modify_solver_contacts$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)RprPhysicsHooks.modify_solver_contacts$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment modify_solver_contacts$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)RprPhysicsHooks.modify_solver_contacts$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void modify_solver_contacts$set(MemorySegment seg, long index, MemoryAddress x) {
+    public static void modify_solver_contacts$set(MemorySegment seg, long index, MemorySegment x) {
         RprPhysicsHooks.modify_solver_contacts$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static modify_solver_contacts modify_solver_contacts (MemorySegment segment, MemorySession session) {
-        return modify_solver_contacts.ofAddress(modify_solver_contacts$get(segment), session);
+    public static modify_solver_contacts modify_solver_contacts(MemorySegment segment, SegmentScope scope) {
+        return modify_solver_contacts.ofAddress(modify_solver_contacts$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

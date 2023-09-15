@@ -6,15 +6,15 @@ import rapier.dynamics.RigidBodySet;
 import rapier.geometry.ColliderSet;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class PairFilterContext extends RefNative {
-    private PairFilterContext(MemoryAddress memory) {
+    private PairFilterContext(MemorySegment memory) {
         super(memory);
     }
 
-    public static PairFilterContext at(MemoryAddress memory) {
+    public static PairFilterContext at(MemorySegment memory) {
         return new PairFilterContext(memory);
     }
 
@@ -27,19 +27,19 @@ public final class PairFilterContext extends RefNative {
     }
 
     public ArenaKey getCollider1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprPairFilterContext_collider1(arena, self));
         }
     }
 
     public ArenaKey getCollider2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprPairFilterContext_collider2(arena, self));
         }
     }
 
     public @Nullable ArenaKey getRigidBody1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprPairFilterContext_rigid_body1(self, res))
                 return ArenaKey.from(res);
@@ -48,7 +48,7 @@ public final class PairFilterContext extends RefNative {
     }
 
     public @Nullable ArenaKey getRigidBody2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprPairFilterContext_rigid_body2(self, res))
                 return ArenaKey.from(res);

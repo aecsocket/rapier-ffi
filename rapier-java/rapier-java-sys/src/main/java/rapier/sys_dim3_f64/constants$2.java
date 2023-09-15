@@ -7,8 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$2 {
+final class constants$2 {
 
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$2() {}
     static final FunctionDescriptor strtoull$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -32,26 +34,33 @@ class constants$2 {
         "a64l",
         constants$2.a64l$FUNC
     );
-    static final FunctionDescriptor __bswap_16$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final FunctionDescriptor select$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle __bswap_16$MH = RuntimeHelper.downcallHandle(
-        "__bswap_16",
-        constants$2.__bswap_16$FUNC
+    static final MethodHandle select$MH = RuntimeHelper.downcallHandle(
+        "select",
+        constants$2.select$FUNC
     );
-    static final FunctionDescriptor __bswap_32$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor pselect$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle __bswap_32$MH = RuntimeHelper.downcallHandle(
-        "__bswap_32",
-        constants$2.__bswap_32$FUNC
+    static final MethodHandle pselect$MH = RuntimeHelper.downcallHandle(
+        "pselect",
+        constants$2.pselect$FUNC
     );
-    static final FunctionDescriptor __bswap_64$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle __bswap_64$MH = RuntimeHelper.downcallHandle(
-        "__bswap_64",
-        constants$2.__bswap_64$FUNC
+    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
+    static final MethodHandle random$MH = RuntimeHelper.downcallHandle(
+        "random",
+        constants$2.random$FUNC
     );
 }
 

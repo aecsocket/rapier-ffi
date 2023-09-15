@@ -32,17 +32,17 @@ public interface PhysicsHooks {
         rapier.sys.RprPhysicsHooks.filter_contact_pair$set(memory, rapier.sys.RprPhysicsHooks.filter_contact_pair.allocate(
                 (context) -> self.filterContactPair(
                         PairFilterContext.at(context)
-                ), memory.session()).address()
+                ), memory.scope())
         );
         rapier.sys.RprPhysicsHooks.filter_intersection_pair$set(memory, rapier.sys.RprPhysicsHooks.filter_intersection_pair.allocate(
                 (context) -> self.filterIntersectionPair(
                         PairFilterContext.at(context)
-                ), memory.session()).address()
+                ), memory.scope())
         );
         rapier.sys.RprPhysicsHooks.modify_solver_contacts$set(memory, rapier.sys.RprPhysicsHooks.modify_solver_contacts.allocate(
                 (context) -> self.modifySolverContacts(
                         ContactModificationContext.at(context)
-                ), memory.session()).address()
+                ), memory.scope())
         );
     }
 

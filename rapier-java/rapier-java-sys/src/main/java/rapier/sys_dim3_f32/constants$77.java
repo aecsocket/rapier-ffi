@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$77 {
+final class constants$77 {
 
-    static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_ccd_enabled",
-        constants$77.RprRigidBody_is_ccd_enabled$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_dynamic",
-        constants$77.RprRigidBody_is_dynamic$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$77() {}
     static final FunctionDescriptor RprRigidBody_is_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -51,6 +39,20 @@ class constants$77 {
     static final MethodHandle RprRigidBody_is_rotation_locked$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_rotation_locked",
         constants$77.RprRigidBody_is_rotation_locked$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_sleeping$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_sleeping",
+        constants$77.RprRigidBody_is_sleeping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_translation_locked$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_translation_locked$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_translation_locked",
+        constants$77.RprRigidBody_is_translation_locked$FUNC
     );
 }
 

@@ -8,8 +8,8 @@ import rapier.dynamics.IslandManager;
 import rapier.dynamics.RigidBodySet;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public final class ColliderSet extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprColliderSet_drop(self));
     }
 
-    private ColliderSet(MemoryAddress memory) {
+    private ColliderSet(MemorySegment memory) {
         super(memory);
     }
 
-    public static ColliderSet at(MemoryAddress memory) {
+    public static ColliderSet at(MemorySegment memory) {
         return new ColliderSet(memory);
     }
 
@@ -44,7 +44,7 @@ public final class ColliderSet extends RefNative implements Droppable {
         return rapier.sys.RapierC.RprColliderSet_is_empty(self);
     }
 
-    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+    private List<Entry> vecToList(SegmentAllocator alloc, MemorySegment vec) {
         var len = (int) rapier.sys.RapierC.RprColliderVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
@@ -57,25 +57,25 @@ public final class ColliderSet extends RefNative implements Droppable {
     }
 
     public List<Entry> all() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return vecToList(arena, rapier.sys.RapierC.RprColliderSet_all(self));
         }
     }
 
     public List<Entry> allEnabled() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return vecToList(arena, rapier.sys.RapierC.RprColliderSet_all_enabled(self));
         }
     }
 
     public ArenaKey insert(Collider.Mut coll) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprColliderSet_insert(arena, self, coll.memory()));
         }
     }
 
     public ArenaKey insertWithParent(Collider.Mut coll, ArenaKey parentHandle, RigidBodySet bodies) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprColliderSet_insert_with_parent(
                     arena,
                     self,
@@ -87,7 +87,7 @@ public final class ColliderSet extends RefNative implements Droppable {
     }
 
     public void setParent(ArenaKey handle, @Nullable ArenaKey newParentHandle, RigidBodySet bodies) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprColliderSet_set_parent(
                     self,
                     handle.allocInto(arena),
@@ -103,7 +103,7 @@ public final class ColliderSet extends RefNative implements Droppable {
             RigidBodySet bodies,
             boolean wakeUp
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprColliderSet_remove(
                     self,
                     handle.allocInto(arena),
@@ -111,21 +111,21 @@ public final class ColliderSet extends RefNative implements Droppable {
                     bodies.memory(),
                     wakeUp
             );
-            return res.address().equals(MemoryAddress.NULL) ? null : Collider.atMut(res);
+            return res.equals(MemorySegment.NULL) ? null : Collider.atMut(res);
         }
     }
 
     public @Nullable Collider get(ArenaKey index) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprColliderSet_get(self, index.allocInto(arena));
-            return res.equals(MemoryAddress.NULL) ? null : Collider.at(res);
+            return res.equals(MemorySegment.NULL) ? null : Collider.at(res);
         }
     }
 
     public @Nullable Collider.Mut getMut(ArenaKey index) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = rapier.sys.RapierC.RprColliderSet_get_mut(self, index.allocInto(arena));
-            return res.equals(MemoryAddress.NULL) ? null : Collider.atMut(res);
+            return res.equals(MemorySegment.NULL) ? null : Collider.atMut(res);
         }
     }
 }

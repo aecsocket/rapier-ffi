@@ -7,36 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$89 {
+final class constants$89 {
 
-    static final FunctionDescriptor RprSharedShape_strong_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprSharedShape_strong_count$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_strong_count",
-        constants$89.RprSharedShape_strong_count$FUNC
-    );
-    static final FunctionDescriptor RprSharedShape_triangle$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSharedShape_triangle$MH = RuntimeHelper.downcallHandle(
-        "RprSharedShape_triangle",
-        constants$89.RprSharedShape_triangle$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$89() {}
     static final FunctionDescriptor RprSharedShape_trimesh$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT,
@@ -68,6 +42,24 @@ class constants$89 {
     static final MethodHandle RprSolverContact_is_bouncy$MH = RuntimeHelper.downcallHandle(
         "RprSolverContact_is_bouncy",
         constants$89.RprSolverContact_is_bouncy$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_is_new$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_is_new$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_is_new",
+        constants$89.RprSolverContact_is_new$FUNC
+    );
+    static final FunctionDescriptor RprSolverContact_point$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprSolverContact_point$MH = RuntimeHelper.downcallHandle(
+        "RprSolverContact_point",
+        constants$89.RprSolverContact_point$FUNC
     );
 }
 

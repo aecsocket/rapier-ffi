@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$77 {
+final class constants$77 {
 
-    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_locked_axes",
-        constants$77.RprRigidBody_locked_axes$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_mass$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_mass",
-        constants$77.RprRigidBody_mass$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$77() {}
     static final FunctionDescriptor RprRigidBody_mass_properties$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -78,6 +66,22 @@ class constants$77 {
     static final MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_predict_position_using_velocity_and_forces",
         constants$77.RprRigidBody_predict_position_using_velocity_and_forces$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_recompute_mass_properties_from_colliders$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_recompute_mass_properties_from_colliders",
+        constants$77.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_reset_forces$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_reset_forces$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_reset_forces",
+        constants$77.RprRigidBody_reset_forces$FUNC
     );
 }
 

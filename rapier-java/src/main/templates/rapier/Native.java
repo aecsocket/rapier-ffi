@@ -6,10 +6,10 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 
 public interface Native {
-    Addressable memory();
+    MemorySegment memory();
 
-    static Addressable memoryOrNull(@Nullable Native obj) {
-        return obj == null ? MemoryAddress.NULL : obj.memory();
+    static MemorySegment memoryOrNull(@Nullable Native obj) {
+        return obj == null ? MemorySegment.NULL : obj.memory();
     }
 
     static MemorySegment allocPtrSlice(SegmentAllocator alloc, Native... objs) {
@@ -21,15 +21,15 @@ public interface Native {
     }
 
     static <T extends Native> T[] fromPtrSlice(
-            MemoryAddress data,
+            MemorySegment data,
             int len,
             IntFunction<T[]> createArray,
-            Function<MemoryAddress, T> map
+            Function<MemorySegment, T> map
     ) {
         var ptrSize = ValueLayout.ADDRESS.byteSize();
         var res = createArray.apply(len);
         for (int i = 0; i < len; i++) {
-            var elem = data.addOffset(ptrSize * i).get(ValueLayout.ADDRESS, 0);
+            var elem = data.asSlice(ptrSize * i).get(ValueLayout.ADDRESS, 0);
             res[i] = map.apply(elem);
         }
         return res;

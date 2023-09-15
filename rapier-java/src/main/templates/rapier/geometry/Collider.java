@@ -10,24 +10,24 @@ import rapier.math.*;
 import rapier.shape.SharedShape;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public sealed class Collider extends RefNative permits Collider.Mut {
-    protected Collider(MemoryAddress memory) {
+    protected Collider(MemorySegment memory) {
         super(memory);
     }
 
-    public static Collider at(MemoryAddress memory) {
+    public static Collider at(MemorySegment memory) {
         return new Collider(memory);
     }
 
-    public static Mut atMut(MemoryAddress memory) {
+    public static Mut atMut(MemorySegment memory) {
         return new Mut(memory);
     }
 
     public @Nullable ArenaKey getParent() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.from(rapier.sys.RapierC.RprCollider_parent(arena, self));
             return res.isValid() ? res : null;
         }
@@ -74,38 +74,38 @@ public sealed class Collider extends RefNative permits Collider.Mut {
     }
 
     public Vector getTranslation() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprCollider_translation(arena, self));
         }
     }
 
     public Rotation getRotation() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Rotation.from(rapier.sys.RapierC.RprCollider_rotation(arena, self));
         }
     }
 
     public Isometry getPosition() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Isometry.from(rapier.sys.RapierC.RprCollider_position(arena, self));
         }
     }
 
     public @Nullable Isometry getPositionWrtParent() {
         if (getParent() == null) return null;
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Isometry.from(rapier.sys.RapierC.RprCollider_position_wrt_parent(arena, self));
         }
     }
 
     public InteractionGroups getCollisionGroups() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return InteractionGroups.from(rapier.sys.RapierC.RprCollider_collision_groups(arena, self));
         }
     }
 
     public InteractionGroups getSolverGroups() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return InteractionGroups.from(rapier.sys.RapierC.RprCollider_solver_groups(arena, self));
         }
     }
@@ -115,7 +115,7 @@ public sealed class Collider extends RefNative permits Collider.Mut {
     }
 
     public ColliderMaterial getMaterial() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ColliderMaterial.from(rapier.sys.RapierC.RprCollider_material(arena, self));
         }
     }
@@ -133,13 +133,13 @@ public sealed class Collider extends RefNative permits Collider.Mut {
     }
 
     public Aabb computeAabb() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Aabb.from(rapier.sys.RapierC.RprCollider_compute_aabb(arena, self));
         }
     }
 
     public Aabb computeSweptAabb(Isometry nextPosition) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Aabb.from(rapier.sys.RapierC.RprCollider_compute_swept_aabb(arena, self, nextPosition.allocInto(arena)));
         }
     }
@@ -152,7 +152,7 @@ public sealed class Collider extends RefNative permits Collider.Mut {
             dropped.drop(() -> rapier.sys.RapierC.RprCollider_drop(self));
         }
 
-        private Mut(MemoryAddress memory) {
+        private Mut(MemorySegment memory) {
             super(memory);
         }
 
@@ -197,49 +197,49 @@ public sealed class Collider extends RefNative permits Collider.Mut {
         }
 
         public void setTranslation(Vector translation) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_translation(self, translation.allocInto(arena));
             }
         }
 
         public void setRotation(AngVector rotation) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_rotation(self, rotation.allocInto(arena));
             }
         }
 
         public void setPosition(Isometry position) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_position(self, position.allocInto(arena));
             }
         }
 
         public void setTranslationWrtParent(Vector translation) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_translation_wrt_parent(self, translation.allocInto(arena));
             }
         }
 
         public void setRotationWrtParent(AngVector rotation) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_rotation_wrt_parent(self, rotation.allocInto(arena));
             }
         }
 
         public void setPositionWrtParent(Isometry posWrtParent) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_position_wrt_parent(self, posWrtParent.allocInto(arena));
             }
         }
 
         public void setCollisionGroups(InteractionGroups groups) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_collision_groups(self, groups.allocInto(arena));
             }
         }
 
         public void setSolverGroups(InteractionGroups groups) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprCollider_set_solver_groups(self, groups.allocInto(arena));
             }
         }

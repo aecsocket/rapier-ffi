@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$42 {
+final class constants$42 {
 
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_wheels_mut$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_wheels_mut$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_wheels_mut",
-        constants$42.RprDynamicRayCastVehicleController_wheels_mut$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_contacts_enabled",
-        constants$42.RprGenericJoint_contacts_enabled$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$42() {}
     static final FunctionDescriptor RprGenericJoint_coupled_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -52,6 +38,23 @@ class constants$42 {
     static final MethodHandle RprGenericJoint_limit_axes$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_limit_axes",
         constants$42.RprGenericJoint_limit_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_limits$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_limits$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_limits",
+        constants$42.RprGenericJoint_limits$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_limits_for$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_limits_for$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_limits_for",
+        constants$42.RprGenericJoint_limits_for$FUNC
     );
 }
 

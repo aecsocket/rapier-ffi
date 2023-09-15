@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$65 {
+final class constants$65 {
 
-    static final FunctionDescriptor RprRigidBodyBuilder_ccd_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_ccd_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_ccd_enabled",
-        constants$65.RprRigidBodyBuilder_ccd_enabled$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_dominance_group$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyBuilder_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_dominance_group",
-        constants$65.RprRigidBodyBuilder_dominance_group$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$65() {}
     static final FunctionDescriptor RprRigidBodyBuilder_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -49,6 +35,19 @@ class constants$65 {
     static final MethodHandle RprRigidBodyBuilder_fixed$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyBuilder_fixed",
         constants$65.RprRigidBodyBuilder_fixed$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_gravity_scale$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyBuilder_gravity_scale$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_gravity_scale",
+        constants$65.RprRigidBodyBuilder_gravity_scale$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyBuilder_kinematic_position_based$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprRigidBodyBuilder_kinematic_position_based$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyBuilder_kinematic_position_based",
+        constants$65.RprRigidBodyBuilder_kinematic_position_based$FUNC
     );
 }
 

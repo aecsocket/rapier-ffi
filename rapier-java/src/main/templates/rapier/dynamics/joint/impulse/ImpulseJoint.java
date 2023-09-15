@@ -5,30 +5,30 @@ import rapier.data.ArenaKey;
 import rapier.dynamics.joint.GenericJoint;
 import rapier.math.SpacialVector;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
-    private ImpulseJoint(MemoryAddress memory) {
+    private ImpulseJoint(MemorySegment memory) {
         super(memory);
     }
 
-    public static ImpulseJoint at(MemoryAddress memory) {
+    public static ImpulseJoint at(MemorySegment memory) {
         return new ImpulseJoint(memory);
     }
 
-    public static Mut atMut(MemoryAddress memory) {
+    public static Mut atMut(MemorySegment memory) {
         return new Mut(memory);
     }
 
     public ArenaKey getBody1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprImpulseJoint_body1(arena, self));
         }
     }
 
     public ArenaKey getBody2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprImpulseJoint_body2(arena, self));
         }
     }
@@ -38,25 +38,25 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
     }
 
     public SpacialVector getImpulses() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return SpacialVector.from(rapier.sys.RapierC.RprImpulseJoint_impulses(arena, self));
         }
     }
 
     public static final class Mut extends ImpulseJoint {
-        private Mut(MemoryAddress memory) {
+        private Mut(MemorySegment memory) {
             super(memory);
         }
 
 
         public void setBody1(ArenaKey body1) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprImpulseJoint_set_body1(self, body1.allocInto(arena));
             }
         }
 
         public void setBody2(ArenaKey body2) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprImpulseJoint_set_body2(self, body2.allocInto(arena));
             }
         }
@@ -71,7 +71,7 @@ public sealed class ImpulseJoint extends RefNative permits ImpulseJoint.Mut {
         }
 
         public void setImpulses(SpacialVector impulses) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprImpulseJoint_set_impulses(self, impulses.allocInto(arena));
             }
         }

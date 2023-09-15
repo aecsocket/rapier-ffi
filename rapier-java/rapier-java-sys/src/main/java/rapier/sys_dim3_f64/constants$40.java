@@ -7,50 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$40 {
+final class constants$40 {
 
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_add_wheel$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_stiffness"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_compression"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_damping"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_travel"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("friction_slip"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_force")
-        ).withName("RprWheelTuning")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_add_wheel$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_add_wheel",
-        constants$40.RprDynamicRayCastVehicleController_add_wheel$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_chassis$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_chassis$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_chassis",
-        constants$40.RprDynamicRayCastVehicleController_chassis$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$40() {}
     static final FunctionDescriptor RprDynamicRayCastVehicleController_current_vehicle_speed$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -78,6 +38,27 @@ class constants$40 {
     static final MethodHandle RprDynamicRayCastVehicleController_index_up_axis$MH = RuntimeHelper.downcallHandle(
         "RprDynamicRayCastVehicleController_index_up_axis",
         constants$40.RprDynamicRayCastVehicleController_index_up_axis$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_new$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_new",
+        constants$40.RprDynamicRayCastVehicleController_new$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_set_chassis$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_set_chassis$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_set_chassis",
+        constants$40.RprDynamicRayCastVehicleController_set_chassis$FUNC
     );
 }
 

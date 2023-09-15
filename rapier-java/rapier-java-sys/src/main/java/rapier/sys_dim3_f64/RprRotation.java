@@ -7,9 +7,19 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprRotation {
+ *     double x;
+ *     double y;
+ *     double z;
+ *     double w;
+ * };
+ * }
+ */
 public class RprRotation {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
         Constants$root.C_DOUBLE$LAYOUT.withName("z"),
@@ -22,10 +32,22 @@ public class RprRotation {
     public static VarHandle x$VH() {
         return RprRotation.x$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double x;
+     * }
+     */
     public static double x$get(MemorySegment seg) {
         return (double)RprRotation.x$VH.get(seg);
     }
-    public static void x$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double x;
+     * }
+     */
+    public static void x$set(MemorySegment seg, double x) {
         RprRotation.x$VH.set(seg, x);
     }
     public static double x$get(MemorySegment seg, long index) {
@@ -38,10 +60,22 @@ public class RprRotation {
     public static VarHandle y$VH() {
         return RprRotation.y$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double y;
+     * }
+     */
     public static double y$get(MemorySegment seg) {
         return (double)RprRotation.y$VH.get(seg);
     }
-    public static void y$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double y;
+     * }
+     */
+    public static void y$set(MemorySegment seg, double x) {
         RprRotation.y$VH.set(seg, x);
     }
     public static double y$get(MemorySegment seg, long index) {
@@ -54,10 +88,22 @@ public class RprRotation {
     public static VarHandle z$VH() {
         return RprRotation.z$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double z;
+     * }
+     */
     public static double z$get(MemorySegment seg) {
         return (double)RprRotation.z$VH.get(seg);
     }
-    public static void z$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double z;
+     * }
+     */
+    public static void z$set(MemorySegment seg, double x) {
         RprRotation.z$VH.set(seg, x);
     }
     public static double z$get(MemorySegment seg, long index) {
@@ -70,10 +116,22 @@ public class RprRotation {
     public static VarHandle w$VH() {
         return RprRotation.w$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double w;
+     * }
+     */
     public static double w$get(MemorySegment seg) {
         return (double)RprRotation.w$VH.get(seg);
     }
-    public static void w$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double w;
+     * }
+     */
+    public static void w$set(MemorySegment seg, double x) {
         RprRotation.w$VH.set(seg, x);
     }
     public static double w$get(MemorySegment seg, long index) {
@@ -84,10 +142,10 @@ public class RprRotation {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

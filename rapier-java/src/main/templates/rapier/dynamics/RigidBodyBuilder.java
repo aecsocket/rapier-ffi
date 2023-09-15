@@ -6,8 +6,8 @@ import rapier.RefNative;
 import rapier.__real;
 import rapier.math.*;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class RigidBodyBuilder extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
@@ -17,11 +17,11 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprRigidBodyBuilder_drop(self));
     }
 
-    private RigidBodyBuilder(MemoryAddress memory) {
+    private RigidBodyBuilder(MemorySegment memory) {
         super(memory);
     }
 
-    public static RigidBodyBuilder at(MemoryAddress memory) {
+    public static RigidBodyBuilder at(MemorySegment memory) {
         return new RigidBodyBuilder(memory);
     }
 
@@ -60,21 +60,21 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
     }
 
     public RigidBodyBuilder translation(Vector translation) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprRigidBodyBuilder_translation(self, translation.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder rotation(AngVector rotation) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprRigidBodyBuilder_rotation(self, rotation.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder position(Isometry position) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprRigidBodyBuilder_position(self, position.allocInto(arena));
         }
         return this;
@@ -96,14 +96,14 @@ public final class RigidBodyBuilder extends RefNative implements Droppable {
     }
 
     public RigidBodyBuilder linvel(Vector linvel) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprRigidBodyBuilder_linvel(self, linvel.allocInto(arena));
         }
         return this;
     }
 
     public RigidBodyBuilder angvel(AngVector angvel) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprRigidBodyBuilder_angvel(self, angvel.allocInto(arena));
         }
         return this;

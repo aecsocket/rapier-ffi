@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$34 {
+final class constants$34 {
 
-    static final FunctionDescriptor RprContactData_set_dist$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprContactData_set_dist$MH = RuntimeHelper.downcallHandle(
-        "RprContactData_set_dist",
-        constants$34.RprContactData_set_dist$FUNC
-    );
-    static final FunctionDescriptor RprContactData_set_impulse$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprContactData_set_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprContactData_set_impulse",
-        constants$34.RprContactData_set_impulse$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$34() {}
     static final FunctionDescriptor RprContactData_set_local_p1$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -66,6 +52,28 @@ class constants$34 {
     static final MethodHandle RprContactData_tangent_impulse$MH = RuntimeHelper.downcallHandle(
         "RprContactData_tangent_impulse",
         constants$34.RprContactData_tangent_impulse$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_local_n1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_local_n1$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_local_n1",
+        constants$34.RprContactManifold_local_n1$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_local_n2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y"),
+        Constants$root.C_FLOAT$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_local_n2$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_local_n2",
+        constants$34.RprContactManifold_local_n2$FUNC
     );
 }
 

@@ -5,20 +5,20 @@ import rapier.math.Isometry;
 import rapier.math.Vector;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 
 public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
-    private GenericJoint(MemoryAddress memory) {
+    private GenericJoint(MemorySegment memory) {
         super(memory);
     }
 
-    public static GenericJoint at(MemoryAddress memory) {
+    public static GenericJoint at(MemorySegment memory) {
         return new GenericJoint(memory);
     }
 
-    public static Mut atMut(MemoryAddress memory) {
+    public static Mut atMut(MemorySegment memory) {
         return new Mut(memory);
     }
 
@@ -43,7 +43,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public JointLimits[] getLimits() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = JointLimits.allocSlice(arena, Real.spatialDim());
             rapier.sys.RapierC.RprGenericJoint_limits(self, res);
             return JointLimits.fromSlice(res, Real.spatialDim());
@@ -51,7 +51,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public JointMotor[] getMotors() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = JointMotor.allocSlice(arena, Real.spatialDim());
             rapier.sys.RapierC.RprGenericJoint_motors(self, res);
             return JointMotor.fromSlice(res, Real.spatialDim());
@@ -63,37 +63,37 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public Isometry getLocalFrame1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Isometry.from(rapier.sys.RapierC.RprGenericJoint_local_frame1(arena, self));
         }
     }
 
     public Isometry getLocalFrame2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Isometry.from(rapier.sys.RapierC.RprGenericJoint_local_frame2(arena, self));
         }
     }
 
     public Vector getLocalAxis1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_axis1(arena, self));
         }
     }
 
     public Vector getLocalAxis2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_axis2(arena, self));
         }
     }
 
     public Vector getLocalAnchor1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_anchor1(arena, self));
         }
     }
 
     public Vector getLocalAnchor2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprGenericJoint_local_anchor2(arena, self));
         }
     }
@@ -103,7 +103,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public @Nullable JointLimits getLimits(JointAxis axis) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = JointLimits.alloc(arena);
             if (rapier.sys.RapierC.RprGenericJoint_limits_for(self, axis.ordinal(), res))
                 return JointLimits.from(res);
@@ -112,7 +112,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public @Nullable MotorModel getMotorModel(JointAxis axis) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = arena.allocate(ValueLayout.JAVA_INT);
             if (rapier.sys.RapierC.RprGenericJoint_motor_model(self, axis.ordinal(), res))
                 return MotorModel.values()[res.get(ValueLayout.JAVA_INT, 0)];
@@ -121,7 +121,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
     }
 
     public @Nullable JointMotor getMotor(JointAxis axis) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = JointMotor.alloc(arena);
             if (rapier.sys.RapierC.RprGenericJoint_motor(self, axis.ordinal(), res))
                 return JointMotor.from(res);
@@ -137,7 +137,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
             dropped.drop(() -> rapier.sys.RapierC.RprGenericJoint_drop(self));
         }
 
-        private Mut(MemoryAddress memory) {
+        private Mut(MemorySegment memory) {
             super(memory);
         }
 
@@ -160,7 +160,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         public void setLimits(JointLimits... value) {
             if (value.length != Real.spatialDim())
                 throw new IllegalArgumentException("Array must contain " + Real.spatialDim() + " values");
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 var data = JointLimits.allocIntoSlice(arena, value);
                 rapier.sys.RapierC.RprGenericJoint_set_limits(self, data);
             }
@@ -169,7 +169,7 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         public void setMotors(JointMotor... value) {
             if (value.length != Real.spatialDim())
                 throw new IllegalArgumentException("Array must contain " + Real.spatialDim() + " values");
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 var data = JointMotor.allocIntoSlice(arena, value);
                 rapier.sys.RapierC.RprGenericJoint_set_motors(self, data);
             }
@@ -184,37 +184,37 @@ public sealed class GenericJoint extends RefNative permits GenericJoint.Mut {
         }
 
         public void setLocalFrame1(Isometry localFrame) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_frame1(self, localFrame.allocInto(arena));
             }
         }
 
         public void setLocalFrame2(Isometry localFrame) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_frame2(self, localFrame.allocInto(arena));
             }
         }
 
         public void setLocalAxis1(Vector localAxis) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_axis1(self, localAxis.allocInto(arena));
             }
         }
 
         public void setLocalAxis2(Vector localAxis) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_axis2(self, localAxis.allocInto(arena));
             }
         }
 
         public void setLocalAnchor1(Vector localAnchor) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_anchor1(self, localAnchor.allocInto(arena));
             }
         }
 
         public void setLocalAnchor2(Vector localAnchor) {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprGenericJoint_set_local_anchor2(self, localAnchor.allocInto(arena));
             }
         }

@@ -5,7 +5,7 @@ import rapier.dynamics.RigidBodySet;
 import rapier.geometry.ColliderSet;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -47,8 +47,8 @@ public interface EventHandler {
                         RigidBodySet.at(bodies),
                         ColliderSet.at(colliders),
                         CollisionEvent.from(event),
-                        contactPair.equals(MemoryAddress.NULL) ? null : ContactPair.at(contactPair)
-                ), memory.session()).address()
+                        contactPair.equals(MemorySegment.NULL) ? null : ContactPair.at(contactPair)
+                ), memory.scope())
         );
         rapier.sys.RprEventHandler.handle_contact_force_event$set(memory, rapier.sys.RprEventHandler.handle_contact_force_event.allocate(
                 (dt,
@@ -62,7 +62,7 @@ public interface EventHandler {
                     ColliderSet.at(colliders),
                     ContactPair.at(contactPair),
                     totalForceMagnitude
-                ), memory.session()).address()
+                ), memory.scope())
         );
     }
 

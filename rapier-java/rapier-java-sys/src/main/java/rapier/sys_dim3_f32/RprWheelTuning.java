@@ -7,9 +7,21 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprWheelTuning {
+ *     float suspension_stiffness;
+ *     float suspension_compression;
+ *     float suspension_damping;
+ *     float max_suspension_travel;
+ *     float friction_slip;
+ *     float max_suspension_force;
+ * };
+ * }
+ */
 public class RprWheelTuning {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("suspension_stiffness"),
         Constants$root.C_FLOAT$LAYOUT.withName("suspension_compression"),
         Constants$root.C_FLOAT$LAYOUT.withName("suspension_damping"),
@@ -24,10 +36,22 @@ public class RprWheelTuning {
     public static VarHandle suspension_stiffness$VH() {
         return RprWheelTuning.suspension_stiffness$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float suspension_stiffness;
+     * }
+     */
     public static float suspension_stiffness$get(MemorySegment seg) {
         return (float)RprWheelTuning.suspension_stiffness$VH.get(seg);
     }
-    public static void suspension_stiffness$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float suspension_stiffness;
+     * }
+     */
+    public static void suspension_stiffness$set(MemorySegment seg, float x) {
         RprWheelTuning.suspension_stiffness$VH.set(seg, x);
     }
     public static float suspension_stiffness$get(MemorySegment seg, long index) {
@@ -40,10 +64,22 @@ public class RprWheelTuning {
     public static VarHandle suspension_compression$VH() {
         return RprWheelTuning.suspension_compression$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float suspension_compression;
+     * }
+     */
     public static float suspension_compression$get(MemorySegment seg) {
         return (float)RprWheelTuning.suspension_compression$VH.get(seg);
     }
-    public static void suspension_compression$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float suspension_compression;
+     * }
+     */
+    public static void suspension_compression$set(MemorySegment seg, float x) {
         RprWheelTuning.suspension_compression$VH.set(seg, x);
     }
     public static float suspension_compression$get(MemorySegment seg, long index) {
@@ -56,10 +92,22 @@ public class RprWheelTuning {
     public static VarHandle suspension_damping$VH() {
         return RprWheelTuning.suspension_damping$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float suspension_damping;
+     * }
+     */
     public static float suspension_damping$get(MemorySegment seg) {
         return (float)RprWheelTuning.suspension_damping$VH.get(seg);
     }
-    public static void suspension_damping$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float suspension_damping;
+     * }
+     */
+    public static void suspension_damping$set(MemorySegment seg, float x) {
         RprWheelTuning.suspension_damping$VH.set(seg, x);
     }
     public static float suspension_damping$get(MemorySegment seg, long index) {
@@ -72,10 +120,22 @@ public class RprWheelTuning {
     public static VarHandle max_suspension_travel$VH() {
         return RprWheelTuning.max_suspension_travel$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float max_suspension_travel;
+     * }
+     */
     public static float max_suspension_travel$get(MemorySegment seg) {
         return (float)RprWheelTuning.max_suspension_travel$VH.get(seg);
     }
-    public static void max_suspension_travel$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float max_suspension_travel;
+     * }
+     */
+    public static void max_suspension_travel$set(MemorySegment seg, float x) {
         RprWheelTuning.max_suspension_travel$VH.set(seg, x);
     }
     public static float max_suspension_travel$get(MemorySegment seg, long index) {
@@ -88,10 +148,22 @@ public class RprWheelTuning {
     public static VarHandle friction_slip$VH() {
         return RprWheelTuning.friction_slip$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float friction_slip;
+     * }
+     */
     public static float friction_slip$get(MemorySegment seg) {
         return (float)RprWheelTuning.friction_slip$VH.get(seg);
     }
-    public static void friction_slip$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float friction_slip;
+     * }
+     */
+    public static void friction_slip$set(MemorySegment seg, float x) {
         RprWheelTuning.friction_slip$VH.set(seg, x);
     }
     public static float friction_slip$get(MemorySegment seg, long index) {
@@ -104,10 +176,22 @@ public class RprWheelTuning {
     public static VarHandle max_suspension_force$VH() {
         return RprWheelTuning.max_suspension_force$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float max_suspension_force;
+     * }
+     */
     public static float max_suspension_force$get(MemorySegment seg) {
         return (float)RprWheelTuning.max_suspension_force$VH.get(seg);
     }
-    public static void max_suspension_force$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float max_suspension_force;
+     * }
+     */
+    public static void max_suspension_force$set(MemorySegment seg, float x) {
         RprWheelTuning.max_suspension_force$VH.set(seg, x);
     }
     public static float max_suspension_force$get(MemorySegment seg, long index) {
@@ -118,10 +202,10 @@ public class RprWheelTuning {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

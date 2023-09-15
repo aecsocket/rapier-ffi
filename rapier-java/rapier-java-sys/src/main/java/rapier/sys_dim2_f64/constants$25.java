@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$25 {
+final class constants$25 {
 
-    static final FunctionDescriptor RprColliderVec_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprColliderVec_drop$MH = RuntimeHelper.downcallHandle(
-        "RprColliderVec_drop",
-        constants$25.RprColliderVec_drop$FUNC
-    );
-    static final FunctionDescriptor RprColliderVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle RprColliderVec_handle$MH = RuntimeHelper.downcallHandle(
-        "RprColliderVec_handle",
-        constants$25.RprColliderVec_handle$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$25() {}
     static final FunctionDescriptor RprColliderVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -55,6 +39,23 @@ class constants$25 {
     static final MethodHandle RprCollider_active_events$MH = RuntimeHelper.downcallHandle(
         "RprCollider_active_events",
         constants$25.RprCollider_active_events$FUNC
+    );
+    static final FunctionDescriptor RprCollider_active_hooks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_active_hooks$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_active_hooks",
+        constants$25.RprCollider_active_hooks$FUNC
+    );
+    static final FunctionDescriptor RprCollider_collision_groups$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("memberships"),
+        Constants$root.C_INT$LAYOUT.withName("filter")
+    ).withName("RprInteractionGroups"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_collision_groups$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_collision_groups",
+        constants$25.RprCollider_collision_groups$FUNC
     );
 }
 

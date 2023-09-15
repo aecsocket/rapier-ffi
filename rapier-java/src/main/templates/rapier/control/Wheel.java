@@ -4,51 +4,51 @@ import rapier.RefNative;
 import rapier.__real;
 import rapier.math.Vector;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class Wheel extends RefNative {
-    private Wheel(MemoryAddress memory) {
+    private Wheel(MemorySegment memory) {
         super(memory);
     }
 
-    public static Wheel at(MemoryAddress memory) {
+    public static Wheel at(MemorySegment memory) {
         return new Wheel(memory);
     }
 
 /*{% if dim3 %}*/
     public Vector getChassisConnectionPointCs() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_chassis_connection_point_cs(arena, self));
         }
     }
 
     public void setChassisConnectionPointCs(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys_dim3.RapierC.RprWheel_set_chassis_connection_point_cs(self, value.allocInto(arena));
         }
     }
 
     public Vector getDirectionCs() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_direction_cs(arena, self));
         }
     }
 
     public void setDirectionCs(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys_dim3.RapierC.RprWheel_set_direction_cs(self, value.allocInto(arena));
         }
     }
 
     public Vector getAxleCs() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_axle_cs(arena, self));
         }
     }
 
     public void setAxleCs(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys_dim3.RapierC.RprWheel_set_axle_cs(self, value.allocInto(arena));
         }
     }
@@ -166,19 +166,19 @@ public final class Wheel extends RefNative {
     }
 
     public Vector getCenter() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_center(arena, self));
         }
     }
 
     public Vector getSuspension() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_suspension(arena, self));
         }
     }
 
     public Vector getAxle() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys_dim3.RapierC.RprWheel_axle(arena, self));
         }
     }

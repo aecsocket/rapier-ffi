@@ -7,32 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$42 {
+final class constants$42 {
 
-    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("re"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("im")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame2",
-        constants$42.RprGenericJoint_local_frame2$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_lock_axes$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_lock_axes",
-        constants$42.RprGenericJoint_lock_axes$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$42() {}
     static final FunctionDescriptor RprGenericJoint_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -64,6 +42,21 @@ class constants$42 {
     static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_motor_model",
         constants$42.RprGenericJoint_motor_model$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motors$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motors$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motors",
+        constants$42.RprGenericJoint_motors$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_CHAR$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_new$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_new",
+        constants$42.RprGenericJoint_new$FUNC
     );
 }
 

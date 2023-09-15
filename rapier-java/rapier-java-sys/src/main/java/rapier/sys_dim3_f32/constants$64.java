@@ -7,83 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$64 {
+final class constants$64 {
 
-    static final FunctionDescriptor RprQueryPipeline_project_point$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        Constants$root.C_BOOL$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprQueryPipeline_project_point$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_project_point",
-        constants$64.RprQueryPipeline_project_point$FUNC
-    );
-    static final FunctionDescriptor RprQueryPipeline_project_point_and_get_feature$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y"),
-            Constants$root.C_FLOAT$LAYOUT.withName("z")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("memberships"),
-                Constants$root.C_INT$LAYOUT.withName("filter")
-            ).withName("groups"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_collider"),
-            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
-            MemoryLayout.paddingLayout(24),
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("exclude_rigid_body"),
-            Constants$root.C_POINTER$LAYOUT.withName("predicate")
-        ).withName("RprQueryFilter"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprQueryPipeline_project_point_and_get_feature$MH = RuntimeHelper.downcallHandle(
-        "RprQueryPipeline_project_point_and_get_feature",
-        constants$64.RprQueryPipeline_project_point_and_get_feature$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$64() {}
     static final FunctionDescriptor RprQueryPipeline_update$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -116,6 +43,22 @@ class constants$64 {
     static final MethodHandle RprRigidBodyActivation_linear_threshold$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyActivation_linear_threshold",
         constants$64.RprRigidBodyActivation_linear_threshold$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyActivation_set_angular_threshold$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyActivation_set_angular_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyActivation_set_angular_threshold",
+        constants$64.RprRigidBodyActivation_set_angular_threshold$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyActivation_set_linear_threshold$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyActivation_set_linear_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyActivation_set_linear_threshold",
+        constants$64.RprRigidBodyActivation_set_linear_threshold$FUNC
     );
 }
 

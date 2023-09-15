@@ -8,17 +8,17 @@ import rapier.geometry.VHACDParameters;
 import rapier.math.Vector;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
 public final class SharedShape extends RefNative implements RefCounted {
-    private SharedShape(MemoryAddress memory) {
+    private SharedShape(MemorySegment memory) {
         super(memory);
     }
 
-    public static SharedShape at(MemoryAddress memory) {
+    public static SharedShape at(MemorySegment memory) {
         return new SharedShape(memory);
     }
 
@@ -26,7 +26,7 @@ public final class SharedShape extends RefNative implements RefCounted {
         if (shapes.length == 0)
             throw new IllegalArgumentException("Shapes must not be empty");
 
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nShapes = CompoundChild.allocIntoSlice(arena, shapes);
             var memory = rapier.sys.RapierC.RprSharedShape_compound(nShapes, shapes.length);
             return at(memory);
@@ -38,37 +38,37 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static SharedShape halfspace(Vector outwardNormal) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprSharedShape_halfspace(outwardNormal.allocInto(arena)));
         }
     }
 
     public static SharedShape capsule(Vector a, Vector b, __real radius) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprSharedShape_capsule(a.allocInto(arena), b.allocInto(arena), radius));
         }
     }
 
     public static SharedShape segment(Vector a, Vector b) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprSharedShape_segment(a.allocInto(arena), b.allocInto(arena)));
         }
     }
 
     public static SharedShape triangle(Vector a, Vector b, Vector c) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprSharedShape_triangle(a.allocInto(arena), b.allocInto(arena), c.allocInto(arena)));
         }
     }
 
     public static SharedShape roundTriangle(Vector a, Vector b, Vector c, __real borderRadius) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprSharedShape_round_triangle(a.allocInto(arena), b.allocInto(arena), c.allocInto(arena), borderRadius));
         }
     }
 
     public static SharedShape polyline(Vector[] vertices, int[][] indices) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_polyline(
@@ -82,7 +82,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static SharedShape trimesh(Vector[] vertices, int[][] indices, byte flags) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_trimesh(
@@ -105,7 +105,7 @@ public final class SharedShape extends RefNative implements RefCounted {
             int[][] indices,
             VHACDParameters params
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_convex_decomposition_with_params(
@@ -120,7 +120,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static SharedShape convexDecomposition(Vector[] vertices, int[][] indices) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_convex_decomposition(
@@ -139,7 +139,7 @@ public final class SharedShape extends RefNative implements RefCounted {
             VHACDParameters params,
             __real borderRadius
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_round_convex_decomposition_with_params(
@@ -159,7 +159,7 @@ public final class SharedShape extends RefNative implements RefCounted {
             int[][] indices,
             __real borderRadius
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nVertices = Vector.allocIntoSlice(arena, vertices);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys.RapierC.RprSharedShape_round_convex_decomposition(
@@ -174,18 +174,18 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static @Nullable SharedShape convexHull(Vector... points) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPoints = Vector.allocIntoSlice(arena, points);
             var memory = rapier.sys.RapierC.RprSharedShape_convex_hull(nPoints, points.length);
-            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+            return memory.equals(MemorySegment.NULL) ? null : SharedShape.at(memory);
         }
     }
 
     public static @Nullable SharedShape roundConvexHull(Vector[] points, __real borderRadius) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPoints = Vector.allocIntoSlice(arena, points);
             var memory = rapier.sys.RapierC.RprSharedShape_round_convex_hull(nPoints, points.length, borderRadius);
-            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+            return memory.equals(MemorySegment.NULL) ? null : SharedShape.at(memory);
         }
     }
 
@@ -199,7 +199,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static SharedShape heightfield(__real[] heights, Vector scale) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nHeightsData = arena.allocateArray(Real.layout(), heights);
             return SharedShape.at(rapier.sys_dim2.RapierC.RprSharedShape_heightfield(heights.length, nHeightsData, scale.allocInto(arena)));
         }
@@ -229,7 +229,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     }
 
     public static @Nullable SharedShape convexMesh(Vector[] points, int[][] indices) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPoints = Vector.allocIntoSlice(arena, points);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys_dim3.RapierC.RprSharedShape_convex_mesh(
@@ -238,12 +238,12 @@ public final class SharedShape extends RefNative implements RefCounted {
                     nIndices,
                     indices.length
             );
-            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+            return memory.equals(MemorySegment.NULL) ? null : SharedShape.at(memory);
         }
     }
 
     public static @Nullable SharedShape roundConvexMesh(Vector[] points, int[][] indices, __real borderRadius) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPoints = Vector.allocIntoSlice(arena, points);
             var nIndices = arena.allocateArray(ValueLayout.JAVA_INT, Arrays.stream(indices).flatMapToInt(Arrays::stream).toArray());
             var memory = rapier.sys_dim3.RapierC.RprSharedShape_round_convex_mesh(
@@ -253,7 +253,7 @@ public final class SharedShape extends RefNative implements RefCounted {
                     indices.length,
                     borderRadius
             );
-            return memory.equals(MemoryAddress.NULL) ? null : SharedShape.at(memory);
+            return memory.equals(MemorySegment.NULL) ? null : SharedShape.at(memory);
         }
     }
 
@@ -265,7 +265,7 @@ public final class SharedShape extends RefNative implements RefCounted {
     ) {
         if (heightsRows * heightsCols != heightsData.length)
             throw new IllegalArgumentException("heightsRows * heightsCols must equal heightsData.length");
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nHeightsData = arena.allocateArray(Real.layout(), heightsData);
             return SharedShape.at(rapier.sys.RapierC.RprSharedShape_heightfield(heightsRows, heightsCols, nHeightsData, scale.allocInto(arena)));
         }
@@ -273,7 +273,7 @@ public final class SharedShape extends RefNative implements RefCounted {
 /*{% endif %}*/
 
     @Override
-    public MemoryAddress refData() {
+    public MemorySegment refData() {
         return rapier.sys.RapierC.RprSharedShape_data(self);
     }
 

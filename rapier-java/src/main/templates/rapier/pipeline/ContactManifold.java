@@ -7,22 +7,22 @@ import rapier.math.Isometry;
 import rapier.math.Vector;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
 public final class ContactManifold extends RefNative {
-    private ContactManifold(MemoryAddress memory) {
+    private ContactManifold(MemorySegment memory) {
         super(memory);
     }
 
-    public static ContactManifold at(MemoryAddress memory) {
+    public static ContactManifold at(MemorySegment memory) {
         return new ContactManifold(memory);
     }
 
     public ContactData[] getPoints() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprContactManifold_points(self, data, len);
@@ -36,13 +36,13 @@ public final class ContactManifold extends RefNative {
     }
 
     public Vector getLocalN1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprContactManifold_local_n1(arena, self));
         }
     }
 
     public Vector getLocalN2(SegmentAllocator alloc) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprContactManifold_local_n2(arena, self));
         }
     }
@@ -56,7 +56,7 @@ public final class ContactManifold extends RefNative {
     }
 
     public @Nullable Isometry getSubshapePos1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = Isometry.alloc(arena);
             if (rapier.sys.RapierC.RprContactManifold_subshape_pos1(self, res))
                 return Isometry.from(res);
@@ -65,7 +65,7 @@ public final class ContactManifold extends RefNative {
     }
 
     public @Nullable Isometry getSubshapePos2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = Isometry.alloc(arena);
             if (rapier.sys.RapierC.RprContactManifold_subshape_pos2(self, res))
                 return Isometry.from(res);
@@ -74,7 +74,7 @@ public final class ContactManifold extends RefNative {
     }
 
     public @Nullable ArenaKey getRigidBody1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprContactManifold_rigid_body1(self, res))
                 return ArenaKey.from(res);
@@ -83,7 +83,7 @@ public final class ContactManifold extends RefNative {
     }
 
     public @Nullable ArenaKey getRigidBody2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprContactManifold_rigid_body2(self, res))
                 return ArenaKey.from(res);
@@ -96,7 +96,7 @@ public final class ContactManifold extends RefNative {
     }
 
     public SolverContact[] getSolverContacts() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys.RapierC.RprContactManifold_solver_contacts(self, data, len);

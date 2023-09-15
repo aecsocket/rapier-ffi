@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$30 {
+final class constants$30 {
 
-    static final FunctionDescriptor RprCollider_set_density$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_density$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_density",
-        constants$30.RprCollider_set_density$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_enabled$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_enabled$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_enabled",
-        constants$30.RprCollider_set_enabled$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$30() {}
     static final FunctionDescriptor RprCollider_set_friction$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_DOUBLE$LAYOUT
@@ -68,6 +54,34 @@ class constants$30 {
     static final MethodHandle RprCollider_set_position$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_position",
         constants$30.RprCollider_set_position$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_position_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("w")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("z")
+            ).withName("translation")
+        ).withName("RprIsometry")
+    );
+    static final MethodHandle RprCollider_set_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_position_wrt_parent",
+        constants$30.RprCollider_set_position_wrt_parent$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_restitution$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_restitution$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_restitution",
+        constants$30.RprCollider_set_restitution$FUNC
     );
 }
 

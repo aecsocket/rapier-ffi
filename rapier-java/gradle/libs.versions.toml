@@ -1,11 +1,11 @@
 [versions]
-indra = "3.0.1"
+indra = "3.1.3"
 jextract = "0.4.1"
 spotless = "6.19.0"
-pebble = "3.1.6"
+pebble = "3.2.1"
 findbugs = "3.0.2" # todo legacy
 checker = "3.34.0"
-junit = "5.9.2"
+junit = "5.10.0"
 
 [libraries]
 indra-common = { group = "net.kyori", name = "indra-common", version.ref = "indra" }

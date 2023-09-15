@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$79 {
+final class constants$79 {
 
-    static final FunctionDescriptor RprRigidBody_lock_translations$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_lock_translations$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_lock_translations",
-        constants$79.RprRigidBody_lock_translations$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_locked_axes",
-        constants$79.RprRigidBody_locked_axes$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$79() {}
     static final FunctionDescriptor RprRigidBody_mass$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -76,6 +62,34 @@ class constants$79 {
     static final MethodHandle RprRigidBody_position$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_position",
         constants$79.RprRigidBody_position$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_predict_position_using_velocity_and_forces$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z"),
+            Constants$root.C_FLOAT$LAYOUT.withName("w")
+        ).withName("rotation"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y"),
+            Constants$root.C_FLOAT$LAYOUT.withName("z")
+        ).withName("translation")
+    ).withName("RprIsometry"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_predict_position_using_velocity_and_forces$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_predict_position_using_velocity_and_forces",
+        constants$79.RprRigidBody_predict_position_using_velocity_and_forces$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_recompute_mass_properties_from_colliders$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_recompute_mass_properties_from_colliders",
+        constants$79.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
     );
 }
 

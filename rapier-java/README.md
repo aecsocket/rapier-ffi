@@ -124,7 +124,7 @@ To update rapier_ffi:
     takes the C header file and creates Java sources for FFI in [rapier-java-sys/src](rapier-java-sys/src/) using
     [jextract](https://github.com/openjdk/jextract)
 
-    **Note:** for this step, you need `jextract` on your machine to point to a JExtract version 19 binary
+    **Note:** for this step, you need `jextract` on your machine to point to a JExtract binary for the correct Java version
 
 3. Modify the Java source templates in [src/main/templates](src/main/templates/)
 
@@ -141,8 +141,8 @@ To generate native libraries:
     the `rapier-java-dim*-f*/platform-arch/build` directory
 
     Use the Gradle property `buildProfile` (via `-PbuildProfile=` on command line or `buildProfile=` in `gradle.properties`): 
-    - `build/debug` for `dev` profile builds (default) - unoptimized, debug symbols
-    - `build/release` for `release` profile builds (published to Maven central) - optimized
+    - `dev` compiles into `build/debug` (default) - unoptimized, debug symbols
+    - `release` compiles into `build/release` (published to Maven central) - optimized
 
     These files are then copied (during the `assemble` step) into the `:rapier-java-natives-dim*-f*:platform-arch` project's JAR
 

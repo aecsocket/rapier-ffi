@@ -7,9 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct Mass_Body {
+ *     double mass;
+ * };
+ * }
+ */
 public class Mass_Body {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("mass")
     ).withName("Mass_Body");
     public static MemoryLayout $LAYOUT() {
@@ -19,10 +26,22 @@ public class Mass_Body {
     public static VarHandle mass$VH() {
         return Mass_Body.mass$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double mass;
+     * }
+     */
     public static double mass$get(MemorySegment seg) {
         return (double)Mass_Body.mass$VH.get(seg);
     }
-    public static void mass$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double mass;
+     * }
+     */
+    public static void mass$set(MemorySegment seg, double x) {
         Mass_Body.mass$VH.set(seg, x);
     }
     public static double mass$get(MemorySegment seg, long index) {
@@ -33,10 +52,10 @@ public class Mass_Body {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

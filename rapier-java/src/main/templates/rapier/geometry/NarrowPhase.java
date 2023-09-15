@@ -4,7 +4,7 @@ import rapier.DropFlag;
 import rapier.Droppable;
 import rapier.RefNative;
 
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 
 public final class NarrowPhase extends RefNative implements Droppable {
     private final DropFlag dropped = new DropFlag();
@@ -14,11 +14,11 @@ public final class NarrowPhase extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprNarrowPhase_drop(self));
     }
 
-    private NarrowPhase(MemoryAddress memory) {
+    private NarrowPhase(MemorySegment memory) {
         super(memory);
     }
 
-    public static NarrowPhase at(MemoryAddress memory) {
+    public static NarrowPhase at(MemorySegment memory) {
         return new NarrowPhase(memory);
     }
 

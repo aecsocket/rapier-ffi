@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$78 {
+final class constants$78 {
 
-    static final FunctionDescriptor RprRigidBody_recompute_mass_properties_from_colliders$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_recompute_mass_properties_from_colliders$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_recompute_mass_properties_from_colliders",
-        constants$78.RprRigidBody_recompute_mass_properties_from_colliders$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_reset_forces$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_reset_forces$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_reset_forces",
-        constants$78.RprRigidBody_reset_forces$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$78() {}
     static final FunctionDescriptor RprRigidBody_reset_torques$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -59,6 +45,27 @@ class constants$78 {
     static final MethodHandle RprRigidBody_set_angular_damping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_set_angular_damping",
         constants$78.RprRigidBody_set_angular_damping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_angvel$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_angvel$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_angvel",
+        constants$78.RprRigidBody_set_angvel$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_set_body_type$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_set_body_type$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_set_body_type",
+        constants$78.RprRigidBody_set_body_type$FUNC
     );
 }
 

@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$76 {
+final class constants$76 {
 
-    static final FunctionDescriptor RprRigidBody_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_drop",
-        constants$76.RprRigidBody_drop$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_effective_dominance_group",
-        constants$76.RprRigidBody_effective_dominance_group$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$76() {}
     static final FunctionDescriptor RprRigidBody_enable_ccd$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -57,6 +45,20 @@ class constants$76 {
     static final MethodHandle RprRigidBody_is_ccd_active$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_is_ccd_active",
         constants$76.RprRigidBody_is_ccd_active$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_ccd_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_ccd_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_ccd_enabled",
+        constants$76.RprRigidBody_is_ccd_enabled$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_is_dynamic$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_is_dynamic$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_is_dynamic",
+        constants$76.RprRigidBody_is_dynamic$FUNC
     );
 }
 

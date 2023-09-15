@@ -7,28 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$68 {
+final class constants$68 {
 
-    static final FunctionDescriptor RprRigidBodyMassProps_effective_inv_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_effective_inv_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_effective_inv_mass",
-        constants$68.RprRigidBodyMassProps_effective_inv_mass$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyMassProps_effective_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_effective_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_effective_mass",
-        constants$68.RprRigidBodyMassProps_effective_mass$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$68() {}
     static final FunctionDescriptor RprRigidBodyMassProps_effective_world_inv_inertia_sqrt$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x")
     ).withName("RprAngularInertia"),
@@ -67,6 +49,23 @@ class constants$68 {
     static final MethodHandle RprRigidBodyMassProps_mass$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyMassProps_mass",
         constants$68.RprRigidBodyMassProps_mass$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_world_com$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_world_com$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_world_com",
+        constants$68.RprRigidBodyMassProps_world_com$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_all$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_all$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_all",
+        constants$68.RprRigidBodySet_all$FUNC
     );
 }
 

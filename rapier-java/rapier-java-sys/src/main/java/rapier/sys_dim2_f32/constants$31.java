@@ -7,33 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$31 {
+final class constants$31 {
 
-    static final FunctionDescriptor RprCollider_set_position_wrt_parent$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("re"),
-                Constants$root.C_FLOAT$LAYOUT.withName("im")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprCollider_set_position_wrt_parent$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_position_wrt_parent",
-        constants$31.RprCollider_set_position_wrt_parent$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_restitution",
-        constants$31.RprCollider_set_restitution$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$31() {}
     static final FunctionDescriptor RprCollider_set_restitution_combine_rule$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
@@ -70,6 +47,25 @@ class constants$31 {
     static final MethodHandle RprCollider_set_sensor$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_sensor",
         constants$31.RprCollider_set_sensor$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_shape$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_shape$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_shape",
+        constants$31.RprCollider_set_shape$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_solver_groups$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("memberships"),
+            Constants$root.C_INT$LAYOUT.withName("filter")
+        ).withName("RprInteractionGroups")
+    );
+    static final MethodHandle RprCollider_set_solver_groups$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_solver_groups",
+        constants$31.RprCollider_set_solver_groups$FUNC
     );
 }
 

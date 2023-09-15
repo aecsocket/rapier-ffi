@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$22 {
+final class constants$22 {
 
-    static final FunctionDescriptor RprColliderBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x")
-        ).withName("RprAngVector")
-    );
-    static final MethodHandle RprColliderBuilder_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_rotation",
-        constants$22.RprColliderBuilder_rotation$FUNC
-    );
-    static final FunctionDescriptor RprColliderBuilder_sensor$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprColliderBuilder_sensor$MH = RuntimeHelper.downcallHandle(
-        "RprColliderBuilder_sensor",
-        constants$22.RprColliderBuilder_sensor$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$22() {}
     static final FunctionDescriptor RprColliderBuilder_solver_groups$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -65,6 +49,24 @@ class constants$22 {
     static final MethodHandle RprColliderSet_all$MH = RuntimeHelper.downcallHandle(
         "RprColliderSet_all",
         constants$22.RprColliderSet_all$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_all_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprColliderSet_all_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_all_enabled",
+        constants$22.RprColliderSet_all_enabled$FUNC
+    );
+    static final FunctionDescriptor RprColliderSet_contains$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprColliderSet_contains$MH = RuntimeHelper.downcallHandle(
+        "RprColliderSet_contains",
+        constants$22.RprColliderSet_contains$FUNC
     );
 }
 

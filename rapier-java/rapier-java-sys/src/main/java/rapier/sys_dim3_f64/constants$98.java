@@ -7,23 +7,11 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$98 {
+final class constants$98 {
 
-    static final FunctionDescriptor RprWheel_suspension_stiffness$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_suspension_stiffness$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_suspension_stiffness",
-        constants$98.RprWheel_suspension_stiffness$FUNC
-    );
-    static final FunctionDescriptor RprWheel_wheel_suspension_force$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_wheel_suspension_force$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_wheel_suspension_force",
-        constants$98.RprWheel_wheel_suspension_force$FUNC
-    );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$98() {}
+    static final MemorySegment NULL$ADDR = MemorySegment.ofAddress(0L);
 }
 
 

@@ -7,54 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$58 {
+final class constants$58 {
 
-    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_new",
-        constants$58.RprPhysicsPipeline_new$FUNC
-    );
-    static final FunctionDescriptor RprPhysicsPipeline_step$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x"),
-            Constants$root.C_FLOAT$LAYOUT.withName("y")
-        ).withName("RprVector"),
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
-            Constants$root.C_FLOAT$LAYOUT.withName("erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_erp"),
-            Constants$root.C_FLOAT$LAYOUT.withName("joint_damping_ratio"),
-            Constants$root.C_FLOAT$LAYOUT.withName("allowed_linear_error"),
-            Constants$root.C_FLOAT$LAYOUT.withName("max_penetration_correction"),
-            Constants$root.C_FLOAT$LAYOUT.withName("prediction_distance"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_velocity_friction_iterations"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_stabilization_iterations"),
-            Constants$root.C_BOOL$LAYOUT.withName("interleave_restitution_and_friction_resolution"),
-            MemoryLayout.paddingLayout(56),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("min_island_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("max_ccd_substeps")
-        ).withName("RprIntegrationParameters"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPhysicsPipeline_step$MH = RuntimeHelper.downcallHandle(
-        "RprPhysicsPipeline_step",
-        constants$58.RprPhysicsPipeline_step$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$58() {}
     static final FunctionDescriptor RprPhysicsPipeline_step_all$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -189,6 +145,61 @@ class constants$58 {
     static final MethodHandle RprQueryPipeline_cast_ray_and_get_normal$MH = RuntimeHelper.downcallHandle(
         "RprQueryPipeline_cast_ray_and_get_normal",
         constants$58.RprQueryPipeline_cast_ray_and_get_normal$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_cast_shape$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("re"),
+                Constants$root.C_FLOAT$LAYOUT.withName("im")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_FLOAT$LAYOUT.withName("x"),
+                Constants$root.C_FLOAT$LAYOUT.withName("y")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        MemoryLayout.structLayout(
+            Constants$root.C_FLOAT$LAYOUT.withName("x"),
+            Constants$root.C_FLOAT$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprQueryPipeline_cast_shape$MH = RuntimeHelper.downcallHandle(
+        "RprQueryPipeline_cast_shape",
+        constants$58.RprQueryPipeline_cast_shape$FUNC
+    );
+    static final FunctionDescriptor RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
     );
 }
 

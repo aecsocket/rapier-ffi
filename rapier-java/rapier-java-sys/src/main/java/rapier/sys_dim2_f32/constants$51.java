@@ -7,20 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$51 {
+final class constants$51 {
 
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$51.RprIslandManager_drop$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_new",
-        constants$51.RprIslandManager_new$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$51() {}
     static final FunctionDescriptor RprJointLimits_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("min"),
         Constants$root.C_FLOAT$LAYOUT.withName("max"),
@@ -57,6 +47,18 @@ class constants$51 {
     static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_clear_autostep",
         constants$51.RprKinematicCharacterController_clear_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_snap_to_ground",
+        constants$51.RprKinematicCharacterController_clear_snap_to_ground$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_default",
+        constants$51.RprKinematicCharacterController_default$FUNC
     );
 }
 

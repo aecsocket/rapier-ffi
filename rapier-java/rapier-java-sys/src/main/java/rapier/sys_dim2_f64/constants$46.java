@@ -7,28 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$46 {
+final class constants$46 {
 
-    static final FunctionDescriptor RprGenericJoint_set_motor_model$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_motor_model$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_motor_model",
-        constants$46.RprGenericJoint_set_motor_model$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_set_motor_position$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_set_motor_position$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_set_motor_position",
-        constants$46.RprGenericJoint_set_motor_position$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$46() {}
     static final FunctionDescriptor RprGenericJoint_set_motor_velocity$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT,
@@ -64,6 +46,24 @@ class constants$46 {
     static final MethodHandle RprImpulseJointSet_contains$MH = RuntimeHelper.downcallHandle(
         "RprImpulseJointSet_contains",
         constants$46.RprImpulseJointSet_contains$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointSet_drop$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_drop",
+        constants$46.RprImpulseJointSet_drop$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprImpulseJointSet_get$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_get",
+        constants$46.RprImpulseJointSet_get$FUNC
     );
 }
 

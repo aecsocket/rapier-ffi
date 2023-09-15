@@ -3,18 +3,18 @@ package rapier.dynamics;
 import rapier.RefNative;
 import rapier.__real;
 
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 
 public sealed class RigidBodyActivation extends RefNative permits RigidBodyActivation.Mut {
-    private RigidBodyActivation(MemoryAddress memory) {
+    private RigidBodyActivation(MemorySegment memory) {
         super(memory);
     }
 
-    public static RigidBodyActivation at(MemoryAddress memory) {
+    public static RigidBodyActivation at(MemorySegment memory) {
         return new RigidBodyActivation(memory);
     }
 
-    public static Mut atMut(MemoryAddress memory) {
+    public static Mut atMut(MemorySegment memory) {
         return new Mut(memory);
     }
 
@@ -39,7 +39,7 @@ public sealed class RigidBodyActivation extends RefNative permits RigidBodyActiv
     }
 
     public static final class Mut extends RigidBodyActivation {
-        private Mut(MemoryAddress memory) {
+        private Mut(MemorySegment memory) {
             super(memory);
         }
 

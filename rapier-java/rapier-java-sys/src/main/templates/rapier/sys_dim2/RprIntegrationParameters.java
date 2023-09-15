@@ -7,9 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprIntegrationParameters {
+ *     float dt;
+ *     float min_ccd_dt;
+ *     float erp;
+ *     float damping_ratio;
+ *     float joint_erp;
+ *     float joint_damping_ratio;
+ *     float allowed_linear_error;
+ *     float max_penetration_correction;
+ *     float prediction_distance;
+ *     unsigned long max_velocity_iterations;
+ *     unsigned long max_velocity_friction_iterations;
+ *     unsigned long max_stabilization_iterations;
+ *     _Bool interleave_restitution_and_friction_resolution;
+ *     unsigned long min_island_size;
+ *     unsigned long max_ccd_substeps;
+ * };
+ * }
+ */
 public class RprIntegrationParameters {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("dt"),
         Constants$root.C_FLOAT$LAYOUT.withName("min_ccd_dt"),
         Constants$root.C_FLOAT$LAYOUT.withName("erp"),
@@ -35,10 +56,22 @@ public class RprIntegrationParameters {
     public static VarHandle dt$VH() {
         return RprIntegrationParameters.dt$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float dt;
+     * }
+     */
     public static float dt$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.dt$VH.get(seg);
     }
-    public static void dt$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float dt;
+     * }
+     */
+    public static void dt$set(MemorySegment seg, float x) {
         RprIntegrationParameters.dt$VH.set(seg, x);
     }
     public static float dt$get(MemorySegment seg, long index) {
@@ -51,10 +84,22 @@ public class RprIntegrationParameters {
     public static VarHandle min_ccd_dt$VH() {
         return RprIntegrationParameters.min_ccd_dt$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float min_ccd_dt;
+     * }
+     */
     public static float min_ccd_dt$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.min_ccd_dt$VH.get(seg);
     }
-    public static void min_ccd_dt$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float min_ccd_dt;
+     * }
+     */
+    public static void min_ccd_dt$set(MemorySegment seg, float x) {
         RprIntegrationParameters.min_ccd_dt$VH.set(seg, x);
     }
     public static float min_ccd_dt$get(MemorySegment seg, long index) {
@@ -67,10 +112,22 @@ public class RprIntegrationParameters {
     public static VarHandle erp$VH() {
         return RprIntegrationParameters.erp$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float erp;
+     * }
+     */
     public static float erp$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.erp$VH.get(seg);
     }
-    public static void erp$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float erp;
+     * }
+     */
+    public static void erp$set(MemorySegment seg, float x) {
         RprIntegrationParameters.erp$VH.set(seg, x);
     }
     public static float erp$get(MemorySegment seg, long index) {
@@ -83,10 +140,22 @@ public class RprIntegrationParameters {
     public static VarHandle damping_ratio$VH() {
         return RprIntegrationParameters.damping_ratio$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float damping_ratio;
+     * }
+     */
     public static float damping_ratio$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.damping_ratio$VH.get(seg);
     }
-    public static void damping_ratio$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float damping_ratio;
+     * }
+     */
+    public static void damping_ratio$set(MemorySegment seg, float x) {
         RprIntegrationParameters.damping_ratio$VH.set(seg, x);
     }
     public static float damping_ratio$get(MemorySegment seg, long index) {
@@ -99,10 +168,22 @@ public class RprIntegrationParameters {
     public static VarHandle joint_erp$VH() {
         return RprIntegrationParameters.joint_erp$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float joint_erp;
+     * }
+     */
     public static float joint_erp$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.joint_erp$VH.get(seg);
     }
-    public static void joint_erp$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float joint_erp;
+     * }
+     */
+    public static void joint_erp$set(MemorySegment seg, float x) {
         RprIntegrationParameters.joint_erp$VH.set(seg, x);
     }
     public static float joint_erp$get(MemorySegment seg, long index) {
@@ -115,10 +196,22 @@ public class RprIntegrationParameters {
     public static VarHandle joint_damping_ratio$VH() {
         return RprIntegrationParameters.joint_damping_ratio$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float joint_damping_ratio;
+     * }
+     */
     public static float joint_damping_ratio$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.joint_damping_ratio$VH.get(seg);
     }
-    public static void joint_damping_ratio$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float joint_damping_ratio;
+     * }
+     */
+    public static void joint_damping_ratio$set(MemorySegment seg, float x) {
         RprIntegrationParameters.joint_damping_ratio$VH.set(seg, x);
     }
     public static float joint_damping_ratio$get(MemorySegment seg, long index) {
@@ -131,10 +224,22 @@ public class RprIntegrationParameters {
     public static VarHandle allowed_linear_error$VH() {
         return RprIntegrationParameters.allowed_linear_error$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float allowed_linear_error;
+     * }
+     */
     public static float allowed_linear_error$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.allowed_linear_error$VH.get(seg);
     }
-    public static void allowed_linear_error$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float allowed_linear_error;
+     * }
+     */
+    public static void allowed_linear_error$set(MemorySegment seg, float x) {
         RprIntegrationParameters.allowed_linear_error$VH.set(seg, x);
     }
     public static float allowed_linear_error$get(MemorySegment seg, long index) {
@@ -147,10 +252,22 @@ public class RprIntegrationParameters {
     public static VarHandle max_penetration_correction$VH() {
         return RprIntegrationParameters.max_penetration_correction$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float max_penetration_correction;
+     * }
+     */
     public static float max_penetration_correction$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.max_penetration_correction$VH.get(seg);
     }
-    public static void max_penetration_correction$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float max_penetration_correction;
+     * }
+     */
+    public static void max_penetration_correction$set(MemorySegment seg, float x) {
         RprIntegrationParameters.max_penetration_correction$VH.set(seg, x);
     }
     public static float max_penetration_correction$get(MemorySegment seg, long index) {
@@ -163,10 +280,22 @@ public class RprIntegrationParameters {
     public static VarHandle prediction_distance$VH() {
         return RprIntegrationParameters.prediction_distance$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float prediction_distance;
+     * }
+     */
     public static float prediction_distance$get(MemorySegment seg) {
         return (float)RprIntegrationParameters.prediction_distance$VH.get(seg);
     }
-    public static void prediction_distance$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float prediction_distance;
+     * }
+     */
+    public static void prediction_distance$set(MemorySegment seg, float x) {
         RprIntegrationParameters.prediction_distance$VH.set(seg, x);
     }
     public static float prediction_distance$get(MemorySegment seg, long index) {
@@ -179,10 +308,22 @@ public class RprIntegrationParameters {
     public static VarHandle max_velocity_iterations$VH() {
         return RprIntegrationParameters.max_velocity_iterations$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long max_velocity_iterations;
+     * }
+     */
     public static long max_velocity_iterations$get(MemorySegment seg) {
         return (long)RprIntegrationParameters.max_velocity_iterations$VH.get(seg);
     }
-    public static void max_velocity_iterations$set( MemorySegment seg, long x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long max_velocity_iterations;
+     * }
+     */
+    public static void max_velocity_iterations$set(MemorySegment seg, long x) {
         RprIntegrationParameters.max_velocity_iterations$VH.set(seg, x);
     }
     public static long max_velocity_iterations$get(MemorySegment seg, long index) {
@@ -195,10 +336,22 @@ public class RprIntegrationParameters {
     public static VarHandle max_velocity_friction_iterations$VH() {
         return RprIntegrationParameters.max_velocity_friction_iterations$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long max_velocity_friction_iterations;
+     * }
+     */
     public static long max_velocity_friction_iterations$get(MemorySegment seg) {
         return (long)RprIntegrationParameters.max_velocity_friction_iterations$VH.get(seg);
     }
-    public static void max_velocity_friction_iterations$set( MemorySegment seg, long x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long max_velocity_friction_iterations;
+     * }
+     */
+    public static void max_velocity_friction_iterations$set(MemorySegment seg, long x) {
         RprIntegrationParameters.max_velocity_friction_iterations$VH.set(seg, x);
     }
     public static long max_velocity_friction_iterations$get(MemorySegment seg, long index) {
@@ -211,10 +364,22 @@ public class RprIntegrationParameters {
     public static VarHandle max_stabilization_iterations$VH() {
         return RprIntegrationParameters.max_stabilization_iterations$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long max_stabilization_iterations;
+     * }
+     */
     public static long max_stabilization_iterations$get(MemorySegment seg) {
         return (long)RprIntegrationParameters.max_stabilization_iterations$VH.get(seg);
     }
-    public static void max_stabilization_iterations$set( MemorySegment seg, long x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long max_stabilization_iterations;
+     * }
+     */
+    public static void max_stabilization_iterations$set(MemorySegment seg, long x) {
         RprIntegrationParameters.max_stabilization_iterations$VH.set(seg, x);
     }
     public static long max_stabilization_iterations$get(MemorySegment seg, long index) {
@@ -227,10 +392,22 @@ public class RprIntegrationParameters {
     public static VarHandle interleave_restitution_and_friction_resolution$VH() {
         return RprIntegrationParameters.interleave_restitution_and_friction_resolution$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool interleave_restitution_and_friction_resolution;
+     * }
+     */
     public static boolean interleave_restitution_and_friction_resolution$get(MemorySegment seg) {
         return (boolean)RprIntegrationParameters.interleave_restitution_and_friction_resolution$VH.get(seg);
     }
-    public static void interleave_restitution_and_friction_resolution$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool interleave_restitution_and_friction_resolution;
+     * }
+     */
+    public static void interleave_restitution_and_friction_resolution$set(MemorySegment seg, boolean x) {
         RprIntegrationParameters.interleave_restitution_and_friction_resolution$VH.set(seg, x);
     }
     public static boolean interleave_restitution_and_friction_resolution$get(MemorySegment seg, long index) {
@@ -243,10 +420,22 @@ public class RprIntegrationParameters {
     public static VarHandle min_island_size$VH() {
         return RprIntegrationParameters.min_island_size$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long min_island_size;
+     * }
+     */
     public static long min_island_size$get(MemorySegment seg) {
         return (long)RprIntegrationParameters.min_island_size$VH.get(seg);
     }
-    public static void min_island_size$set( MemorySegment seg, long x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long min_island_size;
+     * }
+     */
+    public static void min_island_size$set(MemorySegment seg, long x) {
         RprIntegrationParameters.min_island_size$VH.set(seg, x);
     }
     public static long min_island_size$get(MemorySegment seg, long index) {
@@ -259,10 +448,22 @@ public class RprIntegrationParameters {
     public static VarHandle max_ccd_substeps$VH() {
         return RprIntegrationParameters.max_ccd_substeps$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long max_ccd_substeps;
+     * }
+     */
     public static long max_ccd_substeps$get(MemorySegment seg) {
         return (long)RprIntegrationParameters.max_ccd_substeps$VH.get(seg);
     }
-    public static void max_ccd_substeps$set( MemorySegment seg, long x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long max_ccd_substeps;
+     * }
+     */
+    public static void max_ccd_substeps$set(MemorySegment seg, long x) {
         RprIntegrationParameters.max_ccd_substeps$VH.set(seg, x);
     }
     public static long max_ccd_substeps$get(MemorySegment seg, long index) {
@@ -273,10 +474,10 @@ public class RprIntegrationParameters {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

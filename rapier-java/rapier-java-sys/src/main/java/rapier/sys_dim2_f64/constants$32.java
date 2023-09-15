@@ -7,27 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$32 {
+final class constants$32 {
 
-    static final FunctionDescriptor RprCollider_set_shape$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_shape$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_shape",
-        constants$32.RprCollider_set_shape$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_solver_groups$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("memberships"),
-            Constants$root.C_INT$LAYOUT.withName("filter")
-        ).withName("RprInteractionGroups")
-    );
-    static final MethodHandle RprCollider_set_solver_groups$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_solver_groups",
-        constants$32.RprCollider_set_solver_groups$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$32() {}
     static final FunctionDescriptor RprCollider_set_translation$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -66,6 +49,23 @@ class constants$32 {
     static final MethodHandle RprCollider_solver_groups$MH = RuntimeHelper.downcallHandle(
         "RprCollider_solver_groups",
         constants$32.RprCollider_solver_groups$FUNC
+    );
+    static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_translation$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_translation",
+        constants$32.RprCollider_translation$FUNC
+    );
+    static final FunctionDescriptor RprCollider_volume$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_volume$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_volume",
+        constants$32.RprCollider_volume$FUNC
     );
 }
 

@@ -7,23 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$37 {
+final class constants$37 {
 
-    static final FunctionDescriptor RprContactManifold_subshape_pos2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactManifold_subshape_pos2$MH = RuntimeHelper.downcallHandle(
-        "RprContactManifold_subshape_pos2",
-        constants$37.RprContactManifold_subshape_pos2$FUNC
-    );
-    static final FunctionDescriptor RprContactManifold_user_data$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactManifold_user_data$MH = RuntimeHelper.downcallHandle(
-        "RprContactManifold_user_data",
-        constants$37.RprContactManifold_user_data$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$37() {}
     static final FunctionDescriptor RprContactModificationContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -57,6 +44,24 @@ class constants$37 {
     static final MethodHandle RprContactModificationContext_colliders$MH = RuntimeHelper.downcallHandle(
         "RprContactModificationContext_colliders",
         constants$37.RprContactModificationContext_colliders$FUNC
+    );
+    static final FunctionDescriptor RprContactModificationContext_manifold$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactModificationContext_manifold$MH = RuntimeHelper.downcallHandle(
+        "RprContactModificationContext_manifold",
+        constants$37.RprContactModificationContext_manifold$FUNC
+    );
+    static final FunctionDescriptor RprContactModificationContext_normal$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactModificationContext_normal$MH = RuntimeHelper.downcallHandle(
+        "RprContactModificationContext_normal",
+        constants$37.RprContactModificationContext_normal$FUNC
     );
 }
 

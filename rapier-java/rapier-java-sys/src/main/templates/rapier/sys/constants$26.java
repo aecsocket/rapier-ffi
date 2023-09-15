@@ -7,25 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$26 {
+final class constants$26 {
 
-    static final FunctionDescriptor RprCollider_active_hooks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_active_hooks$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_active_hooks",
-        constants$26.RprCollider_active_hooks$FUNC
-    );
-    static final FunctionDescriptor RprCollider_collision_groups$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("memberships"),
-        Constants$root.C_INT$LAYOUT.withName("filter")
-    ).withName("RprInteractionGroups"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_collision_groups$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_collision_groups",
-        constants$26.RprCollider_collision_groups$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$26() {}
     static final FunctionDescriptor RprCollider_compute_aabb$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_FLOAT$LAYOUT.withName("x"),
@@ -81,6 +66,20 @@ class constants$26 {
     static final MethodHandle RprCollider_density$MH = RuntimeHelper.downcallHandle(
         "RprCollider_density",
         constants$26.RprCollider_density$FUNC
+    );
+    static final FunctionDescriptor RprCollider_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_drop$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_drop",
+        constants$26.RprCollider_drop$FUNC
+    );
+    static final FunctionDescriptor RprCollider_friction$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_friction$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_friction",
+        constants$26.RprCollider_friction$FUNC
     );
 }
 

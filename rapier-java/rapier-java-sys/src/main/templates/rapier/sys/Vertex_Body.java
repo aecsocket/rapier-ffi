@@ -7,9 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct Vertex_Body {
+ *     unsigned int id;
+ * };
+ * }
+ */
 public class Vertex_Body {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("id")
     ).withName("Vertex_Body");
     public static MemoryLayout $LAYOUT() {
@@ -19,10 +26,22 @@ public class Vertex_Body {
     public static VarHandle id$VH() {
         return Vertex_Body.id$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int id;
+     * }
+     */
     public static int id$get(MemorySegment seg) {
         return (int)Vertex_Body.id$VH.get(seg);
     }
-    public static void id$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int id;
+     * }
+     */
+    public static void id$set(MemorySegment seg, int x) {
         Vertex_Body.id$VH.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
@@ -33,10 +52,10 @@ public class Vertex_Body {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

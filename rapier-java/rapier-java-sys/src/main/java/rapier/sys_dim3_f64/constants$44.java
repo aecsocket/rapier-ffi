@@ -7,46 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$44 {
+final class constants$44 {
 
-    static final FunctionDescriptor RprGenericJoint_local_frame1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_local_frame1$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame1",
-        constants$44.RprGenericJoint_local_frame1$FUNC
-    );
-    static final FunctionDescriptor RprGenericJoint_local_frame2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("w")
-        ).withName("rotation"),
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("translation")
-    ).withName("RprIsometry"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprGenericJoint_local_frame2$MH = RuntimeHelper.downcallHandle(
-        "RprGenericJoint_local_frame2",
-        constants$44.RprGenericJoint_local_frame2$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$44() {}
     static final FunctionDescriptor RprGenericJoint_lock_axes$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_CHAR$LAYOUT
@@ -77,6 +41,23 @@ class constants$44 {
     static final MethodHandle RprGenericJoint_motor_axes$MH = RuntimeHelper.downcallHandle(
         "RprGenericJoint_motor_axes",
         constants$44.RprGenericJoint_motor_axes$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motor_model$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motor_model$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motor_model",
+        constants$44.RprGenericJoint_motor_model$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_motors$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_motors$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_motors",
+        constants$44.RprGenericJoint_motors$FUNC
     );
 }
 

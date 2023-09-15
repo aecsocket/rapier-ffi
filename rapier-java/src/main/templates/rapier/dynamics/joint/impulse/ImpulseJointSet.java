@@ -6,8 +6,8 @@ import rapier.RefNative;
 import rapier.data.ArenaKey;
 import rapier.dynamics.joint.GenericJoint;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,11 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprImpulseJointSet_drop(self));
     }
 
-    private ImpulseJointSet(MemoryAddress memory) {
+    private ImpulseJointSet(MemorySegment memory) {
         super(memory);
     }
 
-    public static ImpulseJointSet at(MemoryAddress memory) {
+    public static ImpulseJointSet at(MemorySegment memory) {
         return new ImpulseJointSet(memory);
     }
 
@@ -42,7 +42,7 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
         return rapier.sys.RapierC.RprImpulseJointSet_is_empty(self);
     }
 
-    private List<Entry> vecToList(SegmentAllocator alloc, MemoryAddress vec) {
+    private List<Entry> vecToList(SegmentAllocator alloc, MemorySegment vec) {
         var len = (int) rapier.sys.RapierC.RprImpulseJointVec_len(vec);
         var res = new ArrayList<Entry>(len);
         for (int i = 0; i < len; i++) {
@@ -55,31 +55,31 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
     }
 
     public List<Entry> all() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return vecToList(arena, rapier.sys.RapierC.RprImpulseJointSet_all(self));
         }
     }
 
     public boolean contains(ArenaKey handle) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return rapier.sys.RapierC.RprImpulseJointSet_contains(self, handle.allocInto(arena));
         }
     }
 
     public ImpulseJoint get(ArenaKey handle) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ImpulseJoint.at(rapier.sys.RapierC.RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
     public ImpulseJoint.Mut getMut(ArenaKey handle) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ImpulseJoint.atMut(rapier.sys.RapierC.RprImpulseJointSet_get(self, handle.allocInto(arena)));
         }
     }
 
     public ArenaKey insert(ArenaKey body1, ArenaKey body2, GenericJoint data, boolean wakeUp) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys.RapierC.RprImpulseJointSet_insert(
                     arena,
                     self,
@@ -92,7 +92,7 @@ public final class ImpulseJointSet extends RefNative implements Droppable {
     }
 
     public ImpulseJoint.Mut remove(ArenaKey handle, boolean wakeUp) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ImpulseJoint.atMut(rapier.sys.RapierC.RprImpulseJointSet_remove(self, handle.allocInto(arena), wakeUp));
         }
     }

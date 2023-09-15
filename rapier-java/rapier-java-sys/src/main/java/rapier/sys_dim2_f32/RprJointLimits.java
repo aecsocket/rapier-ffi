@@ -7,9 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprJointLimits {
+ *     float min;
+ *     float max;
+ *     float impulse;
+ * };
+ * }
+ */
 public class RprJointLimits {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("min"),
         Constants$root.C_FLOAT$LAYOUT.withName("max"),
         Constants$root.C_FLOAT$LAYOUT.withName("impulse")
@@ -21,10 +30,22 @@ public class RprJointLimits {
     public static VarHandle min$VH() {
         return RprJointLimits.min$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float min;
+     * }
+     */
     public static float min$get(MemorySegment seg) {
         return (float)RprJointLimits.min$VH.get(seg);
     }
-    public static void min$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float min;
+     * }
+     */
+    public static void min$set(MemorySegment seg, float x) {
         RprJointLimits.min$VH.set(seg, x);
     }
     public static float min$get(MemorySegment seg, long index) {
@@ -37,10 +58,22 @@ public class RprJointLimits {
     public static VarHandle max$VH() {
         return RprJointLimits.max$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float max;
+     * }
+     */
     public static float max$get(MemorySegment seg) {
         return (float)RprJointLimits.max$VH.get(seg);
     }
-    public static void max$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float max;
+     * }
+     */
+    public static void max$set(MemorySegment seg, float x) {
         RprJointLimits.max$VH.set(seg, x);
     }
     public static float max$get(MemorySegment seg, long index) {
@@ -53,10 +86,22 @@ public class RprJointLimits {
     public static VarHandle impulse$VH() {
         return RprJointLimits.impulse$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float impulse;
+     * }
+     */
     public static float impulse$get(MemorySegment seg) {
         return (float)RprJointLimits.impulse$VH.get(seg);
     }
-    public static void impulse$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float impulse;
+     * }
+     */
+    public static void impulse$set(MemorySegment seg, float x) {
         RprJointLimits.impulse$VH.set(seg, x);
     }
     public static float impulse$get(MemorySegment seg, long index) {
@@ -67,10 +112,10 @@ public class RprJointLimits {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

@@ -7,56 +7,58 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$3 {
+final class constants$3 {
 
-    static final FunctionDescriptor __uint16_identity$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle __uint16_identity$MH = RuntimeHelper.downcallHandle(
-        "__uint16_identity",
-        constants$3.__uint16_identity$FUNC
-    );
-    static final FunctionDescriptor __uint32_identity$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$3() {}
+    static final FunctionDescriptor srandom$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_INT$LAYOUT
     );
-    static final MethodHandle __uint32_identity$MH = RuntimeHelper.downcallHandle(
-        "__uint32_identity",
-        constants$3.__uint32_identity$FUNC
+    static final MethodHandle srandom$MH = RuntimeHelper.downcallHandle(
+        "srandom",
+        constants$3.srandom$FUNC
     );
-    static final FunctionDescriptor __uint64_identity$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+    static final FunctionDescriptor initstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT
     );
-    static final MethodHandle __uint64_identity$MH = RuntimeHelper.downcallHandle(
-        "__uint64_identity",
-        constants$3.__uint64_identity$FUNC
+    static final MethodHandle initstate$MH = RuntimeHelper.downcallHandle(
+        "initstate",
+        constants$3.initstate$FUNC
     );
-    static final FunctionDescriptor select$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor setstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle setstate$MH = RuntimeHelper.downcallHandle(
+        "setstate",
+        constants$3.setstate$FUNC
+    );
+    static final FunctionDescriptor random_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle select$MH = RuntimeHelper.downcallHandle(
-        "select",
-        constants$3.select$FUNC
+    static final MethodHandle random_r$MH = RuntimeHelper.downcallHandle(
+        "random_r",
+        constants$3.random_r$FUNC
     );
-    static final FunctionDescriptor pselect$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor srandom_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle pselect$MH = RuntimeHelper.downcallHandle(
-        "pselect",
-        constants$3.pselect$FUNC
+    static final MethodHandle srandom_r$MH = RuntimeHelper.downcallHandle(
+        "srandom_r",
+        constants$3.srandom_r$FUNC
     );
-    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle random$MH = RuntimeHelper.downcallHandle(
-        "random",
-        constants$3.random$FUNC
+    static final FunctionDescriptor initstate_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle initstate_r$MH = RuntimeHelper.downcallHandle(
+        "initstate_r",
+        constants$3.initstate_r$FUNC
     );
 }
 

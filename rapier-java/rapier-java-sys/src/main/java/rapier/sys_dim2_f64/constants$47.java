@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$47 {
+final class constants$47 {
 
-    static final FunctionDescriptor RprImpulseJointSet_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprImpulseJointSet_drop$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_drop",
-        constants$47.RprImpulseJointSet_drop$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJointSet_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprImpulseJointSet_get$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_get",
-        constants$47.RprImpulseJointSet_get$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$47() {}
     static final FunctionDescriptor RprImpulseJointSet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
         MemoryLayout.structLayout(
@@ -71,6 +55,23 @@ class constants$47 {
     static final MethodHandle RprImpulseJointSet_len$MH = RuntimeHelper.downcallHandle(
         "RprImpulseJointSet_len",
         constants$47.RprImpulseJointSet_len$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_new",
+        constants$47.RprImpulseJointSet_new$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJointSet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey"),
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprImpulseJointSet_remove$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJointSet_remove",
+        constants$47.RprImpulseJointSet_remove$FUNC
     );
 }
 

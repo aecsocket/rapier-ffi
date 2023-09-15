@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$29 {
+final class constants$29 {
 
-    static final FunctionDescriptor RprCollider_rotation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_FLOAT$LAYOUT.withName("re"),
-        Constants$root.C_FLOAT$LAYOUT.withName("im")
-    ).withName("RprRotation"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_rotation",
-        constants$29.RprCollider_rotation$FUNC
-    );
-    static final FunctionDescriptor RprCollider_set_active_collision_types$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle RprCollider_set_active_collision_types$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_set_active_collision_types",
-        constants$29.RprCollider_set_active_collision_types$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$29() {}
     static final FunctionDescriptor RprCollider_set_active_events$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_INT$LAYOUT
@@ -61,6 +45,22 @@ class constants$29 {
     static final MethodHandle RprCollider_set_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
         "RprCollider_set_contact_force_event_threshold",
         constants$29.RprCollider_set_contact_force_event_threshold$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_density$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_density$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_density",
+        constants$29.RprCollider_set_density$FUNC
+    );
+    static final FunctionDescriptor RprCollider_set_enabled$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprCollider_set_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_set_enabled",
+        constants$29.RprCollider_set_enabled$FUNC
     );
 }
 

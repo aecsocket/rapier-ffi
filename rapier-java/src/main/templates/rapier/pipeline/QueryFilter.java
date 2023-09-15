@@ -5,7 +5,7 @@ import rapier.geometry.Collider;
 import rapier.geometry.InteractionGroups;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -53,7 +53,7 @@ public record QueryFilter(
             excludeRigidBody.into(rapier.sys.RprQueryFilter.exclude_rigid_body$slice(memory));
         }
         if (predicate == null) {
-            rapier.sys.RprQueryFilter.predicate$set(memory, MemoryAddress.NULL);
+            rapier.sys.RprQueryFilter.predicate$set(memory, MemorySegment.NULL);
         } else {
             rapier.sys.RprQueryFilter.predicate$set(memory, rapier.sys.RprQueryFilter.predicate.allocate(
                     (handle,
@@ -61,7 +61,7 @@ public record QueryFilter(
                     ) -> predicate.test(
                              ArenaKey.from(handle),
                             Collider.at(coll)
-                    ), memory.session()).address());
+                    ), memory.scope()));
         }
     }
 

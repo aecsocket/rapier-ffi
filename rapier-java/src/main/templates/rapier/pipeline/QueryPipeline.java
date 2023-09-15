@@ -11,8 +11,8 @@ import rapier.math.Vector;
 import rapier.shape.SharedShape;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class QueryPipeline extends RefNative implements Droppable {
     public interface IntersectionWithRayCallback {
@@ -38,11 +38,11 @@ public final class QueryPipeline extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprQueryPipeline_drop(self));
     }
 
-    private QueryPipeline(MemoryAddress memory) {
+    private QueryPipeline(MemorySegment memory) {
         super(memory);
     }
 
-    public static QueryPipeline at(MemoryAddress memory) {
+    public static QueryPipeline at(MemorySegment memory) {
         return new QueryPipeline(memory);
     }
 
@@ -68,7 +68,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
         ) {
             throw new IllegalArgumentException("All arrays must be of the same length");
         }
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPipeline = Native.allocPtrSlice(arena, pipeline);
             var nBodies = Native.allocPtrSlice(arena, bodies);
             var nColliders = Native.allocPtrSlice(arena, colliders);
@@ -89,7 +89,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = SimpleRayResult.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_cast_ray(
                     self,
@@ -113,7 +113,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ComplexRayResult.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_cast_ray_and_get_normal(
                     self,
@@ -138,7 +138,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             QueryFilter filter,
             IntersectionWithRayCallback callback
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprQueryPipeline_intersection_with_ray(
                     self,
                     bodies.memory(),
@@ -150,7 +150,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     rapier.sys.RprQueryPipeline_intersection_with_ray$callback.allocate(
                             (result) -> callback.run(
                                     ComplexRayResult.from(result)
-                            ), arena
+                            ), arena.scope()
                     )
             );
         }
@@ -163,7 +163,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             SharedShape shape,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ArenaKey.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_intersection_with_shape(
                     self,
@@ -185,7 +185,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean solid,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = SimplePointProject.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_project_point(
                     self,
@@ -207,7 +207,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             QueryFilter filter,
             IntersectionsWithPointCallback callback
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprQueryPipeline_intersections_with_point(
                     self,
                     bodies.memory(),
@@ -217,7 +217,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     rapier.sys.RprQueryPipeline_intersections_with_point$callback.allocate(
                             (result) -> callback.run(
                                     ArenaKey.from(result)
-                            ), arena
+                            ), arena.scope()
                     )
             );
         }
@@ -229,7 +229,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             Vector point,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ComplexPointProject.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_project_point_and_get_feature(
                     self,
@@ -247,14 +247,14 @@ public final class QueryPipeline extends RefNative implements Droppable {
             Aabb aabb,
             CollidersWithAabbIntersectingAabbCallback callback
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprQueryPipeline_colliders_with_aabb_intersecting_aabb(
                     self,
                     aabb.allocInto(arena),
                     rapier.sys.RprQueryPipeline_colliders_with_aabb_intersecting_aabb$callback.allocate(
                             (result) -> callback.run(
                                     ArenaKey.from(result)
-                            ), arena
+                            ), arena.scope()
                     )
             );
         }
@@ -270,7 +270,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean stopAtPenetration,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ShapeCast.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_cast_shape(
                     self,
@@ -298,7 +298,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             boolean stopAtPenetration,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = ShapeCast.alloc(arena);
             if (rapier.sys.RapierC.RprQueryPipeline_nonlinear_cast_shape(
                     self,
@@ -324,7 +324,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
             QueryFilter filter,
             IntersectionsWithShapeCallback callback
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprQueryPipeline_intersections_with_shape(
                     self,
                     bodies.memory(),
@@ -335,7 +335,7 @@ public final class QueryPipeline extends RefNative implements Droppable {
                     rapier.sys.RprQueryPipeline_intersections_with_shape$callback.allocate(
                             (result) -> callback.run(
                                     ArenaKey.from(result)
-                            ), arena
+                            ), arena.scope()
                     )
             );
         }

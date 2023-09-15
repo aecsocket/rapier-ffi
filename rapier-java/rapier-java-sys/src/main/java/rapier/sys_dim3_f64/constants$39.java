@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$39 {
+final class constants$39 {
 
-    static final FunctionDescriptor RprContactModificationContext_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactModificationContext_solver_contacts$MH = RuntimeHelper.downcallHandle(
-        "RprContactModificationContext_solver_contacts",
-        constants$39.RprContactModificationContext_solver_contacts$FUNC
-    );
-    static final FunctionDescriptor RprContactModificationContext_user_data$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactModificationContext_user_data$MH = RuntimeHelper.downcallHandle(
-        "RprContactModificationContext_user_data",
-        constants$39.RprContactModificationContext_user_data$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$39() {}
     static final FunctionDescriptor RprContactPair_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
@@ -60,6 +46,48 @@ class constants$39 {
     static final MethodHandle RprContactPair_manifolds$MH = RuntimeHelper.downcallHandle(
         "RprContactPair_manifolds",
         constants$39.RprContactPair_manifolds$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_add_wheel$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("z")
+        ).withName("RprVector"),
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_stiffness"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_compression"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("suspension_damping"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_travel"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("friction_slip"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_force")
+        ).withName("RprWheelTuning")
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_add_wheel$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_add_wheel",
+        constants$39.RprDynamicRayCastVehicleController_add_wheel$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_chassis$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_chassis$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_chassis",
+        constants$39.RprDynamicRayCastVehicleController_chassis$FUNC
     );
 }
 

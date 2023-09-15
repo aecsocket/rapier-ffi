@@ -7,9 +7,19 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprComplexPointProject {
+ *     struct RprArenaKey collider;
+ *     _Bool is_inside;
+ *     struct RprVector point;
+ *     struct RprFeatureId feature;
+ * };
+ * }
+ */
 public class RprComplexPointProject {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
@@ -29,7 +39,7 @@ public class RprComplexPointProject {
                 MemoryLayout.structLayout(
                     Constants$root.C_INT$LAYOUT.withName("id")
                 ).withName("face")
-            ).withName("$anon$0")
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1142:3)")
         ).withName("feature")
     ).withName("RprComplexPointProject");
     public static MemoryLayout $LAYOUT() {
@@ -42,10 +52,22 @@ public class RprComplexPointProject {
     public static VarHandle is_inside$VH() {
         return RprComplexPointProject.is_inside$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool is_inside;
+     * }
+     */
     public static boolean is_inside$get(MemorySegment seg) {
         return (boolean)RprComplexPointProject.is_inside$VH.get(seg);
     }
-    public static void is_inside$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool is_inside;
+     * }
+     */
+    public static void is_inside$set(MemorySegment seg, boolean x) {
         RprComplexPointProject.is_inside$VH.set(seg, x);
     }
     public static boolean is_inside$get(MemorySegment seg, long index) {
@@ -62,10 +84,10 @@ public class RprComplexPointProject {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

@@ -7,25 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$59 {
+final class constants$59 {
 
-    static final FunctionDescriptor RprPairFilterContext_bodies$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_bodies",
-        constants$59.RprPairFilterContext_bodies$FUNC
-    );
-    static final FunctionDescriptor RprPairFilterContext_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprPairFilterContext_collider1$MH = RuntimeHelper.downcallHandle(
-        "RprPairFilterContext_collider1",
-        constants$59.RprPairFilterContext_collider1$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$59() {}
     static final FunctionDescriptor RprPairFilterContext_collider2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
@@ -58,6 +43,18 @@ class constants$59 {
     static final MethodHandle RprPairFilterContext_rigid_body2$MH = RuntimeHelper.downcallHandle(
         "RprPairFilterContext_rigid_body2",
         constants$59.RprPairFilterContext_rigid_body2$FUNC
+    );
+    static final FunctionDescriptor RprPhysicsPipeline_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprPhysicsPipeline_drop$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_drop",
+        constants$59.RprPhysicsPipeline_drop$FUNC
+    );
+    static final FunctionDescriptor RprPhysicsPipeline_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
+    static final MethodHandle RprPhysicsPipeline_new$MH = RuntimeHelper.downcallHandle(
+        "RprPhysicsPipeline_new",
+        constants$59.RprPhysicsPipeline_new$FUNC
     );
 }
 

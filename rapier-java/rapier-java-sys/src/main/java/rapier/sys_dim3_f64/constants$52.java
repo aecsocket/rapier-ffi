@@ -7,30 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$52 {
+final class constants$52 {
 
-    static final FunctionDescriptor RprImpulseJoint_set_body1$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprImpulseJoint_set_body1$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJoint_set_body1",
-        constants$52.RprImpulseJoint_set_body1$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJoint_set_body2$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprImpulseJoint_set_body2$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJoint_set_body2",
-        constants$52.RprImpulseJoint_set_body2$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$52() {}
     static final FunctionDescriptor RprImpulseJoint_set_data$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
@@ -84,6 +64,22 @@ class constants$52 {
     static final MethodHandle RprIslandManager_active_dynamic_bodies$MH = RuntimeHelper.downcallHandle(
         "RprIslandManager_active_dynamic_bodies",
         constants$52.RprIslandManager_active_dynamic_bodies$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_active_kinematic_bodies",
+        constants$52.RprIslandManager_active_kinematic_bodies$FUNC
+    );
+    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
+        "RprIslandManager_drop",
+        constants$52.RprIslandManager_drop$FUNC
     );
 }
 

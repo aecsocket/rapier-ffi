@@ -7,35 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$67 {
+final class constants$67 {
 
-    static final FunctionDescriptor RprRigidBodyBuilder_position$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("re"),
-                Constants$root.C_FLOAT$LAYOUT.withName("im")
-            ).withName("rotation"),
-            MemoryLayout.structLayout(
-                Constants$root.C_FLOAT$LAYOUT.withName("x"),
-                Constants$root.C_FLOAT$LAYOUT.withName("y")
-            ).withName("translation")
-        ).withName("RprIsometry")
-    );
-    static final MethodHandle RprRigidBodyBuilder_position$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_position",
-        constants$67.RprRigidBodyBuilder_position$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyBuilder_rotation$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x")
-        ).withName("RprAngVector")
-    );
-    static final MethodHandle RprRigidBodyBuilder_rotation$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyBuilder_rotation",
-        constants$67.RprRigidBodyBuilder_rotation$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$67() {}
     static final FunctionDescriptor RprRigidBodyBuilder_sleeping$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -71,6 +46,26 @@ class constants$67 {
     static final MethodHandle RprRigidBodyMassProps_effective_angular_inertia$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyMassProps_effective_angular_inertia",
         constants$67.RprRigidBodyMassProps_effective_angular_inertia$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_inv_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_effective_inv_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_inv_mass",
+        constants$67.RprRigidBodyMassProps_effective_inv_mass$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyMassProps_effective_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_FLOAT$LAYOUT.withName("x"),
+        Constants$root.C_FLOAT$LAYOUT.withName("y")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyMassProps_effective_mass$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyMassProps_effective_mass",
+        constants$67.RprRigidBodyMassProps_effective_mass$FUNC
     );
 }
 

@@ -7,25 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$33 {
+final class constants$33 {
 
-    static final FunctionDescriptor RprCollider_translation$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_translation$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_translation",
-        constants$33.RprCollider_translation$FUNC
-    );
-    static final FunctionDescriptor RprCollider_volume$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_volume$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_volume",
-        constants$33.RprCollider_volume$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$33() {}
     static final FunctionDescriptor RprContactData_dist$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -59,6 +44,22 @@ class constants$33 {
     static final MethodHandle RprContactData_local_p2$MH = RuntimeHelper.downcallHandle(
         "RprContactData_local_p2",
         constants$33.RprContactData_local_p2$FUNC
+    );
+    static final FunctionDescriptor RprContactData_set_dist$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprContactData_set_dist$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_set_dist",
+        constants$33.RprContactData_set_dist$FUNC
+    );
+    static final FunctionDescriptor RprContactData_set_impulse$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprContactData_set_impulse$MH = RuntimeHelper.downcallHandle(
+        "RprContactData_set_impulse",
+        constants$33.RprContactData_set_impulse$FUNC
     );
 }
 

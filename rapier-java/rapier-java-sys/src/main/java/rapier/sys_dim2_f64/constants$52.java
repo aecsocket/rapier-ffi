@@ -7,20 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$52 {
+final class constants$52 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_clear_snap_to_ground",
-        constants$52.RprKinematicCharacterController_clear_snap_to_ground$FUNC
-    );
-    static final FunctionDescriptor RprKinematicCharacterController_default$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprKinematicCharacterController_default$MH = RuntimeHelper.downcallHandle(
-        "RprKinematicCharacterController_default",
-        constants$52.RprKinematicCharacterController_default$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$52() {}
     static final FunctionDescriptor RprKinematicCharacterController_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -88,6 +78,65 @@ class constants$52 {
                 MemoryLayout.paddingLayout(32)
             ).withName("toi")
         ).withName("RprCharacterCollision")
+    );
+    static final MethodHandle RprKinematicCharacterController_move_shape$events$MH = RuntimeHelper.downcallHandle(
+        constants$52.RprKinematicCharacterController_move_shape$events$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_move_shape$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("translation"),
+        Constants$root.C_BOOL$LAYOUT.withName("grounded"),
+        MemoryLayout.paddingLayout(56)
+    ).withName("RprEffectiveCharacterMovement"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("re"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("im")
+            ).withName("rotation"),
+            MemoryLayout.structLayout(
+                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+                Constants$root.C_DOUBLE$LAYOUT.withName("y")
+            ).withName("translation")
+        ).withName("RprIsometry"),
+        MemoryLayout.structLayout(
+            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+            Constants$root.C_DOUBLE$LAYOUT.withName("y")
+        ).withName("RprVector"),
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("flags"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("memberships"),
+                Constants$root.C_INT$LAYOUT.withName("filter")
+            ).withName("groups"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_collider"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_collider"),
+            Constants$root.C_BOOL$LAYOUT.withName("has_exclude_rigid_body"),
+            MemoryLayout.paddingLayout(24),
+            MemoryLayout.structLayout(
+                Constants$root.C_INT$LAYOUT.withName("index"),
+                Constants$root.C_INT$LAYOUT.withName("generation")
+            ).withName("exclude_rigid_body"),
+            Constants$root.C_POINTER$LAYOUT.withName("predicate")
+        ).withName("RprQueryFilter"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_move_shape$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_move_shape",
+        constants$52.RprKinematicCharacterController_move_shape$FUNC
     );
 }
 

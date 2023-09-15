@@ -7,50 +7,51 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$12 {
+final class constants$12 {
 
-    static final FunctionDescriptor on_exit$__func$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT,
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$12() {}
+    static final FunctionDescriptor putenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle on_exit$__func$MH = RuntimeHelper.downcallHandle(
-        constants$12.on_exit$__func$FUNC
+    static final MethodHandle putenv$MH = RuntimeHelper.downcallHandle(
+        "putenv",
+        constants$12.putenv$FUNC
     );
-    static final FunctionDescriptor on_exit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+    static final FunctionDescriptor setenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_INT$LAYOUT
+    );
+    static final MethodHandle setenv$MH = RuntimeHelper.downcallHandle(
+        "setenv",
+        constants$12.setenv$FUNC
+    );
+    static final FunctionDescriptor unsetenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle on_exit$MH = RuntimeHelper.downcallHandle(
-        "on_exit",
-        constants$12.on_exit$FUNC
+    static final MethodHandle unsetenv$MH = RuntimeHelper.downcallHandle(
+        "unsetenv",
+        constants$12.unsetenv$FUNC
     );
-    static final FunctionDescriptor exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor clearenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
+    static final MethodHandle clearenv$MH = RuntimeHelper.downcallHandle(
+        "clearenv",
+        constants$12.clearenv$FUNC
     );
-    static final MethodHandle exit$MH = RuntimeHelper.downcallHandle(
-        "exit",
-        constants$12.exit$FUNC
-    );
-    static final FunctionDescriptor quick_exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle quick_exit$MH = RuntimeHelper.downcallHandle(
-        "quick_exit",
-        constants$12.quick_exit$FUNC
-    );
-    static final FunctionDescriptor _Exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle _Exit$MH = RuntimeHelper.downcallHandle(
-        "_Exit",
-        constants$12._Exit$FUNC
-    );
-    static final FunctionDescriptor getenv$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+    static final FunctionDescriptor mktemp$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
-    static final MethodHandle getenv$MH = RuntimeHelper.downcallHandle(
-        "getenv",
-        constants$12.getenv$FUNC
+    static final MethodHandle mktemp$MH = RuntimeHelper.downcallHandle(
+        "mktemp",
+        constants$12.mktemp$FUNC
+    );
+    static final FunctionDescriptor mkstemp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle mkstemp$MH = RuntimeHelper.downcallHandle(
+        "mkstemp",
+        constants$12.mkstemp$FUNC
     );
 }
 

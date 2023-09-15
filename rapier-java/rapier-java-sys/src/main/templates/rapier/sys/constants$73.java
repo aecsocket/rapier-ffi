@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$73 {
+final class constants$73 {
 
-    static final FunctionDescriptor RprRigidBody_apply_torque_impulse$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_FLOAT$LAYOUT.withName("x")
-        ).withName("RprAngVector"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_apply_torque_impulse$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_apply_torque_impulse",
-        constants$73.RprRigidBody_apply_torque_impulse$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_body_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_body_type$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_body_type",
-        constants$73.RprRigidBody_body_type$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$73() {}
     static final FunctionDescriptor RprRigidBody_center_of_mass$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("x"),
         Constants$root.C_FLOAT$LAYOUT.withName("y")
@@ -59,6 +43,21 @@ class constants$73 {
     static final MethodHandle RprRigidBody_drop$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_drop",
         constants$73.RprRigidBody_drop$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_effective_dominance_group$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_effective_dominance_group$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_effective_dominance_group",
+        constants$73.RprRigidBody_effective_dominance_group$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_enable_ccd$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_enable_ccd$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_enable_ccd",
+        constants$73.RprRigidBody_enable_ccd$FUNC
     );
 }
 

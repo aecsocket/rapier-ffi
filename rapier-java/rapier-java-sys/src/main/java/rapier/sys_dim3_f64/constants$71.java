@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$71 {
+final class constants$71 {
 
-    static final FunctionDescriptor RprRigidBodyMassProps_mass$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_mass$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_mass",
-        constants$71.RprRigidBodyMassProps_mass$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyMassProps_world_com$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyMassProps_world_com$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyMassProps_world_com",
-        constants$71.RprRigidBodyMassProps_world_com$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$71() {}
     static final FunctionDescriptor RprRigidBodySet_all$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -62,6 +46,28 @@ class constants$71 {
     static final MethodHandle RprRigidBodySet_get$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodySet_get",
         constants$71.RprRigidBodySet_get$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_get_mut$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("index"),
+            Constants$root.C_INT$LAYOUT.withName("generation")
+        ).withName("RprArenaKey")
+    );
+    static final MethodHandle RprRigidBodySet_get_mut$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_get_mut",
+        constants$71.RprRigidBodySet_get_mut$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodySet_insert",
+        constants$71.RprRigidBodySet_insert$FUNC
     );
 }
 

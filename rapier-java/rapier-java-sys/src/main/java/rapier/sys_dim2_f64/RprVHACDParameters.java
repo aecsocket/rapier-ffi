@@ -7,9 +7,24 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprVHACDParameters {
+ *     double concavity;
+ *     double alpha;
+ *     double beta;
+ *     unsigned int resolution;
+ *     unsigned int plane_downsampling;
+ *     unsigned int convex_hull_downsampling;
+ *     struct RprFillMode fill_mode;
+ *     _Bool convex_hull_approximation;
+ *     unsigned int max_convex_hulls;
+ * };
+ * }
+ */
 public class RprVHACDParameters {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("concavity"),
         Constants$root.C_DOUBLE$LAYOUT.withName("alpha"),
         Constants$root.C_DOUBLE$LAYOUT.withName("beta"),
@@ -23,7 +38,7 @@ public class RprVHACDParameters {
                     Constants$root.C_BOOL$LAYOUT.withName("detect_cavities"),
                     Constants$root.C_BOOL$LAYOUT.withName("detect_self_intersections")
                 ).withName("flood_fill")
-            ).withName("$anon$0"),
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1334:3)"),
             MemoryLayout.paddingLayout(16)
         ).withName("fill_mode"),
         Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
@@ -38,10 +53,22 @@ public class RprVHACDParameters {
     public static VarHandle concavity$VH() {
         return RprVHACDParameters.concavity$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double concavity;
+     * }
+     */
     public static double concavity$get(MemorySegment seg) {
         return (double)RprVHACDParameters.concavity$VH.get(seg);
     }
-    public static void concavity$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double concavity;
+     * }
+     */
+    public static void concavity$set(MemorySegment seg, double x) {
         RprVHACDParameters.concavity$VH.set(seg, x);
     }
     public static double concavity$get(MemorySegment seg, long index) {
@@ -54,10 +81,22 @@ public class RprVHACDParameters {
     public static VarHandle alpha$VH() {
         return RprVHACDParameters.alpha$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double alpha;
+     * }
+     */
     public static double alpha$get(MemorySegment seg) {
         return (double)RprVHACDParameters.alpha$VH.get(seg);
     }
-    public static void alpha$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double alpha;
+     * }
+     */
+    public static void alpha$set(MemorySegment seg, double x) {
         RprVHACDParameters.alpha$VH.set(seg, x);
     }
     public static double alpha$get(MemorySegment seg, long index) {
@@ -70,10 +109,22 @@ public class RprVHACDParameters {
     public static VarHandle beta$VH() {
         return RprVHACDParameters.beta$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double beta;
+     * }
+     */
     public static double beta$get(MemorySegment seg) {
         return (double)RprVHACDParameters.beta$VH.get(seg);
     }
-    public static void beta$set( MemorySegment seg, double x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double beta;
+     * }
+     */
+    public static void beta$set(MemorySegment seg, double x) {
         RprVHACDParameters.beta$VH.set(seg, x);
     }
     public static double beta$get(MemorySegment seg, long index) {
@@ -86,10 +137,22 @@ public class RprVHACDParameters {
     public static VarHandle resolution$VH() {
         return RprVHACDParameters.resolution$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int resolution;
+     * }
+     */
     public static int resolution$get(MemorySegment seg) {
         return (int)RprVHACDParameters.resolution$VH.get(seg);
     }
-    public static void resolution$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int resolution;
+     * }
+     */
+    public static void resolution$set(MemorySegment seg, int x) {
         RprVHACDParameters.resolution$VH.set(seg, x);
     }
     public static int resolution$get(MemorySegment seg, long index) {
@@ -102,10 +165,22 @@ public class RprVHACDParameters {
     public static VarHandle plane_downsampling$VH() {
         return RprVHACDParameters.plane_downsampling$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int plane_downsampling;
+     * }
+     */
     public static int plane_downsampling$get(MemorySegment seg) {
         return (int)RprVHACDParameters.plane_downsampling$VH.get(seg);
     }
-    public static void plane_downsampling$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int plane_downsampling;
+     * }
+     */
+    public static void plane_downsampling$set(MemorySegment seg, int x) {
         RprVHACDParameters.plane_downsampling$VH.set(seg, x);
     }
     public static int plane_downsampling$get(MemorySegment seg, long index) {
@@ -118,10 +193,22 @@ public class RprVHACDParameters {
     public static VarHandle convex_hull_downsampling$VH() {
         return RprVHACDParameters.convex_hull_downsampling$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int convex_hull_downsampling;
+     * }
+     */
     public static int convex_hull_downsampling$get(MemorySegment seg) {
         return (int)RprVHACDParameters.convex_hull_downsampling$VH.get(seg);
     }
-    public static void convex_hull_downsampling$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int convex_hull_downsampling;
+     * }
+     */
+    public static void convex_hull_downsampling$set(MemorySegment seg, int x) {
         RprVHACDParameters.convex_hull_downsampling$VH.set(seg, x);
     }
     public static int convex_hull_downsampling$get(MemorySegment seg, long index) {
@@ -137,10 +224,22 @@ public class RprVHACDParameters {
     public static VarHandle convex_hull_approximation$VH() {
         return RprVHACDParameters.convex_hull_approximation$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool convex_hull_approximation;
+     * }
+     */
     public static boolean convex_hull_approximation$get(MemorySegment seg) {
         return (boolean)RprVHACDParameters.convex_hull_approximation$VH.get(seg);
     }
-    public static void convex_hull_approximation$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool convex_hull_approximation;
+     * }
+     */
+    public static void convex_hull_approximation$set(MemorySegment seg, boolean x) {
         RprVHACDParameters.convex_hull_approximation$VH.set(seg, x);
     }
     public static boolean convex_hull_approximation$get(MemorySegment seg, long index) {
@@ -153,10 +252,22 @@ public class RprVHACDParameters {
     public static VarHandle max_convex_hulls$VH() {
         return RprVHACDParameters.max_convex_hulls$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int max_convex_hulls;
+     * }
+     */
     public static int max_convex_hulls$get(MemorySegment seg) {
         return (int)RprVHACDParameters.max_convex_hulls$VH.get(seg);
     }
-    public static void max_convex_hulls$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int max_convex_hulls;
+     * }
+     */
+    public static void max_convex_hulls$set(MemorySegment seg, int x) {
         RprVHACDParameters.max_convex_hulls$VH.set(seg, x);
     }
     public static int max_convex_hulls$get(MemorySegment seg, long index) {
@@ -167,10 +278,10 @@ public class RprVHACDParameters {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

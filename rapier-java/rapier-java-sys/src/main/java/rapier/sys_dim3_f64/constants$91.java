@@ -7,28 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$91 {
+final class constants$91 {
 
-    static final FunctionDescriptor RprSolverContact_set_restitution$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle RprSolverContact_set_restitution$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_restitution",
-        constants$91.RprSolverContact_set_restitution$FUNC
-    );
-    static final FunctionDescriptor RprSolverContact_set_tangent_velocity$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-            Constants$root.C_DOUBLE$LAYOUT.withName("z")
-        ).withName("RprVector")
-    );
-    static final MethodHandle RprSolverContact_set_tangent_velocity$MH = RuntimeHelper.downcallHandle(
-        "RprSolverContact_set_tangent_velocity",
-        constants$91.RprSolverContact_set_tangent_velocity$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$91() {}
     static final FunctionDescriptor RprSolverContact_tangent_velocity$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
@@ -53,7 +35,7 @@ class constants$91 {
                 MemoryLayout.structLayout(
                     Constants$root.C_BOOL$LAYOUT.withName("detect_cavities")
                 ).withName("flood_fill")
-            ).withName("$anon$0"),
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1334:3)"),
             MemoryLayout.paddingLayout(24)
         ).withName("fill_mode"),
         Constants$root.C_BOOL$LAYOUT.withName("convex_hull_approximation"),
@@ -83,6 +65,29 @@ class constants$91 {
     static final MethodHandle RprVHACD_drop$MH = RuntimeHelper.downcallHandle(
         "RprVHACD_drop",
         constants$91.RprVHACD_drop$FUNC
+    );
+    static final FunctionDescriptor RprWheelTuning_default$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("suspension_stiffness"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("suspension_compression"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("suspension_damping"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_travel"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("friction_slip"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("max_suspension_force")
+    ).withName("RprWheelTuning"));
+    static final MethodHandle RprWheelTuning_default$MH = RuntimeHelper.downcallHandle(
+        "RprWheelTuning_default",
+        constants$91.RprWheelTuning_default$FUNC
+    );
+    static final FunctionDescriptor RprWheel_axle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("z")
+    ).withName("RprVector"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_axle$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_axle",
+        constants$91.RprWheel_axle$FUNC
     );
 }
 

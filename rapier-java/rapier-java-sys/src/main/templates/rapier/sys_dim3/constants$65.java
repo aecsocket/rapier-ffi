@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$65 {
+final class constants$65 {
 
-    static final FunctionDescriptor RprRigidBodyActivation_set_angular_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_angular_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_angular_threshold",
-        constants$65.RprRigidBodyActivation_set_angular_threshold$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodyActivation_set_linear_threshold$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle RprRigidBodyActivation_set_linear_threshold$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodyActivation_set_linear_threshold",
-        constants$65.RprRigidBodyActivation_set_linear_threshold$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$65() {}
     static final FunctionDescriptor RprRigidBodyActivation_set_sleeping$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_BOOL$LAYOUT
@@ -55,6 +41,20 @@ class constants$65 {
     static final MethodHandle RprRigidBodyActivation_sleeping$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyActivation_sleeping",
         constants$65.RprRigidBodyActivation_sleeping$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyActivation_time_since_can_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyActivation_time_since_can_sleep$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyActivation_time_since_can_sleep",
+        constants$65.RprRigidBodyActivation_time_since_can_sleep$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyActivation_time_until_sleep$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyActivation_time_until_sleep$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyActivation_time_until_sleep",
+        constants$65.RprRigidBodyActivation_time_until_sleep$FUNC
     );
 }
 

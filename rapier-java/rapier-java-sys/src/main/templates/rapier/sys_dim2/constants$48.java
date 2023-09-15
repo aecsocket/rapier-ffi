@@ -7,25 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$48 {
+final class constants$48 {
 
-    static final FunctionDescriptor RprImpulseJointSet_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprImpulseJointSet_new$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_new",
-        constants$48.RprImpulseJointSet_new$FUNC
-    );
-    static final FunctionDescriptor RprImpulseJointSet_remove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey"),
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle RprImpulseJointSet_remove$MH = RuntimeHelper.downcallHandle(
-        "RprImpulseJointSet_remove",
-        constants$48.RprImpulseJointSet_remove$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$48() {}
     static final FunctionDescriptor RprImpulseJointVec_drop$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT
     );
@@ -58,6 +43,26 @@ class constants$48 {
     static final MethodHandle RprImpulseJointVec_value$MH = RuntimeHelper.downcallHandle(
         "RprImpulseJointVec_value",
         constants$48.RprImpulseJointVec_value$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_body1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJoint_body1$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_body1",
+        constants$48.RprImpulseJoint_body1$FUNC
+    );
+    static final FunctionDescriptor RprImpulseJoint_body2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprImpulseJoint_body2$MH = RuntimeHelper.downcallHandle(
+        "RprImpulseJoint_body2",
+        constants$48.RprImpulseJoint_body2$FUNC
     );
 }
 

@@ -7,9 +7,23 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprQueryFilter {
+ *     unsigned int flags;
+ *     _Bool has_groups;
+ *     struct RprInteractionGroups groups;
+ *     _Bool has_exclude_collider;
+ *     struct RprArenaKey exclude_collider;
+ *     _Bool has_exclude_rigid_body;
+ *     struct RprArenaKey exclude_rigid_body;
+ *     _Bool (**predicate)(struct RprArenaKey,struct RprCollider*);
+ * };
+ * }
+ */
 public class RprQueryFilter {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("flags"),
         Constants$root.C_BOOL$LAYOUT.withName("has_groups"),
         MemoryLayout.paddingLayout(24),
@@ -38,10 +52,22 @@ public class RprQueryFilter {
     public static VarHandle flags$VH() {
         return RprQueryFilter.flags$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int flags;
+     * }
+     */
     public static int flags$get(MemorySegment seg) {
         return (int)RprQueryFilter.flags$VH.get(seg);
     }
-    public static void flags$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int flags;
+     * }
+     */
+    public static void flags$set(MemorySegment seg, int x) {
         RprQueryFilter.flags$VH.set(seg, x);
     }
     public static int flags$get(MemorySegment seg, long index) {
@@ -54,10 +80,22 @@ public class RprQueryFilter {
     public static VarHandle has_groups$VH() {
         return RprQueryFilter.has_groups$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool has_groups;
+     * }
+     */
     public static boolean has_groups$get(MemorySegment seg) {
         return (boolean)RprQueryFilter.has_groups$VH.get(seg);
     }
-    public static void has_groups$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool has_groups;
+     * }
+     */
+    public static void has_groups$set(MemorySegment seg, boolean x) {
         RprQueryFilter.has_groups$VH.set(seg, x);
     }
     public static boolean has_groups$get(MemorySegment seg, long index) {
@@ -73,10 +111,22 @@ public class RprQueryFilter {
     public static VarHandle has_exclude_collider$VH() {
         return RprQueryFilter.has_exclude_collider$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool has_exclude_collider;
+     * }
+     */
     public static boolean has_exclude_collider$get(MemorySegment seg) {
         return (boolean)RprQueryFilter.has_exclude_collider$VH.get(seg);
     }
-    public static void has_exclude_collider$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool has_exclude_collider;
+     * }
+     */
+    public static void has_exclude_collider$set(MemorySegment seg, boolean x) {
         RprQueryFilter.has_exclude_collider$VH.set(seg, x);
     }
     public static boolean has_exclude_collider$get(MemorySegment seg, long index) {
@@ -92,10 +142,22 @@ public class RprQueryFilter {
     public static VarHandle has_exclude_rigid_body$VH() {
         return RprQueryFilter.has_exclude_rigid_body$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool has_exclude_rigid_body;
+     * }
+     */
     public static boolean has_exclude_rigid_body$get(MemorySegment seg) {
         return (boolean)RprQueryFilter.has_exclude_rigid_body$VH.get(seg);
     }
-    public static void has_exclude_rigid_body$set( MemorySegment seg, boolean x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool has_exclude_rigid_body;
+     * }
+     */
+    public static void has_exclude_rigid_body$set(MemorySegment seg, boolean x) {
         RprQueryFilter.has_exclude_rigid_body$VH.set(seg, x);
     }
     public static boolean has_exclude_rigid_body$get(MemorySegment seg, long index) {
@@ -117,17 +179,22 @@ public class RprQueryFilter {
     static final MethodHandle predicate$MH = RuntimeHelper.downcallHandle(
         RprQueryFilter.predicate$FUNC
     );
+    /**
+     * {@snippet :
+ * _Bool (*predicate)(struct RprArenaKey,struct RprCollider*);
+     * }
+     */
     public interface predicate {
 
-        boolean apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemoryAddress _x1);
-        static MemorySegment allocate(predicate fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(predicate.class, fi, RprQueryFilter.predicate$FUNC, session);
+        boolean apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+        static MemorySegment allocate(predicate fi, SegmentScope scope) {
+            return RuntimeHelper.upcallStub(predicate.class, fi, RprQueryFilter.predicate$FUNC, scope);
         }
-        static predicate ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemoryAddress __x1) -> {
+        static predicate ofAddress(MemorySegment addr, SegmentScope scope) {
+            MemorySegment symbol = MemorySegment.ofAddress(addr.address(), 0, scope);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (boolean)RprQueryFilter.predicate$MH.invokeExact((Addressable)symbol, __x0, (java.lang.foreign.Addressable)__x1);
+                    return (boolean)RprQueryFilter.predicate$MH.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -139,27 +206,39 @@ public class RprQueryFilter {
     public static VarHandle predicate$VH() {
         return RprQueryFilter.predicate$VH;
     }
-    public static MemoryAddress predicate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)RprQueryFilter.predicate$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * _Bool (**predicate)(struct RprArenaKey,struct RprCollider*);
+     * }
+     */
+    public static MemorySegment predicate$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)RprQueryFilter.predicate$VH.get(seg);
     }
-    public static void predicate$set( MemorySegment seg, MemoryAddress x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * _Bool (**predicate)(struct RprArenaKey,struct RprCollider*);
+     * }
+     */
+    public static void predicate$set(MemorySegment seg, MemorySegment x) {
         RprQueryFilter.predicate$VH.set(seg, x);
     }
-    public static MemoryAddress predicate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)RprQueryFilter.predicate$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment predicate$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)RprQueryFilter.predicate$VH.get(seg.asSlice(index*sizeof()));
     }
-    public static void predicate$set(MemorySegment seg, long index, MemoryAddress x) {
+    public static void predicate$set(MemorySegment seg, long index, MemorySegment x) {
         RprQueryFilter.predicate$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static predicate predicate (MemorySegment segment, MemorySession session) {
-        return predicate.ofAddress(predicate$get(segment), session);
+    public static predicate predicate(MemorySegment segment, SegmentScope scope) {
+        return predicate.ofAddress(predicate$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

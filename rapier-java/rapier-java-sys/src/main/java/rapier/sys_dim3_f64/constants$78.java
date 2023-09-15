@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$78 {
+final class constants$78 {
 
-    static final FunctionDescriptor RprRigidBody_is_sleeping$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_sleeping$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_sleeping",
-        constants$78.RprRigidBody_is_sleeping$FUNC
-    );
-    static final FunctionDescriptor RprRigidBody_is_translation_locked$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBody_is_translation_locked$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBody_is_translation_locked",
-        constants$78.RprRigidBody_is_translation_locked$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$78() {}
     static final FunctionDescriptor RprRigidBody_kinetic_energy$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -56,6 +44,22 @@ class constants$78 {
     static final MethodHandle RprRigidBody_lock_rotations$MH = RuntimeHelper.downcallHandle(
         "RprRigidBody_lock_rotations",
         constants$78.RprRigidBody_lock_rotations$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_lock_translations$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_BOOL$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_lock_translations$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_lock_translations",
+        constants$78.RprRigidBody_lock_translations$FUNC
+    );
+    static final FunctionDescriptor RprRigidBody_locked_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBody_locked_axes$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBody_locked_axes",
+        constants$78.RprRigidBody_locked_axes$FUNC
     );
 }
 

@@ -7,9 +7,19 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprComplexRayResult {
+ *     struct RprArenaKey collider;
+ *     float toi;
+ *     struct RprVector normal;
+ *     struct RprFeatureId feature;
+ * };
+ * }
+ */
 public class RprComplexRayResult {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_INT$LAYOUT.withName("index"),
             Constants$root.C_INT$LAYOUT.withName("generation")
@@ -28,7 +38,7 @@ public class RprComplexRayResult {
                 MemoryLayout.structLayout(
                     Constants$root.C_INT$LAYOUT.withName("id")
                 ).withName("face")
-            ).withName("$anon$0")
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1142:3)")
         ).withName("feature")
     ).withName("RprComplexRayResult");
     public static MemoryLayout $LAYOUT() {
@@ -41,10 +51,22 @@ public class RprComplexRayResult {
     public static VarHandle toi$VH() {
         return RprComplexRayResult.toi$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float toi;
+     * }
+     */
     public static float toi$get(MemorySegment seg) {
         return (float)RprComplexRayResult.toi$VH.get(seg);
     }
-    public static void toi$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float toi;
+     * }
+     */
+    public static void toi$set(MemorySegment seg, float x) {
         RprComplexRayResult.toi$VH.set(seg, x);
     }
     public static float toi$get(MemorySegment seg, long index) {
@@ -61,10 +83,10 @@ public class RprComplexRayResult {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

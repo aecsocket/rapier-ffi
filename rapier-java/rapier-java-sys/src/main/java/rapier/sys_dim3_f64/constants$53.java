@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$53 {
+final class constants$53 {
 
-    static final FunctionDescriptor RprIslandManager_active_kinematic_bodies$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_active_kinematic_bodies$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_active_kinematic_bodies",
-        constants$53.RprIslandManager_active_kinematic_bodies$FUNC
-    );
-    static final FunctionDescriptor RprIslandManager_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprIslandManager_drop$MH = RuntimeHelper.downcallHandle(
-        "RprIslandManager_drop",
-        constants$53.RprIslandManager_drop$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$53() {}
     static final FunctionDescriptor RprIslandManager_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
     static final MethodHandle RprIslandManager_new$MH = RuntimeHelper.downcallHandle(
         "RprIslandManager_new",
@@ -60,6 +46,20 @@ class constants$53 {
     static final MethodHandle RprKinematicCharacterController_autostep$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_autostep",
         constants$53.RprKinematicCharacterController_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_clear_autostep$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_clear_autostep$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_autostep",
+        constants$53.RprKinematicCharacterController_clear_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_clear_snap_to_ground$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_clear_snap_to_ground$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_clear_snap_to_ground",
+        constants$53.RprKinematicCharacterController_clear_snap_to_ground$FUNC
     );
 }
 

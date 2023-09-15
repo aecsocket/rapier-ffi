@@ -7,9 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprCollisionEvent {
+ *     enum RprCollisionEvent_Tag tag;
+ *     union union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1089:3) {
+ *         struct Started_Body started;
+ *         struct Stopped_Body stopped;
+ *     };
+ * };
+ * }
+ */
 public class RprCollisionEvent {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("tag"),
         MemoryLayout.unionLayout(
             MemoryLayout.structLayout(
@@ -34,7 +45,7 @@ public class RprCollisionEvent {
                 ).withName("coll2"),
                 Constants$root.C_INT$LAYOUT.withName("flags")
             ).withName("stopped")
-        ).withName("$anon$0")
+        ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1089:3)")
     ).withName("RprCollisionEvent");
     public static MemoryLayout $LAYOUT() {
         return RprCollisionEvent.$struct$LAYOUT;
@@ -43,10 +54,22 @@ public class RprCollisionEvent {
     public static VarHandle tag$VH() {
         return RprCollisionEvent.tag$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum RprCollisionEvent_Tag tag;
+     * }
+     */
     public static int tag$get(MemorySegment seg) {
         return (int)RprCollisionEvent.tag$VH.get(seg);
     }
-    public static void tag$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum RprCollisionEvent_Tag tag;
+     * }
+     */
+    public static void tag$set(MemorySegment seg, int x) {
         RprCollisionEvent.tag$VH.set(seg, x);
     }
     public static int tag$get(MemorySegment seg, long index) {
@@ -55,18 +78,12 @@ public class RprCollisionEvent {
     public static void tag$set(MemorySegment seg, long index, int x) {
         RprCollisionEvent.tag$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static MemorySegment started$slice(MemorySegment seg) {
-        return seg.asSlice(4, 20);
-    }
-    public static MemorySegment stopped$slice(MemorySegment seg) {
-        return seg.asSlice(4, 20);
-    }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

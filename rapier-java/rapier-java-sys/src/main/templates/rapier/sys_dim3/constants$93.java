@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$93 {
+final class constants$93 {
 
-    static final FunctionDescriptor RprWheel_damping_compression$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_damping_compression$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_damping_compression",
-        constants$93.RprWheel_damping_compression$FUNC
-    );
-    static final FunctionDescriptor RprWheel_damping_relaxation$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprWheel_damping_relaxation$MH = RuntimeHelper.downcallHandle(
-        "RprWheel_damping_relaxation",
-        constants$93.RprWheel_damping_relaxation$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$93() {}
     static final FunctionDescriptor RprWheel_direction_cs$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("x"),
         Constants$root.C_FLOAT$LAYOUT.withName("y"),
@@ -54,6 +42,20 @@ class constants$93 {
     static final MethodHandle RprWheel_max_suspension_force$MH = RuntimeHelper.downcallHandle(
         "RprWheel_max_suspension_force",
         constants$93.RprWheel_max_suspension_force$FUNC
+    );
+    static final FunctionDescriptor RprWheel_max_suspension_travel$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_max_suspension_travel$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_max_suspension_travel",
+        constants$93.RprWheel_max_suspension_travel$FUNC
+    );
+    static final FunctionDescriptor RprWheel_radius$FUNC = FunctionDescriptor.of(Constants$root.C_FLOAT$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprWheel_radius$MH = RuntimeHelper.downcallHandle(
+        "RprWheel_radius",
+        constants$93.RprWheel_radius$FUNC
     );
 }
 

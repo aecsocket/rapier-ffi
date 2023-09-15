@@ -9,8 +9,8 @@ import rapier.pipeline.*;
 import rapier.shape.SharedShape;
 
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class KinematicCharacterController extends RefNative implements Droppable {
     public interface MoveEvents {
@@ -24,11 +24,11 @@ public final class KinematicCharacterController extends RefNative implements Dro
         dropped.drop(() -> rapier.sys.RapierC.RprKinematicCharacterController_drop(self));
     }
 
-    private KinematicCharacterController(MemoryAddress memory) {
+    private KinematicCharacterController(MemorySegment memory) {
         super(memory);
     }
 
-    public static KinematicCharacterController at(MemoryAddress memory) {
+    public static KinematicCharacterController at(MemorySegment memory) {
         return new KinematicCharacterController(memory);
     }
 
@@ -41,15 +41,15 @@ public final class KinematicCharacterController extends RefNative implements Dro
             __real minSlopeSlideAngle,
             @Nullable CharacterLength snapToGround
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys.RapierC.RprKinematicCharacterController_new(
                     up.allocInto(arena),
                     offset.allocInto(arena),
                     slide,
-                    autostep == null ? MemoryAddress.NULL : autostep.allocInto(arena),
+                    autostep == null ? MemorySegment.NULL : autostep.allocInto(arena),
                     maxSlopeClimbAngle,
                     minSlopeSlideAngle,
-                    snapToGround == null ? MemoryAddress.NULL : snapToGround.allocInto(arena)
+                    snapToGround == null ? MemorySegment.NULL : snapToGround.allocInto(arena)
             ));
         }
     }
@@ -59,25 +59,25 @@ public final class KinematicCharacterController extends RefNative implements Dro
     }
 
     public Vector getUp() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprKinematicCharacterController_up(arena, self));
         }
     }
 
     public void setUp(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprKinematicCharacterController_set_up(self, value.allocInto(arena));
         }
     }
 
     public CharacterLength getOffset() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return CharacterLength.from(rapier.sys.RapierC.RprKinematicCharacterController_offset(arena, self));
         }
     }
 
     public void setOffset(CharacterLength value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprKinematicCharacterController_set_offset(self, value.allocInto(arena));
         }
     }
@@ -91,7 +91,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
     }
 
     public @Nullable CharacterAutostep getAutostep() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = CharacterAutostep.alloc(arena);
             if (rapier.sys.RapierC.RprKinematicCharacterController_autostep(self, res))
                 return CharacterAutostep.from(res);
@@ -103,7 +103,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
         if (value == null) {
             rapier.sys.RapierC.RprKinematicCharacterController_clear_autostep(self);
         } else {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprKinematicCharacterController_set_autostep(self, value.allocInto(arena));
             }
         }
@@ -126,7 +126,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
     }
 
     public @Nullable CharacterLength getSnapToGround() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var res = CharacterLength.alloc(arena);
             if (rapier.sys.RapierC.RprKinematicCharacterController_snap_to_ground(self, res))
                 return CharacterLength.from(res);
@@ -138,7 +138,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
         if (value == null) {
             rapier.sys.RapierC.RprKinematicCharacterController_clear_snap_to_ground(self);
         } else {
-            try (var arena = MemorySession.openConfined()) {
+            try (var arena = Arena.openConfined()) {
                 rapier.sys.RapierC.RprKinematicCharacterController_set_snap_to_ground(self, value.allocInto(arena));
             }
         }
@@ -155,7 +155,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
             QueryFilter filter,
             MoveEvents events
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return EffectiveCharacterMovement.from(rapier.sys.RapierC.RprKinematicCharacterController_move_shape(
                     arena,
                     self,
@@ -170,7 +170,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
                     rapier.sys.RprKinematicCharacterController_move_shape$events.allocate(
                             (coll) -> events.handle(
                                     CharacterCollision.from(coll)
-                            ), arena
+                            ), arena.scope()
                     )
             ));
         }
@@ -186,7 +186,7 @@ public final class KinematicCharacterController extends RefNative implements Dro
             CharacterCollision collision,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprKinematicCharacterController_solve_character_collision_impulses(
                     self,
                     dt,

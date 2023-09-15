@@ -7,29 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$41 {
+final class constants$41 {
 
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_new$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_new",
-        constants$41.RprDynamicRayCastVehicleController_new$FUNC
-    );
-    static final FunctionDescriptor RprDynamicRayCastVehicleController_set_chassis$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("index"),
-            Constants$root.C_INT$LAYOUT.withName("generation")
-        ).withName("RprArenaKey")
-    );
-    static final MethodHandle RprDynamicRayCastVehicleController_set_chassis$MH = RuntimeHelper.downcallHandle(
-        "RprDynamicRayCastVehicleController_set_chassis",
-        constants$41.RprDynamicRayCastVehicleController_set_chassis$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$41() {}
     static final FunctionDescriptor RprDynamicRayCastVehicleController_set_index_forward_axis$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_LONG_LONG$LAYOUT
@@ -87,6 +68,22 @@ class constants$41 {
     static final MethodHandle RprDynamicRayCastVehicleController_wheels$MH = RuntimeHelper.downcallHandle(
         "RprDynamicRayCastVehicleController_wheels",
         constants$41.RprDynamicRayCastVehicleController_wheels$FUNC
+    );
+    static final FunctionDescriptor RprDynamicRayCastVehicleController_wheels_mut$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprDynamicRayCastVehicleController_wheels_mut$MH = RuntimeHelper.downcallHandle(
+        "RprDynamicRayCastVehicleController_wheels_mut",
+        constants$41.RprDynamicRayCastVehicleController_wheels_mut$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_contacts_enabled",
+        constants$41.RprGenericJoint_contacts_enabled$FUNC
     );
 }
 

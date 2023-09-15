@@ -5,38 +5,38 @@ import rapier.RefNative;
 import rapier.__real;
 import rapier.math.Vector;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 
 public final class ContactData extends RefNative {
-    private ContactData(MemoryAddress memory) {
+    private ContactData(MemorySegment memory) {
         super(memory);
     }
 
-    public static ContactData at(MemoryAddress memory) {
+    public static ContactData at(MemorySegment memory) {
         return new ContactData(memory);
     }
 
     public Vector getLocalP1() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprContactData_local_p1(arena, self));
         }
     }
 
     public void setLocalP1(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprContactData_set_local_p1(self, value.allocInto(arena));
         }
     }
 
     public Vector getLocalP2() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Vector.from(rapier.sys.RapierC.RprContactData_local_p2(arena, self));
         }
     }
 
     public void setLocalP2(Vector value) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys.RapierC.RprContactData_set_local_p2(self, value.allocInto(arena));
         }
     }
@@ -64,7 +64,7 @@ public final class ContactData extends RefNative {
     ) {}
 
     public TangentImpulse getTangentImpulse() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
 /*{% if dim2 %}*/
             var nX = arena.allocate(Real.layout());
             rapier.sys.RapierC.RprContactData_tangent_impulse(self, nX);

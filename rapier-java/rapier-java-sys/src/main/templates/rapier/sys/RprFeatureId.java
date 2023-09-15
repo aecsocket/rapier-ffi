@@ -7,9 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprFeatureId {
+ *     enum RprFeatureId_Tag tag;
+ *     union union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1142:3) {
+ *         struct Vertex_Body vertex;
+ *         struct Face_Body face;
+ *     };
+ * };
+ * }
+ */
 public class RprFeatureId {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("tag"),
         MemoryLayout.unionLayout(
             MemoryLayout.structLayout(
@@ -18,7 +29,7 @@ public class RprFeatureId {
             MemoryLayout.structLayout(
                 Constants$root.C_INT$LAYOUT.withName("id")
             ).withName("face")
-        ).withName("$anon$0")
+        ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:1142:3)")
     ).withName("RprFeatureId");
     public static MemoryLayout $LAYOUT() {
         return RprFeatureId.$struct$LAYOUT;
@@ -27,10 +38,22 @@ public class RprFeatureId {
     public static VarHandle tag$VH() {
         return RprFeatureId.tag$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum RprFeatureId_Tag tag;
+     * }
+     */
     public static int tag$get(MemorySegment seg) {
         return (int)RprFeatureId.tag$VH.get(seg);
     }
-    public static void tag$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum RprFeatureId_Tag tag;
+     * }
+     */
+    public static void tag$set(MemorySegment seg, int x) {
         RprFeatureId.tag$VH.set(seg, x);
     }
     public static int tag$get(MemorySegment seg, long index) {
@@ -39,18 +62,12 @@ public class RprFeatureId {
     public static void tag$set(MemorySegment seg, long index, int x) {
         RprFeatureId.tag$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static MemorySegment vertex$slice(MemorySegment seg) {
-        return seg.asSlice(4, 4);
-    }
-    public static MemorySegment face$slice(MemorySegment seg) {
-        return seg.asSlice(4, 4);
-    }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

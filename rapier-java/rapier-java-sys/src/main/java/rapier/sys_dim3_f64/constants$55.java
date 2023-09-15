@@ -7,67 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$55 {
+final class constants$55 {
 
-    static final FunctionDescriptor RprKinematicCharacterController_move_shape$events$FUNC = FunctionDescriptor.ofVoid(
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_INT$LAYOUT.withName("index"),
-                Constants$root.C_INT$LAYOUT.withName("generation")
-            ).withName("handle"),
-            MemoryLayout.structLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("w")
-                ).withName("rotation"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
-                ).withName("translation")
-            ).withName("character_pos"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("translation_applied"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                Constants$root.C_DOUBLE$LAYOUT.withName("z")
-            ).withName("translation_remaining"),
-            MemoryLayout.structLayout(
-                Constants$root.C_DOUBLE$LAYOUT.withName("toi"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
-                ).withName("witness1"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
-                ).withName("witness2"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
-                ).withName("normal1"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-                    Constants$root.C_DOUBLE$LAYOUT.withName("z")
-                ).withName("normal2"),
-                Constants$root.C_INT$LAYOUT.withName("status"),
-                MemoryLayout.paddingLayout(32)
-            ).withName("toi")
-        ).withName("RprCharacterCollision")
-    );
-    static final MethodHandle RprKinematicCharacterController_move_shape$events$MH = RuntimeHelper.downcallHandle(
-        constants$55.RprKinematicCharacterController_move_shape$events$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$55() {}
     static final FunctionDescriptor RprKinematicCharacterController_move_shape$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             Constants$root.C_DOUBLE$LAYOUT.withName("x"),
@@ -141,11 +84,11 @@ class constants$55 {
             MemoryLayout.unionLayout(
                 MemoryLayout.structLayout(
                     Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-                ).withName("$anon$0"),
+                ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5)"),
                 MemoryLayout.structLayout(
                     Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-                ).withName("$anon$1")
-            ).withName("$anon$0")
+                ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5)")
+            ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3)")
         ).withName("RprCharacterLength"),
         Constants$root.C_BOOL$LAYOUT,
         Constants$root.C_POINTER$LAYOUT,
@@ -163,11 +106,11 @@ class constants$55 {
         MemoryLayout.unionLayout(
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-            ).withName("$anon$0"),
+            ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5)"),
             MemoryLayout.structLayout(
                 Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-            ).withName("$anon$1")
-        ).withName("$anon$0")
+            ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5)")
+        ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3)")
     ).withName("RprCharacterLength"),
         Constants$root.C_POINTER$LAYOUT
     );
@@ -184,11 +127,11 @@ class constants$55 {
                 MemoryLayout.unionLayout(
                     MemoryLayout.structLayout(
                         Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-                    ).withName("$anon$0"),
+                    ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5)"),
                     MemoryLayout.structLayout(
                         Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-                    ).withName("$anon$1")
-                ).withName("$anon$0")
+                    ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5)")
+                ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3)")
             ).withName("max_height"),
             MemoryLayout.structLayout(
                 Constants$root.C_INT$LAYOUT.withName("tag"),
@@ -196,11 +139,11 @@ class constants$55 {
                 MemoryLayout.unionLayout(
                     MemoryLayout.structLayout(
                         Constants$root.C_DOUBLE$LAYOUT.withName("relative")
-                    ).withName("$anon$0"),
+                    ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:955:5)"),
                     MemoryLayout.structLayout(
                         Constants$root.C_DOUBLE$LAYOUT.withName("absolute")
-                    ).withName("$anon$1")
-                ).withName("$anon$0")
+                    ).withName("struct (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:958:5)")
+                ).withName("union (anonymous at /home/socket/Projects/rapier-ffi/rapier-java/rapier-java-sys/build/librapier.h:954:3)")
             ).withName("min_width"),
             Constants$root.C_BOOL$LAYOUT.withName("include_dynamic_bodies"),
             MemoryLayout.paddingLayout(56)
@@ -209,6 +152,22 @@ class constants$55 {
     static final MethodHandle RprKinematicCharacterController_set_autostep$MH = RuntimeHelper.downcallHandle(
         "RprKinematicCharacterController_set_autostep",
         constants$55.RprKinematicCharacterController_set_autostep$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_set_max_slope_climb_angle$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_set_max_slope_climb_angle$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_set_max_slope_climb_angle",
+        constants$55.RprKinematicCharacterController_set_max_slope_climb_angle$FUNC
+    );
+    static final FunctionDescriptor RprKinematicCharacterController_set_min_slope_slide_angle$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_DOUBLE$LAYOUT
+    );
+    static final MethodHandle RprKinematicCharacterController_set_min_slope_slide_angle$MH = RuntimeHelper.downcallHandle(
+        "RprKinematicCharacterController_set_min_slope_slide_angle",
+        constants$55.RprKinematicCharacterController_set_min_slope_slide_angle$FUNC
     );
 }
 

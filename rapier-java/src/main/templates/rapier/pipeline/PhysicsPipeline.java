@@ -14,8 +14,8 @@ import rapier.math.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 
 public final class PhysicsPipeline extends RefNative implements Droppable {
@@ -26,11 +26,11 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
         dropped.drop(() -> rapier.sys.RapierC.RprPhysicsPipeline_drop(self));
     }
 
-    private PhysicsPipeline(MemoryAddress memory) {
+    private PhysicsPipeline(MemorySegment memory) {
         super(memory);
     }
 
-    public static PhysicsPipeline at(MemoryAddress memory) {
+    public static PhysicsPipeline at(MemorySegment memory) {
         return new PhysicsPipeline(memory);
     }
 
@@ -53,9 +53,9 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
             @Nullable PhysicsHooks hooks,
             @Nullable EventHandler events
     ) {
-        try (var arena = MemorySession.openConfined()) {
-            var hooksPtr = hooks == null ? MemoryAddress.NULL : PhysicsHooks.allocInto(hooks, arena);
-            var eventsPtr = events == null ? MemoryAddress.NULL : EventHandler.allocInto(events, arena);
+        try (var arena = Arena.openConfined()) {
+            var hooksPtr = hooks == null ? MemorySegment.NULL : PhysicsHooks.allocInto(hooks, arena);
+            var eventsPtr = events == null ? MemorySegment.NULL : EventHandler.allocInto(events, arena);
             rapier.sys.RapierC.RprPhysicsPipeline_step(
                     self,
                     gravity.allocInto(arena),
@@ -108,7 +108,7 @@ public final class PhysicsPipeline extends RefNative implements Droppable {
         ) {
             throw new IllegalArgumentException("All arrays must be of the same length");
         }
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var nPipeline = Native.allocPtrSlice(arena, pipeline);
             var nGravity = Vector.allocIntoSlice(arena, gravity);
             var nIntegrationParameters = IntegrationParameters.allocIntoSlice(arena, integrationParameters);

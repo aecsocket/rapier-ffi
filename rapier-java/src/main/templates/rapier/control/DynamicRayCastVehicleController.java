@@ -8,8 +8,8 @@ import rapier.math.Vector;
 import rapier.pipeline.QueryFilter;
 import rapier.pipeline.QueryPipeline;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 
 public final class DynamicRayCastVehicleController extends RefNative implements Droppable {
@@ -22,19 +22,19 @@ public final class DynamicRayCastVehicleController extends RefNative implements 
 /*{% endif %}*/
     }
 
-    private DynamicRayCastVehicleController(MemoryAddress memory) {
+    private DynamicRayCastVehicleController(MemorySegment memory) {
         super(memory);
     }
 
 /*{% if dim3 %}*/
-    public static DynamicRayCastVehicleController at(MemoryAddress memory) {
+    public static DynamicRayCastVehicleController at(MemorySegment memory) {
         return new DynamicRayCastVehicleController(memory);
     }
 
     public static DynamicRayCastVehicleController of(
             ArenaKey chassis
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return at(rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_new(
                     chassis.allocInto(arena)
             ));
@@ -46,13 +46,13 @@ public final class DynamicRayCastVehicleController extends RefNative implements 
     }
 
     public ArenaKey getChassis() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return ArenaKey.from(rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_chassis(arena, self));
         }
     }
 
     public void setChassis(ArenaKey chassis) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_set_chassis(self, chassis.allocInto(arena));
         }
     }
@@ -81,7 +81,7 @@ public final class DynamicRayCastVehicleController extends RefNative implements 
             __real radius,
             WheelTuning tuning
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return Wheel.at(rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_add_wheel(
                     self,
                     chassisConnectionCs.allocInto(arena),
@@ -101,7 +101,7 @@ public final class DynamicRayCastVehicleController extends RefNative implements 
             QueryPipeline queries,
             QueryFilter filter
     ) {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_update_vehicle(
                     self,
                     dt,
@@ -114,7 +114,7 @@ public final class DynamicRayCastVehicleController extends RefNative implements 
     }
 
     public Wheel[] getWheels() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             var data = arena.allocate(ValueLayout.ADDRESS);
             var len = arena.allocate(ValueLayout.JAVA_LONG);
             rapier.sys_dim3.RapierC.RprDynamicRayCastVehicleController_wheels(self, data, len);

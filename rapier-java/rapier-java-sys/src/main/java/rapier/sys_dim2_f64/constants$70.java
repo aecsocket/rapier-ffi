@@ -7,26 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$70 {
+final class constants$70 {
 
-    static final FunctionDescriptor RprRigidBodySet_insert$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("index"),
-        Constants$root.C_INT$LAYOUT.withName("generation")
-    ).withName("RprArenaKey"),
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_insert$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_insert",
-        constants$70.RprRigidBodySet_insert$FUNC
-    );
-    static final FunctionDescriptor RprRigidBodySet_is_empty$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprRigidBodySet_is_empty$MH = RuntimeHelper.downcallHandle(
-        "RprRigidBodySet_is_empty",
-        constants$70.RprRigidBodySet_is_empty$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$70() {}
     static final FunctionDescriptor RprRigidBodySet_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -61,6 +45,24 @@ class constants$70 {
     static final MethodHandle RprRigidBodyVec_drop$MH = RuntimeHelper.downcallHandle(
         "RprRigidBodyVec_drop",
         constants$70.RprRigidBodyVec_drop$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyVec_handle$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_LONG_LONG$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_handle$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_handle",
+        constants$70.RprRigidBodyVec_handle$FUNC
+    );
+    static final FunctionDescriptor RprRigidBodyVec_len$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprRigidBodyVec_len$MH = RuntimeHelper.downcallHandle(
+        "RprRigidBodyVec_len",
+        constants$70.RprRigidBodyVec_len$FUNC
     );
 }
 

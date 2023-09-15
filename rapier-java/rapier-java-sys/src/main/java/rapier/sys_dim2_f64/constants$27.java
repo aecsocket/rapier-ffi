@@ -7,22 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$27 {
+final class constants$27 {
 
-    static final FunctionDescriptor RprCollider_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_drop$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_drop",
-        constants$27.RprCollider_drop$FUNC
-    );
-    static final FunctionDescriptor RprCollider_friction$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCollider_friction$MH = RuntimeHelper.downcallHandle(
-        "RprCollider_friction",
-        constants$27.RprCollider_friction$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$27() {}
     static final FunctionDescriptor RprCollider_friction_combine_rule$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
         Constants$root.C_POINTER$LAYOUT
     );
@@ -50,6 +38,28 @@ class constants$27 {
     static final MethodHandle RprCollider_mass$MH = RuntimeHelper.downcallHandle(
         "RprCollider_mass",
         constants$27.RprCollider_mass$FUNC
+    );
+    static final FunctionDescriptor RprCollider_material$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_DOUBLE$LAYOUT.withName("friction"),
+        Constants$root.C_DOUBLE$LAYOUT.withName("restitution"),
+        Constants$root.C_INT$LAYOUT.withName("friction_combine_rule"),
+        Constants$root.C_INT$LAYOUT.withName("restitution_combine_rule")
+    ).withName("RprColliderMaterial"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_material$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_material",
+        constants$27.RprCollider_material$FUNC
+    );
+    static final FunctionDescriptor RprCollider_parent$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
+        Constants$root.C_INT$LAYOUT.withName("index"),
+        Constants$root.C_INT$LAYOUT.withName("generation")
+    ).withName("RprArenaKey"),
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprCollider_parent$MH = RuntimeHelper.downcallHandle(
+        "RprCollider_parent",
+        constants$27.RprCollider_parent$FUNC
     );
 }
 

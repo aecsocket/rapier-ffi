@@ -7,9 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprJointMotor {
+ *     float target_vel;
+ *     float target_pos;
+ *     float stiffness;
+ *     float damping;
+ *     float max_force;
+ *     float impulse;
+ *     enum RprMotorModel model;
+ * };
+ * }
+ */
 public class RprJointMotor {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("target_vel"),
         Constants$root.C_FLOAT$LAYOUT.withName("target_pos"),
         Constants$root.C_FLOAT$LAYOUT.withName("stiffness"),
@@ -25,10 +38,22 @@ public class RprJointMotor {
     public static VarHandle target_vel$VH() {
         return RprJointMotor.target_vel$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float target_vel;
+     * }
+     */
     public static float target_vel$get(MemorySegment seg) {
         return (float)RprJointMotor.target_vel$VH.get(seg);
     }
-    public static void target_vel$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float target_vel;
+     * }
+     */
+    public static void target_vel$set(MemorySegment seg, float x) {
         RprJointMotor.target_vel$VH.set(seg, x);
     }
     public static float target_vel$get(MemorySegment seg, long index) {
@@ -41,10 +66,22 @@ public class RprJointMotor {
     public static VarHandle target_pos$VH() {
         return RprJointMotor.target_pos$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float target_pos;
+     * }
+     */
     public static float target_pos$get(MemorySegment seg) {
         return (float)RprJointMotor.target_pos$VH.get(seg);
     }
-    public static void target_pos$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float target_pos;
+     * }
+     */
+    public static void target_pos$set(MemorySegment seg, float x) {
         RprJointMotor.target_pos$VH.set(seg, x);
     }
     public static float target_pos$get(MemorySegment seg, long index) {
@@ -57,10 +94,22 @@ public class RprJointMotor {
     public static VarHandle stiffness$VH() {
         return RprJointMotor.stiffness$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float stiffness;
+     * }
+     */
     public static float stiffness$get(MemorySegment seg) {
         return (float)RprJointMotor.stiffness$VH.get(seg);
     }
-    public static void stiffness$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float stiffness;
+     * }
+     */
+    public static void stiffness$set(MemorySegment seg, float x) {
         RprJointMotor.stiffness$VH.set(seg, x);
     }
     public static float stiffness$get(MemorySegment seg, long index) {
@@ -73,10 +122,22 @@ public class RprJointMotor {
     public static VarHandle damping$VH() {
         return RprJointMotor.damping$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float damping;
+     * }
+     */
     public static float damping$get(MemorySegment seg) {
         return (float)RprJointMotor.damping$VH.get(seg);
     }
-    public static void damping$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float damping;
+     * }
+     */
+    public static void damping$set(MemorySegment seg, float x) {
         RprJointMotor.damping$VH.set(seg, x);
     }
     public static float damping$get(MemorySegment seg, long index) {
@@ -89,10 +150,22 @@ public class RprJointMotor {
     public static VarHandle max_force$VH() {
         return RprJointMotor.max_force$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float max_force;
+     * }
+     */
     public static float max_force$get(MemorySegment seg) {
         return (float)RprJointMotor.max_force$VH.get(seg);
     }
-    public static void max_force$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float max_force;
+     * }
+     */
+    public static void max_force$set(MemorySegment seg, float x) {
         RprJointMotor.max_force$VH.set(seg, x);
     }
     public static float max_force$get(MemorySegment seg, long index) {
@@ -105,10 +178,22 @@ public class RprJointMotor {
     public static VarHandle impulse$VH() {
         return RprJointMotor.impulse$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float impulse;
+     * }
+     */
     public static float impulse$get(MemorySegment seg) {
         return (float)RprJointMotor.impulse$VH.get(seg);
     }
-    public static void impulse$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float impulse;
+     * }
+     */
+    public static void impulse$set(MemorySegment seg, float x) {
         RprJointMotor.impulse$VH.set(seg, x);
     }
     public static float impulse$get(MemorySegment seg, long index) {
@@ -121,10 +206,22 @@ public class RprJointMotor {
     public static VarHandle model$VH() {
         return RprJointMotor.model$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum RprMotorModel model;
+     * }
+     */
     public static int model$get(MemorySegment seg) {
         return (int)RprJointMotor.model$VH.get(seg);
     }
-    public static void model$set( MemorySegment seg, int x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum RprMotorModel model;
+     * }
+     */
+    public static void model$set(MemorySegment seg, int x) {
         RprJointMotor.model$VH.set(seg, x);
     }
     public static int model$get(MemorySegment seg, long index) {
@@ -135,10 +232,10 @@ public class RprJointMotor {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 

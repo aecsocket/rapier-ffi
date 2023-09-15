@@ -3,9 +3,9 @@ package rapier.dynamics.joint;
 import rapier.__real;
 import rapier.data.ArenaKey;
 
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 
 public record JointLimits(

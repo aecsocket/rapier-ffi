@@ -3,7 +3,7 @@ package rapier.control;
 import rapier.__real;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 
 public record WheelTuning(
@@ -54,7 +54,7 @@ public record WheelTuning(
     }
 
     public static WheelTuning defaults() {
-        try (var arena = MemorySession.openConfined()) {
+        try (var arena = Arena.openConfined()) {
             return from(rapier.sys_dim3.RapierC.RprWheelTuning_default(arena));
         }
     }

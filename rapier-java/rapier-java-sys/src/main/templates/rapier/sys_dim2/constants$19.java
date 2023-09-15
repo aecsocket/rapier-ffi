@@ -7,20 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$19 {
+final class constants$19 {
 
-    static final FunctionDescriptor RprCCDSolver_drop$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprCCDSolver_drop$MH = RuntimeHelper.downcallHandle(
-        "RprCCDSolver_drop",
-        constants$19.RprCCDSolver_drop$FUNC
-    );
-    static final FunctionDescriptor RprCCDSolver_new$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle RprCCDSolver_new$MH = RuntimeHelper.downcallHandle(
-        "RprCCDSolver_new",
-        constants$19.RprCCDSolver_new$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$19() {}
     static final FunctionDescriptor RprColliderBuilder_active_collision_types$FUNC = FunctionDescriptor.ofVoid(
         Constants$root.C_POINTER$LAYOUT,
         Constants$root.C_SHORT$LAYOUT
@@ -51,6 +41,25 @@ class constants$19 {
     static final MethodHandle RprColliderBuilder_build$MH = RuntimeHelper.downcallHandle(
         "RprColliderBuilder_build",
         constants$19.RprColliderBuilder_build$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_collision_groups$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        MemoryLayout.structLayout(
+            Constants$root.C_INT$LAYOUT.withName("memberships"),
+            Constants$root.C_INT$LAYOUT.withName("filter")
+        ).withName("RprInteractionGroups")
+    );
+    static final MethodHandle RprColliderBuilder_collision_groups$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_collision_groups",
+        constants$19.RprColliderBuilder_collision_groups$FUNC
+    );
+    static final FunctionDescriptor RprColliderBuilder_contact_force_event_threshold$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_FLOAT$LAYOUT
+    );
+    static final MethodHandle RprColliderBuilder_contact_force_event_threshold$MH = RuntimeHelper.downcallHandle(
+        "RprColliderBuilder_contact_force_event_threshold",
+        constants$19.RprColliderBuilder_contact_force_event_threshold$FUNC
     );
 }
 

@@ -7,30 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$35 {
+final class constants$35 {
 
-    static final FunctionDescriptor RprContactManifold_local_n1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactManifold_local_n1$MH = RuntimeHelper.downcallHandle(
-        "RprContactManifold_local_n1",
-        constants$35.RprContactManifold_local_n1$FUNC
-    );
-    static final FunctionDescriptor RprContactManifold_local_n2$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_DOUBLE$LAYOUT.withName("x"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("y"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("z")
-    ).withName("RprVector"),
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactManifold_local_n2$MH = RuntimeHelper.downcallHandle(
-        "RprContactManifold_local_n2",
-        constants$35.RprContactManifold_local_n2$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$35() {}
     static final FunctionDescriptor RprContactManifold_normal$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_DOUBLE$LAYOUT.withName("x"),
         Constants$root.C_DOUBLE$LAYOUT.withName("y"),
@@ -65,6 +45,23 @@ class constants$35 {
     static final MethodHandle RprContactManifold_rigid_body1$MH = RuntimeHelper.downcallHandle(
         "RprContactManifold_rigid_body1",
         constants$35.RprContactManifold_rigid_body1$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_rigid_body2$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_rigid_body2$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_rigid_body2",
+        constants$35.RprContactManifold_rigid_body2$FUNC
+    );
+    static final FunctionDescriptor RprContactManifold_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprContactManifold_solver_contacts$MH = RuntimeHelper.downcallHandle(
+        "RprContactManifold_solver_contacts",
+        constants$35.RprContactManifold_solver_contacts$FUNC
     );
 }
 

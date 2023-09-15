@@ -7,24 +7,10 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$39 {
+final class constants$39 {
 
-    static final FunctionDescriptor RprContactModificationContext_solver_contacts$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactModificationContext_solver_contacts$MH = RuntimeHelper.downcallHandle(
-        "RprContactModificationContext_solver_contacts",
-        constants$39.RprContactModificationContext_solver_contacts$FUNC
-    );
-    static final FunctionDescriptor RprContactModificationContext_user_data$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle RprContactModificationContext_user_data$MH = RuntimeHelper.downcallHandle(
-        "RprContactModificationContext_user_data",
-        constants$39.RprContactModificationContext_user_data$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$39() {}
     static final FunctionDescriptor RprContactPair_collider1$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
         Constants$root.C_INT$LAYOUT.withName("index"),
         Constants$root.C_INT$LAYOUT.withName("generation")
@@ -60,6 +46,20 @@ class constants$39 {
     static final MethodHandle RprContactPair_manifolds$MH = RuntimeHelper.downcallHandle(
         "RprContactPair_manifolds",
         constants$39.RprContactPair_manifolds$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_contacts_enabled$FUNC = FunctionDescriptor.of(Constants$root.C_BOOL$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_contacts_enabled$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_contacts_enabled",
+        constants$39.RprGenericJoint_contacts_enabled$FUNC
+    );
+    static final FunctionDescriptor RprGenericJoint_coupled_axes$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
+        Constants$root.C_POINTER$LAYOUT
+    );
+    static final MethodHandle RprGenericJoint_coupled_axes$MH = RuntimeHelper.downcallHandle(
+        "RprGenericJoint_coupled_axes",
+        constants$39.RprGenericJoint_coupled_axes$FUNC
     );
 }
 

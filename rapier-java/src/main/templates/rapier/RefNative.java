@@ -1,16 +1,16 @@
 package rapier;
 
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 
 public non-sealed abstract class RefNative extends BaseNative {
-    protected final MemoryAddress self;
+    protected final MemorySegment self;
 
-    protected RefNative(MemoryAddress memory) {
+    protected RefNative(MemorySegment memory) {
         this.self = memory;
     }
 
     @Override
-    public MemoryAddress memory() {
+    public MemorySegment memory() {
         return self;
     }
 

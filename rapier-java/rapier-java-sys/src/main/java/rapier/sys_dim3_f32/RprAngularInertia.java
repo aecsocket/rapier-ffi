@@ -7,9 +7,21 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct RprAngularInertia {
+ *     float m11;
+ *     float m12;
+ *     float m13;
+ *     float m22;
+ *     float m23;
+ *     float m33;
+ * };
+ * }
+ */
 public class RprAngularInertia {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
+    static final StructLayout $struct$LAYOUT = MemoryLayout.structLayout(
         Constants$root.C_FLOAT$LAYOUT.withName("m11"),
         Constants$root.C_FLOAT$LAYOUT.withName("m12"),
         Constants$root.C_FLOAT$LAYOUT.withName("m13"),
@@ -24,10 +36,22 @@ public class RprAngularInertia {
     public static VarHandle m11$VH() {
         return RprAngularInertia.m11$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m11;
+     * }
+     */
     public static float m11$get(MemorySegment seg) {
         return (float)RprAngularInertia.m11$VH.get(seg);
     }
-    public static void m11$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m11;
+     * }
+     */
+    public static void m11$set(MemorySegment seg, float x) {
         RprAngularInertia.m11$VH.set(seg, x);
     }
     public static float m11$get(MemorySegment seg, long index) {
@@ -40,10 +64,22 @@ public class RprAngularInertia {
     public static VarHandle m12$VH() {
         return RprAngularInertia.m12$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m12;
+     * }
+     */
     public static float m12$get(MemorySegment seg) {
         return (float)RprAngularInertia.m12$VH.get(seg);
     }
-    public static void m12$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m12;
+     * }
+     */
+    public static void m12$set(MemorySegment seg, float x) {
         RprAngularInertia.m12$VH.set(seg, x);
     }
     public static float m12$get(MemorySegment seg, long index) {
@@ -56,10 +92,22 @@ public class RprAngularInertia {
     public static VarHandle m13$VH() {
         return RprAngularInertia.m13$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m13;
+     * }
+     */
     public static float m13$get(MemorySegment seg) {
         return (float)RprAngularInertia.m13$VH.get(seg);
     }
-    public static void m13$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m13;
+     * }
+     */
+    public static void m13$set(MemorySegment seg, float x) {
         RprAngularInertia.m13$VH.set(seg, x);
     }
     public static float m13$get(MemorySegment seg, long index) {
@@ -72,10 +120,22 @@ public class RprAngularInertia {
     public static VarHandle m22$VH() {
         return RprAngularInertia.m22$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m22;
+     * }
+     */
     public static float m22$get(MemorySegment seg) {
         return (float)RprAngularInertia.m22$VH.get(seg);
     }
-    public static void m22$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m22;
+     * }
+     */
+    public static void m22$set(MemorySegment seg, float x) {
         RprAngularInertia.m22$VH.set(seg, x);
     }
     public static float m22$get(MemorySegment seg, long index) {
@@ -88,10 +148,22 @@ public class RprAngularInertia {
     public static VarHandle m23$VH() {
         return RprAngularInertia.m23$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m23;
+     * }
+     */
     public static float m23$get(MemorySegment seg) {
         return (float)RprAngularInertia.m23$VH.get(seg);
     }
-    public static void m23$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m23;
+     * }
+     */
+    public static void m23$set(MemorySegment seg, float x) {
         RprAngularInertia.m23$VH.set(seg, x);
     }
     public static float m23$get(MemorySegment seg, long index) {
@@ -104,10 +176,22 @@ public class RprAngularInertia {
     public static VarHandle m33$VH() {
         return RprAngularInertia.m33$VH;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * float m33;
+     * }
+     */
     public static float m33$get(MemorySegment seg) {
         return (float)RprAngularInertia.m33$VH.get(seg);
     }
-    public static void m33$set( MemorySegment seg, float x) {
+    /**
+     * Setter for field:
+     * {@snippet :
+     * float m33;
+     * }
+     */
+    public static void m33$set(MemorySegment seg, float x) {
         RprAngularInertia.m33$VH.set(seg, x);
     }
     public static float m33$get(MemorySegment seg, long index) {
@@ -118,10 +202,10 @@ public class RprAngularInertia {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, SegmentScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 
 
